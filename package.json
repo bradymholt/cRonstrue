@@ -1,0 +1,32 @@
+{
+  "name": "cronglish",
+  "version": "0.1.0",
+  "description": "Convert cron expressions into descriptions",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradyholt/cronglish.git"
+  },
+  "keywords": [
+    "cron",
+    "expression",
+    "description",
+    "pretty",
+    "schedule"
+  ],
+  "author": "Brady Holt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradyholt/cronglish/issues"
+  },
+  "homepage": "https://github.com/bradyholt/cronglish#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "typescript": "^1.8.10"
+  }
+}
