@@ -1,18 +1,14 @@
-import StringUtilities from './stringUtilities'
-import Options from './options'
-import DescriptionTypeEnum from './descriptionTypeEnum'
-import CasingTypeEnum from './casingTypeEnum'
-
-class ExpressionDescriptor {
-    expression: string;
-    parsed: boolean = false;
-    options: Options;
-    text: any;
-
-    constructor(expression: string) {
+"use strict";
+var stringUtilities_1 = require('./stringUtilities');
+var options_1 = require('./options');
+var descriptionTypeEnum_1 = require('./descriptionTypeEnum');
+var casingTypeEnum_1 = require('./casingTypeEnum');
+var ExpressionDescriptor = (function () {
+    function ExpressionDescriptor(expression) {
+        this.parsed = false;
         this.expression = expression;
         this.parsed = false;
-        this.options = new Options();
+        this.options = new options_1.default();
         this.text = {
             "EveryMinute": "every minute",
             "EveryHour": "every hour",
@@ -60,38 +56,37 @@ class ExpressionDescriptor {
             "CommaStartingX0": ", starting {0}"
         };
     }
-
-    getDescription(type: DescriptionTypeEnum) {
+    ExpressionDescriptor.prototype.getDescription = function (type) {
         var description = "";
         try {
             if (!this.parsed) {
             }
             switch (type) {
-                case DescriptionTypeEnum.FULL:
+                case descriptionTypeEnum_1.default.FULL:
                     description = this.getFullDescription();
                     break;
-                case DescriptionTypeEnum.TIMEOFDAY:
+                case descriptionTypeEnum_1.default.TIMEOFDAY:
                     description = this.getTimeOfDayDescription();
                     break;
-                case DescriptionTypeEnum.HOURS:
+                case descriptionTypeEnum_1.default.HOURS:
                     description = this.getHoursDescription();
                     break;
-                case DescriptionTypeEnum.MINUTES:
+                case descriptionTypeEnum_1.default.MINUTES:
                     description = this.getMinutesDescription();
                     break;
-                case DescriptionTypeEnum.SECONDS:
+                case descriptionTypeEnum_1.default.SECONDS:
                     description = this.getSecondsDescription();
                     break;
-                case DescriptionTypeEnum.DAYOFMONTH:
+                case descriptionTypeEnum_1.default.DAYOFMONTH:
                     description = this.getDayOfMonthDescription();
                     break;
-                case DescriptionTypeEnum.MONTH:
+                case descriptionTypeEnum_1.default.MONTH:
                     description = this.getMonthDescription();
                     break;
-                case DescriptionTypeEnum.DAYOFWEEK:
+                case descriptionTypeEnum_1.default.DAYOFWEEK:
                     description = this.getDayOfWeekDescription();
                     break;
-                case DescriptionTypeEnum.YEAR:
+                case descriptionTypeEnum_1.default.YEAR:
                     description = this.getYearDescription();
                     break;
                 default:
@@ -104,10 +99,9 @@ class ExpressionDescriptor {
             throw new Error("error!");
         }
         return description;
-    }
-
-    getFullDescription() {
-        var description: string;
+    };
+    ExpressionDescriptor.prototype.getFullDescription = function () {
+        var description;
         try {
             var timeSegment = this.getTimeOfDayDescription();
             var dayOfMonthDesc = this.getDayOfMonthDescription();
@@ -125,53 +119,52 @@ class ExpressionDescriptor {
             }
         }
         return description;
-    }
-
-    getTimeOfDayDescription() {
+    };
+    ExpressionDescriptor.prototype.getTimeOfDayDescription = function () {
         return "";
-    }
-    getHoursDescription() {
+    };
+    ExpressionDescriptor.prototype.getHoursDescription = function () {
         return "";
-    }
-    getMinutesDescription() {
+    };
+    ExpressionDescriptor.prototype.getMinutesDescription = function () {
         return "";
-    }
-    getSecondsDescription() {
+    };
+    ExpressionDescriptor.prototype.getSecondsDescription = function () {
         return "";
-    }
-    getDayOfMonthDescription() {
+    };
+    ExpressionDescriptor.prototype.getDayOfMonthDescription = function () {
         return "";
-    }
-    getMonthDescription() {
+    };
+    ExpressionDescriptor.prototype.getMonthDescription = function () {
         return "";
-    }
-    getDayOfWeekDescription() {
+    };
+    ExpressionDescriptor.prototype.getDayOfWeekDescription = function () {
         return "";
-    }
-    getYearDescription() {
+    };
+    ExpressionDescriptor.prototype.getYearDescription = function () {
         return "";
-    }
-    transformVerbosity(description: string, useVerboseFormat: boolean) {
+    };
+    ExpressionDescriptor.prototype.transformVerbosity = function (description, useVerboseFormat) {
         if (!useVerboseFormat) {
             description = description.replace(this.text.ComaEveryMinute, "");
             description = description.replace(this.text.CommaEveryHour, "");
             description = description.replace(this.text.ComaEveryDay, "");
         }
         return description;
-    }
-
-    transformCase(description: string, caseType: CasingTypeEnum) {
+    };
+    ExpressionDescriptor.prototype.transformCase = function (description, caseType) {
         switch (caseType) {
-            case CasingTypeEnum.SENTENCE:
+            case casingTypeEnum_1.default.SENTENCE:
                 description = description.toLocaleUpperCase();
                 break;
-            case CasingTypeEnum.TITLE:
-                description = StringUtilities.toProperCase(description);
+            case casingTypeEnum_1.default.TITLE:
+                description = stringUtilities_1.default.toProperCase(description);
                 break;
             default:
                 description = description.toLocaleLowerCase();
                 break;
         }
         return description;
-    }
-}
+    };
+    return ExpressionDescriptor;
+}());

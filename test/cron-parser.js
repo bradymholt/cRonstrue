@@ -1,5 +1,5 @@
 var asset = require('chai').assert;
-var CronParser = require('../lib/cron-parser');
+var CronParser = require('../build/cron-parser').CronParser;
 
 describe('CronParser', function() {
   describe('#parse()', function () {
@@ -18,7 +18,7 @@ describe('CronParser', function() {
     });
 
     it('should blow up if expression is crap', function () {
-      asset.throws(function() {new CronParser("sdlksCRAPdlkskl- dds").parse()}, 'Expression only has 2 part(s).  At least 5 part are required.');
+      asset.throws(function() {new CronParser("sdlksCRAPdlkskl- dds").parse()}, 'Expression only has 2 parts.  At least 5 part are required.');
     });
   });
 });
