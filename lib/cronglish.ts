@@ -1,4 +1,5 @@
-import StringUtilities from './stringUtilities'
+import { StringUtilities } from './stringUtilities'
+import { CronParser } from './cronParser'
 import Options from './options'
 import DescriptionTypeEnum from './descriptionTypeEnum'
 import CasingTypeEnum from './casingTypeEnum'
@@ -6,13 +7,17 @@ import CasingTypeEnum from './casingTypeEnum'
 class ExpressionDescriptor {
     expression: string;
     parsed: boolean = false;
+    expressionParts: string[];
     options: Options;
+    specialCharacters: string[];
     text: any;
 
     constructor(expression: string) {
         this.expression = expression;
         this.parsed = false;
+        this.expressionParts = new Array(5);
         this.options = new Options();
+        this.specialCharacters = ["/", "-", ",", "*"];
         this.text = {
             "EveryMinute": "every minute",
             "EveryHour": "every hour",
@@ -64,8 +69,13 @@ class ExpressionDescriptor {
     getDescription(type: DescriptionTypeEnum) {
         var description = "";
         try {
+
             if (!this.parsed) {
+                let parser = new CronParser(this.expression, this.options);
+                this.expressionParts = parser.parse();
+                this.parsed = true;
             }
+
             switch (type) {
                 case DescriptionTypeEnum.FULL:
                     description = this.getFullDescription();
@@ -128,7 +138,70 @@ class ExpressionDescriptor {
     }
 
     getTimeOfDayDescription() {
-        return "";
+        let secondsExpression: string = this.expressionParts[0];
+        let minuteExpression: string = this.expressionParts[1];
+        let hourExpression: string = this.expressionParts[2];
+
+        let description = "";
+
+        //handle special cases first
+        if (this.specialCharacters.some((c) => { return minuteExpression.indexOf(c) > -1 })
+            && this.specialCharacters.some((c) => { return hourExpression.indexOf(c) > -1 })
+            && this.specialCharacters.some((c) => { return secondsExpression.indexOf(c) > -1 })) {
+            //specific time of day (i.e. 10 14)
+            description += StringUtilities.format(this.text.AtSpace, this.formatTime(hourExpression, minuteExpression, secondsExpression));
+        }
+        else if (
+            minuteExpression.indexOf("-") > -1
+            && !(minuteExpression.indexOf(",") > -1)
+            && !this.specialCharacters.some((c) => { return hourExpression.indexOf(c) > -1 })) {
+            //minute range in single hour (i.e. 0-10 11)
+            let minuteParts: string[] = minuteExpression.split("-");
+            description += "";
+            //description.Append(string.Format(CronExpressionDescriptor.Resources.EveryMinuteBetweenX0AndX1,
+            //    FormatTime(hourExpression, minuteParts[0]),
+            //    FormatTime(hourExpression, minuteParts[1])));
+        }
+        /* else if (hourExpression.Contains(",") && minuteExpression.IndexOfAny(m_specialCharacters) == -1) {
+             //hours list with single minute (o.e. 30 6,14,16)
+             string[] hourParts = hourExpression.Split(',');
+             description.Append(CronExpressionDescriptor.Resources.At);
+             for (int i = 0; i < hourParts.Length; i++)
+             {
+                 description.Append(" ").Append(FormatTime(hourParts[i], minuteExpression));
+ 
+                 if (i < (hourParts.Length - 2)) {
+                     description.Append(",");
+                 }
+ 
+                 if (i == hourParts.Length - 2) {
+                     description.Append(CronExpressionDescriptor.Resources.SpaceAnd);
+                 }
+             }
+         }
+         else {
+             //default time description
+             let secondsDescription = this.getSecondsDescription();
+             let minutesDescription = this.getMinutesDescription();
+             let string hoursDescription = this.getHoursDescription();
+ 
+             description.Append(secondsDescription);
+ 
+             if (description.Length > 0) {
+                 description.Append(", ");
+             }
+ 
+             description.Append(minutesDescription);
+ 
+             if (description.Length > 0) {
+                 description.Append(", ");
+             }
+ 
+             description += hoursDescription;
+         }*/
+
+
+        return description;
     }
     getHoursDescription() {
         return "";
@@ -151,6 +224,27 @@ class ExpressionDescriptor {
     getYearDescription() {
         return "";
     }
+
+    formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
+        let hour: number = parseInt(hourExpression);
+
+        let period: string = "";
+        if (!this.options.use24HourTimeFormat) {
+            period = (hour >= 12) ? " PM" : " AM";
+            if (hour > 12) {
+                hour -= 12;
+            }
+        }
+
+        let minute = minuteExpression;
+        let second: string = "";
+        if (secondExpression) {
+            second = `: ${('00' + secondExpression).substring(secondExpression.length)}`;
+        }
+
+        return `${('00' + hour.toString()).substring(hour.toString().length)}:${('00' + minute.toString()).substring(minute.toString().length)}${second}${period}`;
+    }
+
     transformVerbosity(description: string, useVerboseFormat: boolean) {
         if (!useVerboseFormat) {
             description = description.replace(this.text.ComaEveryMinute, "");

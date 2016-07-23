@@ -1,7 +1,12 @@
+import Options from './options'
+
 export class CronParser {
     expression: string;
-    constructor(expression: string) {
+    options: Options;
+
+    constructor(expression: string, options: Options) {
         this.expression = expression;
+        this.options = options;
     }
 
     parse(): string[] {
