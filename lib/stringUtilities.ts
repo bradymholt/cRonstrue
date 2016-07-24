@@ -10,4 +10,8 @@ export class StringUtilities {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
     }
+
+    static containsAny(text:string, searchStrings: string[]) {
+        return searchStrings.some((c) => { return text.indexOf(c) > -1 })
+    }
 }
