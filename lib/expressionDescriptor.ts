@@ -495,9 +495,9 @@ export class ExpressionDescriptor {
 
     transformVerbosity(description: string, useVerboseFormat: boolean) {
         if (!useVerboseFormat) {
-            description = description.replace(this.text.ComaEveryMinute, "");
-            description = description.replace(this.text.CommaEveryHour, "");
-            description = description.replace(this.text.ComaEveryDay, "");
+            description = description.replace(new RegExp(this.text.ComaEveryMinute, 'g'), "");
+            description = description.replace(new RegExp(this.text.ComaEveryHour, 'g'), "");
+            description = description.replace(new RegExp(this.text.ComaEveryDay, 'g'), "");
         }
         return description;
     }
