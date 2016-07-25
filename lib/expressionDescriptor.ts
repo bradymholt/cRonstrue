@@ -12,11 +12,11 @@ export class ExpressionDescriptor {
     specialCharacters: string[];
     text: any;
 
-    constructor(expression: string) {
+    constructor(expression: string, options:Options = new Options()) {
         this.expression = expression;
         this.parsed = false;
         this.expressionParts = new Array(5);
-        this.options = new Options();
+        this.options = options;
         this.specialCharacters = ["/", "-", ",", "*"];
         this.text = {
             "EveryMinute": "every minute",
@@ -66,8 +66,8 @@ export class ExpressionDescriptor {
         };
     }
 
-    static getDescription(expression: string) {
-        let descripter = new ExpressionDescriptor(expression);
+    static getDescription(expression: string, options: Options) {
+        let descripter = new ExpressionDescriptor(expression, options);
         return descripter.getDescription(DescriptionTypeEnum.FULL);
     }
 
