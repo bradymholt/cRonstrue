@@ -1,12 +1,17 @@
-import Options from './options'
+import Options from './options.ts'
 
 export class CronParser {
     expression: string;
     options: Options;
 
-    constructor(expression: string, options: Options) {
+    constructor(expression: string, options?: Options) {
         this.expression = expression;
-        this.options = options;
+
+        if (options) {
+            this.options = options;
+        } else {
+            this.options = new Options();
+        }
     }
 
     parse(): string[] {
@@ -14,7 +19,7 @@ export class CronParser {
             throw new Error('Expression is empty');
         }
 
-        let parsed: string[] = this.expression.split(' ');
+        let parsed: string[] = this.expression.trim().split(' ');
 
         if (parsed.length < 5) {
             throw new Error(`Expression only has ${parsed.length} parts.  At least 5 part are required.`);
@@ -24,7 +29,7 @@ export class CronParser {
             parsed.push('');
         } else if (parsed.length == 6) {
             //If last element ends with 4 digits, a year element has been supplied and no seconds element
-            if (/^\d{4}$/.test(parsed[5])) {
+            if (/\d{4}$/.test(parsed[5])) {
                 // year provided
                 parsed.unshift('');
             } else {
@@ -78,6 +83,16 @@ export class CronParser {
         if (expressionParts[6].indexOf("1/") == 0) {
             // Years
             expressionParts[6] = expressionParts[6].replace("1/", "*/");
+        }
+
+        // Handle dayOfWeekStartIndexZero option where SUN=1 rather than SUN=0
+        if (!this.options.dayOfWeekStartIndexZero) {
+            //skip anything preceeding by # or /
+            expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, (t) => {
+                let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
+                let dowDigitsAdjusted: string = (parseInt(dowDigits) - 1).toString();
+                return t.replace(dowDigits, dowDigitsAdjusted);
+            });
         }
 
         // Convert DOM '?' to '*'

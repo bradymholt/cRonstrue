@@ -7,7 +7,11 @@
             "request": "launch",
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "stopOnEntry": false,
-            "args": ["-t", "10000", "test/**/*.js"],
+            "args": [
+                "-t",
+                "10000",
+                "test/**/*.js"
+            ],
             "cwd": "${workspaceRoot}",
             "preLaunchTask": null,
             "runtimeArgs": [
@@ -17,8 +21,8 @@
                 "NODE_ENV": "development"
             },
             "externalConsole": false,
-            "sourceMaps": true,
-            "outDir": null
+            "sourceMaps": true
+           // "outDir": "${workspaceRoot}/build"
         },
         {
             "name": "Launch",

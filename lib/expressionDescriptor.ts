@@ -1,8 +1,8 @@
-import { StringUtilities } from './stringUtilities'
-import { CronParser } from './cronParser'
-import Options from './options'
-import DescriptionTypeEnum from './descriptionTypeEnum'
-import CasingTypeEnum from './casingTypeEnum'
+import { StringUtilities } from './stringUtilities.ts'
+import { CronParser } from './cronParser.ts'
+import Options from './options.ts'
+import DescriptionTypeEnum from './descriptionTypeEnum.ts'
+import CasingTypeEnum from './casingTypeEnum.ts'
 
 export class ExpressionDescriptor {
     expression: string;
@@ -12,11 +12,17 @@ export class ExpressionDescriptor {
     specialCharacters: string[];
     text: any;
 
-    constructor(expression: string, options:Options = new Options()) {
+    constructor(expression: string, options?: Options) {
         this.expression = expression;
         this.parsed = false;
         this.expressionParts = new Array(5);
-        this.options = options;
+
+        if (options) {
+            this.options = options;
+        } else {
+            this.options = new Options();
+        }
+
         this.specialCharacters = ["/", "-", ",", "*"];
         this.text = {
             "EveryMinute": "every minute",
@@ -66,7 +72,7 @@ export class ExpressionDescriptor {
         };
     }
 
-    static getDescription(expression: string, options: Options) {
+    static getDescription(expression: string, options?: Options) {
         let descripter = new ExpressionDescriptor(expression, options);
         return descripter.getDescription(DescriptionTypeEnum.FULL);
     }
@@ -154,7 +160,7 @@ export class ExpressionDescriptor {
             && !StringUtilities.containsAny(hourExpression, this.specialCharacters)
             && !StringUtilities.containsAny(secondsExpression, this.specialCharacters)) {
             //specific time of day (i.e. 10 14)
-            description += StringUtilities.format(this.text.AtSpace, this.formatTime(hourExpression, minuteExpression, secondsExpression));
+            description += this.text.AtSpace + this.formatTime(hourExpression, minuteExpression, secondsExpression);
         }
         else if (
             minuteExpression.indexOf("-") > -1
@@ -174,7 +180,7 @@ export class ExpressionDescriptor {
 
             for (let i = 0; i < hourParts.length; i++) {
                 description += " ";
-                description += this.formatTime(hourParts[1], minuteExpression, "");
+                description += this.formatTime(hourParts[i], minuteExpression, "");
 
                 if (i < (hourParts.length - 2)) {
                     description += ",";
@@ -340,7 +346,7 @@ export class ExpressionDescriptor {
                 description = this.text.ComaOnTheLastWeekdayOfTheMonth;
                 break;
             default:
-                let matches = expression.match(/(\\d{1,2}W)|(W\\d{1,2})/);
+                let matches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
                 if (matches) {
                     let dayNumber: number = parseInt(matches[0].replace("W", ""));
                     let dayString: string = dayNumber == 1 ? this.text.FirstWeekday :
@@ -487,7 +493,7 @@ export class ExpressionDescriptor {
         let minute = minuteExpression;
         let second: string = "";
         if (secondExpression) {
-            second = `: ${('00' + secondExpression).substring(secondExpression.length)}`;
+            second = `:${('00' + secondExpression).substring(secondExpression.length)}`;
         }
 
         return `${('00' + hour.toString()).substring(hour.toString().length)}:${('00' + minute.toString()).substring(minute.toString().length)}${second}${period}`;

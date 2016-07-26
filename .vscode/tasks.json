@@ -21,6 +21,10 @@
             "args": [
                 "test"
             ]
-        }        
+        },
+        {
+            "taskName": "dist",
+            "args": ["run", "dist"]
+        }    
     ]
 }
