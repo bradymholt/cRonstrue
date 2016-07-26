@@ -1,4 +1,4 @@
-import CasingTypeEnum from './casingTypeEnum.ts'
+import CasingTypeEnum from './casingTypeEnum'
 
 export default class Options {
     

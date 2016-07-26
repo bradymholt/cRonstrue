@@ -1,6 +1,6 @@
-import Options from './options.ts'
+import Options from './options'
 
-export class CronParser {
+export default class CronParser {
     expression: string;
     options: Options;
 

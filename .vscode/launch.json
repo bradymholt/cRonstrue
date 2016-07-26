@@ -22,6 +22,7 @@
             },
             "externalConsole": false,
             "sourceMaps": true
+           // "trace": "sm"
            // "outDir": "${workspaceRoot}/build"
         },
         {

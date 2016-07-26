@@ -1,16 +1,19 @@
 var webpack = require('webpack');
 var path = require('path');
-var libraryName = 'cronglish';
-var outputFile = libraryName + '.js';
+var libraryName = require('./package.json').name;
 
 var config = {
   entry: __dirname + '/lib/expressionDescriptor.ts',
+  devtool: 'source-map',
   output: {
     path: __dirname + '/dist',
-    filename: outputFile,
+    filename: libraryName + '.js',
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
+  },
+  resolve: {
+    extensions: ['', '.js', '.ts']
   },
   module: {
     /*
@@ -23,10 +26,8 @@ var config = {
     loaders: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-        
-      }
+        loader: "awesome-typescript-loader"
+      }     
     ]
   }
   

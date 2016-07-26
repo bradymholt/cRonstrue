@@ -7,7 +7,9 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "declaration": false,
-        "rootDir": "./lib"
-    }
+        "declaration": true       
+    },
+    "files": [
+        "lib/expressionDescriptor.ts"
+    ]
 }

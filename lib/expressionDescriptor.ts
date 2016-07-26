@@ -1,8 +1,12 @@
-import { StringUtilities } from './stringUtilities.ts'
-import { CronParser } from './cronParser.ts'
-import Options from './options.ts'
-import DescriptionTypeEnum from './descriptionTypeEnum.ts'
-import CasingTypeEnum from './casingTypeEnum.ts'
+import StringUtilities from './stringUtilities'
+import CronParser  from './cronParser'
+import Options from './options'
+import DescriptionTypeEnum from './descriptionTypeEnum'
+import CasingTypeEnum from './casingTypeEnum'
+
+export { CronParser };
+export { Options };
+export { StringUtilities };
 
 export class ExpressionDescriptor {
     expression: string;

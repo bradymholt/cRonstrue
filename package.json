@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Convert cron expressions into descriptions",
   "main": "dist/cronglish.js",
+  "typings": "dist/types/expressionDescriptor.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "webpack && mv ./dist/lib ./dist/types",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha --reporter spec",
     "dist": "webpack"
@@ -27,10 +28,10 @@
   },
   "homepage": "https://github.com/bradyholt/cronglish#readme",
   "devDependencies": {
+    "awesome-typescript-loader": "^2.1.1",
     "chai": "^3.5.0",
     "expose-loader": "^0.7.1",
     "mocha": "^2.5.3",
-    "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "webpack": "^1.13.1"
   }
