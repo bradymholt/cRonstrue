@@ -182,13 +182,13 @@ describe('ExpressionDescriptor', function () {
 
     describe('DayOfWeekStartIndexZero=false', function () {
         it('23 12 * * 1#2', function () {
-            let options = new Options();
+            var options = new Options();
             options.dayOfWeekStartIndexZero = false;
             assert.equal(ExpressionDescriptor.getDescription("23 12 * * 1#2", options), "At 12:23 PM, on the second Sunday of the month");
         });
 
         it('* * * ? * 2-6/2', function () {
-            let options = new Options();
+            var options = new Options();
             options.dayOfWeekStartIndexZero = false;
 
             assert.equal(ExpressionDescriptor.getDescription("* * * ? * 2-6/2", options), "Every second, every 2 days of the week, Monday through Friday");
