@@ -1,4 +1,4 @@
-export default class StringUtilities {
+export class StringUtilities {
     static format(template:string, ...values:string[]){
         return template.replace(/%s/g, function () {
             return values.shift();

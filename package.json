@@ -5,8 +5,9 @@
     "main": "dist/cronstrue.js",
     "typings": "dist/types/expressionDescriptor.d.ts",
     "scripts": {
-        "build": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
-        "pretest": "npm run build",
+        "buildrelease": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
+        "build": "tsc",
+        "pretest": "tsc",
         "test": "./node_modules/.bin/mocha --reporter spec"
     },
     "repository": {

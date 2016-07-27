@@ -1,4 +1,4 @@
-enum DescriptionTypeEnum {
+export enum DescriptionTypeEnum {
     FULL,
     TIMEOFDAY,
     SECONDS,
@@ -9,5 +9,3 @@ enum DescriptionTypeEnum {
     DAYOFMONTH,
     YEAR
 }
-
-export default DescriptionTypeEnum;

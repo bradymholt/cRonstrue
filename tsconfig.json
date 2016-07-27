@@ -6,10 +6,9 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true,
-        "declaration": true       
+        "sourceMap": true
     },
     "files": [
-        "lib/expressionDescriptor.ts"
-    ]
+        "src/expressionDescriptor.ts"
+    ]  
 }

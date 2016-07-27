@@ -1,6 +1,6 @@
-import CasingTypeEnum from './casingTypeEnum'
+import { CasingTypeEnum } from './casingTypeEnum'
 
-export default class Options {
+export class Options {
     
     throwExceptionOnParseError: boolean;
     casingType: CasingTypeEnum;

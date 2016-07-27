@@ -1,14 +1,10 @@
-import StringUtilities from './stringUtilities';
-import CronParser  from './cronParser';
-import Options from './options';
-import DescriptionTypeEnum from './descriptionTypeEnum';
-import CasingTypeEnum from './casingTypeEnum';
+import { StringUtilities } from './stringUtilities';
+import { CronParser }  from './cronParser';
+import { Options } from './options';
+import { DescriptionTypeEnum } from './descriptionTypeEnum';
+import { CasingTypeEnum } from './casingTypeEnum';
 import Locale from './locale/locale';
 import EnglishTranslations from './locale/en'; // English for now; more locales in future
-
-export { CronParser };
-export { Options };
-export { StringUtilities };
 
 export class ExpressionDescriptor {
     expression: string;
@@ -33,12 +29,13 @@ export class ExpressionDescriptor {
         this.specialCharacters = ["/", "-", ",", "*"];
     }
 
-    static getDescription(expression: string, options?: Options) {
+    // public interface entry point
+    static toString(expression: string, options?: Options) {
         let descripter = new ExpressionDescriptor(expression, options);
         return descripter.getDescription(DescriptionTypeEnum.FULL);
     }
 
-    getDescription(type: DescriptionTypeEnum) {
+    private getDescription(type: DescriptionTypeEnum) {
         var description = "";
         try {
 
@@ -88,7 +85,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getFullDescription() {
+    protected getFullDescription() {
         var description: string;
         try {
             var timeSegment = this.getTimeOfDayDescription();
@@ -109,7 +106,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getTimeOfDayDescription() {
+    protected getTimeOfDayDescription() {
         let secondsExpression: string = this.expressionParts[0];
         let minuteExpression: string = this.expressionParts[1];
         let hourExpression: string = this.expressionParts[2];
@@ -177,7 +174,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getSecondsDescription() {
+    protected getSecondsDescription() {
         let description: string = this.getSegmentDescription(this.expressionParts[0],
             this.i18n.EverySecond(),
             (s) => { return s },
@@ -192,7 +189,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getMinutesDescription() {
+    protected getMinutesDescription() {
         let description: string = this.getSegmentDescription(this.expressionParts[1],
             this.i18n.EveryMinute(),
             (s) => { return s },
@@ -211,7 +208,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getHoursDescription() {
+    protected getHoursDescription() {
         let expression = this.expressionParts[2];
         let description: string = this.getSegmentDescription(expression,
             this.i18n.EveryHour(),
@@ -223,7 +220,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getDayOfWeekDescription() {
+    protected getDayOfWeekDescription() {
         var daysOfWeekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
         let description: string = this.getSegmentDescription(this.expressionParts[5],
@@ -280,7 +277,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getMonthDescription() {
+    protected getMonthDescription() {
         var monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"];
 
@@ -294,7 +291,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getDayOfMonthDescription(): string {
+    protected getDayOfMonthDescription(): string {
         let description: string = null;
         let expression: string = this.expressionParts[3];
 
@@ -333,9 +330,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-
-
-    getYearDescription() {
+    protected getYearDescription() {
         let description: string = this.getSegmentDescription(this.expressionParts[6],
             "",
             (s) => { return /^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s },
@@ -346,7 +341,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    getSegmentDescription(expression: string,
+    protected getSegmentDescription(expression: string,
         allDescription: string,
         getSingleItemDescription: (t: string) => string,
         getIntervalDescriptionFormat: (t: string) => string,
@@ -425,7 +420,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    generateBetweenSegmentDescription(betweenExpression: string,
+    protected generateBetweenSegmentDescription(betweenExpression: string,
         getBetweenDescriptionFormat: (t: string) => string,
         getSingleItemDescription: (t: string) => string): string {
 
@@ -440,7 +435,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
+    protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
         let hour: number = parseInt(hourExpression);
 
         let period: string = "";
@@ -460,7 +455,7 @@ export class ExpressionDescriptor {
         return `${('00' + hour.toString()).substring(hour.toString().length)}:${('00' + minute.toString()).substring(minute.toString().length)}${second}${period}`;
     }
 
-    transformVerbosity(description: string, useVerboseFormat: boolean) {
+    protected transformVerbosity(description: string, useVerboseFormat: boolean) {
         if (!useVerboseFormat) {
             description = description.replace(new RegExp(this.i18n.ComaEveryMinute(), 'g'), "");
             description = description.replace(new RegExp(this.i18n.ComaEveryHour(), 'g'), "");
@@ -469,7 +464,7 @@ export class ExpressionDescriptor {
         return description;
     }
 
-    transformCase(description: string, caseType: CasingTypeEnum) {
+    protected transformCase(description: string, caseType: CasingTypeEnum) {
         switch (caseType) {
             case CasingTypeEnum.Sentence:
                 description = description[0].toLocaleUpperCase() + description.substring(1);

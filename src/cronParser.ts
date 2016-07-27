@@ -1,6 +1,6 @@
-import Options from './options'
+import { Options } from './options'
 
-export default class CronParser {
+export class CronParser {
     expression: string;
     options: Options;
 
