@@ -7,8 +7,7 @@
   "scripts": {
     "build": "webpack && mv ./dist/lib ./dist/types",
     "pretest": "npm run build",
-    "test": "./node_modules/.bin/mocha --reporter spec",
-    "dist": "webpack"
+    "test": "./node_modules/.bin/mocha --reporter spec"   
   },
   "repository": {
     "type": "git",
@@ -16,10 +15,13 @@
   },
   "keywords": [
     "cron",
-    "expression",
-    "description",
-    "pretty",
-    "schedule"
+    "cron expression",
+    "cron description",
+    "pretty cron",
+    "cron for humans",
+    "cron translated",
+    "cron english",
+    "cron schedule"
   ],
   "author": "Brady Holt",
   "license": "MIT",
