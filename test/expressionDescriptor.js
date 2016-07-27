@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('chai').assert;
-var construe = require('../build/ExpressionDescriptor');
+var construe = require('../build/expressionDescriptor');
 
 describe('ExpressionDescriptor', function () {
     describe('every', function () {
