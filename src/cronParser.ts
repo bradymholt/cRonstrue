@@ -1,17 +1,12 @@
-import { Options } from './options'
+import { IOptions } from './options'
 
 export class CronParser {
     expression: string;
-    options: Options;
+    dayOfWeekStartIndexZero: boolean;
 
-    constructor(expression: string, options?: Options) {
+    constructor(expression: string, dayOfWeekStartIndexZero:boolean = true) {
         this.expression = expression;
-
-        if (options) {
-            this.options = options;
-        } else {
-            this.options = new Options();
-        }
+        this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     }
 
     parse(): string[] {
@@ -86,7 +81,7 @@ export class CronParser {
         }
 
         // Handle dayOfWeekStartIndexZero option where SUN=1 rather than SUN=0
-        if (!this.options.dayOfWeekStartIndexZero) {
+        if (!this.dayOfWeekStartIndexZero) {
             //skip anything preceeding by # or /
             expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, (t) => {
                 let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)

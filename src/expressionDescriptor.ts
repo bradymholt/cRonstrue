@@ -1,38 +1,49 @@
 import { StringUtilities } from './stringUtilities';
 import { CronParser }  from './cronParser';
-import { Options } from './options';
+import { IOptions } from './options';
 import { DescriptionTypeEnum } from './descriptionTypeEnum';
 import { CasingTypeEnum } from './casingTypeEnum';
-import Locale from './locale/locale';
-import EnglishTranslations from './locale/en'; // English for now; more locales in future
+import { Locale } from './locale/locale';
+import { Locale_en } from './locale/en';
 
-export class ExpressionDescriptor {
+class ExpressionDescriptor {
     expression: string;
     parsed: boolean = false;
     expressionParts: string[];
-    options: Options;
+    options: IOptions;
     specialCharacters: string[];
     i18n: Locale;
 
-    constructor(expression: string, options?: Options) {
-        this.expression = expression;
-        this.parsed = false;
-        this.expressionParts = new Array(5);
-        this.i18n = new EnglishTranslations();
-
-        if (options) {
-            this.options = options;
-        } else {
-            this.options = new Options();
-        }
-
-        this.specialCharacters = ["/", "-", ",", "*"];
-    }
-
     // public interface entry point
-    static toString(expression: string, options?: Options) {
+    static toString(expression: string, {
+        throwExceptionOnParseError = true,
+        casingType = CasingTypeEnum.Sentence,
+        verbose = false,
+        dayOfWeekStartIndexZero = true,
+        use24HourTimeFormat = false
+    }: IOptions = {}) {
+        // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
+        // a IOptions so we can pass around options with ease.
+        
+        let options = <IOptions>{
+            throwExceptionOnParseError: throwExceptionOnParseError,
+            casingType: casingType,
+            verbose: verbose,
+            dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
+            use24HourTimeFormat: use24HourTimeFormat
+        };
+
         let descripter = new ExpressionDescriptor(expression, options);
         return descripter.getDescription(DescriptionTypeEnum.FULL);
+    }
+
+    constructor(expression: string, options: IOptions) {
+        this.expression = expression;
+        this.options = options;
+        this.parsed = false;
+        this.expressionParts = new Array(5);
+        this.i18n = new Locale_en(); // English for now; more locales in future
+        this.specialCharacters = ["/", "-", ",", "*"];
     }
 
     private getDescription(type: DescriptionTypeEnum) {
@@ -40,7 +51,7 @@ export class ExpressionDescriptor {
         try {
 
             if (!this.parsed) {
-                let parser = new CronParser(this.expression, this.options);
+                let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
                 this.expressionParts = parser.parse();
                 this.parsed = true;
             }
@@ -479,3 +490,5 @@ export class ExpressionDescriptor {
         return description;
     }
 }
+
+export = ExpressionDescriptor;

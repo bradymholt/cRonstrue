@@ -1,6 +1,6 @@
-import Locale from './locale'
+import { Locale } from './locale'
 
-export default class Locale_en implements Locale {
+export class Locale_en implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD() { return "An error occured when generating the expression description.  Check the cron expression syntax." };
     EveryMinute() { return "every minute" };
     EveryHour() { return "every hour" };

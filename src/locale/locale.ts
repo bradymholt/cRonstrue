@@ -50,5 +50,3 @@ export interface Locale {
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
 }
-
-export default Locale
