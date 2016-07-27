@@ -1,7 +1,7 @@
 "use strict";
 var assert = require('chai').assert;
-var ExpressionDescriptor = require('../dist/cronglish').ExpressionDescriptor;
-var Options = require('../dist/cronglish').Options;
+var ExpressionDescriptor = require('../dist/cronstrue').ExpressionDescriptor;
+var Options = require('../dist/cronstrue').Options;
 
 describe('ExpressionDescriptor', function () {
     describe('every', function () {
@@ -316,6 +316,10 @@ describe('ExpressionDescriptor', function () {
 
         it('0 0 0 1,2,3 * WED,FRI', function () {
             assert.equal(ExpressionDescriptor.getDescription("0 0 0 1,2,3 * WED,FRI"), "At 00:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday");
+        });
+
+        it('0 2,16 1,8,15,22 * 1,2', function () {
+            assert.equal(ExpressionDescriptor.getDescription("0 2,16 1,8,15,22 * 1,2"), "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday");
         });
     });
 

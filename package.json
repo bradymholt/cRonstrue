@@ -1,40 +1,45 @@
 {
-  "name": "cronglish",
-  "version": "0.1.0",
-  "description": "Convert cron expressions into descriptions",
-  "main": "dist/cronglish.js",
-  "typings": "dist/types/expressionDescriptor.d.ts",
-  "scripts": {
-    "build": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
-    "pretest": "npm run build",
-    "test": "./node_modules/.bin/mocha --reporter spec"   
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bradyholt/cronglish.git"
-  },
-  "keywords": [
-    "cron",
-    "cron expression",
-    "cron description",
-    "pretty cron",
-    "cron for humans",
-    "cron translated",
-    "cron english",
-    "cron schedule"
-  ],
-  "author": "Brady Holt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bradyholt/cronglish/issues"
-  },
-  "homepage": "https://github.com/bradyholt/cronglish#readme",
-  "devDependencies": {
-    "awesome-typescript-loader": "^2.1.1",
-    "chai": "^3.5.0",
-    "expose-loader": "^0.7.1",
-    "mocha": "^2.5.3",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1"
-  }
+    "name": "cronstrue",
+    "version": "0.1.0",
+    "description": "Convert cron expressions into descriptions",
+    "main": "dist/cronstrue.js",
+    "typings": "dist/types/expressionDescriptor.d.ts",
+    "scripts": {
+        "build": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
+        "pretest": "npm run build",
+        "test": "./node_modules/.bin/mocha --reporter spec"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bradyholt/cronstrue.git"
+    },
+    "keywords": [
+        "cron",
+        "cronjob",
+        "crontab",
+        "schedule",
+        "parser",
+        "cron expression",
+        "cron description",
+        "pretty cron",
+        "cron for humans",
+        "cron translated",
+        "cron english",
+        "cron schedule",
+        "cron english"
+    ],
+    "author": "Brady Holt",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bradyholt/cronstrue/issues"
+    },
+    "homepage": "https://github.com/bradyholt/cronstrue#readme",
+    "devDependencies": {
+        "awesome-typescript-loader": "^2.1.1",
+        "chai": "^3.5.0",
+        "expose-loader": "^0.7.1",
+        "mocha": "^2.5.3",
+        "typescript": "^1.8.10",
+        "webpack": "^1.13.1"
+    }
 }

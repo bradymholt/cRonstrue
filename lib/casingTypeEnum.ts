@@ -1,7 +1,7 @@
 enum CasingTypeEnum {
-    TITLE,
-    SENTENCE,
-    LOWERCASE
+    Title,
+    Sentence,
+    Lowercase
 }
 
 export default CasingTypeEnum;

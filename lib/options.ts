@@ -10,7 +10,7 @@ export default class Options {
 
     constructor(){
         this.throwExceptionOnParseError = true;
-        this.casingType = CasingTypeEnum.SENTENCE;
+        this.casingType = CasingTypeEnum.Sentence;
         this.verbose = false;
         this.dayOfWeekStartIndexZero = true;
         this.use24HourTimeFormat = false;
