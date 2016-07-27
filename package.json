@@ -5,7 +5,7 @@
   "main": "dist/cronglish.js",
   "typings": "dist/types/expressionDescriptor.d.ts",
   "scripts": {
-    "build": "webpack && mv ./dist/lib ./dist/types",
+    "build": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha --reporter spec"   
   },

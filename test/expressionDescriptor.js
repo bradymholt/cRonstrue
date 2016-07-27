@@ -1,7 +1,7 @@
 "use strict";
 var assert = require('chai').assert;
-var ExpressionDescriptor = require('../build/expressionDescriptor').ExpressionDescriptor;
-var Options = require('../build/options').default;
+var ExpressionDescriptor = require('../dist/cronglish').ExpressionDescriptor;
+var Options = require('../dist/cronglish').Options;
 
 describe('ExpressionDescriptor', function () {
     describe('every', function () {

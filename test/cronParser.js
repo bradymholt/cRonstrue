@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var CronParser = require('../build/cronParser').CronParser;
+var CronParser = require('../dist/cronglish').CronParser;
 
 describe('CronParser', function() {
   describe('parse', function () {
