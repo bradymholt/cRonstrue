@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var StringUtilities = require('../build/StringUtilities').StringUtilities;
+var StringUtilities = require('../build/stringUtilities').StringUtilities;
 
 describe('StringUtilities', function () {
     describe('format', function () {
