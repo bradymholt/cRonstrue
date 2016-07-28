@@ -16,6 +16,10 @@ describe('ExpressionDescriptor', function () {
             assert.equal(construe.toString("*/1 * * * *"), "Every minute");
         });
 
+        it('*/5 * * * *', function () {
+            assert.equal(construe.toString("*/5 * * * *"), "Every 5 minutes");
+        });
+
         it('0 0/1 * * * ?', function () {
             assert.equal(construe.toString("0 0/1 * * * ?"), "Every minute");
         });
