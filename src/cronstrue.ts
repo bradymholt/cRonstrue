@@ -8,12 +8,11 @@ import { en } from './locale/en';
 
 class cronstrue {
     static locales: { [name: string]: Locale } = {};
+    static specialCharacters: string[];
 
     expression: string;
-    parsed: boolean = false;
     expressionParts: string[];
     options: IOptions;
-    specialCharacters: string[];
     i18n: Locale;
 
     // public interface entry point
@@ -42,6 +41,8 @@ class cronstrue {
     }
 
     static initialize() {
+        cronstrue.specialCharacters = ["/", "-", ",", "*"];
+
         // Load locales
         LocalesManager.init(cronstrue.locales);
     }
@@ -50,7 +51,6 @@ class cronstrue {
         this.expression = expression;
         this.options = options;
         this.expressionParts = new Array(5);
-        this.specialCharacters = ["/", "-", ",", "*"];
         this.i18n = cronstrue.locales[options.locale || 'en'];
     }
 
@@ -89,16 +89,16 @@ class cronstrue {
         let description = "";
 
         //handle special cases first
-        if (!StringUtilities.containsAny(minuteExpression, this.specialCharacters)
-            && !StringUtilities.containsAny(hourExpression, this.specialCharacters)
-            && !StringUtilities.containsAny(secondsExpression, this.specialCharacters)) {
+        if (!StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)
+            && !StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)
+            && !StringUtilities.containsAny(secondsExpression, cronstrue.specialCharacters)) {
             //specific time of day (i.e. 10 14)
             description += this.i18n.AtSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
         }
         else if (
             minuteExpression.indexOf("-") > -1
             && !(minuteExpression.indexOf(",") > -1)
-            && !StringUtilities.containsAny(hourExpression, this.specialCharacters)) {
+            && !StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)) {
 
             //minute range in single hour (i.e. 0-10 11)
             let minuteParts: string[] = minuteExpression.split("-");
@@ -106,7 +106,7 @@ class cronstrue {
                 this.formatTime(hourExpression, minuteParts[0], ""),
                 this.formatTime(hourExpression, minuteParts[1], ""));
         }
-        else if (hourExpression.indexOf(",") > -1 && !StringUtilities.containsAny(minuteExpression, this.specialCharacters)) {
+        else if (hourExpression.indexOf(",") > -1 && !StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)) {
             //hours list with single minute (o.e. 30 6,14,16)
             let hourParts: string[] = hourExpression.split(",");
             description += this.i18n.At();
