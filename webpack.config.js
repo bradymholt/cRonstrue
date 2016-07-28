@@ -1,10 +1,11 @@
+var webpack = require('webpack');
 var libraryName = require('./package.json').name;
 
 var config = {
     entry: {
-        [libraryName]: './lib/expressionDescriptor.ts' 
+        [libraryName]: './src/cronstrue.ts',
+        [libraryName + ".min"]: './src/cronstrue.ts'
     },
-    devtool: 'source-map',
     output: {
         path: __dirname + '/dist',
         filename: '[name].js',
@@ -26,10 +27,16 @@ var config = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: "awesome-typescript-loader?tsconfig=tsconfig.json&declaration=true"
+                loader: "awesome-typescript-loader?tsconfig=tsconfig.json&declaration=true&sourceMap=false"
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            include: /\.min\.js$/,
+            minimize: true
+        })
+    ]
 };
 
 module.exports = config;
