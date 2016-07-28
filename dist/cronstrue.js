@@ -516,12 +516,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var locales = __webpack_require__(4);
-	function init(foo) {
-	    for (var property in locales) {
-	        if (locales.hasOwnProperty(property)) {
-	            var locale = new (locales[property]);
-	            foo[property] = locale;
+	var availableLocales = __webpack_require__(4);
+	function init(locales) {
+	    for (var property in availableLocales) {
+	        if (availableLocales.hasOwnProperty(property)) {
+	            var locale = new (availableLocales[property]);
+	            locales[property] = locale;
 	        }
 	    }
 	}

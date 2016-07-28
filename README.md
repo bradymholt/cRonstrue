@@ -8,7 +8,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 - Zero dependencies
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
-- ~~~i18n with support for 14 languages~~~ (i18n support with 14 languages coming soon)
+- (i18n support with 14 languages coming soon)
 
 
 ## Installation
