@@ -1,4 +1,4 @@
-# c**r**onstrue [![Build Status](https://travis-ci.org/bradyholt/cronstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cronstrue)
+# c**r**onstrue [![Build Status](https://travis-ci.org/bradyholt/cronstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cronstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 
 c**r**onstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
