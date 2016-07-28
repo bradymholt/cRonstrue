@@ -1,7 +1,6 @@
 import { StringUtilities } from './stringUtilities';
 import { CronParser }  from './cronParser';
 import { IOptions } from './options';
-import { DescriptionTypeEnum } from './descriptionTypeEnum';
 import { CasingTypeEnum } from './casingTypeEnum';
 import LocalesManager = require('./locale/localesManager')
 import { Locale } from './locale/locale';

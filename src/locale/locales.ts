@@ -1,3 +1,4 @@
 export { en } from './en'
-export { es } from './es'
+// Only English for now; more to come
+//export { es } from './es'
 

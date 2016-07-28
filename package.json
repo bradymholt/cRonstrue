@@ -24,7 +24,7 @@
         "cron english"
     ],
     "main": "dist/cronstrue.js",
-    "typings": "dist/types/expressionDescriptor.d.ts",
+    "typings": "dist/declarations/cronstrue.d.ts",
     "files": [
         "dist/"
     ],
@@ -41,7 +41,7 @@
         "webpack": "^1.13.1"
     },
     "scripts": {
-        "package": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
+        "package": "rm -rf ./dist && webpack && mv ./dist/src ./dist/declarations",
         "build": "tsc",
         "pretest": "tsc",
         "test": "./node_modules/.bin/mocha --reporter spec"

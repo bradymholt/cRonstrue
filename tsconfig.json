@@ -5,7 +5,7 @@
         "outDir": "build",
         "noImplicitAny": true,
         "removeComments": true,
-        "preserveConstEnums": true,
+        "preserveConstEnums": false,
         "sourceMap": true
     },
     "files": [
