@@ -6,4 +6,5 @@ export interface IOptions {
     verbose?: boolean;
     dayOfWeekStartIndexZero?: boolean;
     use24HourTimeFormat?: boolean;
+    locale?: string;
 }

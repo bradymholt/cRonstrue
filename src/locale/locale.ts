@@ -1,5 +1,9 @@
+var locales = {};
+
 export interface Locale {
-    //TODO: circle back and use null/undefined aware types for optionals below in TypeScript 2.0: https://github.com/Microsoft/TypeScript/pull/7140
+    // TODO: Circle back and use null/undefined aware types for optionals below in TypeScript 2.0: https://github.com/Microsoft/TypeScript/pull/7140
+    // TODO: These locale translations would be a good use for ES6 template strings except we sometimes concatenate multiple transactions together before
+    //       doing the actual template replacement.
 
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;

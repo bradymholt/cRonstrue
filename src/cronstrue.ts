@@ -3,10 +3,13 @@ import { CronParser }  from './cronParser';
 import { IOptions } from './options';
 import { DescriptionTypeEnum } from './descriptionTypeEnum';
 import { CasingTypeEnum } from './casingTypeEnum';
+import LocalesManager = require('./locale/localesManager')
 import { Locale } from './locale/locale';
-import { Locale_en } from './locale/en';
+import { en } from './locale/en';
 
-class ExpressionDescriptor {
+class cronstrue {
+    static locales: { [name: string]: Locale } = {};
+
     expression: string;
     parsed: boolean = false;
     expressionParts: string[];
@@ -20,85 +23,41 @@ class ExpressionDescriptor {
         casingType = CasingTypeEnum.Sentence,
         verbose = false,
         dayOfWeekStartIndexZero = true,
-        use24HourTimeFormat = false
+        use24HourTimeFormat = false,
+        locale = 'en'
     }: IOptions = {}) {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
         // a IOptions so we can pass around options with ease.
-        
+
         let options = <IOptions>{
             throwExceptionOnParseError: throwExceptionOnParseError,
             casingType: casingType,
             verbose: verbose,
             dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
-            use24HourTimeFormat: use24HourTimeFormat
+            use24HourTimeFormat: use24HourTimeFormat,
+            locale: locale
         };
 
-        let descripter = new ExpressionDescriptor(expression, options);
-        return descripter.getDescription(DescriptionTypeEnum.FULL);
+        let descripter = new cronstrue(expression, options);
+        return descripter.getFullDescription();
     }
 
     constructor(expression: string, options: IOptions) {
         this.expression = expression;
         this.options = options;
-        this.parsed = false;
         this.expressionParts = new Array(5);
-        this.i18n = new Locale_en(); // English for now; more locales in future
         this.specialCharacters = ["/", "-", ",", "*"];
-    }
 
-    private getDescription(type: DescriptionTypeEnum) {
-        var description = "";
-        try {
-
-            if (!this.parsed) {
-                let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
-                this.expressionParts = parser.parse();
-                this.parsed = true;
-            }
-
-            switch (type) {
-                case DescriptionTypeEnum.FULL:
-                    description = this.getFullDescription();
-                    break;
-                case DescriptionTypeEnum.TIMEOFDAY:
-                    description = this.getTimeOfDayDescription();
-                    break;
-                case DescriptionTypeEnum.HOURS:
-                    description = this.getHoursDescription();
-                    break;
-                case DescriptionTypeEnum.MINUTES:
-                    description = this.getMinutesDescription();
-                    break;
-                case DescriptionTypeEnum.SECONDS:
-                    description = this.getSecondsDescription();
-                    break;
-                case DescriptionTypeEnum.DAYOFMONTH:
-                    description = this.getDayOfMonthDescription();
-                    break;
-                case DescriptionTypeEnum.MONTH:
-                    description = this.getMonthDescription();
-                    break;
-                case DescriptionTypeEnum.DAYOFWEEK:
-                    description = this.getDayOfWeekDescription();
-                    break;
-                case DescriptionTypeEnum.YEAR:
-                    description = this.getYearDescription();
-                    break;
-                default:
-                    description = this.getSecondsDescription();
-                    break;
-            }
-        }
-        catch (ex) {
-            description = ex.Message;
-            throw new Error("error!");
-        }
-        return description;
+        this.i18n = cronstrue.locales[options.locale || 'en'];
     }
 
     protected getFullDescription() {
-        var description: string;
+
+        let description = "";
         try {
+            let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
+            this.expressionParts = parser.parse();
+
             var timeSegment = this.getTimeOfDayDescription();
             var dayOfMonthDesc = this.getDayOfMonthDescription();
             var monthDesc = this.getMonthDescription();
@@ -109,9 +68,10 @@ class ExpressionDescriptor {
             description = this.transformCase(description, this.options.casingType);
         }
         catch (ex) {
-            description = this.i18n.AnErrorOccuredWhenGeneratingTheExpressionD();
-            if (this.options.throwExceptionOnParseError) {
-                throw new Error("Invalid format: " + description);
+            if (!this.options.throwExceptionOnParseError) {
+                description = this.i18n.AnErrorOccuredWhenGeneratingTheExpressionD();
+            } else {
+                throw `Error: ${ex}`;
             }
         }
         return description;
@@ -491,4 +451,4 @@ class ExpressionDescriptor {
     }
 }
 
-export = ExpressionDescriptor;
+export = cronstrue;

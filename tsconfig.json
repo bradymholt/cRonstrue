@@ -9,6 +9,6 @@
         "sourceMap": true
     },
     "files": [
-        "src/expressionDescriptor.ts"
+        "src/cronstrue.ts"
     ]  
 }

@@ -1,8 +1,8 @@
 import { Locale } from './locale'
 
-export class en implements Locale {
+export class es implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD() { return "An error occured when generating the expression description.  Check the cron expression syntax." };
-    EveryMinute() { return "every minute" };
+    EveryMinute() { return "every minute IN SPANISH" };
     EveryHour() { return "every hour" };
     AtSpace() { return "At " };
     EveryMinuteBetweenX0AndX1() { return "Every minute between %s and %s" };
