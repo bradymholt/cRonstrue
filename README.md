@@ -5,6 +5,7 @@ c**r**onstrue is a JavaScript library that parses a cron expression and outputs 
 This library was ported from the original C# implemenation called [cron-expression-descriptor](https://github.com/bradyholt/cron-expression-descriptor) and is also available in a [few other languages](https://github.com/bradyholt/cron-expression-descriptor#ports).
 
 ## Features         
+- Zero dependencies
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - ~~~i18n with support for 14 languages~~~ (i18n support with 14 languages coming soon)
@@ -18,7 +19,7 @@ npm install cronstrue
 var cronstrue = require('cronstrue');
 ```
 ### Browser
-There are no dependencies so you can simply include the library in a `<script>` tag.
+ The `cronstrue.min.js` file from the `/dist` folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a `<script>` tag.  
 ```
 <script src="cronstrue.min.js" type="text/javascript"></script>
 var cronstrue = window.cronstrue;
