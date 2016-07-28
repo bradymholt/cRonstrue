@@ -15,7 +15,20 @@ class cronstrue {
     options: IOptions;
     i18n: Locale;
 
-    // public interface entry point
+    /**
+     * Converts a cron expressions into a description a human can read 
+     * @static
+     * @param {string} expression - The cron expression
+     * @param {IOptions} [{
+     *         throwExceptionOnParseError = true,
+     *         casingType = CasingTypeEnum.Sentence,
+     *         verbose = false,
+     *         dayOfWeekStartIndexZero = true,
+     *         use24HourTimeFormat = false,
+     *         locale = 'en'
+     *     }={}]
+     * @returns {string}
+     */
     static toString(expression: string, {
         throwExceptionOnParseError = true,
         casingType = CasingTypeEnum.Sentence,
@@ -23,7 +36,7 @@ class cronstrue {
         dayOfWeekStartIndexZero = true,
         use24HourTimeFormat = false,
         locale = 'en'
-    }: IOptions = {}) {
+    }: IOptions = {}):string {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
         // a IOptions so we can pass around options with ease.
 
