@@ -1,5 +1,10 @@
 import { IOptions } from './options'
 
+/**
+ * Parses and normalizes a cron expression
+ * @export
+ * @class CronParser
+ */
 export class CronParser {
     expression: string;
     dayOfWeekStartIndexZero: boolean;
@@ -9,6 +14,10 @@ export class CronParser {
         this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     }
 
+    /**
+     * Parses and normalizes a cron expression into an array of strings
+     * @returns {string[]}
+     */
     parse(): string[] {
         if (!this.expression) {
             throw new Error('Expression is empty');
@@ -39,7 +48,7 @@ export class CronParser {
         return parsed;
     }
 
-    normalizeExpression(expressionParts: string[]): void {
+    protected normalizeExpression(expressionParts: string[]): void {
         // Convert ? to * only for DOM and DOW
         expressionParts[3] = expressionParts[3].replace("?", "*");
         expressionParts[5] = expressionParts[5].replace("?", "*");
