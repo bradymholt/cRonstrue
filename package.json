@@ -2,18 +2,12 @@
     "name": "cronstrue",
     "version": "0.1.0",
     "description": "Convert cron expressions into descriptions",
-    "main": "dist/cronstrue.js",
-    "typings": "dist/types/expressionDescriptor.d.ts",
-    "scripts": {
-        "buildrelease": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
-        "build": "tsc",
-        "pretest": "tsc",
-        "test": "./node_modules/.bin/mocha --reporter spec"
+    "author": "Brady Holt",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bradyholt/cronstrue/issues"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/bradyholt/cronstrue.git"
-    },
+    "homepage": "https://github.com/bradyholt/cronstrue#readme",
     "keywords": [
         "cron",
         "cronjob",
@@ -29,12 +23,15 @@
         "cron schedule",
         "cron english"
     ],
-    "author": "Brady Holt",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/bradyholt/cronstrue/issues"
+    "main": "dist/cronstrue.js",
+    "typings": "dist/types/expressionDescriptor.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bradyholt/cronstrue.git"
     },
-    "homepage": "https://github.com/bradyholt/cronstrue#readme",
     "devDependencies": {
         "awesome-typescript-loader": "^2.1.1",
         "chai": "^3.5.0",
@@ -42,5 +39,11 @@
         "mocha": "^2.5.3",
         "typescript": "^1.8.10",
         "webpack": "^1.13.1"
+    },
+    "scripts": {
+        "package": "webpack && rm -rf ./dist/types && mv ./dist/lib ./dist/types",
+        "build": "tsc",
+        "pretest": "tsc",
+        "test": "./node_modules/.bin/mocha --reporter spec"
     }
 }
