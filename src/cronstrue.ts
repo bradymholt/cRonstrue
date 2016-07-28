@@ -15,7 +15,7 @@ class cronstrue {
     i18n: Locale;
 
     /**
-     * Converts a cron expressions into a description a human can read 
+     * Converts a cron expression into a description a human can read 
      * @static
      * @param {string} expression - The cron expression
      * @param {IOptions} [{

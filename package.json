@@ -21,7 +21,8 @@
         "cron translated",
         "cron english",
         "cron schedule",
-        "cron english"
+        "cron english",
+        "cron schedule"
     ],
     "main": "dist/cronstrue.js",
     "typings": "dist/declarations/cronstrue.d.ts",

@@ -1,19 +1,17 @@
-import { IOptions } from './options';
-import { CasingTypeEnum } from './casingTypeEnum';
+import { Options } from './options';
 import { Locale } from './locale/locale';
 declare class cronstrue {
     static locales: {
         [name: string]: Locale;
     };
+    static specialCharacters: string[];
     expression: string;
-    parsed: boolean;
     expressionParts: string[];
-    options: IOptions;
-    specialCharacters: string[];
+    options: Options;
     i18n: Locale;
-    static toString(expression: string, {throwExceptionOnParseError, casingType, verbose, dayOfWeekStartIndexZero, use24HourTimeFormat, locale}?: IOptions): string;
+    static toString(expression: string, {throwExceptionOnParseError, verbose, dayOfWeekStartIndexZero, use24HourTimeFormat, locale}?: Options): string;
     static initialize(): void;
-    constructor(expression: string, options: IOptions);
+    constructor(expression: string, options: Options);
     protected getFullDescription(): string;
     protected getTimeOfDayDescription(): string;
     protected getSecondsDescription(): string;
@@ -27,6 +25,5 @@ declare class cronstrue {
     protected generateBetweenSegmentDescription(betweenExpression: string, getBetweenDescriptionFormat: (t: string) => string, getSingleItemDescription: (t: string) => string): string;
     protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string): string;
     protected transformVerbosity(description: string, useVerboseFormat: boolean): string;
-    protected transformCase(description: string, caseType: CasingTypeEnum): string;
 }
 export = cronstrue;

@@ -57,22 +57,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var stringUtilities_1 = __webpack_require__(1);
 	var cronParser_1 = __webpack_require__(2);
-	var casingTypeEnum_1 = __webpack_require__(3);
-	var LocalesManager = __webpack_require__(4);
+	var LocalesManager = __webpack_require__(3);
 	var cronstrue = (function () {
 	    function cronstrue(expression, options) {
-	        this.parsed = false;
 	        this.expression = expression;
 	        this.options = options;
 	        this.expressionParts = new Array(5);
-	        this.specialCharacters = ["/", "-", ",", "*"];
 	        this.i18n = cronstrue.locales[options.locale || 'en'];
 	    }
 	    cronstrue.toString = function (expression, _a) {
-	        var _b = _a === void 0 ? {} : _a, _c = _b.throwExceptionOnParseError, throwExceptionOnParseError = _c === void 0 ? true : _c, _d = _b.casingType, casingType = _d === void 0 ? casingTypeEnum_1.CasingTypeEnum.Sentence : _d, _e = _b.verbose, verbose = _e === void 0 ? false : _e, _f = _b.dayOfWeekStartIndexZero, dayOfWeekStartIndexZero = _f === void 0 ? true : _f, _g = _b.use24HourTimeFormat, use24HourTimeFormat = _g === void 0 ? false : _g, _h = _b.locale, locale = _h === void 0 ? 'en' : _h;
+	        var _b = _a === void 0 ? {} : _a, _c = _b.throwExceptionOnParseError, throwExceptionOnParseError = _c === void 0 ? true : _c, _d = _b.verbose, verbose = _d === void 0 ? false : _d, _e = _b.dayOfWeekStartIndexZero, dayOfWeekStartIndexZero = _e === void 0 ? true : _e, _f = _b.use24HourTimeFormat, use24HourTimeFormat = _f === void 0 ? false : _f, _g = _b.locale, locale = _g === void 0 ? 'en' : _g;
 	        var options = {
 	            throwExceptionOnParseError: throwExceptionOnParseError,
-	            casingType: casingType,
 	            verbose: verbose,
 	            dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
 	            use24HourTimeFormat: use24HourTimeFormat,
@@ -82,6 +78,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return descripter.getFullDescription();
 	    };
 	    cronstrue.initialize = function () {
+	        cronstrue.specialCharacters = ["/", "-", ",", "*"];
 	        LocalesManager.init(cronstrue.locales);
 	    };
 	    cronstrue.prototype.getFullDescription = function () {
@@ -94,16 +91,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var monthDesc = this.getMonthDescription();
 	            var dayOfWeekDesc = this.getDayOfWeekDescription();
 	            var yearDesc = this.getYearDescription();
-	            description = "" + timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc;
+	            description += (timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc);
 	            description = this.transformVerbosity(description, this.options.verbose);
-	            description = this.transformCase(description, this.options.casingType);
+	            description = description.charAt(0).toLocaleUpperCase() + description.substr(1);
 	        }
 	        catch (ex) {
 	            if (!this.options.throwExceptionOnParseError) {
 	                description = this.i18n.AnErrorOccuredWhenGeneratingTheExpressionD();
 	            }
 	            else {
-	                throw "Error: " + ex;
+	                throw "" + ex;
 	            }
 	        }
 	        return description;
@@ -113,18 +110,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var minuteExpression = this.expressionParts[1];
 	        var hourExpression = this.expressionParts[2];
 	        var description = "";
-	        if (!stringUtilities_1.StringUtilities.containsAny(minuteExpression, this.specialCharacters)
-	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, this.specialCharacters)
-	            && !stringUtilities_1.StringUtilities.containsAny(secondsExpression, this.specialCharacters)) {
+	        if (!stringUtilities_1.StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)
+	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)
+	            && !stringUtilities_1.StringUtilities.containsAny(secondsExpression, cronstrue.specialCharacters)) {
 	            description += this.i18n.AtSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
 	        }
 	        else if (minuteExpression.indexOf("-") > -1
 	            && !(minuteExpression.indexOf(",") > -1)
-	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, this.specialCharacters)) {
+	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)) {
 	            var minuteParts = minuteExpression.split("-");
 	            description += stringUtilities_1.StringUtilities.format(this.i18n.EveryMinuteBetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
 	        }
-	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, this.specialCharacters)) {
+	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)) {
 	            var hourParts = hourExpression.split(",");
 	            description += this.i18n.At();
 	            for (var i = 0; i < hourParts.length; i++) {
@@ -363,20 +360,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    cronstrue.prototype.transformCase = function (description, caseType) {
-	        switch (caseType) {
-	            case casingTypeEnum_1.CasingTypeEnum.Sentence:
-	                description = description[0].toLocaleUpperCase() + description.substring(1);
-	                break;
-	            case casingTypeEnum_1.CasingTypeEnum.Title:
-	                description = stringUtilities_1.StringUtilities.toProperCase(description);
-	                break;
-	            default:
-	                description = description.toLocaleLowerCase();
-	                break;
-	        }
-	        return description;
-	    };
 	    cronstrue.locales = {};
 	    return cronstrue;
 	}());
@@ -399,11 +382,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return template.replace(/%s/g, function () {
 	            return values.shift();
-	        });
-	    };
-	    StringUtilities.toProperCase = function (text) {
-	        return text.replace(/\w\S*/g, function (txt) {
-	            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 	        });
 	    };
 	    StringUtilities.containsAny = function (text, searchStrings) {
@@ -535,23 +513,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
-
-	"use strict";
-	(function (CasingTypeEnum) {
-	    CasingTypeEnum[CasingTypeEnum["Title"] = 0] = "Title";
-	    CasingTypeEnum[CasingTypeEnum["Sentence"] = 1] = "Sentence";
-	    CasingTypeEnum[CasingTypeEnum["Lowercase"] = 2] = "Lowercase";
-	})(exports.CasingTypeEnum || (exports.CasingTypeEnum = {}));
-	var CasingTypeEnum = exports.CasingTypeEnum;
-
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var locales = __webpack_require__(5);
+	var locales = __webpack_require__(4);
 	function init(foo) {
 	    for (var property in locales) {
 	        if (locales.hasOwnProperty(property)) {
@@ -564,16 +529,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var en_1 = __webpack_require__(6);
+	var en_1 = __webpack_require__(5);
 	exports.en = en_1.en;
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
