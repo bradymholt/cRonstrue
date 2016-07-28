@@ -42,18 +42,23 @@ class cronstrue {
         return descripter.getFullDescription();
     }
 
+    static initialize() {
+        // Load locales
+        LocalesManager.init(cronstrue.locales);
+    }
+
     constructor(expression: string, options: IOptions) {
         this.expression = expression;
         this.options = options;
         this.expressionParts = new Array(5);
         this.specialCharacters = ["/", "-", ",", "*"];
-
         this.i18n = cronstrue.locales[options.locale || 'en'];
     }
 
     protected getFullDescription() {
 
         let description = "";
+
         try {
             let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
             this.expressionParts = parser.parse();
@@ -450,5 +455,7 @@ class cronstrue {
         return description;
     }
 }
+
+cronstrue.initialize();
 
 export = cronstrue;
