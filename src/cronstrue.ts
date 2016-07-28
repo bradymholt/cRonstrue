@@ -1,11 +1,11 @@
 import { StringUtilities } from './stringUtilities';
 import { CronParser }  from './cronParser';
 import { Options } from './options';
-import LocalesManager = require('./locale/localesManager')
-import { Locale } from './locale/locale';
-import { en } from './locale/en';
 
-class cronstrue {
+import { Locale } from './i18n/locale';
+import { LocalesLoader } from './i18n/localesLoader';
+
+export class cronstrue {
     static locales: { [name: string]: Locale } = {};
     static specialCharacters: string[];
 
@@ -36,7 +36,7 @@ class cronstrue {
         locale = 'en'
     }: Options = {}): string {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
-        // a IOptions so we can pass around options with ease.
+        // an Options type so we can pass around options with ease.
 
         let options = <Options>{
             throwExceptionOnParseError: throwExceptionOnParseError,
@@ -50,18 +50,29 @@ class cronstrue {
         return descripter.getFullDescription();
     }
 
-    static initialize() {
+    static initialize(localesLoader: LocalesLoader) {
         cronstrue.specialCharacters = ["/", "-", ",", "*"];
 
         // Load locales
-        LocalesManager.init(cronstrue.locales);
+        localesLoader.init(cronstrue.locales);
+    }
+
+    static locale(localeName: string) {
+
     }
 
     constructor(expression: string, options: Options) {
         this.expression = expression;
         this.options = options;
         this.expressionParts = new Array(5);
-        this.i18n = cronstrue.locales[options.locale || 'en'];
+
+        if (cronstrue.locales[options.locale]) {
+            this.i18n = cronstrue.locales[options.locale];
+        } else {
+            // fall back to English
+            // TODO: warn consumer about this somehow (console.warn()?)
+            this.i18n = cronstrue.locales['en'];
+        }
     }
 
     protected getFullDescription() {
@@ -452,7 +463,3 @@ class cronstrue {
         return description;
     }
 }
-
-cronstrue.initialize();
-
-export = cronstrue;

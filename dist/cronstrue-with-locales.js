@@ -56,8 +56,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var cronstrue_1 = __webpack_require__(1);
-	var localesLoaderEnglish_1 = __webpack_require__(4);
-	cronstrue_1.cronstrue.initialize(new localesLoaderEnglish_1.LocalesLoaderEnglish());
+	var localesLoaderAll_1 = __webpack_require__(6);
+	cronstrue_1.cronstrue.initialize(new localesLoaderAll_1.LocalesLoaderAll());
 	module.exports = cronstrue_1.cronstrue;
 
 
@@ -528,23 +528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var en_1 = __webpack_require__(5);
-	var LocalesLoaderEnglish = (function () {
-	    function LocalesLoaderEnglish() {
-	    }
-	    LocalesLoaderEnglish.prototype.init = function (locales) {
-	        locales['en'] = new en_1.en();
-	    };
-	    return LocalesLoaderEnglish;
-	}());
-	exports.LocalesLoaderEnglish = LocalesLoaderEnglish;
-
-
-/***/ },
+/* 4 */,
 /* 5 */
 /***/ function(module, exports) {
 
@@ -647,6 +631,144 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return en;
 	}());
 	exports.en = en;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var availableLocales = __webpack_require__(7);
+	var LocalesLoaderAll = (function () {
+	    function LocalesLoaderAll() {
+	    }
+	    LocalesLoaderAll.prototype.init = function (locales) {
+	        for (var property in availableLocales) {
+	            if (availableLocales.hasOwnProperty(property)) {
+	                var locale = new (availableLocales[property]);
+	                locales[property] = locale;
+	            }
+	        }
+	    };
+	    return LocalesLoaderAll;
+	}());
+	exports.LocalesLoaderAll = LocalesLoaderAll;
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var en_1 = __webpack_require__(5);
+	exports.en = en_1.en;
+	var es_1 = __webpack_require__(8);
+	exports.es = es_1.es;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var es = (function () {
+	    function es() {
+	    }
+	    es.prototype.AnErrorOccuredWhenGeneratingTheExpressionD = function () { return "Ocurrió un error mientras se generaba la descripción de la expresión. Revise la sintaxis de la expresión de cron."; };
+	    ;
+	    es.prototype.At = function () { return "A las"; };
+	    ;
+	    es.prototype.AtSpace = function () { return "A las "; };
+	    ;
+	    es.prototype.AtX0 = function () { return "a las {0}"; };
+	    ;
+	    es.prototype.AtX0MinutesPastTheHour = function () { return "a los {0} minutos de la hora"; };
+	    ;
+	    es.prototype.AtX0SecondsPastTheMinute = function () { return "a los {0} segundos del minuto"; };
+	    ;
+	    es.prototype.BetweenX0AndX1 = function () { return "entre las {0} y las {1}"; };
+	    ;
+	    es.prototype.ComaBetweenDayX0AndX1OfTheMonth = function () { return ", entre los días {0} y {1} del mes"; };
+	    ;
+	    es.prototype.ComaEveryDay = function () { return ", cada día"; };
+	    ;
+	    es.prototype.ComaEveryHour = function () { return ", cada hora"; };
+	    ;
+	    es.prototype.ComaEveryMinute = function () { return ", cada minuto"; };
+	    ;
+	    es.prototype.ComaEveryX0Days = function () { return ", cada {0} días"; };
+	    ;
+	    es.prototype.ComaEveryX0DaysOfTheWeek = function () { return ", cada {0} días de la semana"; };
+	    ;
+	    es.prototype.ComaEveryX0Months = function () { return ", cada {0} meses"; };
+	    ;
+	    es.prototype.ComaOnDayX0OfTheMonth = function () { return ", el día {0} del mes"; };
+	    ;
+	    es.prototype.ComaOnlyInX0 = function () { return ", sólo en {0}"; };
+	    ;
+	    es.prototype.ComaOnlyOnX0 = function () { return ", sólo el {0}"; };
+	    ;
+	    es.prototype.ComaOnThe = function () { return ", en el "; };
+	    ;
+	    es.prototype.ComaOnTheLastDayOfTheMonth = function () { return ", en el último día del mes"; };
+	    ;
+	    es.prototype.ComaOnTheLastWeekdayOfTheMonth = function () { return ", en el último día de la semana del mes"; };
+	    ;
+	    es.prototype.ComaOnTheLastX0OfTheMonth = function () { return ", en el último {0} del mes"; };
+	    ;
+	    es.prototype.ComaOnTheX0OfTheMonth = function () { return ", en el {0} del mes"; };
+	    ;
+	    es.prototype.ComaX0ThroughX1 = function () { return ", de {0} a {1}"; };
+	    ;
+	    es.prototype.EveryHour = function () { return "cada hora"; };
+	    ;
+	    es.prototype.EveryMinute = function () { return "cada minuto"; };
+	    ;
+	    es.prototype.EveryMinuteBetweenX0AndX1 = function () { return "cada minuto entre las {0} y las {1}"; };
+	    ;
+	    es.prototype.EverySecond = function () { return "cada segundo"; };
+	    ;
+	    es.prototype.EveryX0Hours = function () { return "cada {0} horas"; };
+	    ;
+	    es.prototype.EveryX0Minutes = function () { return "cada {0} minutos"; };
+	    ;
+	    es.prototype.EveryX0Seconds = function () { return "cada {0} segundos"; };
+	    ;
+	    es.prototype.Fifth = function () { return "quinto"; };
+	    ;
+	    es.prototype.First = function () { return "primero"; };
+	    ;
+	    es.prototype.FirstWeekday = function () { return "primer día de la semana"; };
+	    ;
+	    es.prototype.Forth = function () { return "cuarto"; };
+	    ;
+	    es.prototype.MinutesX0ThroughX1PastTheHour = function () { return "del minuto {0} al {1} pasada la hora"; };
+	    ;
+	    es.prototype.Second = function () { return "segundo"; };
+	    ;
+	    es.prototype.SecondsX0ThroughX1PastTheMinute = function () { return "En los segundos {0} al {1} de cada minuto"; };
+	    ;
+	    es.prototype.SpaceAnd = function () { return " y"; };
+	    ;
+	    es.prototype.SpaceAndSpace = function () { return " y "; };
+	    ;
+	    es.prototype.SpaceX0OfTheMonth = function () { return " {0} del mes"; };
+	    ;
+	    es.prototype.Third = function () { return "tercer"; };
+	    ;
+	    es.prototype.WeekdayNearestDayX0 = function () { return "día de la semana más próximo al {0}"; };
+	    ;
+	    es.prototype.ComaEveryX0Years = function () { return ", cada {0} años"; };
+	    ;
+	    es.prototype.CommaStartingX0 = function () { return ", comenzando {0}"; };
+	    ;
+	    es.prototype.AtX0SecondsPastTheMinuteGt20 = function () { return null; };
+	    es.prototype.AtX0MinutesPastTheHourGt20 = function () { return null; };
+	    es.prototype.ComaMonthX0ThroughMonthX1 = function () { return null; };
+	    es.prototype.ComaYearX0ThroughYearX1 = function () { return null; };
+	    return es;
+	}());
+	exports.es = es;
 
 
 /***/ }

@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('chai').assert;
-var construe = require('../build/cronstrue');
+var construe = require('../build/cronstrue-english');
 
 describe('ExpressionDescriptor', function () {
     describe('every', function () {

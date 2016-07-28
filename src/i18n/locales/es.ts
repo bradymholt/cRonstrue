@@ -1,4 +1,4 @@
-import { Locale } from './locale'
+import { Locale } from '../locale'
 
 export class es implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD() { return "Ocurrió un error mientras se generaba la descripción de la expresión. Revise la sintaxis de la expresión de cron." };

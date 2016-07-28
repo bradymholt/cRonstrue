@@ -1,4 +1,4 @@
-import { Locale } from './locale';
+import { Locale } from '../locale';
 export declare class en implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
