@@ -11,7 +11,8 @@
             "taskName": "build",
             "isBuildCommand": true,
             "args": [
-                "run", "build"
+                "run",
+                "build"
             ],
             "problemMatcher": "$tsc"
         },
@@ -21,10 +22,6 @@
             "args": [
                 "test"
             ]
-        },
-        {
-            "taskName": "dist",
-            "args": ["run", "dist"]
-        }    
+        }
     ]
 }
