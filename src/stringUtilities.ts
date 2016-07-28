@@ -14,18 +14,6 @@ export class StringUtilities {
     }
 
     /**
-     * Uppercases the first character in a string
-     * @static
-     * @param {string} text
-     * @returns {string}
-     */
-    static toProperCase(text: string): string {
-        return text.replace(/\w\S*/g, (txt) => {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
-    }
-
-    /**
      * 
      * Given a string and an array of search strings, determines if the string
      * contains any value from the array.

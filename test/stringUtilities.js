@@ -15,10 +15,4 @@ describe('StringUtilities', function () {
             assert.equal(StringUtilities.format("Test %s %s %s", "one", "two", "three"), "Test one two three");
         });
     });
-
-    describe('toProperCase', function () {
-        it('should properly case a sentence', function () {
-            assert.equal(StringUtilities.toProperCase("this is a test, only a test.  the case should be proper."), "This Is A Test, Only A Test.  The Case Should Be Proper.");
-        });
-    });
 });

@@ -190,8 +190,6 @@ describe('ExpressionDescriptor', function () {
     });
 
     describe('non-trival expressions', function () {
-
-
         it('*/5 15 * * MON-FRI', function () {
             assert.equal(construe.toString("*/5 15 * * MON-FRI"), "Every 5 minutes, at 03:00 PM, Monday through Friday");
         });
@@ -317,26 +315,25 @@ describe('ExpressionDescriptor', function () {
         });
     });
 
+    describe('errors', function () {
+        it('garbage expression', function () {
+            assert.throws(function () { construe.toString("sdlksldksldksd") }, 'Error: Expression only has 1 parts.  At least 5 part are required.');
+        });
 
+        it('empty expression', function () {
+            assert.throws(function () { construe.toString("") }, 'Error: Expression is empty');
+        });
 
+        it('null expression', function () {
+            assert.throws(function () { construe.toString(null) }, 'Error: Expression is empty');
+        });
 
+        it('undefined expression', function () {
+            assert.throws(function () { construe.toString() }, 'Error: Expression is empty');
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        it('garbage expression with option (throwExceptionOnParseError = false)', function () {
+            assert.equal(construe.toString("garbage", { throwExceptionOnParseError: false }), "An error occured when generating the expression description.  Check the cron expression syntax.");
+        });
+    });
 });

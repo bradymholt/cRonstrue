@@ -1,8 +1,5 @@
-import { CasingTypeEnum } from './casingTypeEnum'
-
-export interface IOptions {
+export interface Options {
     throwExceptionOnParseError?: boolean;
-    casingType?: CasingTypeEnum;
     verbose?: boolean;
     dayOfWeekStartIndexZero?: boolean;
     use24HourTimeFormat?: boolean;

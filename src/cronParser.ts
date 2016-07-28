@@ -1,4 +1,4 @@
-import { IOptions } from './options'
+import { Options } from './options'
 
 /**
  * Parses and normalizes a cron expression

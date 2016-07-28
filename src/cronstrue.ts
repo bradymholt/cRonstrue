@@ -1,7 +1,6 @@
 import { StringUtilities } from './stringUtilities';
 import { CronParser }  from './cronParser';
-import { IOptions } from './options';
-import { CasingTypeEnum } from './casingTypeEnum';
+import { Options } from './options';
 import LocalesManager = require('./locale/localesManager')
 import { Locale } from './locale/locale';
 import { en } from './locale/en';
@@ -12,7 +11,7 @@ class cronstrue {
 
     expression: string;
     expressionParts: string[];
-    options: IOptions;
+    options: Options;
     i18n: Locale;
 
     /**
@@ -31,18 +30,16 @@ class cronstrue {
      */
     static toString(expression: string, {
         throwExceptionOnParseError = true,
-        casingType = CasingTypeEnum.Sentence,
         verbose = false,
         dayOfWeekStartIndexZero = true,
         use24HourTimeFormat = false,
         locale = 'en'
-    }: IOptions = {}):string {
+    }: Options = {}): string {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
         // a IOptions so we can pass around options with ease.
 
-        let options = <IOptions>{
+        let options = <Options>{
             throwExceptionOnParseError: throwExceptionOnParseError,
-            casingType: casingType,
             verbose: verbose,
             dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
             use24HourTimeFormat: use24HourTimeFormat,
@@ -60,7 +57,7 @@ class cronstrue {
         LocalesManager.init(cronstrue.locales);
     }
 
-    constructor(expression: string, options: IOptions) {
+    constructor(expression: string, options: Options) {
         this.expression = expression;
         this.options = options;
         this.expressionParts = new Array(5);
@@ -80,15 +77,18 @@ class cronstrue {
             var monthDesc = this.getMonthDescription();
             var dayOfWeekDesc = this.getDayOfWeekDescription();
             var yearDesc = this.getYearDescription();
-            description = "" + timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc;
+
+            description += (timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc);
             description = this.transformVerbosity(description, this.options.verbose);
-            description = this.transformCase(description, this.options.casingType);
+
+            // uppercase first character
+            description = description.charAt(0).toLocaleUpperCase() + description.substr(1);
         }
         catch (ex) {
             if (!this.options.throwExceptionOnParseError) {
                 description = this.i18n.AnErrorOccuredWhenGeneratingTheExpressionD();
             } else {
-                throw `Error: ${ex}`;
+                throw `${ex}`;
             }
         }
         return description;
@@ -448,21 +448,6 @@ class cronstrue {
             description = description.replace(new RegExp(this.i18n.ComaEveryMinute(), 'g'), "");
             description = description.replace(new RegExp(this.i18n.ComaEveryHour(), 'g'), "");
             description = description.replace(new RegExp(this.i18n.ComaEveryDay(), 'g'), "");
-        }
-        return description;
-    }
-
-    protected transformCase(description: string, caseType: CasingTypeEnum) {
-        switch (caseType) {
-            case CasingTypeEnum.Sentence:
-                description = description[0].toLocaleUpperCase() + description.substring(1);
-                break;
-            case CasingTypeEnum.Title:
-                description = StringUtilities.toProperCase(description);
-                break;
-            default:
-                description = description.toLocaleLowerCase();
-                break;
         }
         return description;
     }
