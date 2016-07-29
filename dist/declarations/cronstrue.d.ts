@@ -1,7 +1,7 @@
-import { Options } from './options';
-import { Locale } from './i18n/locale';
-import { LocaleLoader } from './i18n/LocaleLoader';
-export declare class cronstrue {
+import { Options } from "./options";
+import { Locale } from "./i18n/locale";
+import { LocaleLoader } from "./i18n/localeLoader";
+export declare class Cronstrue {
     static locales: {
         [name: string]: Locale;
     };

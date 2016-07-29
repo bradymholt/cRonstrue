@@ -21,8 +21,11 @@ var cronstrue = require('cronstrue');
  The `cronstrue.min.js` file from the `/dist` folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a `<script>` tag.
 ```
 <script src="cronstrue.min.js" type="text/javascript"></script>
-var cronstrue = window.cronstrue;
+<script>
+  var cronstrue = window.cronstrue;
+</script>
 ```
+
 ## Usage
 
 ```
@@ -40,7 +43,23 @@ For more usage examples, including a demonstration of how cRonstrue can handle s
 
 ## i18n
 
-The following locales are supported by passing in the locale name as an option to `cronstrue.toString()`.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
+To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
+
+### Node
+```
+var cronstrue = require('cronstrue/i18n');
+cronstrue.toString("*/5 * * * *", { locale: "fr" });
+```
+### Browser
+ The `cronstrue-i18n.min.js` file from the `/dist` folder in the npm package should be served to the browser.
+```
+<script src="cronstrue-i18n.min.js" type="text/javascript"></script>
+<script>
+  cronstrue.toString("*/5 * * * *", { locale: "fr" });
+</script>
+```
+
+### Supported Locales
 
 - en - English
 - nl - Dutch

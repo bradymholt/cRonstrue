@@ -4,6 +4,7 @@ export declare class en implements Locale {
     AtX0MinutesPastTheHourGt20(): string;
     ComaMonthX0ThroughMonthX1(): string;
     ComaYearX0ThroughYearX1(): string;
+    Use24HourTimeFormatByDefault(): boolean;
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
     EveryHour(): string;
@@ -48,4 +49,6 @@ export declare class en implements Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

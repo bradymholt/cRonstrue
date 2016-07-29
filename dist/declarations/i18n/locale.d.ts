@@ -1,4 +1,5 @@
 export interface Locale {
+    Use24HourTimeFormatByDefault(): boolean;
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
     EveryHour(): string;
@@ -47,4 +48,6 @@ export interface Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

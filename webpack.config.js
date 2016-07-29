@@ -1,13 +1,13 @@
 var webpack = require('webpack');
 var libraryName = require('./package.json').name;
-var withLocalesSuffix = '-with-locales';
+var withLocalesSuffix = '-i18n';
 
 var config = {
     entry: {
         [libraryName]: './src/cronstrue-en.ts',
         [libraryName + '.min']: './src/cronstrue-en.ts',
-        [libraryName + withLocalesSuffix]: './src/cronstrue-with-locales.ts',
-        [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-with-locales.ts'
+        [libraryName + withLocalesSuffix]: './src/cronstrue-i18n.ts',
+        [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-i18n.ts'
     },
     output: {
         path: __dirname + '/dist',

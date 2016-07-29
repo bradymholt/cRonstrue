@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('chai').assert;
-var construe = require('../build/cronstrue-with-locales');
+var construe = require('../build/cronstrue-i18n');
 
 describe("i18n", function () {
     describe("de", function () {

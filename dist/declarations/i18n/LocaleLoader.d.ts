@@ -1,4 +1,4 @@
-import { Locale } from './locale';
+import { Locale } from "./locale";
 export interface LocaleLoader {
     load(availableLocales: {
         [name: string]: Locale;

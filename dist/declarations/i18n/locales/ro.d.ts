@@ -1,5 +1,6 @@
 import { Locale } from "../locale";
 export declare class ro implements Locale {
+    Use24HourTimeFormatByDefault(): boolean;
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     At(): string;
     AtSpace(): string;
@@ -49,4 +50,6 @@ export declare class ro implements Locale {
     AtX0MinutesPastTheHourGt20(): string;
     AtX0SecondsPastTheMinuteGt20(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }
