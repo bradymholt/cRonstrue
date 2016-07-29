@@ -27,7 +27,8 @@
     "main": "dist/cronstrue.js",
     "typings": "dist/declarations/cronstrue.d.ts",
     "files": [
-        "dist/"
+        "dist/",
+        "i18n.js"
     ],
     "repository": {
         "type": "git",
