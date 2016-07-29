@@ -46,7 +46,7 @@
     "build": "tsc",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/*/",
+    "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src",
     "prepublish": "npm run build_dist",
     "postpublish": "git push --tags",
     "publishpatch": "npm version patch && npm publish",
