@@ -1,5 +1,5 @@
-import { Locale } from './locale';
-import * as allLocales from './allLocales';
+import { Locale } from "./locale";
+import * as allLocales from "./allLocales";
 
 export class allLocalesLoader {
     load(availableLocales: { [name: string]: Locale }) {

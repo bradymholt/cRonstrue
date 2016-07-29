@@ -1,4 +1,4 @@
-import { Locale } from '../locale'
+import { Locale } from "../locale"
 
 export class en implements Locale {
     AtX0SecondsPastTheMinuteGt20(): string { return null; }

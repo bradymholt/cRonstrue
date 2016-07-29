@@ -1,4 +1,4 @@
-import { Locale } from '../locale'
+import { Locale } from "../locale"
 export class ro implements Locale {
 
     Use24HourTimeFormatByDefault() { return true; }

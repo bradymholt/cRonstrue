@@ -1,4 +1,4 @@
-import { Locale } from '../locale';
+import { Locale } from "../locale";
 export declare class tr implements Locale {
     AtX0SecondsPastTheMinuteGt20(): string;
     AtX0MinutesPastTheHourGt20(): string;

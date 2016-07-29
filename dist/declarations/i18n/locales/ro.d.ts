@@ -1,4 +1,4 @@
-import { Locale } from '../locale';
+import { Locale } from "../locale";
 export declare class ro implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     At(): string;

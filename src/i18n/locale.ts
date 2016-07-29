@@ -52,6 +52,6 @@ export interface Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
-    DaysOfTheWeek():string[];
-    MonthsOfTheYear():string[];
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

@@ -1,9 +1,9 @@
-import { StringUtilities } from './stringUtilities';
-import { CronParser }  from './cronParser';
-import { Options } from './options';
+import { StringUtilities } from "./stringUtilities";
+import { CronParser }  from "./cronParser";
+import { Options } from "./options";
 
-import { Locale } from './i18n/locale';
-import { LocaleLoader } from './i18n/localeLoader';
+import { Locale } from "./i18n/locale";
+import { LocaleLoader } from "./i18n/localeLoader";
 
 export class Cronstrue {
     static locales: { [name: string]: Locale } = {};
@@ -33,7 +33,7 @@ export class Cronstrue {
         verbose = false,
         dayOfWeekStartIndexZero = true,
         use24HourTimeFormat,
-        locale = 'en'
+        locale = "en"
     }: Options = {}): string {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
         // an Options type so we can pass around options with ease.
@@ -71,7 +71,7 @@ export class Cronstrue {
         } else {
             // fall back to English
             // TODO: warn consumer about this somehow (console.warn()?)
-            this.i18n = Cronstrue.locales['en'];
+            this.i18n = Cronstrue.locales["en"];
         }
 
         if (options.use24HourTimeFormat === undefined) {
@@ -453,10 +453,10 @@ export class Cronstrue {
         let minute = minuteExpression;
         let second: string = "";
         if (secondExpression) {
-            second = `:${('00' + secondExpression).substring(secondExpression.length)}`;
+            second = `:${("00" + secondExpression).substring(secondExpression.length)}`;
         }
 
-        return `${('00' + hour.toString()).substring(hour.toString().length)}:${('00' + minute.toString()).substring(minute.toString().length)}${second}${period}`;
+        return `${("00" + hour.toString()).substring(hour.toString().length)}:${("00" + minute.toString()).substring(minute.toString().length)}${second}${period}`;
     }
 
     protected transformVerbosity(description: string, useVerboseFormat: boolean) {
