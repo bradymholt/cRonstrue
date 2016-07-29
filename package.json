@@ -1,52 +1,52 @@
 {
-    "name": "cronstrue",
-    "version": "0.1.2",
-    "description": "Convert cron expressions into human readable descriptions",
-    "author": "Brady Holt",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/bradyholt/cronstrue/issues"
-    },
-    "homepage": "https://github.com/bradyholt/cronstrue#readme",
-    "keywords": [
-        "cron",
-        "cronjob",
-        "crontab",
-        "schedule",
-        "parser",
-        "cron expression",
-        "cron description",
-        "pretty cron",
-        "cron for humans",
-        "cron translated",
-        "cron english",
-        "cron schedule",
-        "cron english",
-        "cron schedule"
-    ],
-    "main": "dist/cronstrue.js",
-    "typings": "dist/declarations/cronstrue.d.ts",
-    "files": [
-        "dist/",
-        "i18n.js"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/bradyholt/cronstrue.git"
-    },
-    "devDependencies": {
-        "awesome-typescript-loader": "^2.1.1",
-        "chai": "^3.5.0",
-        "expose-loader": "^0.7.1",
-        "mocha": "^2.5.3",
-        "typescript": "^1.8.10",
-        "webpack": "^1.13.1"
-    },
-    "scripts": {
-        "build": "tsc",
-        "pretest": "npm run build",
-        "test": "./node_modules/.bin/mocha --reporter spec",
-        "package": "rm -rf ./dist && webpack && mv ./dist/src ./dist/declarations",
-        "prepublish": "npm run package"
-    }
+  "name": "cronstrue",
+  "version": "0.1.3",
+  "description": "Convert cron expressions into human readable descriptions",
+  "author": "Brady Holt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradyholt/cronstrue/issues"
+  },
+  "homepage": "https://github.com/bradyholt/cronstrue#readme",
+  "keywords": [
+    "cron",
+    "cronjob",
+    "crontab",
+    "schedule",
+    "parser",
+    "cron expression",
+    "cron description",
+    "pretty cron",
+    "cron for humans",
+    "cron translated",
+    "cron english",
+    "cron schedule",
+    "cron english",
+    "cron schedule"
+  ],
+  "main": "dist/cronstrue.js",
+  "typings": "dist/declarations/cronstrue.d.ts",
+  "files": [
+    "dist/",
+    "i18n.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradyholt/cronstrue.git"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^2.1.1",
+    "chai": "^3.5.0",
+    "expose-loader": "^0.7.1",
+    "mocha": "^2.5.3",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "pretest": "npm run build",
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "package": "rm -rf ./dist && webpack && mv ./dist/src ./dist/declarations",
+    "prepublish": "npm run package"
+  }
 }
