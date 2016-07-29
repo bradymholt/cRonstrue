@@ -1,6 +1,6 @@
 {
   "name": "cronstrue",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Convert cron expressions into human readable descriptions",
   "author": "Brady Holt",
   "license": "MIT",
