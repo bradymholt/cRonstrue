@@ -1,9 +1,5 @@
 import { Locale } from '../locale';
-export declare class es implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string;
-    AtX0MinutesPastTheHourGt20(): string;
-    ComaMonthX0ThroughMonthX1(): string;
-    ComaYearX0ThroughYearX1(): string;
+export declare class ro implements Locale {
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     At(): string;
     AtSpace(): string;
@@ -18,6 +14,7 @@ export declare class es implements Locale {
     ComaEveryX0Days(): string;
     ComaEveryX0DaysOfTheWeek(): string;
     ComaEveryX0Months(): string;
+    ComaEveryX0Years(): string;
     ComaOnDayX0OfTheMonth(): string;
     ComaOnlyInX0(): string;
     ComaOnlyOnX0(): string;
@@ -46,6 +43,10 @@ export declare class es implements Locale {
     SpaceX0OfTheMonth(): string;
     Third(): string;
     WeekdayNearestDayX0(): string;
-    ComaEveryX0Years(): string;
+    ComaMinX0ThroughMinX1(): string;
+    ComaMonthX0ThroughMonthX1(): string;
+    ComaYearX0ThroughYearX1(): string;
+    AtX0MinutesPastTheHourGt20(): string;
+    AtX0SecondsPastTheMinuteGt20(): string;
     CommaStartingX0(): string;
 }

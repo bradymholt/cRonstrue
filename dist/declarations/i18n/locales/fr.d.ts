@@ -1,12 +1,12 @@
 import { Locale } from '../locale';
-export declare class en implements Locale {
+export declare class fr implements Locale {
     AtX0SecondsPastTheMinuteGt20(): string;
     AtX0MinutesPastTheHourGt20(): string;
     ComaMonthX0ThroughMonthX1(): string;
     ComaYearX0ThroughYearX1(): string;
-    AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
     EveryHour(): string;
+    AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     AtSpace(): string;
     EveryMinuteBetweenX0AndX1(): string;
     At(): string;
@@ -47,5 +47,7 @@ export declare class en implements Locale {
     ComaEveryMinute(): string;
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
+    ComaDaysX0ThroughX1(): string;
+    WeekSpaceAndSpace(): string;
     CommaStartingX0(): string;
 }

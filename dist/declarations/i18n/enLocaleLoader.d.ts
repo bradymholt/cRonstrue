@@ -1,6 +1,6 @@
 import { Locale } from './locale';
-export interface LocalesLoader {
-    init(locales: {
+export declare class enLocaleLoader {
+    load(availableLocales: {
         [name: string]: Locale;
     }): void;
 }

@@ -3,7 +3,7 @@ import { CronParser }  from './cronParser';
 import { Options } from './options';
 
 import { Locale } from './i18n/locale';
-import { LocalesLoader } from './i18n/localesLoader';
+import { LocaleLoader } from './i18n/LocaleLoader';
 
 export class cronstrue {
     static locales: { [name: string]: Locale } = {};
@@ -15,7 +15,7 @@ export class cronstrue {
     i18n: Locale;
 
     /**
-     * Converts a cron expression into a description a human can read 
+     * Converts a cron expression into a description a human can read
      * @static
      * @param {string} expression - The cron expression
      * @param {IOptions} [{
@@ -35,7 +35,7 @@ export class cronstrue {
         use24HourTimeFormat = false,
         locale = 'en'
     }: Options = {}): string {
-        // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to 
+        // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
         // an Options type so we can pass around options with ease.
 
         let options = <Options>{
@@ -50,11 +50,11 @@ export class cronstrue {
         return descripter.getFullDescription();
     }
 
-    static initialize(localesLoader: LocalesLoader) {
+    static initialize(localesLoader: LocaleLoader) {
         cronstrue.specialCharacters = ["/", "-", ",", "*"];
 
         // Load locales
-        localesLoader.init(cronstrue.locales);
+        localesLoader.load(cronstrue.locales);
     }
 
     static locale(localeName: string) {

@@ -1,6 +1,6 @@
 import { Options } from './options';
 import { Locale } from './i18n/locale';
-import { LocalesLoader } from './i18n/localesLoader';
+import { LocaleLoader } from './i18n/LocaleLoader';
 export declare class cronstrue {
     static locales: {
         [name: string]: Locale;
@@ -11,7 +11,7 @@ export declare class cronstrue {
     options: Options;
     i18n: Locale;
     static toString(expression: string, {throwExceptionOnParseError, verbose, dayOfWeekStartIndexZero, use24HourTimeFormat, locale}?: Options): string;
-    static initialize(localesLoader: LocalesLoader): void;
+    static initialize(localesLoader: LocaleLoader): void;
     static locale(localeName: string): void;
     constructor(expression: string, options: Options);
     protected getFullDescription(): string;

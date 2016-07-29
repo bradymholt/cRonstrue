@@ -9,6 +9,6 @@
         "sourceMap": true
     },
     "files": [
-        "src/cronstrue-english.ts"
-    ]  
+        "src/cronstrue-en.ts"
+    ]
 }

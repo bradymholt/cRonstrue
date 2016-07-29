@@ -1,6 +1,11 @@
 import { Locale } from '../locale'
 
 export class es implements Locale {
+    AtX0SecondsPastTheMinuteGt20(): string { return null; }
+    AtX0MinutesPastTheHourGt20(): string { return null; }
+    ComaMonthX0ThroughMonthX1(): string { return null; }
+    ComaYearX0ThroughYearX1(): string { return null; }
+
     AnErrorOccuredWhenGeneratingTheExpressionD() { return "Ocurrió un error mientras se generaba la descripción de la expresión. Revise la sintaxis de la expresión de cron." };
     At() { return "A las" };
     AtSpace() { return "A las " };
@@ -45,8 +50,4 @@ export class es implements Locale {
     WeekdayNearestDayX0() { return "día de la semana más próximo al {0}" };
     ComaEveryX0Years() { return ", cada {0} años" };
     CommaStartingX0() { return ", comenzando {0}" };
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
 }

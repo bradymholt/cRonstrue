@@ -4,10 +4,10 @@ var withLocalesSuffix = '-with-locales';
 
 var config = {
     entry: {
-        [libraryName]: './src/cronstrue-english.ts',
-        [libraryName + '.min']: './src/cronstrue-english.ts',
-        [libraryName + withLocalesSuffix]: './src/cronstrue-locales.ts',
-        [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-locales.ts'
+        [libraryName]: './src/cronstrue-en.ts',
+        [libraryName + '.min']: './src/cronstrue-en.ts',
+        [libraryName + withLocalesSuffix]: './src/cronstrue-with-locales.ts',
+        [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-with-locales.ts'
     },
     output: {
         path: __dirname + '/dist',
@@ -37,7 +37,8 @@ var config = {
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             include: /\.min\.js$/,
-            minimize: true
+            minimize: true,
+            sideEffects: false
         })
     ]
 };

@@ -56,8 +56,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var cronstrue_1 = __webpack_require__(1);
-	var localesLoaderEnglish_1 = __webpack_require__(4);
-	cronstrue_1.cronstrue.initialize(new localesLoaderEnglish_1.LocalesLoaderEnglish());
+	var enLocaleLoader_1 = __webpack_require__(4);
+	cronstrue_1.cronstrue.initialize(new enLocaleLoader_1.enLocaleLoader());
 	module.exports = cronstrue_1.cronstrue;
 
 
@@ -94,7 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    cronstrue.initialize = function (localesLoader) {
 	        cronstrue.specialCharacters = ["/", "-", ",", "*"];
-	        localesLoader.init(cronstrue.locales);
+	        localesLoader.load(cronstrue.locales);
 	    };
 	    cronstrue.locale = function (localeName) {
 	    };
@@ -533,15 +533,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	var en_1 = __webpack_require__(5);
-	var LocalesLoaderEnglish = (function () {
-	    function LocalesLoaderEnglish() {
+	var enLocaleLoader = (function () {
+	    function enLocaleLoader() {
 	    }
-	    LocalesLoaderEnglish.prototype.init = function (locales) {
-	        locales['en'] = new en_1.en();
+	    enLocaleLoader.prototype.load = function (availableLocales) {
+	        availableLocales['en'] = new en_1.en();
 	    };
-	    return LocalesLoaderEnglish;
+	    return enLocaleLoader;
 	}());
-	exports.LocalesLoaderEnglish = LocalesLoaderEnglish;
+	exports.enLocaleLoader = enLocaleLoader;
 
 
 /***/ },
@@ -552,6 +552,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var en = (function () {
 	    function en() {
 	    }
+	    en.prototype.AtX0SecondsPastTheMinuteGt20 = function () { return null; };
+	    en.prototype.AtX0MinutesPastTheHourGt20 = function () { return null; };
+	    en.prototype.ComaMonthX0ThroughMonthX1 = function () { return null; };
+	    en.prototype.ComaYearX0ThroughYearX1 = function () { return null; };
 	    en.prototype.AnErrorOccuredWhenGeneratingTheExpressionD = function () { return "An error occured when generating the expression description.  Check the cron expression syntax."; };
 	    ;
 	    en.prototype.EveryMinute = function () { return "every minute"; };
@@ -574,14 +578,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ;
 	    en.prototype.AtX0SecondsPastTheMinute = function () { return "at %s seconds past the minute"; };
 	    ;
-	    en.prototype.AtX0SecondsPastTheMinuteGt20 = function () { return null; };
 	    en.prototype.EveryX0Minutes = function () { return "every %s minutes"; };
 	    ;
 	    en.prototype.MinutesX0ThroughX1PastTheHour = function () { return "minutes %s through %s past the hour"; };
 	    ;
 	    en.prototype.AtX0MinutesPastTheHour = function () { return "at %s minutes past the hour"; };
 	    ;
-	    en.prototype.AtX0MinutesPastTheHourGt20 = function () { return null; };
 	    en.prototype.EveryX0Hours = function () { return "every %s hours"; };
 	    ;
 	    en.prototype.BetweenX0AndX1 = function () { return "between %s and %s"; };
@@ -594,8 +596,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ;
 	    en.prototype.ComaX0ThroughX1 = function () { return ", %s through %s"; };
 	    ;
-	    en.prototype.ComaMonthX0ThroughMonthX1 = function () { return null; };
-	    en.prototype.ComaYearX0ThroughYearX1 = function () { return null; };
 	    en.prototype.First = function () { return "first"; };
 	    ;
 	    en.prototype.Second = function () { return "second"; };

@@ -1,6 +1,11 @@
 import { Locale } from '../locale'
 
 export class en implements Locale {
+    AtX0SecondsPastTheMinuteGt20(): string { return null; }
+    AtX0MinutesPastTheHourGt20(): string { return null; }
+    ComaMonthX0ThroughMonthX1(): string { return null; }
+    ComaYearX0ThroughYearX1(): string { return null; }
+
     AnErrorOccuredWhenGeneratingTheExpressionD() { return "An error occured when generating the expression description.  Check the cron expression syntax." };
     EveryMinute() { return "every minute" };
     EveryHour() { return "every hour" };
@@ -12,19 +17,15 @@ export class en implements Locale {
     EveryX0Seconds() { return "every %s seconds" };
     SecondsX0ThroughX1PastTheMinute() { return "seconds %s through %s past the minute" };
     AtX0SecondsPastTheMinute() { return "at %s seconds past the minute" };
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
     EveryX0Minutes() { return "every %s minutes" };
     MinutesX0ThroughX1PastTheHour() { return "minutes %s through %s past the hour" };
     AtX0MinutesPastTheHour() { return "at %s minutes past the hour" };
-    AtX0MinutesPastTheHourGt20(): string { return null; }
     EveryX0Hours() { return "every %s hours" };
     BetweenX0AndX1() { return "between %s and %s" };
     AtX0() { return "at %s" };
     ComaEveryDay() { return ", every day" };
     ComaEveryX0DaysOfTheWeek() { return ", every %s days of the week" };
     ComaX0ThroughX1() { return ", %s through %s" };
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
     First() { return "first" };
     Second() { return "second" };
     Third() { return "third" };
