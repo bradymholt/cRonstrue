@@ -1,5 +1,8 @@
 import { Locale } from '../locale'
 export class ro implements Locale {
+
+    Use24HourTimeFormatByDefault() { return true; }
+
     AnErrorOccuredWhenGeneratingTheExpressionD() {
         return "Eroare la generarea descrierii. Verificați sintaxa.";
     }
@@ -10,19 +13,19 @@ export class ro implements Locale {
         return "La ";
     }
     AtX0() {
-        return "la {0}";
+        return "la %s";
     }
     AtX0MinutesPastTheHour() {
-        return "la și {0} minute";
+        return "la și %s minute";
     }
     AtX0SecondsPastTheMinute() {
-        return "la și {0} secunde";
+        return "la și %s secunde";
     }
     BetweenX0AndX1() {
-        return "între {0} și {1}";
+        return "între %s și %s";
     }
     ComaBetweenDayX0AndX1OfTheMonth() {
-        return ", între zilele {0} și {1} ale lunii";
+        return ", între zilele %s și %s ale lunii";
     }
     ComaEveryDay() {
         return ", în fiecare zi";
@@ -34,25 +37,25 @@ export class ro implements Locale {
         return ", în fiecare minut";
     }
     ComaEveryX0Days() {
-        return ", la fiecare {0} zile";
+        return ", la fiecare %s zile";
     }
     ComaEveryX0DaysOfTheWeek() {
-        return ", la fiecare a {0}-a zi a săptămânii";
+        return ", la fiecare a %s-a zi a săptămânii";
     }
     ComaEveryX0Months() {
-        return ", la fiecare {0} luni";
+        return ", la fiecare %s luni";
     }
     ComaEveryX0Years() {
-        return ", o dată la {0} ani";
+        return ", o dată la %s ani";
     }
     ComaOnDayX0OfTheMonth() {
-        return ", în ziua {0} a lunii";
+        return ", în ziua %s a lunii";
     }
     ComaOnlyInX0() {
-        return ", doar în {0}";
+        return ", doar în %s";
     }
     ComaOnlyOnX0() {
-        return ", doar {0}";
+        return ", doar %s";
     }
     ComaOnThe() {
         return ", în ";
@@ -64,13 +67,13 @@ export class ro implements Locale {
         return ", în ultima zi lucrătoare a lunii";
     }
     ComaOnTheLastX0OfTheMonth() {
-        return ", în ultima {0} a lunii";
+        return ", în ultima %s a lunii";
     }
     ComaOnTheX0OfTheMonth() {
-        return ", în {0} a lunii";
+        return ", în %s a lunii";
     }
     ComaX0ThroughX1() {
-        return ", de {0} până {1}";
+        return ", de %s până %s";
     }
     EveryHour() {
         return "în fiecare oră";
@@ -79,19 +82,19 @@ export class ro implements Locale {
         return "în fiecare minut";
     }
     EveryMinuteBetweenX0AndX1() {
-        return "În fiecare minut între {0} și {1}";
+        return "În fiecare minut între %s și %s";
     }
     EverySecond() {
         return "în fiecare secundă";
     }
     EveryX0Hours() {
-        return "la fiecare {0} ore";
+        return "la fiecare %s ore";
     }
     EveryX0Minutes() {
-        return "la fiecare {0} minute";
+        return "la fiecare %s minute";
     }
     EveryX0Seconds() {
-        return "la fiecare {0} secunde";
+        return "la fiecare %s secunde";
     }
     Fifth() {
         return "a cincea";
@@ -106,13 +109,13 @@ export class ro implements Locale {
         return "a patra";
     }
     MinutesX0ThroughX1PastTheHour() {
-        return "între minutele {0} și {1}";
+        return "între minutele %s și %s";
     }
     Second() {
         return "a doua";
     }
     SecondsX0ThroughX1PastTheMinute() {
-        return "între secunda {0} și secunda {1}";
+        return "între secunda %s și secunda %s";
     }
     SpaceAnd() {
         return " și";
@@ -121,30 +124,36 @@ export class ro implements Locale {
         return " și ";
     }
     SpaceX0OfTheMonth() {
-        return " {0} a lunii";
+        return " %s a lunii";
     }
     Third() {
         return "a treia";
     }
     WeekdayNearestDayX0() {
-        return "cea mai apropiată zi a săptămânii de ziua {0}";
+        return "cea mai apropiată zi a săptămânii de ziua %s";
     }
     ComaMinX0ThroughMinX1() {
-        return ", de la {0} până la {1}";
+        return ", de la %s până la %s";
     }
     ComaMonthX0ThroughMonthX1() {
-        return ", din {0} până în {1}";
+        return ", din %s până în %s";
     }
     ComaYearX0ThroughYearX1() {
-        return ", din {0} până în {1}";
+        return ", din %s până în %s";
     }
     AtX0MinutesPastTheHourGt20() {
-        return "la și {0} de minute";
+        return "la și %s de minute";
     }
     AtX0SecondsPastTheMinuteGt20() {
-        return "la și {0} de secunde";
+        return "la și %s de secunde";
     }
     CommaStartingX0() {
-        return ", pornire {0}";
+        return ", pornire %s";
+    }
+    DaysOfTheWeek() {
+        return ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
+    }
+    MonthsOfTheYear() {
+        return ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
     }
 }

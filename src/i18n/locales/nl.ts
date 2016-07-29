@@ -5,6 +5,8 @@ export class nl implements Locale {
     ComaMonthX0ThroughMonthX1(): string { return null; }
     ComaYearX0ThroughYearX1(): string { return null; }
 
+    Use24HourTimeFormatByDefault() { return false; }
+
     EveryMinute() {
         return "elke minuut";
     }
@@ -18,7 +20,7 @@ export class nl implements Locale {
         return "Op ";
     }
     EveryMinuteBetweenX0AndX1() {
-        return "Elke minuut tussen {0} en {1}";
+        return "Elke minuut tussen %s en %s";
     }
     At() {
         return "Op";
@@ -30,40 +32,40 @@ export class nl implements Locale {
         return "elke seconde";
     }
     EveryX0Seconds() {
-        return "elke {0} seconden";
+        return "elke %s seconden";
     }
     SecondsX0ThroughX1PastTheMinute() {
-        return "seconden {0} t/m {1} na de minuut";
+        return "seconden %s t/m %s na de minuut";
     }
     AtX0SecondsPastTheMinute() {
-        return "op {0} seconden na de minuut";
+        return "op %s seconden na de minuut";
     }
     EveryX0Minutes() {
-        return "elke {0} minuten";
+        return "elke %s minuten";
     }
     MinutesX0ThroughX1PastTheHour() {
-        return "minuut {0} t/m {1} na het uur";
+        return "minuut %s t/m %s na het uur";
     }
     AtX0MinutesPastTheHour() {
-        return "op {0} minuten na het uur";
+        return "op %s minuten na het uur";
     }
     EveryX0Hours() {
-        return "elke {0} uur";
+        return "elke %s uur";
     }
     BetweenX0AndX1() {
-        return "tussen {0} en {1}";
+        return "tussen %s en %s";
     }
     AtX0() {
-        return "op {0}";
+        return "op %s";
     }
     ComaEveryDay() {
         return ", elke dag";
     }
     ComaEveryX0DaysOfTheWeek() {
-        return ", elke {0} dagen van de week";
+        return ", elke %s dagen van de week";
     }
     ComaX0ThroughX1() {
-        return ", {0} t/m {1}";
+        return ", %s t/m %s";
     }
     First() {
         return "eerste";
@@ -84,19 +86,19 @@ export class nl implements Locale {
         return ", op de ";
     }
     SpaceX0OfTheMonth() {
-        return " {0} van de maand";
+        return " %s van de maand";
     }
     ComaOnTheLastX0OfTheMonth() {
-        return ", op de laatste {0} van de maand";
+        return ", op de laatste %s van de maand";
     }
     ComaOnlyOnX0() {
-        return ", alleen op {0}";
+        return ", alleen op %s";
     }
     ComaEveryX0Months() {
-        return ", elke {0} maanden";
+        return ", elke %s maanden";
     }
     ComaOnlyInX0() {
-        return ", alleen in {0}";
+        return ", alleen in %s";
     }
     ComaOnTheLastDayOfTheMonth() {
         return ", op de laatste dag van de maand";
@@ -108,19 +110,19 @@ export class nl implements Locale {
         return "eerste werkdag";
     }
     WeekdayNearestDayX0() {
-        return "werkdag dichtst bij dag {0}";
+        return "werkdag dichtst bij dag %s";
     }
     ComaOnTheX0OfTheMonth() {
-        return ", op de {0} van de maand";
+        return ", op de %s van de maand";
     }
     ComaEveryX0Days() {
-        return ", elke {0} dagen";
+        return ", elke %s dagen";
     }
     ComaBetweenDayX0AndX1OfTheMonth() {
-        return ", tussen dag {0} en {1} van de maand";
+        return ", tussen dag %s en %s van de maand";
     }
     ComaOnDayX0OfTheMonth() {
-        return ", op dag {0} van de maand";
+        return ", op dag %s van de maand";
     }
     SpaceAndSpace() {
         return " en ";
@@ -132,9 +134,15 @@ export class nl implements Locale {
         return ", elk uur";
     }
     ComaEveryX0Years() {
-        return ", elke {0} jaren";
+        return ", elke %s jaren";
     }
     CommaStartingX0() {
-        return ", beginnend {0}";
+        return ", beginnend %s";
+    }
+    DaysOfTheWeek() {
+        return ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
+    }
+    MonthsOfTheYear() {
+        return ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
     }
 }

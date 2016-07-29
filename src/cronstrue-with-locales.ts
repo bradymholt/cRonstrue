@@ -1,6 +1,6 @@
-import { cronstrue } from './cronstrue'
+import { Cronstrue } from './cronstrue'
 import { allLocalesLoader } from './i18n/allLocalesLoader'
 
-cronstrue.initialize(new allLocalesLoader());
+Cronstrue.initialize(new allLocalesLoader());
 
-export = cronstrue;
+export = Cronstrue;

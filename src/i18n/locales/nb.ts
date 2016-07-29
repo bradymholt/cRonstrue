@@ -4,6 +4,9 @@ export class nb implements Locale {
     AtX0MinutesPastTheHourGt20(): string { return null; }
     ComaMonthX0ThroughMonthX1(): string { return null; }
     ComaYearX0ThroughYearX1(): string { return null; }
+
+    Use24HourTimeFormatByDefault() { return false; }
+
     AnErrorOccuredWhenGeneratingTheExpressionD() {
         return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
     }
@@ -14,19 +17,19 @@ export class nb implements Locale {
         return "På ";
     }
     AtX0() {
-        return "på {0}";
+        return "på %s";
     }
     AtX0MinutesPastTheHour() {
-        return "på {0} minutter etter timen";
+        return "på %s minutter etter timen";
     }
     AtX0SecondsPastTheMinute() {
-        return "på {0} sekunder etter minuttet";
+        return "på %s sekunder etter minuttet";
     }
     BetweenX0AndX1() {
-        return "mellom {0} og {1}";
+        return "mellom %s og %s";
     }
     ComaBetweenDayX0AndX1OfTheMonth() {
-        return ", mellom dag {0} og {1} av måneden";
+        return ", mellom dag %s og %s av måneden";
     }
     ComaEveryDay() {
         return ", hver dag";
@@ -38,25 +41,25 @@ export class nb implements Locale {
         return ", hvert minutt";
     }
     ComaEveryX0Days() {
-        return ", hver {0} dag";
+        return ", hver %s dag";
     }
     ComaEveryX0DaysOfTheWeek() {
-        return ", hver {0} ukedag";
+        return ", hver %s ukedag";
     }
     ComaEveryX0Months() {
-        return ", hver {0} måned]";
+        return ", hver %s måned]";
     }
     ComaEveryX0Years() {
-        return ", hvert {0} år";
+        return ", hvert %s år";
     }
     ComaOnDayX0OfTheMonth() {
-        return ", på dag {0} av måneden";
+        return ", på dag %s av måneden";
     }
     ComaOnlyInX0() {
-        return ", bare i {0}";
+        return ", bare i %s";
     }
     ComaOnlyOnX0() {
-        return ", bare på {0}";
+        return ", bare på %s";
     }
     ComaOnThe() {
         return ", på den ";
@@ -68,13 +71,13 @@ export class nb implements Locale {
         return ", på den siste ukedagen i måneden";
     }
     ComaOnTheLastX0OfTheMonth() {
-        return ", på den siste {0} av måneden";
+        return ", på den siste %s av måneden";
     }
     ComaOnTheX0OfTheMonth() {
-        return ", på den {0} av måneden";
+        return ", på den %s av måneden";
     }
     ComaX0ThroughX1() {
-        return ", {0} til og med {1}";
+        return ", %s til og med %s";
     }
     EveryHour() {
         return "hver time";
@@ -83,19 +86,19 @@ export class nb implements Locale {
         return "hvert minutt";
     }
     EveryMinuteBetweenX0AndX1() {
-        return "Hvert minutt mellom {0} og {1}";
+        return "Hvert minutt mellom %s og %s";
     }
     EverySecond() {
         return "hvert sekund";
     }
     EveryX0Hours() {
-        return "hver {0} time";
+        return "hver %s time";
     }
     EveryX0Minutes() {
-        return "hvert {0} minutt";
+        return "hvert %s minutt";
     }
     EveryX0Seconds() {
-        return "hvert {0} sekund";
+        return "hvert %s sekund";
     }
     Fifth() {
         return "femte";
@@ -110,13 +113,13 @@ export class nb implements Locale {
         return "fjede";
     }
     MinutesX0ThroughX1PastTheHour() {
-        return "minuttene fra {0} til og med {1} etter timen";
+        return "minuttene fra %s til og med %s etter timen";
     }
     Second() {
         return "sekund";
     }
     SecondsX0ThroughX1PastTheMinute() {
-        return "sekundene fra {0} til og med {1} etter minuttet";
+        return "sekundene fra %s til og med %s etter minuttet";
     }
     SpaceAnd() {
         return " og";
@@ -125,15 +128,21 @@ export class nb implements Locale {
         return " og ";
     }
     SpaceX0OfTheMonth() {
-        return " {0} av måneden";
+        return " %s av måneden";
     }
     Third() {
         return "tredje";
     }
     WeekdayNearestDayX0() {
-        return "ukedag nærmest dag {0}";
+        return "ukedag nærmest dag %s";
     }
     CommaStartingX0() {
-        return ", starter {0}";
+        return ", starter %s";
+    }
+    DaysOfTheWeek() {
+        return ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
+    }
+    MonthsOfTheYear() {
+        return ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
     }
 }

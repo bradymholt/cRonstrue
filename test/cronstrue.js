@@ -1,8 +1,8 @@
 "use strict";
 var assert = require('chai').assert;
-var construe = require('../build/cronstrue-en');
+var construe = require('../build/cronstrue-with-locales');
 
-describe('ExpressionDescriptor', function () {
+describe('Cronstrue', function () {
     describe('every', function () {
         it('* * * * * *', function () {
             assert.equal(construe.toString("* * * * * *"), "Every second");
@@ -183,7 +183,7 @@ describe('ExpressionDescriptor', function () {
         });
     });
 
-    describe('DayOfWeekStartIndexZero=false', function () {
+    describe('dayOfWeekStartIndexZero=false', function () {
         it('23 12 * * 1#2', function () {
             assert.equal(construe.toString("23 12 * * 1#2", { dayOfWeekStartIndexZero: false }), "At 12:23 PM, on the second Sunday of the month");
         });

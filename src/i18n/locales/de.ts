@@ -4,6 +4,9 @@ export class de implements Locale {
     AtX0MinutesPastTheHourGt20(): string { return null; }
     ComaMonthX0ThroughMonthX1(): string { return null; }
     ComaYearX0ThroughYearX1(): string { return null; }
+
+    Use24HourTimeFormatByDefault() { return true; }
+
     EveryMinute() {
         return "jede Minute";
     }
@@ -17,7 +20,7 @@ export class de implements Locale {
         return "Um ";
     }
     EveryMinuteBetweenX0AndX1() {
-        return "Jede Minute zwischen {0} und {1}";
+        return "Jede Minute zwischen %s und %s";
     }
     At() {
         return "Um";
@@ -29,40 +32,40 @@ export class de implements Locale {
         return "Jede Sekunde";
     }
     EveryX0Seconds() {
-        return "alle {0} Sekunden";
+        return "alle %s Sekunden";
     }
     SecondsX0ThroughX1PastTheMinute() {
-        return "Sekunden {0} bis {1}";
+        return "Sekunden %s bis %s";
     }
     AtX0SecondsPastTheMinute() {
-        return "bei Sekunde {0}";
+        return "bei Sekunde %s";
     }
     EveryX0Minutes() {
-        return "alle {0} Minuten";
+        return "alle %s Minuten";
     }
     MinutesX0ThroughX1PastTheHour() {
-        return "Minuten {0} bis {1}";
+        return "Minuten %s bis %s";
     }
     AtX0MinutesPastTheHour() {
-        return "bei Minute {0}";
+        return "bei Minute %s";
     }
     EveryX0Hours() {
-        return "alle {0} Stunden";
+        return "alle %s Stunden";
     }
     BetweenX0AndX1() {
-        return "zwischen {0} und {1}";
+        return "zwischen %s und %s";
     }
     AtX0() {
-        return "um {0}";
+        return "um %s";
     }
     ComaEveryDay() {
         return ", jeden Tag";
     }
     ComaEveryX0DaysOfTheWeek() {
-        return ", every {0} days of the week";
+        return ", every %s days of the week";
     }
     ComaX0ThroughX1() {
-        return ", {0} bis {1}";
+        return ", %s bis %s";
     }
     First() {
         return "ersten";
@@ -83,19 +86,19 @@ export class de implements Locale {
         return ", am ";
     }
     SpaceX0OfTheMonth() {
-        return " {0} des Monats";
+        return " %s des Monats";
     }
     ComaOnTheLastX0OfTheMonth() {
-        return ", am letzten {0} des Monats";
+        return ", am letzten %s des Monats";
     }
     ComaOnlyOnX0() {
-        return ", nur am {0}";
+        return ", nur am %s";
     }
     ComaEveryX0Months() {
-        return ", alle {0} Monate";
+        return ", alle %s Monate";
     }
     ComaOnlyInX0() {
-        return ", nur im {0}";
+        return ", nur im %s";
     }
     ComaOnTheLastDayOfTheMonth() {
         return ", am letzten Tag des Monats";
@@ -107,19 +110,19 @@ export class de implements Locale {
         return "ersten Werktag";
     }
     WeekdayNearestDayX0() {
-        return "Werktag am nächsten zum {0} Tag";
+        return "Werktag am nächsten zum %s Tag";
     }
     ComaOnTheX0OfTheMonth() {
-        return ", am {0} des Monats";
+        return ", am %s des Monats";
     }
     ComaEveryX0Days() {
-        return ", alle {0} Tage";
+        return ", alle %s Tage";
     }
     ComaBetweenDayX0AndX1OfTheMonth() {
-        return ", zwischen Tag {0} und {1} des Monats";
+        return ", zwischen Tag %s und %s des Monats";
     }
     ComaOnDayX0OfTheMonth() {
-        return ", am {0} Tag des Monats";
+        return ", am %s Tag des Monats";
     }
     SpaceAndSpace() {
         return " und ";
@@ -131,9 +134,15 @@ export class de implements Locale {
         return ", jede Stunde";
     }
     ComaEveryX0Years() {
-        return ", alle {0} Jahre";
+        return ", alle %s Jahre";
     }
     CommaStartingX0() {
-        return ", beginnend {0}";
+        return ", beginnend %s";
+    }
+    DaysOfTheWeek() {
+        return ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+    }
+    MonthsOfTheYear() {
+        return ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
     }
 }

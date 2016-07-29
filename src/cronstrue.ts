@@ -5,7 +5,7 @@ import { Options } from './options';
 import { Locale } from './i18n/locale';
 import { LocaleLoader } from './i18n/localeLoader';
 
-export class cronstrue {
+export class Cronstrue {
     static locales: { [name: string]: Locale } = {};
     static specialCharacters: string[];
 
@@ -32,7 +32,7 @@ export class cronstrue {
         throwExceptionOnParseError = true,
         verbose = false,
         dayOfWeekStartIndexZero = true,
-        use24HourTimeFormat = false,
+        use24HourTimeFormat,
         locale = 'en'
     }: Options = {}): string {
         // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -46,15 +46,15 @@ export class cronstrue {
             locale: locale
         };
 
-        let descripter = new cronstrue(expression, options);
+        let descripter = new Cronstrue(expression, options);
         return descripter.getFullDescription();
     }
 
     static initialize(localesLoader: LocaleLoader) {
-        cronstrue.specialCharacters = ["/", "-", ",", "*"];
+        Cronstrue.specialCharacters = ["/", "-", ",", "*"];
 
         // Load locales
-        localesLoader.load(cronstrue.locales);
+        localesLoader.load(Cronstrue.locales);
     }
 
     static locale(localeName: string) {
@@ -66,13 +66,19 @@ export class cronstrue {
         this.options = options;
         this.expressionParts = new Array(5);
 
-        if (cronstrue.locales[options.locale]) {
-            this.i18n = cronstrue.locales[options.locale];
+        if (Cronstrue.locales[options.locale]) {
+            this.i18n = Cronstrue.locales[options.locale];
         } else {
             // fall back to English
             // TODO: warn consumer about this somehow (console.warn()?)
-            this.i18n = cronstrue.locales['en'];
+            this.i18n = Cronstrue.locales['en'];
         }
+
+        if (options.use24HourTimeFormat === undefined) {
+            // if use24HourTimeFormat not specified, set based on locale default
+            options.use24HourTimeFormat = this.i18n.Use24HourTimeFormatByDefault();
+        }
+
     }
 
     protected getFullDescription() {
@@ -113,16 +119,16 @@ export class cronstrue {
         let description = "";
 
         //handle special cases first
-        if (!StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)
-            && !StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)
-            && !StringUtilities.containsAny(secondsExpression, cronstrue.specialCharacters)) {
+        if (!StringUtilities.containsAny(minuteExpression, Cronstrue.specialCharacters)
+            && !StringUtilities.containsAny(hourExpression, Cronstrue.specialCharacters)
+            && !StringUtilities.containsAny(secondsExpression, Cronstrue.specialCharacters)) {
             //specific time of day (i.e. 10 14)
             description += this.i18n.AtSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
         }
         else if (
             minuteExpression.indexOf("-") > -1
             && !(minuteExpression.indexOf(",") > -1)
-            && !StringUtilities.containsAny(hourExpression, cronstrue.specialCharacters)) {
+            && !StringUtilities.containsAny(hourExpression, Cronstrue.specialCharacters)) {
 
             //minute range in single hour (i.e. 0-10 11)
             let minuteParts: string[] = minuteExpression.split("-");
@@ -130,7 +136,7 @@ export class cronstrue {
                 this.formatTime(hourExpression, minuteParts[0], ""),
                 this.formatTime(hourExpression, minuteParts[1], ""));
         }
-        else if (hourExpression.indexOf(",") > -1 && !StringUtilities.containsAny(minuteExpression, cronstrue.specialCharacters)) {
+        else if (hourExpression.indexOf(",") > -1 && !StringUtilities.containsAny(minuteExpression, Cronstrue.specialCharacters)) {
             //hours list with single minute (o.e. 30 6,14,16)
             let hourParts: string[] = hourExpression.split(",");
             description += this.i18n.At();
@@ -220,7 +226,7 @@ export class cronstrue {
     }
 
     protected getDayOfWeekDescription() {
-        var daysOfWeekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var daysOfWeekNames = this.i18n.DaysOfTheWeek();
 
         let description: string = this.getSegmentDescription(this.expressionParts[5],
             this.i18n.ComaEveryDay(),
@@ -277,8 +283,7 @@ export class cronstrue {
     }
 
     protected getMonthDescription() {
-        var monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"];
+        var monthNames = this.i18n.MonthsOfTheYear();
 
         let description: string = this.getSegmentDescription(this.expressionParts[4],
             "",

@@ -4,6 +4,9 @@ export class uk implements Locale {
     AtX0MinutesPastTheHourGt20(): string { return null; }
     ComaMonthX0ThroughMonthX1(): string { return null; }
     ComaYearX0ThroughYearX1(): string { return null; }
+
+    Use24HourTimeFormatByDefault() { return true; }
+
     EveryMinute() {
         return "щохвилини";
     }
@@ -17,7 +20,7 @@ export class uk implements Locale {
         return "О ";
     }
     EveryMinuteBetweenX0AndX1() {
-        return "Щохвилини між {0} та {1}";
+        return "Щохвилини між %s та %s";
     }
     At() {
         return "О";
@@ -29,40 +32,40 @@ export class uk implements Locale {
         return "Щосекунди";
     }
     EveryX0Seconds() {
-        return "кожні {0} секунд";
+        return "кожні %s секунд";
     }
     SecondsX0ThroughX1PastTheMinute() {
-        return "з {0} по {1} секунду";
+        return "з %s по %s секунду";
     }
     AtX0SecondsPastTheMinute() {
-        return "о {0} секунді";
+        return "о %s секунді";
     }
     EveryX0Minutes() {
-        return "кожні {0} хвилин";
+        return "кожні %s хвилин";
     }
     MinutesX0ThroughX1PastTheHour() {
-        return "з {0} по {1} хвилину";
+        return "з %s по %s хвилину";
     }
     AtX0MinutesPastTheHour() {
-        return "о {0} хвилині";
+        return "о %s хвилині";
     }
     EveryX0Hours() {
-        return "кожні {0} годин";
+        return "кожні %s годин";
     }
     BetweenX0AndX1() {
-        return "між {0} та {1}";
+        return "між %s та %s";
     }
     AtX0() {
-        return "о {0}";
+        return "о %s";
     }
     ComaEveryDay() {
         return ", щоденно";
     }
     ComaEveryX0DaysOfTheWeek() {
-        return ", кожен {0} день тижня";
+        return ", кожен %s день тижня";
     }
     ComaX0ThroughX1() {
-        return ", {0} по {1}";
+        return ", %s по %s";
     }
     First() {
         return "перший";
@@ -83,19 +86,19 @@ export class uk implements Locale {
         return ", в ";
     }
     SpaceX0OfTheMonth() {
-        return " {0} місяця";
+        return " %s місяця";
     }
     ComaOnTheLastX0OfTheMonth() {
-        return ", в останній {0} місяця";
+        return ", в останній %s місяця";
     }
     ComaOnlyOnX0() {
-        return ", тільки в {0}";
+        return ", тільки в %s";
     }
     ComaEveryX0Months() {
-        return ", кожен {0} місяць";
+        return ", кожен %s місяць";
     }
     ComaOnlyInX0() {
-        return ", тільки в {0}";
+        return ", тільки в %s";
     }
     ComaOnTheLastDayOfTheMonth() {
         return ", в останній день місяця";
@@ -107,19 +110,19 @@ export class uk implements Locale {
         return "перший будень";
     }
     WeekdayNearestDayX0() {
-        return "будень найближчий до {0} дня";
+        return "будень найближчий до %s дня";
     }
     ComaOnTheX0OfTheMonth() {
-        return ", в {0} місяця";
+        return ", в %s місяця";
     }
     ComaEveryX0Days() {
-        return ", кожен {0} день";
+        return ", кожен %s день";
     }
     ComaBetweenDayX0AndX1OfTheMonth() {
-        return ", між {0} та {1} днями місяця";
+        return ", між %s та %s днями місяця";
     }
     ComaOnDayX0OfTheMonth() {
-        return ", на {0} день місяця";
+        return ", на %s день місяця";
     }
     SpaceAndSpace() {
         return " та ";
@@ -131,9 +134,15 @@ export class uk implements Locale {
         return ", щогодини";
     }
     ComaEveryX0Years() {
-        return ", кожні {0} роки";
+        return ", кожні %s роки";
     }
     CommaStartingX0() {
-        return ", початок {0}";
+        return ", початок %s";
+    }
+    DaysOfTheWeek() {
+        return ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
+    }
+    MonthsOfTheYear() {
+        return ["січень", "лютий", "березень", "квітень", "травень", "червень", "липень", "серпень", "вересень", "жовтень", "листопад", "грудень"];
     }
 }
