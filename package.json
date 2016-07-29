@@ -48,7 +48,7 @@
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src",
     "prepublish": "npm run build_dist",
-    "postpublish": "git commit -a -m \"New release\" && git push && git push --tags",
+    "postpublish": "git commit -a -m \"New release\"",
     "publishpatch": "npm version patch && npm publish",
     "publishminor": "npm version minor && npm publish"
   }
