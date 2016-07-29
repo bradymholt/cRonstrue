@@ -1,7 +1,7 @@
 import { Options } from "./options";
 import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
-export declare class Cronstrue {
+export declare class ExpressionDescriptor {
     static locales: {
         [name: string]: Locale;
     };

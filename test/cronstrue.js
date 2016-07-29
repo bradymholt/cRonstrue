@@ -1,6 +1,6 @@
 "use strict";
 var assert = require('chai').assert;
-var construe = require('../build/cronstrue-i18n');
+var construe = require('../build/cronstrue');
 
 describe("Cronstrue", function () {
     describe("every", function () {

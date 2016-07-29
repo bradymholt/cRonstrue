@@ -55,10 +55,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var cronstrue_1 = __webpack_require__(1);
+	var expressionDescriptor_1 = __webpack_require__(1);
 	var enLocaleLoader_1 = __webpack_require__(4);
-	cronstrue_1.Cronstrue.initialize(new enLocaleLoader_1.enLocaleLoader());
-	module.exports = cronstrue_1.Cronstrue;
+	expressionDescriptor_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLocaleLoader());
+	module.exports = expressionDescriptor_1.ExpressionDescriptor;
 
 
 /***/ },
@@ -68,22 +68,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var stringUtilities_1 = __webpack_require__(2);
 	var cronParser_1 = __webpack_require__(3);
-	var Cronstrue = (function () {
-	    function Cronstrue(expression, options) {
+	var ExpressionDescriptor = (function () {
+	    function ExpressionDescriptor(expression, options) {
 	        this.expression = expression;
 	        this.options = options;
 	        this.expressionParts = new Array(5);
-	        if (Cronstrue.locales[options.locale]) {
-	            this.i18n = Cronstrue.locales[options.locale];
+	        if (ExpressionDescriptor.locales[options.locale]) {
+	            this.i18n = ExpressionDescriptor.locales[options.locale];
 	        }
 	        else {
-	            this.i18n = Cronstrue.locales["en"];
+	            this.i18n = ExpressionDescriptor.locales["en"];
 	        }
 	        if (options.use24HourTimeFormat === undefined) {
 	            options.use24HourTimeFormat = this.i18n.Use24HourTimeFormatByDefault();
 	        }
 	    }
-	    Cronstrue.toString = function (expression, _a) {
+	    ExpressionDescriptor.toString = function (expression, _a) {
 	        var _b = _a === void 0 ? {} : _a, _c = _b.throwExceptionOnParseError, throwExceptionOnParseError = _c === void 0 ? true : _c, _d = _b.verbose, verbose = _d === void 0 ? false : _d, _e = _b.dayOfWeekStartIndexZero, dayOfWeekStartIndexZero = _e === void 0 ? true : _e, use24HourTimeFormat = _b.use24HourTimeFormat, _f = _b.locale, locale = _f === void 0 ? "en" : _f;
 	        var options = {
 	            throwExceptionOnParseError: throwExceptionOnParseError,
@@ -92,16 +92,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            use24HourTimeFormat: use24HourTimeFormat,
 	            locale: locale
 	        };
-	        var descripter = new Cronstrue(expression, options);
+	        var descripter = new ExpressionDescriptor(expression, options);
 	        return descripter.getFullDescription();
 	    };
-	    Cronstrue.initialize = function (localesLoader) {
-	        Cronstrue.specialCharacters = ["/", "-", ",", "*"];
-	        localesLoader.load(Cronstrue.locales);
+	    ExpressionDescriptor.initialize = function (localesLoader) {
+	        ExpressionDescriptor.specialCharacters = ["/", "-", ",", "*"];
+	        localesLoader.load(ExpressionDescriptor.locales);
 	    };
-	    Cronstrue.locale = function (localeName) {
+	    ExpressionDescriptor.locale = function (localeName) {
 	    };
-	    Cronstrue.prototype.getFullDescription = function () {
+	    ExpressionDescriptor.prototype.getFullDescription = function () {
 	        var description = "";
 	        try {
 	            var parser = new cronParser_1.CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
@@ -125,23 +125,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    Cronstrue.prototype.getTimeOfDayDescription = function () {
+	    ExpressionDescriptor.prototype.getTimeOfDayDescription = function () {
 	        var secondsExpression = this.expressionParts[0];
 	        var minuteExpression = this.expressionParts[1];
 	        var hourExpression = this.expressionParts[2];
 	        var description = "";
-	        if (!stringUtilities_1.StringUtilities.containsAny(minuteExpression, Cronstrue.specialCharacters)
-	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, Cronstrue.specialCharacters)
-	            && !stringUtilities_1.StringUtilities.containsAny(secondsExpression, Cronstrue.specialCharacters)) {
+	        if (!stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
+	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
+	            && !stringUtilities_1.StringUtilities.containsAny(secondsExpression, ExpressionDescriptor.specialCharacters)) {
 	            description += this.i18n.AtSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
 	        }
 	        else if (minuteExpression.indexOf("-") > -1
 	            && !(minuteExpression.indexOf(",") > -1)
-	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, Cronstrue.specialCharacters)) {
+	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)) {
 	            var minuteParts = minuteExpression.split("-");
 	            description += stringUtilities_1.StringUtilities.format(this.i18n.EveryMinuteBetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
 	        }
-	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, Cronstrue.specialCharacters)) {
+	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
 	            var hourParts = hourExpression.split(",");
 	            description += this.i18n.At();
 	            for (var i = 0; i < hourParts.length; i++) {
@@ -171,7 +171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    Cronstrue.prototype.getSecondsDescription = function () {
+	    ExpressionDescriptor.prototype.getSecondsDescription = function () {
 	        var _this = this;
 	        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.EverySecond(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Seconds(), s); }, function (s) { return _this.i18n.SecondsX0ThroughX1PastTheMinute(); }, function (s) {
 	            return s == "0" ? "" : parseInt(s) < 20
@@ -180,7 +180,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        return description;
 	    };
-	    Cronstrue.prototype.getMinutesDescription = function () {
+	    ExpressionDescriptor.prototype.getMinutesDescription = function () {
 	        var _this = this;
 	        var description = this.getSegmentDescription(this.expressionParts[1], this.i18n.EveryMinute(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Minutes(), s); }, function (s) { return _this.i18n.MinutesX0ThroughX1PastTheHour(); }, function (s) {
 	            try {
@@ -194,13 +194,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        return description;
 	    };
-	    Cronstrue.prototype.getHoursDescription = function () {
+	    ExpressionDescriptor.prototype.getHoursDescription = function () {
 	        var _this = this;
 	        var expression = this.expressionParts[2];
 	        var description = this.getSegmentDescription(expression, this.i18n.EveryHour(), function (s) { return _this.formatTime(s, "0", ""); }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Hours(), s); }, function (s) { return _this.i18n.BetweenX0AndX1(); }, function (s) { return _this.i18n.AtX0(); });
 	        return description;
 	    };
-	    Cronstrue.prototype.getDayOfWeekDescription = function () {
+	    ExpressionDescriptor.prototype.getDayOfWeekDescription = function () {
 	        var _this = this;
 	        var daysOfWeekNames = this.i18n.DaysOfTheWeek();
 	        var description = this.getSegmentDescription(this.expressionParts[5], this.i18n.ComaEveryDay(), function (s) {
@@ -246,13 +246,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        return description;
 	    };
-	    Cronstrue.prototype.getMonthDescription = function () {
+	    ExpressionDescriptor.prototype.getMonthDescription = function () {
 	        var _this = this;
 	        var monthNames = this.i18n.MonthsOfTheYear();
 	        var description = this.getSegmentDescription(this.expressionParts[4], "", function (s) { return monthNames[(parseInt(s) - 1)]; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.ComaEveryX0Months(), s); }, function (s) { return _this.i18n.ComaMonthX0ThroughMonthX1() || _this.i18n.ComaX0ThroughX1(); }, function (s) { return _this.i18n.ComaOnlyInX0(); });
 	        return description;
 	    };
-	    Cronstrue.prototype.getDayOfMonthDescription = function () {
+	    ExpressionDescriptor.prototype.getDayOfMonthDescription = function () {
 	        var _this = this;
 	        var description = null;
 	        var expression = this.expressionParts[3];
@@ -283,12 +283,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    Cronstrue.prototype.getYearDescription = function () {
+	    ExpressionDescriptor.prototype.getYearDescription = function () {
 	        var _this = this;
 	        var description = this.getSegmentDescription(this.expressionParts[6], "", function (s) { return /^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.ComaEveryX0Years(), s); }, function (s) { return _this.i18n.ComaYearX0ThroughYearX1() || _this.i18n.ComaX0ThroughX1(); }, function (s) { return _this.i18n.ComaOnlyInX0(); });
 	        return description;
 	    };
-	    Cronstrue.prototype.getSegmentDescription = function (expression, allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat) {
+	    ExpressionDescriptor.prototype.getSegmentDescription = function (expression, allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat) {
 	        var _this = this;
 	        var description = null;
 	        if (!expression) {
@@ -345,7 +345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    Cronstrue.prototype.generateBetweenSegmentDescription = function (betweenExpression, getBetweenDescriptionFormat, getSingleItemDescription) {
+	    ExpressionDescriptor.prototype.generateBetweenSegmentDescription = function (betweenExpression, getBetweenDescriptionFormat, getSingleItemDescription) {
 	        var description = "";
 	        var betweenSegments = betweenExpression.split('-');
 	        var betweenSegment1Description = getSingleItemDescription(betweenSegments[0]);
@@ -355,7 +355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        description += stringUtilities_1.StringUtilities.format(betweenDescriptionFormat, betweenSegment1Description, betweenSegment2Description);
 	        return description;
 	    };
-	    Cronstrue.prototype.formatTime = function (hourExpression, minuteExpression, secondExpression) {
+	    ExpressionDescriptor.prototype.formatTime = function (hourExpression, minuteExpression, secondExpression) {
 	        var hour = parseInt(hourExpression);
 	        var period = "";
 	        if (!this.options.use24HourTimeFormat) {
@@ -371,7 +371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return ("00" + hour.toString()).substring(hour.toString().length) + ":" + ("00" + minute.toString()).substring(minute.toString().length) + second + period;
 	    };
-	    Cronstrue.prototype.transformVerbosity = function (description, useVerboseFormat) {
+	    ExpressionDescriptor.prototype.transformVerbosity = function (description, useVerboseFormat) {
 	        if (!useVerboseFormat) {
 	            description = description.replace(new RegExp(this.i18n.ComaEveryMinute(), 'g'), "");
 	            description = description.replace(new RegExp(this.i18n.ComaEveryHour(), 'g'), "");
@@ -379,10 +379,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return description;
 	    };
-	    Cronstrue.locales = {};
-	    return Cronstrue;
+	    ExpressionDescriptor.locales = {};
+	    return ExpressionDescriptor;
 	}());
-	exports.Cronstrue = Cronstrue;
+	exports.ExpressionDescriptor = ExpressionDescriptor;
 
 
 /***/ },

@@ -4,8 +4,8 @@ var withLocalesSuffix = '-i18n';
 
 var config = {
     entry: {
-        [libraryName]: './src/cronstrue-en.ts',
-        [libraryName + '.min']: './src/cronstrue-en.ts',
+        [libraryName]: './src/cronstrue.ts',
+        [libraryName + '.min']: './src/cronstrue.ts',
         [libraryName + withLocalesSuffix]: './src/cronstrue-i18n.ts',
         [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-i18n.ts'
     },

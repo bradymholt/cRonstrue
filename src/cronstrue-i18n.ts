@@ -1,6 +1,6 @@
-import { Cronstrue } from "./cronstrue"
+import { ExpressionDescriptor } from "./expressionDescriptor"
 import { allLocalesLoader } from "./i18n/allLocalesLoader"
 
-Cronstrue.initialize(new allLocalesLoader());
+ExpressionDescriptor.initialize(new allLocalesLoader());
 
-export = Cronstrue;
+export = ExpressionDescriptor;
