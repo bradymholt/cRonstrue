@@ -1,6 +1,6 @@
-# c**r**onstrue [![Build Status](https://travis-ci.org/bradyholt/cronstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cronstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+# cRonstrue [![Build Status](https://travis-ci.org/bradyholt/cronstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cronstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 
-c**r**onstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
+cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
 This library was ported from the original C# implemenation called [cron-expression-descriptor](https://github.com/bradyholt/cron-expression-descriptor) and is also available in a [few other languages](https://github.com/bradyholt/cron-expression-descriptor#ports).
 
@@ -11,7 +11,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 - i18n support with 14 languages
 
 ## Installation
-c**r**onstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
+cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
 ### Node
 ```
 npm install cronstrue
@@ -36,7 +36,7 @@ cronstrue.toString("23 12 * * SUN#2");
 > "At 12:23 PM, on the second Sunday of the month"
 ```
 
-For more usage examples, including a demonstration of how cronstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js).
+For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js).
 
 ## i18n
 
@@ -59,4 +59,4 @@ The following locales are supported by passing in the locale name as an option t
 
 ## License
 
-c**r**onstrue is freely distributable under the terms of the [MIT license](https://github.com/bradyholt/cronstrue/blob/master/LICENSE).
+cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradyholt/cronstrue/blob/master/LICENSE).
