@@ -1,10 +1,9 @@
-var locales = {};
-
 export interface Locale {
     // TODO: Circle back and use null/undefined aware types for optionals below in TypeScript 2.0: https://github.com/Microsoft/TypeScript/pull/7140
     // TODO: These locale translations would be a good use for ES6 template strings except we sometimes concatenate multiple transactions together before
     //       doing the actual template replacement.
 
+    Use24HourTimeFormatByDefault(): boolean;
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
     EveryHour(): string;
@@ -28,7 +27,7 @@ export interface Locale {
     ComaEveryX0DaysOfTheWeek(): string;
     ComaX0ThroughX1(): string;
     ComaMonthX0ThroughMonthX1(): string //optional
-    ComaYearX0ThroughYearX1():string //optional
+    ComaYearX0ThroughYearX1(): string //optional
     First(): string;
     Second(): string;
     Third(): string;
@@ -53,4 +52,6 @@ export interface Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

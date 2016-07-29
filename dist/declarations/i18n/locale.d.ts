@@ -1,5 +1,5 @@
-import { Locale } from './locale';
-export declare class en implements Locale {
+export interface Locale {
+    Use24HourTimeFormatByDefault(): boolean;
     AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     EveryMinute(): string;
     EveryHour(): string;
@@ -48,4 +48,6 @@ export declare class en implements Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

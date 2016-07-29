@@ -1,7 +1,13 @@
-export interface Locale {
-    AnErrorOccuredWhenGeneratingTheExpressionD(): string;
+import { Locale } from "../locale";
+export declare class nl implements Locale {
+    AtX0SecondsPastTheMinuteGt20(): string;
+    AtX0MinutesPastTheHourGt20(): string;
+    ComaMonthX0ThroughMonthX1(): string;
+    ComaYearX0ThroughYearX1(): string;
+    Use24HourTimeFormatByDefault(): boolean;
     EveryMinute(): string;
     EveryHour(): string;
+    AnErrorOccuredWhenGeneratingTheExpressionD(): string;
     AtSpace(): string;
     EveryMinuteBetweenX0AndX1(): string;
     At(): string;
@@ -10,19 +16,15 @@ export interface Locale {
     EveryX0Seconds(): string;
     SecondsX0ThroughX1PastTheMinute(): string;
     AtX0SecondsPastTheMinute(): string;
-    AtX0SecondsPastTheMinuteGt20(): string;
     EveryX0Minutes(): string;
     MinutesX0ThroughX1PastTheHour(): string;
     AtX0MinutesPastTheHour(): string;
-    AtX0MinutesPastTheHourGt20(): string;
     EveryX0Hours(): string;
     BetweenX0AndX1(): string;
     AtX0(): string;
     ComaEveryDay(): string;
     ComaEveryX0DaysOfTheWeek(): string;
     ComaX0ThroughX1(): string;
-    ComaMonthX0ThroughMonthX1(): string;
-    ComaYearX0ThroughYearX1(): string;
     First(): string;
     Second(): string;
     Third(): string;
@@ -47,4 +49,6 @@ export interface Locale {
     ComaEveryHour(): string;
     ComaEveryX0Years(): string;
     CommaStartingX0(): string;
+    DaysOfTheWeek(): string[];
+    MonthsOfTheYear(): string[];
 }

@@ -1,10 +1,13 @@
 var webpack = require('webpack');
 var libraryName = require('./package.json').name;
+var withLocalesSuffix = '-i18n';
 
 var config = {
     entry: {
-        [libraryName]: './src/cronstrue.ts',
-        [libraryName + ".min"]: './src/cronstrue.ts'
+        [libraryName]: './src/cronstrue-en.ts',
+        [libraryName + '.min']: './src/cronstrue-en.ts',
+        [libraryName + withLocalesSuffix]: './src/cronstrue-i18n.ts',
+        [libraryName + withLocalesSuffix + '.min']: './src/cronstrue-i18n.ts'
     },
     output: {
         path: __dirname + '/dist',
@@ -34,7 +37,8 @@ var config = {
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             include: /\.min\.js$/,
-            minimize: true
+            minimize: true,
+            sideEffects: false
         })
     ]
 };

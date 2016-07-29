@@ -27,7 +27,8 @@
     "main": "dist/cronstrue.js",
     "typings": "dist/declarations/cronstrue.d.ts",
     "files": [
-        "dist/"
+        "dist/",
+        "i18n.js"
     ],
     "repository": {
         "type": "git",
@@ -45,6 +46,7 @@
         "build": "tsc",
         "pretest": "npm run build",
         "test": "./node_modules/.bin/mocha --reporter spec",
-        "prepublish": "rm -rf ./dist && webpack && mv ./dist/src ./dist/declarations"
+        "package": "rm -rf ./dist && webpack && mv ./dist/src ./dist/declarations",
+        "prepublish": "npm run package"
     }
 }

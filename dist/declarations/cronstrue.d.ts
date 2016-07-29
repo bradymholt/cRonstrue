@@ -1,6 +1,7 @@
-import { Options } from './options';
-import { Locale } from './locale/locale';
-declare class cronstrue {
+import { Options } from "./options";
+import { Locale } from "./i18n/locale";
+import { LocaleLoader } from "./i18n/localeLoader";
+export declare class Cronstrue {
     static locales: {
         [name: string]: Locale;
     };
@@ -10,7 +11,8 @@ declare class cronstrue {
     options: Options;
     i18n: Locale;
     static toString(expression: string, {throwExceptionOnParseError, verbose, dayOfWeekStartIndexZero, use24HourTimeFormat, locale}?: Options): string;
-    static initialize(): void;
+    static initialize(localesLoader: LocaleLoader): void;
+    static locale(localeName: string): void;
     constructor(expression: string, options: Options);
     protected getFullDescription(): string;
     protected getTimeOfDayDescription(): string;
@@ -26,4 +28,3 @@ declare class cronstrue {
     protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string): string;
     protected transformVerbosity(description: string, useVerboseFormat: boolean): string;
 }
-export = cronstrue;

@@ -1,1 +1,0 @@
-export { en } from './en';

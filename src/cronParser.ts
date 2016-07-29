@@ -1,4 +1,4 @@
-import { Options } from './options'
+import { Options } from "./options"
 
 /**
  * Parses and normalizes a cron expression
@@ -9,7 +9,7 @@ export class CronParser {
     expression: string;
     dayOfWeekStartIndexZero: boolean;
 
-    constructor(expression: string, dayOfWeekStartIndexZero:boolean = true) {
+    constructor(expression: string, dayOfWeekStartIndexZero: boolean = true) {
         this.expression = expression;
         this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     }
@@ -20,7 +20,7 @@ export class CronParser {
      */
     parse(): string[] {
         if (!this.expression) {
-            throw new Error('Expression is empty');
+            throw new Error("Expression is empty");
         }
 
         let parsed: string[] = this.expression.trim().split(' ');
@@ -29,8 +29,8 @@ export class CronParser {
             throw new Error(`Expression only has ${parsed.length} parts.  At least 5 part are required.`);
         } else if (parsed.length == 5) {
             //5 part cron so shift array past seconds element
-            parsed.unshift('');
-            parsed.push('');
+            parsed.unshift("");
+            parsed.push("");
         } else if (parsed.length == 6) {
             //If last element ends with 4 digits, a year element has been supplied and no seconds element
             if (/\d{4}$/.test(parsed[5])) {
@@ -106,7 +106,7 @@ export class CronParser {
 
         // Convert SUN-SAT format to 0-6 format
         var days: { [key: string]: number } = {
-            'SUN': 0, 'MON': 1, 'TUE': 2, 'WED': 3, 'THU': 4, 'FRI': 5, 'SAT': 6
+            "SUN": 0, "MON": 1, "TUE": 2, "WED": 3, "THU": 4, "FRI": 5, "SAT": 6
         };
         for (let day in days) {
             expressionParts[5] = expressionParts[5].replace(new RegExp(day, "g"), days[day].toString());
@@ -114,7 +114,7 @@ export class CronParser {
 
         // Convert JAN-DEC format to 1-12 format
         var months: { [key: string]: number } = {
-            'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, 'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12
+            "JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12
         };
         for (let month in months) {
             expressionParts[4] = expressionParts[4].replace(new RegExp(month, "g"), months[month].toString());
@@ -125,7 +125,7 @@ export class CronParser {
             expressionParts[0] = "";
         }
 
-        // Loop through all parts and apply global normalization 
+        // Loop through all parts and apply global normalization
         for (let i = 0; i < expressionParts.length; i++) {
             // convert all '*/1' to '*'
             if (expressionParts[i] == "*/1") {
@@ -134,8 +134,8 @@ export class CronParser {
 
             /* Convert Month,DOW,Year step values with a starting value (i.e. not '*') to between expressions.
                 This allows us to reuse the between expression handling for step values.
-                
-                For Example: 
+
+                For Example:
                 - month part '3/2' will be converted to '3-12/2' (every 2 months between March and December)
                 - DOW part '3/2' will be converted to '3-6/2' (every 2 days between Tuesday and Saturday)
             */
@@ -151,7 +151,7 @@ export class CronParser {
                 }
 
                 if (stepRangeThrough != null) {
-                    let parts: string[] = expressionParts[i].split('/');
+                    let parts: string[] = expressionParts[i].split("/");
                     expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
                 }
             }
