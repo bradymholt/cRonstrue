@@ -3,7 +3,7 @@ import { CronParser }  from './cronParser';
 import { Options } from './options';
 
 import { Locale } from './i18n/locale';
-import { LocaleLoader } from './i18n/LocaleLoader';
+import { LocaleLoader } from './i18n/localeLoader';
 
 export class cronstrue {
     static locales: { [name: string]: Locale } = {};
