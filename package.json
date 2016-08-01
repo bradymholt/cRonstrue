@@ -39,7 +39,7 @@
     "chai": "^3.5.0",
     "expose-loader": "^0.7.1",
     "mocha": "^2.5.3",
-    "npm-github-release": "^0.6.0",
+    "npm-github-release": "^0.7.0",
     "octonode": "^0.7.6",
     "typescript": "^1.8.10",
     "webpack": "^1.13.1"
