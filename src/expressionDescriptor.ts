@@ -66,7 +66,7 @@ export class ExpressionDescriptor {
             this.i18n = ExpressionDescriptor.locales[options.locale];
         } else {
             // fall back to English
-            // TODO: warn consumer about this somehow (console.warn()?)
+            console.warn(`Locale '${options.locale}' could not be found; falling back to 'en'.`);
             this.i18n = ExpressionDescriptor.locales["en"];
         }
 
