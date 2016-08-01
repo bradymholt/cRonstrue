@@ -1,159 +1,159 @@
 import { Locale } from "../locale"
 export class ro implements Locale {
 
-    Use24HourTimeFormatByDefault() { return true; }
+    use24HourTimeFormatByDefault() { return true; }
 
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "Eroare la generarea descrierii. Verificați sintaxa.";
     }
-    At() {
+    at() {
         return "La";
     }
-    AtSpace() {
+    atSpace() {
         return "La ";
     }
-    AtX0() {
+    atX0() {
         return "la %s";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "la și %s minute";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "la și %s secunde";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "între %s și %s";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", între zilele %s și %s ale lunii";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", în fiecare zi";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", în fiecare oră";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", în fiecare minut";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", la fiecare %s zile";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", la fiecare a %s-a zi a săptămânii";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", la fiecare %s luni";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", o dată la %s ani";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", în ziua %s a lunii";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", doar în %s";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", doar %s";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", în ";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", în ultima zi a lunii";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", în ultima zi lucrătoare a lunii";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", în ultima %s a lunii";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", în %s a lunii";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", de %s până %s";
     }
-    EveryHour() {
+    everyHour() {
         return "în fiecare oră";
     }
-    EveryMinute() {
+    everyMinute() {
         return "în fiecare minut";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "În fiecare minut între %s și %s";
     }
-    EverySecond() {
+    everysecond() {
         return "în fiecare secundă";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "la fiecare %s ore";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "la fiecare %s minute";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "la fiecare %s secunde";
     }
-    Fifth() {
+    fifth() {
         return "a cincea";
     }
-    First() {
+    first() {
         return "prima";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "prima zi a săptămânii";
     }
-    Forth() {
+    forth() {
         return "a patra";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "între minutele %s și %s";
     }
-    Second() {
+    second() {
         return "a doua";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "între secunda %s și secunda %s";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " și";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " și ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s a lunii";
     }
-    Third() {
+    third() {
         return "a treia";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "cea mai apropiată zi a săptămânii de ziua %s";
     }
     ComaMinX0ThroughMinX1() {
         return ", de la %s până la %s";
     }
-    ComaMonthX0ThroughMonthX1() {
+    commaMonthX0ThroughMonthX1() {
         return ", din %s până în %s";
     }
-    ComaYearX0ThroughYearX1() {
+    commaYearX0ThroughYearX1() {
         return ", din %s până în %s";
     }
-    AtX0MinutesPastTheHourGt20() {
+    atX0MinutesPastTheHourGt20() {
         return "la și %s de minute";
     }
-    AtX0SecondsPastTheMinuteGt20() {
+    atX0SecondsPastTheMinuteGt20() {
         return "la și %s de secunde";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", pornire %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
     }
 }

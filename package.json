@@ -39,6 +39,7 @@
     "chai": "^3.5.0",
     "expose-loader": "^0.7.1",
     "mocha": "^2.5.3",
+    "octonode": "^0.7.6",
     "typescript": "^1.8.10",
     "webpack": "^1.13.1"
   },
@@ -46,10 +47,6 @@
     "build": "tsc",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src",
-    "prepublish": "npm run build_dist",
-    "postpublish": "./bin/post-publish.sh",
-    "publishpatch": "npm version patch && npm publish",
-    "publishminor": "npm version minor && npm publish"
+    "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src"
   }
 }

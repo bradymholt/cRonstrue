@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class tr implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return true; }
+    use24HourTimeFormatByDefault() { return true; }
 
-    EveryMinute() {
+    everyMinute() {
         return "her dakika";
     }
-    EveryHour() {
+    everyHour() {
         return "her saat";
     }
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "İfade açıklamasını oluştururken bir hata oluştu. Cron ifadesini gözden geçirin.";
     }
-    AtSpace() {
+    atSpace() {
         return "Saat ";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "Saat %s ve %s arasındaki her dakika";
     }
-    At() {
+    at() {
         return "Saat";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " ve";
     }
-    EverySecond() {
+    everysecond() {
         return "her saniye";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "her %s saniyede bir";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "dakikaların %s. ve %s. saniyeleri arası";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "dakikaların %s. saniyesinde";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "her %s dakikada bir";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "saatlerin %s. ve %s. dakikaları arası";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "saatlerin %s. dakikasında";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "her %s saatte";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "%s ile %s arasında";
     }
-    AtX0() {
+    atX0() {
         return "saat %s";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", her gün";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", ayın her %s günü";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s ile %s arasında";
     }
-    First() {
+    first() {
         return "ilk";
     }
-    Second() {
+    second() {
         return "ikinci";
     }
-    Third() {
+    third() {
         return "üçüncü";
     }
-    Forth() {
+    forth() {
         return "dördüncü";
     }
-    Fifth() {
+    fifth() {
         return "beşinci";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", ayın ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s günü";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", ayın son %s günü";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", sadece %s günü";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", %s ayda bir";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", sadece %s için";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", ayın son günü";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", ayın son iş günü";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "ilk iş günü";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "%s. günü sonrasındaki ilk iş günü";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", ayın %s";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", %s günde bir";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", ayın %s. ve %s. günleri arası";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", ayın %s. günü";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " ve ";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", her dakika";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", her saat";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", %s yılda bir";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", başlangıç %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
     }
 }

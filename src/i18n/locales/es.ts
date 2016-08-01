@@ -1,149 +1,149 @@
 import { Locale } from "../locale"
 
 export class es implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return false; }
+    use24HourTimeFormatByDefault() { return false; }
 
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "Ocurrió un error mientras se generaba la descripción de la expresión. Revise la sintaxis de la expresión de cron.";
     };
-    At() {
+    at() {
         return "A las";
     };
-    AtSpace() {
+    atSpace() {
         return "A las ";
     };
-    AtX0() {
+    atX0() {
         return "a las %s";
     };
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "a los %s minutos de la hora";
     };
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "a los %s segundos del minuto";
     };
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "entre las %s y las %s";
     };
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", entre los días %s y %s del mes";
     };
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", cada día";
     };
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", cada hora";
     };
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", cada minuto";
     };
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", cada %s días";
     };
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", cada %s días de la semana";
     };
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", cada %s meses";
     };
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", el día %s del mes";
     };
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", sólo en %s";
     };
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", sólo el %s";
     };
-    ComaOnThe() {
+    commaOnThe() {
         return ", en el ";
     };
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", en el último día del mes";
     };
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", en el último día de la semana del mes";
     };
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", en el último %s del mes";
     };
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", en el %s del mes";
     };
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", de %s a %s";
     };
-    EveryHour() {
+    everyHour() {
         return "cada hora";
     };
-    EveryMinute() {
+    everyMinute() {
         return "cada minuto";
     };
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "cada minuto entre las %s y las %s";
     };
-    EverySecond() {
+    everysecond() {
         return "cada segundo";
     };
-    EveryX0Hours() {
+    everyX0Hours() {
         return "cada %s horas";
     };
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "cada %s minutos";
     };
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "cada %s segundos";
     };
-    Fifth() {
+    fifth() {
         return "quinto";
     };
-    First() {
+    first() {
         return "primero";
     };
-    FirstWeekday() {
+    firstWeekday() {
         return "primer día de la semana";
     };
-    Forth() {
+    forth() {
         return "cuarto";
     };
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "del minuto %s al %s pasada la hora";
     };
-    Second() {
+    second() {
         return "segundo";
     };
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "En los segundos %s al %s de cada minuto";
     };
-    SpaceAnd() {
+    spaceAnd() {
         return " y";
     };
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " y ";
     };
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s del mes";
     };
-    Third() {
+    third() {
         return "tercer";
     };
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "día de la semana más próximo al %s";
     };
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", cada %s años";
     };
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", comenzando %s";
     };
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
     }
 }

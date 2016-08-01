@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class ru implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return true; }
+    use24HourTimeFormatByDefault() { return true; }
 
-    EveryMinute() {
+    everyMinute() {
         return "каждую минуту";
     }
-    EveryHour() {
+    everyHour() {
         return "каждый час";
     }
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "Произошла ошибка во время генерации описания выражения. Проверьте синтаксис крон-выражения.";
     }
-    AtSpace() {
+    atSpace() {
         return "В ";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "Каждую минуту с %s по %s";
     }
-    At() {
+    at() {
         return "В";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " и";
     }
-    EverySecond() {
+    everysecond() {
         return "каждую секунду";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "каждые %s секунд";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "секунды с %s по %s";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "в %s секунд";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "каждые %s минут";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "минуты с %s по %s";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "в %s минут";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "каждые %s часов";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "с %s по %s";
     }
-    AtX0() {
+    atX0() {
         return "в %s";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", каждый день";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", каждые %s дней недели";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s по %s";
     }
-    First() {
+    first() {
         return "первый";
     }
-    Second() {
+    second() {
         return "второй";
     }
-    Third() {
+    third() {
         return "третий";
     }
-    Forth() {
+    forth() {
         return "четвертый";
     }
-    Fifth() {
+    fifth() {
         return "пятый";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", в ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s месяца";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", в последний %s месяца";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", только в %s";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", каждые %s месяцев";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", только в %s";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", в последний день месяца";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", в последний будний день месяца";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "первый будний день";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "ближайший будний день к %s";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", в %s месяца";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", каждые %s дней";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", с %s по %s число месяца";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", в %s число месяца";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " и ";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", каждую минуту";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", каждый час";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", каждые %s лет";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", начало %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"];
     }
 }

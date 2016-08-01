@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.i18n = ExpressionDescriptor.locales["en"];
 	        }
 	        if (options.use24HourTimeFormat === undefined) {
-	            options.use24HourTimeFormat = this.i18n.Use24HourTimeFormatByDefault();
+	            options.use24HourTimeFormat = this.i18n.use24HourTimeFormatByDefault();
 	        }
 	    }
 	    ExpressionDescriptor.toString = function (expression, _a) {
@@ -99,8 +99,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ExpressionDescriptor.specialCharacters = ["/", "-", ",", "*"];
 	        localesLoader.load(ExpressionDescriptor.locales);
 	    };
-	    ExpressionDescriptor.locale = function (localeName) {
-	    };
 	    ExpressionDescriptor.prototype.getFullDescription = function () {
 	        var description = "";
 	        try {
@@ -117,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        catch (ex) {
 	            if (!this.options.throwExceptionOnParseError) {
-	                description = this.i18n.AnErrorOccuredWhenGeneratingTheExpressionD();
+	                description = this.i18n.anErrorOccuredWhenGeneratingTheExpressionD();
 	            }
 	            else {
 	                throw "" + ex;
@@ -133,17 +131,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (!stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
 	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
 	            && !stringUtilities_1.StringUtilities.containsAny(secondsExpression, ExpressionDescriptor.specialCharacters)) {
-	            description += this.i18n.AtSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
+	            description += this.i18n.atSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
 	        }
 	        else if (minuteExpression.indexOf("-") > -1
 	            && !(minuteExpression.indexOf(",") > -1)
 	            && !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)) {
 	            var minuteParts = minuteExpression.split("-");
-	            description += stringUtilities_1.StringUtilities.format(this.i18n.EveryMinuteBetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
+	            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinutebetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
 	        }
 	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
 	            var hourParts = hourExpression.split(",");
-	            description += this.i18n.At();
+	            description += this.i18n.at();
 	            for (var i = 0; i < hourParts.length; i++) {
 	                description += " ";
 	                description += this.formatTime(hourParts[i], minuteExpression, "");
@@ -151,7 +149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    description += ",";
 	                }
 	                if (i == hourParts.length - 2) {
-	                    description += this.i18n.SpaceAnd();
+	                    description += this.i18n.spaceAnd();
 	                }
 	            }
 	        }
@@ -173,23 +171,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    ExpressionDescriptor.prototype.getSecondsDescription = function () {
 	        var _this = this;
-	        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.EverySecond(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Seconds(), s); }, function (s) { return _this.i18n.SecondsX0ThroughX1PastTheMinute(); }, function (s) {
+	        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.everysecond(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.everyX0Seconds(), s); }, function (s) { return _this.i18n.secondsX0ThroughX1PastTheMinute(); }, function (s) {
 	            return s == "0" ? "" : parseInt(s) < 20
-	                ? _this.i18n.AtX0SecondsPastTheMinute()
-	                : _this.i18n.AtX0SecondsPastTheMinuteGt20() || _this.i18n.AtX0SecondsPastTheMinute();
+	                ? _this.i18n.atX0SecondsPastTheMinute()
+	                : _this.i18n.atX0SecondsPastTheMinuteGt20() || _this.i18n.atX0SecondsPastTheMinute();
 	        });
 	        return description;
 	    };
 	    ExpressionDescriptor.prototype.getMinutesDescription = function () {
 	        var _this = this;
-	        var description = this.getSegmentDescription(this.expressionParts[1], this.i18n.EveryMinute(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Minutes(), s); }, function (s) { return _this.i18n.MinutesX0ThroughX1PastTheHour(); }, function (s) {
+	        var description = this.getSegmentDescription(this.expressionParts[1], this.i18n.everyMinute(), function (s) { return s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.everyX0Minutes(), s); }, function (s) { return _this.i18n.minutesX0ThroughX1PastTheHour(); }, function (s) {
 	            try {
 	                return s == "0" ? "" : parseInt(s) < 20
-	                    ? _this.i18n.AtX0MinutesPastTheHour()
-	                    : _this.i18n.AtX0MinutesPastTheHourGt20() || _this.i18n.AtX0MinutesPastTheHour();
+	                    ? _this.i18n.atX0MinutesPastTheHour()
+	                    : _this.i18n.atX0MinutesPastTheHourGt20() || _this.i18n.atX0MinutesPastTheHour();
 	            }
 	            catch (e) {
-	                return _this.i18n.AtX0MinutesPastTheHour();
+	                return _this.i18n.atX0MinutesPastTheHour();
 	            }
 	        });
 	        return description;
@@ -197,13 +195,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ExpressionDescriptor.prototype.getHoursDescription = function () {
 	        var _this = this;
 	        var expression = this.expressionParts[2];
-	        var description = this.getSegmentDescription(expression, this.i18n.EveryHour(), function (s) { return _this.formatTime(s, "0", ""); }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.EveryX0Hours(), s); }, function (s) { return _this.i18n.BetweenX0AndX1(); }, function (s) { return _this.i18n.AtX0(); });
+	        var description = this.getSegmentDescription(expression, this.i18n.everyHour(), function (s) { return _this.formatTime(s, "0", ""); }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.everyX0Hours(), s); }, function (s) { return _this.i18n.betweenX0AndX1(); }, function (s) { return _this.i18n.atX0(); });
 	        return description;
 	    };
 	    ExpressionDescriptor.prototype.getDayOfWeekDescription = function () {
 	        var _this = this;
-	        var daysOfWeekNames = this.i18n.DaysOfTheWeek();
-	        var description = this.getSegmentDescription(this.expressionParts[5], this.i18n.ComaEveryDay(), function (s) {
+	        var daysOfWeekNames = this.i18n.daysOfTheWeek();
+	        var description = this.getSegmentDescription(this.expressionParts[5], this.i18n.commaEveryDay(), function (s) {
 	            var exp = s;
 	            if (s.indexOf("#") > -1) {
 	                exp = s.substr(0, s.indexOf("#"));
@@ -212,35 +210,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	                exp = exp.replace("L", "");
 	            }
 	            return daysOfWeekNames[parseInt(exp)];
-	        }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.ComaEveryX0DaysOfTheWeek(), s); }, function (s) { return _this.i18n.ComaX0ThroughX1(); }, function (s) {
+	        }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0daysOfTheWeek(), s); }, function (s) { return _this.i18n.commaX0ThroughX1(); }, function (s) {
 	            var format = null;
 	            if (s.indexOf("#") > -1) {
 	                var dayOfWeekOfMonthNumber = s.substring(s.indexOf("#") + 1);
 	                var dayOfWeekOfMonthDescription = null;
 	                switch (dayOfWeekOfMonthNumber) {
 	                    case "1":
-	                        dayOfWeekOfMonthDescription = _this.i18n.First();
+	                        dayOfWeekOfMonthDescription = _this.i18n.first();
 	                        break;
 	                    case "2":
-	                        dayOfWeekOfMonthDescription = _this.i18n.Second();
+	                        dayOfWeekOfMonthDescription = _this.i18n.second();
 	                        break;
 	                    case "3":
-	                        dayOfWeekOfMonthDescription = _this.i18n.Third();
+	                        dayOfWeekOfMonthDescription = _this.i18n.third();
 	                        break;
 	                    case "4":
-	                        dayOfWeekOfMonthDescription = _this.i18n.Forth();
+	                        dayOfWeekOfMonthDescription = _this.i18n.forth();
 	                        break;
 	                    case "5":
-	                        dayOfWeekOfMonthDescription = _this.i18n.Fifth();
+	                        dayOfWeekOfMonthDescription = _this.i18n.fifth();
 	                        break;
 	                }
-	                format = _this.i18n.ComaOnThe() + dayOfWeekOfMonthDescription + _this.i18n.SpaceX0OfTheMonth();
+	                format = _this.i18n.commaOnThe() + dayOfWeekOfMonthDescription + _this.i18n.spaceX0OfTheMonth();
 	            }
 	            else if (s.indexOf("L") > -1) {
-	                format = _this.i18n.ComaOnTheLastX0OfTheMonth();
+	                format = _this.i18n.commaOnTheLastX0OfTheMonth();
 	            }
 	            else {
-	                format = _this.i18n.ComaOnlyOnX0();
+	                format = _this.i18n.commaOnlyOnX0();
 	            }
 	            return format;
 	        });
@@ -248,8 +246,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    ExpressionDescriptor.prototype.getMonthDescription = function () {
 	        var _this = this;
-	        var monthNames = this.i18n.MonthsOfTheYear();
-	        var description = this.getSegmentDescription(this.expressionParts[4], "", function (s) { return monthNames[(parseInt(s) - 1)]; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.ComaEveryX0Months(), s); }, function (s) { return _this.i18n.ComaMonthX0ThroughMonthX1() || _this.i18n.ComaX0ThroughX1(); }, function (s) { return _this.i18n.ComaOnlyInX0(); });
+	        var monthNames = this.i18n.monthsOfTheYear();
+	        var description = this.getSegmentDescription(this.expressionParts[4], "", function (s) { return monthNames[(parseInt(s) - 1)]; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0Months(), s); }, function (s) { return _this.i18n.commaMonthX0ThroughMonthX1() || _this.i18n.commaX0ThroughX1(); }, function (s) { return _this.i18n.commaOnlyInX0(); });
 	        return description;
 	    };
 	    ExpressionDescriptor.prototype.getDayOfMonthDescription = function () {
@@ -258,26 +256,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var expression = this.expressionParts[3];
 	        switch (expression) {
 	            case "L":
-	                description = this.i18n.ComaOnTheLastDayOfTheMonth();
+	                description = this.i18n.commaOnTheLastDayOfTheMonth();
 	                break;
 	            case "WL":
 	            case "LW":
-	                description = this.i18n.ComaOnTheLastWeekdayOfTheMonth();
+	                description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
 	                break;
 	            default:
 	                var matches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
 	                if (matches) {
 	                    var dayNumber = parseInt(matches[0].replace("W", ""));
-	                    var dayString = dayNumber == 1 ? this.i18n.FirstWeekday() :
-	                        stringUtilities_1.StringUtilities.format(this.i18n.WeekdayNearestDayX0(), dayNumber.toString());
-	                    description = stringUtilities_1.StringUtilities.format(this.i18n.ComaOnTheX0OfTheMonth(), dayString);
+	                    var dayString = dayNumber == 1 ? this.i18n.firstWeekday() :
+	                        stringUtilities_1.StringUtilities.format(this.i18n.weekdayNearestDayX0(), dayNumber.toString());
+	                    description = stringUtilities_1.StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
 	                    break;
 	                }
 	                else {
-	                    description = this.getSegmentDescription(expression, this.i18n.ComaEveryDay(), function (s) { return s; }, function (s) {
-	                        return s == "1" ? _this.i18n.ComaEveryDay() :
-	                            _this.i18n.ComaEveryX0Days();
-	                    }, function (s) { return _this.i18n.ComaBetweenDayX0AndX1OfTheMonth(); }, function (s) { return _this.i18n.ComaOnDayX0OfTheMonth(); });
+	                    description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) { return s; }, function (s) {
+	                        return s == "1" ? _this.i18n.commaEveryDay() :
+	                            _this.i18n.commaEveryX0Days();
+	                    }, function (s) { return _this.i18n.commaBetweenDayX0AndX1OfTheMonth(); }, function (s) { return _this.i18n.commaOnDayX0OfTheMonth(); });
 	                    break;
 	                }
 	        }
@@ -285,7 +283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    ExpressionDescriptor.prototype.getYearDescription = function () {
 	        var _this = this;
-	        var description = this.getSegmentDescription(this.expressionParts[6], "", function (s) { return /^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.ComaEveryX0Years(), s); }, function (s) { return _this.i18n.ComaYearX0ThroughYearX1() || _this.i18n.ComaX0ThroughX1(); }, function (s) { return _this.i18n.ComaOnlyInX0(); });
+	        var description = this.getSegmentDescription(this.expressionParts[6], "", function (s) { return /^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s; }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0Years(), s); }, function (s) { return _this.i18n.commaYearX0ThroughYearX1() || _this.i18n.commaX0ThroughX1(); }, function (s) { return _this.i18n.commaOnlyInX0(); });
 	        return description;
 	    };
 	    ExpressionDescriptor.prototype.getSegmentDescription = function (expression, allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat) {
@@ -313,7 +311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            else if (!stringUtilities_1.StringUtilities.containsAny(segments[0], ["*", ","])) {
 	                var rangeItemDescription = stringUtilities_1.StringUtilities.format(getDescriptionFormat(segments[0]), getSingleItemDescription(segments[0]));
 	                rangeItemDescription = rangeItemDescription.replace(", ", "");
-	                description += stringUtilities_1.StringUtilities.format(this.i18n.CommaStartingX0(), rangeItemDescription);
+	                description += stringUtilities_1.StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
 	            }
 	        }
 	        else if (expression.indexOf(",") > -1) {
@@ -327,10 +325,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    }
 	                }
 	                if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-	                    descriptionContent += this.i18n.SpaceAndSpace();
+	                    descriptionContent += this.i18n.spaceAndSpace();
 	                }
 	                if (segments[i].indexOf("-") > -1) {
-	                    var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[i], (function (s) { return _this.i18n.ComaX0ThroughX1(); }), getSingleItemDescription);
+	                    var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[i], (function (s) { return _this.i18n.commaX0ThroughX1(); }), getSingleItemDescription);
 	                    betweenSegmentDescription = betweenSegmentDescription.replace(", ", "");
 	                    descriptionContent += betweenSegmentDescription;
 	                }
@@ -373,9 +371,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    ExpressionDescriptor.prototype.transformVerbosity = function (description, useVerboseFormat) {
 	        if (!useVerboseFormat) {
-	            description = description.replace(new RegExp(this.i18n.ComaEveryMinute(), 'g'), "");
-	            description = description.replace(new RegExp(this.i18n.ComaEveryHour(), 'g'), "");
-	            description = description.replace(new RegExp(this.i18n.ComaEveryDay(), 'g'), "");
+	            description = description.replace(new RegExp(this.i18n.commaEveryMinute(), 'g'), "");
+	            description = description.replace(new RegExp(this.i18n.commaEveryHour(), 'g'), "");
+	            description = description.replace(new RegExp(this.i18n.commaEveryDay(), 'g'), "");
 	        }
 	        return description;
 	    };
@@ -554,191 +552,191 @@ return /******/ (function(modules) { // webpackBootstrap
 	var en = (function () {
 	    function en() {
 	    }
-	    en.prototype.AtX0SecondsPastTheMinuteGt20 = function () { return null; };
-	    en.prototype.AtX0MinutesPastTheHourGt20 = function () { return null; };
-	    en.prototype.ComaMonthX0ThroughMonthX1 = function () { return null; };
-	    en.prototype.ComaYearX0ThroughYearX1 = function () { return null; };
-	    en.prototype.Use24HourTimeFormatByDefault = function () { return false; };
-	    en.prototype.AnErrorOccuredWhenGeneratingTheExpressionD = function () {
+	    en.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+	    en.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+	    en.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+	    en.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+	    en.prototype.use24HourTimeFormatByDefault = function () { return false; };
+	    en.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
 	        return "An error occured when generating the expression description.  Check the cron expression syntax.";
 	    };
 	    ;
-	    en.prototype.EveryMinute = function () {
+	    en.prototype.everyMinute = function () {
 	        return "every minute";
 	    };
 	    ;
-	    en.prototype.EveryHour = function () {
+	    en.prototype.everyHour = function () {
 	        return "every hour";
 	    };
 	    ;
-	    en.prototype.AtSpace = function () {
+	    en.prototype.atSpace = function () {
 	        return "At ";
 	    };
 	    ;
-	    en.prototype.EveryMinuteBetweenX0AndX1 = function () {
+	    en.prototype.everyMinutebetweenX0AndX1 = function () {
 	        return "Every minute between %s and %s";
 	    };
 	    ;
-	    en.prototype.At = function () {
+	    en.prototype.at = function () {
 	        return "At";
 	    };
 	    ;
-	    en.prototype.SpaceAnd = function () {
+	    en.prototype.spaceAnd = function () {
 	        return " and";
 	    };
 	    ;
-	    en.prototype.EverySecond = function () {
+	    en.prototype.everysecond = function () {
 	        return "every second";
 	    };
 	    ;
-	    en.prototype.EveryX0Seconds = function () {
+	    en.prototype.everyX0Seconds = function () {
 	        return "every %s seconds";
 	    };
 	    ;
-	    en.prototype.SecondsX0ThroughX1PastTheMinute = function () {
+	    en.prototype.secondsX0ThroughX1PastTheMinute = function () {
 	        return "seconds %s through %s past the minute";
 	    };
 	    ;
-	    en.prototype.AtX0SecondsPastTheMinute = function () {
+	    en.prototype.atX0SecondsPastTheMinute = function () {
 	        return "at %s seconds past the minute";
 	    };
 	    ;
-	    en.prototype.EveryX0Minutes = function () {
+	    en.prototype.everyX0Minutes = function () {
 	        return "every %s minutes";
 	    };
 	    ;
-	    en.prototype.MinutesX0ThroughX1PastTheHour = function () {
+	    en.prototype.minutesX0ThroughX1PastTheHour = function () {
 	        return "minutes %s through %s past the hour";
 	    };
 	    ;
-	    en.prototype.AtX0MinutesPastTheHour = function () {
+	    en.prototype.atX0MinutesPastTheHour = function () {
 	        return "at %s minutes past the hour";
 	    };
 	    ;
-	    en.prototype.EveryX0Hours = function () {
+	    en.prototype.everyX0Hours = function () {
 	        return "every %s hours";
 	    };
 	    ;
-	    en.prototype.BetweenX0AndX1 = function () {
+	    en.prototype.betweenX0AndX1 = function () {
 	        return "between %s and %s";
 	    };
 	    ;
-	    en.prototype.AtX0 = function () {
+	    en.prototype.atX0 = function () {
 	        return "at %s";
 	    };
 	    ;
-	    en.prototype.ComaEveryDay = function () {
+	    en.prototype.commaEveryDay = function () {
 	        return ", every day";
 	    };
 	    ;
-	    en.prototype.ComaEveryX0DaysOfTheWeek = function () {
+	    en.prototype.commaEveryX0daysOfTheWeek = function () {
 	        return ", every %s days of the week";
 	    };
 	    ;
-	    en.prototype.ComaX0ThroughX1 = function () {
+	    en.prototype.commaX0ThroughX1 = function () {
 	        return ", %s through %s";
 	    };
 	    ;
-	    en.prototype.First = function () {
+	    en.prototype.first = function () {
 	        return "first";
 	    };
 	    ;
-	    en.prototype.Second = function () {
+	    en.prototype.second = function () {
 	        return "second";
 	    };
 	    ;
-	    en.prototype.Third = function () {
+	    en.prototype.third = function () {
 	        return "third";
 	    };
 	    ;
-	    en.prototype.Forth = function () {
+	    en.prototype.forth = function () {
 	        return "forth";
 	    };
 	    ;
-	    en.prototype.Fifth = function () {
+	    en.prototype.fifth = function () {
 	        return "fifth";
 	    };
 	    ;
-	    en.prototype.ComaOnThe = function () {
+	    en.prototype.commaOnThe = function () {
 	        return ", on the ";
 	    };
 	    ;
-	    en.prototype.SpaceX0OfTheMonth = function () {
+	    en.prototype.spaceX0OfTheMonth = function () {
 	        return " %s of the month";
 	    };
 	    ;
-	    en.prototype.ComaOnTheLastX0OfTheMonth = function () {
+	    en.prototype.commaOnTheLastX0OfTheMonth = function () {
 	        return ", on the last %s of the month";
 	    };
 	    ;
-	    en.prototype.ComaOnlyOnX0 = function () {
+	    en.prototype.commaOnlyOnX0 = function () {
 	        return ", only on %s";
 	    };
 	    ;
-	    en.prototype.ComaEveryX0Months = function () {
+	    en.prototype.commaEveryX0Months = function () {
 	        return ", every %s months";
 	    };
 	    ;
-	    en.prototype.ComaOnlyInX0 = function () {
+	    en.prototype.commaOnlyInX0 = function () {
 	        return ", only in %s";
 	    };
 	    ;
-	    en.prototype.ComaOnTheLastDayOfTheMonth = function () {
+	    en.prototype.commaOnTheLastDayOfTheMonth = function () {
 	        return ", on the last day of the month";
 	    };
 	    ;
-	    en.prototype.ComaOnTheLastWeekdayOfTheMonth = function () {
+	    en.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
 	        return ", on the last weekday of the month";
 	    };
 	    ;
-	    en.prototype.FirstWeekday = function () {
+	    en.prototype.firstWeekday = function () {
 	        return "first weekday";
 	    };
 	    ;
-	    en.prototype.WeekdayNearestDayX0 = function () {
+	    en.prototype.weekdayNearestDayX0 = function () {
 	        return "weekday nearest day %s";
 	    };
 	    ;
-	    en.prototype.ComaOnTheX0OfTheMonth = function () {
+	    en.prototype.commaOnTheX0OfTheMonth = function () {
 	        return ", on the %s of the month";
 	    };
 	    ;
-	    en.prototype.ComaEveryX0Days = function () {
+	    en.prototype.commaEveryX0Days = function () {
 	        return ", every %s days";
 	    };
 	    ;
-	    en.prototype.ComaBetweenDayX0AndX1OfTheMonth = function () {
+	    en.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
 	        return ", between day %s and %s of the month";
 	    };
 	    ;
-	    en.prototype.ComaOnDayX0OfTheMonth = function () {
+	    en.prototype.commaOnDayX0OfTheMonth = function () {
 	        return ", on day %s of the month";
 	    };
 	    ;
-	    en.prototype.SpaceAndSpace = function () {
+	    en.prototype.spaceAndSpace = function () {
 	        return " and ";
 	    };
 	    ;
-	    en.prototype.ComaEveryMinute = function () {
+	    en.prototype.commaEveryMinute = function () {
 	        return ", every minute";
 	    };
 	    ;
-	    en.prototype.ComaEveryHour = function () {
+	    en.prototype.commaEveryHour = function () {
 	        return ", every hour";
 	    };
 	    ;
-	    en.prototype.ComaEveryX0Years = function () {
+	    en.prototype.commaEveryX0Years = function () {
 	        return ", every %s years";
 	    };
 	    ;
-	    en.prototype.CommaStartingX0 = function () {
+	    en.prototype.commaStartingX0 = function () {
 	        return ", starting %s";
 	    };
 	    ;
-	    en.prototype.DaysOfTheWeek = function () {
+	    en.prototype.daysOfTheWeek = function () {
 	        return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	    };
-	    en.prototype.MonthsOfTheYear = function () {
+	    en.prototype.monthsOfTheYear = function () {
 	        return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	    };
 	    return en;

@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class nl implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return false; }
+    use24HourTimeFormatByDefault() { return false; }
 
-    EveryMinute() {
+    everyMinute() {
         return "elke minuut";
     }
-    EveryHour() {
+    everyHour() {
         return "elk uur";
     }
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "Er is een fout opgetreden bij het vertalen van de gegevens. Controleer de gegevens.";
     }
-    AtSpace() {
+    atSpace() {
         return "Op ";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "Elke minuut tussen %s en %s";
     }
-    At() {
+    at() {
         return "Op";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " en";
     }
-    EverySecond() {
+    everysecond() {
         return "elke seconde";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "elke %s seconden";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "seconden %s t/m %s na de minuut";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "op %s seconden na de minuut";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "elke %s minuten";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "minuut %s t/m %s na het uur";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "op %s minuten na het uur";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "elke %s uur";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "tussen %s en %s";
     }
-    AtX0() {
+    atX0() {
         return "op %s";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", elke dag";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", elke %s dagen van de week";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s t/m %s";
     }
-    First() {
+    first() {
         return "eerste";
     }
-    Second() {
+    second() {
         return "tweede";
     }
-    Third() {
+    third() {
         return "derde";
     }
-    Forth() {
+    forth() {
         return "vierde";
     }
-    Fifth() {
+    fifth() {
         return "vijfde";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", op de ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s van de maand";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", op de laatste %s van de maand";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", alleen op %s";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", elke %s maanden";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", alleen in %s";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", op de laatste dag van de maand";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", op de laatste werkdag van de maand";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "eerste werkdag";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "werkdag dichtst bij dag %s";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", op de %s van de maand";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", elke %s dagen";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", tussen dag %s en %s van de maand";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", op dag %s van de maand";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " en ";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", elke minuut";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", elk uur";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", elke %s jaren";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", beginnend %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
     }
 }

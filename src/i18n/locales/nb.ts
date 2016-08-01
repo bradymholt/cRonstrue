@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class nb implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return false; }
+    use24HourTimeFormatByDefault() { return false; }
 
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
     }
-    At() {
+    at() {
         return "På";
     }
-    AtSpace() {
+    atSpace() {
         return "På ";
     }
-    AtX0() {
+    atX0() {
         return "på %s";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "på %s minutter etter timen";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "på %s sekunder etter minuttet";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "mellom %s og %s";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", mellom dag %s og %s av måneden";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", hver dag";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", hver time";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", hvert minutt";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", hver %s dag";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", hver %s ukedag";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", hver %s måned]";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", hvert %s år";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", på dag %s av måneden";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", bare i %s";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", bare på %s";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", på den ";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", på den siste dagen i måneden";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", på den siste ukedagen i måneden";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", på den siste %s av måneden";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", på den %s av måneden";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s til og med %s";
     }
-    EveryHour() {
+    everyHour() {
         return "hver time";
     }
-    EveryMinute() {
+    everyMinute() {
         return "hvert minutt";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "Hvert minutt mellom %s og %s";
     }
-    EverySecond() {
+    everysecond() {
         return "hvert sekund";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "hver %s time";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "hvert %s minutt";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "hvert %s sekund";
     }
-    Fifth() {
+    fifth() {
         return "femte";
     }
-    First() {
+    first() {
         return "første";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "første ukedag";
     }
-    Forth() {
+    forth() {
         return "fjede";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "minuttene fra %s til og med %s etter timen";
     }
-    Second() {
+    second() {
         return "sekund";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "sekundene fra %s til og med %s etter minuttet";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " og";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " og ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s av måneden";
     }
-    Third() {
+    third() {
         return "tredje";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "ukedag nærmest dag %s";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", starter %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
     }
 }

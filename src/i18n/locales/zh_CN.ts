@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class zh_CN implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return false; }
+    use24HourTimeFormatByDefault() { return false; }
 
-    EveryMinute() {
+    everyMinute() {
         return "每分钟";
     }
-    EveryHour() {
+    everyHour() {
         return "每小时";
     }
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "生成表达式描述时发生了错误，请检查cron表达式语法。";
     }
-    AtSpace() {
+    atSpace() {
         return "在 ";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "在 %s 和 %s 之间的每分钟";
     }
-    At() {
+    at() {
         return "在";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " 和";
     }
-    EverySecond() {
+    everysecond() {
         return "每秒";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "每 %s 秒";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "在每分钟的 %s 到 %s 秒";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "在每分钟的 %s 秒";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "每 %s 分钟";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "在每小时的 %s 到 %s 分钟";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "在每小时的 %s 分";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "每 %s 小时";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "在 %s 和 %s 之间";
     }
-    AtX0() {
+    atX0() {
         return "在 %s";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", 每天";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", 每周的每 %s 天";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s 到 %s";
     }
-    First() {
+    first() {
         return "第一个";
     }
-    Second() {
+    second() {
         return "第二个";
     }
-    Third() {
+    third() {
         return "第三个";
     }
-    Forth() {
+    forth() {
         return "第四个";
     }
-    Fifth() {
+    fifth() {
         return "第五个";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", 在 ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return "%s 每月";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", 每月的最后一个 %s ";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", 仅在 %s";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", 每 %s 月";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", 仅在 %s";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", 每月的最后一天";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", 每月的最后一个平日";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "第一个平日";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "最接近 %s 号的平日";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", 每月的 %s ";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", 每 %s 天";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", 在每月的 %s 和 %s 号之间";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", 每月的 %s 号";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " 和 ";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", 每分钟";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", 每小时";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", 每 %s 年";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", 开始 %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
     }
 }

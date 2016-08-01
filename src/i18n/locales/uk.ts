@@ -1,148 +1,148 @@
 import { Locale } from "../locale"
 export class uk implements Locale {
-    AtX0SecondsPastTheMinuteGt20(): string { return null; }
-    AtX0MinutesPastTheHourGt20(): string { return null; }
-    ComaMonthX0ThroughMonthX1(): string { return null; }
-    ComaYearX0ThroughYearX1(): string { return null; }
+    atX0SecondsPastTheMinuteGt20(): string { return null; }
+    atX0MinutesPastTheHourGt20(): string { return null; }
+    commaMonthX0ThroughMonthX1(): string { return null; }
+    commaYearX0ThroughYearX1(): string { return null; }
 
-    Use24HourTimeFormatByDefault() { return true; }
+    use24HourTimeFormatByDefault() { return true; }
 
-    EveryMinute() {
+    everyMinute() {
         return "щохвилини";
     }
-    EveryHour() {
+    everyHour() {
         return "щогодини";
     }
-    AnErrorOccuredWhenGeneratingTheExpressionD() {
+    anErrorOccuredWhenGeneratingTheExpressionD() {
         return "ВІдбулася помилка підчас генерації опису. Перевірта правильність написання cron виразу.";
     }
-    AtSpace() {
+    atSpace() {
         return "О ";
     }
-    EveryMinuteBetweenX0AndX1() {
+    everyMinutebetweenX0AndX1() {
         return "Щохвилини між %s та %s";
     }
-    At() {
+    at() {
         return "О";
     }
-    SpaceAnd() {
+    spaceAnd() {
         return " та";
     }
-    EverySecond() {
+    everysecond() {
         return "Щосекунди";
     }
-    EveryX0Seconds() {
+    everyX0Seconds() {
         return "кожні %s секунд";
     }
-    SecondsX0ThroughX1PastTheMinute() {
+    secondsX0ThroughX1PastTheMinute() {
         return "з %s по %s секунду";
     }
-    AtX0SecondsPastTheMinute() {
+    atX0SecondsPastTheMinute() {
         return "о %s секунді";
     }
-    EveryX0Minutes() {
+    everyX0Minutes() {
         return "кожні %s хвилин";
     }
-    MinutesX0ThroughX1PastTheHour() {
+    minutesX0ThroughX1PastTheHour() {
         return "з %s по %s хвилину";
     }
-    AtX0MinutesPastTheHour() {
+    atX0MinutesPastTheHour() {
         return "о %s хвилині";
     }
-    EveryX0Hours() {
+    everyX0Hours() {
         return "кожні %s годин";
     }
-    BetweenX0AndX1() {
+    betweenX0AndX1() {
         return "між %s та %s";
     }
-    AtX0() {
+    atX0() {
         return "о %s";
     }
-    ComaEveryDay() {
+    commaEveryDay() {
         return ", щоденно";
     }
-    ComaEveryX0DaysOfTheWeek() {
+    commaEveryX0daysOfTheWeek() {
         return ", кожен %s день тижня";
     }
-    ComaX0ThroughX1() {
+    commaX0ThroughX1() {
         return ", %s по %s";
     }
-    First() {
+    first() {
         return "перший";
     }
-    Second() {
+    second() {
         return "другий";
     }
-    Third() {
+    third() {
         return "третій";
     }
-    Forth() {
+    forth() {
         return "четвертий";
     }
-    Fifth() {
+    fifth() {
         return "п'ятий";
     }
-    ComaOnThe() {
+    commaOnThe() {
         return ", в ";
     }
-    SpaceX0OfTheMonth() {
+    spaceX0OfTheMonth() {
         return " %s місяця";
     }
-    ComaOnTheLastX0OfTheMonth() {
+    commaOnTheLastX0OfTheMonth() {
         return ", в останній %s місяця";
     }
-    ComaOnlyOnX0() {
+    commaOnlyOnX0() {
         return ", тільки в %s";
     }
-    ComaEveryX0Months() {
+    commaEveryX0Months() {
         return ", кожен %s місяць";
     }
-    ComaOnlyInX0() {
+    commaOnlyInX0() {
         return ", тільки в %s";
     }
-    ComaOnTheLastDayOfTheMonth() {
+    commaOnTheLastDayOfTheMonth() {
         return ", в останній день місяця";
     }
-    ComaOnTheLastWeekdayOfTheMonth() {
+    commaOnTheLastWeekdayOfTheMonth() {
         return ", в останній будень місяця";
     }
-    FirstWeekday() {
+    firstWeekday() {
         return "перший будень";
     }
-    WeekdayNearestDayX0() {
+    weekdayNearestDayX0() {
         return "будень найближчий до %s дня";
     }
-    ComaOnTheX0OfTheMonth() {
+    commaOnTheX0OfTheMonth() {
         return ", в %s місяця";
     }
-    ComaEveryX0Days() {
+    commaEveryX0Days() {
         return ", кожен %s день";
     }
-    ComaBetweenDayX0AndX1OfTheMonth() {
+    commaBetweenDayX0AndX1OfTheMonth() {
         return ", між %s та %s днями місяця";
     }
-    ComaOnDayX0OfTheMonth() {
+    commaOnDayX0OfTheMonth() {
         return ", на %s день місяця";
     }
-    SpaceAndSpace() {
+    spaceAndSpace() {
         return " та ";
     }
-    ComaEveryMinute() {
+    commaEveryMinute() {
         return ", щохвилини";
     }
-    ComaEveryHour() {
+    commaEveryHour() {
         return ", щогодини";
     }
-    ComaEveryX0Years() {
+    commaEveryX0Years() {
         return ", кожні %s роки";
     }
-    CommaStartingX0() {
+    commaStartingX0() {
         return ", початок %s";
     }
-    DaysOfTheWeek() {
+    daysOfTheWeek() {
         return ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
     }
-    MonthsOfTheYear() {
+    monthsOfTheYear() {
         return ["січень", "лютий", "березень", "квітень", "травень", "червень", "липень", "серпень", "вересень", "жовтень", "листопад", "грудень"];
     }
 }
