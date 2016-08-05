@@ -1,4 +1,4 @@
-# cRonstrue [![Build Status](https://travis-ci.org/bradyholt/cronstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cronstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+# cRonstrue [![Build Status](https://travis-ci.org/bradyholt/cRonstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cRonstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 
 cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
@@ -8,6 +8,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 - Zero dependencies
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
+- Supports [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions
 - i18n support with 14 languages
 
 ## Installation
