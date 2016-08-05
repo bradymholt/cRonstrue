@@ -118,6 +118,10 @@ describe("Cronstrue", function () {
             assert.equal(construe.toString("46 9 * * 1"), "At 09:46 AM, only on Monday");
         });
 
+        it("46 9 * * 7 (7 should mean Sunday)", function () {
+            assert.equal(construe.toString("46 9 * * 7"), "At 09:46 AM, only on Sunday");
+        });
+
         it("23 12 15 * *", function () {
             assert.equal(construe.toString("23 12 15 * *"), "At 12:23 PM, on day 15 of the month");
         });
@@ -190,6 +194,10 @@ describe("Cronstrue", function () {
 
         it("* * * ? * 2-6/2", function () {
             assert.equal(construe.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false }), "Every second, every 2 days of the week, Monday through Friday");
+        });
+
+        it("* * * ? * 7 (7 should mean Saturday)", function () {
+            assert.equal(construe.toString("* * * ? * 7", { dayOfWeekStartIndexZero: false }), "Every second, only on Saturday");
         });
     });
 

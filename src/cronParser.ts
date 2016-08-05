@@ -89,15 +89,24 @@ export class CronParser {
             expressionParts[6] = expressionParts[6].replace("1/", "*/");
         }
 
-        // Handle dayOfWeekStartIndexZero option where SUN=1 rather than SUN=0
-        if (!this.dayOfWeekStartIndexZero) {
-            //skip anything preceeding by # or /
-            expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, (t) => {
-                let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
-                let dowDigitsAdjusted: string = (parseInt(dowDigits) - 1).toString();
-                return t.replace(dowDigits, dowDigitsAdjusted);
-            });
-        }
+        // Adjust DOW based on dayOfWeekStartIndexZero option
+        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, (t) => { //skip anything preceeding by # or /
+            let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
+            let dowDigitsAdjusted: string = dowDigits;
+
+            if (this.dayOfWeekStartIndexZero) {
+                // "7" also means Sunday so we will convert to "0" to normalize it
+                if (dowDigits == "7") {
+                    dowDigitsAdjusted = "0";
+                }
+            } else {
+                // If dayOfWeekStartIndexZero==false, Sunday is specified as 1 and Saturday is specified as 7.
+                // To normalize, we will shift the  DOW number down so that 1 becomes 0, 2 becomes 1, and so on.
+                dowDigitsAdjusted = (parseInt(dowDigits) - 1).toString();
+            }
+
+            return t.replace(dowDigits, dowDigitsAdjusted);
+        });
 
         // Convert DOM '?' to '*'
         if (expressionParts[3] == "?") {
