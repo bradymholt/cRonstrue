@@ -303,28 +303,25 @@ export class ExpressionDescriptor {
             case "LW":
                 description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
                 break;
+            case "W1":
+            case "1W":
+                description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), this.i18n.firstWeekday());
+                break;
             default:
-                let matches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
-                if (matches) {
-                    let dayNumber: number = parseInt(matches[0].replace("W", ""));
-                    let dayString: string = dayNumber == 1 ? this.i18n.firstWeekday() :
-                        StringUtilities.format(this.i18n.weekdayNearestDayX0(), dayNumber.toString());
-                    description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
-
-                    break;
-                }
-                else {
-                    description = this.getSegmentDescription(expression,
-                        this.i18n.commaEveryDay(),
-                        (s) => { return s },
-                        (s) => {
-                            return s == "1" ? this.i18n.commaEveryDay() :
-                                this.i18n.commaEveryX0Days()
-                        },
-                        (s) => { return this.i18n.commaBetweenDayX0AndX1OfTheMonth() },
-                        (s) => { return this.i18n.commaOnDayX0OfTheMonth() });
-                    break;
-                }
+                description = this.getSegmentDescription(expression,
+                    this.i18n.commaEveryDay(),
+                    (s) => {
+                        let dayNumber: number = parseInt(s.replace("W", ""));
+                        return s.indexOf("W") == -1 ? dayNumber.toString() :
+                            StringUtilities.format(this.i18n.weekdayNearestDayX0(), dayNumber.toString());
+                    },
+                    (s) => {
+                        return s == "1" ? this.i18n.commaEveryDay() :
+                            this.i18n.commaEveryX0Days()
+                    },
+                    (s) => { return this.i18n.commaBetweenDayX0AndX1OfTheMonth() },
+                    (s) => { return this.i18n.commaOnDayX0OfTheMonth() });
+                break;
         }
 
         return description;
