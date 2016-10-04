@@ -77,6 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.i18n = ExpressionDescriptor.locales[options.locale];
 	        }
 	        else {
+	            console.warn("Locale '" + options.locale + "' could not be found; falling back to 'en'.");
 	            this.i18n = ExpressionDescriptor.locales["en"];
 	        }
 	        if (options.use24HourTimeFormat === undefined) {
@@ -446,6 +447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return parsed;
 	    };
 	    CronParser.prototype.normalizeExpression = function (expressionParts) {
+	        var _this = this;
 	        expressionParts[3] = expressionParts[3].replace("?", "*");
 	        expressionParts[5] = expressionParts[5].replace("?", "*");
 	        if (expressionParts[0].indexOf("0/") == 0) {
@@ -469,15 +471,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (expressionParts[6].indexOf("1/") == 0) {
 	            expressionParts[6] = expressionParts[6].replace("1/", "*/");
 	        }
-	        if (!this.dayOfWeekStartIndexZero) {
-	            expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, function (t) {
-	                var dowDigits = t.replace(/\D/, "");
-	                var dowDigitsAdjusted = (parseInt(dowDigits) - 1).toString();
-	                return t.replace(dowDigits, dowDigitsAdjusted);
-	            });
-	        }
+	        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, function (t) {
+	            var dowDigits = t.replace(/\D/, "");
+	            var dowDigitsAdjusted = dowDigits;
+	            if (_this.dayOfWeekStartIndexZero) {
+	                if (dowDigits == "7") {
+	                    dowDigitsAdjusted = "0";
+	                }
+	            }
+	            else {
+	                dowDigitsAdjusted = (parseInt(dowDigits) - 1).toString();
+	            }
+	            return t.replace(dowDigits, dowDigitsAdjusted);
+	        });
 	        if (expressionParts[3] == "?") {
 	            expressionParts[3] = "*";
+	        }
+	        if (expressionParts[3].indexOf('W') > -1 && (expressionParts[3].indexOf(',') > -1 || expressionParts[3].indexOf('-') > -1)) {
+	            throw new Error("The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.");
 	        }
 	        var days = {
 	            "SUN": 0, "MON": 1, "TUE": 2, "WED": 3, "THU": 4, "FRI": 5, "SAT": 6
