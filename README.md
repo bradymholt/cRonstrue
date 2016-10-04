@@ -44,7 +44,7 @@ For more usage examples, including a demonstration of how cRonstrue can handle s
 
 ## Demo
 
-A demo is available here: [http://bradyholt.github.io/cRonstrue/](http://bradyholt.github.io/cRonstrue/).
+A demo is available here: [http://bradyholt.github.io/cRonstrue/](http://bradyholt.github.io/cRonstrue/)
 
 ## i18n
 
