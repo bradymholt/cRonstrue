@@ -48,7 +48,7 @@
     "build": "tsc",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "build_dist": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src",
+    "prerelease": "rm -rf ./dist && webpack && mv ./dist/src/* ./dist/ && rm -rf ./dist/src && git add -A && git commit -m 'Build latest /dist'",
     "release": "npm-github-release"
   }
 }
