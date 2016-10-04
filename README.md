@@ -42,6 +42,10 @@ cronstrue.toString("23 12 * * SUN#2");
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js).
 
+## Demo
+
+A demo is available here: [http://bradyholt.github.io/cRonstrue/](http://bradyholt.github.io/cRonstrue/).
+
 ## i18n
 
 To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
