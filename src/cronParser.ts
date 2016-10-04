@@ -113,6 +113,10 @@ export class CronParser {
             expressionParts[3] = "*";
         }
 
+        if (expressionParts[3].indexOf('W') > -1 && (expressionParts[3].indexOf(',') > -1 || expressionParts[3].indexOf('-') > -1)) {
+            throw new Error("The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.");
+        }
+
         // Convert SUN-SAT format to 0-6 format
         var days: { [key: string]: number } = {
             "SUN": 0, "MON": 1, "TUE": 2, "WED": 3, "THU": 4, "FRI": 5, "SAT": 6

@@ -344,6 +344,10 @@ describe("Cronstrue", function () {
             assert.throws(function () { construe.toString() }, 'Error: Expression is empty');
         });
 
+        it("'W' list is invalid", function () {
+            assert.throws(function () { construe.toString("0 30 14 1W,15W * ? *") }, "Error: The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.");
+        });
+
         it("garbage expression with option (throwExceptionOnParseError = false)", function () {
             assert.equal(construe.toString("garbage", { throwExceptionOnParseError: false }), "An error occured when generating the expression description.  Check the cron expression syntax.");
         });
