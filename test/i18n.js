@@ -53,6 +53,28 @@ describe("i18n", function () {
         });
     });
 
+    describe("sv", function () {
+        it("* * * * *", function () {
+            assert.equal(construe.toString("* * * * *", { locale: "sv" }), "Varje minut");
+        });
+
+        it("*/5 15 * * MON-FRI", function () {
+            assert.equal(construe.toString("*/5 15 * * MON-FRI", { locale: "sv" }), "Var 5 minut, kl 15:00, måndag till fredag");
+        });
+
+        it("0 12 * * *", function () {
+            assert.equal(construe.toString("0 12 * * *", { locale: "sv" }), "Kl 12:00");
+        });
+
+        it("0 15 10 ? * 6#3", function () {
+            assert.equal(construe.toString("0 15 10 ? * 6#3", { locale: "sv" }), "Kl 10:15, den tredje lördagen av månaden");
+        });
+
+        it("0 0 15 ? * MON *", function () {
+            assert.equal(construe.toString("0 0 15 ? * MON *", { locale: "sv" }), "Kl 15:00, varje måndag");
+        });
+    });
+
     describe("nl", function () {
         it("* * * * *", function () {
             assert.equal(construe.toString("* * * * *", { locale: "nl" }), "Elke minuut");
