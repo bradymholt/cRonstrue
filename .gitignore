@@ -38,3 +38,6 @@ jspm_packages
 
 build/
 # dist/ # We will commit dist/ so that the packaged module is easily accesible from the repo.
+
+# OS X files
+.DS_Store
