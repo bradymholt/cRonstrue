@@ -169,10 +169,10 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
     <script src="https://rawgit.com/bradyholt/cronstrue/master/dist/cronstrue.min.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-       $("#translate ").click(function(){
-           var expression = $("#expression ").val();
+       $("#translate").click(function(){
+           var expression = $("#expression").val();
            var description = cronstrue.toString(expression, { throwExceptionOnParseError: false});
-           $("#output ").text(description);
+           $("#output").text(description);
        });
     });
     </script>
