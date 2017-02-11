@@ -77,6 +77,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 - ro - Romanian
 - ru - Russian
 - es - Spanish
+- sv - Swedish
 - tr - Turkish
 - uk - Ukrainian
 - zh_CN - Chinese (Simplified)
