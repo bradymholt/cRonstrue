@@ -90,7 +90,7 @@ export class CronParser {
         }
 
         // Adjust DOW based on dayOfWeekStartIndexZero option
-        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, (t) => { //skip anything preceeding by # or /
+        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, (t) => { //skip anything preceeded by # or /
             let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
             let dowDigitsAdjusted: string = dowDigits;
 
