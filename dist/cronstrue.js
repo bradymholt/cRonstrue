@@ -471,7 +471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (expressionParts[6].indexOf("1/") == 0) {
 	            expressionParts[6] = expressionParts[6].replace("1/", "*/");
 	        }
-	        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, function (t) {
+	        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, function (t) {
 	            var dowDigits = t.replace(/\D/, "");
 	            var dowDigitsAdjusted = dowDigits;
 	            if (_this.dayOfWeekStartIndexZero) {

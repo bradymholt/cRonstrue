@@ -5,6 +5,7 @@ export { fr } from "./locales/fr";
 export { it } from "./locales/it";
 export { nl } from "./locales/nl";
 export { nb } from "./locales/nb";
+export { sv } from "./locales/sv";
 export { pl } from "./locales/pl";
 export { pt_BR } from "./locales/pt_BR";
 export { ro } from "./locales/ro";

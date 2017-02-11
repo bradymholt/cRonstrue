@@ -471,7 +471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (expressionParts[6].indexOf("1/") == 0) {
 	            expressionParts[6] = expressionParts[6].replace("1/", "*/");
 	        }
-	        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)+/g, function (t) {
+	        expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, function (t) {
 	            var dowDigits = t.replace(/\D/, "");
 	            var dowDigitsAdjusted = dowDigits;
 	            if (_this.dayOfWeekStartIndexZero) {
@@ -780,19 +780,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.nl = nl_1.nl;
 	var nb_1 = __webpack_require__(13);
 	exports.nb = nb_1.nb;
-	var pl_1 = __webpack_require__(14);
+	var sv_1 = __webpack_require__(14);
+	exports.sv = sv_1.sv;
+	var pl_1 = __webpack_require__(15);
 	exports.pl = pl_1.pl;
-	var pt_BR_1 = __webpack_require__(15);
+	var pt_BR_1 = __webpack_require__(16);
 	exports.pt_BR = pt_BR_1.pt_BR;
-	var ro_1 = __webpack_require__(16);
+	var ro_1 = __webpack_require__(17);
 	exports.ro = ro_1.ro;
-	var ru_1 = __webpack_require__(17);
+	var ru_1 = __webpack_require__(18);
 	exports.ru = ru_1.ru;
-	var tr_1 = __webpack_require__(18);
+	var tr_1 = __webpack_require__(19);
 	exports.tr = tr_1.tr;
-	var uk_1 = __webpack_require__(19);
+	var uk_1 = __webpack_require__(20);
 	exports.uk = uk_1.uk;
-	var zh_CN_1 = __webpack_require__(20);
+	var zh_CN_1 = __webpack_require__(21);
 	exports.zh_CN = zh_CN_1.zh_CN;
 
 
@@ -1787,6 +1789,206 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	var sv = (function () {
+	    function sv() {
+	    }
+	    sv.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+	    sv.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+	    sv.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+	    sv.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+	    sv.prototype.use24HourTimeFormatByDefault = function () { return true; };
+	    sv.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+	        return "Ett fel inträffade vid generering av uttryckets beskrivning. Kontrollera cron-uttryckets syntax.";
+	    };
+	    ;
+	    sv.prototype.everyMinute = function () {
+	        return "varje minut";
+	    };
+	    ;
+	    sv.prototype.everyHour = function () {
+	        return "varje timme";
+	    };
+	    ;
+	    sv.prototype.atSpace = function () {
+	        return "Kl ";
+	    };
+	    ;
+	    sv.prototype.everyMinutebetweenX0AndX1 = function () {
+	        return "Varje minut mellan %s och %s";
+	    };
+	    ;
+	    sv.prototype.at = function () {
+	        return "Kl";
+	    };
+	    ;
+	    sv.prototype.spaceAnd = function () {
+	        return " och";
+	    };
+	    ;
+	    sv.prototype.everysecond = function () {
+	        return "varje sekund";
+	    };
+	    ;
+	    sv.prototype.everyX0Seconds = function () {
+	        return "varje %s sekund";
+	    };
+	    ;
+	    sv.prototype.secondsX0ThroughX1PastTheMinute = function () {
+	        return "sekunderna från %s till och med %s efter minuten";
+	    };
+	    ;
+	    sv.prototype.atX0SecondsPastTheMinute = function () {
+	        return "på %s sekunder efter minuten";
+	    };
+	    ;
+	    sv.prototype.everyX0Minutes = function () {
+	        return "var %s minut";
+	    };
+	    ;
+	    sv.prototype.minutesX0ThroughX1PastTheHour = function () {
+	        return "minuterna från %s till och med %s efter timmen";
+	    };
+	    ;
+	    sv.prototype.atX0MinutesPastTheHour = function () {
+	        return "på %s minuten efter timmen";
+	    };
+	    ;
+	    sv.prototype.everyX0Hours = function () {
+	        return "var %s timme";
+	    };
+	    ;
+	    sv.prototype.betweenX0AndX1 = function () {
+	        return "mellan %s och %s";
+	    };
+	    ;
+	    sv.prototype.atX0 = function () {
+	        return "kl %s";
+	    };
+	    ;
+	    sv.prototype.commaEveryDay = function () {
+	        return ", varje dag";
+	    };
+	    ;
+	    sv.prototype.commaEveryX0daysOfTheWeek = function () {
+	        return ", var %s dag i veckan";
+	    };
+	    ;
+	    sv.prototype.commaX0ThroughX1 = function () {
+	        return ", %s till %s";
+	    };
+	    ;
+	    sv.prototype.first = function () {
+	        return "första";
+	    };
+	    ;
+	    sv.prototype.second = function () {
+	        return "andra";
+	    };
+	    ;
+	    sv.prototype.third = function () {
+	        return "tredje";
+	    };
+	    ;
+	    sv.prototype.forth = function () {
+	        return "fjärde";
+	    };
+	    ;
+	    sv.prototype.fifth = function () {
+	        return "femte";
+	    };
+	    ;
+	    sv.prototype.commaOnThe = function () {
+	        return ", den ";
+	    };
+	    ;
+	    sv.prototype.spaceX0OfTheMonth = function () {
+	        return " %sen av månaden";
+	    };
+	    ;
+	    sv.prototype.commaOnTheLastX0OfTheMonth = function () {
+	        return ", på sista %s av månaden";
+	    };
+	    ;
+	    sv.prototype.commaOnlyOnX0 = function () {
+	        return ", varje %s";
+	    };
+	    ;
+	    sv.prototype.commaEveryX0Months = function () {
+	        return ", var %s månad";
+	    };
+	    ;
+	    sv.prototype.commaOnlyInX0 = function () {
+	        return ", bara på %s";
+	    };
+	    ;
+	    sv.prototype.commaOnTheLastDayOfTheMonth = function () {
+	        return ", på sista dagen av månaden";
+	    };
+	    ;
+	    sv.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+	        return ", på sista veckodag av månaden";
+	    };
+	    ;
+	    sv.prototype.firstWeekday = function () {
+	        return "första veckodag";
+	    };
+	    ;
+	    sv.prototype.weekdayNearestDayX0 = function () {
+	        return "veckodagen närmast dag %s";
+	    };
+	    ;
+	    sv.prototype.commaOnTheX0OfTheMonth = function () {
+	        return ", på den %s av månaden";
+	    };
+	    ;
+	    sv.prototype.commaEveryX0Days = function () {
+	        return ", var %s dag";
+	    };
+	    ;
+	    sv.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+	        return ", mellan dag %s och %s av månaden";
+	    };
+	    ;
+	    sv.prototype.commaOnDayX0OfTheMonth = function () {
+	        return ", på dag %s av månaden";
+	    };
+	    ;
+	    sv.prototype.spaceAndSpace = function () {
+	        return " och ";
+	    };
+	    ;
+	    sv.prototype.commaEveryMinute = function () {
+	        return ", varje minut";
+	    };
+	    ;
+	    sv.prototype.commaEveryHour = function () {
+	        return ", varje timme";
+	    };
+	    ;
+	    sv.prototype.commaEveryX0Years = function () {
+	        return ", var %s år";
+	    };
+	    ;
+	    sv.prototype.commaStartingX0 = function () {
+	        return ", startar %s";
+	    };
+	    ;
+	    sv.prototype.daysOfTheWeek = function () {
+	        return ["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"];
+	    };
+	    sv.prototype.monthsOfTheYear = function () {
+	        return ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"];
+	    };
+	    return sv;
+	}());
+	exports.sv = sv;
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
 	var pl = (function () {
 	    function pl() {
 	    }
@@ -1939,7 +2141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2095,7 +2297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2262,7 +2464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2418,7 +2620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2574,7 +2776,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2730,7 +2932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	"use strict";
