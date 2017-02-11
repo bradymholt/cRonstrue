@@ -199,6 +199,10 @@ describe("Cronstrue", function () {
         it("* * * ? * 7 (7 should mean Saturday)", function () {
             assert.equal(construe.toString("* * * ? * 7", { dayOfWeekStartIndexZero: false }), "Every second, only on Saturday");
         });
+
+        it("* * * ? * 1,2,3,4,5", function () {
+            assert.equal(construe.toString("* * * ? * 1,2,3,4,5", { dayOfWeekStartIndexZero: false }), "Every second, only on Sunday, Monday, Tuesday, Wednesday, and Thursday");
+        });
     });
 
     describe("non-trival expressions", function () {
