@@ -13,6 +13,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
+
 ### Node
 ```
 npm install cronstrue
