@@ -91,6 +91,10 @@ describe("Cronstrue", function () {
         it("23 12 * JAN-FEB *", function () {
             assert.equal(construe.toString("23 12 * JAN-FEB *"), "At 12:23 PM, January through February");
         });
+
+        it("1 1,3-4 * * *", function () {
+            assert.equal(construe.toString("1 1,3-4 * * *"), "At 1 minutes past the hour, at 01:00 AM and 03:00 AM through 04:59 AM");
+        });
     });
 
     describe("at", function () {

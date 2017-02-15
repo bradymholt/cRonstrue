@@ -132,8 +132,10 @@ export class ExpressionDescriptor {
                 this.formatTime(hourExpression, minuteParts[0], ""),
                 this.formatTime(hourExpression, minuteParts[1], ""));
         }
-        else if (hourExpression.indexOf(",") > -1 && !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
-            //hours list with single minute (o.e. 30 6,14,16)
+        else if (hourExpression.indexOf(",") > -1
+            && hourExpression.indexOf("-") == -1
+            && !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
+            //hours list with single minute (i.e. 30 6,14,16)
             let hourParts: string[] = hourExpression.split(",");
             description += this.i18n.at();
 
