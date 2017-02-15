@@ -140,7 +140,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var minuteParts = minuteExpression.split("-");
 	            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinutebetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
 	        }
-	        else if (hourExpression.indexOf(",") > -1 && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
+	        else if (hourExpression.indexOf(",") > -1
+	            && hourExpression.indexOf("-") == -1
+	            && !stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
 	            var hourParts = hourExpression.split(",");
 	            description += this.i18n.at();
 	            for (var i = 0; i < hourParts.length; i++) {
@@ -202,47 +204,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ExpressionDescriptor.prototype.getDayOfWeekDescription = function () {
 	        var _this = this;
 	        var daysOfWeekNames = this.i18n.daysOfTheWeek();
-	        var description = this.getSegmentDescription(this.expressionParts[5], this.i18n.commaEveryDay(), function (s) {
-	            var exp = s;
-	            if (s.indexOf("#") > -1) {
-	                exp = s.substr(0, s.indexOf("#"));
-	            }
-	            else if (s.indexOf("L") > -1) {
-	                exp = exp.replace("L", "");
-	            }
-	            return daysOfWeekNames[parseInt(exp)];
-	        }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0daysOfTheWeek(), s); }, function (s) { return _this.i18n.commaX0ThroughX1(); }, function (s) {
-	            var format = null;
-	            if (s.indexOf("#") > -1) {
-	                var dayOfWeekOfMonthNumber = s.substring(s.indexOf("#") + 1);
-	                var dayOfWeekOfMonthDescription = null;
-	                switch (dayOfWeekOfMonthNumber) {
-	                    case "1":
-	                        dayOfWeekOfMonthDescription = _this.i18n.first();
-	                        break;
-	                    case "2":
-	                        dayOfWeekOfMonthDescription = _this.i18n.second();
-	                        break;
-	                    case "3":
-	                        dayOfWeekOfMonthDescription = _this.i18n.third();
-	                        break;
-	                    case "4":
-	                        dayOfWeekOfMonthDescription = _this.i18n.forth();
-	                        break;
-	                    case "5":
-	                        dayOfWeekOfMonthDescription = _this.i18n.fifth();
-	                        break;
+	        var description = null;
+	        if (this.expressionParts[5] == "*" && this.expressionParts[3] != "*") {
+	            description = "";
+	        }
+	        else {
+	            description = this.getSegmentDescription(this.expressionParts[5], this.i18n.commaEveryDay(), function (s) {
+	                var exp = s;
+	                if (s.indexOf("#") > -1) {
+	                    exp = s.substr(0, s.indexOf("#"));
 	                }
-	                format = _this.i18n.commaOnThe() + dayOfWeekOfMonthDescription + _this.i18n.spaceX0OfTheMonth();
-	            }
-	            else if (s.indexOf("L") > -1) {
-	                format = _this.i18n.commaOnTheLastX0OfTheMonth();
-	            }
-	            else {
-	                format = _this.i18n.commaOnlyOnX0();
-	            }
-	            return format;
-	        });
+	                else if (s.indexOf("L") > -1) {
+	                    exp = exp.replace("L", "");
+	                }
+	                return daysOfWeekNames[parseInt(exp)];
+	            }, function (s) { return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0daysOfTheWeek(), s); }, function (s) { return _this.i18n.commaX0ThroughX1(); }, function (s) {
+	                var format = null;
+	                if (s.indexOf("#") > -1) {
+	                    var dayOfWeekOfMonthNumber = s.substring(s.indexOf("#") + 1);
+	                    var dayOfWeekOfMonthDescription = null;
+	                    switch (dayOfWeekOfMonthNumber) {
+	                        case "1":
+	                            dayOfWeekOfMonthDescription = _this.i18n.first();
+	                            break;
+	                        case "2":
+	                            dayOfWeekOfMonthDescription = _this.i18n.second();
+	                            break;
+	                        case "3":
+	                            dayOfWeekOfMonthDescription = _this.i18n.third();
+	                            break;
+	                        case "4":
+	                            dayOfWeekOfMonthDescription = _this.i18n.forth();
+	                            break;
+	                        case "5":
+	                            dayOfWeekOfMonthDescription = _this.i18n.fifth();
+	                            break;
+	                    }
+	                    format = _this.i18n.commaOnThe() + dayOfWeekOfMonthDescription + _this.i18n.spaceX0OfTheMonth();
+	                }
+	                else if (s.indexOf("L") > -1) {
+	                    format = _this.i18n.commaOnTheLastX0OfTheMonth();
+	                }
+	                else {
+	                    format = _this.i18n.commaOnlyOnX0();
+	                }
+	                return format;
+	            });
+	        }
 	        return description;
 	    };
 	    ExpressionDescriptor.prototype.getMonthDescription = function () {
