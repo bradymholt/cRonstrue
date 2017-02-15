@@ -331,6 +331,12 @@ describe("Cronstrue", function () {
         });
     });
 
+    describe("verbose", function () {
+        it("30 4 1 * *", function () {
+            assert.equal(construe.toString("30 4 1 * *", { verbose: true }), "At 04:30 AM, on day 1 of the month");
+        });
+    });
+
     describe("errors", function () {
         it("garbage expression", function () {
             assert.throws(function () { construe.toString("sdlksldksldksd") }, 'Error: Expression only has 1 parts.  At least 5 part are required.');

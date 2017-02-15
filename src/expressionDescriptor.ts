@@ -224,56 +224,63 @@ export class ExpressionDescriptor {
     protected getDayOfWeekDescription() {
         var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
-        let description: string = this.getSegmentDescription(this.expressionParts[5],
-            this.i18n.commaEveryDay(),
-            (s) => {
-                let exp: string = s;
-                if (s.indexOf("#") > -1) {
-                    exp = s.substr(0, s.indexOf("#"));
-                }
-                else if (s.indexOf("L") > -1) {
-                    exp = exp.replace("L", "");
-                }
-
-                return daysOfWeekNames[parseInt(exp)];
-            },
-            (s) => { return StringUtilities.format(this.i18n.commaEveryX0daysOfTheWeek(), s) },
-            (s) => { return this.i18n.commaX0ThroughX1() },
-            (s) => {
-                let format: string = null;
-                if (s.indexOf("#") > -1) {
-                    let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-                    let dayOfWeekOfMonthDescription: string = null;
-                    switch (dayOfWeekOfMonthNumber) {
-                        case "1":
-                            dayOfWeekOfMonthDescription = this.i18n.first();
-                            break;
-                        case "2":
-                            dayOfWeekOfMonthDescription = this.i18n.second();
-                            break;
-                        case "3":
-                            dayOfWeekOfMonthDescription = this.i18n.third();
-                            break;
-                        case "4":
-                            dayOfWeekOfMonthDescription = this.i18n.forth();
-                            break;
-                        case "5":
-                            dayOfWeekOfMonthDescription = this.i18n.fifth();
-                            break;
+        let description: string = null;
+        if (this.expressionParts[5] == "*" && this.expressionParts[3] != "*") {
+            // DOM is specified and DOW is * so to prevent contradiction like "on day 1 of the month, every day"
+            // we will not specified a DOW description.
+            description = "";
+        } else {
+            description = this.getSegmentDescription(this.expressionParts[5],
+                this.i18n.commaEveryDay(),
+                (s) => {
+                    let exp: string = s;
+                    if (s.indexOf("#") > -1) {
+                        exp = s.substr(0, s.indexOf("#"));
+                    }
+                    else if (s.indexOf("L") > -1) {
+                        exp = exp.replace("L", "");
                     }
 
+                    return daysOfWeekNames[parseInt(exp)];
+                },
+                (s) => { return StringUtilities.format(this.i18n.commaEveryX0daysOfTheWeek(), s) },
+                (s) => { return this.i18n.commaX0ThroughX1() },
+                (s) => {
+                    let format: string = null;
+                    if (s.indexOf("#") > -1) {
+                        let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
+                        let dayOfWeekOfMonthDescription: string = null;
+                        switch (dayOfWeekOfMonthNumber) {
+                            case "1":
+                                dayOfWeekOfMonthDescription = this.i18n.first();
+                                break;
+                            case "2":
+                                dayOfWeekOfMonthDescription = this.i18n.second();
+                                break;
+                            case "3":
+                                dayOfWeekOfMonthDescription = this.i18n.third();
+                                break;
+                            case "4":
+                                dayOfWeekOfMonthDescription = this.i18n.forth();
+                                break;
+                            case "5":
+                                dayOfWeekOfMonthDescription = this.i18n.fifth();
+                                break;
+                        }
 
-                    format = this.i18n.commaOnThe() + dayOfWeekOfMonthDescription + this.i18n.spaceX0OfTheMonth();
-                }
-                else if (s.indexOf("L") > -1) {
-                    format = this.i18n.commaOnTheLastX0OfTheMonth();
-                }
-                else {
-                    format = this.i18n.commaOnlyOnX0();
-                }
 
-                return format;
-            });
+                        format = this.i18n.commaOnThe() + dayOfWeekOfMonthDescription + this.i18n.spaceX0OfTheMonth();
+                    }
+                    else if (s.indexOf("L") > -1) {
+                        format = this.i18n.commaOnTheLastX0OfTheMonth();
+                    }
+                    else {
+                        format = this.i18n.commaOnlyOnX0();
+                    }
+
+                    return format;
+                });
+        }
 
         return description;
     }
