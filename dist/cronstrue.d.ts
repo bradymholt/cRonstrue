@@ -1,2 +1,2 @@
 import { ExpressionDescriptor } from "./expressionDescriptor";
-export = ExpressionDescriptor;
+export default ExpressionDescriptor;
