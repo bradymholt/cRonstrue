@@ -1,6 +1,6 @@
 {
   "name": "cronstrue",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Convert cron expressions into human readable descriptions",
   "author": "Brady Holt",
   "license": "MIT",
@@ -54,6 +54,5 @@
     "prerelease": "rm -rf ./dist && webpack && node ./docs/generate.js README.md && git add -A && git commit --allow-empty -m 'Build latest /dist'",
     "release": "npm-github-release"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
