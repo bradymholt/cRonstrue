@@ -14,32 +14,29 @@ This library was ported from the original C# implemenation called [cron-expressi
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
 
-### Node
+First, install the module:
 
-Install from npm:
 ```
 npm install cronstrue
 ```
 
-Then, require it:
+Then, depending upon your usage context, add a reference to it:
+
+### Node
+
 ```
 var cronstrue = require('cronstrue');
 ```
 
 ### ES6/TypeScript
 
-Install from npm:
-```
-npm install cronstrue
-```
-
-Then, import it:
 ```
 import cronstrue from 'cronstrue';
 ```
 
 ### Browser
  The `cronstrue.min.js` file from the `/dist` folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a `<script>` tag.
+
 ```
 <script src="cronstrue.min.js" type="text/javascript"></script>
 <script>
