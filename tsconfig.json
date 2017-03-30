@@ -6,7 +6,8 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": false,
-        "sourceMap": true
+        "sourceMap": true,
+        "declaration": true
     },
     "files": [
         "src/cronstrue.ts",
