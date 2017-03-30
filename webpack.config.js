@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var libraryName = require('./package.json').name;
 var withLocalesSuffix = '-i18n';
 
-var config = {
+module.exports = {
     entry: {
         [libraryName]: './src/cronstrue.ts',
         [libraryName + '.min']: './src/cronstrue.ts',
@@ -17,7 +17,7 @@ var config = {
         umdNamedDefine: true
     },
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['.js', '.ts']
     },
     module: {
         /*
@@ -27,10 +27,17 @@ var config = {
          * the test. Then it will apply the loader to that file. I haven't
          * installed ts-loader yet, but will do that shortly.
          */
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: "awesome-typescript-loader?tsconfig=tsconfig.json&declaration=true&sourceMap=false"
+                loader: 'ts-loader',
+                options: {
+                    compilerOptions: {
+                        outDir: "../dist",
+                        declaration: true,
+                        sourceMap: false
+                    }
+                }
             }
         ]
     },
@@ -41,6 +48,4 @@ var config = {
             sideEffects: false
         })
     ]
-};
-
-module.exports = config;
+}
