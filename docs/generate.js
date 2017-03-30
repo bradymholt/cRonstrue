@@ -11,7 +11,7 @@ const marked = require('marked');
 let readme = fs.readFileSync(process.argv[2], 'utf8');
 let content = marked(readme);
 
-const templateFile = path.join(__dirname, 'index.hbs.html');
+const templateFile = path.join(__dirname, 'template.hbs.html');
 const outputFile = path.join(__dirname, 'index.html');
 let templateSource = fs.readFileSync(templateFile, 'utf8');
 let template = handlebars.compile(templateSource);
