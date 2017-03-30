@@ -800,10 +800,13 @@ exports.allLocalesLoader = allLocalesLoader;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var expressionDescriptor_1 = __webpack_require__(0);
 var allLocalesLoader_1 = __webpack_require__(4);
 expressionDescriptor_1.ExpressionDescriptor.initialize(new allLocalesLoader_1.allLocalesLoader());
-module.exports = expressionDescriptor_1.ExpressionDescriptor;
+exports.default = expressionDescriptor_1.ExpressionDescriptor;
+var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
+exports.toString = toString;
 
 
 /***/ }),
