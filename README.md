@@ -58,6 +58,10 @@ cronstrue.toString("0 23 ? * MON-FRI");
 
 cronstrue.toString("23 12 * * SUN#2");
 > "At 12:23 PM, on the second Sunday of the month"
+
+console.log(construe.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false}));
+> "Every second, every 2 days of the week, Monday through Friday"
+
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js).
