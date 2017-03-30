@@ -796,10 +796,13 @@ exports.enLocaleLoader = enLocaleLoader;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
 var expressionDescriptor_1 = __webpack_require__(0);
 var enLocaleLoader_1 = __webpack_require__(5);
 expressionDescriptor_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLocaleLoader());
-module.exports = expressionDescriptor_1.ExpressionDescriptor;
+exports.default = expressionDescriptor_1.ExpressionDescriptor;
+var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
+exports.toString = toString;
 
 
 /***/ })

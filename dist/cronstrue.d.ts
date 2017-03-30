@@ -1,2 +1,4 @@
 import { ExpressionDescriptor } from "./expressionDescriptor";
-export = ExpressionDescriptor;
+export default ExpressionDescriptor;
+declare let toString: typeof ExpressionDescriptor.toString;
+export { toString };
