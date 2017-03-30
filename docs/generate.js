@@ -1,3 +1,6 @@
+// Generates documention index.html webpage given a markdown file
+// Usage: node generate.js README.md
+
 "use strict";
 
 const fs = require("fs");
@@ -5,7 +8,7 @@ const path = require("path");
 const handlebars = require("handlebars");
 const marked = require('marked');
 
-let readme = fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8');
+let readme = fs.readFileSync(process.argv[2], 'utf8');
 let content = marked(readme);
 
 const templateFile = path.join(__dirname, 'index.hbs.html');
