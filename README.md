@@ -35,7 +35,7 @@ npm install cronstrue
 
 Then, import it:
 ```
-import construe from 'cronstrue';
+import cronstrue from 'cronstrue';
 ```
 
 ### Browser
@@ -59,7 +59,7 @@ cronstrue.toString("0 23 ? * MON-FRI");
 cronstrue.toString("23 12 * * SUN#2");
 > "At 12:23 PM, on the second Sunday of the month"
 
-console.log(construe.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false}));
+console.log(cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false}));
 > "Every second, every 2 days of the week, Monday through Friday"
 
 ```
