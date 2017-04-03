@@ -1,5 +1,6 @@
 {
   "name": "cronstrue",
+  "title": "cRonstrue",
   "version": "0.10.3",
   "description": "Convert cron expressions into human readable descriptions",
   "author": "Brady Holt",
@@ -7,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/bradyholt/cronstrue/issues"
   },
-  "homepage": "https://github.com/bradyholt/cronstrue#readme",
+  "homepage": "https://github.com/bradyholt/cronstrue",
   "keywords": [
     "cron",
     "cronjob",

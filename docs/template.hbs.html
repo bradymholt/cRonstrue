@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>cRonstrue by bradyholt</title>
+    <title>{{config.title}} by {{config.author}}</title>
 </head>
 
 <body>
@@ -18,25 +18,31 @@
         <div class="inner">
 
             <header>
-                <h1>cRonstrue</h1>
-                <h2>Convert cron expressions into human readable descriptions</h2>
+                <h1>{{config.title}}</h1>
+                <h2>{{config.description}}</h2>
             </header>
 
             <section id="downloads" class="clearfix">
-                <a href="https://github.com/bradyholt/cronstrue/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-                <a href="https://github.com/bradyholt/cronstrue/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-                <a href="https://github.com/bradyholt/cronstrue" id="view-on-github" class="button"><span>View on GitHub</span></a>
+                <a href="{{config.homepage}}/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+                <a href="{{config.homepage}}/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+                <a href="{{config.homepage}}" id="view-on-github" class="button"><span>View on GitHub</span></a>
             </section>
 
             <hr>
 
             <section id="main_content">
-                {{{ content }}}
+                {{{content}}}
+                <h2>Live Demo</h2>
+                <form style="background-color:inherit; padding-left:0px; font-size:18px;">
+                    <input type="text" id="expression" size="20" style="font-size:18px;" value="*/5 * * * *" class="textinput" />
+                    <button type="button" class="button" style="font-size:18px;" id="translate">Translate</button>
+                    <div id="output" style="margin-top: 10px; font-weight: bold; color:blue;" class="output ">Every 5 minutes</div>
+                </form>
             </section>
-
             <footer>
-                cRonstrue is maintained by <a href="https://github.com/bradyholt">bradyholt</a><br> This page was generated
-                by <a href="https://www.npmjs.com/package/handlebars">Handlebars.js</a> and <a href="https://www.npmjs.com/package/marked">marked</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+                {{config.title}} is maintained by <a href="{{config.homepage}}">{{config.author}}</a><br> This page was generated
+                by <a href="https://www.npmjs.com/package/handlebars">Handlebars.js</a> and <a href="https://www.npmjs.com/package/marked">marked</a>.
+                Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
             </footer>
 
 
