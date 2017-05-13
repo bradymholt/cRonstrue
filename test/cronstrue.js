@@ -327,7 +327,7 @@ describe("Cronstrue", function () {
         });
 
         it("0 0 0 1,2,3 * WED,FRI", function () {
-            assert.equal(construe.toString("0 0 0 1,2,3 * WED,FRI"), "At 00:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday");
+            assert.equal(construe.toString("0 0 0 1,2,3 * WED,FRI"), "At 12:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday");
         });
 
         it("0 2,16 1,8,15,22 * 1,2", function () {
