@@ -1,6 +1,16 @@
-Once you run npm install, there are package.json scripts you can use for build/test.
+### Setup
 
+```
+npm install
+```
 
-> npm install
-> npm run build
-> npm test
+### Build
+```
+npm start
+```
+
+### Test
+
+```
+npm test
+```

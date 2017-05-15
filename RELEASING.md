@@ -1,1 +1,4 @@
-Run `npm run release`
+```
+npm adduser bradyholt
+npm run release
+```
