@@ -387,6 +387,9 @@ var ExpressionDescriptor = (function () {
             if (hour > 12) {
                 hour -= 12;
             }
+            if (hour === 0) {
+                hour = 12;
+            }
         }
         var minute = minuteExpression;
         var second = "";
