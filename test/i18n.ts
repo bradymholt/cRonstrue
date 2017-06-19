@@ -1,6 +1,6 @@
-"use strict";
-var assert = require('chai').assert;
-var construe = require('../build/cronstrue-i18n');
+import chai = require("chai");
+import construe from "../src/cronstrue-i18n";
+let assert = chai.assert;
 
 describe("i18n", function () {
     describe("de", function () {

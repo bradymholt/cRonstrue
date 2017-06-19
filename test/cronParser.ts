@@ -1,5 +1,6 @@
-var assert = require('chai').assert;
-var CronParser = require('../build/cronParser').CronParser;
+import chai = require("chai");
+import { CronParser } from "../src/cronParser";
+let assert = chai.assert;
 
 describe("CronParser", function () {
     describe("parse", function () {
