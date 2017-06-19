@@ -8,22 +8,14 @@
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "stopOnEntry": false,
             "args": [
-                "-t",
-                "10000",
-                "test/**/*.js"
+                "--compilers",
+                "ts:ts-node/register"
             ],
             "cwd": "${workspaceRoot}",
-            "preLaunchTask": null,
-            "runtimeArgs": [
-                "--nolazy"
-            ],
             "env": {
                 "NODE_ENV": "development"
             },
-            "externalConsole": false,
             "sourceMaps": true
-            // "trace": "sm"
-            // "outDir": "${workspaceRoot}/build"
         }
     ]
 }
