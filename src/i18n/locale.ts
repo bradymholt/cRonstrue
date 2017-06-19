@@ -35,6 +35,7 @@ export interface Locale {
     fifth(): string;
     commaOnThe(): string;
     spaceX0OfTheMonth(): string;
+    lastDay(): string;
     commaOnTheLastX0OfTheMonth(): string;
     commaOnlyOnX0(): string;
     commaEveryX0Months(): string;
