@@ -45,6 +45,7 @@ export declare class es implements Locale {
     spaceAnd(): string;
     spaceAndSpace(): string;
     spaceX0OfTheMonth(): string;
+    lastDay(): string;
     third(): string;
     weekdayNearestDayX0(): string;
     commaEveryX0Years(): string;

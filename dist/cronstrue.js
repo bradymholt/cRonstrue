@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -298,7 +298,9 @@ var ExpressionDescriptor = (function () {
                     break;
                 }
                 else {
-                    description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) { return s; }, function (s) {
+                    description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) {
+                        return s == "L" ? _this.i18n.lastDay() : s;
+                    }, function (s) {
                         return s == "1" ? _this.i18n.commaEveryDay() :
                             _this.i18n.commaEveryX0Days();
                     }, function (s) { return _this.i18n.commaBetweenDayX0AndX1OfTheMonth(); }, function (s) { return _this.i18n.commaOnDayX0OfTheMonth(); });
@@ -406,9 +408,9 @@ var ExpressionDescriptor = (function () {
         }
         return description;
     };
+    ExpressionDescriptor.locales = {};
     return ExpressionDescriptor;
 }());
-ExpressionDescriptor.locales = {};
 exports.ExpressionDescriptor = ExpressionDescriptor;
 
 
@@ -664,6 +666,10 @@ var en = (function () {
     ;
     en.prototype.spaceX0OfTheMonth = function () {
         return " %s of the month";
+    };
+    ;
+    en.prototype.lastDay = function () {
+        return "the last day";
     };
     ;
     en.prototype.commaOnTheLastX0OfTheMonth = function () {

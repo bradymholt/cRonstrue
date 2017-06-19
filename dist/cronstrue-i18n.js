@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -298,7 +298,9 @@ var ExpressionDescriptor = (function () {
                     break;
                 }
                 else {
-                    description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) { return s; }, function (s) {
+                    description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) {
+                        return s == "L" ? _this.i18n.lastDay() : s;
+                    }, function (s) {
                         return s == "1" ? _this.i18n.commaEveryDay() :
                             _this.i18n.commaEveryX0Days();
                     }, function (s) { return _this.i18n.commaBetweenDayX0AndX1OfTheMonth(); }, function (s) { return _this.i18n.commaOnDayX0OfTheMonth(); });
@@ -406,9 +408,9 @@ var ExpressionDescriptor = (function () {
         }
         return description;
     };
+    ExpressionDescriptor.locales = {};
     return ExpressionDescriptor;
 }());
-ExpressionDescriptor.locales = {};
 exports.ExpressionDescriptor = ExpressionDescriptor;
 
 
@@ -664,6 +666,10 @@ var en = (function () {
     ;
     en.prototype.spaceX0OfTheMonth = function () {
         return " %s of the month";
+    };
+    ;
+    en.prototype.lastDay = function () {
+        return "the last day";
     };
     ;
     en.prototype.commaOnTheLastX0OfTheMonth = function () {
@@ -948,6 +954,9 @@ var de = (function () {
     de.prototype.spaceX0OfTheMonth = function () {
         return " %s des Monats";
     };
+    de.prototype.lastDay = function () {
+        return "der letzte Tag";
+    };
     de.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", am letzten %s des Monats";
     };
@@ -1185,6 +1194,10 @@ var es = (function () {
         return " %s del mes";
     };
     ;
+    es.prototype.lastDay = function () {
+        return "el último día";
+    };
+    ;
     es.prototype.third = function () {
         return "tercer";
     };
@@ -1307,6 +1320,9 @@ var fr = (function () {
     };
     fr.prototype.spaceX0OfTheMonth = function () {
         return " %s du mois";
+    };
+    fr.prototype.lastDay = function () {
+        return "le dernier jour";
     };
     fr.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", le dernier %s du mois";
@@ -1514,6 +1530,9 @@ var it = (function () {
     it.prototype.spaceX0OfTheMonth = function () {
         return " %s del mese";
     };
+    it.prototype.lastDay = function () {
+        return "l'ultimo giorno";
+    };
     it.prototype.third = function () {
         return "terzo";
     };
@@ -1672,6 +1691,9 @@ var nb = (function () {
     nb.prototype.spaceX0OfTheMonth = function () {
         return " %s av måneden";
     };
+    nb.prototype.lastDay = function () {
+        return "den siste dagen";
+    };
     nb.prototype.third = function () {
         return "tredje";
     };
@@ -1787,6 +1809,9 @@ var nl = (function () {
     };
     nl.prototype.spaceX0OfTheMonth = function () {
         return " %s van de maand";
+    };
+    nl.prototype.lastDay = function () {
+        return "de laatste dag";
     };
     nl.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", op de laatste %s van de maand";
@@ -1988,6 +2013,9 @@ var pl = (function () {
     pl.prototype.spaceX0OfTheMonth = function () {
         return " %s miesiąca";
     };
+    pl.prototype.lastDay = function () {
+        return "ostatni dzień";
+    };
     pl.prototype.third = function () {
         return "trzeci";
     };
@@ -2142,6 +2170,9 @@ var pt_BR = (function () {
     };
     pt_BR.prototype.spaceX0OfTheMonth = function () {
         return " %s do mês";
+    };
+    pt_BR.prototype.lastDay = function () {
+        return "o último dia";
     };
     pt_BR.prototype.third = function () {
         return "terceira";
@@ -2300,6 +2331,9 @@ var ro = (function () {
     ro.prototype.spaceX0OfTheMonth = function () {
         return " %s a lunii";
     };
+    ro.prototype.lastDay = function () {
+        return "ultima zi";
+    };
     ro.prototype.third = function () {
         return "a treia";
     };
@@ -2430,6 +2464,9 @@ var ru = (function () {
     };
     ru.prototype.spaceX0OfTheMonth = function () {
         return " %s месяца";
+    };
+    ru.prototype.lastDay = function () {
+        return "последний день";
     };
     ru.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", в последний %s месяца";
@@ -2616,6 +2653,10 @@ var sv = (function () {
         return " %sen av månaden";
     };
     ;
+    sv.prototype.lastDay = function () {
+        return "den sista dagen";
+    };
+    ;
     sv.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", på sista %s av månaden";
     };
@@ -2791,6 +2832,9 @@ var tr = (function () {
     tr.prototype.spaceX0OfTheMonth = function () {
         return " %s günü";
     };
+    tr.prototype.lastDay = function () {
+        return "son gün";
+    };
     tr.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", ayın son %s günü";
     };
@@ -2949,6 +2993,9 @@ var uk = (function () {
     uk.prototype.spaceX0OfTheMonth = function () {
         return " %s місяця";
     };
+    uk.prototype.lastDay = function () {
+        return "останній день";
+    };
     uk.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", в останній %s місяця";
     };
@@ -3106,6 +3153,9 @@ var zh_CN = (function () {
     };
     zh_CN.prototype.spaceX0OfTheMonth = function () {
         return "%s 每月";
+    };
+    zh_CN.prototype.lastDay = function () {
+        return "最后一天";
     };
     zh_CN.prototype.commaOnTheLastX0OfTheMonth = function () {
         return ", 每月的最后一个 %s ";

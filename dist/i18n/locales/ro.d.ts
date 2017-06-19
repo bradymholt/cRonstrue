@@ -42,6 +42,7 @@ export declare class ro implements Locale {
     spaceAnd(): string;
     spaceAndSpace(): string;
     spaceX0OfTheMonth(): string;
+    lastDay(): string;
     third(): string;
     weekdayNearestDayX0(): string;
     ComaMinX0ThroughMinX1(): string;

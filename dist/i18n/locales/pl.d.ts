@@ -46,6 +46,7 @@ export declare class pl implements Locale {
     spaceAnd(): string;
     spaceAndSpace(): string;
     spaceX0OfTheMonth(): string;
+    lastDay(): string;
     third(): string;
     weekdayNearestDayX0(): string;
     commaStartingX0(): string;
