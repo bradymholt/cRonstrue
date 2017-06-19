@@ -1,4 +1,5 @@
 // Swedish
+
 import { Locale } from "../locale"
 export class sv implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }

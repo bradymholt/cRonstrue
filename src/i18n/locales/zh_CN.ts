@@ -1,4 +1,5 @@
 // Chinese (Simplified)
+
 import { Locale } from "../locale"
 export class zh_CN implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }

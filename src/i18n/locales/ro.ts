@@ -1,4 +1,5 @@
 // Romanian
+
 import { Locale } from "../locale"
 export class ro implements Locale {
 

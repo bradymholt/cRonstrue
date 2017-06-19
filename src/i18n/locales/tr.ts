@@ -1,4 +1,5 @@
 // Turkish
+
 import { Locale } from "../locale"
 export class tr implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
