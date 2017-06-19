@@ -1,5 +1,6 @@
-import { Locale } from "../locale"
+// Spanish
 
+import { Locale } from "../locale"
 export class es implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
     atX0MinutesPastTheHourGt20(): string { return null; }
@@ -127,6 +128,9 @@ export class es implements Locale {
     };
     spaceX0OfTheMonth() {
         return " %s del mes";
+    };
+    lastDay() {
+        return "el último día";
     };
     third() {
         return "tercer";

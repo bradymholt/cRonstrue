@@ -1,3 +1,5 @@
+// Italian
+
 import { Locale } from "../locale"
 export class it implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -129,6 +131,9 @@ export class it implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s del mese";
+    }
+    lastDay() {
+        return "l'ultimo giorno";
     }
     third() {
         return "terzo";

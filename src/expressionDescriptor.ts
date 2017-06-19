@@ -325,7 +325,9 @@ export class ExpressionDescriptor {
                 else {
                     description = this.getSegmentDescription(expression,
                         this.i18n.commaEveryDay(),
-                        (s) => { return s },
+                        (s) => {
+                            return s == "L" ? this.i18n.lastDay() : s;
+                        },
                         (s) => {
                             return s == "1" ? this.i18n.commaEveryDay() :
                                 this.i18n.commaEveryX0Days()

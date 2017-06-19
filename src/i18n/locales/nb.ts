@@ -1,3 +1,5 @@
+// Norwegian
+
 import { Locale } from "../locale"
 export class nb implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -129,6 +131,9 @@ export class nb implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s av måneden";
+    }
+    lastDay() {
+        return "den siste dagen";
     }
     third() {
         return "tredje";

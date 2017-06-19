@@ -1,5 +1,5 @@
+// Swedish
 import { Locale } from "../locale"
-
 export class sv implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
     atX0MinutesPastTheHourGt20(): string { return null; }
@@ -88,6 +88,9 @@ export class sv implements Locale {
     };
     spaceX0OfTheMonth() {
         return " %sen av månaden";
+    };
+    lastDay() {
+        return "den sista dagen";
     };
     commaOnTheLastX0OfTheMonth() {
         return ", på sista %s av månaden";

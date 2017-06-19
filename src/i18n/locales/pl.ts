@@ -1,3 +1,4 @@
+// Polish
 import { Locale } from "../locale"
 export class pl implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -129,6 +130,9 @@ export class pl implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s miesiąca";
+    }
+    lastDay() {
+        return "ostatni dzień";
     }
     third() {
         return "trzeci";

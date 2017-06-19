@@ -189,6 +189,14 @@ describe("Cronstrue", function () {
         it("*/5 * L JAN *", function () {
             assert.equal(construe.toString(this.test.title), "Every 5 minutes, on the last day of the month, only in January");
         });
+
+        it("0 20 15,L * *", function () {
+            assert.equal(construe.toString(this.test.title), "At 08:00 PM, on day 15 and the last day of the month");
+        });
+
+        it("0 20 1-10,20-L * *", function () {
+            assert.equal(construe.toString(this.test.title), "At 08:00 PM, on day 1 through 10 and 20 through the last day of the month");
+        });
     });
 
     describe("dayOfWeekStartIndexZero=false", function () {

@@ -1,3 +1,5 @@
+// Ukranian
+
 import { Locale } from "../locale"
 export class uk implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -87,6 +89,9 @@ export class uk implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s місяця";
+    }
+    lastDay() {
+        return "останній день";
     }
     commaOnTheLastX0OfTheMonth() {
         return ", в останній %s місяця";

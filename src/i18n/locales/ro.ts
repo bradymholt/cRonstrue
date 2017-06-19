@@ -1,3 +1,4 @@
+// Romanian
 import { Locale } from "../locale"
 export class ro implements Locale {
 
@@ -125,6 +126,9 @@ export class ro implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s a lunii";
+    }
+    lastDay() {
+        return "ultima zi";
     }
     third() {
         return "a treia";

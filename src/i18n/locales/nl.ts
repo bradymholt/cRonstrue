@@ -1,3 +1,5 @@
+// Dutch
+
 import { Locale } from "../locale"
 export class nl implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -87,6 +89,9 @@ export class nl implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s van de maand";
+    }
+    lastDay() {
+        return "de laatste dag";
     }
     commaOnTheLastX0OfTheMonth() {
         return ", op de laatste %s van de maand";

@@ -1,3 +1,4 @@
+// Turkish
 import { Locale } from "../locale"
 export class tr implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -87,6 +88,9 @@ export class tr implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s günü";
+    }
+    lastDay() {
+        return "son gün";
     }
     commaOnTheLastX0OfTheMonth() {
         return ", ayın son %s günü";

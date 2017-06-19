@@ -1,3 +1,5 @@
+// Russian
+
 import { Locale } from "../locale"
 export class ru implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -87,6 +89,9 @@ export class ru implements Locale {
     }
     spaceX0OfTheMonth() {
         return " %s месяца";
+    }
+    lastDay() {
+        return "последний день";
     }
     commaOnTheLastX0OfTheMonth() {
         return ", в последний %s месяца";

@@ -1,3 +1,4 @@
+// Chinese (Simplified)
 import { Locale } from "../locale"
 export class zh_CN implements Locale {
     atX0SecondsPastTheMinuteGt20(): string { return null; }
@@ -87,6 +88,9 @@ export class zh_CN implements Locale {
     }
     spaceX0OfTheMonth() {
         return "%s 每月";
+    }
+    lastDay() {
+        return "最后一天";
     }
     commaOnTheLastX0OfTheMonth() {
         return ", 每月的最后一个 %s ";
