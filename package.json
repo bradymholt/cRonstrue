@@ -36,22 +36,22 @@
     "url": "git+https://github.com/bradyholt/cronstrue.git"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.1.2",
+    "@types/chai": "^4.0.0",
+    "@types/mocha": "^2.2.41",
     "chai": "^3.5.0",
-    "expose-loader": "^0.7.1",
     "handlebars": "^4.0.6",
     "marked": "^0.3.6",
     "mocha": "^2.5.3",
     "npm-github-release": "^0.7.3",
     "octonode": "^0.7.6",
-    "typescript": "^2.2.2",
-    "webpack": "^2.3.2",
-    "ts-loader": "^2.0.3"
+    "ts-loader": "^2.0.3",
+    "ts-node": "^3.0.6",
+    "typescript": "^2.4.0",
+    "webpack": "^2.3.2"
   },
   "scripts": {
-    "start": "tsc",
-    "pretest": "npm start",
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "build": "tsc",
+    "test": "./node_modules/.bin/mocha --reporter spec --compilers ts:ts-node/register",
     "prerelease": "rm -rf ./dist && webpack && node ./docs/generate.js README.md && git add -A && git commit --allow-empty -m 'Build latest /dist'",
     "release": "npm-github-release"
   },

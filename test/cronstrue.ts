@@ -1,6 +1,6 @@
-"use strict";
-var assert = require('chai').assert;
-var construe = require('../build/cronstrue');
+import chai = require("chai");
+import construe from "../src/cronstrue";
+let assert = chai.assert;
 
 describe("Cronstrue", function () {
     describe("every", function () {
@@ -355,7 +355,7 @@ describe("Cronstrue", function () {
         });
 
         it("undefined expression", function () {
-            assert.throws(function () { construe.toString() }, 'Error: Expression is empty');
+            assert.throws(function () { construe.toString("") }, 'Error: Expression is empty');
         });
 
         it("'W' list is invalid", function () {
