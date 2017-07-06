@@ -491,6 +491,9 @@ var CronParser = (function () {
             }
             return t.replace(dowDigits, dowDigitsAdjusted);
         });
+        if (expressionParts[5] == "L") {
+            expressionParts[5] = "6";
+        }
         if (expressionParts[3] == "?") {
             expressionParts[3] = "*";
         }
