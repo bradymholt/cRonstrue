@@ -90,6 +90,7 @@ export class CronParser {
         }
 
         // Adjust DOW based on dayOfWeekStartIndexZero option
+        // Normalized DOW: 0=Sunday/6=Saturday
         expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, (t) => { //skip anything preceeded by # or /
             let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
             let dowDigitsAdjusted: string = dowDigits;
@@ -107,6 +108,11 @@ export class CronParser {
 
             return t.replace(dowDigits, dowDigitsAdjusted);
         });
+
+        // Convert DOW 'L' to '6' (Saturday)
+        if (expressionParts[5] == "L") {
+            expressionParts[5] = "6";
+        }
 
         // Convert DOM '?' to '*'
         if (expressionParts[3] == "?") {
@@ -129,6 +135,7 @@ export class CronParser {
         var months: { [key: string]: number } = {
             "JAN": 1, "FEB": 2, "MAR": 3, "APR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AUG": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DEC": 12
         };
+
         for (let month in months) {
             expressionParts[4] = expressionParts[4].replace(new RegExp(month, "g"), months[month].toString());
         }

@@ -197,6 +197,14 @@ describe("Cronstrue", function () {
         it("0 20 1-10,20-L * *", function () {
             assert.equal(construe.toString(this.test.title), "At 08:00 PM, on day 1 through 10 and 20 through the last day of the month");
         });
+
+        it("0 15 10 * * L", function () {
+            assert.equal(construe.toString(this.test.title), "At 10:15 AM, only on Saturday");
+        });
+
+        it("0 15 10 L * *", function () {
+            assert.equal(construe.toString(this.test.title), "At 10:15 AM, on the last day of the month");
+        });
     });
 
     describe("dayOfWeekStartIndexZero=false", function () {
