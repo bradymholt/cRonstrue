@@ -79,7 +79,7 @@ export class en implements Locale {
         return "third";
     };
     forth() {
-        return "forth";
+        return "fourth";
     };
     fifth() {
         return "fifth";
