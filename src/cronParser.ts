@@ -26,7 +26,7 @@ export class CronParser {
         let parsed: string[] = this.expression.trim().split(' ');
 
         if (parsed.length < 5) {
-            throw new Error(`Expression only has ${parsed.length} parts.  At least 5 part are required.`);
+            throw new Error(`Expression has only ${parsed.length} part${parsed.length == 1 ? '' : 's'}. At least 5 parts are required.`);
         } else if (parsed.length == 5) {
             //5 part cron so shift array past seconds element
             parsed.unshift("");
