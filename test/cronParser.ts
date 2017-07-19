@@ -19,7 +19,7 @@ describe("CronParser", function () {
         });
 
         it("should blow up if expression is crap", function () {
-            assert.throws(function () { new CronParser("sdlksCRAPdlkskl- dds").parse() }, 'Expression only has 2 parts.  At least 5 part are required.');
+            assert.throws(function () { new CronParser("sdlksCRAPdlkskl- dds").parse() }, 'Expression has only 2 parts. At least 5 parts are required.');
         });
     });
 });

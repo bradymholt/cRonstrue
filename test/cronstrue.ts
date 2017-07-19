@@ -359,7 +359,7 @@ describe("Cronstrue", function () {
 
     describe("errors", function () {
         it("garbage expression", function () {
-            assert.throws(function () { construe.toString("sdlksldksldksd") }, 'Error: Expression only has 1 parts.  At least 5 part are required.');
+            assert.throws(function () { construe.toString("sdlksldksldksd") }, 'Error: Expression has only 1 part. At least 5 parts are required.');
         });
 
         it("empty expression", function () {
