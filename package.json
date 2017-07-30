@@ -50,10 +50,10 @@
     "webpack": "^2.3.2"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "./node_modules/.bin/mocha --reporter spec --compilers ts:ts-node/register",
+    "build": "npx tsc",
+    "test": "npx mocha --reporter spec --compilers ts:ts-node/register",
     "prerelease": "rm -rf ./dist && webpack && node ./docs/generate.js README.md && git add -A && git commit --allow-empty -m 'Build latest /dist'",
-    "release": "npm-github-release"
+    "release": "npx npm-github-release"
   },
   "dependencies": {}
 }
