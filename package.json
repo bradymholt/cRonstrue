@@ -27,10 +27,7 @@
   ],
   "main": "dist/cronstrue.js",
   "typings": "dist/cronstrue.d.ts",
-  "files": [
-    "dist/",
-    "i18n.js"
-  ],
+  "files": ["dist/", "i18n.js"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bradyholt/cronstrue.git"

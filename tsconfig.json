@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES5",
-        "outDir": "build",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": false,
-        "sourceMap": true,
-        "declaration": true
-    },
-    "files": [
-        "src/cronstrue.ts",
-        "src/cronstrue-i18n.ts"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "build",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": false,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": ["src/cronstrue.ts", "src/cronstrue-i18n.ts"]
 }

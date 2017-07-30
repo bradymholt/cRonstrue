@@ -2,9 +2,7 @@
   "name": "cronstrue",
   "description": "Convert cron expressions into human readable descriptions",
   "main": "dist/cronstrue.js",
-  "authors": [
-    "Brady Holt"
-  ],
+  "authors": ["Brady Holt"],
   "license": "MIT",
   "keywords": [
     "cron",
@@ -33,11 +31,5 @@
     "schedule"
   ],
   "homepage": "https://github.com/bradyholt/cronstrue",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"]
 }

@@ -1,7 +1,6 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-    "files.exclude": {
-        "**/build": true,
-        "**/dist": true
-    }
+  "files.exclude": {
+    "**/build": true,
+    "**/dist": true
+  }
 }
