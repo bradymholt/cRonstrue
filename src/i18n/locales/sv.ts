@@ -78,7 +78,7 @@ export class sv implements Locale {
     third() {
         return "tredje";
     };
-    forth() {
+    fourth() {
         return "fjärde";
     };
     fifth() {

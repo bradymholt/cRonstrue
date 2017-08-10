@@ -78,7 +78,7 @@ export class tr implements Locale {
     third() {
         return "üçüncü";
     }
-    forth() {
+    fourth() {
         return "dördüncü";
     }
     fifth() {

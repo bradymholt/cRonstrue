@@ -78,7 +78,7 @@ export class uk implements Locale {
     third() {
         return "третій";
     }
-    forth() {
+    fourth() {
         return "четвертий";
     }
     fifth() {

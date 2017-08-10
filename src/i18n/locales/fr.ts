@@ -78,7 +78,7 @@ export class fr implements Locale {
     third() {
         return "troisième";
     }
-    forth() {
+    fourth() {
         return "quatrième";
     }
     fifth() {

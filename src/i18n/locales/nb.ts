@@ -111,7 +111,7 @@ export class nb implements Locale {
     firstWeekday() {
         return "første ukedag";
     }
-    forth() {
+    fourth() {
         return "fjede";
     }
     minutesX0ThroughX1PastTheHour() {

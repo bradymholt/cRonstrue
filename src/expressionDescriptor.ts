@@ -330,7 +330,7 @@ export class ExpressionDescriptor {
                 dayOfWeekOfMonthDescription = this.i18n.third();
                 break;
               case "4":
-                dayOfWeekOfMonthDescription = this.i18n.forth();
+                dayOfWeekOfMonthDescription = this.i18n.fourth();
                 break;
               case "5":
                 dayOfWeekOfMonthDescription = this.i18n.fifth();

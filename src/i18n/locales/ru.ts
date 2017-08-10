@@ -78,7 +78,7 @@ export class ru implements Locale {
     third() {
         return "третий";
     }
-    forth() {
+    fourth() {
         return "четвертый";
     }
     fifth() {

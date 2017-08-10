@@ -78,7 +78,7 @@ export class nl implements Locale {
     third() {
         return "derde";
     }
-    forth() {
+    fourth() {
         return "vierde";
     }
     fifth() {

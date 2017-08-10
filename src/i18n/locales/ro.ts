@@ -107,7 +107,7 @@ export class ro implements Locale {
     firstWeekday() {
         return "prima zi a săptămânii";
     }
-    forth() {
+    fourth() {
         return "a patra";
     }
     minutesX0ThroughX1PastTheHour() {

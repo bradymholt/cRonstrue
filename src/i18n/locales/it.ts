@@ -111,7 +111,7 @@ export class it implements Locale {
     firstWeekday() {
         return "primo giorno della settimana";
     }
-    forth() {
+    fourth() {
         return "quarto";
     }
     minutesX0ThroughX1PastTheHour() {

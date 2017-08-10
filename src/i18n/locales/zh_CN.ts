@@ -78,7 +78,7 @@ export class zh_CN implements Locale {
     third() {
         return "第三个";
     }
-    forth() {
+    fourth() {
         return "第四个";
     }
     fifth() {
