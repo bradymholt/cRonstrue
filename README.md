@@ -72,7 +72,7 @@ A demo is available here [here](http://bradyholt.github.io/cRonstrue/#cronstrue-
 To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
 
 ### Node
-```
+```js
 var cronstrue = require('cronstrue/i18n');
 cronstrue.toString("*/5 * * * *", { locale: "fr" });
 ```
