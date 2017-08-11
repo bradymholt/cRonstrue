@@ -24,20 +24,20 @@ Then, depending upon your usage context, add a reference to it:
 
 ### Node
 
-```
+```js
 var cronstrue = require('cronstrue');
 ```
 
 ### ES6/TypeScript
 
-```
+```js
 import cronstrue from 'cronstrue';
 ```
 
 ### Browser
  The `cronstrue.min.js` file from the `/dist` folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a `<script>` tag.
 
-```
+```html
 <script src="cronstrue.min.js" type="text/javascript"></script>
 <script>
   var cronstrue = window.cronstrue;
@@ -46,7 +46,7 @@ import cronstrue from 'cronstrue';
 
 ## Usage
 
-```
+```js
 cronstrue.toString("* * * * *");
 > "Every minute"
 
@@ -78,7 +78,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 ```
 ### Browser
  The `cronstrue-i18n.min.js` file from the `/dist` folder in the npm package should be served to the browser.
-```
+```html
 <script src="cronstrue-i18n.min.js" type="text/javascript"></script>
 <script>
   cronstrue.toString("*/5 * * * *", { locale: "fr" });
