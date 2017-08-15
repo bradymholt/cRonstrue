@@ -61,7 +61,7 @@ cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false});
 
 ```
 
-For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js).
+For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cRonstrue/blob/master/test/cronstrue.ts).
 
 ## Demo
 
