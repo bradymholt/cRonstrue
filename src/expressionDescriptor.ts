@@ -285,9 +285,10 @@ export class ExpressionDescriptor {
     var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
     let description: string = null;
-    if (this.expressionParts[5] == "*" && this.expressionParts[3] != "*") {
-      // DOM is specified and DOW is * so to prevent contradiction like "on day 1 of the month, every day"
-      // we will not specified a DOW description.
+    if (this.expressionParts[5] == "*") {
+      // DOW is specified as * so we will not generate a description and defer to DOM part.
+      // Otherwise, we could get a contradiction like "on day 1 of the month, every day"
+      // or a dupe description like "every day, every day".
       description = "";
     } else {
       description = this.getSegmentDescription(
