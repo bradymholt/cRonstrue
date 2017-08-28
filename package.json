@@ -1,7 +1,7 @@
 {
   "name": "cronstrue",
   "title": "cRonstrue",
-  "version": "0.10.9",
+  "version": "0.10.10",
   "description": "Convert cron expressions into human readable descriptions",
   "author": "Brady Holt",
   "license": "MIT",
@@ -27,7 +27,10 @@
   ],
   "main": "dist/cronstrue.js",
   "typings": "dist/cronstrue.d.ts",
-  "files": ["dist/", "i18n.js"],
+  "files": [
+    "dist/",
+    "i18n.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bradyholt/cronstrue.git"
