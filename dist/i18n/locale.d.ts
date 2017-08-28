@@ -27,7 +27,7 @@ export interface Locale {
     first(): string;
     second(): string;
     third(): string;
-    forth(): string;
+    fourth(): string;
     fifth(): string;
     commaOnThe(): string;
     spaceX0OfTheMonth(): string;

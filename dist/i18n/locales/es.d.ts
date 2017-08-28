@@ -38,7 +38,7 @@ export declare class es implements Locale {
     fifth(): string;
     first(): string;
     firstWeekday(): string;
-    forth(): string;
+    fourth(): string;
     minutesX0ThroughX1PastTheHour(): string;
     second(): string;
     secondsX0ThroughX1PastTheMinute(): string;

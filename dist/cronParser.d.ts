@@ -3,5 +3,8 @@ export declare class CronParser {
     dayOfWeekStartIndexZero: boolean;
     constructor(expression: string, dayOfWeekStartIndexZero?: boolean);
     parse(): string[];
-    protected normalizeExpression(expressionParts: string[]): void;
+    protected extractParts(expression: string): string[];
+    protected normalize(expressionParts: string[]): void;
+    protected validate(parsed: string[]): void;
+    protected assertNoInvalidCharacters(partDescription: string, expression: string): void;
 }

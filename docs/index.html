@@ -48,17 +48,20 @@
 <pre><code>npm install cronstrue
 </code></pre><p>Then, depending upon your usage context, add a reference to it:</p>
 <h3 id="node">Node</h3>
-<pre><code>var cronstrue = require(&#39;cronstrue&#39;);
-</code></pre><h3 id="es6-typescript">ES6/TypeScript</h3>
-<pre><code>import cronstrue from &#39;cronstrue&#39;;
-</code></pre><h3 id="browser">Browser</h3>
+<pre><code class="lang-js">var cronstrue = require(&#39;cronstrue&#39;);
+</code></pre>
+<h3 id="es6-typescript">ES6/TypeScript</h3>
+<pre><code class="lang-js">import cronstrue from &#39;cronstrue&#39;;
+</code></pre>
+<h3 id="browser">Browser</h3>
 <p> The <code>cronstrue.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a <code>&lt;script&gt;</code> tag.</p>
-<pre><code>&lt;script src=&quot;cronstrue.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html">&lt;script src=&quot;cronstrue.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   var cronstrue = window.cronstrue;
 &lt;/script&gt;
-</code></pre><h2 id="usage">Usage</h2>
-<pre><code>cronstrue.toString(&quot;* * * * *&quot;);
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-js">cronstrue.toString(&quot;* * * * *&quot;);
 &gt; &quot;Every minute&quot;
 
 cronstrue.toString(&quot;0 23 ? * MON-FRI&quot;);
@@ -67,23 +70,26 @@ cronstrue.toString(&quot;0 23 ? * MON-FRI&quot;);
 cronstrue.toString(&quot;23 12 * * SUN#2&quot;);
 &gt; &quot;At 12:23 PM, on the second Sunday of the month&quot;
 
-console.log(cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false}));
+cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false});
 &gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
-</code></pre><p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradyholt/cronstrue/blob/master/test/cronstrue.js">reference the unit tests</a>.</p>
+</code></pre>
+<p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradyholt/cRonstrue/blob/master/test/cronstrue.ts">reference the unit tests</a>.</p>
 <h2 id="demo">Demo</h2>
 <p>A demo is available here <a href="http://bradyholt.github.io/cRonstrue/#cronstrue-demo">here</a>.</p>
 <h2 id="i18n">i18n</h2>
 <p>To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  <code>cronstrue.toString()</code>.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; });</code>.</p>
 <h3 id="node">Node</h3>
-<pre><code>var cronstrue = require(&#39;cronstrue/i18n&#39;);
+<pre><code class="lang-js">var cronstrue = require(&#39;cronstrue/i18n&#39;);
 cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
-</code></pre><h3 id="browser">Browser</h3>
+</code></pre>
+<h3 id="browser">Browser</h3>
 <p> The <code>cronstrue-i18n.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.</p>
-<pre><code>&lt;script src=&quot;cronstrue-i18n.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html">&lt;script src=&quot;cronstrue-i18n.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
 &lt;/script&gt;
-</code></pre><h3 id="supported-locales">Supported Locales</h3>
+</code></pre>
+<h3 id="supported-locales">Supported Locales</h3>
 <ul>
 <li>en - English</li>
 <li>nl - Dutch</li>
