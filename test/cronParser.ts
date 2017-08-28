@@ -18,8 +18,13 @@ describe("CronParser", function () {
             assert.equal(new CronParser("* * * * * 2015").parse()[0], "");
         });
 
-        it("should error if expression is not valid", function () {
+
+        it("should error if expression is not a cron schedule", function () {
             assert.throws(function () { new CronParser("sdlksCRAPdlkskl- dds").parse() }, 'Expression has only 2 parts. At least 5 parts are required.');
+        });
+
+        it("should error if DOW part is not valid", function () {
+            assert.throws(function () { new CronParser("* * * * MO").parse() }, `DOW part contains invalid values: 'MO'`);
         });
     });
 });

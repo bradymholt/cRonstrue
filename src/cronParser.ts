@@ -19,11 +19,19 @@ export class CronParser {
      * @returns {string[]}
      */
   parse(): string[] {
+    let parsed = this.extractParts(this.expression);
+    this.normalize(parsed);
+    this.validate(parsed);
+
+    return parsed;
+  }
+
+  protected extractParts(expression: string) {
     if (!this.expression) {
       throw new Error("Expression is empty");
     }
 
-    let parsed: string[] = this.expression.trim().split(" ");
+    let parsed: string[] = expression.trim().split(" ");
 
     if (parsed.length < 5) {
       throw new Error(
@@ -48,11 +56,10 @@ export class CronParser {
       throw new Error(`Expression has ${parsed.length} parts; too many!`);
     }
 
-    this.normalizeExpression(parsed);
     return parsed;
   }
 
-  protected normalizeExpression(expressionParts: string[]): void {
+  protected normalize(expressionParts: string[]): void {
     // Convert ? to * only for DOM and DOW
     expressionParts[3] = expressionParts[3].replace("?", "*");
     expressionParts[5] = expressionParts[5].replace("?", "*");
@@ -134,7 +141,7 @@ export class CronParser {
       );
     }
 
-    // Convert SUN-SAT format to 0-6 format
+    // Convert DOW SUN-SAT format to 0-6 format
     var days: { [key: string]: number } = {
       SUN: 0,
       MON: 1,
@@ -219,6 +226,21 @@ export class CronParser {
           expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
         }
       }
+    }
+  }
+
+  protected validate(parsed: string[]) {
+    this.assertNoInvalidCharacters("DOW", parsed[5]);
+    this.assertNoInvalidCharacters("DOM", parsed[3]);
+  }
+
+  protected assertNoInvalidCharacters(partDescription: string, expression: string) {
+    // No characters other than 'L' or 'W' should remain after normalization
+    let invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
+    if (invalidChars && invalidChars.length) {
+      throw new Error(
+        `${partDescription} part contains invalid values: '${invalidChars.toString()}'`
+      );
     }
   }
 }
