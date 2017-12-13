@@ -177,7 +177,7 @@ export class CronParser {
     for (let month in months) {
       expressionParts[4] = expressionParts[4].replace(
         new RegExp(month, "gi"),
-        months[month.toUpperCase()].toString()
+        months[month].toString()
       );
     }
 
