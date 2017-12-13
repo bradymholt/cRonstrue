@@ -1,4 +1,4 @@
-# cRonstrue [![Build Status](https://travis-ci.org/bradyholt/cRonstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cRonstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+# cRonstrue [![Build Status](https://travis-ci.org/bradymholt/cRonstrue.svg?branch=master)](https://travis-ci.org/bradyholt/cRonstrue) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 
 cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
@@ -61,11 +61,11 @@ cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false});
 
 ```
 
-For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradyholt/cRonstrue/blob/master/test/cronstrue.ts).
+For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
 
 ## Demo
 
-A demo is available here [here](http://bradyholt.github.io/cRonstrue/#cronstrue-demo).
+A demo is available here [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
 
 ## i18n
 
@@ -105,4 +105,4 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 
 ## License
 
-cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradyholt/cronstrue/blob/master/LICENSE).
+cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradymholt/cronstrue/blob/master/LICENSE).
