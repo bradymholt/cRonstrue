@@ -88,7 +88,7 @@ describe("Cronstrue", function () {
             assert.equal(construe.toString(this.test.title), "Every minute between 11:00 AM and 11:10 AM");
         });
 
-        it("23 12 * JAN-MAR *", function () {
+        it("23 12 * Jan-Mar *", function () {
             assert.equal(construe.toString(this.test.title), "At 12:23 PM, January through March");
         });
 
@@ -338,7 +338,7 @@ describe("Cronstrue", function () {
             assert.equal(construe.toString(this.test.title), "At 07:05 AM, every 4 years, 2016 through 9999");
         });
 
-        it("0 30 10-13 ? * WED,FRI", function () {
+        it("0 30 10-13 ? * wed,FRI", function () {
             assert.equal(construe.toString(this.test.title), "At 30 minutes past the hour, between 10:00 AM and 01:59 PM, only on Wednesday and Friday");
         });
 

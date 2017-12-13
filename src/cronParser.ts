@@ -153,7 +153,7 @@ export class CronParser {
     };
     for (let day in days) {
       expressionParts[5] = expressionParts[5].replace(
-        new RegExp(day, "g"),
+        new RegExp(day, "gi"),
         days[day].toString()
       );
     }
@@ -176,8 +176,8 @@ export class CronParser {
 
     for (let month in months) {
       expressionParts[4] = expressionParts[4].replace(
-        new RegExp(month, "g"),
-        months[month].toString()
+        new RegExp(month, "gi"),
+        months[month.toUpperCase()].toString()
       );
     }
 
