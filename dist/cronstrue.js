@@ -584,7 +584,7 @@ var CronParser = (function () {
             SAT: 6
         };
         for (var day in days) {
-            expressionParts[5] = expressionParts[5].replace(new RegExp(day, "g"), days[day].toString());
+            expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
         }
         var months = {
             JAN: 1,
@@ -601,7 +601,7 @@ var CronParser = (function () {
             DEC: 12
         };
         for (var month in months) {
-            expressionParts[4] = expressionParts[4].replace(new RegExp(month, "g"), months[month].toString());
+            expressionParts[4] = expressionParts[4].replace(new RegExp(month, "gi"), months[month].toString());
         }
         if (expressionParts[0] == "0") {
             expressionParts[0] = "";
