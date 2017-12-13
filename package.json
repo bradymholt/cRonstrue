@@ -6,9 +6,9 @@
   "author": "Brady Holt",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bradyholt/cronstrue/issues"
+    "url": "https://github.com/bradymholt/cronstrue/issues"
   },
-  "homepage": "https://github.com/bradyholt/cronstrue",
+  "homepage": "https://github.com/bradymholt/cronstrue",
   "keywords": [
     "cron",
     "cronjob",
@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradyholt/cronstrue.git"
+    "url": "git+https://github.com/bradymholt/cronstrue.git"
   },
   "devDependencies": {
     "@types/chai": "^4.0.0",

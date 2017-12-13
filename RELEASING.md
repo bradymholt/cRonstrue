@@ -1,4 +1,4 @@
 ```
-npm adduser bradyholt
+npm adduser bradymholt
 npm run release
 ```

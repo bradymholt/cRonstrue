@@ -30,6 +30,6 @@
     "cron",
     "schedule"
   ],
-  "homepage": "https://github.com/bradyholt/cronstrue",
+  "homepage": "https://github.com/bradymholt/cronstrue",
   "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"]
 }
