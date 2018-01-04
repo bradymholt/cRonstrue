@@ -7,7 +7,7 @@
 		exports["cronstrue"] = factory();
 	else
 		root["cronstrue"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -42,9 +42,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
 /******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
@@ -83,8 +80,8 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var stringUtilities_1 = __webpack_require__(3);
-var cronParser_1 = __webpack_require__(1);
+var stringUtilities_1 = __webpack_require__(1);
+var cronParser_1 = __webpack_require__(2);
 var ExpressionDescriptor = (function () {
     function ExpressionDescriptor(expression, options) {
         this.expression = expression;
@@ -486,6 +483,35 @@ exports.ExpressionDescriptor = ExpressionDescriptor;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var StringUtilities = (function () {
+    function StringUtilities() {
+    }
+    StringUtilities.format = function (template) {
+        var values = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            values[_i - 1] = arguments[_i];
+        }
+        return template.replace(/%s/g, function () {
+            return values.shift();
+        });
+    };
+    StringUtilities.containsAny = function (text, searchStrings) {
+        return searchStrings.some(function (c) {
+            return text.indexOf(c) > -1;
+        });
+    };
+    return StringUtilities;
+}());
+exports.StringUtilities = StringUtilities;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 var CronParser = (function () {
     function CronParser(expression, dayOfWeekStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
@@ -650,7 +676,7 @@ exports.CronParser = CronParser;
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -856,36 +882,24 @@ exports.en = en;
 
 
 /***/ }),
-/* 3 */
+/* 4 */,
+/* 5 */,
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var StringUtilities = (function () {
-    function StringUtilities() {
-    }
-    StringUtilities.format = function (template) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return template.replace(/%s/g, function () {
-            return values.shift();
-        });
-    };
-    StringUtilities.containsAny = function (text, searchStrings) {
-        return searchStrings.some(function (c) {
-            return text.indexOf(c) > -1;
-        });
-    };
-    return StringUtilities;
-}());
-exports.StringUtilities = StringUtilities;
+var expressionDescriptor_1 = __webpack_require__(0);
+var allLocalesLoader_1 = __webpack_require__(7);
+expressionDescriptor_1.ExpressionDescriptor.initialize(new allLocalesLoader_1.allLocalesLoader());
+exports.default = expressionDescriptor_1.ExpressionDescriptor;
+var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
+exports.toString = toString;
 
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -909,30 +923,13 @@ exports.allLocalesLoader = allLocalesLoader;
 
 
 /***/ }),
-/* 5 */,
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var expressionDescriptor_1 = __webpack_require__(0);
-var allLocalesLoader_1 = __webpack_require__(4);
-expressionDescriptor_1.ExpressionDescriptor.initialize(new allLocalesLoader_1.allLocalesLoader());
-exports.default = expressionDescriptor_1.ExpressionDescriptor;
-var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
-exports.toString = toString;
-
-
-/***/ }),
-/* 7 */,
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var en_1 = __webpack_require__(2);
+var en_1 = __webpack_require__(3);
 exports.en = en_1.en;
 var de_1 = __webpack_require__(9);
 exports.de = de_1.de;
@@ -942,19 +939,19 @@ var fr_1 = __webpack_require__(11);
 exports.fr = fr_1.fr;
 var it_1 = __webpack_require__(12);
 exports.it = it_1.it;
-var nl_1 = __webpack_require__(14);
+var nl_1 = __webpack_require__(13);
 exports.nl = nl_1.nl;
-var nb_1 = __webpack_require__(13);
+var nb_1 = __webpack_require__(14);
 exports.nb = nb_1.nb;
-var sv_1 = __webpack_require__(19);
+var sv_1 = __webpack_require__(15);
 exports.sv = sv_1.sv;
-var pl_1 = __webpack_require__(15);
+var pl_1 = __webpack_require__(16);
 exports.pl = pl_1.pl;
-var pt_BR_1 = __webpack_require__(16);
+var pt_BR_1 = __webpack_require__(17);
 exports.pt_BR = pt_BR_1.pt_BR;
-var ro_1 = __webpack_require__(17);
+var ro_1 = __webpack_require__(18);
 exports.ro = ro_1.ro;
-var ru_1 = __webpack_require__(18);
+var ru_1 = __webpack_require__(19);
 exports.ru = ru_1.ru;
 var tr_1 = __webpack_require__(20);
 exports.tr = tr_1.tr;
@@ -1666,167 +1663,6 @@ exports.it = it;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var nb = (function () {
-    function nb() {
-    }
-    nb.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
-    nb.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
-    nb.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
-    nb.prototype.commaYearX0ThroughYearX1 = function () { return null; };
-    nb.prototype.use24HourTimeFormatByDefault = function () { return false; };
-    nb.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
-        return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
-    };
-    nb.prototype.at = function () {
-        return "På";
-    };
-    nb.prototype.atSpace = function () {
-        return "På ";
-    };
-    nb.prototype.atX0 = function () {
-        return "på %s";
-    };
-    nb.prototype.atX0MinutesPastTheHour = function () {
-        return "på %s minutter etter timen";
-    };
-    nb.prototype.atX0SecondsPastTheMinute = function () {
-        return "på %s sekunder etter minuttet";
-    };
-    nb.prototype.betweenX0AndX1 = function () {
-        return "mellom %s og %s";
-    };
-    nb.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return ", mellom dag %s og %s av måneden";
-    };
-    nb.prototype.commaEveryDay = function () {
-        return ", hver dag";
-    };
-    nb.prototype.commaEveryHour = function () {
-        return ", hver time";
-    };
-    nb.prototype.commaEveryMinute = function () {
-        return ", hvert minutt";
-    };
-    nb.prototype.commaEveryX0Days = function () {
-        return ", hver %s dag";
-    };
-    nb.prototype.commaEveryX0daysOfTheWeek = function () {
-        return ", hver %s ukedag";
-    };
-    nb.prototype.commaEveryX0Months = function () {
-        return ", hver %s måned]";
-    };
-    nb.prototype.commaEveryX0Years = function () {
-        return ", hvert %s år";
-    };
-    nb.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", på dag %s av måneden";
-    };
-    nb.prototype.commaOnlyInX0 = function () {
-        return ", bare i %s";
-    };
-    nb.prototype.commaOnlyOnX0 = function () {
-        return ", bare på %s";
-    };
-    nb.prototype.commaOnThe = function () {
-        return ", på den ";
-    };
-    nb.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return ", på den siste dagen i måneden";
-    };
-    nb.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return ", på den siste ukedagen i måneden";
-    };
-    nb.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return ", på den siste %s av måneden";
-    };
-    nb.prototype.commaOnTheX0OfTheMonth = function () {
-        return ", på den %s av måneden";
-    };
-    nb.prototype.commaX0ThroughX1 = function () {
-        return ", %s til og med %s";
-    };
-    nb.prototype.everyHour = function () {
-        return "hver time";
-    };
-    nb.prototype.everyMinute = function () {
-        return "hvert minutt";
-    };
-    nb.prototype.everyMinutebetweenX0AndX1 = function () {
-        return "Hvert minutt mellom %s og %s";
-    };
-    nb.prototype.everysecond = function () {
-        return "hvert sekund";
-    };
-    nb.prototype.everyX0Hours = function () {
-        return "hver %s time";
-    };
-    nb.prototype.everyX0Minutes = function () {
-        return "hvert %s minutt";
-    };
-    nb.prototype.everyX0Seconds = function () {
-        return "hvert %s sekund";
-    };
-    nb.prototype.fifth = function () {
-        return "femte";
-    };
-    nb.prototype.first = function () {
-        return "første";
-    };
-    nb.prototype.firstWeekday = function () {
-        return "første ukedag";
-    };
-    nb.prototype.fourth = function () {
-        return "fjede";
-    };
-    nb.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "minuttene fra %s til og med %s etter timen";
-    };
-    nb.prototype.second = function () {
-        return "sekund";
-    };
-    nb.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "sekundene fra %s til og med %s etter minuttet";
-    };
-    nb.prototype.spaceAnd = function () {
-        return " og";
-    };
-    nb.prototype.spaceAndSpace = function () {
-        return " og ";
-    };
-    nb.prototype.spaceX0OfTheMonth = function () {
-        return " %s av måneden";
-    };
-    nb.prototype.lastDay = function () {
-        return "den siste dagen";
-    };
-    nb.prototype.third = function () {
-        return "tredje";
-    };
-    nb.prototype.weekdayNearestDayX0 = function () {
-        return "ukedag nærmest dag %s";
-    };
-    nb.prototype.commaStartingX0 = function () {
-        return ", starter %s";
-    };
-    nb.prototype.daysOfTheWeek = function () {
-        return ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
-    };
-    nb.prototype.monthsOfTheYear = function () {
-        return ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
-    };
-    return nb;
-}());
-exports.nb = nb;
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 var nl = (function () {
     function nl() {
     }
@@ -1982,662 +1818,168 @@ exports.nl = nl;
 
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var nb = (function () {
+    function nb() {
+    }
+    nb.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+    nb.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+    nb.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+    nb.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+    nb.prototype.use24HourTimeFormatByDefault = function () { return false; };
+    nb.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
+    };
+    nb.prototype.at = function () {
+        return "På";
+    };
+    nb.prototype.atSpace = function () {
+        return "På ";
+    };
+    nb.prototype.atX0 = function () {
+        return "på %s";
+    };
+    nb.prototype.atX0MinutesPastTheHour = function () {
+        return "på %s minutter etter timen";
+    };
+    nb.prototype.atX0SecondsPastTheMinute = function () {
+        return "på %s sekunder etter minuttet";
+    };
+    nb.prototype.betweenX0AndX1 = function () {
+        return "mellom %s og %s";
+    };
+    nb.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", mellom dag %s og %s av måneden";
+    };
+    nb.prototype.commaEveryDay = function () {
+        return ", hver dag";
+    };
+    nb.prototype.commaEveryHour = function () {
+        return ", hver time";
+    };
+    nb.prototype.commaEveryMinute = function () {
+        return ", hvert minutt";
+    };
+    nb.prototype.commaEveryX0Days = function () {
+        return ", hver %s dag";
+    };
+    nb.prototype.commaEveryX0daysOfTheWeek = function () {
+        return ", hver %s ukedag";
+    };
+    nb.prototype.commaEveryX0Months = function () {
+        return ", hver %s måned]";
+    };
+    nb.prototype.commaEveryX0Years = function () {
+        return ", hvert %s år";
+    };
+    nb.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", på dag %s av måneden";
+    };
+    nb.prototype.commaOnlyInX0 = function () {
+        return ", bare i %s";
+    };
+    nb.prototype.commaOnlyOnX0 = function () {
+        return ", bare på %s";
+    };
+    nb.prototype.commaOnThe = function () {
+        return ", på den ";
+    };
+    nb.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", på den siste dagen i måneden";
+    };
+    nb.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", på den siste ukedagen i måneden";
+    };
+    nb.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", på den siste %s av måneden";
+    };
+    nb.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", på den %s av måneden";
+    };
+    nb.prototype.commaX0ThroughX1 = function () {
+        return ", %s til og med %s";
+    };
+    nb.prototype.everyHour = function () {
+        return "hver time";
+    };
+    nb.prototype.everyMinute = function () {
+        return "hvert minutt";
+    };
+    nb.prototype.everyMinutebetweenX0AndX1 = function () {
+        return "Hvert minutt mellom %s og %s";
+    };
+    nb.prototype.everysecond = function () {
+        return "hvert sekund";
+    };
+    nb.prototype.everyX0Hours = function () {
+        return "hver %s time";
+    };
+    nb.prototype.everyX0Minutes = function () {
+        return "hvert %s minutt";
+    };
+    nb.prototype.everyX0Seconds = function () {
+        return "hvert %s sekund";
+    };
+    nb.prototype.fifth = function () {
+        return "femte";
+    };
+    nb.prototype.first = function () {
+        return "første";
+    };
+    nb.prototype.firstWeekday = function () {
+        return "første ukedag";
+    };
+    nb.prototype.fourth = function () {
+        return "fjede";
+    };
+    nb.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "minuttene fra %s til og med %s etter timen";
+    };
+    nb.prototype.second = function () {
+        return "sekund";
+    };
+    nb.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "sekundene fra %s til og med %s etter minuttet";
+    };
+    nb.prototype.spaceAnd = function () {
+        return " og";
+    };
+    nb.prototype.spaceAndSpace = function () {
+        return " og ";
+    };
+    nb.prototype.spaceX0OfTheMonth = function () {
+        return " %s av måneden";
+    };
+    nb.prototype.lastDay = function () {
+        return "den siste dagen";
+    };
+    nb.prototype.third = function () {
+        return "tredje";
+    };
+    nb.prototype.weekdayNearestDayX0 = function () {
+        return "ukedag nærmest dag %s";
+    };
+    nb.prototype.commaStartingX0 = function () {
+        return ", starter %s";
+    };
+    nb.prototype.daysOfTheWeek = function () {
+        return ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
+    };
+    nb.prototype.monthsOfTheYear = function () {
+        return ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"];
+    };
+    return nb;
+}());
+exports.nb = nb;
+
+
+/***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var pl = (function () {
-    function pl() {
-    }
-    pl.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
-    pl.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
-    pl.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
-    pl.prototype.commaYearX0ThroughYearX1 = function () { return null; };
-    pl.prototype.use24HourTimeFormatByDefault = function () { return true; };
-    pl.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
-        return "Wystąpił błąd podczas generowania opisu wyrażenia cron. Sprawdź składnię wyrażenia cron.";
-    };
-    pl.prototype.at = function () {
-        return "O";
-    };
-    pl.prototype.atSpace = function () {
-        return "O ";
-    };
-    pl.prototype.atX0 = function () {
-        return "o %s";
-    };
-    pl.prototype.atX0MinutesPastTheHour = function () {
-        return "w %s minucie";
-    };
-    pl.prototype.atX0SecondsPastTheMinute = function () {
-        return "w %s sekundzie";
-    };
-    pl.prototype.betweenX0AndX1 = function () {
-        return "od %s do %s";
-    };
-    pl.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return ", od %s-ego do %s-ego dnia miesiąca";
-    };
-    pl.prototype.commaEveryDay = function () {
-        return ", co dzień";
-    };
-    pl.prototype.commaEveryHour = function () {
-        return ", co godzinę";
-    };
-    pl.prototype.commaEveryMinute = function () {
-        return ", co minutę";
-    };
-    pl.prototype.commaEveryX0Days = function () {
-        return ", co %s dni";
-    };
-    pl.prototype.commaEveryX0daysOfTheWeek = function () {
-        return ", co %s dni tygodnia";
-    };
-    pl.prototype.commaEveryX0Months = function () {
-        return ", co %s miesięcy";
-    };
-    pl.prototype.commaEveryX0Years = function () {
-        return ", co %s lat";
-    };
-    pl.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", %s-ego dnia miesiąca";
-    };
-    pl.prototype.commaOnlyInX0 = function () {
-        return ", tylko %s";
-    };
-    pl.prototype.commaOnlyOnX0 = function () {
-        return ", tylko %s";
-    };
-    pl.prototype.commaOnThe = function () {
-        return ", ";
-    };
-    pl.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return ", ostatni dzień miesiąca";
-    };
-    pl.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return ", ostatni dzień roboczy miesiąca";
-    };
-    pl.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return ", ostatni %s miesiąca";
-    };
-    pl.prototype.commaOnTheX0OfTheMonth = function () {
-        return ", %s miesiąca";
-    };
-    pl.prototype.commaX0ThroughX1 = function () {
-        return ", od %s do %s";
-    };
-    pl.prototype.everyHour = function () {
-        return "co godzinę";
-    };
-    pl.prototype.everyMinute = function () {
-        return "co minutę";
-    };
-    pl.prototype.everyMinutebetweenX0AndX1 = function () {
-        return "Co minutę od %s do %s";
-    };
-    pl.prototype.everysecond = function () {
-        return "co sekundę";
-    };
-    pl.prototype.everyX0Hours = function () {
-        return "co %s godzin";
-    };
-    pl.prototype.everyX0Minutes = function () {
-        return "co %s minut";
-    };
-    pl.prototype.everyX0Seconds = function () {
-        return "co %s sekund";
-    };
-    pl.prototype.fifth = function () {
-        return "piąty";
-    };
-    pl.prototype.first = function () {
-        return "pierwszy";
-    };
-    pl.prototype.firstWeekday = function () {
-        return "pierwszy dzień roboczy";
-    };
-    pl.prototype.fourth = function () {
-        return "czwarty";
-    };
-    pl.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "minuty od %s do %s";
-    };
-    pl.prototype.second = function () {
-        return "drugi";
-    };
-    pl.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "sekundy od %s do %s";
-    };
-    pl.prototype.spaceAnd = function () {
-        return " i";
-    };
-    pl.prototype.spaceAndSpace = function () {
-        return " i ";
-    };
-    pl.prototype.spaceX0OfTheMonth = function () {
-        return " %s miesiąca";
-    };
-    pl.prototype.lastDay = function () {
-        return "ostatni dzień";
-    };
-    pl.prototype.third = function () {
-        return "trzeci";
-    };
-    pl.prototype.weekdayNearestDayX0 = function () {
-        return "dzień roboczy najbliższy %s-ego dnia";
-    };
-    pl.prototype.commaStartingX0 = function () {
-        return ", startowy %s";
-    };
-    pl.prototype.daysOfTheWeek = function () {
-        return ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
-    };
-    pl.prototype.monthsOfTheYear = function () {
-        return ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
-    };
-    return pl;
-}());
-exports.pl = pl;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var pt_BR = (function () {
-    function pt_BR() {
-    }
-    pt_BR.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
-    pt_BR.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
-    pt_BR.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
-    pt_BR.prototype.commaYearX0ThroughYearX1 = function () { return null; };
-    pt_BR.prototype.use24HourTimeFormatByDefault = function () { return false; };
-    pt_BR.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
-        return "Ocorreu um erro ao gerar a descrição da expressão Cron.";
-    };
-    pt_BR.prototype.at = function () {
-        return "às";
-    };
-    pt_BR.prototype.atSpace = function () {
-        return "às ";
-    };
-    pt_BR.prototype.atX0 = function () {
-        return "Às %s";
-    };
-    pt_BR.prototype.atX0MinutesPastTheHour = function () {
-        return "aos %s minutos da hora";
-    };
-    pt_BR.prototype.atX0SecondsPastTheMinute = function () {
-        return "aos %s segundos do minuto";
-    };
-    pt_BR.prototype.betweenX0AndX1 = function () {
-        return "entre %s e %s";
-    };
-    pt_BR.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return ", entre os dias %s e %s do mês";
-    };
-    pt_BR.prototype.commaEveryDay = function () {
-        return ", a cada dia";
-    };
-    pt_BR.prototype.commaEveryHour = function () {
-        return ", a cada hora";
-    };
-    pt_BR.prototype.commaEveryMinute = function () {
-        return ", a cada minuto";
-    };
-    pt_BR.prototype.commaEveryX0Days = function () {
-        return ", a cada %s dias";
-    };
-    pt_BR.prototype.commaEveryX0daysOfTheWeek = function () {
-        return ", a cada %s dias de semana";
-    };
-    pt_BR.prototype.commaEveryX0Months = function () {
-        return ", a cada %s meses";
-    };
-    pt_BR.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", no dia %s do mês";
-    };
-    pt_BR.prototype.commaOnlyInX0 = function () {
-        return ", somente em %s";
-    };
-    pt_BR.prototype.commaOnlyOnX0 = function () {
-        return ", somente de %s";
-    };
-    pt_BR.prototype.commaOnThe = function () {
-        return ", na ";
-    };
-    pt_BR.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return ", no último dia do mês";
-    };
-    pt_BR.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return ", no último dia da semana do mês";
-    };
-    pt_BR.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return ", na última %s do mês";
-    };
-    pt_BR.prototype.commaOnTheX0OfTheMonth = function () {
-        return ", no %s do mês";
-    };
-    pt_BR.prototype.commaX0ThroughX1 = function () {
-        return ", de %s a %s";
-    };
-    pt_BR.prototype.everyHour = function () {
-        return "a cada hora";
-    };
-    pt_BR.prototype.everyMinute = function () {
-        return "a cada minuto";
-    };
-    pt_BR.prototype.everyMinutebetweenX0AndX1 = function () {
-        return "a cada minuto entre %s e %s";
-    };
-    pt_BR.prototype.everysecond = function () {
-        return "a cada segundo";
-    };
-    pt_BR.prototype.everyX0Hours = function () {
-        return "a cada %s horas";
-    };
-    pt_BR.prototype.everyX0Minutes = function () {
-        return "a cada %s minutos";
-    };
-    pt_BR.prototype.everyX0Seconds = function () {
-        return "a cada %s segundos";
-    };
-    pt_BR.prototype.fifth = function () {
-        return "quinta";
-    };
-    pt_BR.prototype.first = function () {
-        return "primeira";
-    };
-    pt_BR.prototype.firstWeekday = function () {
-        return "primeiro dia da semana";
-    };
-    pt_BR.prototype.fourth = function () {
-        return "quarta";
-    };
-    pt_BR.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "do minuto %s até %s de cada hora";
-    };
-    pt_BR.prototype.second = function () {
-        return "segunda";
-    };
-    pt_BR.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "No segundo %s até %s de cada minuto";
-    };
-    pt_BR.prototype.spaceAnd = function () {
-        return " e";
-    };
-    pt_BR.prototype.spaceAndSpace = function () {
-        return " e ";
-    };
-    pt_BR.prototype.spaceX0OfTheMonth = function () {
-        return " %s do mês";
-    };
-    pt_BR.prototype.lastDay = function () {
-        return "o último dia";
-    };
-    pt_BR.prototype.third = function () {
-        return "terceira";
-    };
-    pt_BR.prototype.weekdayNearestDayX0 = function () {
-        return "dia da semana mais próximo do dia %s";
-    };
-    pt_BR.prototype.commaEveryX0Years = function () {
-        return ", a cada %s anos";
-    };
-    pt_BR.prototype.commaStartingX0 = function () {
-        return ", iniciando %s";
-    };
-    pt_BR.prototype.daysOfTheWeek = function () {
-        return ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
-    };
-    pt_BR.prototype.monthsOfTheYear = function () {
-        return ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-    };
-    return pt_BR;
-}());
-exports.pt_BR = pt_BR;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ro = (function () {
-    function ro() {
-    }
-    ro.prototype.use24HourTimeFormatByDefault = function () { return true; };
-    ro.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
-        return "Eroare la generarea descrierii. Verificați sintaxa.";
-    };
-    ro.prototype.at = function () {
-        return "La";
-    };
-    ro.prototype.atSpace = function () {
-        return "La ";
-    };
-    ro.prototype.atX0 = function () {
-        return "la %s";
-    };
-    ro.prototype.atX0MinutesPastTheHour = function () {
-        return "la și %s minute";
-    };
-    ro.prototype.atX0SecondsPastTheMinute = function () {
-        return "la și %s secunde";
-    };
-    ro.prototype.betweenX0AndX1 = function () {
-        return "între %s și %s";
-    };
-    ro.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return ", între zilele %s și %s ale lunii";
-    };
-    ro.prototype.commaEveryDay = function () {
-        return ", în fiecare zi";
-    };
-    ro.prototype.commaEveryHour = function () {
-        return ", în fiecare oră";
-    };
-    ro.prototype.commaEveryMinute = function () {
-        return ", în fiecare minut";
-    };
-    ro.prototype.commaEveryX0Days = function () {
-        return ", la fiecare %s zile";
-    };
-    ro.prototype.commaEveryX0daysOfTheWeek = function () {
-        return ", la fiecare a %s-a zi a săptămânii";
-    };
-    ro.prototype.commaEveryX0Months = function () {
-        return ", la fiecare %s luni";
-    };
-    ro.prototype.commaEveryX0Years = function () {
-        return ", o dată la %s ani";
-    };
-    ro.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", în ziua %s a lunii";
-    };
-    ro.prototype.commaOnlyInX0 = function () {
-        return ", doar în %s";
-    };
-    ro.prototype.commaOnlyOnX0 = function () {
-        return ", doar %s";
-    };
-    ro.prototype.commaOnThe = function () {
-        return ", în ";
-    };
-    ro.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return ", în ultima zi a lunii";
-    };
-    ro.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return ", în ultima zi lucrătoare a lunii";
-    };
-    ro.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return ", în ultima %s a lunii";
-    };
-    ro.prototype.commaOnTheX0OfTheMonth = function () {
-        return ", în %s a lunii";
-    };
-    ro.prototype.commaX0ThroughX1 = function () {
-        return ", de %s până %s";
-    };
-    ro.prototype.everyHour = function () {
-        return "în fiecare oră";
-    };
-    ro.prototype.everyMinute = function () {
-        return "în fiecare minut";
-    };
-    ro.prototype.everyMinutebetweenX0AndX1 = function () {
-        return "În fiecare minut între %s și %s";
-    };
-    ro.prototype.everysecond = function () {
-        return "în fiecare secundă";
-    };
-    ro.prototype.everyX0Hours = function () {
-        return "la fiecare %s ore";
-    };
-    ro.prototype.everyX0Minutes = function () {
-        return "la fiecare %s minute";
-    };
-    ro.prototype.everyX0Seconds = function () {
-        return "la fiecare %s secunde";
-    };
-    ro.prototype.fifth = function () {
-        return "a cincea";
-    };
-    ro.prototype.first = function () {
-        return "prima";
-    };
-    ro.prototype.firstWeekday = function () {
-        return "prima zi a săptămânii";
-    };
-    ro.prototype.fourth = function () {
-        return "a patra";
-    };
-    ro.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "între minutele %s și %s";
-    };
-    ro.prototype.second = function () {
-        return "a doua";
-    };
-    ro.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "între secunda %s și secunda %s";
-    };
-    ro.prototype.spaceAnd = function () {
-        return " și";
-    };
-    ro.prototype.spaceAndSpace = function () {
-        return " și ";
-    };
-    ro.prototype.spaceX0OfTheMonth = function () {
-        return " %s a lunii";
-    };
-    ro.prototype.lastDay = function () {
-        return "ultima zi";
-    };
-    ro.prototype.third = function () {
-        return "a treia";
-    };
-    ro.prototype.weekdayNearestDayX0 = function () {
-        return "cea mai apropiată zi a săptămânii de ziua %s";
-    };
-    ro.prototype.ComaMinX0ThroughMinX1 = function () {
-        return ", de la %s până la %s";
-    };
-    ro.prototype.commaMonthX0ThroughMonthX1 = function () {
-        return ", din %s până în %s";
-    };
-    ro.prototype.commaYearX0ThroughYearX1 = function () {
-        return ", din %s până în %s";
-    };
-    ro.prototype.atX0MinutesPastTheHourGt20 = function () {
-        return "la și %s de minute";
-    };
-    ro.prototype.atX0SecondsPastTheMinuteGt20 = function () {
-        return "la și %s de secunde";
-    };
-    ro.prototype.commaStartingX0 = function () {
-        return ", pornire %s";
-    };
-    ro.prototype.daysOfTheWeek = function () {
-        return ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
-    };
-    ro.prototype.monthsOfTheYear = function () {
-        return ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
-    };
-    return ro;
-}());
-exports.ro = ro;
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ru = (function () {
-    function ru() {
-    }
-    ru.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
-    ru.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
-    ru.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
-    ru.prototype.commaYearX0ThroughYearX1 = function () { return null; };
-    ru.prototype.use24HourTimeFormatByDefault = function () { return true; };
-    ru.prototype.everyMinute = function () {
-        return "каждую минуту";
-    };
-    ru.prototype.everyHour = function () {
-        return "каждый час";
-    };
-    ru.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
-        return "Произошла ошибка во время генерации описания выражения. Проверьте синтаксис крон-выражения.";
-    };
-    ru.prototype.atSpace = function () {
-        return "В ";
-    };
-    ru.prototype.everyMinutebetweenX0AndX1 = function () {
-        return "Каждую минуту с %s по %s";
-    };
-    ru.prototype.at = function () {
-        return "В";
-    };
-    ru.prototype.spaceAnd = function () {
-        return " и";
-    };
-    ru.prototype.everysecond = function () {
-        return "каждую секунду";
-    };
-    ru.prototype.everyX0Seconds = function () {
-        return "каждые %s секунд";
-    };
-    ru.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "секунды с %s по %s";
-    };
-    ru.prototype.atX0SecondsPastTheMinute = function () {
-        return "в %s секунд";
-    };
-    ru.prototype.everyX0Minutes = function () {
-        return "каждые %s минут";
-    };
-    ru.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "минуты с %s по %s";
-    };
-    ru.prototype.atX0MinutesPastTheHour = function () {
-        return "в %s минут";
-    };
-    ru.prototype.everyX0Hours = function () {
-        return "каждые %s часов";
-    };
-    ru.prototype.betweenX0AndX1 = function () {
-        return "с %s по %s";
-    };
-    ru.prototype.atX0 = function () {
-        return "в %s";
-    };
-    ru.prototype.commaEveryDay = function () {
-        return ", каждый день";
-    };
-    ru.prototype.commaEveryX0daysOfTheWeek = function () {
-        return ", каждые %s дней недели";
-    };
-    ru.prototype.commaX0ThroughX1 = function () {
-        return ", %s по %s";
-    };
-    ru.prototype.first = function () {
-        return "первый";
-    };
-    ru.prototype.second = function () {
-        return "второй";
-    };
-    ru.prototype.third = function () {
-        return "третий";
-    };
-    ru.prototype.fourth = function () {
-        return "четвертый";
-    };
-    ru.prototype.fifth = function () {
-        return "пятый";
-    };
-    ru.prototype.commaOnThe = function () {
-        return ", в ";
-    };
-    ru.prototype.spaceX0OfTheMonth = function () {
-        return " %s месяца";
-    };
-    ru.prototype.lastDay = function () {
-        return "последний день";
-    };
-    ru.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return ", в последний %s месяца";
-    };
-    ru.prototype.commaOnlyOnX0 = function () {
-        return ", только в %s";
-    };
-    ru.prototype.commaEveryX0Months = function () {
-        return ", каждые %s месяцев";
-    };
-    ru.prototype.commaOnlyInX0 = function () {
-        return ", только в %s";
-    };
-    ru.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return ", в последний день месяца";
-    };
-    ru.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return ", в последний будний день месяца";
-    };
-    ru.prototype.firstWeekday = function () {
-        return "первый будний день";
-    };
-    ru.prototype.weekdayNearestDayX0 = function () {
-        return "ближайший будний день к %s";
-    };
-    ru.prototype.commaOnTheX0OfTheMonth = function () {
-        return ", в %s месяца";
-    };
-    ru.prototype.commaEveryX0Days = function () {
-        return ", каждые %s дней";
-    };
-    ru.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return ", с %s по %s число месяца";
-    };
-    ru.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", в %s число месяца";
-    };
-    ru.prototype.spaceAndSpace = function () {
-        return " и ";
-    };
-    ru.prototype.commaEveryMinute = function () {
-        return ", каждую минуту";
-    };
-    ru.prototype.commaEveryHour = function () {
-        return ", каждый час";
-    };
-    ru.prototype.commaEveryX0Years = function () {
-        return ", каждые %s лет";
-    };
-    ru.prototype.commaStartingX0 = function () {
-        return ", начало %s";
-    };
-    ru.prototype.daysOfTheWeek = function () {
-        return ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
-    };
-    ru.prototype.monthsOfTheYear = function () {
-        return ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"];
-    };
-    return ru;
-}());
-exports.ru = ru;
-
-
-/***/ }),
-/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2840,6 +2182,661 @@ var sv = (function () {
     return sv;
 }());
 exports.sv = sv;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var pl = (function () {
+    function pl() {
+    }
+    pl.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+    pl.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+    pl.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+    pl.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+    pl.prototype.use24HourTimeFormatByDefault = function () { return true; };
+    pl.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Wystąpił błąd podczas generowania opisu wyrażenia cron. Sprawdź składnię wyrażenia cron.";
+    };
+    pl.prototype.at = function () {
+        return "O";
+    };
+    pl.prototype.atSpace = function () {
+        return "O ";
+    };
+    pl.prototype.atX0 = function () {
+        return "o %s";
+    };
+    pl.prototype.atX0MinutesPastTheHour = function () {
+        return "w %s minucie";
+    };
+    pl.prototype.atX0SecondsPastTheMinute = function () {
+        return "w %s sekundzie";
+    };
+    pl.prototype.betweenX0AndX1 = function () {
+        return "od %s do %s";
+    };
+    pl.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", od %s-ego do %s-ego dnia miesiąca";
+    };
+    pl.prototype.commaEveryDay = function () {
+        return ", co dzień";
+    };
+    pl.prototype.commaEveryHour = function () {
+        return ", co godzinę";
+    };
+    pl.prototype.commaEveryMinute = function () {
+        return ", co minutę";
+    };
+    pl.prototype.commaEveryX0Days = function () {
+        return ", co %s dni";
+    };
+    pl.prototype.commaEveryX0daysOfTheWeek = function () {
+        return ", co %s dni tygodnia";
+    };
+    pl.prototype.commaEveryX0Months = function () {
+        return ", co %s miesięcy";
+    };
+    pl.prototype.commaEveryX0Years = function () {
+        return ", co %s lat";
+    };
+    pl.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", %s-ego dnia miesiąca";
+    };
+    pl.prototype.commaOnlyInX0 = function () {
+        return ", tylko %s";
+    };
+    pl.prototype.commaOnlyOnX0 = function () {
+        return ", tylko %s";
+    };
+    pl.prototype.commaOnThe = function () {
+        return ", ";
+    };
+    pl.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", ostatni dzień miesiąca";
+    };
+    pl.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", ostatni dzień roboczy miesiąca";
+    };
+    pl.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", ostatni %s miesiąca";
+    };
+    pl.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", %s miesiąca";
+    };
+    pl.prototype.commaX0ThroughX1 = function () {
+        return ", od %s do %s";
+    };
+    pl.prototype.everyHour = function () {
+        return "co godzinę";
+    };
+    pl.prototype.everyMinute = function () {
+        return "co minutę";
+    };
+    pl.prototype.everyMinutebetweenX0AndX1 = function () {
+        return "Co minutę od %s do %s";
+    };
+    pl.prototype.everysecond = function () {
+        return "co sekundę";
+    };
+    pl.prototype.everyX0Hours = function () {
+        return "co %s godzin";
+    };
+    pl.prototype.everyX0Minutes = function () {
+        return "co %s minut";
+    };
+    pl.prototype.everyX0Seconds = function () {
+        return "co %s sekund";
+    };
+    pl.prototype.fifth = function () {
+        return "piąty";
+    };
+    pl.prototype.first = function () {
+        return "pierwszy";
+    };
+    pl.prototype.firstWeekday = function () {
+        return "pierwszy dzień roboczy";
+    };
+    pl.prototype.fourth = function () {
+        return "czwarty";
+    };
+    pl.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "minuty od %s do %s";
+    };
+    pl.prototype.second = function () {
+        return "drugi";
+    };
+    pl.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "sekundy od %s do %s";
+    };
+    pl.prototype.spaceAnd = function () {
+        return " i";
+    };
+    pl.prototype.spaceAndSpace = function () {
+        return " i ";
+    };
+    pl.prototype.spaceX0OfTheMonth = function () {
+        return " %s miesiąca";
+    };
+    pl.prototype.lastDay = function () {
+        return "ostatni dzień";
+    };
+    pl.prototype.third = function () {
+        return "trzeci";
+    };
+    pl.prototype.weekdayNearestDayX0 = function () {
+        return "dzień roboczy najbliższy %s-ego dnia";
+    };
+    pl.prototype.commaStartingX0 = function () {
+        return ", startowy %s";
+    };
+    pl.prototype.daysOfTheWeek = function () {
+        return ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+    };
+    pl.prototype.monthsOfTheYear = function () {
+        return ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"];
+    };
+    return pl;
+}());
+exports.pl = pl;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var pt_BR = (function () {
+    function pt_BR() {
+    }
+    pt_BR.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+    pt_BR.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+    pt_BR.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+    pt_BR.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+    pt_BR.prototype.use24HourTimeFormatByDefault = function () { return false; };
+    pt_BR.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Ocorreu um erro ao gerar a descrição da expressão Cron.";
+    };
+    pt_BR.prototype.at = function () {
+        return "às";
+    };
+    pt_BR.prototype.atSpace = function () {
+        return "às ";
+    };
+    pt_BR.prototype.atX0 = function () {
+        return "Às %s";
+    };
+    pt_BR.prototype.atX0MinutesPastTheHour = function () {
+        return "aos %s minutos da hora";
+    };
+    pt_BR.prototype.atX0SecondsPastTheMinute = function () {
+        return "aos %s segundos do minuto";
+    };
+    pt_BR.prototype.betweenX0AndX1 = function () {
+        return "entre %s e %s";
+    };
+    pt_BR.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", entre os dias %s e %s do mês";
+    };
+    pt_BR.prototype.commaEveryDay = function () {
+        return ", a cada dia";
+    };
+    pt_BR.prototype.commaEveryHour = function () {
+        return ", a cada hora";
+    };
+    pt_BR.prototype.commaEveryMinute = function () {
+        return ", a cada minuto";
+    };
+    pt_BR.prototype.commaEveryX0Days = function () {
+        return ", a cada %s dias";
+    };
+    pt_BR.prototype.commaEveryX0daysOfTheWeek = function () {
+        return ", a cada %s dias de semana";
+    };
+    pt_BR.prototype.commaEveryX0Months = function () {
+        return ", a cada %s meses";
+    };
+    pt_BR.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", no dia %s do mês";
+    };
+    pt_BR.prototype.commaOnlyInX0 = function () {
+        return ", somente em %s";
+    };
+    pt_BR.prototype.commaOnlyOnX0 = function () {
+        return ", somente de %s";
+    };
+    pt_BR.prototype.commaOnThe = function () {
+        return ", na ";
+    };
+    pt_BR.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", no último dia do mês";
+    };
+    pt_BR.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", no último dia da semana do mês";
+    };
+    pt_BR.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", na última %s do mês";
+    };
+    pt_BR.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", no %s do mês";
+    };
+    pt_BR.prototype.commaX0ThroughX1 = function () {
+        return ", de %s a %s";
+    };
+    pt_BR.prototype.everyHour = function () {
+        return "a cada hora";
+    };
+    pt_BR.prototype.everyMinute = function () {
+        return "a cada minuto";
+    };
+    pt_BR.prototype.everyMinutebetweenX0AndX1 = function () {
+        return "a cada minuto entre %s e %s";
+    };
+    pt_BR.prototype.everysecond = function () {
+        return "a cada segundo";
+    };
+    pt_BR.prototype.everyX0Hours = function () {
+        return "a cada %s horas";
+    };
+    pt_BR.prototype.everyX0Minutes = function () {
+        return "a cada %s minutos";
+    };
+    pt_BR.prototype.everyX0Seconds = function () {
+        return "a cada %s segundos";
+    };
+    pt_BR.prototype.fifth = function () {
+        return "quinta";
+    };
+    pt_BR.prototype.first = function () {
+        return "primeira";
+    };
+    pt_BR.prototype.firstWeekday = function () {
+        return "primeiro dia da semana";
+    };
+    pt_BR.prototype.fourth = function () {
+        return "quarta";
+    };
+    pt_BR.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "do minuto %s até %s de cada hora";
+    };
+    pt_BR.prototype.second = function () {
+        return "segunda";
+    };
+    pt_BR.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "No segundo %s até %s de cada minuto";
+    };
+    pt_BR.prototype.spaceAnd = function () {
+        return " e";
+    };
+    pt_BR.prototype.spaceAndSpace = function () {
+        return " e ";
+    };
+    pt_BR.prototype.spaceX0OfTheMonth = function () {
+        return " %s do mês";
+    };
+    pt_BR.prototype.lastDay = function () {
+        return "o último dia";
+    };
+    pt_BR.prototype.third = function () {
+        return "terceira";
+    };
+    pt_BR.prototype.weekdayNearestDayX0 = function () {
+        return "dia da semana mais próximo do dia %s";
+    };
+    pt_BR.prototype.commaEveryX0Years = function () {
+        return ", a cada %s anos";
+    };
+    pt_BR.prototype.commaStartingX0 = function () {
+        return ", iniciando %s";
+    };
+    pt_BR.prototype.daysOfTheWeek = function () {
+        return ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+    };
+    pt_BR.prototype.monthsOfTheYear = function () {
+        return ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+    };
+    return pt_BR;
+}());
+exports.pt_BR = pt_BR;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ro = (function () {
+    function ro() {
+    }
+    ro.prototype.use24HourTimeFormatByDefault = function () { return true; };
+    ro.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Eroare la generarea descrierii. Verificați sintaxa.";
+    };
+    ro.prototype.at = function () {
+        return "La";
+    };
+    ro.prototype.atSpace = function () {
+        return "La ";
+    };
+    ro.prototype.atX0 = function () {
+        return "la %s";
+    };
+    ro.prototype.atX0MinutesPastTheHour = function () {
+        return "la și %s minute";
+    };
+    ro.prototype.atX0SecondsPastTheMinute = function () {
+        return "la și %s secunde";
+    };
+    ro.prototype.betweenX0AndX1 = function () {
+        return "între %s și %s";
+    };
+    ro.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", între zilele %s și %s ale lunii";
+    };
+    ro.prototype.commaEveryDay = function () {
+        return ", în fiecare zi";
+    };
+    ro.prototype.commaEveryHour = function () {
+        return ", în fiecare oră";
+    };
+    ro.prototype.commaEveryMinute = function () {
+        return ", în fiecare minut";
+    };
+    ro.prototype.commaEveryX0Days = function () {
+        return ", la fiecare %s zile";
+    };
+    ro.prototype.commaEveryX0daysOfTheWeek = function () {
+        return ", la fiecare a %s-a zi a săptămânii";
+    };
+    ro.prototype.commaEveryX0Months = function () {
+        return ", la fiecare %s luni";
+    };
+    ro.prototype.commaEveryX0Years = function () {
+        return ", o dată la %s ani";
+    };
+    ro.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", în ziua %s a lunii";
+    };
+    ro.prototype.commaOnlyInX0 = function () {
+        return ", doar în %s";
+    };
+    ro.prototype.commaOnlyOnX0 = function () {
+        return ", doar %s";
+    };
+    ro.prototype.commaOnThe = function () {
+        return ", în ";
+    };
+    ro.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", în ultima zi a lunii";
+    };
+    ro.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", în ultima zi lucrătoare a lunii";
+    };
+    ro.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", în ultima %s a lunii";
+    };
+    ro.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", în %s a lunii";
+    };
+    ro.prototype.commaX0ThroughX1 = function () {
+        return ", de %s până %s";
+    };
+    ro.prototype.everyHour = function () {
+        return "în fiecare oră";
+    };
+    ro.prototype.everyMinute = function () {
+        return "în fiecare minut";
+    };
+    ro.prototype.everyMinutebetweenX0AndX1 = function () {
+        return "În fiecare minut între %s și %s";
+    };
+    ro.prototype.everysecond = function () {
+        return "în fiecare secundă";
+    };
+    ro.prototype.everyX0Hours = function () {
+        return "la fiecare %s ore";
+    };
+    ro.prototype.everyX0Minutes = function () {
+        return "la fiecare %s minute";
+    };
+    ro.prototype.everyX0Seconds = function () {
+        return "la fiecare %s secunde";
+    };
+    ro.prototype.fifth = function () {
+        return "a cincea";
+    };
+    ro.prototype.first = function () {
+        return "prima";
+    };
+    ro.prototype.firstWeekday = function () {
+        return "prima zi a săptămânii";
+    };
+    ro.prototype.fourth = function () {
+        return "a patra";
+    };
+    ro.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "între minutele %s și %s";
+    };
+    ro.prototype.second = function () {
+        return "a doua";
+    };
+    ro.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "între secunda %s și secunda %s";
+    };
+    ro.prototype.spaceAnd = function () {
+        return " și";
+    };
+    ro.prototype.spaceAndSpace = function () {
+        return " și ";
+    };
+    ro.prototype.spaceX0OfTheMonth = function () {
+        return " %s a lunii";
+    };
+    ro.prototype.lastDay = function () {
+        return "ultima zi";
+    };
+    ro.prototype.third = function () {
+        return "a treia";
+    };
+    ro.prototype.weekdayNearestDayX0 = function () {
+        return "cea mai apropiată zi a săptămânii de ziua %s";
+    };
+    ro.prototype.ComaMinX0ThroughMinX1 = function () {
+        return ", de la %s până la %s";
+    };
+    ro.prototype.commaMonthX0ThroughMonthX1 = function () {
+        return ", din %s până în %s";
+    };
+    ro.prototype.commaYearX0ThroughYearX1 = function () {
+        return ", din %s până în %s";
+    };
+    ro.prototype.atX0MinutesPastTheHourGt20 = function () {
+        return "la și %s de minute";
+    };
+    ro.prototype.atX0SecondsPastTheMinuteGt20 = function () {
+        return "la și %s de secunde";
+    };
+    ro.prototype.commaStartingX0 = function () {
+        return ", pornire %s";
+    };
+    ro.prototype.daysOfTheWeek = function () {
+        return ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
+    };
+    ro.prototype.monthsOfTheYear = function () {
+        return ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+    };
+    return ro;
+}());
+exports.ro = ro;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ru = (function () {
+    function ru() {
+    }
+    ru.prototype.atX0SecondsPastTheMinuteGt20 = function () { return null; };
+    ru.prototype.atX0MinutesPastTheHourGt20 = function () { return null; };
+    ru.prototype.commaMonthX0ThroughMonthX1 = function () { return null; };
+    ru.prototype.commaYearX0ThroughYearX1 = function () { return null; };
+    ru.prototype.use24HourTimeFormatByDefault = function () { return true; };
+    ru.prototype.everyMinute = function () {
+        return "каждую минуту";
+    };
+    ru.prototype.everyHour = function () {
+        return "каждый час";
+    };
+    ru.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Произошла ошибка во время генерации описания выражения. Проверьте синтаксис крон-выражения.";
+    };
+    ru.prototype.atSpace = function () {
+        return "В ";
+    };
+    ru.prototype.everyMinutebetweenX0AndX1 = function () {
+        return "Каждую минуту с %s по %s";
+    };
+    ru.prototype.at = function () {
+        return "В";
+    };
+    ru.prototype.spaceAnd = function () {
+        return " и";
+    };
+    ru.prototype.everysecond = function () {
+        return "каждую секунду";
+    };
+    ru.prototype.everyX0Seconds = function () {
+        return "каждые %s секунд";
+    };
+    ru.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "секунды с %s по %s";
+    };
+    ru.prototype.atX0SecondsPastTheMinute = function () {
+        return "в %s секунд";
+    };
+    ru.prototype.everyX0Minutes = function () {
+        return "каждые %s минут";
+    };
+    ru.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "минуты с %s по %s";
+    };
+    ru.prototype.atX0MinutesPastTheHour = function () {
+        return "в %s минут";
+    };
+    ru.prototype.everyX0Hours = function () {
+        return "каждые %s часов";
+    };
+    ru.prototype.betweenX0AndX1 = function () {
+        return "с %s по %s";
+    };
+    ru.prototype.atX0 = function () {
+        return "в %s";
+    };
+    ru.prototype.commaEveryDay = function () {
+        return ", каждый день";
+    };
+    ru.prototype.commaEveryX0daysOfTheWeek = function () {
+        return ", каждые %s дней недели";
+    };
+    ru.prototype.commaX0ThroughX1 = function () {
+        return ", %s по %s";
+    };
+    ru.prototype.first = function () {
+        return "первый";
+    };
+    ru.prototype.second = function () {
+        return "второй";
+    };
+    ru.prototype.third = function () {
+        return "третий";
+    };
+    ru.prototype.fourth = function () {
+        return "четвертый";
+    };
+    ru.prototype.fifth = function () {
+        return "пятый";
+    };
+    ru.prototype.commaOnThe = function () {
+        return ", в ";
+    };
+    ru.prototype.spaceX0OfTheMonth = function () {
+        return " %s месяца";
+    };
+    ru.prototype.lastDay = function () {
+        return "последний день";
+    };
+    ru.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", в последний %s месяца";
+    };
+    ru.prototype.commaOnlyOnX0 = function () {
+        return ", только в %s";
+    };
+    ru.prototype.commaEveryX0Months = function () {
+        return ", каждые %s месяцев";
+    };
+    ru.prototype.commaOnlyInX0 = function () {
+        return ", только в %s";
+    };
+    ru.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", в последний день месяца";
+    };
+    ru.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", в последний будний день месяца";
+    };
+    ru.prototype.firstWeekday = function () {
+        return "первый будний день";
+    };
+    ru.prototype.weekdayNearestDayX0 = function () {
+        return "ближайший будний день к %s";
+    };
+    ru.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", в %s месяца";
+    };
+    ru.prototype.commaEveryX0Days = function () {
+        return ", каждые %s дней";
+    };
+    ru.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", с %s по %s число месяца";
+    };
+    ru.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", в %s число месяца";
+    };
+    ru.prototype.spaceAndSpace = function () {
+        return " и ";
+    };
+    ru.prototype.commaEveryMinute = function () {
+        return ", каждую минуту";
+    };
+    ru.prototype.commaEveryHour = function () {
+        return ", каждый час";
+    };
+    ru.prototype.commaEveryX0Years = function () {
+        return ", каждые %s лет";
+    };
+    ru.prototype.commaStartingX0 = function () {
+        return ", начало %s";
+    };
+    ru.prototype.daysOfTheWeek = function () {
+        return ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
+    };
+    ru.prototype.monthsOfTheYear = function () {
+        return ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"];
+    };
+    return ru;
+}());
+exports.ru = ru;
 
 
 /***/ }),

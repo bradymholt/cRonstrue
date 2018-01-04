@@ -7,7 +7,7 @@
 		exports["cronstrue"] = factory();
 	else
 		root["cronstrue"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -43,9 +43,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -73,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,8 +80,8 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var stringUtilities_1 = __webpack_require__(3);
-var cronParser_1 = __webpack_require__(1);
+var stringUtilities_1 = __webpack_require__(1);
+var cronParser_1 = __webpack_require__(2);
 var ExpressionDescriptor = (function () {
     function ExpressionDescriptor(expression, options) {
         this.expression = expression;
@@ -486,6 +483,35 @@ exports.ExpressionDescriptor = ExpressionDescriptor;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var StringUtilities = (function () {
+    function StringUtilities() {
+    }
+    StringUtilities.format = function (template) {
+        var values = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            values[_i - 1] = arguments[_i];
+        }
+        return template.replace(/%s/g, function () {
+            return values.shift();
+        });
+    };
+    StringUtilities.containsAny = function (text, searchStrings) {
+        return searchStrings.some(function (c) {
+            return text.indexOf(c) > -1;
+        });
+    };
+    return StringUtilities;
+}());
+exports.StringUtilities = StringUtilities;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 var CronParser = (function () {
     function CronParser(expression, dayOfWeekStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
@@ -650,7 +676,7 @@ exports.CronParser = CronParser;
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -856,57 +882,7 @@ exports.en = en;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var StringUtilities = (function () {
-    function StringUtilities() {
-    }
-    StringUtilities.format = function (template) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return template.replace(/%s/g, function () {
-            return values.shift();
-        });
-    };
-    StringUtilities.containsAny = function (text, searchStrings) {
-        return searchStrings.some(function (c) {
-            return text.indexOf(c) > -1;
-        });
-    };
-    return StringUtilities;
-}());
-exports.StringUtilities = StringUtilities;
-
-
-/***/ }),
-/* 4 */,
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var en_1 = __webpack_require__(2);
-var enLocaleLoader = (function () {
-    function enLocaleLoader() {
-    }
-    enLocaleLoader.prototype.load = function (availableLocales) {
-        availableLocales["en"] = new en_1.en();
-    };
-    return enLocaleLoader;
-}());
-exports.enLocaleLoader = enLocaleLoader;
-
-
-/***/ }),
-/* 6 */,
-/* 7 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -918,6 +894,25 @@ expressionDescriptor_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLo
 exports.default = expressionDescriptor_1.ExpressionDescriptor;
 var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
 exports.toString = toString;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var en_1 = __webpack_require__(3);
+var enLocaleLoader = (function () {
+    function enLocaleLoader() {
+    }
+    enLocaleLoader.prototype.load = function (availableLocales) {
+        availableLocales["en"] = new en_1.en();
+    };
+    return enLocaleLoader;
+}());
+exports.enLocaleLoader = enLocaleLoader;
 
 
 /***/ })
