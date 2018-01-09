@@ -358,9 +358,9 @@ export class ExpressionDescriptor {
         description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
         break;
       default:
-        let matches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
-        if (matches) {
-          let dayNumber: number = parseInt(matches[0].replace("W", ""));
+        let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/); // i.e. 3W or W2
+        if (weekDayNumberMatches) {
+          let dayNumber: number = parseInt(weekDayNumberMatches[0].replace("W", ""));
           let dayString: string =
             dayNumber == 1
               ? this.i18n.firstWeekday()
@@ -369,22 +369,30 @@ export class ExpressionDescriptor {
 
           break;
         } else {
-          description = this.getSegmentDescription(
-            expression,
-            this.i18n.commaEveryDay(),
-            s => {
-              return s == "L" ? this.i18n.lastDay() : s;
-            },
-            s => {
-              return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
-            },
-            s => {
-              return this.i18n.commaBetweenDayX0AndX1OfTheMonth();
-            },
-            s => {
-              return this.i18n.commaOnDayX0OfTheMonth();
-            }
-          );
+          // Handle "last day offset" (i.e. L-5:  "5 days before the last day of the month")
+          let lastDayOffSetMatches = expression.match(/L-(\d{1,2})/);
+          if (lastDayOffSetMatches) {
+            let offSetDays = lastDayOffSetMatches[1];
+            description = StringUtilities.format(this.i18n.commaDaysBeforeTheLastDayOfTheMonth(), offSetDays);
+            break;
+          } else {
+            description = this.getSegmentDescription(
+              expression,
+              this.i18n.commaEveryDay(),
+              s => {
+                return s == "L" ? this.i18n.lastDay() : s;
+              },
+              s => {
+                return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
+              },
+              s => {
+                return this.i18n.commaBetweenDayX0AndX1OfTheMonth();
+              },
+              s => {
+                return this.i18n.commaOnDayX0OfTheMonth();
+              }
+            );
+          }
           break;
         }
     }

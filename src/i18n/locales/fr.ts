@@ -121,6 +121,9 @@ export class fr implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", le dernier jour ouvrable du mois";
   }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s jours avant le dernier jour du mois"
+  }
   firstWeekday() {
     return "premier jour ouvrable";
   }

@@ -14,11 +14,9 @@ export class nb implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return false;
   }
-
   anErrorOccuredWhenGeneratingTheExpressionD() {
     return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
   }
@@ -81,6 +79,9 @@ export class nb implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", på den siste ukedagen i måneden";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s dager før den siste dagen i måneden"
   }
   commaOnTheLastX0OfTheMonth() {
     return ", på den siste %s av måneden";

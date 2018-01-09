@@ -14,11 +14,9 @@ export class zh_CN implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return false;
   }
-
   everyMinute() {
     return "每分钟";
   }
@@ -120,6 +118,9 @@ export class zh_CN implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", 每月的最后一个平日";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s 这个月的最后一天的前几天"
   }
   firstWeekday() {
     return "第一个平日";

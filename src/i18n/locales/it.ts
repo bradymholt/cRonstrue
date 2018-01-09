@@ -82,6 +82,9 @@ export class it implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", nell'ultima settimana del mese";
   }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s giorni prima dell'ultimo giorno del mese"
+  }
   commaOnTheLastX0OfTheMonth() {
     return ", l'ultimo %s del mese";
   }

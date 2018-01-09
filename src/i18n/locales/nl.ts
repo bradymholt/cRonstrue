@@ -14,11 +14,9 @@ export class nl implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return false;
   }
-
   everyMinute() {
     return "elke minuut";
   }
@@ -120,6 +118,9 @@ export class nl implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", op de laatste werkdag van de maand";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s dagen vóór de laatste dag van de maand"
   }
   firstWeekday() {
     return "eerste werkdag";
