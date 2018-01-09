@@ -155,15 +155,7 @@ export class nl implements Locale {
     return ", beginnend %s";
   }
   daysOfTheWeek() {
-    return [
-      "zondag",
-      "maandag",
-      "dinsdag",
-      "woensdag",
-      "donderdag",
-      "vrijdag",
-      "zaterdag"
-    ];
+    return ["zondag", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag"];
   }
   monthsOfTheYear() {
     return [

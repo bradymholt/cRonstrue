@@ -157,15 +157,7 @@ export class ro implements Locale {
     return ", pornire %s";
   }
   daysOfTheWeek() {
-    return [
-      "duminică",
-      "luni",
-      "marți",
-      "miercuri",
-      "joi",
-      "vineri",
-      "sâmbătă"
-    ];
+    return ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "sâmbătă"];
   }
   monthsOfTheYear() {
     return [

@@ -161,15 +161,7 @@ export class fr implements Locale {
     return ", départ %s";
   }
   daysOfTheWeek() {
-    return [
-      "dimanche",
-      "lundi",
-      "mardi",
-      "mercredi",
-      "jeudi",
-      "vendredi",
-      "samedi"
-    ];
+    return ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
   }
   monthsOfTheYear() {
     return [

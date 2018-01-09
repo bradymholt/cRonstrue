@@ -155,15 +155,7 @@ export class sv implements Locale {
     return ", startar %s";
   }
   daysOfTheWeek() {
-    return [
-      "söndag",
-      "måndag",
-      "tisdag",
-      "onsdag",
-      "torsdag",
-      "fredag",
-      "lördag"
-    ];
+    return ["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"];
   }
   monthsOfTheYear() {
     return [

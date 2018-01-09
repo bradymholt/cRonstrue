@@ -35,9 +35,7 @@ export class CronParser {
 
     if (parsed.length < 5) {
       throw new Error(
-        `Expression has only ${parsed.length} part${
-          parsed.length == 1 ? "" : "s"
-        }. At least 5 parts are required.`
+        `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`
       );
     } else if (parsed.length == 5) {
       //5 part cron so shift array past seconds element
@@ -133,8 +131,7 @@ export class CronParser {
 
     if (
       expressionParts[3].indexOf("W") > -1 &&
-      (expressionParts[3].indexOf(",") > -1 ||
-        expressionParts[3].indexOf("-") > -1)
+      (expressionParts[3].indexOf(",") > -1 || expressionParts[3].indexOf("-") > -1)
     ) {
       throw new Error(
         "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
@@ -152,10 +149,7 @@ export class CronParser {
       SAT: 6
     };
     for (let day in days) {
-      expressionParts[5] = expressionParts[5].replace(
-        new RegExp(day, "gi"),
-        days[day].toString()
-      );
+      expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
     }
 
     // Convert JAN-DEC format to 1-12 format
@@ -175,10 +169,7 @@ export class CronParser {
     };
 
     for (let month in months) {
-      expressionParts[4] = expressionParts[4].replace(
-        new RegExp(month, "gi"),
-        months[month].toString()
-      );
+      expressionParts[4] = expressionParts[4].replace(new RegExp(month, "gi"), months[month].toString());
     }
 
     // Convert 0 second to (empty)
@@ -201,10 +192,7 @@ export class CronParser {
                 - DOW part '3/2' will be converted to '3-6/2' (every 2 days between Tuesday and Saturday)
             */
 
-      if (
-        expressionParts[i].indexOf("/") > -1 &&
-        !/^\*|\-|\,/.test(expressionParts[i])
-      ) {
+      if (expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
         let stepRangeThrough: string = null;
         switch (i) {
           case 4:
@@ -234,16 +222,11 @@ export class CronParser {
     this.assertNoInvalidCharacters("DOM", parsed[3]);
   }
 
-  protected assertNoInvalidCharacters(
-    partDescription: string,
-    expression: string
-  ) {
+  protected assertNoInvalidCharacters(partDescription: string, expression: string) {
     // No characters other than 'L' or 'W' should remain after normalization
     let invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
     if (invalidChars && invalidChars.length) {
-      throw new Error(
-        `${partDescription} part contains invalid values: '${invalidChars.toString()}'`
-      );
+      throw new Error(`${partDescription} part contains invalid values: '${invalidChars.toString()}'`);
     }
   }
 }

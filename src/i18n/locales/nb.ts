@@ -155,15 +155,7 @@ export class nb implements Locale {
     return ", starter %s";
   }
   daysOfTheWeek() {
-    return [
-      "søndag",
-      "mandag",
-      "tirsdag",
-      "onsdag",
-      "torsdag",
-      "fredag",
-      "lørdag"
-    ];
+    return ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
   }
   monthsOfTheYear() {
     return [

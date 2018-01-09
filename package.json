@@ -35,6 +35,9 @@
     "type": "git",
     "url": "git+https://github.com/bradymholt/cronstrue.git"
   },
+  "prettier": {
+    "printWidth": 120
+  },
   "devDependencies": {
     "@types/chai": "^4.0.10",
     "@types/mocha": "^2.2.44",

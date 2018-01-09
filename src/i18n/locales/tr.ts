@@ -155,15 +155,7 @@ export class tr implements Locale {
     return ", başlangıç %s";
   }
   daysOfTheWeek() {
-    return [
-      "Pazar",
-      "Pazartesi",
-      "Salı",
-      "Çarşamba",
-      "Perşembe",
-      "Cuma",
-      "Cumartesi"
-    ];
+    return ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
   }
   monthsOfTheYear() {
     return [

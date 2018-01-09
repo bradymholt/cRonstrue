@@ -155,15 +155,7 @@ export class it implements Locale {
     return ", a partire %s";
   }
   daysOfTheWeek() {
-    return [
-      "domenica",
-      "lunedì",
-      "martedì",
-      "mercoledì",
-      "giovedì",
-      "venerdì",
-      "sabato"
-    ];
+    return ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
   }
   monthsOfTheYear() {
     return [

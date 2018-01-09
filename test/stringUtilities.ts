@@ -13,10 +13,7 @@ describe("StringUtilities", function() {
     });
 
     it("should format a string with multiple replacements", function() {
-      assert.equal(
-        StringUtilities.format("Test %s %s %s", "one", "two", "three"),
-        "Test one two three"
-      );
+      assert.equal(StringUtilities.format("Test %s %s %s", "one", "two", "three"), "Test one two three");
     });
   });
 });
