@@ -15,19 +15,19 @@ export class ExpressionDescriptor {
   i18n: Locale;
 
   /**
-     * Converts a cron expression into a description a human can read
-     * @static
-     * @param {string} expression - The cron expression
-     * @param {IOptions} [{
-     *         throwExceptionOnParseError = true,
-     *         casingType = CasingTypeEnum.Sentence,
-     *         verbose = false,
-     *         dayOfWeekStartIndexZero = true,
-     *         use24HourTimeFormat = false,
-     *         locale = 'en'
-     *     }={}]
-     * @returns {string}
-     */
+   * Converts a cron expression into a description a human can read
+   * @static
+   * @param {string} expression - The cron expression
+   * @param {IOptions} [{
+   *         throwExceptionOnParseError = true,
+   *         casingType = CasingTypeEnum.Sentence,
+   *         verbose = false,
+   *         dayOfWeekStartIndexZero = true,
+   *         use24HourTimeFormat = false,
+   *         locale = 'en'
+   *     }={}]
+   * @returns {string}
+   */
   static toString(
     expression: string,
     {
@@ -625,11 +625,9 @@ export class ExpressionDescriptor {
       )}`;
     }
 
-    return `${("00" + hour.toString()).substring(
-      hour.toString().length
-    )}:${("00" + minute.toString()).substring(
-      minute.toString().length
-    )}${second}${period}`;
+    return `${("00" + hour.toString()).substring(hour.toString().length)}:${(
+      "00" + minute.toString()
+    ).substring(minute.toString().length)}${second}${period}`;
   }
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
