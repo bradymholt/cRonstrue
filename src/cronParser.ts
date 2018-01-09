@@ -15,9 +15,9 @@ export class CronParser {
   }
 
   /**
-     * Parses and normalizes a cron expression into an array of strings
-     * @returns {string[]}
-     */
+   * Parses and normalizes a cron expression into an array of strings
+   * @returns {string[]}
+   */
   parse(): string[] {
     let parsed = this.extractParts(this.expression);
     this.normalize(parsed);
@@ -35,9 +35,9 @@ export class CronParser {
 
     if (parsed.length < 5) {
       throw new Error(
-        `Expression has only ${parsed.length} part${parsed.length == 1
-          ? ""
-          : "s"}. At least 5 parts are required.`
+        `Expression has only ${parsed.length} part${
+          parsed.length == 1 ? "" : "s"
+        }. At least 5 parts are required.`
       );
     } else if (parsed.length == 5) {
       //5 part cron so shift array past seconds element
@@ -234,7 +234,10 @@ export class CronParser {
     this.assertNoInvalidCharacters("DOM", parsed[3]);
   }
 
-  protected assertNoInvalidCharacters(partDescription: string, expression: string) {
+  protected assertNoInvalidCharacters(
+    partDescription: string,
+    expression: string
+  ) {
     // No characters other than 'L' or 'W' should remain after normalization
     let invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
     if (invalidChars && invalidChars.length) {
