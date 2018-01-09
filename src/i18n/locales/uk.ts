@@ -14,11 +14,9 @@ export class uk implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
-
   everyMinute() {
     return "щохвилини";
   }
@@ -120,6 +118,9 @@ export class uk implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", в останній будень місяця";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s днів до останнього дня місяця"
   }
   firstWeekday() {
     return "перший будень";

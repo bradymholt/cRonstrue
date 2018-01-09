@@ -14,11 +14,9 @@ export class tr implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
-
   everyMinute() {
     return "her dakika";
   }
@@ -120,6 +118,9 @@ export class tr implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", ayın son iş günü";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s ayın son gününden önceki günler"
   }
   firstWeekday() {
     return "ilk iş günü";

@@ -14,11 +14,9 @@ export class sv implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
-
   anErrorOccuredWhenGeneratingTheExpressionD() {
     return "Ett fel inträffade vid generering av uttryckets beskrivning. Kontrollera cron-uttryckets syntax.";
   }
@@ -120,6 +118,9 @@ export class sv implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", på sista veckodag av månaden";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s dagar före den sista dagen i månaden"
   }
   firstWeekday() {
     return "första veckodag";

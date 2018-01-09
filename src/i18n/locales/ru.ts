@@ -14,11 +14,9 @@ export class ru implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
-
   everyMinute() {
     return "каждую минуту";
   }
@@ -120,6 +118,9 @@ export class ru implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", в последний будний день месяца";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s дней до последнего дня месяца"
   }
   firstWeekday() {
     return "первый будний день";

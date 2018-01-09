@@ -79,6 +79,9 @@ export class es implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", en el último día de la semana del mes";
   }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s días antes del último día del mes"
+  }
   commaOnTheLastX0OfTheMonth() {
     return ", en el último %s del mes";
   }

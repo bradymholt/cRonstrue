@@ -14,11 +14,9 @@ export class pl implements Locale {
   commaYearX0ThroughYearX1(): string {
     return null;
   }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
-
   anErrorOccuredWhenGeneratingTheExpressionD() {
     return "Wystąpił błąd podczas generowania opisu wyrażenia cron. Sprawdź składnię wyrażenia cron.";
   }
@@ -81,6 +79,9 @@ export class pl implements Locale {
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", ostatni dzień roboczy miesiąca";
+  }
+  commaDaysBeforeTheLastDayOfTheMonth(){
+    return ", %s dni przed ostatnim dniem miesiąca"
   }
   commaOnTheLastX0OfTheMonth() {
     return ", ostatni %s miesiąca";

@@ -42,6 +42,7 @@ export interface Locale {
   commaOnlyInX0(): string;
   commaOnTheLastDayOfTheMonth(): string;
   commaOnTheLastWeekdayOfTheMonth(): string;
+  commaDaysBeforeTheLastDayOfTheMonth():string;
   firstWeekday(): string;
   weekdayNearestDayX0(): string;
   commaOnTheX0OfTheMonth(): string;

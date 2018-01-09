@@ -218,6 +218,10 @@ describe("Cronstrue", function() {
     it("0 15 10 L * *", function() {
       assert.equal(construe.toString(this.test.title), "At 10:15 AM, on the last day of the month");
     });
+
+    it("0 0 0 L-5 * ?", function() {
+      assert.equal(construe.toString(this.test.title), "At 12:00 AM, 5 days before the last day of the month");
+    });
   });
 
   describe("dayOfWeekStartIndexZero=false", function() {
