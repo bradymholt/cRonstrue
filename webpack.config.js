@@ -13,8 +13,7 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "[name].js",
     library: libraryName,
-    libraryTarget: "umd",
-    umdNamedDefine: true
+    libraryTarget: "umd"
   },
   resolve: {
     extensions: [".js", ".ts"]
