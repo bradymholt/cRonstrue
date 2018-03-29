@@ -50,7 +50,7 @@
     "ts-loader": "^4.1.0",
     "ts-node": "^5.0.1",
     "typescript": "^2.6.2",
-    "webpack": "^4.4.1"
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "build": "npx tsc",
