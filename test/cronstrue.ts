@@ -408,6 +408,13 @@ describe("Cronstrue", function() {
         "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday"
       );
     });
+
+    it("0 */4,6 * * * ", function() {
+      assert.equal(
+        construe.toString(this.test.title),
+        "Every 4,6 hours"
+      );
+    });
   });
 
   describe("verbose", function() {
