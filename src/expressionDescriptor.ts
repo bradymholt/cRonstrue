@@ -136,7 +136,7 @@ export class ExpressionDescriptor {
       );
     } else if (
       hourExpression.indexOf(",") > -1 &&
-      hourExpression.indexOf("-") == -1 &&
+      hourExpression.indexOf("-") == -1 && hourExpression.indexOf("/") == -1 &&
       !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
     ) {
       //hours list with single minute (i.e. 30 6,14,16)
