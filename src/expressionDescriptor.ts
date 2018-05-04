@@ -123,6 +123,7 @@ export class ExpressionDescriptor {
       //specific time of day (i.e. 10 14)
       description += this.i18n.atSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
     } else if (
+      !secondsExpression &&
       minuteExpression.indexOf("-") > -1 &&
       !(minuteExpression.indexOf(",") > -1) &&
       !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
@@ -136,7 +137,8 @@ export class ExpressionDescriptor {
       );
     } else if (
       hourExpression.indexOf(",") > -1 &&
-      hourExpression.indexOf("-") == -1 && hourExpression.indexOf("/") == -1 &&
+      hourExpression.indexOf("-") == -1 &&
+      hourExpression.indexOf("/") == -1 &&
       !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
     ) {
       //hours list with single minute (i.e. 30 6,14,16)
