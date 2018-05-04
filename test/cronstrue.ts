@@ -297,6 +297,10 @@ describe("Cronstrue", function() {
       assert.equal(construe.toString(this.test.title), "At 12:23 PM, January through March, 2013 through 2015");
     });
 
+    it("12-50 0-10 6 * * * 2022", function() {
+      assert.equal(construe.toString(this.test.title), "Seconds 12 through 50 past the minute, minutes 0 through 10 past the hour, at 06:00 AM, only in 2022");
+    });
+
     it("0 0/30 8-9 5,20 * ?", function() {
       assert.equal(
         construe.toString(this.test.title),
