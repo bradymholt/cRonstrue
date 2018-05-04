@@ -313,7 +313,9 @@ export class ExpressionDescriptor {
           } else if (s.indexOf("L") > -1) {
             format = this.i18n.commaOnTheLastX0OfTheMonth();
           } else {
-            format = this.i18n.commaOnlyOnX0();
+            // If both DOM and DOW are specified, the cron will execute at either time.
+            const domSpecified = this.expressionParts[3] != "*";
+            format = domSpecified ? this.i18n.commaAndOnX0() : this.i18n.commaOnlyOnX0();
           }
 
           return format;
@@ -483,7 +485,7 @@ export class ExpressionDescriptor {
         }
 
         if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-          descriptionContent += this.i18n.spaceAndSpace();
+          descriptionContent += `${this.i18n.spaceAnd()} `;
         }
 
         if (segments[i].indexOf("-") > -1) {

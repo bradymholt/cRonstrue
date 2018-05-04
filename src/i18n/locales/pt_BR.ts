@@ -68,6 +68,9 @@ export class pt_BR implements Locale {
   commaOnlyOnX0() {
     return ", somente de %s";
   }
+  commaAndOnX0(){
+    return ", e de %s";
+  }
   commaOnThe() {
     return ", na ";
   }
@@ -133,9 +136,6 @@ export class pt_BR implements Locale {
   }
   spaceAnd() {
     return " e";
-  }
-  spaceAndSpace() {
-    return " e ";
   }
   spaceX0OfTheMonth() {
     return " %s do mês";

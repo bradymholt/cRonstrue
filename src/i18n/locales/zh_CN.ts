@@ -107,6 +107,9 @@ export class zh_CN implements Locale {
   commaOnlyOnX0() {
     return ", 仅在 %s";
   }
+  commaAndOnX0(){
+    return ", 和 %s";
+  }
   commaEveryX0Months() {
     return ", 每 %s 月";
   }
@@ -139,9 +142,6 @@ export class zh_CN implements Locale {
   }
   commaOnDayX0OfTheMonth() {
     return ", 每月的 %s 号";
-  }
-  spaceAndSpace() {
-    return " 和 ";
   }
   commaEveryMinute() {
     return ", 每分钟";

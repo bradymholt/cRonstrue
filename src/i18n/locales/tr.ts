@@ -107,6 +107,9 @@ export class tr implements Locale {
   commaOnlyOnX0() {
     return ", sadece %s günü";
   }
+  commaAndOnX0(){
+    return ", ve %s";
+  }
   commaEveryX0Months() {
     return ", %s ayda bir";
   }
@@ -139,9 +142,6 @@ export class tr implements Locale {
   }
   commaOnDayX0OfTheMonth() {
     return ", ayın %s. günü";
-  }
-  spaceAndSpace() {
-    return " ve ";
   }
   commaEveryMinute() {
     return ", her dakika";

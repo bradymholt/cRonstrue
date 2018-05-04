@@ -71,6 +71,9 @@ export class pl implements Locale {
   commaOnlyOnX0() {
     return ", tylko %s";
   }
+  commaAndOnX0(){
+    return ", i %s";
+  }
   commaOnThe() {
     return ", ";
   }
@@ -136,9 +139,6 @@ export class pl implements Locale {
   }
   spaceAnd() {
     return " i";
-  }
-  spaceAndSpace() {
-    return " i ";
   }
   spaceX0OfTheMonth() {
     return " %s miesiąca";

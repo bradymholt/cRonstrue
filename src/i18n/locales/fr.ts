@@ -109,6 +109,9 @@ export class fr implements Locale {
   commaOnlyOnX0() {
     return ", uniquement le %s";
   }
+  commaAndOnX0(){
+    return ", et %s";
+  }
   commaEveryX0Months() {
     return ", tous les %s mois";
   }
@@ -142,9 +145,6 @@ export class fr implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", le %s du mois";
   }
-  spaceAndSpace() {
-    return " et ";
-  }
   commaEveryMinute() {
     return ", toutes les minutes";
   }
@@ -156,9 +156,6 @@ export class fr implements Locale {
   }
   commaDaysX0ThroughX1() {
     return ", du %s au %s";
-  }
-  weekSpaceAndSpace() {
-    return " et le ";
   }
   commaStartingX0() {
     return ", départ %s";

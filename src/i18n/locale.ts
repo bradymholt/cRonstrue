@@ -38,6 +38,7 @@ export interface Locale {
   lastDay(): string;
   commaOnTheLastX0OfTheMonth(): string;
   commaOnlyOnX0(): string;
+  commaAndOnX0(): string;
   commaEveryX0Months(): string;
   commaOnlyInX0(): string;
   commaOnTheLastDayOfTheMonth(): string;
@@ -49,7 +50,6 @@ export interface Locale {
   commaEveryX0Days(): string;
   commaBetweenDayX0AndX1OfTheMonth(): string;
   commaOnDayX0OfTheMonth(): string;
-  spaceAndSpace(): string;
   commaEveryMinute(): string;
   commaEveryHour(): string;
   commaEveryX0Years(): string;

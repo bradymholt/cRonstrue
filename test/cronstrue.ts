@@ -156,6 +156,10 @@ describe("Cronstrue", function() {
     it("30 6,14,16 * * *", function() {
       assert.equal(construe.toString(this.test.title), "At 06:30 AM, 02:30 PM and 04:30 PM");
     });
+
+    it ("0 * 31 * 1", function() {
+      assert.equal(construe.toString(this.test.title), "Every hour, on day 31 of the month, and on Monday");
+    });
   });
 
   describe("weekday", function() {
@@ -402,14 +406,14 @@ describe("Cronstrue", function() {
     it("0 0 0 1,2,3 * WED,FRI", function() {
       assert.equal(
         construe.toString(this.test.title),
-        "At 12:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday"
+        "At 12:00 AM, on day 1, 2, and 3 of the month, and on Wednesday and Friday"
       );
     });
 
     it("0 2,16 1,8,15,22 * 1,2", function() {
       assert.equal(
         construe.toString(this.test.title),
-        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday"
+        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, and on Monday and Tuesday"
       );
     });
 

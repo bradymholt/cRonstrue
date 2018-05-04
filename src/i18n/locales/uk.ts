@@ -107,6 +107,9 @@ export class uk implements Locale {
   commaOnlyOnX0() {
     return ", тільки в %s";
   }
+  commaAndOnX0(){
+    return ", і в %s";
+  }
   commaEveryX0Months() {
     return ", кожен %s місяць";
   }
@@ -139,9 +142,6 @@ export class uk implements Locale {
   }
   commaOnDayX0OfTheMonth() {
     return ", на %s день місяця";
-  }
-  spaceAndSpace() {
-    return " та ";
   }
   commaEveryMinute() {
     return ", щохвилини";
