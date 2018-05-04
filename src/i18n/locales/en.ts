@@ -142,9 +142,6 @@ export class en implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", on day %s of the month";
   }
-  spaceAndSpace() {
-    return " and ";
-  }
   commaEveryMinute() {
     return ", every minute";
   }

@@ -140,9 +140,6 @@ export class de implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", am %s Tag des Monats";
   }
-  spaceAndSpace() {
-    return " und ";
-  }
   commaEveryMinute() {
     return ", jede Minute";
   }

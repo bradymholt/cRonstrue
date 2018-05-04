@@ -483,7 +483,7 @@ export class ExpressionDescriptor {
         }
 
         if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-          descriptionContent += this.i18n.spaceAndSpace();
+          descriptionContent += `${this.i18n.spaceAnd()} `;
         }
 
         if (segments[i].indexOf("-") > -1) {

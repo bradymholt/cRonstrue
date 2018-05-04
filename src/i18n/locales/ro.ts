@@ -126,9 +126,6 @@ export class ro implements Locale {
   spaceAnd() {
     return " și";
   }
-  spaceAndSpace() {
-    return " și ";
-  }
   spaceX0OfTheMonth() {
     return " %s a lunii";
   }

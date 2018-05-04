@@ -134,9 +134,6 @@ export class pt_BR implements Locale {
   spaceAnd() {
     return " e";
   }
-  spaceAndSpace() {
-    return " e ";
-  }
   spaceX0OfTheMonth() {
     return " %s do mês";
   }

@@ -137,9 +137,6 @@ export class nb implements Locale {
   spaceAnd() {
     return " og";
   }
-  spaceAndSpace() {
-    return " og ";
-  }
   spaceX0OfTheMonth() {
     return " %s av måneden";
   }

@@ -137,9 +137,6 @@ export class pl implements Locale {
   spaceAnd() {
     return " i";
   }
-  spaceAndSpace() {
-    return " i ";
-  }
   spaceX0OfTheMonth() {
     return " %s miesiąca";
   }

@@ -140,9 +140,6 @@ export class tr implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", ayın %s. günü";
   }
-  spaceAndSpace() {
-    return " ve ";
-  }
   commaEveryMinute() {
     return ", her dakika";
   }

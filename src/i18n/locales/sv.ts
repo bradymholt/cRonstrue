@@ -140,9 +140,6 @@ export class sv implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", på dag %s av månaden";
   }
-  spaceAndSpace() {
-    return " och ";
-  }
   commaEveryMinute() {
     return ", varje minut";
   }

@@ -140,9 +140,6 @@ export class uk implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", на %s день місяця";
   }
-  spaceAndSpace() {
-    return " та ";
-  }
   commaEveryMinute() {
     return ", щохвилини";
   }
