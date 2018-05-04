@@ -60,6 +60,9 @@ export class ro implements Locale {
   commaOnlyOnX0() {
     return ", doar %s";
   }
+  commaAndOnX0(){
+    return ", și %s";
+  }
   commaOnThe() {
     return ", în ";
   }

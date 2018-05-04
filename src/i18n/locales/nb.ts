@@ -71,6 +71,9 @@ export class nb implements Locale {
   commaOnlyOnX0() {
     return ", bare på %s";
   }
+  commaAndOnX0(){
+    return ", og på %s";
+  }
   commaOnThe() {
     return ", på den ";
   }

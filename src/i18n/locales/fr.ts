@@ -109,6 +109,9 @@ export class fr implements Locale {
   commaOnlyOnX0() {
     return ", uniquement le %s";
   }
+  commaAndOnX0(){
+    return ", et %s";
+  }
   commaEveryX0Months() {
     return ", tous les %s mois";
   }

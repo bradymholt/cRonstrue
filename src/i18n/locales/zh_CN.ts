@@ -107,6 +107,9 @@ export class zh_CN implements Locale {
   commaOnlyOnX0() {
     return ", 仅在 %s";
   }
+  commaAndOnX0(){
+    return ", 和 %s";
+  }
   commaEveryX0Months() {
     return ", 每 %s 月";
   }

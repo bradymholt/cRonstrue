@@ -70,6 +70,9 @@ export class es implements Locale {
   commaOnlyOnX0() {
     return ", sólo el %s";
   }
+  commaAndOnX0(){
+    return ", y el %s";
+  }
   commaOnThe() {
     return ", en el ";
   }

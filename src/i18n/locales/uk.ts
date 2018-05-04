@@ -107,6 +107,9 @@ export class uk implements Locale {
   commaOnlyOnX0() {
     return ", тільки в %s";
   }
+  commaAndOnX0(){
+    return ", і в %s";
+  }
   commaEveryX0Months() {
     return ", кожен %s місяць";
   }

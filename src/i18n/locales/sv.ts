@@ -107,6 +107,9 @@ export class sv implements Locale {
   commaOnlyOnX0() {
     return ", varje %s";
   }
+  commaAndOnX0(){
+    return ", och på %s";
+  }
   commaEveryX0Months() {
     return ", var %s månad";
   }

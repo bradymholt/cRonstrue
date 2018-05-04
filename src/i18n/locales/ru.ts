@@ -107,6 +107,9 @@ export class ru implements Locale {
   commaOnlyOnX0() {
     return ", только в %s";
   }
+  commaAndOnX0(){
+    return ", и в %s";
+  }
   commaEveryX0Months() {
     return ", каждые %s месяцев";
   }

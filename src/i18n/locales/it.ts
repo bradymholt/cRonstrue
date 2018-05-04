@@ -73,6 +73,9 @@ export class it implements Locale {
   commaOnlyOnX0() {
     return ", solo il %s";
   }
+  commaAndOnX0(){
+    return ", e il %s";
+  }
   commaOnThe() {
     return ", il ";
   }

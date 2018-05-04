@@ -107,6 +107,9 @@ export class nl implements Locale {
   commaOnlyOnX0() {
     return ", alleen op %s";
   }
+  commaAndOnX0(){
+    return ", en op %s";
+  }
   commaEveryX0Months() {
     return ", elke %s maanden";
   }
