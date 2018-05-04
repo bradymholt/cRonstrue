@@ -290,7 +290,8 @@ var ExpressionDescriptor = (function () {
                     format = _this.i18n.commaOnTheLastX0OfTheMonth();
                 }
                 else {
-                    format = _this.i18n.commaOnlyOnX0();
+                    var domSpecified = _this.expressionParts[3] != "*";
+                    format = domSpecified ? _this.i18n.commaAndOnX0() : _this.i18n.commaOnlyOnX0();
                 }
                 return format;
             });
@@ -408,7 +409,7 @@ var ExpressionDescriptor = (function () {
                     }
                 }
                 if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-                    descriptionContent += this.i18n.spaceAndSpace();
+                    descriptionContent += this.i18n.spaceAnd() + " ";
                 }
                 if (segments[i].indexOf("-") > -1) {
                     var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[i], function (s) {
@@ -781,6 +782,9 @@ var en = (function () {
     en.prototype.commaOnlyOnX0 = function () {
         return ", only on %s";
     };
+    en.prototype.commaAndOnX0 = function () {
+        return ", and on %s";
+    };
     en.prototype.commaEveryX0Months = function () {
         return ", every %s months";
     };
@@ -813,9 +817,6 @@ var en = (function () {
     };
     en.prototype.commaOnDayX0OfTheMonth = function () {
         return ", on day %s of the month";
-    };
-    en.prototype.spaceAndSpace = function () {
-        return " and ";
     };
     en.prototype.commaEveryMinute = function () {
         return ", every minute";
@@ -1047,6 +1048,9 @@ var de = (function () {
     de.prototype.commaOnlyOnX0 = function () {
         return ", nur am %s";
     };
+    de.prototype.commaAndOnX0 = function () {
+        return ", und am %s";
+    };
     de.prototype.commaEveryX0Months = function () {
         return ", alle %s Monate";
     };
@@ -1079,9 +1083,6 @@ var de = (function () {
     };
     de.prototype.commaOnDayX0OfTheMonth = function () {
         return ", am %s Tag des Monats";
-    };
-    de.prototype.spaceAndSpace = function () {
-        return " und ";
     };
     de.prototype.commaEveryMinute = function () {
         return ", jede Minute";
@@ -1195,6 +1196,9 @@ var es = (function () {
     es.prototype.commaOnlyOnX0 = function () {
         return ", sólo el %s";
     };
+    es.prototype.commaAndOnX0 = function () {
+        return ", y el %s";
+    };
     es.prototype.commaOnThe = function () {
         return ", en el ";
     };
@@ -1260,9 +1264,6 @@ var es = (function () {
     };
     es.prototype.spaceAnd = function () {
         return " y";
-    };
-    es.prototype.spaceAndSpace = function () {
-        return " y ";
     };
     es.prototype.spaceX0OfTheMonth = function () {
         return " %s del mes";
@@ -1421,6 +1422,9 @@ var fr = (function () {
     fr.prototype.commaOnlyOnX0 = function () {
         return ", uniquement le %s";
     };
+    fr.prototype.commaAndOnX0 = function () {
+        return ", et %s";
+    };
     fr.prototype.commaEveryX0Months = function () {
         return ", tous les %s mois";
     };
@@ -1454,9 +1458,6 @@ var fr = (function () {
     fr.prototype.commaOnDayX0OfTheMonth = function () {
         return ", le %s du mois";
     };
-    fr.prototype.spaceAndSpace = function () {
-        return " et ";
-    };
     fr.prototype.commaEveryMinute = function () {
         return ", toutes les minutes";
     };
@@ -1468,9 +1469,6 @@ var fr = (function () {
     };
     fr.prototype.commaDaysX0ThroughX1 = function () {
         return ", du %s au %s";
-    };
-    fr.prototype.weekSpaceAndSpace = function () {
-        return " et le ";
     };
     fr.prototype.commaStartingX0 = function () {
         return ", départ %s";
@@ -1578,6 +1576,9 @@ var it = (function () {
     it.prototype.commaOnlyOnX0 = function () {
         return ", solo il %s";
     };
+    it.prototype.commaAndOnX0 = function () {
+        return ", e il %s";
+    };
     it.prototype.commaOnThe = function () {
         return ", il ";
     };
@@ -1643,9 +1644,6 @@ var it = (function () {
     };
     it.prototype.spaceAnd = function () {
         return " e";
-    };
-    it.prototype.spaceAndSpace = function () {
-        return " e ";
     };
     it.prototype.spaceX0OfTheMonth = function () {
         return " %s del mese";
@@ -1801,6 +1799,9 @@ var nl = (function () {
     nl.prototype.commaOnlyOnX0 = function () {
         return ", alleen op %s";
     };
+    nl.prototype.commaAndOnX0 = function () {
+        return ", en op %s";
+    };
     nl.prototype.commaEveryX0Months = function () {
         return ", elke %s maanden";
     };
@@ -1833,9 +1834,6 @@ var nl = (function () {
     };
     nl.prototype.commaOnDayX0OfTheMonth = function () {
         return ", op dag %s van de maand";
-    };
-    nl.prototype.spaceAndSpace = function () {
-        return " en ";
     };
     nl.prototype.commaEveryMinute = function () {
         return ", elke minuut";
@@ -1952,6 +1950,9 @@ var nb = (function () {
     nb.prototype.commaOnlyOnX0 = function () {
         return ", bare på %s";
     };
+    nb.prototype.commaAndOnX0 = function () {
+        return ", og på %s";
+    };
     nb.prototype.commaOnThe = function () {
         return ", på den ";
     };
@@ -2017,9 +2018,6 @@ var nb = (function () {
     };
     nb.prototype.spaceAnd = function () {
         return " og";
-    };
-    nb.prototype.spaceAndSpace = function () {
-        return " og ";
     };
     nb.prototype.spaceX0OfTheMonth = function () {
         return " %s av måneden";
@@ -2175,6 +2173,9 @@ var sv = (function () {
     sv.prototype.commaOnlyOnX0 = function () {
         return ", varje %s";
     };
+    sv.prototype.commaAndOnX0 = function () {
+        return ", och på %s";
+    };
     sv.prototype.commaEveryX0Months = function () {
         return ", var %s månad";
     };
@@ -2207,9 +2208,6 @@ var sv = (function () {
     };
     sv.prototype.commaOnDayX0OfTheMonth = function () {
         return ", på dag %s av månaden";
-    };
-    sv.prototype.spaceAndSpace = function () {
-        return " och ";
     };
     sv.prototype.commaEveryMinute = function () {
         return ", varje minut";
@@ -2326,6 +2324,9 @@ var pl = (function () {
     pl.prototype.commaOnlyOnX0 = function () {
         return ", tylko %s";
     };
+    pl.prototype.commaAndOnX0 = function () {
+        return ", i %s";
+    };
     pl.prototype.commaOnThe = function () {
         return ", ";
     };
@@ -2391,9 +2392,6 @@ var pl = (function () {
     };
     pl.prototype.spaceAnd = function () {
         return " i";
-    };
-    pl.prototype.spaceAndSpace = function () {
-        return " i ";
     };
     pl.prototype.spaceX0OfTheMonth = function () {
         return " %s miesiąca";
@@ -2510,6 +2508,9 @@ var pt_BR = (function () {
     pt_BR.prototype.commaOnlyOnX0 = function () {
         return ", somente de %s";
     };
+    pt_BR.prototype.commaAndOnX0 = function () {
+        return ", e de %s";
+    };
     pt_BR.prototype.commaOnThe = function () {
         return ", na ";
     };
@@ -2575,9 +2576,6 @@ var pt_BR = (function () {
     };
     pt_BR.prototype.spaceAnd = function () {
         return " e";
-    };
-    pt_BR.prototype.spaceAndSpace = function () {
-        return " e ";
     };
     pt_BR.prototype.spaceX0OfTheMonth = function () {
         return " %s do mês";
@@ -2688,6 +2686,9 @@ var ro = (function () {
     ro.prototype.commaOnlyOnX0 = function () {
         return ", doar %s";
     };
+    ro.prototype.commaAndOnX0 = function () {
+        return ", și %s";
+    };
     ro.prototype.commaOnThe = function () {
         return ", în ";
     };
@@ -2753,9 +2754,6 @@ var ro = (function () {
     };
     ro.prototype.spaceAnd = function () {
         return " și";
-    };
-    ro.prototype.spaceAndSpace = function () {
-        return " și ";
     };
     ro.prototype.spaceX0OfTheMonth = function () {
         return " %s a lunii";
@@ -2926,6 +2924,9 @@ var ru = (function () {
     ru.prototype.commaOnlyOnX0 = function () {
         return ", только в %s";
     };
+    ru.prototype.commaAndOnX0 = function () {
+        return ", и в %s";
+    };
     ru.prototype.commaEveryX0Months = function () {
         return ", каждые %s месяцев";
     };
@@ -2958,9 +2959,6 @@ var ru = (function () {
     };
     ru.prototype.commaOnDayX0OfTheMonth = function () {
         return ", в %s число месяца";
-    };
-    ru.prototype.spaceAndSpace = function () {
-        return " и ";
     };
     ru.prototype.commaEveryMinute = function () {
         return ", каждую минуту";
@@ -3113,6 +3111,9 @@ var tr = (function () {
     tr.prototype.commaOnlyOnX0 = function () {
         return ", sadece %s günü";
     };
+    tr.prototype.commaAndOnX0 = function () {
+        return ", ve %s";
+    };
     tr.prototype.commaEveryX0Months = function () {
         return ", %s ayda bir";
     };
@@ -3145,9 +3146,6 @@ var tr = (function () {
     };
     tr.prototype.commaOnDayX0OfTheMonth = function () {
         return ", ayın %s. günü";
-    };
-    tr.prototype.spaceAndSpace = function () {
-        return " ve ";
     };
     tr.prototype.commaEveryMinute = function () {
         return ", her dakika";
@@ -3300,6 +3298,9 @@ var uk = (function () {
     uk.prototype.commaOnlyOnX0 = function () {
         return ", тільки в %s";
     };
+    uk.prototype.commaAndOnX0 = function () {
+        return ", і в %s";
+    };
     uk.prototype.commaEveryX0Months = function () {
         return ", кожен %s місяць";
     };
@@ -3332,9 +3333,6 @@ var uk = (function () {
     };
     uk.prototype.commaOnDayX0OfTheMonth = function () {
         return ", на %s день місяця";
-    };
-    uk.prototype.spaceAndSpace = function () {
-        return " та ";
     };
     uk.prototype.commaEveryMinute = function () {
         return ", щохвилини";
@@ -3487,6 +3485,9 @@ var zh_CN = (function () {
     zh_CN.prototype.commaOnlyOnX0 = function () {
         return ", 仅在 %s";
     };
+    zh_CN.prototype.commaAndOnX0 = function () {
+        return ", 和 %s";
+    };
     zh_CN.prototype.commaEveryX0Months = function () {
         return ", 每 %s 月";
     };
@@ -3519,9 +3520,6 @@ var zh_CN = (function () {
     };
     zh_CN.prototype.commaOnDayX0OfTheMonth = function () {
         return ", 每月的 %s 号";
-    };
-    zh_CN.prototype.spaceAndSpace = function () {
-        return " 和 ";
     };
     zh_CN.prototype.commaEveryMinute = function () {
         return ", 每分钟";

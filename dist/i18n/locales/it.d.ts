@@ -23,6 +23,7 @@ export declare class it implements Locale {
     commaOnDayX0OfTheMonth(): string;
     commaOnlyInX0(): string;
     commaOnlyOnX0(): string;
+    commaAndOnX0(): string;
     commaOnThe(): string;
     commaOnTheLastDayOfTheMonth(): string;
     commaOnTheLastWeekdayOfTheMonth(): string;
@@ -45,7 +46,6 @@ export declare class it implements Locale {
     second(): string;
     secondsX0ThroughX1PastTheMinute(): string;
     spaceAnd(): string;
-    spaceAndSpace(): string;
     spaceX0OfTheMonth(): string;
     lastDay(): string;
     third(): string;

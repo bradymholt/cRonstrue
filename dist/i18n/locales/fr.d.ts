@@ -35,6 +35,7 @@ export declare class fr implements Locale {
     lastDay(): string;
     commaOnTheLastX0OfTheMonth(): string;
     commaOnlyOnX0(): string;
+    commaAndOnX0(): string;
     commaEveryX0Months(): string;
     commaOnlyInX0(): string;
     commaOnTheLastDayOfTheMonth(): string;
@@ -46,12 +47,10 @@ export declare class fr implements Locale {
     commaEveryX0Days(): string;
     commaBetweenDayX0AndX1OfTheMonth(): string;
     commaOnDayX0OfTheMonth(): string;
-    spaceAndSpace(): string;
     commaEveryMinute(): string;
     commaEveryHour(): string;
     commaEveryX0Years(): string;
     commaDaysX0ThroughX1(): string;
-    weekSpaceAndSpace(): string;
     commaStartingX0(): string;
     daysOfTheWeek(): string[];
     monthsOfTheYear(): string[];

@@ -290,7 +290,8 @@ var ExpressionDescriptor = (function () {
                     format = _this.i18n.commaOnTheLastX0OfTheMonth();
                 }
                 else {
-                    format = _this.i18n.commaOnlyOnX0();
+                    var domSpecified = _this.expressionParts[3] != "*";
+                    format = domSpecified ? _this.i18n.commaAndOnX0() : _this.i18n.commaOnlyOnX0();
                 }
                 return format;
             });
@@ -408,7 +409,7 @@ var ExpressionDescriptor = (function () {
                     }
                 }
                 if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-                    descriptionContent += this.i18n.spaceAndSpace();
+                    descriptionContent += this.i18n.spaceAnd() + " ";
                 }
                 if (segments[i].indexOf("-") > -1) {
                     var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[i], function (s) {
@@ -781,6 +782,9 @@ var en = (function () {
     en.prototype.commaOnlyOnX0 = function () {
         return ", only on %s";
     };
+    en.prototype.commaAndOnX0 = function () {
+        return ", and on %s";
+    };
     en.prototype.commaEveryX0Months = function () {
         return ", every %s months";
     };
@@ -813,9 +817,6 @@ var en = (function () {
     };
     en.prototype.commaOnDayX0OfTheMonth = function () {
         return ", on day %s of the month";
-    };
-    en.prototype.spaceAndSpace = function () {
-        return " and ";
     };
     en.prototype.commaEveryMinute = function () {
         return ", every minute";
