@@ -136,6 +136,7 @@ export class ExpressionDescriptor {
         this.formatTime(hourExpression, minuteParts[1], "")
       );
     } else if (
+      !secondsExpression &&
       hourExpression.indexOf(",") > -1 &&
       hourExpression.indexOf("-") == -1 &&
       hourExpression.indexOf("/") == -1 &&
