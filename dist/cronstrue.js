@@ -155,7 +155,8 @@ var ExpressionDescriptor = (function () {
             var minuteParts = minuteExpression.split("-");
             description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinutebetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
         }
-        else if (hourExpression.indexOf(",") > -1 &&
+        else if (!secondsExpression &&
+            hourExpression.indexOf(",") > -1 &&
             hourExpression.indexOf("-") == -1 &&
             hourExpression.indexOf("/") == -1 &&
             !stringUtilities_1.StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)) {
