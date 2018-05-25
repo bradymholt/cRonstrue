@@ -29,7 +29,7 @@ export class tr implements Locale {
   atSpace() {
     return "Saat ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Saat %s ve %s arasındaki her dakika";
   }
   at() {
@@ -38,7 +38,7 @@ export class tr implements Locale {
   spaceAnd() {
     return " ve";
   }
-  everysecond() {
+  everySecond() {
     return "her saniye";
   }
   everyX0Seconds() {

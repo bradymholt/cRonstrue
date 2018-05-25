@@ -89,10 +89,10 @@ export class ro implements Locale {
   everyMinute() {
     return "vsako minuto";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Vsako minuto od %s do %s";
   }
-  everysecond() {
+  everySecond() {
     return "vsako sekundo";
   }
   everyX0Hours() {

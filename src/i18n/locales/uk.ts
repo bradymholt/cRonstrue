@@ -29,7 +29,7 @@ export class uk implements Locale {
   atSpace() {
     return "О ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Щохвилини між %s та %s";
   }
   at() {
@@ -38,7 +38,7 @@ export class uk implements Locale {
   spaceAnd() {
     return " та";
   }
-  everysecond() {
+  everySecond() {
     return "Щосекунди";
   }
   everyX0Seconds() {

@@ -29,7 +29,7 @@ export class nl implements Locale {
   atSpace() {
     return "Op ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Elke minuut tussen %s en %s";
   }
   at() {
@@ -38,7 +38,7 @@ export class nl implements Locale {
   spaceAnd() {
     return " en";
   }
-  everysecond() {
+  everySecond() {
     return "elke seconde";
   }
   everyX0Seconds() {

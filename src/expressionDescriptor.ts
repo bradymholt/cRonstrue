@@ -131,7 +131,7 @@ export class ExpressionDescriptor {
       //minute range in single hour (i.e. 0-10 11)
       let minuteParts: string[] = minuteExpression.split("-");
       description += StringUtilities.format(
-        this.i18n.everyMinutebetweenX0AndX1(),
+        this.i18n.everyMinuteBetweenX0AndX1(),
         this.formatTime(hourExpression, minuteParts[0], ""),
         this.formatTime(hourExpression, minuteParts[1], "")
       );
@@ -185,7 +185,7 @@ export class ExpressionDescriptor {
   protected getSecondsDescription() {
     let description: string = this.getSegmentDescription(
       this.expressionParts[0],
-      this.i18n.everysecond(),
+      this.i18n.everySecond(),
       s => {
         return s;
       },

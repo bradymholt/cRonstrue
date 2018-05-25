@@ -101,10 +101,10 @@ export class nb implements Locale {
   everyMinute() {
     return "hvert minutt";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Hvert minutt mellom %s og %s";
   }
-  everysecond() {
+  everySecond() {
     return "hvert sekund";
   }
   everyX0Hours() {

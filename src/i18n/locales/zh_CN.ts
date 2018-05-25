@@ -29,7 +29,7 @@ export class zh_CN implements Locale {
   atSpace() {
     return "在 ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "在 %s 和 %s 之间的每分钟";
   }
   at() {
@@ -38,7 +38,7 @@ export class zh_CN implements Locale {
   spaceAnd() {
     return " 和";
   }
-  everysecond() {
+  everySecond() {
     return "每秒";
   }
   everyX0Seconds() {

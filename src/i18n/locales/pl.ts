@@ -101,10 +101,10 @@ export class pl implements Locale {
   everyMinute() {
     return "co minutę";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Co minutę od %s do %s";
   }
-  everysecond() {
+  everySecond() {
     return "co sekundę";
   }
   everyX0Hours() {

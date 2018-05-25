@@ -90,10 +90,10 @@ export class ro implements Locale {
   everyMinute() {
     return "în fiecare minut";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "În fiecare minut între %s și %s";
   }
-  everysecond() {
+  everySecond() {
     return "în fiecare secundă";
   }
   everyX0Hours() {
