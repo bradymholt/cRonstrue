@@ -100,10 +100,10 @@ export class es implements Locale {
   everyMinute() {
     return "cada minuto";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "cada minuto entre las %s y las %s";
   }
-  everysecond() {
+  everySecond() {
     return "cada segundo";
   }
   everyX0Hours() {

@@ -29,7 +29,7 @@ export class ru implements Locale {
   atSpace() {
     return "В ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Каждую минуту с %s по %s";
   }
   at() {
@@ -38,7 +38,7 @@ export class ru implements Locale {
   spaceAnd() {
     return " и";
   }
-  everysecond() {
+  everySecond() {
     return "каждую секунду";
   }
   everyX0Seconds() {

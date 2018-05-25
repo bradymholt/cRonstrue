@@ -90,10 +90,10 @@ export class ro implements Locale {
   everyMinute() {
     return "în fiecare minut";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "În fiecare minut între %s și %s";
   }
-  everysecond() {
+  everySecond() {
     return "în fiecare secundă";
   }
   everyX0Hours() {
@@ -140,9 +140,6 @@ export class ro implements Locale {
   }
   weekdayNearestDayX0() {
     return "cea mai apropiată zi a săptămânii de ziua %s";
-  }
-  ComaMinX0ThroughMinX1() {
-    return ", de la %s până la %s";
   }
   commaMonthX0ThroughMonthX1() {
     return ", din %s până în %s";

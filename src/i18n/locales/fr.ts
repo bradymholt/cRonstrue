@@ -31,7 +31,7 @@ export class fr implements Locale {
   atSpace() {
     return "À ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Toutes les minutes entre %s et %s";
   }
   at() {
@@ -40,7 +40,7 @@ export class fr implements Locale {
   spaceAnd() {
     return " et";
   }
-  everysecond() {
+  everySecond() {
     return "toutes les secondes";
   }
   everyX0Seconds() {

@@ -29,7 +29,7 @@ export class sv implements Locale {
   atSpace() {
     return "Kl ";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "Varje minut mellan %s och %s";
   }
   at() {
@@ -38,7 +38,7 @@ export class sv implements Locale {
   spaceAnd() {
     return " och";
   }
-  everysecond() {
+  everySecond() {
     return "varje sekund";
   }
   everyX0Seconds() {

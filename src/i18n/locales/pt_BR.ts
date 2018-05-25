@@ -98,10 +98,10 @@ export class pt_BR implements Locale {
   everyMinute() {
     return "a cada minuto";
   }
-  everyMinutebetweenX0AndX1() {
+  everyMinuteBetweenX0AndX1() {
     return "a cada minuto entre %s e %s";
   }
-  everysecond() {
+  everySecond() {
     return "a cada segundo";
   }
   everyX0Hours() {
