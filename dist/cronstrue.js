@@ -153,7 +153,7 @@ var ExpressionDescriptor = (function () {
             !(minuteExpression.indexOf(",") > -1) &&
             !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)) {
             var minuteParts = minuteExpression.split("-");
-            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinutebetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
+            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinuteBetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
         }
         else if (!secondsExpression &&
             hourExpression.indexOf(",") > -1 &&
@@ -191,7 +191,7 @@ var ExpressionDescriptor = (function () {
     };
     ExpressionDescriptor.prototype.getSecondsDescription = function () {
         var _this = this;
-        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.everysecond(), function (s) {
+        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.everySecond(), function (s) {
             return s;
         }, function (s) {
             return stringUtilities_1.StringUtilities.format(_this.i18n.everyX0Seconds(), s);
@@ -705,7 +705,7 @@ var en = (function () {
     en.prototype.atSpace = function () {
         return "At ";
     };
-    en.prototype.everyMinutebetweenX0AndX1 = function () {
+    en.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Every minute between %s and %s";
     };
     en.prototype.at = function () {
@@ -714,7 +714,7 @@ var en = (function () {
     en.prototype.spaceAnd = function () {
         return " and";
     };
-    en.prototype.everysecond = function () {
+    en.prototype.everySecond = function () {
         return "every second";
     };
     en.prototype.everyX0Seconds = function () {

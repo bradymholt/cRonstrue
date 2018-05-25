@@ -9,10 +9,10 @@ export declare class uk implements Locale {
     everyHour(): string;
     anErrorOccuredWhenGeneratingTheExpressionD(): string;
     atSpace(): string;
-    everyMinutebetweenX0AndX1(): string;
+    everyMinuteBetweenX0AndX1(): string;
     at(): string;
     spaceAnd(): string;
-    everysecond(): string;
+    everySecond(): string;
     everyX0Seconds(): string;
     secondsX0ThroughX1PastTheMinute(): string;
     atX0SecondsPastTheMinute(): string;

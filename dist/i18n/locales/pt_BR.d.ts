@@ -32,8 +32,8 @@ export declare class pt_BR implements Locale {
     commaX0ThroughX1(): string;
     everyHour(): string;
     everyMinute(): string;
-    everyMinutebetweenX0AndX1(): string;
-    everysecond(): string;
+    everyMinuteBetweenX0AndX1(): string;
+    everySecond(): string;
     everyX0Hours(): string;
     everyX0Minutes(): string;
     everyX0Seconds(): string;

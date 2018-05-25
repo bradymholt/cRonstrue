@@ -153,7 +153,7 @@ var ExpressionDescriptor = (function () {
             !(minuteExpression.indexOf(",") > -1) &&
             !stringUtilities_1.StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)) {
             var minuteParts = minuteExpression.split("-");
-            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinutebetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
+            description += stringUtilities_1.StringUtilities.format(this.i18n.everyMinuteBetweenX0AndX1(), this.formatTime(hourExpression, minuteParts[0], ""), this.formatTime(hourExpression, minuteParts[1], ""));
         }
         else if (!secondsExpression &&
             hourExpression.indexOf(",") > -1 &&
@@ -191,7 +191,7 @@ var ExpressionDescriptor = (function () {
     };
     ExpressionDescriptor.prototype.getSecondsDescription = function () {
         var _this = this;
-        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.everysecond(), function (s) {
+        var description = this.getSegmentDescription(this.expressionParts[0], this.i18n.everySecond(), function (s) {
             return s;
         }, function (s) {
             return stringUtilities_1.StringUtilities.format(_this.i18n.everyX0Seconds(), s);
@@ -705,7 +705,7 @@ var en = (function () {
     en.prototype.atSpace = function () {
         return "At ";
     };
-    en.prototype.everyMinutebetweenX0AndX1 = function () {
+    en.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Every minute between %s and %s";
     };
     en.prototype.at = function () {
@@ -714,7 +714,7 @@ var en = (function () {
     en.prototype.spaceAnd = function () {
         return " and";
     };
-    en.prototype.everysecond = function () {
+    en.prototype.everySecond = function () {
         return "every second";
     };
     en.prototype.everyX0Seconds = function () {
@@ -971,7 +971,7 @@ var de = (function () {
     de.prototype.atSpace = function () {
         return "Um ";
     };
-    de.prototype.everyMinutebetweenX0AndX1 = function () {
+    de.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Jede Minute zwischen %s und %s";
     };
     de.prototype.at = function () {
@@ -980,7 +980,7 @@ var de = (function () {
     de.prototype.spaceAnd = function () {
         return " und";
     };
-    de.prototype.everysecond = function () {
+    de.prototype.everySecond = function () {
         return "Jede Sekunde";
     };
     de.prototype.everyX0Seconds = function () {
@@ -1227,10 +1227,10 @@ var es = (function () {
     es.prototype.everyMinute = function () {
         return "cada minuto";
     };
-    es.prototype.everyMinutebetweenX0AndX1 = function () {
+    es.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "cada minuto entre las %s y las %s";
     };
-    es.prototype.everysecond = function () {
+    es.prototype.everySecond = function () {
         return "cada segundo";
     };
     es.prototype.everyX0Hours = function () {
@@ -1345,7 +1345,7 @@ var fr = (function () {
     fr.prototype.atSpace = function () {
         return "À ";
     };
-    fr.prototype.everyMinutebetweenX0AndX1 = function () {
+    fr.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Toutes les minutes entre %s et %s";
     };
     fr.prototype.at = function () {
@@ -1354,7 +1354,7 @@ var fr = (function () {
     fr.prototype.spaceAnd = function () {
         return " et";
     };
-    fr.prototype.everysecond = function () {
+    fr.prototype.everySecond = function () {
         return "toutes les secondes";
     };
     fr.prototype.everyX0Seconds = function () {
@@ -1607,10 +1607,10 @@ var it = (function () {
     it.prototype.everyMinute = function () {
         return "ogni minuto";
     };
-    it.prototype.everyMinutebetweenX0AndX1 = function () {
+    it.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Ogni minuto tra le %s e le %s";
     };
-    it.prototype.everysecond = function () {
+    it.prototype.everySecond = function () {
         return "ogni secondo";
     };
     it.prototype.everyX0Hours = function () {
@@ -1722,7 +1722,7 @@ var nl = (function () {
     nl.prototype.atSpace = function () {
         return "Op ";
     };
-    nl.prototype.everyMinutebetweenX0AndX1 = function () {
+    nl.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Elke minuut tussen %s en %s";
     };
     nl.prototype.at = function () {
@@ -1731,7 +1731,7 @@ var nl = (function () {
     nl.prototype.spaceAnd = function () {
         return " en";
     };
-    nl.prototype.everysecond = function () {
+    nl.prototype.everySecond = function () {
         return "elke seconde";
     };
     nl.prototype.everyX0Seconds = function () {
@@ -1981,10 +1981,10 @@ var nb = (function () {
     nb.prototype.everyMinute = function () {
         return "hvert minutt";
     };
-    nb.prototype.everyMinutebetweenX0AndX1 = function () {
+    nb.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Hvert minutt mellom %s og %s";
     };
-    nb.prototype.everysecond = function () {
+    nb.prototype.everySecond = function () {
         return "hvert sekund";
     };
     nb.prototype.everyX0Hours = function () {
@@ -2096,7 +2096,7 @@ var sv = (function () {
     sv.prototype.atSpace = function () {
         return "Kl ";
     };
-    sv.prototype.everyMinutebetweenX0AndX1 = function () {
+    sv.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Varje minut mellan %s och %s";
     };
     sv.prototype.at = function () {
@@ -2105,7 +2105,7 @@ var sv = (function () {
     sv.prototype.spaceAnd = function () {
         return " och";
     };
-    sv.prototype.everysecond = function () {
+    sv.prototype.everySecond = function () {
         return "varje sekund";
     };
     sv.prototype.everyX0Seconds = function () {
@@ -2355,10 +2355,10 @@ var pl = (function () {
     pl.prototype.everyMinute = function () {
         return "co minutę";
     };
-    pl.prototype.everyMinutebetweenX0AndX1 = function () {
+    pl.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Co minutę od %s do %s";
     };
-    pl.prototype.everysecond = function () {
+    pl.prototype.everySecond = function () {
         return "co sekundę";
     };
     pl.prototype.everyX0Hours = function () {
@@ -2539,10 +2539,10 @@ var pt_BR = (function () {
     pt_BR.prototype.everyMinute = function () {
         return "a cada minuto";
     };
-    pt_BR.prototype.everyMinutebetweenX0AndX1 = function () {
+    pt_BR.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "a cada minuto entre %s e %s";
     };
-    pt_BR.prototype.everysecond = function () {
+    pt_BR.prototype.everySecond = function () {
         return "a cada segundo";
     };
     pt_BR.prototype.everyX0Hours = function () {
@@ -2717,10 +2717,10 @@ var ro = (function () {
     ro.prototype.everyMinute = function () {
         return "în fiecare minut";
     };
-    ro.prototype.everyMinutebetweenX0AndX1 = function () {
+    ro.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "În fiecare minut între %s și %s";
     };
-    ro.prototype.everysecond = function () {
+    ro.prototype.everySecond = function () {
         return "în fiecare secundă";
     };
     ro.prototype.everyX0Hours = function () {
@@ -2767,9 +2767,6 @@ var ro = (function () {
     };
     ro.prototype.weekdayNearestDayX0 = function () {
         return "cea mai apropiată zi a săptămânii de ziua %s";
-    };
-    ro.prototype.ComaMinX0ThroughMinX1 = function () {
-        return ", de la %s până la %s";
     };
     ro.prototype.commaMonthX0ThroughMonthX1 = function () {
         return ", din %s până în %s";
@@ -2847,7 +2844,7 @@ var ru = (function () {
     ru.prototype.atSpace = function () {
         return "В ";
     };
-    ru.prototype.everyMinutebetweenX0AndX1 = function () {
+    ru.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Каждую минуту с %s по %s";
     };
     ru.prototype.at = function () {
@@ -2856,7 +2853,7 @@ var ru = (function () {
     ru.prototype.spaceAnd = function () {
         return " и";
     };
-    ru.prototype.everysecond = function () {
+    ru.prototype.everySecond = function () {
         return "каждую секунду";
     };
     ru.prototype.everyX0Seconds = function () {
@@ -3034,7 +3031,7 @@ var tr = (function () {
     tr.prototype.atSpace = function () {
         return "Saat ";
     };
-    tr.prototype.everyMinutebetweenX0AndX1 = function () {
+    tr.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Saat %s ve %s arasındaki her dakika";
     };
     tr.prototype.at = function () {
@@ -3043,7 +3040,7 @@ var tr = (function () {
     tr.prototype.spaceAnd = function () {
         return " ve";
     };
-    tr.prototype.everysecond = function () {
+    tr.prototype.everySecond = function () {
         return "her saniye";
     };
     tr.prototype.everyX0Seconds = function () {
@@ -3221,7 +3218,7 @@ var uk = (function () {
     uk.prototype.atSpace = function () {
         return "О ";
     };
-    uk.prototype.everyMinutebetweenX0AndX1 = function () {
+    uk.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Щохвилини між %s та %s";
     };
     uk.prototype.at = function () {
@@ -3230,7 +3227,7 @@ var uk = (function () {
     uk.prototype.spaceAnd = function () {
         return " та";
     };
-    uk.prototype.everysecond = function () {
+    uk.prototype.everySecond = function () {
         return "Щосекунди";
     };
     uk.prototype.everyX0Seconds = function () {
@@ -3408,7 +3405,7 @@ var zh_CN = (function () {
     zh_CN.prototype.atSpace = function () {
         return "在 ";
     };
-    zh_CN.prototype.everyMinutebetweenX0AndX1 = function () {
+    zh_CN.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "在 %s 和 %s 之间的每分钟";
     };
     zh_CN.prototype.at = function () {
@@ -3417,7 +3414,7 @@ var zh_CN = (function () {
     zh_CN.prototype.spaceAnd = function () {
         return " 和";
     };
-    zh_CN.prototype.everysecond = function () {
+    zh_CN.prototype.everySecond = function () {
         return "每秒";
     };
     zh_CN.prototype.everyX0Seconds = function () {
