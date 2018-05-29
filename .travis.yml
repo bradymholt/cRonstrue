@@ -4,7 +4,7 @@ node_js:
 before_deploy:
     - git checkout master
     - npm run prerelease
-    - npm version minor
+    - npm version minor -m "%s [skip ci]"
 deploy:
   provider: npm
   email: brady.holt@gmail.com
