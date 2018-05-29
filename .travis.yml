@@ -19,7 +19,7 @@ after_deploy:
     - git remote add gh-origin https://${GH_TOKEN}@github.com/${GH_REPO}.git
     - git push gh-origin master --tags
     - |
-      curl -H "Authorization: token ${GH_TOKEN}" -d "{"tag_name":"${VERSION}"}" https://api.github.com/repos/${GH_REPO}/releases
+      curl -H "Authorization: token ${GH_TOKEN}" -d \"{"tag_name":"${VERSION}"}\" \"https://api.github.com/repos/${GH_REPO}/releases\"
 env:
   global:
     - GH_REPO=bradymholt/cRonstrue
