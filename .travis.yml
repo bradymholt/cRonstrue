@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - node
 before_deploy:
+    - git checkout master
     - npm run prerelease
     - npm version minor
 deploy:
