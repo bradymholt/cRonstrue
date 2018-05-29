@@ -4,7 +4,7 @@ node_js:
 before_deploy:
     - git checkout master
     - npm run prerelease
-    - npm version minor -m "Build %s [skip ci]"
+    - VERSION=$(npm version minor -m "Build %s [skip ci]")
 deploy:
   provider: npm
   email: brady.holt@gmail.com
@@ -16,8 +16,10 @@ deploy:
 after_deploy:
     - git config --global user.email "travis@travis-ci.org"
     - git config --global user.name "Travis CI"
-    - git remote add gh-origin https://${GH_TOKEN}@github.com/bradymholt/cRonstrue.git
+    - git remote add gh-origin https://${GH_TOKEN}@github.com/${GH_REPO}.git
     - git push gh-origin master --tags
+    - curl -H "Authorization: token ${GH_TOKEN}" -d "{"tag_name":"${VERSION}"}" \"https://api.github.com/repos/${GH_REPO}/releases\"
 env:
   global:
+    - GH_REPO=bradymholt/cRonstrue
     secure: lkYuzcBLT1lYcinSPH9K1uRZKrmf2Q4lZjpuOqaVVBfU+7ONA1AUvTS98307PcDiUcUoAXwR8mZQgdd6N1322Fiq1K+7FeunuoI8M8QbzIREn9O36SBiptKgFlXrYmFFU25R1DxI2ZkZQNgQA3BgMqEUjWba6mxyjjeILn5/1Y2Q9+swjd5erOCy0gQEg8/eWO7DAT8MKFfbGJBLDbA1zKfTPwdjK1iYfwOrGdoS+wLv6zu5gwm87yjLZpoKnUXNBdCuRfchQSGCfeIdaFXn5Rhzrjq82mG5iusieTarB7YA+OLbWCkoa0M6ZS7w0xZb3yY2RYNEvg/KTk0DbR6o/MpR0TWWKjMI1ns59zdUXaKMk6haOWM1EdUbawDOgOrLVrEJ9quBrhGYJHS6JGX3UpOoFO4ATvEjC7m7VNxlx7ETZLKm2sh/nWXTiKDIj7gHAWkP33gr+wK0yL9yi55FtJQRkGNkWpSWZAyji7gF/0XMKtBBJD2w6FEhWEVWqmnxCBGCr9Q0alt/GcWhA1sRP4LRBtdTHsbtMjQ3sWlpYQAAyfY0ZtAvI1AymJnDAra74qM+48dx0pnU+SqOxhGDcvfC0MqTIaV7tGRQZWMgu2HYoLG1nK7Xv+nRDTN6RreOezuKNOV/e0zqg2NuVA+0lEnqQ8Ej2UmkJjkbhjplOco=
