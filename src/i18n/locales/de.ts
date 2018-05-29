@@ -27,13 +27,13 @@ export class de implements Locale {
     return "An error occured when generating the expression description.  Check the cron expression syntax.";
   }
   atSpace() {
-    return "Um ";
+    return "Täglich um ";
   }
   everyMinuteBetweenX0AndX1() {
     return "Jede Minute zwischen %s und %s";
   }
   at() {
-    return "Um";
+    return "Täglich um";
   }
   spaceAnd() {
     return " und";
