@@ -1,3 +1,20 @@
 language: node_js
 node_js:
-  - "node"
+- node
+deploy:
+  provider: npm
+  email: brady.holt@gmail.com
+  api_key:
+    secure: vC97W5BjHJ5i3qu9m5sKltjmpr8quXL+4oxCU/Fk/1IxP26KDpJIn9p+QWa/qSwOqGdHfzbjVMhMULipKl/jjyTmz5RV2fmziY5gcA91rAY25glr4t90LvU9LCjMHU6lHIl0OydZrR91Bmrq8MzJthoTM7FXKKFTzPlu1EiS66rzmYB9mZvkGgoVX0jLyoWau/XP1kOr/mM5qFnQNil700e393KB9KD74vuB2lKHzQCLfBKX7pzr01MGTikw9ewrWm/aJtX6EvK9wD1glaGkzzSFXyb5cV3YCaxwqlaD/T3s4mfqIrJj4AJ90MQjOY1lKWYjdwc9jvWT5iAteB9IDZ6FYcS+jSIZpRectzMdGkBqhjmxomagAQ9RNgMwfDy+e98MU4Ye8BWh333vAmxkA4l8KmMpmSgAcU3wm5v5h91AdLGAkUKkgMa/FAQAu38lM8W03GAhdrT76D8KIUylyW4W9Lsk8V4+K86oY/OXbDkh0ZEAgHbgE/Gg9iQdtEbhrx6IykoFoO374z82r7/2iVO62dAUkgUa/VPeNQK7k+7pZER3i4qBTFqvkMgTGO1LFcG1q+bstUp8a+XpuQjMPHgWYFcyyynqDV5Twh/qCj9Cb3SFZAY/GikPmYemm6HP6jdKBCu3zUH9exl3hv7PHHEwd6sXeGbLpLG3Gj4nalA=
+  on:
+    repo: bradymholt/cRonstrue
+  before_deploy:
+    - npm run prerelease
+  after_deploy:
+    - git config --global user.email "travis@travis-ci.org"
+    - git config --global user.name "Travis CI"
+    - git remote add origin-pages https://${GH_TOKEN}@github.com/bradymholt/cRonstrue.git > /dev/null 2>&1
+    - git push --quiet
+env:
+  global:
+    secure: lkYuzcBLT1lYcinSPH9K1uRZKrmf2Q4lZjpuOqaVVBfU+7ONA1AUvTS98307PcDiUcUoAXwR8mZQgdd6N1322Fiq1K+7FeunuoI8M8QbzIREn9O36SBiptKgFlXrYmFFU25R1DxI2ZkZQNgQA3BgMqEUjWba6mxyjjeILn5/1Y2Q9+swjd5erOCy0gQEg8/eWO7DAT8MKFfbGJBLDbA1zKfTPwdjK1iYfwOrGdoS+wLv6zu5gwm87yjLZpoKnUXNBdCuRfchQSGCfeIdaFXn5Rhzrjq82mG5iusieTarB7YA+OLbWCkoa0M6ZS7w0xZb3yY2RYNEvg/KTk0DbR6o/MpR0TWWKjMI1ns59zdUXaKMk6haOWM1EdUbawDOgOrLVrEJ9quBrhGYJHS6JGX3UpOoFO4ATvEjC7m7VNxlx7ETZLKm2sh/nWXTiKDIj7gHAWkP33gr+wK0yL9yi55FtJQRkGNkWpSWZAyji7gF/0XMKtBBJD2w6FEhWEVWqmnxCBGCr9Q0alt/GcWhA1sRP4LRBtdTHsbtMjQ3sWlpYQAAyfY0ZtAvI1AymJnDAra74qM+48dx0pnU+SqOxhGDcvfC0MqTIaV7tGRQZWMgu2HYoLG1nK7Xv+nRDTN6RreOezuKNOV/e0zqg2NuVA+0lEnqQ8Ej2UmkJjkbhjplOco=
