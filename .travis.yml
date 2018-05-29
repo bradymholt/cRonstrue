@@ -4,7 +4,7 @@ node_js:
 before_deploy:
     - git checkout master
     - npm run prerelease
-    - npm version minor -m "Build %s [skip ci]")
+    - npm version minor -m "Build %s [skip ci]"
 deploy:
   provider: npm
   email: brady.holt@gmail.com
@@ -20,7 +20,7 @@ after_deploy:
     - git push gh-origin master --tags
     - VERSION=$(node -p "require('./package.json').version")
     - |
-      curl -H "Authorization: token ${GH_TOKEN}" -d '{"tag_name":"${VERSION}"}' https://api.github.com/repos/${GH_REPO}/releases
+      curl -H "Authorization: token ${GH_TOKEN}" -d '{"tag_name":"v${VERSION}"}' https://api.github.com/repos/${GH_REPO}/releases
 env:
   global:
     - GH_REPO=bradymholt/cRonstrue
