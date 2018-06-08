@@ -969,13 +969,13 @@ var de = (function () {
         return "An error occured when generating the expression description.  Check the cron expression syntax.";
     };
     de.prototype.atSpace = function () {
-        return "Täglich um ";
+        return "Um ";
     };
     de.prototype.everyMinuteBetweenX0AndX1 = function () {
         return "Jede Minute zwischen %s und %s";
     };
     de.prototype.at = function () {
-        return "Täglich um";
+        return "Um";
     };
     de.prototype.spaceAnd = function () {
         return " und";
