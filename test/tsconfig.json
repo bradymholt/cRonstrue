@@ -3,7 +3,10 @@
     "module": "commonjs",
     "target": "ES5",
     "noImplicitAny": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": [
+      "es2015"
+    ]
   },
   "include": [
     "./**/*.ts"
