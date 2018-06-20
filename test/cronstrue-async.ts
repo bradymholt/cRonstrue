@@ -56,6 +56,14 @@ describe("cronstrueAsync", () => {
         "Alle 5 Minuten, um 15:00, Montag bis Freitag"
       );
     });
+
+    it("should add daily only when needed (verbose mode)", async () => {
+      const cronstrue = await cronstrueAsync.initialize([{ languageCode: "de", localeOverride: { commaEveryDay: () => "" } }]);
+      assert.equal(cronstrue.toString("0 0 12 ? * SUN *", { locale: "de", verbose: true }), "Um 12:00, nur am Sonntag");
+
+      const cronstrue2 = await cronstrueAsync.initialize([{ languageCode: "de", localeOverride: { commaEveryDay: () => ", täglich" } }]);
+      assert.equal(cronstrue2.toString("0 0 12 ? * ? *", { locale: "de", verbose: true }), "Um 12:00, täglich");
+    });
   });
 
 });
