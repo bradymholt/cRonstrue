@@ -6,9 +6,11 @@ import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
 
 export class ExpressionDescriptor {
-  static locales: { [name: string]: Locale } = {};
-  static specialCharacters: string[];
-
+  static INIT_LOCALES: { [name: string]: Locale } = {};
+  static INIT_SPECIAL_CHARACTERS: string[];
+  
+  locales: { [name: string]: Locale } = {};
+  specialCharacters: string[];
   expression: string;
   expressionParts: string[];
   options: Options;
@@ -54,23 +56,25 @@ export class ExpressionDescriptor {
   }
 
   static initialize(localesLoader: LocaleLoader) {
-    ExpressionDescriptor.specialCharacters = ["/", "-", ",", "*"];
+    ExpressionDescriptor.INIT_SPECIAL_CHARACTERS = ["/", "-", ",", "*"];
 
     // Load locales
-    localesLoader.load(ExpressionDescriptor.locales);
+    localesLoader.load(ExpressionDescriptor.INIT_LOCALES);
   }
 
-  constructor(expression: string, options: Options) {
+  constructor(expression: string, options: Options, locales?: { [name: string]: Locale }, specialCharacters?: string[]) {
     this.expression = expression;
     this.options = options;
     this.expressionParts = new Array(5);
+    this.locales = locales || ExpressionDescriptor.INIT_LOCALES;
+    this.specialCharacters = specialCharacters || ExpressionDescriptor.INIT_SPECIAL_CHARACTERS;
 
-    if (ExpressionDescriptor.locales[options.locale]) {
-      this.i18n = ExpressionDescriptor.locales[options.locale];
+    if (this.locales[options.locale]) {
+      this.i18n = this.locales[options.locale];
     } else {
       // fall back to English
       console.warn(`Locale '${options.locale}' could not be found; falling back to 'en'.`);
-      this.i18n = ExpressionDescriptor.locales["en"];
+      this.i18n = this.locales["en"];
     }
 
     if (options.use24HourTimeFormat === undefined) {
@@ -79,7 +83,7 @@ export class ExpressionDescriptor {
     }
   }
 
-  protected getFullDescription() {
+  getFullDescription() {
     let description = "";
 
     try {
@@ -116,9 +120,9 @@ export class ExpressionDescriptor {
 
     //handle special cases first
     if (
-      !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters) &&
-      !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters) &&
-      !StringUtilities.containsAny(secondsExpression, ExpressionDescriptor.specialCharacters)
+      !StringUtilities.containsAny(minuteExpression, this.specialCharacters) &&
+      !StringUtilities.containsAny(hourExpression, this.specialCharacters) &&
+      !StringUtilities.containsAny(secondsExpression, this.specialCharacters)
     ) {
       //specific time of day (i.e. 10 14)
       description += this.i18n.atSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
@@ -126,7 +130,7 @@ export class ExpressionDescriptor {
       !secondsExpression &&
       minuteExpression.indexOf("-") > -1 &&
       !(minuteExpression.indexOf(",") > -1) &&
-      !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
+      !StringUtilities.containsAny(hourExpression, this.specialCharacters)
     ) {
       //minute range in single hour (i.e. 0-10 11)
       let minuteParts: string[] = minuteExpression.split("-");
@@ -140,7 +144,7 @@ export class ExpressionDescriptor {
       hourExpression.indexOf(",") > -1 &&
       hourExpression.indexOf("-") == -1 &&
       hourExpression.indexOf("/") == -1 &&
-      !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
+      !StringUtilities.containsAny(minuteExpression, this.specialCharacters)
     ) {
       //hours list with single minute (i.e. 30 6,14,16)
       let hourParts: string[] = hourExpression.split(",");

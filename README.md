@@ -58,7 +58,19 @@ cronstrue.toString("23 12 * * SUN#2");
 
 cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false});
 > "Every second, every 2 days of the week, Monday through Friday"
+```
 
+### Asynchronous loading 
+```ts
+import * as cronstrueAsync from "../src/cronstrue-async";
+
+// only loads the German translations and
+// overrides the `everyMinute` method of the associated locale
+const cronstrue = await cronstrueAsync.initialize([
+  { languageCode: "de", localeOverride: { everyMinute: () => "Foo Bar" } }
+]);
+cronstrue.toString("* * * * *", { locale: "de" });
+> "Foo Bar"
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).

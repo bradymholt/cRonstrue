@@ -1,13 +1,16 @@
 var webpack = require("webpack");
 var libraryName = require("./package.json").name;
 var withLocalesSuffix = "-i18n";
+var withAsyncSuffix = "-async";
 
 module.exports = {
   entry: {
     [libraryName]: "./src/cronstrue.ts",
     [libraryName + ".min"]: "./src/cronstrue.ts",
     [libraryName + withLocalesSuffix]: "./src/cronstrue-i18n.ts",
-    [libraryName + withLocalesSuffix + ".min"]: "./src/cronstrue-i18n.ts"
+    [libraryName + withLocalesSuffix + ".min"]: "./src/cronstrue-i18n.ts",
+    [libraryName + withAsyncSuffix]: "./src/cronstrue-async.ts",
+    [libraryName + withAsyncSuffix + ".min"]: "./src/cronstrue-async.ts"
   },
   output: {
     path: __dirname + "/dist",

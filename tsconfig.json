@@ -7,7 +7,11 @@
     "removeComments": true,
     "preserveConstEnums": false,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ]
   },
-  "files": ["src/cronstrue.ts", "src/cronstrue-i18n.ts"]
+  "files": ["src/cronstrue.ts", "src/cronstrue-i18n.ts", "src/cronstrue-async.ts"]
 }
