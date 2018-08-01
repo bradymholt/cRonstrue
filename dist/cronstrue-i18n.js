@@ -3711,10 +3711,10 @@ var ja = (function () {
         return null;
     };
     ja.prototype.lastDay = function () {
-        return "the last day";
+        return "最終日";
     };
     ja.prototype.commaAndOnX0 = function () {
-        return ", and on %s";
+        return "、〜と %s";
     };
     ja.prototype.daysOfTheWeek = function () {
         return ["木曜日", "金曜日", "土曜日", "日曜日", "月曜日", "火曜日", "水曜日"];
