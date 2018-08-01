@@ -282,7 +282,7 @@ export class ExpressionDescriptor {
           return daysOfWeekNames[parseInt(exp)];
         },
         s => {
-          return StringUtilities.format(this.i18n.commaEveryX0daysOfTheWeek(), s);
+          return StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(), s);
         },
         s => {
           return this.i18n.commaX0ThroughX1();

@@ -93,6 +93,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 - fr - French
 - de - German
 - it - Italian
+- ja - Japanese
 - nb - Norwegian
 - pl - Polish
 - pt_BR - Portuguese (Brazil)

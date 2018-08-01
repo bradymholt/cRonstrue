@@ -55,7 +55,7 @@ export class es implements Locale {
   commaEveryX0Days() {
     return ", cada %s días";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", cada %s días de la semana";
   }
   commaEveryX0Months() {

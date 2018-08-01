@@ -71,7 +71,7 @@ export class ru implements Locale {
   commaEveryDay() {
     return ", каждый день";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", каждые %s дней недели";
   }
   commaX0ThroughX1() {

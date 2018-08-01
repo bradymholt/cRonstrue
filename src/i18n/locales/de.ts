@@ -71,7 +71,7 @@ export class de implements Locale {
   commaEveryDay() {
     return ", jeden Tag";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", every %s days of the week";
   }
   commaX0ThroughX1() {

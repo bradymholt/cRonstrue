@@ -53,7 +53,7 @@ export class pt_BR implements Locale {
   commaEveryX0Days() {
     return ", a cada %s dias";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", a cada %s dias de semana";
   }
   commaEveryX0Months() {

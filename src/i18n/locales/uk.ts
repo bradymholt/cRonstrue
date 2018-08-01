@@ -71,7 +71,7 @@ export class uk implements Locale {
   commaEveryDay() {
     return ", щоденно";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", кожен %s день тижня";
   }
   commaX0ThroughX1() {

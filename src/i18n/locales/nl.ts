@@ -71,7 +71,7 @@ export class nl implements Locale {
   commaEveryDay() {
     return ", elke dag";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", elke %s dagen van de week";
   }
   commaX0ThroughX1() {
