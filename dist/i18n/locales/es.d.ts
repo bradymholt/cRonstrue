@@ -17,7 +17,7 @@ export declare class es implements Locale {
     commaEveryHour(): string;
     commaEveryMinute(): string;
     commaEveryX0Days(): string;
-    commaEveryX0daysOfTheWeek(): string;
+    commaEveryX0DaysOfTheWeek(): string;
     commaEveryX0Months(): string;
     commaOnDayX0OfTheMonth(): string;
     commaOnlyInX0(): string;
