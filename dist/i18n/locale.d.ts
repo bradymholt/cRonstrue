@@ -20,7 +20,7 @@ export interface Locale {
     betweenX0AndX1(): string;
     atX0(): string;
     commaEveryDay(): string;
-    commaEveryX0daysOfTheWeek(): string;
+    commaEveryX0DaysOfTheWeek(): string;
     commaX0ThroughX1(): string;
     commaMonthX0ThroughMonthX1(): string;
     commaYearX0ThroughYearX1(): string;

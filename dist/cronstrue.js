@@ -260,7 +260,7 @@ var ExpressionDescriptor = (function () {
                 }
                 return daysOfWeekNames[parseInt(exp)];
             }, function (s) {
-                return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0daysOfTheWeek(), s);
+                return stringUtilities_1.StringUtilities.format(_this.i18n.commaEveryX0DaysOfTheWeek(), s);
             }, function (s) {
                 return _this.i18n.commaX0ThroughX1();
             }, function (s) {
@@ -747,7 +747,7 @@ var en = (function () {
     en.prototype.commaEveryDay = function () {
         return ", every day";
     };
-    en.prototype.commaEveryX0daysOfTheWeek = function () {
+    en.prototype.commaEveryX0DaysOfTheWeek = function () {
         return ", every %s days of the week";
     };
     en.prototype.commaX0ThroughX1 = function () {

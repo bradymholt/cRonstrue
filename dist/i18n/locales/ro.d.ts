@@ -13,7 +13,7 @@ export declare class ro implements Locale {
     commaEveryHour(): string;
     commaEveryMinute(): string;
     commaEveryX0Days(): string;
-    commaEveryX0daysOfTheWeek(): string;
+    commaEveryX0DaysOfTheWeek(): string;
     commaEveryX0Months(): string;
     commaEveryX0Years(): string;
     commaOnDayX0OfTheMonth(): string;

@@ -13,3 +13,4 @@ export { ru } from "./locales/ru";
 export { tr } from "./locales/tr";
 export { uk } from "./locales/uk";
 export { zh_CN } from "./locales/zh_CN";
+export { ja } from "./locales/ja";

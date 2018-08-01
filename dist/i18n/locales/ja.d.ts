@@ -1,9 +1,5 @@
 import { Locale } from "../locale";
-export declare class fr implements Locale {
-    atX0SecondsPastTheMinuteGt20(): string;
-    atX0MinutesPastTheHourGt20(): string;
-    commaMonthX0ThroughMonthX1(): string;
-    commaYearX0ThroughYearX1(): string;
+export declare class ja implements Locale {
     use24HourTimeFormatByDefault(): boolean;
     everyMinute(): string;
     everyHour(): string;
@@ -32,26 +28,32 @@ export declare class fr implements Locale {
     fifth(): string;
     commaOnThe(): string;
     spaceX0OfTheMonth(): string;
-    lastDay(): string;
     commaOnTheLastX0OfTheMonth(): string;
     commaOnlyOnX0(): string;
-    commaAndOnX0(): string;
     commaEveryX0Months(): string;
     commaOnlyInX0(): string;
     commaOnTheLastDayOfTheMonth(): string;
     commaOnTheLastWeekdayOfTheMonth(): string;
-    commaDaysBeforeTheLastDayOfTheMonth(): string;
     firstWeekday(): string;
     weekdayNearestDayX0(): string;
     commaOnTheX0OfTheMonth(): string;
     commaEveryX0Days(): string;
     commaBetweenDayX0AndX1OfTheMonth(): string;
     commaOnDayX0OfTheMonth(): string;
+    spaceAndSpace(): string;
     commaEveryMinute(): string;
     commaEveryHour(): string;
     commaEveryX0Years(): string;
-    commaDaysX0ThroughX1(): string;
     commaStartingX0(): string;
+    aMPeriod(): string;
+    pMPeriod(): string;
+    commaDaysBeforeTheLastDayOfTheMonth(): string;
+    atX0SecondsPastTheMinuteGt20(): string;
+    atX0MinutesPastTheHourGt20(): string;
+    commaMonthX0ThroughMonthX1(): string;
+    commaYearX0ThroughYearX1(): string;
+    lastDay(): string;
+    commaAndOnX0(): string;
     daysOfTheWeek(): string[];
     monthsOfTheYear(): string[];
 }

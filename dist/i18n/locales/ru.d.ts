@@ -23,7 +23,7 @@ export declare class ru implements Locale {
     betweenX0AndX1(): string;
     atX0(): string;
     commaEveryDay(): string;
-    commaEveryX0daysOfTheWeek(): string;
+    commaEveryX0DaysOfTheWeek(): string;
     commaX0ThroughX1(): string;
     first(): string;
     second(): string;
