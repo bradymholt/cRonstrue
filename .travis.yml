@@ -16,7 +16,7 @@ deploy:
 after_deploy:
     - git config --global user.email "travis@travis-ci.org"
     - git config --global user.name "Travis CI"
-    - git remote add gh-origin https://${GH_TOKEN}@github.com/${GH_REPO}.git
+    - git remote add gh-origin https://bradymholt:${GH_TOKEN}@github.com/${GH_REPO}.git
     - git push gh-origin master --tags
     - VERSION=$(node -p "require('./package.json').version")
     - |
