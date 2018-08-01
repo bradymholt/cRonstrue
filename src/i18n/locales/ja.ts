@@ -158,10 +158,10 @@ export class ja implements Locale {
     return null;
   }
   lastDay() {
-    return "the last day";
+    return "最終日";
   }
   commaAndOnX0() {
-    return ", and on %s";
+    return "、〜と %s";
   }
   daysOfTheWeek() {
     return ["木曜日", "金曜日", "土曜日", "日曜日", "月曜日", "火曜日", "水曜日"];
