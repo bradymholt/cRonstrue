@@ -18,7 +18,6 @@ const path = require("path");
 const targetLocaleFile = path.join(__dirname, `../src/i18n/locales/${locale}.ts`);
 
 let methodNamesTranslated = [];
-let atX0MinutesPastTheHourGt20Specified = false;
 const lines = [];
 for (let key in parsed.data) {
   if (parsed.data.hasOwnProperty(key)) {
@@ -56,6 +55,7 @@ for (let property of methodsToDefaultIfMissing) {
   }
 }
 
+// Calculate and add daysOfTheWeek, monthsOfTheYear methods
 lines.push(`
 daysOfTheWeek() {
   return ${JSON.stringify(getDaysOfTheWeek(locale))};
@@ -77,7 +77,9 @@ export class ${locale} implements Locale {
 }
 `;
 
+// Write the locale file
 echo(localeFileOutput, targetLocaleFile);
+// Add locale file to list of available locales
 $(`echo 'export { ${locale} } from \"./locales/${locale}\";' >> ${path.join(__dirname, `../src/i18n/allLocales.ts`)}`)
 
 echo(`Done!`);
