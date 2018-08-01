@@ -70,9 +70,11 @@ cronstrue.toString(&quot;0 23 ? * MON-FRI&quot;);
 cronstrue.toString(&quot;23 12 * * SUN#2&quot;);
 &gt; &quot;At 12:23 PM, on the second Sunday of the month&quot;
 
-cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false});
-&gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
+cronstrue.toString(&quot;23 14 * * SUN#2&quot;, { use24HourTimeFormat: true });
+&gt; &quot;At 14:23, on the second Sunday of the month&quot;
 
+cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false });
+&gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
 </code></pre>
 <p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts">reference the unit tests</a>.</p>
 <h2 id="demo">Demo</h2>
