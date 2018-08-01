@@ -41,7 +41,7 @@ export class ro implements Locale {
   commaEveryX0Days() {
     return ", hver %s. dag";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", hver %s. ugedag";
   }
   commaEveryX0Months() {

@@ -71,7 +71,7 @@ export class tr implements Locale {
   commaEveryDay() {
     return ", her gün";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", ayın her %s günü";
   }
   commaX0ThroughX1() {

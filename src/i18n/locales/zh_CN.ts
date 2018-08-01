@@ -71,7 +71,7 @@ export class zh_CN implements Locale {
   commaEveryDay() {
     return ", 每天";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", 每周的每 %s 天";
   }
   commaX0ThroughX1() {

@@ -42,7 +42,7 @@ export class ro implements Locale {
   commaEveryX0Days() {
     return ", la fiecare %s zile";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", la fiecare a %s-a zi a săptămânii";
   }
   commaEveryX0Months() {

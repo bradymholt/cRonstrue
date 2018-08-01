@@ -53,7 +53,7 @@ export class pl implements Locale {
   commaEveryX0Days() {
     return ", co %s dni";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", co %s dni tygodnia";
   }
   commaEveryX0Months() {

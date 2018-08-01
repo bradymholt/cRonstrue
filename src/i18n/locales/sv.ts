@@ -71,7 +71,7 @@ export class sv implements Locale {
   commaEveryDay() {
     return ", varje dag";
   }
-  commaEveryX0daysOfTheWeek() {
+  commaEveryX0DaysOfTheWeek() {
     return ", var %s dag i veckan";
   }
   commaX0ThroughX1() {
