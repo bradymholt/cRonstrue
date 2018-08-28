@@ -56,7 +56,7 @@
   "scripts": {
     "build": "npx tsc",
     "test": "npx mocha --reporter spec --compilers ts:ts-node/register",
-    "prerelease": "rm -rf ./dist && webpack && node ./docs/generate.js README.md && git add -A",
+    "prerelease": "rm -rf ./dist && webpack && node ./docs/generate.js README.md && git add -A && git commit -m 'Build'",
     "release": "npx npm-github-release"
   },
   "dependencies": {}
