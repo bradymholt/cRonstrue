@@ -2,7 +2,10 @@ var webpack = require("webpack");
 var libraryName = require("./package.json").name;
 var withLocalesSuffix = "-i18n";
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
+  mode: "production",
   entry: {
     [libraryName]: "./src/cronstrue.ts",
     [libraryName + ".min"]: "./src/cronstrue.ts",
@@ -39,12 +42,5 @@ module.exports = {
         }
       }
     ]
-  },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      minimize: true,
-      sideEffects: false
-    })
-  ]
+  }
 };
