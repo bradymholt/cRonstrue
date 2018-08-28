@@ -934,6 +934,8 @@ var zh_CN_1 = __webpack_require__(22);
 exports.zh_CN = zh_CN_1.zh_CN;
 var ja_1 = __webpack_require__(23);
 exports.ja = ja_1.ja;
+var he_1 = __webpack_require__(24);
+exports.he = he_1.he;
 
 
 /***/ }),
@@ -3725,6 +3727,193 @@ var ja = (function () {
     return ja;
 }());
 exports.ja = ja;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var he = (function () {
+    function he() {
+    }
+    he.prototype.atX0SecondsPastTheMinuteGt20 = function () {
+        return null;
+    };
+    he.prototype.atX0MinutesPastTheHourGt20 = function () {
+        return null;
+    };
+    he.prototype.commaMonthX0ThroughMonthX1 = function () {
+        return null;
+    };
+    he.prototype.commaYearX0ThroughYearX1 = function () {
+        return null;
+    };
+    he.prototype.use24HourTimeFormatByDefault = function () {
+        return true;
+    };
+    he.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "אירעה שגיאה בעת יצירת תיאור הביטוי. בדוק את תחביר הביטוי cron.";
+    };
+    he.prototype.everyMinute = function () {
+        return "כל דקה";
+    };
+    he.prototype.everyHour = function () {
+        return "כל שעה";
+    };
+    he.prototype.atSpace = function () {
+        return "ב ";
+    };
+    he.prototype.everyMinuteBetweenX0AndX1 = function () {
+        return "כל דקה %s עד %s";
+    };
+    he.prototype.at = function () {
+        return "ב";
+    };
+    he.prototype.spaceAnd = function () {
+        return " ו";
+    };
+    he.prototype.everySecond = function () {
+        return "כל שניה";
+    };
+    he.prototype.everyX0Seconds = function () {
+        return "כל %s שניות";
+    };
+    he.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "%s עד %s שניות של הדקה";
+    };
+    he.prototype.atX0SecondsPastTheMinute = function () {
+        return "ב %s שניות של הדקה";
+    };
+    he.prototype.everyX0Minutes = function () {
+        return "כל %s דקות";
+    };
+    he.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "%s עד %s דקות של השעה";
+    };
+    he.prototype.atX0MinutesPastTheHour = function () {
+        return "ב %s דקות של השעה";
+    };
+    he.prototype.everyX0Hours = function () {
+        return "כל %s שעות";
+    };
+    he.prototype.betweenX0AndX1 = function () {
+        return "%s עד %s";
+    };
+    he.prototype.atX0 = function () {
+        return "ב %s";
+    };
+    he.prototype.commaEveryDay = function () {
+        return ", כל יום";
+    };
+    he.prototype.commaEveryX0DaysOfTheWeek = function () {
+        return ", כל %s ימים בשבוע";
+    };
+    he.prototype.commaX0ThroughX1 = function () {
+        return ", %s עד %s";
+    };
+    he.prototype.first = function () {
+        return "ראשון";
+    };
+    he.prototype.second = function () {
+        return "שני";
+    };
+    he.prototype.third = function () {
+        return "שלישי";
+    };
+    he.prototype.fourth = function () {
+        return "רביעי";
+    };
+    he.prototype.fifth = function () {
+        return "חמישי";
+    };
+    he.prototype.commaOnThe = function () {
+        return ", ב ";
+    };
+    he.prototype.spaceX0OfTheMonth = function () {
+        return " %s של החודש";
+    };
+    he.prototype.lastDay = function () {
+        return "היום האחרון";
+    };
+    he.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", רק ב %s של החודש";
+    };
+    he.prototype.commaOnlyOnX0 = function () {
+        return ", רק ב %s";
+    };
+    he.prototype.commaAndOnX0 = function () {
+        return ", וב %s";
+    };
+    he.prototype.commaEveryX0Months = function () {
+        return ", כל %s חודשים";
+    };
+    he.prototype.commaOnlyInX0 = function () {
+        return ", רק ב %s";
+    };
+    he.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", ביום האחרון של החודש";
+    };
+    he.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", ביום החול האחרון של החודש";
+    };
+    he.prototype.commaDaysBeforeTheLastDayOfTheMonth = function () {
+        return ", %s ימים לפני היום האחרון בחודש";
+    };
+    he.prototype.firstWeekday = function () {
+        return "יום החול הראשון";
+    };
+    he.prototype.weekdayNearestDayX0 = function () {
+        return "יום החול הראשון הקרוב אל %s";
+    };
+    he.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", ביום ה%s של החודש";
+    };
+    he.prototype.commaEveryX0Days = function () {
+        return ", כל %s ימים";
+    };
+    he.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", בין היום ה%s וה%s של החודש";
+    };
+    he.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", ביום ה%s של החודש";
+    };
+    he.prototype.commaEveryMinute = function () {
+        return ", כל דקה";
+    };
+    he.prototype.commaEveryHour = function () {
+        return ", כל שעה";
+    };
+    he.prototype.commaEveryX0Years = function () {
+        return ", כל %s שנים";
+    };
+    he.prototype.commaStartingX0 = function () {
+        return ", החל מ %s";
+    };
+    he.prototype.daysOfTheWeek = function () {
+        return ["יום ראשון", "יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "יום שבת"];
+    };
+    he.prototype.monthsOfTheYear = function () {
+        return [
+            "ינואר",
+            "פברואר",
+            "מרץ",
+            "אפריל",
+            "מאי",
+            "יוני",
+            "יולי",
+            "אוגוסט",
+            "ספטמבר",
+            "אוקטובר",
+            "נובמבר",
+            "דצמבר"
+        ];
+    };
+    return he;
+}());
+exports.he = he;
 
 
 /***/ })
