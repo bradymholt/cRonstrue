@@ -190,4 +190,17 @@ describe("i18n", function() {
       assert.equal(construe.toString(this.test.title, { locale: "zh_CN" }), "每 5 分钟, 在 03:00 PM, 星期一 到 星期五");
     });
   });
+
+  describe("he", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "he" }), "כל דקה");
+    });
+
+    it("*/5 15 * * MON-FRI", function() {
+      assert.equal(
+        construe.toString(this.test.title, { locale: "he" }),
+        "כל 5 דקות, ב 15:00, יום שני עד יום שישי"
+      );
+    });
+  });
 });
