@@ -90,19 +90,20 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 ### Supported Locales
 
 - en - English
+- es - Spanish
 - da - Danish
-- nl - Dutch
-- fr - French
 - de - German
+- fr - French
+- he - Hebrew
 - it - Italian
 - ja - Japanese
 - nb - Norwegian
+- nl - Dutch
 - pl - Polish
 - pt_BR - Portuguese (Brazil)
 - ro - Romanian
 - ru - Russian
 - sl - Slovenian
-- es - Spanish
 - sv - Swedish
 - tr - Turkish
 - uk - Ukrainian
