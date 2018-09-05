@@ -52,7 +52,8 @@
     "typescript": "^3.0.3",
     "webpack": "^4.17.2",
     "webpack-command": "^0.4.1",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "npm-check-updates": "^2.14.2"
   },
   "scripts": {
     "build": "npx tsc",
@@ -60,7 +61,5 @@
     "prerelease": "rm -rf ./dist && npx webpack && node ./docs/generate.js README.md && git add -A",
     "release": "npx npm-github-release"
   },
-  "dependencies": {
-    "npm-check-updates": "^2.14.2"
-  }
+  "dependencies": {}
 }
