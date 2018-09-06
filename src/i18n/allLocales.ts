@@ -15,3 +15,5 @@ export { uk } from "./locales/uk"; // Ukrainian
 export { zh_CN } from "./locales/zh_CN"; // Chinese (Simplified)
 export { ja } from "./locales/ja";
 export { he } from "./locales/he"; // Hebrew
+export { cs } from "./locales/cs"; // Czech
+export { sk } from "./locales/sk"; // Slovakian
