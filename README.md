@@ -44,6 +44,19 @@ import cronstrue from 'cronstrue';
 </script>
 ```
 
+#### CDN
+
+A simple way to load the library in a browser is by using the [unpkg](https://unpkg.com/) CDN, which is a
+"fast, global content delivery network for everything on npm".  To use it, include a script tag like this in your file:
+
+```
+<script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
+```
+
+Using the "latest" tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js to avoid this redirect.
+
+
+
 ## Usage
 
 ```js
