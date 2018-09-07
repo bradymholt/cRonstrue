@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "build",
+    "outDir": "./dist",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": false,

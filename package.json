@@ -45,6 +45,7 @@
     "handlebars": "^4.0.12",
     "marked": "^0.5.0",
     "mocha": "^5.2.0",
+    "npm-check-updates": "^2.14.2",
     "npm-github-release": "^0.9.0",
     "octonode": "^0.9.3",
     "ts-loader": "^5.0.0",
@@ -52,11 +53,10 @@
     "typescript": "^3.0.3",
     "webpack": "^4.17.2",
     "webpack-command": "^0.4.1",
-    "xml2js": "^0.4.19",
-    "npm-check-updates": "^2.14.2"
+    "xml2js": "^0.4.19"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc --noEmit",
     "test": "npx mocha --reporter spec --compilers ts:ts-node/register",
     "prerelease": "rm -rf ./dist && npx webpack && node ./docs/generate.js README.md && git add -A",
     "release": "npx npm-github-release"
