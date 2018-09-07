@@ -5,21 +5,23 @@
   "suppressTaskName": true,
   "tasks": [
     {
-      "taskName": "build",
+      "label": "build",
+      "type": "npm",
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "args": ["run", "build"],
+      "script": "build",
       "problemMatcher": "$tsc"
     },
     {
-      "taskName": "test",
+      "label": "test",
+      "type": "npm",
       "group": {
         "kind": "test",
         "isDefault": true
       },
-      "args": ["test"]
+      "script": "test"
     }
   ]
 }

@@ -2,7 +2,7 @@ var webpack = require("webpack");
 var libraryName = require("./package.json").name;
 var withLocalesSuffix = "-i18n";
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -34,14 +34,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
-        options: {
-          compilerOptions: {
-            outDir: "../dist",
-            declaration: true,
-            sourceMap: false
-          }
-        }
+        loader: "ts-loader"
       }
     ]
   }
