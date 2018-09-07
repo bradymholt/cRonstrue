@@ -1,7 +1,7 @@
 // Czech
 
 import { Locale } from "../locale";
-export class en implements Locale {
+export class cs implements Locale {
   atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
