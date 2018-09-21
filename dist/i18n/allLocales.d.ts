@@ -17,3 +17,4 @@ export { ja } from "./locales/ja";
 export { he } from "./locales/he";
 export { cs } from "./locales/cs";
 export { sk } from "./locales/sk";
+export { fi } from "./locales/fi";
