@@ -126,6 +126,7 @@ export class ExpressionDescriptor {
       !secondsExpression &&
       minuteExpression.indexOf("-") > -1 &&
       !(minuteExpression.indexOf(",") > -1) &&
+      !(minuteExpression.indexOf("/") > -1) &&
       !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
     ) {
       //minute range in single hour (i.e. 0-10 11)
