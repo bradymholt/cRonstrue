@@ -11,7 +11,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "de" }),
-        "Alle 5 Minuten, um 15:00, Montag bis Freitag"
+        "Alle 5 Minuten, zwischen 15:00 und 15:59, Montag bis Freitag"
       );
     });
   });
@@ -24,7 +24,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "es" }),
-        "Cada 5 minutos, a las 03:00 PM, de lunes a viernes"
+        "Cada 5 minutos, entre las 03:00 PM y las 03:59 PM, de lunes a viernes"
       );
     });
   });
@@ -37,7 +37,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "fr" }),
-        "Toutes les 5 minutes, à 03:00 PM, de lundi à vendredi"
+        "Toutes les 5 minutes, de 03:00 PM à 03:59 PM, de lundi à vendredi"
       );
     });
   });
@@ -50,7 +50,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "it" }),
-        "Ogni 5 minuti, alle 15:00, lunedì al venerdì"
+        "Ogni 5 minuti, tra le 15:00 e le 15:59, lunedì al venerdì"
       );
     });
   });
@@ -63,7 +63,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "nb" }),
-        "Hvert 5 minutt, på 03:00 PM, mandag til og med fredag"
+        "Hvert 5 minutt, mellom 03:00 PM og 03:59 PM, mandag til og med fredag"
       );
     });
   });
@@ -74,7 +74,7 @@ describe("i18n", function() {
     });
 
     it("*/5 15 * * MON-FRI", function() {
-      assert.equal(construe.toString(this.test.title, { locale: "sv" }), "Var 5 minut, kl 15:00, måndag till fredag");
+      assert.equal(construe.toString(this.test.title, { locale: "sv" }), "Var 5 minut, mellan 15:00 och 15:59, måndag till fredag");
     });
 
     it("0 12 * * *", function() {
@@ -98,7 +98,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "nl" }),
-        "Elke 5 minuten, op 03:00 PM, maandag t/m vrijdag"
+        "Elke 5 minuten, tussen 03:00 PM en 03:59 PM, maandag t/m vrijdag"
       );
     });
   });
@@ -111,7 +111,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "pl" }),
-        "Co 5 minut, o 15:00, od poniedziałek do piątek"
+        "Co 5 minut, od 15:00 do 15:59, od poniedziałek do piątek"
       );
     });
   });
@@ -124,7 +124,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "pt_BR" }),
-        "A cada 5 minutos, Às 03:00 PM, de segunda-feira a sexta-feira"
+        "A cada 5 minutos, entre 03:00 PM e 03:59 PM, de segunda-feira a sexta-feira"
       );
     });
   });
@@ -137,7 +137,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "ro" }),
-        "La fiecare 5 minute, la 15:00, de luni până vineri"
+        "La fiecare 5 minute, între 15:00 și 15:59, de luni până vineri"
       );
     });
   });
@@ -150,7 +150,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "ru" }),
-        "Каждые 5 минут, в 15:00, понедельник по пятница"
+        "Каждые 5 минут, с 15:00 по 15:59, понедельник по пятница"
       );
     });
   });
@@ -163,7 +163,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "tr" }),
-        "Her 5 dakikada bir, saat 15:00, Pazartesi ile Cuma arasında"
+        "Her 5 dakikada bir, 15:00 ile 15:59 arasında, Pazartesi ile Cuma arasında"
       );
     });
   });
@@ -176,7 +176,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "uk" }),
-        "Кожні 5 хвилин, о 15:00, понеділок по п'ятниця"
+        "Кожні 5 хвилин, між 15:00 та 15:59, понеділок по п'ятниця"
       );
     });
   });
@@ -187,7 +187,7 @@ describe("i18n", function() {
     });
 
     it("*/5 15 * * MON-FRI", function() {
-      assert.equal(construe.toString(this.test.title, { locale: "zh_CN" }), "每 5 分钟, 在 03:00 PM, 星期一 到 星期五");
+      assert.equal(construe.toString(this.test.title, { locale: "zh_CN" }), "每 5 分钟, 在 03:00 PM 和 03:59 PM 之间, 星期一 到 星期五");
     });
   });
 
@@ -199,7 +199,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         construe.toString(this.test.title, { locale: "he" }),
-        "כל 5 דקות, ב 15:00, יום שני עד יום שישי"
+        "כל 5 דקות, 15:00 עד 15:59, יום שני עד יום שישי"
       );
     });
   });

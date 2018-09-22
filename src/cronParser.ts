@@ -185,12 +185,12 @@ export class CronParser {
       }
 
       /* Convert Month,DOW,Year step values with a starting value (i.e. not '*') to between expressions.
-                This allows us to reuse the between expression handling for step values.
+         This allows us to reuse the between expression handling for step values.
 
-                For Example:
-                - month part '3/2' will be converted to '3-12/2' (every 2 months between March and December)
-                - DOW part '3/2' will be converted to '3-6/2' (every 2 days between Tuesday and Saturday)
-            */
+           For example:
+           - month part '3/2' will be converted to '3-12/2' (every 2 months between March and December)
+           - DOW part '3/2' will be converted to '3-6/2' (every 2 days between Tuesday and Saturday)
+      */
 
       if (expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
         let stepRangeThrough: string = null;
@@ -213,6 +213,17 @@ export class CronParser {
           let parts: string[] = expressionParts[i].split("/");
           expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
         }
+      }
+
+      // If time interval is specified for seconds or minutes and next time part is single item, make it a "self-range" so
+      // the expression can be interpreted as an interval 'between' range.
+
+      //     For example:
+      //     0-20/3 9 * * * => 0-20/3 9-9 * * * (9 => 9-9)
+      //     */5 3 * * * => */5 3-3 * * * (3 => 3-3)
+
+      if ((i == 1 || i == 2) && !/^\*|\-|\,/.test(expressionParts[i]) && expressionParts[i - 1].indexOf("/") > -1) {
+        expressionParts[i] += `-${expressionParts[i]}`;
       }
     }
   }
