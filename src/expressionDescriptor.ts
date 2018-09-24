@@ -167,13 +167,13 @@ export class ExpressionDescriptor {
 
       description += secondsDescription;
 
-      if (description.length > 0) {
+      if (description.length > 0 && minutesDescription.length > 0) {
         description += ", ";
       }
 
       description += minutesDescription;
 
-      if (description.length > 0) {
+      if (description.length > 0 && hoursDescription.length > 0) {
         description += ", ";
       }
 
@@ -209,6 +209,7 @@ export class ExpressionDescriptor {
   }
 
   protected getMinutesDescription() {
+    const secondsExpression = this.expressionParts[0];
     let description: string = this.getSegmentDescription(
       this.expressionParts[1],
       this.i18n.everyMinute(),
@@ -223,7 +224,7 @@ export class ExpressionDescriptor {
       },
       s => {
         try {
-          return s == "0"
+          return s == "0" && secondsExpression == ""
             ? ""
             : parseInt(s) < 20
               ? this.i18n.atX0MinutesPastTheHour()
@@ -570,6 +571,7 @@ export class ExpressionDescriptor {
       description = description.replace(new RegExp(this.i18n.commaEveryMinute(), "g"), "");
       description = description.replace(new RegExp(this.i18n.commaEveryHour(), "g"), "");
       description = description.replace(new RegExp(this.i18n.commaEveryDay(), "g"), "");
+      description = description.replace(/\, ?$/, "");
     }
     return description;
   }
