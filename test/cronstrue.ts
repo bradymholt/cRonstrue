@@ -260,7 +260,10 @@ describe("Cronstrue", function() {
 
   describe("non-trivial expressions", function() {
     it("*/5 15 * * MON-FRI", function() {
-      assert.equal(construe.toString(this.test.title), "Every 5 minutes, between 03:00 PM and 03:59 PM, Monday through Friday");
+      assert.equal(
+        construe.toString(this.test.title),
+        "Every 5 minutes, between 03:00 PM and 03:59 PM, Monday through Friday"
+      );
     });
 
     it("* * * * MON#3", function() {
@@ -432,7 +435,10 @@ describe("Cronstrue", function() {
     });
 
     it("0-20/3 9 * * *", function() {
-      assert.equal(construe.toString(this.test.title), "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM");
+      assert.equal(
+        construe.toString(this.test.title),
+        "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM"
+      );
     });
   });
 
