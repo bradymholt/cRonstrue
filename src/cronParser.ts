@@ -177,6 +177,15 @@ export class CronParser {
       expressionParts[0] = "";
     }
 
+    // If time interval is specified for minutes and hours part is single item, make it a "self-range" so
+    // the expression can be interpreted as an interval 'between' range.
+    //     For example:
+    //     0-20/3 9 * * * => 0-20/3 9-9 * * * (9 => 9-9)
+    //     */5 3 * * * => */5 3-3 * * * (3 => 3-3)
+    if (!/^\*|\-|\,/.test(expressionParts[2]) && expressionParts[1].indexOf("/") > -1) {
+      expressionParts[2] += `-${expressionParts[2]}`;
+    }
+
     // Loop through all parts and apply global normalization
     for (let i = 0; i < expressionParts.length; i++) {
       // convert all '*/1' to '*'
@@ -213,17 +222,6 @@ export class CronParser {
           let parts: string[] = expressionParts[i].split("/");
           expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
         }
-      }
-
-      // If time interval is specified for seconds or minutes and next time part is single item, make it a "self-range" so
-      // the expression can be interpreted as an interval 'between' range.
-
-      //     For example:
-      //     0-20/3 9 * * * => 0-20/3 9-9 * * * (9 => 9-9)
-      //     */5 3 * * * => */5 3-3 * * * (3 => 3-3)
-
-      if ((i == 1 || i == 2) && !/^\*|\-|\,/.test(expressionParts[i]) && expressionParts[i - 1].indexOf("/") > -1) {
-        expressionParts[i] += `-${expressionParts[i]}`;
       }
     }
   }
