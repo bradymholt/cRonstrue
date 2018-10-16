@@ -18,3 +18,4 @@ export { he } from "./locales/he"; // Hebrew
 export { cs } from "./locales/cs"; // Czech
 export { sk } from "./locales/sk"; // Slovakian
 export { fi } from "./locales/fi";
+export { sw } from "./locales/sw"; // Swahili
