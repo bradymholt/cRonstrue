@@ -18,3 +18,4 @@ export { he } from "./locales/he";
 export { cs } from "./locales/cs";
 export { sk } from "./locales/sk";
 export { fi } from "./locales/fi";
+export { sw } from "./locales/sw";
