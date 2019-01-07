@@ -125,6 +125,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 - tr - Turkish
 - uk - Ukrainian
 - zh_CN - Chinese (Simplified)
+- zh_TW - Chinese (Traditional)
 
 ## License
 

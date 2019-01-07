@@ -13,6 +13,7 @@ export { ru } from "./locales/ru"; // Russian
 export { tr } from "./locales/tr"; // Turkish
 export { uk } from "./locales/uk"; // Ukrainian
 export { zh_CN } from "./locales/zh_CN"; // Chinese (Simplified)
+export { zh_TW } from "./locales/zh_TW"; // Chinese (Traditional)
 export { ja } from "./locales/ja";
 export { he } from "./locales/he"; // Hebrew
 export { cs } from "./locales/cs"; // Czech

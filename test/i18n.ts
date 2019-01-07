@@ -74,7 +74,10 @@ describe("i18n", function() {
     });
 
     it("*/5 15 * * MON-FRI", function() {
-      assert.equal(construe.toString(this.test.title, { locale: "sv" }), "Var 5 minut, mellan 15:00 och 15:59, måndag till fredag");
+      assert.equal(
+        construe.toString(this.test.title, { locale: "sv" }),
+        "Var 5 minut, mellan 15:00 och 15:59, måndag till fredag"
+      );
     });
 
     it("0 12 * * *", function() {
@@ -187,7 +190,23 @@ describe("i18n", function() {
     });
 
     it("*/5 15 * * MON-FRI", function() {
-      assert.equal(construe.toString(this.test.title, { locale: "zh_CN" }), "每 5 分钟, 在 03:00 PM 和 03:59 PM 之间, 星期一 到 星期五");
+      assert.equal(
+        construe.toString(this.test.title, { locale: "zh_CN" }),
+        "每 5 分钟, 在 03:00 PM 和 03:59 PM 之间, 星期一 到 星期五"
+      );
+    });
+  });
+
+  describe("zh_TW", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "zh_TW" }), "每分鐘");
+    });
+
+    it("*/5 15 * * MON-FRI", function() {
+      assert.equal(
+        construe.toString(this.test.title, { locale: "zh_TW" }),
+        "每 5 分鐘, 在 03:00 PM 和 03:59 PM 之間, 星期一 到 星期五"
+      );
     });
   });
 
