@@ -1,4 +1,4 @@
-// Chinese (Simplified)
+// Chinese (Traditional)
 
 import { Locale } from "../locale";
 export class zh_TW implements Locale {
