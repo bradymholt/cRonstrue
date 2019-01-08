@@ -1,7 +1,7 @@
 // Danish
 
 import { Locale } from "../locale";
-export class ro implements Locale {
+export class da implements Locale {
   use24HourTimeFormatByDefault() {
     return true;
   }
@@ -140,16 +140,16 @@ export class ro implements Locale {
   weekdayNearestDayX0() {
     return "hverdag nærmest dag %s";
   }
-  commaMonthX0ThroughMonthX1() {
+  commaMonthX0ThroughMonthX1():string {
     return null;
   }
-  commaYearX0ThroughYearX1() {
+  commaYearX0ThroughYearX1():string {
     return null;
   }
-  atX0MinutesPastTheHourGt20() {
+  atX0MinutesPastTheHourGt20():string {
     return null;
   }
-  atX0SecondsPastTheMinuteGt20() {
+  atX0SecondsPastTheMinuteGt20():string {
     return null;
   }
   commaStartingX0() {

@@ -222,4 +222,16 @@ describe("i18n", function() {
       );
     });
   });
+
+  describe("da", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "da" }), "Hvert minut");
+    });
+  });
+
+  describe("sl", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "sl" }), "Vsako minuto");
+    });
+  });
 });
