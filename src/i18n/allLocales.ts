@@ -1,4 +1,5 @@
 export { en } from "./locales/en"; // English
+export { da } from "./locales/da"; // Danish
 export { de } from "./locales/de"; // German
 export { es } from "./locales/es"; // Spanish
 export { fr } from "./locales/fr"; // French
@@ -19,4 +20,6 @@ export { he } from "./locales/he"; // Hebrew
 export { cs } from "./locales/cs"; // Czech
 export { sk } from "./locales/sk"; // Slovakian
 export { fi } from "./locales/fi";
+export { sl } from "./locales/sl"; // Slovenian
 export { sw } from "./locales/sw"; // Swahili
+
