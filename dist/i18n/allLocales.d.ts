@@ -1,4 +1,5 @@
 export { en } from "./locales/en";
+export { da } from "./locales/da";
 export { de } from "./locales/de";
 export { es } from "./locales/es";
 export { fr } from "./locales/fr";
@@ -19,4 +20,5 @@ export { he } from "./locales/he";
 export { cs } from "./locales/cs";
 export { sk } from "./locales/sk";
 export { fi } from "./locales/fi";
+export { sl } from "./locales/sl";
 export { sw } from "./locales/sw";
