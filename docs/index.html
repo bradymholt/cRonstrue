@@ -48,7 +48,7 @@
 <pre><code>npm install cronstrue</code></pre><p>Then, depending upon your usage context, add a reference to it:</p>
 <h3 id="node">Node</h3>
 <pre><code class="language-js">var cronstrue = require(&#39;cronstrue&#39;);</code></pre>
-<h3 id="es6-typescript">ES6/TypeScript</h3>
+<h3 id="esm-webpack-typescript">ESM / webpack / TypeScript</h3>
 <pre><code class="language-js">import cronstrue from &#39;cronstrue&#39;;</code></pre>
 <h3 id="browser">Browser</h3>
 <p> The <code>cronstrue.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a <code>&lt;script&gt;</code> tag.</p>
@@ -59,7 +59,8 @@
 <h4 id="cdn">CDN</h4>
 <p>A simple way to load the library in a browser is by using the <a href="https://unpkg.com/">unpkg</a> CDN, which is a
 &quot;fast, global content delivery network for everything on npm&quot;.  To use it, include a script tag like this in your file:</p>
-<pre><code>&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;</code></pre><p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;</code></pre>
+<p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="language-js">cronstrue.toString(&quot;* * * * *&quot;);
 &gt; &quot;Every minute&quot;
