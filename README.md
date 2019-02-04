@@ -28,7 +28,7 @@ Then, depending upon your usage context, add a reference to it:
 var cronstrue = require('cronstrue');
 ```
 
-### ES6/TypeScript
+### ESM / webpack / TypeScript
 
 ```js
 import cronstrue from 'cronstrue';
@@ -49,13 +49,11 @@ import cronstrue from 'cronstrue';
 A simple way to load the library in a browser is by using the [unpkg](https://unpkg.com/) CDN, which is a
 "fast, global content delivery network for everything on npm".  To use it, include a script tag like this in your file:
 
-```
+```html
 <script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
 ```
 
 Using the "latest" tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js to avoid this redirect.
-
-
 
 ## Usage
 
@@ -93,6 +91,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 ```
 ### Browser
  The `cronstrue-i18n.min.js` file from the `/dist` folder in the npm package should be served to the browser.
+ 
 ```html
 <script src="cronstrue-i18n.min.js" type="text/javascript"></script>
 <script>
