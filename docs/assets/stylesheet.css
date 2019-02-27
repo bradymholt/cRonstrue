@@ -335,6 +335,13 @@ footer a:hover {
   content: '.';
 }
 
+.jumbotron {
+  background-color: #E7E7E7;
+  border-radius: .3rem;
+  margin-bottom: 10px;
+  padding: 25px;
+  border: solid 1px #878787;
+}
 .clearfix {display: inline-block;}
 * html .clearfix {height: 1%;}
 .clearfix {display: block;}
