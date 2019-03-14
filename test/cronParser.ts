@@ -29,5 +29,10 @@ describe("CronParser", function() {
         new CronParser("* * * * MO").parse();
       }, `DOW part contains invalid values: 'MO'`);
     });
+
+    it("should parse cron with multiple spaces between parts", function() {
+      assert.equal(new CronParser("30  2  *    *  *").parse().length, 7);
+      assert.equal(new CronParser("* *  * *  * 2015").parse().length, 7);
+    });
   });
 });

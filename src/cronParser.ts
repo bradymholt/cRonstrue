@@ -31,7 +31,8 @@ export class CronParser {
       throw new Error("Expression is empty");
     }
 
-    let parsed: string[] = expression.trim().split(" ");
+    // split on one or more spaces
+    let parsed: string[] = expression.trim().split(/[ ]+/);
 
     if (parsed.length < 5) {
       throw new Error(
