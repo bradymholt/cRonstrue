@@ -200,8 +200,8 @@ export class ExpressionDescriptor {
         return s == "0"
           ? ""
           : parseInt(s) < 20
-            ? this.i18n.atX0SecondsPastTheMinute()
-            : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
+          ? this.i18n.atX0SecondsPastTheMinute()
+          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
       }
     );
 
@@ -210,6 +210,7 @@ export class ExpressionDescriptor {
 
   protected getMinutesDescription() {
     const secondsExpression = this.expressionParts[0];
+    const hourExpression = this.expressionParts[2];
     let description: string = this.getSegmentDescription(
       this.expressionParts[1],
       this.i18n.everyMinute(),
@@ -224,11 +225,11 @@ export class ExpressionDescriptor {
       },
       s => {
         try {
-          return s == "0" && secondsExpression == ""
-            ? ""
+          return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
+            ? this.i18n.everyHour()
             : parseInt(s) < 20
-              ? this.i18n.atX0MinutesPastTheHour()
-              : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
+            ? this.i18n.atX0MinutesPastTheHour()
+            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour();
         }
