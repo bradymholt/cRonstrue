@@ -229,6 +229,12 @@ describe("i18n", function() {
     });
   });
 
+  describe("fa", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "fa" }), "هر دقیقه");
+    });
+  });
+
   describe("sl", function() {
     it("* * * * *", function() {
       assert.equal(construe.toString(this.test.title, { locale: "sl" }), "Vsako minuto");

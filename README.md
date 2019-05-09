@@ -91,7 +91,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 ```
 ### Browser
  The `cronstrue-i18n.min.js` file from the `/dist` folder in the npm package should be served to the browser.
- 
+
 ```html
 <script src="cronstrue-i18n.min.js" type="text/javascript"></script>
 <script>
@@ -108,6 +108,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 - de - German
 - fi - Finnish
 - fr - French
+- fa - Farsi
 - he - Hebrew
 - it - Italian
 - ja - Japanese
