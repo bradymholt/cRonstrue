@@ -22,3 +22,4 @@ export { sk } from "./locales/sk";
 export { fi } from "./locales/fi";
 export { sl } from "./locales/sl";
 export { sw } from "./locales/sw";
+export { fa } from "./locales/fa";
