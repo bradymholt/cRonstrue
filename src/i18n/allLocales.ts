@@ -4,6 +4,7 @@ export { de } from "./locales/de"; // German
 export { es } from "./locales/es"; // Spanish
 export { fr } from "./locales/fr"; // French
 export { it } from "./locales/it"; // Italian
+export { ko } from "./locales/ko"; // Korean
 export { nl } from "./locales/nl"; // Dutch
 export { nb } from "./locales/nb"; // Norwegian
 export { sv } from "./locales/sv"; // Swedish
