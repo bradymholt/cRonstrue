@@ -9,7 +9,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - Supports [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions
-- i18n support with 24 languages
+- i18n support with 25 languages
 
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
@@ -112,6 +112,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 - he - Hebrew
 - it - Italian
 - ja - Japanese
+- ko - Korean
 - nb - Norwegian
 - nl - Dutch
 - pl - Polish

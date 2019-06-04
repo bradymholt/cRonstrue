@@ -240,4 +240,10 @@ describe("i18n", function() {
       assert.equal(construe.toString(this.test.title, { locale: "sl" }), "Vsako minuto");
     });
   });
+
+  describe("ko", function() {
+    it("* * * * *", function() {
+      assert.equal(construe.toString(this.test.title, { locale: "ko" }), "1분마다");
+    });
+  });
 });

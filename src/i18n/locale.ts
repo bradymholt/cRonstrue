@@ -3,6 +3,9 @@ export interface Locale {
   // TODO: These locale translations would be a good use for ES6 template strings except we sometimes concatenate multiple transactions together before
   //       doing the actual template replacement.
 
+  setPeriodBeforeTime?(): boolean;
+  pm?(): string;
+  am?(): string;
   use24HourTimeFormatByDefault(): boolean;
   anErrorOccuredWhenGeneratingTheExpressionD(): string;
   everyMinute(): string;
