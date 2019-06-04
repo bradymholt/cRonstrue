@@ -544,7 +544,7 @@ export class ExpressionDescriptor {
 
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
     let hour: number = parseInt(hourExpression);
-    let period: string = '';
+    let period: string = "";
     let setPeriodBeforeTime: boolean = false;
     if (!this.options.use24HourTimeFormat) {
       setPeriodBeforeTime = this.i18n.setPeriodBeforeTime && this.i18n.setPeriodBeforeTime();
@@ -558,14 +558,14 @@ export class ExpressionDescriptor {
     }
 
     const minute = minuteExpression;
-    let second: string = '';
+    let second: string = "";
     if (secondExpression) {
-      second = `:${('00' + secondExpression).substring(secondExpression.length)}`;
+      second = `:${("00" + secondExpression).substring(secondExpression.length)}`;
     }
 
-    return `${setPeriodBeforeTime ? period : ''}${('00' + hour.toString()).substring(hour.toString().length)}:${('00' + minute.toString()).substring(
+    return `${setPeriodBeforeTime ? period : ""}${("00" + hour.toString()).substring(hour.toString().length)}:${("00" + minute.toString()).substring(
       minute.toString().length
-    )}${second}${!setPeriodBeforeTime ? period : ''}`;
+    )}${second}${!setPeriodBeforeTime ? period : ""}`;
   }
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
@@ -579,6 +579,6 @@ export class ExpressionDescriptor {
   }
 
   private getPeriod(hour: number): string {
-    return hour >= 12 ? this.i18n.pm && this.i18n.pm() || 'PM' : this.i18n.am && this.i18n.am() || 'AM';
+    return hour >= 12 ? this.i18n.pm && this.i18n.pm() || "PM" : this.i18n.am && this.i18n.am() || "AM";
   }
 }
