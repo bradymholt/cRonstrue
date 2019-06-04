@@ -1,7 +1,12 @@
-export interface Locale {
-    setPeriodBeforeTime?(): boolean;
-    pm?(): string;
-    am?(): string;
+import { Locale } from "../locale";
+export declare class ko implements Locale {
+    setPeriodBeforeTime(): boolean;
+    pm(): string;
+    am(): string;
+    atX0SecondsPastTheMinuteGt20(): string;
+    atX0MinutesPastTheHourGt20(): string;
+    commaMonthX0ThroughMonthX1(): string;
+    commaYearX0ThroughYearX1(): string;
     use24HourTimeFormatByDefault(): boolean;
     anErrorOccuredWhenGeneratingTheExpressionD(): string;
     everyMinute(): string;
@@ -14,19 +19,15 @@ export interface Locale {
     everyX0Seconds(): string;
     secondsX0ThroughX1PastTheMinute(): string;
     atX0SecondsPastTheMinute(): string;
-    atX0SecondsPastTheMinuteGt20(): string;
     everyX0Minutes(): string;
     minutesX0ThroughX1PastTheHour(): string;
     atX0MinutesPastTheHour(): string;
-    atX0MinutesPastTheHourGt20(): string;
     everyX0Hours(): string;
     betweenX0AndX1(): string;
     atX0(): string;
     commaEveryDay(): string;
     commaEveryX0DaysOfTheWeek(): string;
     commaX0ThroughX1(): string;
-    commaMonthX0ThroughMonthX1(): string;
-    commaYearX0ThroughYearX1(): string;
     first(): string;
     second(): string;
     third(): string;

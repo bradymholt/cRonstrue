@@ -26,4 +26,5 @@ export declare class ExpressionDescriptor {
     protected generateBetweenSegmentDescription(betweenExpression: string, getBetweenDescriptionFormat: (t: string) => string, getSingleItemDescription: (t: string) => string): string;
     protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string): string;
     protected transformVerbosity(description: string, useVerboseFormat: boolean): string;
+    private getPeriod;
 }
