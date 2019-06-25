@@ -2,8 +2,6 @@ var webpack = require("webpack");
 var libraryName = require("./package.json").name;
 var withLocalesSuffix = "-i18n";
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-
 module.exports = {
   mode: "production",
   entry: {
