@@ -482,6 +482,10 @@ describe("Cronstrue", function() {
     it("30 4 1 * *", function() {
       assert.equal(construe.toString(this.test.title, { verbose: true }), "At 04:30 AM, on day 1 of the month");
     });
+
+    it("0 13 * * 1", function() {
+      assert.equal(construe.toString(this.test.title, { verbose: true}), "At 01:00 PM, only on Monday");
+    });
   });
 
   describe("errors", function() {

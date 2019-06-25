@@ -394,6 +394,9 @@ export class ExpressionDescriptor {
             let offSetDays = lastDayOffSetMatches[1];
             description = StringUtilities.format(this.i18n.commaDaysBeforeTheLastDayOfTheMonth(), offSetDays);
             break;
+          } else if (expression == "*" && this.expressionParts[5] != "*"){
+            // * dayOfMonth and dayOfWeek specified so use dayOfWeek verbiage instead
+            return "";
           } else {
             description = this.getSegmentDescription(
               expression,
