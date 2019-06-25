@@ -47,8 +47,6 @@ export declare class fr implements Locale {
     commaEveryX0Days(): string;
     commaBetweenDayX0AndX1OfTheMonth(): string;
     commaOnDayX0OfTheMonth(): string;
-    commaEveryMinute(): string;
-    commaEveryHour(): string;
     commaEveryX0Years(): string;
     commaDaysX0ThroughX1(): string;
     commaStartingX0(): string;

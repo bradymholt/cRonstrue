@@ -14,8 +14,6 @@ export declare class it implements Locale {
     betweenX0AndX1(): string;
     commaBetweenDayX0AndX1OfTheMonth(): string;
     commaEveryDay(): string;
-    commaEveryHour(): string;
-    commaEveryMinute(): string;
     commaEveryX0Days(): string;
     commaEveryX0DaysOfTheWeek(): string;
     commaEveryX0Months(): string;
