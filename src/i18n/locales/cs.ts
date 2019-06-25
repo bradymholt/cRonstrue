@@ -145,12 +145,6 @@ export class cs implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", %s. den v měsíci";
   }
-  commaEveryMinute() {
-    return ", každou minutu";
-  }
-  commaEveryHour() {
-    return ", každou hodinu";
-  }
   commaEveryX0Years() {
     return ", každých %s roků";
   }

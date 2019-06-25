@@ -143,12 +143,6 @@ export class zh_CN implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", 每月的 %s 号";
   }
-  commaEveryMinute() {
-    return ", 每分钟";
-  }
-  commaEveryHour() {
-    return ", 每小时";
-  }
   commaEveryX0Years() {
     return ", 每 %s 年";
   }

@@ -143,12 +143,6 @@ export class sv implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", på dag %s av månaden";
   }
-  commaEveryMinute() {
-    return ", varje minut";
-  }
-  commaEveryHour() {
-    return ", varje timme";
-  }
   commaEveryX0Years() {
     return ", var %s år";
   }

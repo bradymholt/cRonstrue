@@ -145,12 +145,6 @@ export class sk implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", %s. deň v mesiaci";
   }
-  commaEveryMinute() {
-    return ", každú minutu";
-  }
-  commaEveryHour() {
-    return ", každú hodinu";
-  }
   commaEveryX0Years() {
     return ", každých %s rokov";
   }

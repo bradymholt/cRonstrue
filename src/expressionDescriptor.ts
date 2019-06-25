@@ -285,7 +285,12 @@ export class ExpressionDescriptor {
           return daysOfWeekNames[parseInt(exp)];
         },
         s => {
-          return StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(), s);
+          if (parseInt(s) == 1) {
+            // rather than "every 1 days" just return empty string
+            return "";
+          } else {
+            return StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(), s);
+          }
         },
         s => {
           return this.i18n.commaX0ThroughX1();
@@ -340,7 +345,13 @@ export class ExpressionDescriptor {
         return monthNames[parseInt(s) - 1];
       },
       s => {
-        return StringUtilities.format(this.i18n.commaEveryX0Months(), s);
+        //
+        if (parseInt(s) == 1) {
+          // rather than "every 1 months" just return empty string
+          return "";
+        } else {
+          return StringUtilities.format(this.i18n.commaEveryX0Months(), s);
+        }
       },
       s => {
         return this.i18n.commaMonthX0ThroughMonthX1() || this.i18n.commaX0ThroughX1();
@@ -570,8 +581,8 @@ export class ExpressionDescriptor {
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
     if (!useVerboseFormat) {
-      description = description.replace(new RegExp(this.i18n.commaEveryMinute(), "g"), "");
-      description = description.replace(new RegExp(this.i18n.commaEveryHour(), "g"), "");
+      description = description.replace(new RegExp(`, ${this.i18n.everyMinute()}`, "g"), "");
+      description = description.replace(new RegExp(`, ${this.i18n.everyHour()}`, "g"), "");
       description = description.replace(new RegExp(this.i18n.commaEveryDay(), "g"), "");
       description = description.replace(/\, ?$/, "");
     }

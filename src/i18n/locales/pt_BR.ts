@@ -44,12 +44,6 @@ export class pt_BR implements Locale {
   commaEveryDay() {
     return ", a cada dia";
   }
-  commaEveryHour() {
-    return ", a cada hora";
-  }
-  commaEveryMinute() {
-    return ", a cada minuto";
-  }
   commaEveryX0Days() {
     return ", a cada %s dias";
   }

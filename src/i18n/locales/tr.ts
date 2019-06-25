@@ -143,12 +143,6 @@ export class tr implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", ayın %s. günü";
   }
-  commaEveryMinute() {
-    return ", her dakika";
-  }
-  commaEveryHour() {
-    return ", her saat";
-  }
   commaEveryX0Years() {
     return ", %s yılda bir";
   }

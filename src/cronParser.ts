@@ -59,9 +59,12 @@ export class CronParser {
   }
 
   protected normalize(expressionParts: string[]): void {
-    // Convert ? to * only for DOM and DOW
+    // Convert ? to * for DOM and DOW
     expressionParts[3] = expressionParts[3].replace("?", "*");
     expressionParts[5] = expressionParts[5].replace("?", "*");
+
+    // Convert ? to * for Hour. ? isn't valid for hour position but we can work around it.
+    expressionParts[2] = expressionParts[2].replace("?", "*");
 
     // Convert 0/, 1/ to */
     if (expressionParts[0].indexOf("0/") == 0) {

@@ -143,12 +143,6 @@ export class de implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", am %s Tag des Monats";
   }
-  commaEveryMinute() {
-    return ", jede Minute";
-  }
-  commaEveryHour() {
-    return ", jede Stunde";
-  }
   commaEveryX0Years() {
     return ", alle %s Jahre";
   }

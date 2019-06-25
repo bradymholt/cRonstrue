@@ -77,6 +77,14 @@ describe("Cronstrue", function() {
     it("0 9-17 * * *", function() {
       assert.equal(construe.toString(this.test.title), "Every hour, between 09:00 AM and 05:59 PM");
     });
+
+    it("0 * ? * 2/1 *", function() {
+      assert.equal(construe.toString(this.test.title), "Every minute, February through December");
+    });
+
+    it("0 * ? * 2/1", function() {
+      assert.equal(construe.toString(this.test.title), "Every hour, Tuesday through Saturday");
+    });
   });
 
   describe("ranges", function() {

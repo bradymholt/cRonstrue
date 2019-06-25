@@ -32,12 +32,6 @@ export class da implements Locale {
   commaEveryDay() {
     return ", hver dag";
   }
-  commaEveryHour() {
-    return ", hver time";
-  }
-  commaEveryMinute() {
-    return ", hvert minut";
-  }
   commaEveryX0Days() {
     return ", hver %s. dag";
   }

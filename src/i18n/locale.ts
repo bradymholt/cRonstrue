@@ -53,8 +53,6 @@ export interface Locale {
   commaEveryX0Days(): string;
   commaBetweenDayX0AndX1OfTheMonth(): string;
   commaOnDayX0OfTheMonth(): string;
-  commaEveryMinute(): string;
-  commaEveryHour(): string;
   commaEveryX0Years(): string;
   commaStartingX0(): string;
   daysOfTheWeek(): string[];

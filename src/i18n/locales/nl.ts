@@ -143,12 +143,6 @@ export class nl implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", op dag %s van de maand";
   }
-  commaEveryMinute() {
-    return ", elke minuut";
-  }
-  commaEveryHour() {
-    return ", elk uur";
-  }
   commaEveryX0Years() {
     return ", elke %s jaren";
   }

@@ -44,12 +44,6 @@ export class nb implements Locale {
   commaEveryDay() {
     return ", hver dag";
   }
-  commaEveryHour() {
-    return ", hver time";
-  }
-  commaEveryMinute() {
-    return ", hvert minutt";
-  }
   commaEveryX0Days() {
     return ", hver %s dag";
   }

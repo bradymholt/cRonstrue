@@ -32,12 +32,6 @@ export class sl implements Locale {
   commaEveryDay() {
     return ", vsak dan";
   }
-  commaEveryHour() {
-    return ", vsako uro";
-  }
-  commaEveryMinute() {
-    return ", vsako minuto";
-  }
   commaEveryX0Days() {
     return ", vsakih %s dni";
   }

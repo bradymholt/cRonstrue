@@ -148,12 +148,6 @@ export class sw implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", siku ya %s ya mwezi";
   }
-  commaEveryMinute() {
-    return ", kila dakika";
-  }
-  commaEveryHour() {
-    return ", kila saa";
-  }
   commaEveryX0Years() {
     return ", kila miaka %s";
   }

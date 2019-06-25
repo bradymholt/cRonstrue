@@ -144,12 +144,6 @@ export class he implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", ביום ה%s של החודש";
   }
-  commaEveryMinute() {
-    return ", כל דקה";
-  }
-  commaEveryHour() {
-    return ", כל שעה";
-  }
   commaEveryX0Years() {
     return ", כל %s שנים";
   }

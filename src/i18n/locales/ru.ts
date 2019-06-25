@@ -143,12 +143,6 @@ export class ru implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", в %s число месяца";
   }
-  commaEveryMinute() {
-    return ", каждую минуту";
-  }
-  commaEveryHour() {
-    return ", каждый час";
-  }
   commaEveryX0Years() {
     return ", каждые %s лет";
   }

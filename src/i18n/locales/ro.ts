@@ -33,12 +33,6 @@ export class ro implements Locale {
   commaEveryDay() {
     return ", în fiecare zi";
   }
-  commaEveryHour() {
-    return ", în fiecare oră";
-  }
-  commaEveryMinute() {
-    return ", în fiecare minut";
-  }
   commaEveryX0Days() {
     return ", la fiecare %s zile";
   }

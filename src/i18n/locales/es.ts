@@ -46,12 +46,6 @@ export class es implements Locale {
   commaEveryDay() {
     return ", cada día";
   }
-  commaEveryHour() {
-    return ", cada hora";
-  }
-  commaEveryMinute() {
-    return ", cada minuto";
-  }
   commaEveryX0Days() {
     return ", cada %s días";
   }
