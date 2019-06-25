@@ -85,10 +85,6 @@ describe("Cronstrue", function() {
     it("0 * ? * 2/1", function() {
       assert.equal(construe.toString(this.test.title), "Every hour, Tuesday through Saturday");
     });
-
-    it("0 52 13 ? * 3/1", function() {
-      assert.equal(construe.toString(this.test.title), "At 01:52 PM, Wednesday through Saturday");
-    });
   });
 
   describe("ranges", function() {
@@ -481,6 +477,10 @@ describe("Cronstrue", function() {
   describe("verbose", function() {
     it("30 4 1 * *", function() {
       assert.equal(construe.toString(this.test.title, { verbose: true }), "At 04:30 AM, on day 1 of the month");
+    });
+
+    it("0 13 * * 1", function() {
+      assert.equal(construe.toString(this.test.title, { verbose: true}), "At 01:00 PM, only on Monday");
     });
   });
 
