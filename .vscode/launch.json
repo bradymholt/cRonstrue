@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "stopOnEntry": false,
-      "args": ["--compilers", "ts:ts-node/register"],
+      "args": ["-r", "ts-node/register", "./test/**/*.ts"],
       "cwd": "${workspaceRoot}",
       "env": {
         "NODE_ENV": "development"
