@@ -57,6 +57,7 @@
     "xml2js": "^0.4.19"
   },
   "scripts": {
+    "start": "npm run build",
     "build": "npx tsc --noEmit",
     "test": "npx mocha --reporter spec -r ts-node/register './test/**/*.ts'",
     "prerelease": "rm -rf ./dist && npx webpack && npx jbash ./scripts/generate-docs.js && git add -A",

@@ -18,13 +18,13 @@ export class nb implements Locale {
     return false;
   }
   anErrorOccuredWhenGeneratingTheExpressionD() {
-    return "En feil intraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
+    return "En feil inntraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";
   }
   at() {
-    return "På";
+    return "Kl.";
   }
   atSpace() {
-    return "På ";
+    return "Kl.";
   }
   atX0() {
     return "på %s";
@@ -51,7 +51,7 @@ export class nb implements Locale {
     return ", hver %s ukedag";
   }
   commaEveryX0Months() {
-    return ", hver %s måned]";
+    return ", hver %s måned";
   }
   commaEveryX0Years() {
     return ", hvert %s år";
@@ -63,19 +63,19 @@ export class nb implements Locale {
     return ", bare i %s";
   }
   commaOnlyOnX0() {
-    return ", bare på %s";
+    return ", på %s";
   }
   commaAndOnX0(){
     return ", og på %s";
   }
   commaOnThe() {
-    return ", på den ";
+    return ", på ";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", på den siste dagen i måneden";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", på den siste ukedagen i måneden";
+    return ", den siste ukedagen i måneden";
   }
   commaDaysBeforeTheLastDayOfTheMonth(){
     return ", %s dager før den siste dagen i måneden"
@@ -120,7 +120,7 @@ export class nb implements Locale {
     return "første ukedag";
   }
   fourth() {
-    return "fjede";
+    return "fjerde";
   }
   minutesX0ThroughX1PastTheHour() {
     return "minuttene fra %s til og med %s etter timen";
@@ -135,7 +135,7 @@ export class nb implements Locale {
     return " og";
   }
   spaceX0OfTheMonth() {
-    return " %s av måneden";
+    return " %s i måneden";
   }
   lastDay() {
     return "den siste dagen";
