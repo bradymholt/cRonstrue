@@ -24,7 +24,7 @@ export class de implements Locale {
     return "jede Stunde";
   }
   anErrorOccuredWhenGeneratingTheExpressionD() {
-    return "An error occured when generating the expression description.  Check the cron expression syntax.";
+    return "Beim Generieren der Ausdrucksbeschreibung ist ein Fehler aufgetreten. Überprüfen Sie die Syntax des Cron-Ausdrucks.";
   }
   atSpace() {
     return "Um ";
@@ -72,7 +72,7 @@ export class de implements Locale {
     return ", jeden Tag";
   }
   commaEveryX0DaysOfTheWeek() {
-    return ", every %s days of the week";
+    return ", alle %s Tage der Woche";
   }
   commaX0ThroughX1() {
     return ", %s bis %s";
