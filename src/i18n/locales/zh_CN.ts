@@ -123,7 +123,7 @@ export class zh_CN implements Locale {
     return ", 每月的最后一个平日";
   }
   commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s 这个月的最后一天的前几天"
+    return ", 这个月的最后一天的前%s天";
   }
   firstWeekday() {
     return "第一个平日";
