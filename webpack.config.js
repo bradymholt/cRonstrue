@@ -15,6 +15,7 @@ module.exports = {
     filename: "[name].js",
     library: libraryName,
     libraryTarget: "umd",
+    umdNamedDefine: true,
     // Workaround for webpack 4 umd bug (Ref: https://github.com/webpack/webpack/issues/6522)
     globalObject: "typeof self !== 'undefined' ? self : this"
   },
