@@ -208,7 +208,7 @@ describe("i18n", function() {
     it("*/5 15 * * MON-FRI", function() {
       assert.equal(
         cronstrue.toString(this.test.title, { locale: "zh_CN" }),
-        "每 5 分钟, 在 下午 03:00 和 下午 03:59 之间, 从星期一至星期五"
+        "每隔 5 分钟, 在 下午 03:00 和 下午 03:59 之间, 星期一至星期五"
       );
     });
   });
