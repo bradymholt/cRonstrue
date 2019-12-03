@@ -2,6 +2,18 @@
 
 import { Locale } from "../locale";
 export class zh_CN implements Locale {
+  setPeriodBeforeTime(): boolean {
+    return true;
+  }
+
+  pm(): string {
+    return "下午";
+  }
+
+  am(): string {
+    return "上午";
+  }
+
   atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
@@ -12,7 +24,7 @@ export class zh_CN implements Locale {
     return null;
   }
   commaYearX0ThroughYearX1(): string {
-    return null;
+    return ", 从%s年至%s年";
   }
   use24HourTimeFormatByDefault() {
     return false;
@@ -27,10 +39,10 @@ export class zh_CN implements Locale {
     return "生成表达式描述时发生了错误，请检查cron表达式语法。";
   }
   atSpace() {
-    return "在 ";
+    return "在";
   }
   everyMinuteBetweenX0AndX1() {
-    return "在 %s 和 %s 之间的每分钟";
+    return "在 %s 至 %s 之间的每分钟";
   }
   at() {
     return "在";
@@ -42,31 +54,31 @@ export class zh_CN implements Locale {
     return "每秒";
   }
   everyX0Seconds() {
-    return "每 %s 秒";
+    return "每隔 %s 秒";
   }
   secondsX0ThroughX1PastTheMinute() {
-    return "在每分钟的 %s 到 %s 秒";
+    return "在每分钟的第 %s 到 %s 秒";
   }
   atX0SecondsPastTheMinute() {
-    return "在每分钟的 %s 秒";
+    return "在每分钟的第 %s 秒";
   }
   everyX0Minutes() {
-    return "每 %s 分钟";
+    return "每隔 %s 分钟";
   }
   minutesX0ThroughX1PastTheHour() {
-    return "在每小时的 %s 到 %s 分钟";
+    return "在每小时的第 %s 到 %s 分钟";
   }
   atX0MinutesPastTheHour() {
-    return "在每小时的 %s 分";
+    return "在每小时的第 %s 分钟";
   }
   everyX0Hours() {
-    return "每 %s 小时";
+    return "每隔 %s 小时";
   }
   betweenX0AndX1() {
     return "在 %s 和 %s 之间";
   }
   atX0() {
-    return "在 %s";
+    return "在%s";
   }
   commaEveryDay() {
     return ", 每天";
@@ -75,7 +87,7 @@ export class zh_CN implements Locale {
     return ", 每周的每 %s 天";
   }
   commaX0ThroughX1() {
-    return ", %s 到 %s";
+    return ", %s至%s";
   }
   first() {
     return "第一个";
@@ -93,61 +105,70 @@ export class zh_CN implements Locale {
     return "第五个";
   }
   commaOnThe() {
-    return ", 在 ";
+    return ", 限每月的";
   }
   spaceX0OfTheMonth() {
-    return "%s 每月";
+    return "%s";
   }
   lastDay() {
-    return "最后一天";
+    return "本月最后一天";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", 每月的最后一个 %s ";
+    return ", 限每月的最后一个%s";
   }
   commaOnlyOnX0() {
-    return ", 仅在 %s";
+    return ", 仅%s";
   }
   commaAndOnX0(){
-    return ", 和 %s";
+    return ", 并且为%s";
   }
   commaEveryX0Months() {
-    return ", 每 %s 月";
+    return ", 每隔 %s 个月";
   }
   commaOnlyInX0() {
-    return ", 仅在 %s";
+    return ", 仅限%s";
+  }
+  commaOnlyInMonthX0() {
+    return ", 仅于%s份";
+  }
+  commaOnlyInYearX0() {
+    return ", 仅于 %s 年";
   }
   commaOnTheLastDayOfTheMonth() {
-    return ", 每月的最后一天";
+    return ", 限每月的最后一天";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", 每月的最后一个平日";
+    return ", 限每月的最后一个工作日";
   }
   commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", 这个月的最后一天的前%s天";
+    return ", 限每月最后%s天";
   }
   firstWeekday() {
-    return "第一个平日";
+    return "第一个工作日";
   }
   weekdayNearestDayX0() {
-    return "最接近 %s 号的平日";
+    return "最接近 %s 号的工作日";
   }
   commaOnTheX0OfTheMonth() {
-    return ", 每月的 %s ";
+    return ", 限每月的%s";
   }
   commaEveryX0Days() {
-    return ", 每 %s 天";
+    return ", 每隔 %s 天";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
-    return ", 在每月的 %s 和 %s 号之间";
+    return ", 限每月的 %s 至 %s 之间";
   }
   commaOnDayX0OfTheMonth() {
-    return ", 每月的 %s 号";
+    return ", 限每月%s";
   }
   commaEveryX0Years() {
-    return ", 每 %s 年";
+    return ", 每隔 %s 年";
   }
   commaStartingX0() {
-    return ", 开始 %s";
+    return ", %s开始";
+  }
+  dayX0() {
+    return " %s 号";
   }
   daysOfTheWeek() {
     return ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];

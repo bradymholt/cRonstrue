@@ -357,7 +357,7 @@ export class ExpressionDescriptor {
         return this.i18n.commaMonthX0ThroughMonthX1() || this.i18n.commaX0ThroughX1();
       },
       s => {
-        return this.i18n.commaOnlyInX0();
+        return this.i18n.commaOnlyInMonthX0 ? this.i18n.commaOnlyInMonthX0() : this.i18n.commaOnlyInX0();
       }
     );
 
@@ -402,7 +402,9 @@ export class ExpressionDescriptor {
               expression,
               this.i18n.commaEveryDay(),
               s => {
-                return s == "L" ? this.i18n.lastDay() : s;
+                return s == "L" ? this.i18n.lastDay() : (
+                  (this.i18n.dayX0) ? StringUtilities.format(this.i18n.dayX0(), s) : s
+                );
               },
               s => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
@@ -436,7 +438,7 @@ export class ExpressionDescriptor {
         return this.i18n.commaYearX0ThroughYearX1() || this.i18n.commaX0ThroughX1();
       },
       s => {
-        return this.i18n.commaOnlyInX0();
+        return this.i18n.commaOnlyInYearX0 ? this.i18n.commaOnlyInYearX0() : this.i18n.commaOnlyInX0();
       }
     );
 
@@ -463,7 +465,7 @@ export class ExpressionDescriptor {
       let segments: string[] = expression.split("/");
       description = StringUtilities.format(
         getIntervalDescriptionFormat(segments[1]),
-        getSingleItemDescription(segments[1])
+        segments[1] // getSingleItemDescription(segments[1])
       );
 
       //interval contains 'between' piece (i.e. 2-59/3 )
