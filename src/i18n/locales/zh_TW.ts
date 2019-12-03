@@ -2,6 +2,18 @@
 
 import { Locale } from "../locale";
 export class zh_TW implements Locale {
+  setPeriodBeforeTime(): boolean {
+    return true;
+  }
+
+  pm(): string {
+    return "下午";
+  }
+
+  am(): string {
+    return "上午";
+  }
+
   atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
@@ -12,7 +24,7 @@ export class zh_TW implements Locale {
     return null;
   }
   commaYearX0ThroughYearX1(): string {
-    return null;
+    return ", 从%s年至%s年";
   }
   use24HourTimeFormatByDefault() {
     return false;
@@ -93,10 +105,10 @@ export class zh_TW implements Locale {
     return "第五個";
   }
   commaOnThe() {
-    return ", 在 ";
+    return ", 在每月 ";
   }
   spaceX0OfTheMonth() {
-    return "%s 每月";
+    return "%s ";
   }
   lastDay() {
     return "最後一天";
@@ -115,6 +127,12 @@ export class zh_TW implements Locale {
   }
   commaOnlyInX0() {
     return ", 僅在 %s";
+  }
+  commaOnlyInMonthX0() {
+    return ", 僅在%s";
+  }
+  commaOnlyInYearX0() {
+    return ", 僅在 %s 年";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", 每月的最後一天";
@@ -138,16 +156,19 @@ export class zh_TW implements Locale {
     return ", 每 %s 天";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
-    return ", 在每月的 %s 和 %s 號之間";
+    return ", 在每月的 %s 和 %s 之間";
   }
   commaOnDayX0OfTheMonth() {
-    return ", 每月的 %s 號";
+    return ", 每月的 %s";
   }
   commaEveryX0Years() {
     return ", 每 %s 年";
   }
   commaStartingX0() {
-    return ", 開始 %s";
+    return ", %s 開始";
+  }
+  dayX0() {
+    return " %s 號";
   }
   daysOfTheWeek() {
     return ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
