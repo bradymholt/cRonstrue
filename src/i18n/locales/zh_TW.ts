@@ -2,18 +2,6 @@
 
 import { Locale } from "../locale";
 export class zh_TW implements Locale {
-  setPeriodBeforeTime(): boolean {
-    return true;
-  }
-
-  pm(): string {
-    return "下午";
-  }
-
-  am(): string {
-    return "上午";
-  }
-
   atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
