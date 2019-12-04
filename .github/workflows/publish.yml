@@ -1,0 +1,32 @@
+name: Publish to npm Registry
+
+on:
+  pull_request:
+    types: closed
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        if: github.event.pull_request.merged
+        with:
+          ref: refs/heads/master
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 8
+      - name: npm install
+        run: npm install
+      - name: version and publish
+        run: |
+          git config user.name $GITHUB_ACTOR
+          git config user.email gh-actions-${GITHUB_ACTOR}@github.com
+          npm config set //registry.npmjs.org/:_authToken=$NPM_API_TOKEN
+          npm version minor --force -m "Version %s"
+          npm publish
+          git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git push gh-origin HEAD:master --tags
+        env:
+          CI: true
+          NPM_API_TOKEN: ${{ secrets.NPM_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
