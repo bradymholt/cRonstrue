@@ -44,6 +44,8 @@ export interface Locale {
   commaAndOnX0(): string;
   commaEveryX0Months(): string;
   commaOnlyInX0(): string;
+  commaOnlyInMonthX0?(): string;
+  commaOnlyInYearX0?(): string;
   commaOnTheLastDayOfTheMonth(): string;
   commaOnTheLastWeekdayOfTheMonth(): string;
   commaDaysBeforeTheLastDayOfTheMonth():string;
@@ -55,6 +57,7 @@ export interface Locale {
   commaOnDayX0OfTheMonth(): string;
   commaEveryX0Years(): string;
   commaStartingX0(): string;
+  dayX0?(): string;
   daysOfTheWeek(): string[];
   monthsOfTheYear(): string[];
 }
