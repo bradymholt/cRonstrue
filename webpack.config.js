@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var libraryName = require("./package.json").name;
 var withLocalesSuffix = "-i18n";
 
@@ -35,6 +36,14 @@ module.exports = {
         test: /\.ts$/,
         loader: "ts-loader"
       }
+    ]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /\.min\.js$/
+      })
     ]
   }
 };
