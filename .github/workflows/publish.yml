@@ -22,6 +22,7 @@ jobs:
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
           npm config set //registry.npmjs.org/:_authToken=$NPM_API_TOKEN
+          npm whoami
           npm version minor --force -m "Version %s"
           npm publish
           git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
