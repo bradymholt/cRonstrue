@@ -128,10 +128,10 @@ export class fi implements Locale {
     return "joka minuutti sekunttien %s - %s välillä";
   }
   spaceAnd(): string {
-    return "ja";
+    return " ja";
   }
   spaceAndSpace(): string {
-    return "ja";
+    return " ja ";
   }
   spaceX0OfTheMonth(): string {
     return "%s kuukaudessa";
