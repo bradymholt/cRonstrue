@@ -11,7 +11,7 @@ export class fi implements Locale {
     return "Klo";
   }
   atSpace(): string {
-    return "Klo";
+    return "Klo ";
   }
   atX0(): string {
     return "klo %s";
@@ -134,7 +134,7 @@ export class fi implements Locale {
     return " ja ";
   }
   spaceX0OfTheMonth(): string {
-    return "%s kuukaudessa";
+    return " %s kuukaudessa";
   }
   third(): string {
     return "kolmas";
