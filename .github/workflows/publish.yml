@@ -21,7 +21,7 @@ jobs:
         run: |
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
-          npm config set //registry.npmjs.org/:_authToken=$NPM_API_TOKEN
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_API_TOKEN }}
           npm whoami
           npm version minor --force -m "Version %s"
           npm publish
@@ -29,5 +29,4 @@ jobs:
           git push gh-origin HEAD:master --tags
         env:
           CI: true
-          NPM_API_TOKEN: ${{ secrets.NPM_API_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
