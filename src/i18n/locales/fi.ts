@@ -158,7 +158,7 @@ export class fi implements Locale {
     return ", ja edelleen %s";
   }
   daysOfTheWeek() {
-    return ["maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai", "sunnuntai"];
+    return ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"];
   }
 
   monthsOfTheYear() {
