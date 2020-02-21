@@ -24,6 +24,7 @@ jobs:
           git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm config set //registry.npmjs.org/:_authToken=$NPM_API_TOKEN
 
+          npm run prerelease
           npm version minor --force -m "Version %s [build-skip]"
           npm publish
 
