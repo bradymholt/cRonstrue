@@ -4990,7 +4990,7 @@ var fi = (function () {
         return ", ja edelleen %s";
     };
     fi.prototype.daysOfTheWeek = function () {
-        return ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"];
+        return ["maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai", "sunnuntai"];
     };
     fi.prototype.monthsOfTheYear = function () {
         return [

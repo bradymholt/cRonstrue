@@ -6,9 +6,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@v1
-        if: github.event.pull_request.merged
         with:
           ref: refs/heads/master
       - name: Install Node.js
@@ -21,11 +21,13 @@ jobs:
         run: |
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
-          echo "//registry.npmjs.org/:_authToken=$NPM_API_TOKEN" >> ~/.npmrc
-          npm whoami
-          npm version minor --force -m "Version %s"
-          npm publish
           git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          echo "//registry.npmjs.org/:_authToken=$NPM_API_TOKEN" >> ~/.npmrc
+
+          npm run prerelease
+          npm version minor --force -m "Version %s [build-skip]"
+          npm publish
+
           git push gh-origin HEAD:master --tags
         env:
           CI: true
