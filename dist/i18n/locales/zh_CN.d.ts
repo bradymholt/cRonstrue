@@ -1,5 +1,8 @@
 import { Locale } from "../locale";
 export declare class zh_CN implements Locale {
+    setPeriodBeforeTime(): boolean;
+    pm(): string;
+    am(): string;
     atX0SecondsPastTheMinuteGt20(): string;
     atX0MinutesPastTheHourGt20(): string;
     commaMonthX0ThroughMonthX1(): string;
@@ -38,6 +41,8 @@ export declare class zh_CN implements Locale {
     commaAndOnX0(): string;
     commaEveryX0Months(): string;
     commaOnlyInX0(): string;
+    commaOnlyInMonthX0(): string;
+    commaOnlyInYearX0(): string;
     commaOnTheLastDayOfTheMonth(): string;
     commaOnTheLastWeekdayOfTheMonth(): string;
     commaDaysBeforeTheLastDayOfTheMonth(): string;
@@ -49,6 +54,7 @@ export declare class zh_CN implements Locale {
     commaOnDayX0OfTheMonth(): string;
     commaEveryX0Years(): string;
     commaStartingX0(): string;
+    dayX0(): string;
     daysOfTheWeek(): string[];
     monthsOfTheYear(): string[];
 }
