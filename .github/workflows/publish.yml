@@ -6,9 +6,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@v1
-        if: github.event.pull_request.merged
         with:
           ref: refs/heads/master
       - name: Install Node.js
