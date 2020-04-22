@@ -103,7 +103,7 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 
 > The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?
 
-This library does not do full validation of cron expressions and assuming the expression passed in is valid. If you need to validate an expression consider using a library like [cron-validator](https://www.npmjs.com/package/cron-validator) or [cron-parser](https://www.npmjs.com/package/cron-parser).
+This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-validator](https://www.npmjs.com/package/cron-validator) or [cron-parser](https://www.npmjs.com/package/cron-parser).
 
 ### Supported Locales
 
