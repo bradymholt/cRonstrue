@@ -80,6 +80,16 @@ cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false });
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
 
+## Options
+
+An options object can be passed as the second parameter to `cronstrue.toString`.  The following options are available:
+
+- **bool throwExceptionOnParseError** - If exception occurs when trying to parse expression and generate description, whether to throw or catch and output the Exception message as the description. (Default: true)
+- **bool verbose** - Whether to use a verbose description (Default: false)
+- **bool dayOfWeekStartIndexZero** - Whether to interpret cron expression DOW `1` as Sunday or Monday. (Default: true)
+- **?bool use24HourTimeFormat** - If true, descriptions will use a [24-hour clock](https://en.wikipedia.org/wiki/24-hour_clock) (Default: false but some translations will default to true)
+- **string locale** - The locale to use (Default: "en")
+
 ## i18n
 
 To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
