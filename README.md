@@ -11,6 +11,10 @@ This library was ported from the original C# implemenation called [cron-expressi
 - Supports [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions
 - i18n support with 25 languages
 
+## Demo
+
+A demo is available here [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
+
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
 
@@ -75,10 +79,6 @@ cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false });
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
-
-## Demo
-
-A demo is available here [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
 
 ## i18n
 
