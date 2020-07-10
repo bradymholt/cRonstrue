@@ -1295,10 +1295,10 @@ var de = (function () {
         return ", am letzten %s des Monats";
     };
     de.prototype.commaOnlyOnX0 = function () {
-        return ", nur am %s";
+        return ", nur jeden %s";
     };
     de.prototype.commaAndOnX0 = function () {
-        return ", und am %s";
+        return ", und jeden %s";
     };
     de.prototype.commaEveryX0Months = function () {
         return ", alle %s Monate";
@@ -1331,7 +1331,7 @@ var de = (function () {
         return ", zwischen Tag %s und %s des Monats";
     };
     de.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", am %s Tag des Monats";
+        return ", an Tag %s des Monats";
     };
     de.prototype.commaEveryX0Years = function () {
         return ", alle %s Jahre";

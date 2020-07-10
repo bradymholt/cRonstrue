@@ -907,11 +907,11 @@ exports.en = en;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var expressionDescriptor_1 = __webpack_require__(0);
+var expressionDescriptor_ts_1 = __webpack_require__(0);
 var enLocaleLoader_1 = __webpack_require__(5);
-expressionDescriptor_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLocaleLoader());
-exports.default = expressionDescriptor_1.ExpressionDescriptor;
-var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
+expressionDescriptor_ts_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLocaleLoader());
+exports.default = expressionDescriptor_ts_1.ExpressionDescriptor;
+var toString = expressionDescriptor_ts_1.ExpressionDescriptor.toString;
 exports.toString = toString;
 
 

@@ -1,4 +1,4 @@
-import { ExpressionDescriptor } from "./expressionDescriptor";
+import { ExpressionDescriptor } from "./expressionDescriptor.ts";
 import { enLocaleLoader } from "./i18n/enLocaleLoader";
 
 ExpressionDescriptor.initialize(new enLocaleLoader());
