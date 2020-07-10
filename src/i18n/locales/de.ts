@@ -105,10 +105,10 @@ export class de implements Locale {
     return ", am letzten %s des Monats";
   }
   commaOnlyOnX0() {
-    return ", nur am %s";
+    return ", nur jeden %s";
   }
   commaAndOnX0(){
-    return ", und am %s";
+    return ", und jeden %s";
   }
   commaEveryX0Months() {
     return ", alle %s Monate";
@@ -141,7 +141,7 @@ export class de implements Locale {
     return ", zwischen Tag %s und %s des Monats";
   }
   commaOnDayX0OfTheMonth() {
-    return ", am %s Tag des Monats";
+    return ", an Tag %s des Monats";
   }
   commaEveryX0Years() {
     return ", alle %s Jahre";
