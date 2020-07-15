@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
-          registry-url: "https://registry.npmjs.org"
+          registry-url: "https://registry.npmjs.com"
       - name: npm install
         run: npm install
       - name: version and publish
