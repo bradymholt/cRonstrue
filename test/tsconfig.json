@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
     "target": "ES6",
     "noImplicitAny": true,
     "sourceMap": true
   },
-  "include": [
-    "./**/*.ts"
-  ]
+  "references": [{ "path": "../src" }],
+  "include": ["./**/*.ts"]
 }
