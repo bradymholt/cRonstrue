@@ -2,12 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "./dist",
+    "outDir": "../dist",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": false,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "composite":true
   },
-  "files": ["src/cronstrue.ts", "src/cronstrue-i18n.ts"]
+  "include": ["./**/*.ts"]
 }
