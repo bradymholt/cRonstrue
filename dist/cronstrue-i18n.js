@@ -101,6 +101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ExpressionDescriptor = void 0;
 var stringUtilities_1 = __webpack_require__(1);
 var cronParser_1 = __webpack_require__(2);
 var ExpressionDescriptor = (function () {
@@ -523,6 +524,7 @@ exports.ExpressionDescriptor = ExpressionDescriptor;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StringUtilities = void 0;
 var StringUtilities = (function () {
     function StringUtilities() {
     }
@@ -552,6 +554,7 @@ exports.StringUtilities = StringUtilities;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CronParser = void 0;
 var CronParser = (function () {
     function CronParser(expression, dayOfWeekStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
@@ -723,6 +726,7 @@ exports.CronParser = CronParser;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.en = void 0;
 var en = (function () {
     function en() {
     }
@@ -909,6 +913,7 @@ exports.en = en;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.toString = void 0;
 var expressionDescriptor_1 = __webpack_require__(0);
 var allLocalesLoader_1 = __webpack_require__(7);
 expressionDescriptor_1.ExpressionDescriptor.initialize(new allLocalesLoader_1.allLocalesLoader());
@@ -924,6 +929,7 @@ exports.toString = toString;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.allLocalesLoader = void 0;
 var allLocales = __webpack_require__(8);
 var allLocalesLoader = (function () {
     function allLocalesLoader() {
@@ -948,57 +954,57 @@ exports.allLocalesLoader = allLocalesLoader;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var en_1 = __webpack_require__(3);
-exports.en = en_1.en;
+Object.defineProperty(exports, "en", { enumerable: true, get: function () { return en_1.en; } });
 var da_1 = __webpack_require__(9);
-exports.da = da_1.da;
+Object.defineProperty(exports, "da", { enumerable: true, get: function () { return da_1.da; } });
 var de_1 = __webpack_require__(10);
-exports.de = de_1.de;
+Object.defineProperty(exports, "de", { enumerable: true, get: function () { return de_1.de; } });
 var es_1 = __webpack_require__(11);
-exports.es = es_1.es;
+Object.defineProperty(exports, "es", { enumerable: true, get: function () { return es_1.es; } });
 var fr_1 = __webpack_require__(12);
-exports.fr = fr_1.fr;
+Object.defineProperty(exports, "fr", { enumerable: true, get: function () { return fr_1.fr; } });
 var it_1 = __webpack_require__(13);
-exports.it = it_1.it;
+Object.defineProperty(exports, "it", { enumerable: true, get: function () { return it_1.it; } });
 var ko_1 = __webpack_require__(14);
-exports.ko = ko_1.ko;
+Object.defineProperty(exports, "ko", { enumerable: true, get: function () { return ko_1.ko; } });
 var nl_1 = __webpack_require__(15);
-exports.nl = nl_1.nl;
+Object.defineProperty(exports, "nl", { enumerable: true, get: function () { return nl_1.nl; } });
 var nb_1 = __webpack_require__(16);
-exports.nb = nb_1.nb;
+Object.defineProperty(exports, "nb", { enumerable: true, get: function () { return nb_1.nb; } });
 var sv_1 = __webpack_require__(17);
-exports.sv = sv_1.sv;
+Object.defineProperty(exports, "sv", { enumerable: true, get: function () { return sv_1.sv; } });
 var pl_1 = __webpack_require__(18);
-exports.pl = pl_1.pl;
+Object.defineProperty(exports, "pl", { enumerable: true, get: function () { return pl_1.pl; } });
 var pt_BR_1 = __webpack_require__(19);
-exports.pt_BR = pt_BR_1.pt_BR;
+Object.defineProperty(exports, "pt_BR", { enumerable: true, get: function () { return pt_BR_1.pt_BR; } });
 var ro_1 = __webpack_require__(20);
-exports.ro = ro_1.ro;
+Object.defineProperty(exports, "ro", { enumerable: true, get: function () { return ro_1.ro; } });
 var ru_1 = __webpack_require__(21);
-exports.ru = ru_1.ru;
+Object.defineProperty(exports, "ru", { enumerable: true, get: function () { return ru_1.ru; } });
 var tr_1 = __webpack_require__(22);
-exports.tr = tr_1.tr;
+Object.defineProperty(exports, "tr", { enumerable: true, get: function () { return tr_1.tr; } });
 var uk_1 = __webpack_require__(23);
-exports.uk = uk_1.uk;
+Object.defineProperty(exports, "uk", { enumerable: true, get: function () { return uk_1.uk; } });
 var zh_CN_1 = __webpack_require__(24);
-exports.zh_CN = zh_CN_1.zh_CN;
+Object.defineProperty(exports, "zh_CN", { enumerable: true, get: function () { return zh_CN_1.zh_CN; } });
 var zh_TW_1 = __webpack_require__(25);
-exports.zh_TW = zh_TW_1.zh_TW;
+Object.defineProperty(exports, "zh_TW", { enumerable: true, get: function () { return zh_TW_1.zh_TW; } });
 var ja_1 = __webpack_require__(26);
-exports.ja = ja_1.ja;
+Object.defineProperty(exports, "ja", { enumerable: true, get: function () { return ja_1.ja; } });
 var he_1 = __webpack_require__(27);
-exports.he = he_1.he;
+Object.defineProperty(exports, "he", { enumerable: true, get: function () { return he_1.he; } });
 var cs_1 = __webpack_require__(28);
-exports.cs = cs_1.cs;
+Object.defineProperty(exports, "cs", { enumerable: true, get: function () { return cs_1.cs; } });
 var sk_1 = __webpack_require__(29);
-exports.sk = sk_1.sk;
+Object.defineProperty(exports, "sk", { enumerable: true, get: function () { return sk_1.sk; } });
 var fi_1 = __webpack_require__(30);
-exports.fi = fi_1.fi;
+Object.defineProperty(exports, "fi", { enumerable: true, get: function () { return fi_1.fi; } });
 var sl_1 = __webpack_require__(31);
-exports.sl = sl_1.sl;
+Object.defineProperty(exports, "sl", { enumerable: true, get: function () { return sl_1.sl; } });
 var sw_1 = __webpack_require__(32);
-exports.sw = sw_1.sw;
+Object.defineProperty(exports, "sw", { enumerable: true, get: function () { return sw_1.sw; } });
 var fa_1 = __webpack_require__(33);
-exports.fa = fa_1.fa;
+Object.defineProperty(exports, "fa", { enumerable: true, get: function () { return fa_1.fa; } });
 
 
 /***/ }),
@@ -1008,6 +1014,7 @@ exports.fa = fa_1.fa;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.da = void 0;
 var da = (function () {
     function da() {
     }
@@ -1189,6 +1196,7 @@ exports.da = da;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.de = void 0;
 var de = (function () {
     function de() {
     }
@@ -1295,10 +1303,10 @@ var de = (function () {
         return ", am letzten %s des Monats";
     };
     de.prototype.commaOnlyOnX0 = function () {
-        return ", nur am %s";
+        return ", nur jeden %s";
     };
     de.prototype.commaAndOnX0 = function () {
-        return ", und am %s";
+        return ", und jeden %s";
     };
     de.prototype.commaEveryX0Months = function () {
         return ", alle %s Monate";
@@ -1331,7 +1339,7 @@ var de = (function () {
         return ", zwischen Tag %s und %s des Monats";
     };
     de.prototype.commaOnDayX0OfTheMonth = function () {
-        return ", am %s Tag des Monats";
+        return ", an Tag %s des Monats";
     };
     de.prototype.commaEveryX0Years = function () {
         return ", alle %s Jahre";
@@ -1370,6 +1378,7 @@ exports.de = de;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.es = void 0;
 var es = (function () {
     function es() {
     }
@@ -1551,6 +1560,7 @@ exports.es = es;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fr = void 0;
 var fr = (function () {
     function fr() {
     }
@@ -1735,6 +1745,7 @@ exports.fr = fr;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.it = void 0;
 var it = (function () {
     function it() {
     }
@@ -1916,6 +1927,7 @@ exports.it = it;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ko = void 0;
 var ko = (function () {
     function ko() {
     }
@@ -2112,6 +2124,7 @@ exports.ko = ko;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.nl = void 0;
 var nl = (function () {
     function nl() {
     }
@@ -2293,6 +2306,7 @@ exports.nl = nl;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.nb = void 0;
 var nb = (function () {
     function nb() {
     }
@@ -2474,6 +2488,7 @@ exports.nb = nb;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sv = void 0;
 var sv = (function () {
     function sv() {
     }
@@ -2655,6 +2670,7 @@ exports.sv = sv;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.pl = void 0;
 var pl = (function () {
     function pl() {
     }
@@ -2836,6 +2852,7 @@ exports.pl = pl;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.pt_BR = void 0;
 var pt_BR = (function () {
     function pt_BR() {
     }
@@ -3017,6 +3034,7 @@ exports.pt_BR = pt_BR;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ro = void 0;
 var ro = (function () {
     function ro() {
     }
@@ -3198,6 +3216,7 @@ exports.ro = ro;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ru = void 0;
 var ru = (function () {
     function ru() {
     }
@@ -3379,6 +3398,7 @@ exports.ru = ru;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.tr = void 0;
 var tr = (function () {
     function tr() {
     }
@@ -3560,6 +3580,7 @@ exports.tr = tr;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.uk = void 0;
 var uk = (function () {
     function uk() {
     }
@@ -3741,6 +3762,7 @@ exports.uk = uk;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.zh_CN = void 0;
 var zh_CN = (function () {
     function zh_CN() {
     }
@@ -3927,6 +3949,7 @@ exports.zh_CN = zh_CN;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.zh_TW = void 0;
 var zh_TW = (function () {
     function zh_TW() {
     }
@@ -4104,6 +4127,7 @@ exports.zh_TW = zh_TW;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ja = void 0;
 var ja = (function () {
     function ja() {
     }
@@ -4287,6 +4311,7 @@ exports.ja = ja;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.he = void 0;
 var he = (function () {
     function he() {
     }
@@ -4468,6 +4493,7 @@ exports.he = he;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.cs = void 0;
 var cs = (function () {
     function cs() {
     }
@@ -4649,6 +4675,7 @@ exports.cs = cs;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sk = void 0;
 var sk = (function () {
     function sk() {
     }
@@ -4830,6 +4857,7 @@ exports.sk = sk;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fi = void 0;
 var fi = (function () {
     function fi() {
     }
@@ -5020,6 +5048,7 @@ exports.fi = fi;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sl = void 0;
 var sl = (function () {
     function sl() {
     }
@@ -5201,6 +5230,7 @@ exports.sl = sl;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sw = void 0;
 var sw = (function () {
     function sw() {
     }
@@ -5383,6 +5413,7 @@ exports.sw = sw;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fa = void 0;
 var fa = (function () {
     function fa() {
     }
