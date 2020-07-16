@@ -27,7 +27,6 @@ jobs:
 
           npm run prerelease
           npm version minor --force -m "Version %s [build-skip]"
-          npm set registry https://registry.npmjs.org/
           npm publish
 
           git push gh-origin HEAD:master --tags
