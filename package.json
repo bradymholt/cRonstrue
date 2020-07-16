@@ -36,6 +36,9 @@
     "type": "git",
     "url": "git+https://github.com/bradymholt/cronstrue.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": {
     "printWidth": 120
   },
