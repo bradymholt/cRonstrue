@@ -4,7 +4,7 @@ on:
   pull_request:
     types: closed
 jobs:
-  publish:
+  job:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
     steps:
@@ -16,19 +16,19 @@ jobs:
           node-version: 12
           registry-url: "https://registry.npmjs.org"
       - run: npm install
-      - name: setup git repo
+      - name: Setup git repo
         run: |
           git config user.name $GITHUB_ACTOR
           git config user.email gh-actions-${GITHUB_ACTOR}@github.com
           git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: version and publish
+      - name: Version and publish to npm
         run: |
           npm run prerelease
           npm version minor --force -m "Version %s [build-skip]"
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-      - name: push release commit and tag to GitHub
+      - name: Push release commit and tag to GitHub
         run: git push gh-origin HEAD:master --tags
