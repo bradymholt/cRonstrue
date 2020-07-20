@@ -27,7 +27,7 @@ describe("i18n", function() {
         "Cada 5 minutos, entre las 03:00 PM y las 03:59 PM, de lunes a viernes"
       );
     });
-  });
+  }); 
 
   describe("fr", function() {
     it("* * * * *", function() {
@@ -254,6 +254,12 @@ describe("i18n", function() {
   describe("sl", function() {
     it("* * * * *", function() {
       assert.equal(cronstrue.toString(this.test.title, { locale: "sl" }), "Vsako minuto");
+    });
+  });
+  
+  describe("ca", function() {
+    it("* * * * *", function() {
+      assert.equal(cronstrue.toString(this.test.title, { locale: "ca" }), "Cada minut");
     });
   });
 
