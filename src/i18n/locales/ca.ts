@@ -1,7 +1,7 @@
 // Catalan
 import { Locale } from "../locale";
 
-export class es implements Locale {
+export class ca implements Locale {
   atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
