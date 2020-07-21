@@ -476,6 +476,13 @@ describe("Cronstrue", function() {
         "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM"
       );
     });
+
+    it("5-45/10,*/5,9 * * * *", function () {
+      assert.equal(
+        construe.toString(this.test.title),
+        "Every 10 minutes, minutes 5 through 45 past the hour, every 5 minutes, at 9 minutes past the hour"
+      );
+    });
   });
 
   describe("verbose", function() {
