@@ -118,6 +118,7 @@ This library does not do full validation of cron expressions and assumes the exp
 ### Supported Locales
 
 - en - English
+- ca - Catalan
 - cs - Czech
 - es - Spanish
 - da - Danish

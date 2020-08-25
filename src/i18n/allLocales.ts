@@ -24,4 +24,4 @@ export { fi } from "./locales/fi";
 export { sl } from "./locales/sl"; // Slovenian
 export { sw } from "./locales/sw"; // Swahili
 export { fa } from "./locales/fa"; // Farsi
-
+export { ca } from "./locales/ca"; // Catalan
