@@ -421,7 +421,15 @@ var ExpressionDescriptor = (function () {
         else if (!stringUtilities_1.StringUtilities.containsAny(expression, ["/", "-", ","])) {
             description = stringUtilities_1.StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
         }
-        else if (expression.indexOf("/") > -1) {
+        else if (expression.indexOf("/") > -1 && expression.indexOf(",") > -1) {
+            var segments = expression.split(",");
+            var segmentDescriptions = [];
+            for (var i = 0; i < segments.length; i++) {
+                segmentDescriptions.push(this.getSegmentDescription(segments[i], allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat));
+            }
+            description = segmentDescriptions.join(", ");
+        }
+        else if (expression.indexOf("/") > -1 && expression.indexOf(",") == -1) {
             var segments = expression.split("/");
             description = stringUtilities_1.StringUtilities.format(getIntervalDescriptionFormat(segments[1]), segments[1]);
             if (segments[0].indexOf("-") > -1) {
@@ -437,7 +445,7 @@ var ExpressionDescriptor = (function () {
                 description += stringUtilities_1.StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
             }
         }
-        else if (expression.indexOf(",") > -1) {
+        else if (expression.indexOf(",") > -1 && expression.indexOf("/") == -1) {
             var segments = expression.split(",");
             var descriptionContent = "";
             for (var i = 0; i < segments.length; i++) {
@@ -1005,6 +1013,8 @@ var sw_1 = __webpack_require__(32);
 Object.defineProperty(exports, "sw", { enumerable: true, get: function () { return sw_1.sw; } });
 var fa_1 = __webpack_require__(33);
 Object.defineProperty(exports, "fa", { enumerable: true, get: function () { return fa_1.fa; } });
+var ca_1 = __webpack_require__(34);
+Object.defineProperty(exports, "ca", { enumerable: true, get: function () { return ca_1.ca; } });
 
 
 /***/ }),
@@ -5592,6 +5602,188 @@ var fa = (function () {
     return fa;
 }());
 exports.fa = fa;
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ca = void 0;
+var ca = (function () {
+    function ca() {
+    }
+    ca.prototype.atX0SecondsPastTheMinuteGt20 = function () {
+        return null;
+    };
+    ca.prototype.atX0MinutesPastTheHourGt20 = function () {
+        return null;
+    };
+    ca.prototype.commaMonthX0ThroughMonthX1 = function () {
+        return null;
+    };
+    ca.prototype.commaYearX0ThroughYearX1 = function () {
+        return null;
+    };
+    ca.prototype.use24HourTimeFormatByDefault = function () {
+        return false;
+    };
+    ca.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "S'ha produït un error mentres es generava la descripció de l'expressió. Revisi la sintaxi de la expressió de cron.";
+    };
+    ca.prototype.at = function () {
+        return "A les";
+    };
+    ca.prototype.atSpace = function () {
+        return "A les ";
+    };
+    ca.prototype.atX0 = function () {
+        return "a les %s";
+    };
+    ca.prototype.atX0MinutesPastTheHour = function () {
+        return "als %s minuts de l'hora";
+    };
+    ca.prototype.atX0SecondsPastTheMinute = function () {
+        return "als %s segonds del minut";
+    };
+    ca.prototype.betweenX0AndX1 = function () {
+        return "entre les %s i les %s";
+    };
+    ca.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", entre els dies %s i %s del mes";
+    };
+    ca.prototype.commaEveryDay = function () {
+        return ", cada dia";
+    };
+    ca.prototype.commaEveryX0Days = function () {
+        return ", cada %s dies";
+    };
+    ca.prototype.commaEveryX0DaysOfTheWeek = function () {
+        return ", cada %s dies de la setmana";
+    };
+    ca.prototype.commaEveryX0Months = function () {
+        return ", cada %s mesos";
+    };
+    ca.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", el dia %s del mes";
+    };
+    ca.prototype.commaOnlyInX0 = function () {
+        return ", sólo en %s";
+    };
+    ca.prototype.commaOnlyOnX0 = function () {
+        return ", només el %s";
+    };
+    ca.prototype.commaAndOnX0 = function () {
+        return ", i el %s";
+    };
+    ca.prototype.commaOnThe = function () {
+        return ", en el ";
+    };
+    ca.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", en l'últim dia del mes";
+    };
+    ca.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", en l'últim dia de la setmana del mes";
+    };
+    ca.prototype.commaDaysBeforeTheLastDayOfTheMonth = function () {
+        return ", %s dies abans de l'últim dia del mes";
+    };
+    ca.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", en l'últim %s del mes";
+    };
+    ca.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", en el %s del mes";
+    };
+    ca.prototype.commaX0ThroughX1 = function () {
+        return ", de %s a %s";
+    };
+    ca.prototype.everyHour = function () {
+        return "cada hora";
+    };
+    ca.prototype.everyMinute = function () {
+        return "cada minut";
+    };
+    ca.prototype.everyMinuteBetweenX0AndX1 = function () {
+        return "cada minut entre les %s i les %s";
+    };
+    ca.prototype.everySecond = function () {
+        return "cada segon";
+    };
+    ca.prototype.everyX0Hours = function () {
+        return "cada %s hores";
+    };
+    ca.prototype.everyX0Minutes = function () {
+        return "cada %s minuts";
+    };
+    ca.prototype.everyX0Seconds = function () {
+        return "cada %s segons";
+    };
+    ca.prototype.fifth = function () {
+        return "cinquè";
+    };
+    ca.prototype.first = function () {
+        return "primer";
+    };
+    ca.prototype.firstWeekday = function () {
+        return "primer dia de la setmana";
+    };
+    ca.prototype.fourth = function () {
+        return "quart";
+    };
+    ca.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "del minut %s al %s passada l'hora";
+    };
+    ca.prototype.second = function () {
+        return "segon";
+    };
+    ca.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "En els segons %s al %s de cada minut";
+    };
+    ca.prototype.spaceAnd = function () {
+        return " i";
+    };
+    ca.prototype.spaceX0OfTheMonth = function () {
+        return " %s del mes";
+    };
+    ca.prototype.lastDay = function () {
+        return "l'últim dia";
+    };
+    ca.prototype.third = function () {
+        return "tercer";
+    };
+    ca.prototype.weekdayNearestDayX0 = function () {
+        return "dia de la setmana més proper al %s";
+    };
+    ca.prototype.commaEveryX0Years = function () {
+        return ", cada %s anys";
+    };
+    ca.prototype.commaStartingX0 = function () {
+        return ", començant %s";
+    };
+    ca.prototype.daysOfTheWeek = function () {
+        return ["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"];
+    };
+    ca.prototype.monthsOfTheYear = function () {
+        return [
+            "gener",
+            "febrer",
+            "març",
+            "abril",
+            "maig",
+            "juny",
+            "juliol",
+            "agost",
+            "setembre",
+            "octubre",
+            "novembre",
+            "desembre"
+        ];
+    };
+    return ca;
+}());
+exports.ca = ca;
 
 
 /***/ })

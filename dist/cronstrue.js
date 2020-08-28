@@ -421,7 +421,15 @@ var ExpressionDescriptor = (function () {
         else if (!stringUtilities_1.StringUtilities.containsAny(expression, ["/", "-", ","])) {
             description = stringUtilities_1.StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
         }
-        else if (expression.indexOf("/") > -1) {
+        else if (expression.indexOf("/") > -1 && expression.indexOf(",") > -1) {
+            var segments = expression.split(",");
+            var segmentDescriptions = [];
+            for (var i = 0; i < segments.length; i++) {
+                segmentDescriptions.push(this.getSegmentDescription(segments[i], allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat));
+            }
+            description = segmentDescriptions.join(", ");
+        }
+        else if (expression.indexOf("/") > -1 && expression.indexOf(",") == -1) {
             var segments = expression.split("/");
             description = stringUtilities_1.StringUtilities.format(getIntervalDescriptionFormat(segments[1]), segments[1]);
             if (segments[0].indexOf("-") > -1) {
@@ -437,7 +445,7 @@ var ExpressionDescriptor = (function () {
                 description += stringUtilities_1.StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
             }
         }
-        else if (expression.indexOf(",") > -1) {
+        else if (expression.indexOf(",") > -1 && expression.indexOf("/") == -1) {
             var segments = expression.split(",");
             var descriptionContent = "";
             for (var i = 0; i < segments.length; i++) {
