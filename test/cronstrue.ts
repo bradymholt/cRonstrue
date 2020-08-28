@@ -460,7 +460,7 @@ describe("Cronstrue", function() {
     });
 
     it("0 */4,6 * * * ", function() {
-      assert.equal(construe.toString(this.test.title), "At 0 minutes past the hour, every 4,6 hours");
+      assert.equal(construe.toString(this.test.title), "At 0 minutes past the hour, every 4 hours, at 06:00 AM");
     });
 
     it("5 30 6,14,16 5 * *", function() {
@@ -474,6 +474,13 @@ describe("Cronstrue", function() {
       assert.equal(
         construe.toString(this.test.title),
         "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM"
+      );
+    });
+
+    it("5-45/10,*/5,9 * * * *", function () {
+      assert.equal(
+        construe.toString(this.test.title),
+        "Every 10 minutes, minutes 5 through 45 past the hour, every 5 minutes, at 9 minutes past the hour"
       );
     });
   });

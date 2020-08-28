@@ -461,7 +461,20 @@ export class ExpressionDescriptor {
       description = allDescription;
     } else if (!StringUtilities.containsAny(expression, ["/", "-", ","])) {
       description = StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
-    } else if (expression.indexOf("/") > -1) {
+    } else if (expression.indexOf("/") > -1 && expression.indexOf(",") > -1) {
+      let segments: string[] = expression.split(",");
+      let segmentDescriptions: string[] = [];
+      for (let i = 0; i < segments.length; i++) {
+        segmentDescriptions.push(this.getSegmentDescription(segments[i],
+          allDescription,
+          getSingleItemDescription,
+          getIntervalDescriptionFormat,
+          getBetweenDescriptionFormat,
+          getDescriptionFormat
+        ));
+      }
+      description = segmentDescriptions.join(", ");
+    } else if (expression.indexOf("/") > -1 && expression.indexOf(",") == -1) {
       let segments: string[] = expression.split("/");
       description = StringUtilities.format(
         getIntervalDescriptionFormat(segments[1]),
@@ -491,7 +504,7 @@ export class ExpressionDescriptor {
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
       }
-    } else if (expression.indexOf(",") > -1) {
+    } else if (expression.indexOf(",") > -1 && expression.indexOf("/") == -1) {
       let segments: string[] = expression.split(",");
 
       let descriptionContent: string = "";
