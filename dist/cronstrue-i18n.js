@@ -127,7 +127,7 @@ var ExpressionDescriptor = (function () {
             verbose: verbose,
             dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
             use24HourTimeFormat: use24HourTimeFormat,
-            locale: locale
+            locale: locale,
         };
         var descripter = new ExpressionDescriptor(expression, options);
         return descripter.getFullDescription();
@@ -382,7 +382,11 @@ var ExpressionDescriptor = (function () {
                     }
                     else {
                         description = this.getSegmentDescription(expression, this.i18n.commaEveryDay(), function (s) {
-                            return s == "L" ? _this.i18n.lastDay() : ((_this.i18n.dayX0) ? stringUtilities_1.StringUtilities.format(_this.i18n.dayX0(), s) : s);
+                            return s == "L"
+                                ? _this.i18n.lastDay()
+                                : _this.i18n.dayX0
+                                    ? stringUtilities_1.StringUtilities.format(_this.i18n.dayX0(), s)
+                                    : s;
                         }, function (s) {
                             return s == "1" ? _this.i18n.commaEveryDay() : _this.i18n.commaEveryX0Days();
                         }, function (s) {
@@ -409,43 +413,21 @@ var ExpressionDescriptor = (function () {
         });
         return description;
     };
-    ExpressionDescriptor.prototype.getSegmentDescription = function (expression, allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat) {
-        var _this = this;
+    ExpressionDescriptor.prototype.getSegmentDescription = function (expression, allDescription, getSingleItemDescription, getIncrementDescriptionFormat, getRangeDescriptionFormat, getDescriptionFormat) {
         var description = null;
+        var doesExpressionContainIncrement = expression.indexOf("/") > -1;
+        var doesExpressionContainRange = expression.indexOf("-") > -1;
+        var doesExpressionContainMultipleValues = expression.indexOf(",") > -1;
         if (!expression) {
             description = "";
         }
         else if (expression === "*") {
             description = allDescription;
         }
-        else if (!stringUtilities_1.StringUtilities.containsAny(expression, ["/", "-", ","])) {
+        else if (!doesExpressionContainIncrement && !doesExpressionContainRange && !doesExpressionContainMultipleValues) {
             description = stringUtilities_1.StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
         }
-        else if (expression.indexOf("/") > -1 && expression.indexOf(",") > -1) {
-            var segments = expression.split(",");
-            var segmentDescriptions = [];
-            for (var i = 0; i < segments.length; i++) {
-                segmentDescriptions.push(this.getSegmentDescription(segments[i], allDescription, getSingleItemDescription, getIntervalDescriptionFormat, getBetweenDescriptionFormat, getDescriptionFormat));
-            }
-            description = segmentDescriptions.join(", ");
-        }
-        else if (expression.indexOf("/") > -1 && expression.indexOf(",") == -1) {
-            var segments = expression.split("/");
-            description = stringUtilities_1.StringUtilities.format(getIntervalDescriptionFormat(segments[1]), segments[1]);
-            if (segments[0].indexOf("-") > -1) {
-                var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[0], getBetweenDescriptionFormat, getSingleItemDescription);
-                if (betweenSegmentDescription.indexOf(", ") != 0) {
-                    description += ", ";
-                }
-                description += betweenSegmentDescription;
-            }
-            else if (!stringUtilities_1.StringUtilities.containsAny(segments[0], ["*", ","])) {
-                var rangeItemDescription = stringUtilities_1.StringUtilities.format(getDescriptionFormat(segments[0]), getSingleItemDescription(segments[0]));
-                rangeItemDescription = rangeItemDescription.replace(", ", "");
-                description += stringUtilities_1.StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
-            }
-        }
-        else if (expression.indexOf(",") > -1 && expression.indexOf("/") == -1) {
+        else if (doesExpressionContainMultipleValues) {
             var segments = expression.split(",");
             var descriptionContent = "";
             for (var i = 0; i < segments.length; i++) {
@@ -458,32 +440,57 @@ var ExpressionDescriptor = (function () {
                 if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
                     descriptionContent += this.i18n.spaceAnd() + " ";
                 }
-                if (segments[i].indexOf("-") > -1) {
-                    var betweenSegmentDescription = this.generateBetweenSegmentDescription(segments[i], function (s) {
-                        return _this.i18n.commaX0ThroughX1();
-                    }, getSingleItemDescription);
-                    betweenSegmentDescription = betweenSegmentDescription.replace(", ", "");
-                    descriptionContent += betweenSegmentDescription;
+                if (segments[i].indexOf("/") > -1 || segments[i].indexOf("-") > -1) {
+                    var isSegmentRangeWithoutIncrement = segments[i].indexOf("-") > -1 && segments[i].indexOf("/") == -1;
+                    var currentDescriptionContent = this.getSegmentDescription(segments[i], allDescription, getSingleItemDescription, getIncrementDescriptionFormat, isSegmentRangeWithoutIncrement ? this.i18n.commaX0ThroughX1 : getRangeDescriptionFormat, getDescriptionFormat);
+                    if (isSegmentRangeWithoutIncrement) {
+                        currentDescriptionContent = currentDescriptionContent.replace(", ", "");
+                    }
+                    descriptionContent += currentDescriptionContent;
                 }
-                else {
+                else if (!doesExpressionContainIncrement) {
                     descriptionContent += getSingleItemDescription(segments[i]);
                 }
+                else {
+                    descriptionContent += this.getSegmentDescription(segments[i], allDescription, getSingleItemDescription, getIncrementDescriptionFormat, getRangeDescriptionFormat, getDescriptionFormat);
+                }
             }
-            description = stringUtilities_1.StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
+            if (!doesExpressionContainIncrement) {
+                description = stringUtilities_1.StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
+            }
+            else {
+                description = descriptionContent;
+            }
         }
-        else if (expression.indexOf("-") > -1) {
-            description = this.generateBetweenSegmentDescription(expression, getBetweenDescriptionFormat, getSingleItemDescription);
+        else if (doesExpressionContainIncrement) {
+            var segments = expression.split("/");
+            description = stringUtilities_1.StringUtilities.format(getIncrementDescriptionFormat(segments[1]), segments[1]);
+            if (segments[0].indexOf("-") > -1) {
+                var rangeSegmentDescription = this.generateRangeSegmentDescription(segments[0], getRangeDescriptionFormat, getSingleItemDescription);
+                if (rangeSegmentDescription.indexOf(", ") != 0) {
+                    description += ", ";
+                }
+                description += rangeSegmentDescription;
+            }
+            else if (segments[0].indexOf("*") == -1) {
+                var rangeItemDescription = stringUtilities_1.StringUtilities.format(getDescriptionFormat(segments[0]), getSingleItemDescription(segments[0]));
+                rangeItemDescription = rangeItemDescription.replace(", ", "");
+                description += stringUtilities_1.StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
+            }
+        }
+        else if (doesExpressionContainRange) {
+            description = this.generateRangeSegmentDescription(expression, getRangeDescriptionFormat, getSingleItemDescription);
         }
         return description;
     };
-    ExpressionDescriptor.prototype.generateBetweenSegmentDescription = function (betweenExpression, getBetweenDescriptionFormat, getSingleItemDescription) {
+    ExpressionDescriptor.prototype.generateRangeSegmentDescription = function (rangeExpression, getRangeDescriptionFormat, getSingleItemDescription) {
         var description = "";
-        var betweenSegments = betweenExpression.split("-");
-        var betweenSegment1Description = getSingleItemDescription(betweenSegments[0]);
-        var betweenSegment2Description = getSingleItemDescription(betweenSegments[1]);
-        betweenSegment2Description = betweenSegment2Description.replace(":00", ":59");
-        var betweenDescriptionFormat = getBetweenDescriptionFormat(betweenExpression);
-        description += stringUtilities_1.StringUtilities.format(betweenDescriptionFormat, betweenSegment1Description, betweenSegment2Description);
+        var rangeSegments = rangeExpression.split("-");
+        var rangeSegment1Description = getSingleItemDescription(rangeSegments[0]);
+        var rangeSegment2Description = getSingleItemDescription(rangeSegments[1]);
+        rangeSegment2Description = rangeSegment2Description.replace(":00", ":59");
+        var rangeDescriptionFormat = getRangeDescriptionFormat(rangeExpression);
+        description += stringUtilities_1.StringUtilities.format(rangeDescriptionFormat, rangeSegment1Description, rangeSegment2Description);
         return description;
     };
     ExpressionDescriptor.prototype.formatTime = function (hourExpression, minuteExpression, secondExpression) {
@@ -517,7 +524,7 @@ var ExpressionDescriptor = (function () {
         return description;
     };
     ExpressionDescriptor.prototype.getPeriod = function (hour) {
-        return hour >= 12 ? this.i18n.pm && this.i18n.pm() || "PM" : this.i18n.am && this.i18n.am() || "AM";
+        return hour >= 12 ? (this.i18n.pm && this.i18n.pm()) || "PM" : (this.i18n.am && this.i18n.am()) || "AM";
     };
     ExpressionDescriptor.locales = {};
     return ExpressionDescriptor;
@@ -656,7 +663,7 @@ var CronParser = (function () {
             WED: 3,
             THU: 4,
             FRI: 5,
-            SAT: 6
+            SAT: 6,
         };
         for (var day in days) {
             expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
@@ -673,7 +680,7 @@ var CronParser = (function () {
             SEP: 9,
             OCT: 10,
             NOV: 11,
-            DEC: 12
+            DEC: 12,
         };
         for (var month in months) {
             expressionParts[4] = expressionParts[4].replace(new RegExp(month, "gi"), months[month].toString());
@@ -904,7 +911,7 @@ var en = (function () {
             "September",
             "October",
             "November",
-            "December"
+            "December",
         ];
     };
     return en;
@@ -1191,7 +1198,7 @@ var da = (function () {
             "september",
             "oktober",
             "november",
-            "december"
+            "december",
         ];
     };
     return da;
@@ -1373,7 +1380,7 @@ var de = (function () {
             "September",
             "Oktober",
             "November",
-            "Dezember"
+            "Dezember",
         ];
     };
     return de;
@@ -1555,7 +1562,7 @@ var es = (function () {
             "septiembre",
             "octubre",
             "noviembre",
-            "diciembre"
+            "diciembre",
         ];
     };
     return es;
@@ -1740,7 +1747,7 @@ var fr = (function () {
             "septembre",
             "octobre",
             "novembre",
-            "décembre"
+            "décembre",
         ];
     };
     return fr;
@@ -1922,7 +1929,7 @@ var it = (function () {
             "settembre",
             "ottobre",
             "novembre",
-            "dicembre"
+            "dicembre",
         ];
     };
     return it;
@@ -2107,20 +2114,7 @@ var ko = (function () {
         return ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
     };
     ko.prototype.monthsOfTheYear = function () {
-        return [
-            "1월",
-            "2월",
-            "3월",
-            "4월",
-            "5월",
-            "6월",
-            "7월",
-            "8월",
-            "9월",
-            "10월",
-            "11월",
-            "12월"
-        ];
+        return ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
     };
     return ko;
 }());
@@ -2301,7 +2295,7 @@ var nl = (function () {
             "september",
             "oktober",
             "november",
-            "december"
+            "december",
         ];
     };
     return nl;
@@ -2483,7 +2477,7 @@ var nb = (function () {
             "september",
             "oktober",
             "november",
-            "desember"
+            "desember",
         ];
     };
     return nb;
@@ -2665,7 +2659,7 @@ var sv = (function () {
             "september",
             "oktober",
             "november",
-            "december"
+            "december",
         ];
     };
     return sv;
@@ -2847,7 +2841,7 @@ var pl = (function () {
             "wrzesień",
             "październik",
             "listopad",
-            "grudzień"
+            "grudzień",
         ];
     };
     return pl;
@@ -3029,7 +3023,7 @@ var pt_BR = (function () {
             "setembro",
             "outubro",
             "novembro",
-            "dezembro"
+            "dezembro",
         ];
     };
     return pt_BR;
@@ -3211,7 +3205,7 @@ var ro = (function () {
             "septembrie",
             "octombrie",
             "noiembrie",
-            "decembrie"
+            "decembrie",
         ];
     };
     return ro;
@@ -3393,7 +3387,7 @@ var ru = (function () {
             "сентябрь",
             "октябрь",
             "ноябрь",
-            "декабрь"
+            "декабрь",
         ];
     };
     return ru;
@@ -3575,7 +3569,7 @@ var tr = (function () {
             "Eylül",
             "Ekim",
             "Kasım",
-            "Aralık"
+            "Aralık",
         ];
     };
     return tr;
@@ -3757,7 +3751,7 @@ var uk = (function () {
             "вересень",
             "жовтень",
             "листопад",
-            "грудень"
+            "грудень",
         ];
     };
     return uk;
@@ -4476,20 +4470,7 @@ var he = (function () {
         return ["יום ראשון", "יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "יום שבת"];
     };
     he.prototype.monthsOfTheYear = function () {
-        return [
-            "ינואר",
-            "פברואר",
-            "מרץ",
-            "אפריל",
-            "מאי",
-            "יוני",
-            "יולי",
-            "אוגוסט",
-            "ספטמבר",
-            "אוקטובר",
-            "נובמבר",
-            "דצמבר"
-        ];
+        return ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
     };
     return he;
 }());
@@ -4670,7 +4651,7 @@ var cs = (function () {
             "Září",
             "Říjen",
             "Listopad",
-            "Prosinec"
+            "Prosinec",
         ];
     };
     return cs;
@@ -4852,7 +4833,7 @@ var sk = (function () {
             "September",
             "Október",
             "November",
-            "December"
+            "December",
         ];
     };
     return sk;
@@ -5043,7 +5024,7 @@ var fi = (function () {
             "syyskuu",
             "lokakuu",
             "marraskuu",
-            "joulukuu"
+            "joulukuu",
         ];
     };
     return fi;
@@ -5225,7 +5206,7 @@ var sl = (function () {
             "september",
             "oktober",
             "november",
-            "december"
+            "december",
         ];
     };
     return sl;
@@ -5408,7 +5389,7 @@ var sw = (function () {
             "Septemba",
             "Oktoba",
             "Novemba",
-            "Desemba"
+            "Desemba",
         ];
     };
     return sw;
@@ -5584,20 +5565,7 @@ var fa = (function () {
         return ["یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
     };
     fa.prototype.monthsOfTheYear = function () {
-        return [
-            "ژانویه",
-            "فوریه",
-            "مارس",
-            "آپریل",
-            "مه",
-            "ژوئن",
-            "ژوئیه",
-            "آگوست",
-            "سپتامبر",
-            "اکتبر",
-            "نوامبر",
-            "دسامبر"
-        ];
+        return ["ژانویه", "فوریه", "مارس", "آپریل", "مه", "ژوئن", "ژوئیه", "آگوست", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"];
     };
     return fa;
 }());
@@ -5778,7 +5746,7 @@ var ca = (function () {
             "setembre",
             "octubre",
             "novembre",
-            "desembre"
+            "desembre",
         ];
     };
     return ca;
