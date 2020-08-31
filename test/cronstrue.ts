@@ -299,6 +299,20 @@ describe("Cronstrue", function () {
         "Every second, only on Sunday, Monday, Tuesday, Wednesday, and Thursday"
       );
     });
+
+    it("0 * ? * 1/1", function () {
+      assert.equal(
+        construe.toString(this.test.title, { dayOfWeekStartIndexZero: false }),
+        "Every hour, Sunday through Saturday"
+      );
+    });
+
+    it("0 * ? * 2/1", function () {
+      assert.equal(
+        construe.toString(this.test.title, { dayOfWeekStartIndexZero: false }),
+        "Every hour, Monday through Saturday"
+      );
+    });
   });
 
   describe("non-trivial expressions", function () {
