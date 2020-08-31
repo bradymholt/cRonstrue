@@ -107,7 +107,7 @@ export class ru implements Locale {
   commaOnlyOnX0() {
     return ", только в %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", и в %s";
   }
   commaEveryX0Months() {
@@ -122,8 +122,8 @@ export class ru implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", в последний будний день месяца";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s дней до последнего дня месяца"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s дней до последнего дня месяца";
   }
   firstWeekday() {
     return "первый будний день";
@@ -165,7 +165,7 @@ export class ru implements Locale {
       "сентябрь",
       "октябрь",
       "ноябрь",
-      "декабрь"
+      "декабрь",
     ];
   }
 }

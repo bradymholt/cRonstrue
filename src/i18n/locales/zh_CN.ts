@@ -119,7 +119,7 @@ export class zh_CN implements Locale {
   commaOnlyOnX0() {
     return ", 仅%s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", 并且为%s";
   }
   commaEveryX0Months() {
@@ -140,7 +140,7 @@ export class zh_CN implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", 限每月的最后一个工作日";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
+  commaDaysBeforeTheLastDayOfTheMonth() {
     return ", 限每月最后%s天";
   }
   firstWeekday() {

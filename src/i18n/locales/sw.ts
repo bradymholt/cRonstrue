@@ -108,17 +108,17 @@ export class sw implements Locale {
     return ", siku ya %s ya mwezi";
   }
   commaOnlyOnX0() {
-//    return ", only on %s";
+    //    return ", only on %s";
     return ", kwa %s tu";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", na pia %s";
   }
   commaEveryX0Months() {
     return ", kila mwezi wa %s";
   }
   commaOnlyInX0() {
-//    return ", only in %s";
+    //    return ", only in %s";
     return ", kwa %s tu";
   }
   commaOnTheLastDayOfTheMonth() {
@@ -127,8 +127,8 @@ export class sw implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", wikendi ya mwisho wa mwezi";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", siku ya %s kabla ya siku ya mwisho wa mwezi"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", siku ya %s kabla ya siku ya mwisho wa mwezi";
   }
   firstWeekday() {
     return "siku za kazi ya kwanza";
@@ -170,7 +170,7 @@ export class sw implements Locale {
       "Septemba",
       "Oktoba",
       "Novemba",
-      "Desemba"
+      "Desemba",
     ];
   }
 }

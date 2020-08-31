@@ -108,7 +108,7 @@ export class he implements Locale {
   commaOnlyOnX0() {
     return ", רק ב %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", וב %s";
   }
   commaEveryX0Months() {
@@ -123,8 +123,8 @@ export class he implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", ביום החול האחרון של החודש";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s ימים לפני היום האחרון בחודש"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s ימים לפני היום האחרון בחודש";
   }
   firstWeekday() {
     return "יום החול הראשון";
@@ -154,19 +154,6 @@ export class he implements Locale {
     return ["יום ראשון", "יום שני", "יום שלישי", "יום רביעי", "יום חמישי", "יום שישי", "יום שבת"];
   }
   monthsOfTheYear() {
-    return [
-      "ינואר",
-      "פברואר",
-      "מרץ",
-      "אפריל",
-      "מאי",
-      "יוני",
-      "יולי",
-      "אוגוסט",
-      "ספטמבר",
-      "אוקטובר",
-      "נובמבר",
-      "דצמבר"
-    ];
+    return ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"];
   }
 }

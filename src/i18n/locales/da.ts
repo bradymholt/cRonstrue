@@ -134,16 +134,16 @@ export class da implements Locale {
   weekdayNearestDayX0() {
     return "hverdag nærmest dag %s";
   }
-  commaMonthX0ThroughMonthX1():string {
+  commaMonthX0ThroughMonthX1(): string {
     return null;
   }
-  commaYearX0ThroughYearX1():string {
+  commaYearX0ThroughYearX1(): string {
     return null;
   }
-  atX0MinutesPastTheHourGt20():string {
+  atX0MinutesPastTheHourGt20(): string {
     return null;
   }
-  atX0SecondsPastTheMinuteGt20():string {
+  atX0SecondsPastTheMinuteGt20(): string {
     return null;
   }
   commaStartingX0() {
@@ -165,7 +165,7 @@ export class da implements Locale {
       "september",
       "oktober",
       "november",
-      "december"
+      "december",
     ];
   }
 }

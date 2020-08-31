@@ -51,6 +51,7 @@
     "mocha": "^8.0.1",
     "npm-github-release": "^0.13.0",
     "pixl-xml": "^1.0.13",
+    "prettier": "^2.1.1",
     "ts-loader": "^8.0.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6",

@@ -109,7 +109,7 @@ export class sk implements Locale {
   commaOnlyOnX0() {
     return ", iba v %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", a v %s";
   }
   commaEveryX0Months() {
@@ -124,8 +124,8 @@ export class sk implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", posledný pracovný deň v mesiaci";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s dní pred posledným dňom v mesiaci"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s dní pred posledným dňom v mesiaci";
   }
   firstWeekday() {
     return "prvý pracovný deň";
@@ -167,7 +167,7 @@ export class sk implements Locale {
       "September",
       "Október",
       "November",
-      "December"
+      "December",
     ];
   }
 }

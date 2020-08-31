@@ -65,7 +65,7 @@ export class pl implements Locale {
   commaOnlyOnX0() {
     return ", tylko %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", i %s";
   }
   commaOnThe() {
@@ -77,8 +77,8 @@ export class pl implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", ostatni dzień roboczy miesiąca";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s dni przed ostatnim dniem miesiąca"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s dni przed ostatnim dniem miesiąca";
   }
   commaOnTheLastX0OfTheMonth() {
     return ", ostatni %s miesiąca";
@@ -165,7 +165,7 @@ export class pl implements Locale {
       "wrzesień",
       "październik",
       "listopad",
-      "grudzień"
+      "grudzień",
     ];
   }
 }

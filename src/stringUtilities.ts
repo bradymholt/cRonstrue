@@ -8,7 +8,7 @@ export class StringUtilities {
    * @returns {string}
    */
   static format(template: string, ...values: string[]): string {
-    return template.replace(/%s/g, function() {
+    return template.replace(/%s/g, function () {
       return values.shift();
     });
   }
@@ -23,7 +23,7 @@ export class StringUtilities {
    * @returns {boolean}
    */
   static containsAny(text: string, searchStrings: string[]): boolean {
-    return searchStrings.some(c => {
+    return searchStrings.some((c) => {
       return text.indexOf(c) > -1;
     });
   }
