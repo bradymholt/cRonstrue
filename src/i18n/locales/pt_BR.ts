@@ -165,7 +165,7 @@ export class pt_BR implements Locale {
       "setembro",
       "outubro",
       "novembro",
-      "dezembro"
+      "dezembro",
     ];
   }
 }

@@ -165,7 +165,7 @@ export class de implements Locale {
       "September",
       "Oktober",
       "November",
-      "Dezember"
+      "Dezember",
     ];
   }
 }

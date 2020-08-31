@@ -167,7 +167,7 @@ export class sk implements Locale {
       "September",
       "Október",
       "November",
-      "December"
+      "December",
     ];
   }
 }

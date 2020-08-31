@@ -104,7 +104,7 @@ export class CronParser {
 
     // Adjust DOW based on dayOfWeekStartIndexZero option
     // Normalized DOW: 0=Sunday/6=Saturday
-    expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, t => {
+    expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, (t) => {
       //skip anything preceeded by # or /
       let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
       let dowDigitsAdjusted: string = dowDigits;
@@ -150,7 +150,7 @@ export class CronParser {
       WED: 3,
       THU: 4,
       FRI: 5,
-      SAT: 6
+      SAT: 6,
     };
     for (let day in days) {
       expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
@@ -169,7 +169,7 @@ export class CronParser {
       SEP: 9,
       OCT: 10,
       NOV: 11,
-      DEC: 12
+      DEC: 12,
     };
 
     for (let month in months) {
@@ -182,8 +182,7 @@ export class CronParser {
     }
 
     // If time interval or * (every) is specified for seconds or minutes and hours part is single item, make it a "self-range" so
-    // the expression can be interpreted as an interval 'between' range.  This will allow us to easily interpret an hour
-    // part as 'between' a second or minute duration.
+    // the expression can be interpreted as an interval / range.  This will allow us to easily interpret an hour part as 'between' a second or minute duration.
     //     For example:
     //     0-20/3 9 * * * => 0-20/3 9-9 * * * (9 => 9-9) => Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM
     //     */5 3 * * * => */5 3-3 * * * (3 => 3-3) => Every 5 minutes, between 03:00 AM and 03:59 AM
@@ -201,8 +200,8 @@ export class CronParser {
         expressionParts[i] = "*";
       }
 
-      /* Convert Month,DOW,Year step values with a starting value (i.e. not '*') to between expressions.
-         This allows us to reuse the between expression handling for step values.
+      /* Convert Month,DOW,Year step values with a starting value (i.e. not '*') to range expressions.
+         This allows us to reuse the range expression handling for step values.
 
            For example:
            - month part '3/2' will be converted to '3-12/2' (every 2 months between March and December)

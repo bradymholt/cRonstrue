@@ -174,7 +174,7 @@ export class fi implements Locale {
       "syyskuu",
       "lokakuu",
       "marraskuu",
-      "joulukuu"
+      "joulukuu",
     ];
   }
 }

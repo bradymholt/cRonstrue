@@ -170,7 +170,7 @@ export class en implements Locale {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
   }
 }

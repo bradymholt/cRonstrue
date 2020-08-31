@@ -165,7 +165,7 @@ export class pl implements Locale {
       "wrzesień",
       "październik",
       "listopad",
-      "grudzień"
+      "grudzień",
     ];
   }
 }

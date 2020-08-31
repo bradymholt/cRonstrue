@@ -170,7 +170,7 @@ export class sw implements Locale {
       "Septemba",
       "Oktoba",
       "Novemba",
-      "Desemba"
+      "Desemba",
     ];
   }
 }

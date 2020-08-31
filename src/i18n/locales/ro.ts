@@ -166,7 +166,7 @@ export class ro implements Locale {
       "septembrie",
       "octombrie",
       "noiembrie",
-      "decembrie"
+      "decembrie",
     ];
   }
 }

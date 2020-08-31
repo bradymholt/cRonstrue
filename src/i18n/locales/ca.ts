@@ -167,7 +167,7 @@ export class ca implements Locale {
       "setembre",
       "octubre",
       "novembre",
-      "desembre"
+      "desembre",
     ];
   }
 }

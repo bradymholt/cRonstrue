@@ -165,7 +165,7 @@ export class tr implements Locale {
       "Eylül",
       "Ekim",
       "Kasım",
-      "Aralık"
+      "Aralık",
     ];
   }
 }

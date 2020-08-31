@@ -165,7 +165,7 @@ export class da implements Locale {
       "september",
       "oktober",
       "november",
-      "december"
+      "december",
     ];
   }
 }

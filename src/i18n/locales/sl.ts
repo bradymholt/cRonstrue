@@ -165,7 +165,7 @@ export class sl implements Locale {
       "september",
       "oktober",
       "november",
-      "december"
+      "december",
     ];
   }
 }

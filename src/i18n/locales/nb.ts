@@ -165,7 +165,7 @@ export class nb implements Locale {
       "september",
       "oktober",
       "november",
-      "desember"
+      "desember",
     ];
   }
 }

@@ -167,7 +167,7 @@ export class es implements Locale {
       "septiembre",
       "octubre",
       "noviembre",
-      "diciembre"
+      "diciembre",
     ];
   }
 }

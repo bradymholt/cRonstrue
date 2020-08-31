@@ -167,7 +167,7 @@ export class cs implements Locale {
       "Září",
       "Říjen",
       "Listopad",
-      "Prosinec"
+      "Prosinec",
     ];
   }
 }
