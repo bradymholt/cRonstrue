@@ -114,13 +114,13 @@ export class ExpressionDescriptor {
 
     let description = "";
 
-    //handle special cases first
+    // handle special cases first
     if (
       !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters) &&
       !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters) &&
       !StringUtilities.containsAny(secondsExpression, ExpressionDescriptor.specialCharacters)
     ) {
-      //specific time of day (i.e. 10 14)
+      // specific time of day (i.e. 10 14)
       description += this.i18n.atSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
     } else if (
       !secondsExpression &&
@@ -129,7 +129,7 @@ export class ExpressionDescriptor {
       !(minuteExpression.indexOf("/") > -1) &&
       !StringUtilities.containsAny(hourExpression, ExpressionDescriptor.specialCharacters)
     ) {
-      //minute range in single hour (i.e. 0-10 11)
+      // minute range in single hour (i.e. 0-10 11)
       let minuteParts: string[] = minuteExpression.split("-");
       description += StringUtilities.format(
         this.i18n.everyMinuteBetweenX0AndX1(),
@@ -143,7 +143,7 @@ export class ExpressionDescriptor {
       hourExpression.indexOf("/") == -1 &&
       !StringUtilities.containsAny(minuteExpression, ExpressionDescriptor.specialCharacters)
     ) {
-      //hours list with single minute (i.e. 30 6,14,16)
+      // hours list with single minute (i.e. 30 6,14,16)
       let hourParts: string[] = hourExpression.split(",");
       description += this.i18n.at();
 
@@ -160,7 +160,7 @@ export class ExpressionDescriptor {
         }
       }
     } else {
-      //default time description
+      // default time description
       let secondsDescription = this.getSecondsDescription();
       let minutesDescription = this.getMinutesDescription();
       let hoursDescription = this.getHoursDescription();
@@ -506,7 +506,7 @@ export class ExpressionDescriptor {
             getSingleItemDescription
           );
 
-          //remove any leading comma
+          // remove any leading comma
           rangeSegmentDescription = rangeSegmentDescription.replace(", ", "");
 
           descriptionContent += rangeSegmentDescription;
@@ -554,7 +554,7 @@ export class ExpressionDescriptor {
           getDescriptionFormat(segments[0]),
           getSingleItemDescription(segments[0])
         );
-        //remove any leading comma
+        // remove any leading comma
         rangeItemDescription = rangeItemDescription.replace(", ", "");
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);

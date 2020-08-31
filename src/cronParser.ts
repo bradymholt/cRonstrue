@@ -39,11 +39,11 @@ export class CronParser {
         `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`
       );
     } else if (parsed.length == 5) {
-      //5 part cron so shift array past seconds element
+      // 5 part cron so shift array past seconds element
       parsed.unshift("");
       parsed.push("");
     } else if (parsed.length == 6) {
-      //If last element ends with 4 digits, a year element has been supplied and no seconds element
+      // If last element ends with 4 digits, a year element has been supplied and no seconds element
       if (/\d{4}$/.test(parsed[5])) {
         // year provided
         parsed.unshift("");
@@ -105,7 +105,7 @@ export class CronParser {
     // Adjust DOW based on dayOfWeekStartIndexZero option
     // Normalized DOW: 0=Sunday/6=Saturday
     expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, (t) => {
-      //skip anything preceeded by # or /
+      // skip anything preceeded by # or /
       let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
       let dowDigitsAdjusted: string = dowDigits;
 
