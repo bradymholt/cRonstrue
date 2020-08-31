@@ -458,43 +458,86 @@ export class ExpressionDescriptor {
     let description: string = null;
 
     if (!expression) {
+      // Empty
       description = "";
     } else if (expression === "*") {
+      // * (All)
       description = allDescription;
     } else if (!StringUtilities.containsAny(expression, ["/", "-", ","])) {
+      // Simple
       description = StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
-    } else if (expression.indexOf("/") > -1 && expression.indexOf(",") > -1) {
+    } else if (expression.indexOf(",") > -1) {
+      // Multiple Values
+
       let segments: string[] = expression.split(",");
       let descriptionContent: string = "";
       for (let i = 0; i < segments.length; i++) {
-        if (i > 0) {
+        if (i > 0 && segments.length > 2) {
           descriptionContent += ",";
+
           if (i < segments.length - 1) {
             descriptionContent += " ";
           }
         }
+
         if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
           descriptionContent += `${this.i18n.spaceAnd()} `;
         }
-        descriptionContent += this.getSegmentDescription(
-          segments[i],
-          allDescription,
-          getSingleItemDescription,
-          getIntervalDescriptionFormat,
-          getBetweenDescriptionFormat,
-          getDescriptionFormat
-        );
-      }
-      description = descriptionContent;
-    } else if (expression.indexOf("/") > -1 && expression.indexOf(",") == -1) {
-      let segments: string[] = expression.split("/");
-      description = StringUtilities.format(
-        getIntervalDescriptionFormat(segments[1]),
-        segments[1] // getSingleItemDescription(segments[1])
-      );
 
-      //interval contains 'between' piece (i.e. 2-59/3 )
+        if (segments[i].indexOf("/") > -1) {
+          // Multiple Values with Increment
+
+          descriptionContent += this.getSegmentDescription(
+            segments[i],
+            allDescription,
+            getSingleItemDescription,
+            getIntervalDescriptionFormat,
+            getBetweenDescriptionFormat,
+            getDescriptionFormat
+          );
+        } else if (segments[i].indexOf("-") > -1) {
+          // Multiple Values with Between/Range
+
+          let betweenSegmentDescription: string = this.generateBetweenSegmentDescription(
+            segments[i],
+            (s) => {
+              return this.i18n.commaX0ThroughX1();
+            },
+            getSingleItemDescription
+          );
+
+          //remove any leading comma
+          betweenSegmentDescription = betweenSegmentDescription.replace(", ", "");
+
+          descriptionContent += betweenSegmentDescription;
+        } else if (expression.indexOf("/") == -1) {
+          descriptionContent += getSingleItemDescription(segments[i]);
+        } else {
+          descriptionContent += this.getSegmentDescription(
+            segments[i],
+            allDescription,
+            getSingleItemDescription,
+            getIntervalDescriptionFormat,
+            getBetweenDescriptionFormat,
+            getDescriptionFormat
+          );
+        }
+      }
+
+      if (expression.indexOf("/") == -1) {
+        description = StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
+      } else {
+        description = descriptionContent;
+      }
+    } else if (expression.indexOf("/") > -1) {
+      // Increment
+
+      let segments: string[] = expression.split("/");
+      description = StringUtilities.format(getIntervalDescriptionFormat(segments[1]), segments[1]);
+
       if (segments[0].indexOf("-") > -1) {
+        // Range with Increment (ex: 2-59/3 )
+
         let betweenSegmentDescription: string = this.generateBetweenSegmentDescription(
           segments[0],
           getBetweenDescriptionFormat,
@@ -516,43 +559,9 @@ export class ExpressionDescriptor {
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
       }
-    } else if (expression.indexOf(",") > -1 && expression.indexOf("/") == -1) {
-      let segments: string[] = expression.split(",");
-
-      let descriptionContent: string = "";
-      for (let i = 0; i < segments.length; i++) {
-        if (i > 0 && segments.length > 2) {
-          descriptionContent += ",";
-
-          if (i < segments.length - 1) {
-            descriptionContent += " ";
-          }
-        }
-
-        if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-          descriptionContent += `${this.i18n.spaceAnd()} `;
-        }
-
-        if (segments[i].indexOf("-") > -1) {
-          let betweenSegmentDescription: string = this.generateBetweenSegmentDescription(
-            segments[i],
-            (s) => {
-              return this.i18n.commaX0ThroughX1();
-            },
-            getSingleItemDescription
-          );
-
-          //remove any leading comma
-          betweenSegmentDescription = betweenSegmentDescription.replace(", ", "");
-
-          descriptionContent += betweenSegmentDescription;
-        } else {
-          descriptionContent += getSingleItemDescription(segments[i]);
-        }
-      }
-
-      description = StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
     } else if (expression.indexOf("-") > -1) {
+      // Range
+
       description = this.generateBetweenSegmentDescription(
         expression,
         getBetweenDescriptionFormat,
