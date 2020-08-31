@@ -456,6 +456,9 @@ export class ExpressionDescriptor {
     getDescriptionFormat: (t: string) => string
   ): string {
     let description: string = null;
+    const doesExpressionContainIncrement = expression.indexOf("/") > -1;
+    const doesExpressionContainRange = expression.indexOf("-") > -1;
+    const doesExpressionContainMultipleValues = expression.indexOf(",") > -1;
 
     if (!expression) {
       // Empty
@@ -463,10 +466,10 @@ export class ExpressionDescriptor {
     } else if (expression === "*") {
       // * (All)
       description = allDescription;
-    } else if (!StringUtilities.containsAny(expression, ["/", "-", ","])) {
+    } else if (!doesExpressionContainIncrement && !doesExpressionContainRange && !doesExpressionContainMultipleValues) {
       // Simple
       description = StringUtilities.format(getDescriptionFormat(expression), getSingleItemDescription(expression));
-    } else if (expression.indexOf(",") > -1) {
+    } else if (doesExpressionContainMultipleValues) {
       // Multiple Values
 
       let segments: string[] = expression.split(",");
@@ -484,33 +487,26 @@ export class ExpressionDescriptor {
           descriptionContent += `${this.i18n.spaceAnd()} `;
         }
 
-        if (segments[i].indexOf("/") > -1) {
-          // Multiple Values with Increment
+        if (segments[i].indexOf("/") > -1 || segments[i].indexOf("-") > -1) {
+          // Multiple Values with Increment or Range
 
-          descriptionContent += this.getSegmentDescription(
+          const isSegmentRangeWithoutIncrement = segments[i].indexOf("-") > -1 && segments[i].indexOf("/") == -1;
+
+          let currentDescriptionContent = this.getSegmentDescription(
             segments[i],
             allDescription,
             getSingleItemDescription,
             getIncrementDescriptionFormat,
-            getRangeDescriptionFormat,
+            isSegmentRangeWithoutIncrement ? this.i18n.commaX0ThroughX1 : getRangeDescriptionFormat,
             getDescriptionFormat
           );
-        } else if (segments[i].indexOf("-") > -1) {
-          // Multiple Values with Range
 
-          let rangeSegmentDescription: string = this.generateRangeSegmentDescription(
-            segments[i],
-            (s) => {
-              return this.i18n.commaX0ThroughX1();
-            },
-            getSingleItemDescription
-          );
+          if (isSegmentRangeWithoutIncrement) {
+            currentDescriptionContent = currentDescriptionContent.replace(", ", "");
+          }
 
-          // remove any leading comma
-          rangeSegmentDescription = rangeSegmentDescription.replace(", ", "");
-
-          descriptionContent += rangeSegmentDescription;
-        } else if (expression.indexOf("/") == -1) {
+          descriptionContent += currentDescriptionContent;
+        } else if (!doesExpressionContainIncrement) {
           descriptionContent += getSingleItemDescription(segments[i]);
         } else {
           descriptionContent += this.getSegmentDescription(
@@ -524,12 +520,12 @@ export class ExpressionDescriptor {
         }
       }
 
-      if (expression.indexOf("/") == -1) {
+      if (!doesExpressionContainIncrement) {
         description = StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
       } else {
         description = descriptionContent;
       }
-    } else if (expression.indexOf("/") > -1) {
+    } else if (doesExpressionContainIncrement) {
       // Increment
 
       let segments: string[] = expression.split("/");
@@ -549,17 +545,18 @@ export class ExpressionDescriptor {
         }
 
         description += rangeSegmentDescription;
-      } else if (!StringUtilities.containsAny(segments[0], ["*", ","])) {
+      } else if (segments[0].indexOf("*") == -1) {
         let rangeItemDescription: string = StringUtilities.format(
           getDescriptionFormat(segments[0]),
           getSingleItemDescription(segments[0])
         );
+
         // remove any leading comma
         rangeItemDescription = rangeItemDescription.replace(", ", "");
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
       }
-    } else if (expression.indexOf("-") > -1) {
+    } else if (doesExpressionContainRange) {
       // Range
 
       description = this.generateRangeSegmentDescription(
