@@ -64,7 +64,7 @@ export class ca implements Locale {
   commaOnlyOnX0() {
     return ", només el %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", i el %s";
   }
   commaOnThe() {
@@ -76,8 +76,8 @@ export class ca implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", en l'últim dia de la setmana del mes";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s dies abans de l'últim dia del mes"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s dies abans de l'últim dia del mes";
   }
   commaOnTheLastX0OfTheMonth() {
     return ", en l'últim %s del mes";

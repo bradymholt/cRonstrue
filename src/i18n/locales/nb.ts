@@ -65,7 +65,7 @@ export class nb implements Locale {
   commaOnlyOnX0() {
     return ", på %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", og på %s";
   }
   commaOnThe() {
@@ -77,8 +77,8 @@ export class nb implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", den siste ukedagen i måneden";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s dager før den siste dagen i måneden"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s dager før den siste dagen i måneden";
   }
   commaOnTheLastX0OfTheMonth() {
     return ", på den siste %s av måneden";

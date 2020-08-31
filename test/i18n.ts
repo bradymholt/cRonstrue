@@ -27,7 +27,7 @@ describe("i18n", function() {
         "Cada 5 minutos, entre las 03:00 PM y las 03:59 PM, de lunes a viernes"
       );
     });
-  }); 
+  });
 
   describe("fr", function() {
     it("* * * * *", function() {
@@ -72,15 +72,24 @@ describe("i18n", function() {
     });
 
     it("15 11 * 1/1 MON#1", function() {
-      assert.equal(cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }), "Kl.11:15, på første mandag i måneden");
+      assert.equal(
+        cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }),
+        "Kl.11:15, på første mandag i måneden"
+      );
     });
 
     it("15 11 * 1/5 MON#1", function() {
-      assert.equal(cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }), "Kl.11:15, på første mandag i måneden, hver 5 måned");
+      assert.equal(
+        cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }),
+        "Kl.11:15, på første mandag i måneden, hver 5 måned"
+      );
     });
 
     it("0 7 * * MON,TUE,THU,FRI,SUN", function() {
-      assert.equal(cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }), "Kl.07:00, på mandag, tirsdag, torsdag, fredag, og søndag");
+      assert.equal(
+        cronstrue.toString(this.test.title, { locale: "nb", use24HourTimeFormat: true }),
+        "Kl.07:00, på mandag, tirsdag, torsdag, fredag, og søndag"
+      );
     });
   });
 
@@ -256,7 +265,7 @@ describe("i18n", function() {
       assert.equal(cronstrue.toString(this.test.title, { locale: "sl" }), "Vsako minuto");
     });
   });
-  
+
   describe("ca", function() {
     it("* * * * *", function() {
       assert.equal(cronstrue.toString(this.test.title, { locale: "ca" }), "Cada minut");

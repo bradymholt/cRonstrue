@@ -35,7 +35,7 @@ describe("CronParser", function() {
       assert.equal(new CronParser("* *  * *  * 2015").parse().length, 7);
     });
 
-    it("should parse cron with multiple commas", function () {
+    it("should parse cron with multiple commas", function() {
       assert.equal(new CronParser("5-45/10,*/5,9 * * * *").parse().length, 7);
     });
   });

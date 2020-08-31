@@ -109,7 +109,7 @@ export class en implements Locale {
   commaOnlyOnX0() {
     return ", only on %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", and on %s";
   }
   commaEveryX0Months() {
@@ -124,8 +124,8 @@ export class en implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", on the last weekday of the month";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s days before the last day of the month"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s days before the last day of the month";
   }
   firstWeekday() {
     return "first weekday";

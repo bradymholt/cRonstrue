@@ -107,7 +107,7 @@ export class uk implements Locale {
   commaOnlyOnX0() {
     return ", тільки в %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", і в %s";
   }
   commaEveryX0Months() {
@@ -122,8 +122,8 @@ export class uk implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", в останній будень місяця";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s днів до останнього дня місяця"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s днів до останнього дня місяця";
   }
   firstWeekday() {
     return "перший будень";

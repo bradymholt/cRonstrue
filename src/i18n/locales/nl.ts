@@ -107,7 +107,7 @@ export class nl implements Locale {
   commaOnlyOnX0() {
     return ", alleen op %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", en op %s";
   }
   commaEveryX0Months() {
@@ -122,8 +122,8 @@ export class nl implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", op de laatste werkdag van de maand";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s dagen vóór de laatste dag van de maand"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s dagen vóór de laatste dag van de maand";
   }
   firstWeekday() {
     return "eerste werkdag";

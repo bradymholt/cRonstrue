@@ -107,7 +107,7 @@ export class tr implements Locale {
   commaOnlyOnX0() {
     return ", sadece %s günü";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", ve %s";
   }
   commaEveryX0Months() {
@@ -122,8 +122,8 @@ export class tr implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", ayın son iş günü";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s ayın son gününden önceki günler"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s ayın son gününden önceki günler";
   }
   firstWeekday() {
     return "ilk iş günü";

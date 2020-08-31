@@ -54,7 +54,7 @@ export class ro implements Locale {
   commaOnlyOnX0() {
     return ", doar %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", și %s";
   }
   commaOnThe() {
@@ -66,8 +66,8 @@ export class ro implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", în ultima zi lucrătoare a lunii";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s zile înainte de ultima zi a lunii"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s zile înainte de ultima zi a lunii";
   }
   commaOnTheLastX0OfTheMonth() {
     return ", în ultima %s a lunii";

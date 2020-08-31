@@ -35,7 +35,7 @@ export class ExpressionDescriptor {
       verbose = false,
       dayOfWeekStartIndexZero = true,
       use24HourTimeFormat,
-      locale = "en",
+      locale = "en"
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -46,7 +46,7 @@ export class ExpressionDescriptor {
       verbose: verbose,
       dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
-      locale: locale,
+      locale: locale
     };
 
     let descripter = new ExpressionDescriptor(expression, options);
@@ -187,16 +187,16 @@ export class ExpressionDescriptor {
     let description: string = this.getSegmentDescription(
       this.expressionParts[0],
       this.i18n.everySecond(),
-      (s) => {
+      s => {
         return s;
       },
-      (s) => {
+      s => {
         return StringUtilities.format(this.i18n.everyX0Seconds(), s);
       },
-      (s) => {
+      s => {
         return this.i18n.secondsX0ThroughX1PastTheMinute();
       },
-      (s) => {
+      s => {
         return s == "0"
           ? ""
           : parseInt(s) < 20
@@ -214,16 +214,16 @@ export class ExpressionDescriptor {
     let description: string = this.getSegmentDescription(
       this.expressionParts[1],
       this.i18n.everyMinute(),
-      (s) => {
+      s => {
         return s;
       },
-      (s) => {
+      s => {
         return StringUtilities.format(this.i18n.everyX0Minutes(), s);
       },
-      (s) => {
+      s => {
         return this.i18n.minutesX0ThroughX1PastTheHour();
       },
-      (s) => {
+      s => {
         try {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
@@ -244,16 +244,16 @@ export class ExpressionDescriptor {
     let description: string = this.getSegmentDescription(
       expression,
       this.i18n.everyHour(),
-      (s) => {
+      s => {
         return this.formatTime(s, "0", "");
       },
-      (s) => {
+      s => {
         return StringUtilities.format(this.i18n.everyX0Hours(), s);
       },
-      (s) => {
+      s => {
         return this.i18n.betweenX0AndX1();
       },
-      (s) => {
+      s => {
         return this.i18n.atX0();
       }
     );
@@ -274,7 +274,7 @@ export class ExpressionDescriptor {
       description = this.getSegmentDescription(
         this.expressionParts[5],
         this.i18n.commaEveryDay(),
-        (s) => {
+        s => {
           let exp: string = s;
           if (s.indexOf("#") > -1) {
             exp = s.substr(0, s.indexOf("#"));
@@ -284,7 +284,7 @@ export class ExpressionDescriptor {
 
           return daysOfWeekNames[parseInt(exp)];
         },
-        (s) => {
+        s => {
           if (parseInt(s) == 1) {
             // rather than "every 1 days" just return empty string
             return "";
@@ -292,10 +292,10 @@ export class ExpressionDescriptor {
             return StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(), s);
           }
         },
-        (s) => {
+        s => {
           return this.i18n.commaX0ThroughX1();
         },
-        (s) => {
+        s => {
           let format: string = null;
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
@@ -341,10 +341,10 @@ export class ExpressionDescriptor {
     let description: string = this.getSegmentDescription(
       this.expressionParts[4],
       "",
-      (s) => {
+      s => {
         return monthNames[parseInt(s) - 1];
       },
-      (s) => {
+      s => {
         //
         if (parseInt(s) == 1) {
           // rather than "every 1 months" just return empty string
@@ -353,10 +353,10 @@ export class ExpressionDescriptor {
           return StringUtilities.format(this.i18n.commaEveryX0Months(), s);
         }
       },
-      (s) => {
+      s => {
         return this.i18n.commaMonthX0ThroughMonthX1() || this.i18n.commaX0ThroughX1();
       },
-      (s) => {
+      s => {
         return this.i18n.commaOnlyInMonthX0 ? this.i18n.commaOnlyInMonthX0() : this.i18n.commaOnlyInX0();
       }
     );
@@ -401,20 +401,20 @@ export class ExpressionDescriptor {
             description = this.getSegmentDescription(
               expression,
               this.i18n.commaEveryDay(),
-              (s) => {
+              s => {
                 return s == "L"
                   ? this.i18n.lastDay()
                   : this.i18n.dayX0
                   ? StringUtilities.format(this.i18n.dayX0(), s)
                   : s;
               },
-              (s) => {
+              s => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
               },
-              (s) => {
+              s => {
                 return this.i18n.commaBetweenDayX0AndX1OfTheMonth();
               },
-              (s) => {
+              s => {
                 return this.i18n.commaOnDayX0OfTheMonth();
               }
             );
@@ -430,16 +430,16 @@ export class ExpressionDescriptor {
     let description: string = this.getSegmentDescription(
       this.expressionParts[6],
       "",
-      (s) => {
+      s => {
         return /^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s;
       },
-      (s) => {
+      s => {
         return StringUtilities.format(this.i18n.commaEveryX0Years(), s);
       },
-      (s) => {
+      s => {
         return this.i18n.commaYearX0ThroughYearX1() || this.i18n.commaX0ThroughX1();
       },
-      (s) => {
+      s => {
         return this.i18n.commaOnlyInYearX0 ? this.i18n.commaOnlyInYearX0() : this.i18n.commaOnlyInX0();
       }
     );
@@ -500,7 +500,7 @@ export class ExpressionDescriptor {
 
           let betweenSegmentDescription: string = this.generateBetweenSegmentDescription(
             segments[i],
-            (s) => {
+            s => {
               return this.i18n.commaX0ThroughX1();
             },
             getSingleItemDescription

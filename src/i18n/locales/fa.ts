@@ -109,7 +109,7 @@ export class fa implements Locale {
   commaOnlyOnX0() {
     return ", فقط در %s";
   }
-  commaAndOnX0(){
+  commaAndOnX0() {
     return ", و در %s";
   }
   commaEveryX0Months() {
@@ -124,8 +124,8 @@ export class fa implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", در آخرین روز ماه";
   }
-  commaDaysBeforeTheLastDayOfTheMonth(){
-    return ", %s روز قبل از آخرین روز ماه"
+  commaDaysBeforeTheLastDayOfTheMonth() {
+    return ", %s روز قبل از آخرین روز ماه";
   }
   firstWeekday() {
     return "اولین روز";
@@ -161,19 +161,6 @@ export class fa implements Locale {
     return ["یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
   }
   monthsOfTheYear() {
-    return [
-      "ژانویه",
-      "فوریه",
-      "مارس",
-      "آپریل",
-      "مه",
-      "ژوئن",
-      "ژوئیه",
-      "آگوست",
-      "سپتامبر",
-      "اکتبر",
-      "نوامبر",
-      "دسامبر"
-    ];
+    return ["ژانویه", "فوریه", "مارس", "آپریل", "مه", "ژوئن", "ژوئیه", "آگوست", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"];
   }
 }
