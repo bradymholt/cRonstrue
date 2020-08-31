@@ -82,6 +82,10 @@ describe("Cronstrue", function () {
       assert.equal(construe.toString(this.test.title), "Every minute, February through December");
     });
 
+    it("0 * ? * 1/1", function () {
+      assert.equal(construe.toString(this.test.title), "Every hour, Monday through Saturday");
+    });
+
     it("0 * ? * 2/1", function () {
       assert.equal(construe.toString(this.test.title), "Every hour, Tuesday through Saturday");
     });
@@ -293,6 +297,20 @@ describe("Cronstrue", function () {
       assert.equal(
         construe.toString(this.test.title, { dayOfWeekStartIndexZero: false }),
         "Every second, only on Sunday, Monday, Tuesday, Wednesday, and Thursday"
+      );
+    });
+
+    it("0 * ? * 1/1", function () {
+      assert.equal(
+        construe.toString(this.test.title, { dayOfWeekStartIndexZero: false }),
+        "Every hour, Sunday through Saturday"
+      );
+    });
+
+    it("0 * ? * 2/1", function () {
+      assert.equal(
+        construe.toString(this.test.title, { dayOfWeekStartIndexZero: false }),
+        "Every hour, Monday through Saturday"
       );
     });
   });
