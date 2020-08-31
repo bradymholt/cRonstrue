@@ -627,9 +627,6 @@ var CronParser = (function () {
         if (expressionParts[4].indexOf("1/") == 0) {
             expressionParts[4] = expressionParts[4].replace("1/", "*/");
         }
-        if (expressionParts[5].indexOf("1/") == 0) {
-            expressionParts[5] = expressionParts[5].replace("1/", "*/");
-        }
         if (expressionParts[6].indexOf("1/") == 0) {
             expressionParts[6] = expressionParts[6].replace("1/", "*/");
         }
