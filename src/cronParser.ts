@@ -181,8 +181,8 @@ export class CronParser {
       expressionParts[0] = "";
     }
 
-    // If time interval or * (every) is specified for seconds or minutes and hours part is single item, make it a "self-range" so
-    // the expression can be interpreted as an interval / range.  This will allow us to easily interpret an hour part as 'between' a second or minute duration.
+    // If time increment or * (every) is specified for seconds or minutes and hours part is single item, make it a "self-range" so
+    // the expression can be interpreted as an increment / range.  This will allow us to easily interpret an hour part as 'between' a second or minute duration.
     //     For example:
     //     0-20/3 9 * * * => 0-20/3 9-9 * * * (9 => 9-9) => Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM
     //     */5 3 * * * => */5 3-3 * * * (3 => 3-3) => Every 5 minutes, between 03:00 AM and 03:59 AM

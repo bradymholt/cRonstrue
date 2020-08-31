@@ -451,7 +451,7 @@ export class ExpressionDescriptor {
     expression: string,
     allDescription: string,
     getSingleItemDescription: (t: string) => string,
-    getIntervalDescriptionFormat: (t: string) => string,
+    getIncrementDescriptionFormat: (t: string) => string,
     getRangeDescriptionFormat: (t: string) => string,
     getDescriptionFormat: (t: string) => string
   ): string {
@@ -491,7 +491,7 @@ export class ExpressionDescriptor {
             segments[i],
             allDescription,
             getSingleItemDescription,
-            getIntervalDescriptionFormat,
+            getIncrementDescriptionFormat,
             getRangeDescriptionFormat,
             getDescriptionFormat
           );
@@ -517,7 +517,7 @@ export class ExpressionDescriptor {
             segments[i],
             allDescription,
             getSingleItemDescription,
-            getIntervalDescriptionFormat,
+            getIncrementDescriptionFormat,
             getRangeDescriptionFormat,
             getDescriptionFormat
           );
@@ -533,7 +533,7 @@ export class ExpressionDescriptor {
       // Increment
 
       let segments: string[] = expression.split("/");
-      description = StringUtilities.format(getIntervalDescriptionFormat(segments[1]), segments[1]);
+      description = StringUtilities.format(getIncrementDescriptionFormat(segments[1]), segments[1]);
 
       if (segments[0].indexOf("-") > -1) {
         // Range with Increment (ex: 2-59/3 )
