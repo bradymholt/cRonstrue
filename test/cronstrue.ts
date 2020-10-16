@@ -520,37 +520,37 @@ describe("Cronstrue", function () {
     it('second out of range', function () {
       assert.throws(function () {
         construe.toString("61 * * * * *");
-      }, "second should not lt 0, or gt 59 ")
+      }, "seconds part must be >= 0 and <= 59")
     });
 
     it('minute out of range', function () {
       assert.throws(function () {
         construe.toString("0 -1 * * * *");
-      }, "minute should not lt 0, or gt 59 ")
+      }, "minutes part must be >= 0 and <= 59")
     });
 
     it('hour out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 24 * * *");
-      }, "hour should not lt 0, or gt 23 ")
+      }, "hours part must be >= 0 and <= 23")
     });
 
     it('dayOfMonth out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 32 * *");
-      }, "dayOfMonth should not lt 1, or gt 31 ")
+      }, "DOM part must be >= 1 and <= 31")
     });
 
     it('month out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 1 13 *");
-      }, "month should not lt 1, or gt 12 ")
+      }, "month part must be >= 1 and <= 12")
     });
 
     it('dayOfWeek out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 1 12 8");
-      }, "dayOfWeek should not lt 0, or gt 6 ")
+      }, "DOW part must be >= 0 and <= 6")
     });
 
     it("garbage expression", function () {
