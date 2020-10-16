@@ -23,7 +23,6 @@ export class CronParser {
     let parsed = this.extractParts(this.expression);
     this.normalize(parsed);
     this.validate(parsed);
-    this.validateRange(parsed);
 
     return parsed;
   }
@@ -233,32 +232,33 @@ export class CronParser {
   protected validate(parsed: string[]) {
     this.assertNoInvalidCharacters("DOW", parsed[5]);
     this.assertNoInvalidCharacters("DOM", parsed[3]);
+    this.validateRange(parsed);
   }
 
   protected validateRange(parsed: string[]) {
     if (!isNaN(parseInt(parsed[0], 10))) {
       const second = parseInt(parsed[0], 10);
-      assert(second >= 0 && second <= 59, 'second should not lt 0, or gt 59 ');
+      assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
     }
     if (!isNaN(parseInt(parsed[1], 10))) {
       const minute = parseInt(parsed[1], 10);
-      assert(minute >= 0 && minute <= 59, 'minute should not lt 0, or gt 59 ');
+      assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
     }
     if (!isNaN(parseInt(parsed[2], 10))) {
       const hour = parseInt(parsed[2], 10);
-      assert(hour >= 0 && hour <= 23, 'hour should not lt 0, or gt 23 ');
+      assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
     }
     if (!isNaN(parseInt(parsed[3], 10))) {
       const dayOfMonth = parseInt(parsed[3], 10);
-      assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'dayOfMonth should not lt 1, or gt 31 ');
+      assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
     }
     if (!isNaN(parseInt(parsed[4], 10))) {
       const month = parseInt(parsed[4], 10);
-      assert(month >= 1 && month <= 12, 'month should not lt 1, or gt 12 ');
+      assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
     }
     if (!isNaN(parseInt(parsed[5], 10))) {
       const dayOfWeek = parseInt(parsed[5], 10);
-      assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'dayOfWeek should not lt 0, or gt 6 ');
+      assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
     }
   }
 
