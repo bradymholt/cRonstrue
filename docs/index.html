@@ -79,6 +79,9 @@
 cronstrue.toString(&quot;0 23 ? * MON-FRI&quot;);
 &gt; &quot;At 11:00 PM, Monday through Friday&quot;
 
+cronstrue.toString(&quot;0 23 * * *&quot;, { verbose: true });
+&gt; &quot;At 11:00 PM, every day&quot;
+
 cronstrue.toString(&quot;23 12 * * SUN#2&quot;);
 &gt; &quot;At 12:23 PM, on the second Sunday of the month&quot;
 
