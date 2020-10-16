@@ -85,7 +85,6 @@ export class ExpressionDescriptor {
     try {
       let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
       this.expressionParts = parser.parse();
-
       var timeSegment = this.getTimeOfDayDescription();
       var dayOfMonthDesc = this.getDayOfMonthDescription();
       var monthDesc = this.getMonthDescription();

@@ -517,6 +517,42 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
+    it('second out of range', function () {
+      assert.throws(function () {
+        construe.toString("61 * * * * *");
+      }, "second should not lt 0, or gt 59 ")
+    });
+
+    it('minute out of range', function () {
+      assert.throws(function () {
+        construe.toString("0 -1 * * * *");
+      }, "minute should not lt 0, or gt 59 ")
+    });
+
+    it('hour out of range', function () {
+      assert.throws(function () {
+        construe.toString("0 0 24 * * *");
+      }, "hour should not lt 0, or gt 23 ")
+    });
+
+    it('dayOfMonth out of range', function () {
+      assert.throws(function () {
+        construe.toString("0 0 0 32 * *");
+      }, "dayOfMonth should not lt 1, or gt 31 ")
+    });
+
+    it('month out of range', function () {
+      assert.throws(function () {
+        construe.toString("0 0 0 1 13 *");
+      }, "month should not lt 1, or gt 12 ")
+    });
+
+    it('dayOfWeek out of range', function () {
+      assert.throws(function () {
+        construe.toString("0 0 0 1 12 8");
+      }, "dayOfWeek should not lt 0, or gt 6 ")
+    });
+
     it("garbage expression", function () {
       assert.throws(function () {
         construe.toString("sdlksldksldksd");
