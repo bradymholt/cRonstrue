@@ -517,6 +517,14 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
+    it("empty_around_comma", function () {
+      assert.equal(construe.toString('*/5 * * * * ,'), 'Every 5 seconds');
+    });
+
+    it("empty_side_by_comma", function () {
+      assert.equal(construe.toString('*/5 * * * * ,2'), 'Every 5 seconds, only on Tuesday');
+    });
+
     it('second out of range', function () {
       assert.throws(function () {
         construe.toString("61 * * * * *");
