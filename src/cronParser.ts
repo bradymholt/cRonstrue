@@ -191,6 +191,11 @@ export class CronParser {
 
     // Loop through all parts and apply global normalization
     for (let i = 0; i < expressionParts.length; i++) {
+      // ignore empty characters around comma
+      // if nothing left, set it to *
+      if (expressionParts[i].indexOf(',') != -1) {
+        expressionParts[i] = expressionParts[i].split(',').filter(str => str !== '').join(',') || '*';
+      }
       // convert all '*/1' to '*'
       if (expressionParts[i] == "*/1") {
         expressionParts[i] = "*";

@@ -517,6 +517,14 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
+    it("dayOfWeek specified as comma", function () {
+      assert.equal(construe.toString('*/5 * * * * ,'), 'Every 5 seconds');
+    });
+
+    it("dayOfWeek dangling comma", function () {
+      assert.equal(construe.toString('*/5 * * * * ,2'), 'Every 5 seconds, only on Tuesday');
+    });
+
     it('second out of range', function () {
       assert.throws(function () {
         construe.toString("61 * * * * *");
