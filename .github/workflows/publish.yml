@@ -27,7 +27,7 @@ jobs:
         run: |
           npm run prerelease
           npm version minor --force -m "Version %s [build-skip]"
-          npm publish --access public
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - name: Push release commit and tag to GitHub
