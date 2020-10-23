@@ -2334,6 +2334,9 @@ var CronParser = (function () {
             expressionParts[2] += "-" + expressionParts[2];
         }
         for (var i = 0; i < expressionParts.length; i++) {
+            if (expressionParts[i].indexOf(',') != -1) {
+                expressionParts[i] = expressionParts[i].split(',').filter(function (str) { return str !== ''; }).join(',') || '*';
+            }
             if (expressionParts[i] == "*/1") {
                 expressionParts[i] = "*";
             }
