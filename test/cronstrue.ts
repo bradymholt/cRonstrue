@@ -517,7 +517,7 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
-    it("empty_around_comma", function () {
+    it("dayOfWeek specified as comma", function () {
       assert.equal(construe.toString('*/5 * * * * ,'), 'Every 5 seconds');
     });
 
