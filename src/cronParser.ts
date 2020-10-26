@@ -1,6 +1,3 @@
-import { assert } from "chai";
-import { Options } from "./options";
-
 /**
  * Parses and normalizes a cron expression
  * @export
@@ -243,27 +240,33 @@ export class CronParser {
   protected validateRange(parsed: string[]) {
     if (!isNaN(parseInt(parsed[0], 10))) {
       const second = parseInt(parsed[0], 10);
-      assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
+      this.assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
     }
     if (!isNaN(parseInt(parsed[1], 10))) {
       const minute = parseInt(parsed[1], 10);
-      assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
+      this.assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
     }
     if (!isNaN(parseInt(parsed[2], 10))) {
       const hour = parseInt(parsed[2], 10);
-      assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
+      this.assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
     }
     if (!isNaN(parseInt(parsed[3], 10))) {
       const dayOfMonth = parseInt(parsed[3], 10);
-      assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
+      this.assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
     }
     if (!isNaN(parseInt(parsed[4], 10))) {
       const month = parseInt(parsed[4], 10);
-      assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
+      this.assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
     }
     if (!isNaN(parseInt(parsed[5], 10))) {
       const dayOfWeek = parseInt(parsed[5], 10);
-      assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
+      this.assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
+    }
+  }
+
+  protected assert(value:boolean, message: string){
+    if (!value){
+      throw new Error(message);
     }
   }
 
