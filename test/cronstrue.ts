@@ -517,11 +517,11 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
-    it("empty_around_comma", function () {
+    it("dayOfWeek specified as comma", function () {
       assert.equal(construe.toString('*/5 * * * * ,'), 'Every 5 seconds');
     });
 
-    it("empty_side_by_comma", function () {
+    it("dayOfWeek dangling comma", function () {
       assert.equal(construe.toString('*/5 * * * * ,2'), 'Every 5 seconds, only on Tuesday');
     });
 
