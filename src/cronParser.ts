@@ -1,3 +1,5 @@
+import RangeValidator from "./rangeValidator";
+
 /**
  * Parses and normalizes a cron expression
  * @export
@@ -238,36 +240,12 @@ export class CronParser {
   }
 
   protected validateRange(parsed: string[]) {
-    if (!isNaN(parseInt(parsed[0], 10))) {
-      const second = parseInt(parsed[0], 10);
-      this.assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
-    }
-    if (!isNaN(parseInt(parsed[1], 10))) {
-      const minute = parseInt(parsed[1], 10);
-      this.assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
-    }
-    if (!isNaN(parseInt(parsed[2], 10))) {
-      const hour = parseInt(parsed[2], 10);
-      this.assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
-    }
-    if (!isNaN(parseInt(parsed[3], 10))) {
-      const dayOfMonth = parseInt(parsed[3], 10);
-      this.assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
-    }
-    if (!isNaN(parseInt(parsed[4], 10))) {
-      const month = parseInt(parsed[4], 10);
-      this.assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
-    }
-    if (!isNaN(parseInt(parsed[5], 10))) {
-      const dayOfWeek = parseInt(parsed[5], 10);
-      this.assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
-    }
-  }
-
-  protected assert(value:boolean, message: string){
-    if (!value){
-      throw new Error(message);
-    }
+    RangeValidator.secondRange(parsed[0]);
+    RangeValidator.minuteRange(parsed[1]);
+    RangeValidator.hourRange(parsed[2]);
+    RangeValidator.dayOfMonthRange(parsed[3]);
+    RangeValidator.monthRange(parsed[4]);
+    RangeValidator.dayOfWeekRange(parsed[5]);
   }
 
   protected assertNoInvalidCharacters(partDescription: string, expression: string) {
