@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { Options } from "./options";
+import RangeValidator from "./rangeValidator";
 
 /**
  * Parses and normalizes a cron expression
@@ -241,30 +242,12 @@ export class CronParser {
   }
 
   protected validateRange(parsed: string[]) {
-    if (!isNaN(parseInt(parsed[0], 10))) {
-      const second = parseInt(parsed[0], 10);
-      assert(second >= 0 && second <= 59, 'second should not lt 0, or gt 59 ');
-    }
-    if (!isNaN(parseInt(parsed[1], 10))) {
-      const minute = parseInt(parsed[1], 10);
-      assert(minute >= 0 && minute <= 59, 'minute should not lt 0, or gt 59 ');
-    }
-    if (!isNaN(parseInt(parsed[2], 10))) {
-      const hour = parseInt(parsed[2], 10);
-      assert(hour >= 0 && hour <= 23, 'hour should not lt 0, or gt 23 ');
-    }
-    if (!isNaN(parseInt(parsed[3], 10))) {
-      const dayOfMonth = parseInt(parsed[3], 10);
-      assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'dayOfMonth should not lt 1, or gt 31 ');
-    }
-    if (!isNaN(parseInt(parsed[4], 10))) {
-      const month = parseInt(parsed[4], 10);
-      assert(month >= 1 && month <= 12, 'month should not lt 1, or gt 12 ');
-    }
-    if (!isNaN(parseInt(parsed[5], 10))) {
-      const dayOfWeek = parseInt(parsed[5], 10);
-      assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'dayOfWeek should not lt 0, or gt 6 ');
-    }
+    RangeValidator.secondRange(parsed[0]);
+    RangeValidator.minuteRange(parsed[1]);
+    RangeValidator.hourRange(parsed[2]);
+    RangeValidator.dayOfMonthRange(parsed[3]);
+    RangeValidator.monthRange(parsed[4]);
+    RangeValidator.dayOfWeekRange(parsed[5]);
   }
 
   protected assertNoInvalidCharacters(partDescription: string, expression: string) {
