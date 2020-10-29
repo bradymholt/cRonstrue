@@ -1,13 +1,16 @@
-import { assert } from "chai";
+function assert(value: boolean, message: string) {
+  if (!value) {
+    throw new Error(message);
+  }
+}
 
 export default class RangeValidator {
-
   static secondRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const second = parseInt(parsed[i], 10);
-        assert(second >= 0 && second <= 59, 'second should not lt 0, or gt 59 ');
+        assert(second >= 0 && second <= 59, 'seconds part must be >= 0 and <= 59');
       }
     }
   }
@@ -17,7 +20,7 @@ export default class RangeValidator {
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const minute = parseInt(parsed[i], 10);
-        assert(minute >= 0 && minute <= 59, 'minute should not lt 0, or gt 59 ');
+        assert(minute >= 0 && minute <= 59, 'minutes part must be >= 0 and <= 59');
       }
     }
   }
@@ -27,7 +30,7 @@ export default class RangeValidator {
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const hour = parseInt(parsed[i], 10);
-        assert(hour >= 0 && hour <= 23, 'hour should not lt 0, or gt 23 ');
+        assert(hour >= 0 && hour <= 23, 'hours part must be >= 0 and <= 23');
       }
     }
   }
@@ -37,7 +40,7 @@ export default class RangeValidator {
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const dayOfMonth = parseInt(parsed[i], 10);
-        assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'dayOfMonth should not lt 1, or gt 31 ');
+        assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'DOM part must be >= 1 and <= 31');
       }
     }
   }
@@ -47,7 +50,7 @@ export default class RangeValidator {
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const month = parseInt(parsed[i], 10);
-        assert(month >= 1 && month <= 12, 'month should not lt 1, or gt 12 ');
+        assert(month >= 1 && month <= 12, 'month part must be >= 1 and <= 12');
       }
     }
   }
@@ -57,7 +60,7 @@ export default class RangeValidator {
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const dayOfWeek = parseInt(parsed[i], 10);
-        assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'dayOfWeek should not lt 0, or gt 6 ');
+        assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'DOW part must be >= 0 and <= 6');
       }
     }
   }
