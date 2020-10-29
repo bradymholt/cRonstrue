@@ -38,5 +38,13 @@ describe("CronParser", function () {
     it("should parse cron with multiple commas", function () {
       assert.equal(new CronParser("5-45/10,*/5,9 * * * *").parse().length, 7);
     });
+
+    it("dayOfWeek specified as comma", function () {
+      assert.equal(new CronParser("*/5 * * * * ,").parse()[5], "*");
+    });
+
+    it("dayOfWeek dangling comma", function () {
+      assert.equal(new CronParser("*/5 * * * * ,2").parse()[5], "2");
+    });
   });
 });

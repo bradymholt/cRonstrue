@@ -690,6 +690,9 @@ var CronParser = (function () {
             expressionParts[2] += "-" + expressionParts[2];
         }
         for (var i = 0; i < expressionParts.length; i++) {
+            if (expressionParts[i].indexOf(',') != -1) {
+                expressionParts[i] = expressionParts[i].split(',').filter(function (str) { return str !== ''; }).join(',') || '*';
+            }
             if (expressionParts[i] == "*/1") {
                 expressionParts[i] = "*";
             }
@@ -719,6 +722,38 @@ var CronParser = (function () {
     CronParser.prototype.validate = function (parsed) {
         this.assertNoInvalidCharacters("DOW", parsed[5]);
         this.assertNoInvalidCharacters("DOM", parsed[3]);
+        this.validateRange(parsed);
+    };
+    CronParser.prototype.validateRange = function (parsed) {
+        if (!isNaN(parseInt(parsed[0], 10))) {
+            var second = parseInt(parsed[0], 10);
+            this.assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
+        }
+        if (!isNaN(parseInt(parsed[1], 10))) {
+            var minute = parseInt(parsed[1], 10);
+            this.assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
+        }
+        if (!isNaN(parseInt(parsed[2], 10))) {
+            var hour = parseInt(parsed[2], 10);
+            this.assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
+        }
+        if (!isNaN(parseInt(parsed[3], 10))) {
+            var dayOfMonth = parseInt(parsed[3], 10);
+            this.assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
+        }
+        if (!isNaN(parseInt(parsed[4], 10))) {
+            var month = parseInt(parsed[4], 10);
+            this.assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
+        }
+        if (!isNaN(parseInt(parsed[5], 10))) {
+            var dayOfWeek = parseInt(parsed[5], 10);
+            this.assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
+        }
+    };
+    CronParser.prototype.assert = function (value, message) {
+        if (!value) {
+            throw new Error(message);
+        }
     };
     CronParser.prototype.assertNoInvalidCharacters = function (partDescription, expression) {
         var invalidChars = expression.match(/[A-KM-VX-Z]+/gi);

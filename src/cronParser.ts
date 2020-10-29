@@ -1,5 +1,3 @@
-import { assert } from "chai";
-import { Options } from "./options";
 import RangeValidator from "./rangeValidator";
 
 /**
@@ -24,7 +22,6 @@ export class CronParser {
     let parsed = this.extractParts(this.expression);
     this.normalize(parsed);
     this.validate(parsed);
-    this.validateRange(parsed);
 
     return parsed;
   }
@@ -239,6 +236,7 @@ export class CronParser {
   protected validate(parsed: string[]) {
     this.assertNoInvalidCharacters("DOW", parsed[5]);
     this.assertNoInvalidCharacters("DOM", parsed[3]);
+    this.validateRange(parsed);
   }
 
   protected validateRange(parsed: string[]) {
