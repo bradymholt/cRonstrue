@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -570,6 +570,7 @@ exports.StringUtilities = StringUtilities;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CronParser = void 0;
+var rangeValidator_1 = __webpack_require__(3);
 var CronParser = (function () {
     function CronParser(expression, dayOfWeekStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
@@ -725,35 +726,12 @@ var CronParser = (function () {
         this.validateRange(parsed);
     };
     CronParser.prototype.validateRange = function (parsed) {
-        if (!isNaN(parseInt(parsed[0], 10))) {
-            var second = parseInt(parsed[0], 10);
-            this.assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
-        }
-        if (!isNaN(parseInt(parsed[1], 10))) {
-            var minute = parseInt(parsed[1], 10);
-            this.assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
-        }
-        if (!isNaN(parseInt(parsed[2], 10))) {
-            var hour = parseInt(parsed[2], 10);
-            this.assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
-        }
-        if (!isNaN(parseInt(parsed[3], 10))) {
-            var dayOfMonth = parseInt(parsed[3], 10);
-            this.assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
-        }
-        if (!isNaN(parseInt(parsed[4], 10))) {
-            var month = parseInt(parsed[4], 10);
-            this.assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
-        }
-        if (!isNaN(parseInt(parsed[5], 10))) {
-            var dayOfWeek = parseInt(parsed[5], 10);
-            this.assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
-        }
-    };
-    CronParser.prototype.assert = function (value, message) {
-        if (!value) {
-            throw new Error(message);
-        }
+        rangeValidator_1.default.secondRange(parsed[0]);
+        rangeValidator_1.default.minuteRange(parsed[1]);
+        rangeValidator_1.default.hourRange(parsed[2]);
+        rangeValidator_1.default.dayOfMonthRange(parsed[3]);
+        rangeValidator_1.default.monthRange(parsed[4]);
+        rangeValidator_1.default.dayOfWeekRange(parsed[5]);
     };
     CronParser.prototype.assertNoInvalidCharacters = function (partDescription, expression) {
         var invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
@@ -768,6 +746,80 @@ exports.CronParser = CronParser;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function assert(value, message) {
+    if (!value) {
+        throw new Error(message);
+    }
+}
+var RangeValidator = (function () {
+    function RangeValidator() {
+    }
+    RangeValidator.secondRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var second = parseInt(parsed[i], 10);
+                assert(second >= 0 && second <= 59, 'seconds part must be >= 0 and <= 59');
+            }
+        }
+    };
+    RangeValidator.minuteRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var minute = parseInt(parsed[i], 10);
+                assert(minute >= 0 && minute <= 59, 'minutes part must be >= 0 and <= 59');
+            }
+        }
+    };
+    RangeValidator.hourRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var hour = parseInt(parsed[i], 10);
+                assert(hour >= 0 && hour <= 23, 'hours part must be >= 0 and <= 23');
+            }
+        }
+    };
+    RangeValidator.dayOfMonthRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var dayOfMonth = parseInt(parsed[i], 10);
+                assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'DOM part must be >= 1 and <= 31');
+            }
+        }
+    };
+    RangeValidator.monthRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var month = parseInt(parsed[i], 10);
+                assert(month >= 1 && month <= 12, 'month part must be >= 1 and <= 12');
+            }
+        }
+    };
+    RangeValidator.dayOfWeekRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var dayOfWeek = parseInt(parsed[i], 10);
+                assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'DOW part must be >= 0 and <= 6');
+            }
+        }
+    };
+    return RangeValidator;
+}());
+exports.default = RangeValidator;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -952,7 +1004,7 @@ exports.en = en;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -960,7 +1012,7 @@ exports.en = en;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toString = void 0;
 var expressionDescriptor_1 = __webpack_require__(0);
-var enLocaleLoader_1 = __webpack_require__(5);
+var enLocaleLoader_1 = __webpack_require__(6);
 expressionDescriptor_1.ExpressionDescriptor.initialize(new enLocaleLoader_1.enLocaleLoader());
 exports.default = expressionDescriptor_1.ExpressionDescriptor;
 var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
@@ -968,14 +1020,14 @@ exports.toString = toString;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.enLocaleLoader = void 0;
-var en_1 = __webpack_require__(3);
+var en_1 = __webpack_require__(4);
 var enLocaleLoader = (function () {
     function enLocaleLoader() {
     }

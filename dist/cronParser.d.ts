@@ -7,6 +7,5 @@ export declare class CronParser {
     protected normalize(expressionParts: string[]): void;
     protected validate(parsed: string[]): void;
     protected validateRange(parsed: string[]): void;
-    protected assert(value: boolean, message: string): void;
     protected assertNoInvalidCharacters(partDescription: string, expression: string): void;
 }

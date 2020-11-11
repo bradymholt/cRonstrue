@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -570,6 +570,7 @@ exports.StringUtilities = StringUtilities;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CronParser = void 0;
+var rangeValidator_1 = __webpack_require__(3);
 var CronParser = (function () {
     function CronParser(expression, dayOfWeekStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
@@ -725,35 +726,12 @@ var CronParser = (function () {
         this.validateRange(parsed);
     };
     CronParser.prototype.validateRange = function (parsed) {
-        if (!isNaN(parseInt(parsed[0], 10))) {
-            var second = parseInt(parsed[0], 10);
-            this.assert(second >= 0 && second <= 59, "seconds part must be >= 0 and <= 59");
-        }
-        if (!isNaN(parseInt(parsed[1], 10))) {
-            var minute = parseInt(parsed[1], 10);
-            this.assert(minute >= 0 && minute <= 59, "minutes part must be >= 0 and <= 59");
-        }
-        if (!isNaN(parseInt(parsed[2], 10))) {
-            var hour = parseInt(parsed[2], 10);
-            this.assert(hour >= 0 && hour <= 23, "hours part must be >= 0 and <= 23");
-        }
-        if (!isNaN(parseInt(parsed[3], 10))) {
-            var dayOfMonth = parseInt(parsed[3], 10);
-            this.assert(dayOfMonth >= 1 && dayOfMonth <= 31, "DOM part must be >= 1 and <= 31");
-        }
-        if (!isNaN(parseInt(parsed[4], 10))) {
-            var month = parseInt(parsed[4], 10);
-            this.assert(month >= 1 && month <= 12, "month part must be >= 1 and <= 12");
-        }
-        if (!isNaN(parseInt(parsed[5], 10))) {
-            var dayOfWeek = parseInt(parsed[5], 10);
-            this.assert(dayOfWeek >= 0 && dayOfWeek <= 6, "DOW part must be >= 0 and <= 6");
-        }
-    };
-    CronParser.prototype.assert = function (value, message) {
-        if (!value) {
-            throw new Error(message);
-        }
+        rangeValidator_1.default.secondRange(parsed[0]);
+        rangeValidator_1.default.minuteRange(parsed[1]);
+        rangeValidator_1.default.hourRange(parsed[2]);
+        rangeValidator_1.default.dayOfMonthRange(parsed[3]);
+        rangeValidator_1.default.monthRange(parsed[4]);
+        rangeValidator_1.default.dayOfWeekRange(parsed[5]);
     };
     CronParser.prototype.assertNoInvalidCharacters = function (partDescription, expression) {
         var invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
@@ -768,6 +746,80 @@ exports.CronParser = CronParser;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function assert(value, message) {
+    if (!value) {
+        throw new Error(message);
+    }
+}
+var RangeValidator = (function () {
+    function RangeValidator() {
+    }
+    RangeValidator.secondRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var second = parseInt(parsed[i], 10);
+                assert(second >= 0 && second <= 59, 'seconds part must be >= 0 and <= 59');
+            }
+        }
+    };
+    RangeValidator.minuteRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var minute = parseInt(parsed[i], 10);
+                assert(minute >= 0 && minute <= 59, 'minutes part must be >= 0 and <= 59');
+            }
+        }
+    };
+    RangeValidator.hourRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var hour = parseInt(parsed[i], 10);
+                assert(hour >= 0 && hour <= 23, 'hours part must be >= 0 and <= 23');
+            }
+        }
+    };
+    RangeValidator.dayOfMonthRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var dayOfMonth = parseInt(parsed[i], 10);
+                assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'DOM part must be >= 1 and <= 31');
+            }
+        }
+    };
+    RangeValidator.monthRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var month = parseInt(parsed[i], 10);
+                assert(month >= 1 && month <= 12, 'month part must be >= 1 and <= 12');
+            }
+        }
+    };
+    RangeValidator.dayOfWeekRange = function (parse) {
+        var parsed = parse.split(',');
+        for (var i = 0; i < parsed.length; i++) {
+            if (!isNaN(parseInt(parsed[i], 10))) {
+                var dayOfWeek = parseInt(parsed[i], 10);
+                assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'DOW part must be >= 0 and <= 6');
+            }
+        }
+    };
+    return RangeValidator;
+}());
+exports.default = RangeValidator;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -952,9 +1004,9 @@ exports.en = en;
 
 
 /***/ }),
-/* 4 */,
 /* 5 */,
-/* 6 */
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -962,7 +1014,7 @@ exports.en = en;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toString = void 0;
 var expressionDescriptor_1 = __webpack_require__(0);
-var allLocalesLoader_1 = __webpack_require__(7);
+var allLocalesLoader_1 = __webpack_require__(8);
 expressionDescriptor_1.ExpressionDescriptor.initialize(new allLocalesLoader_1.allLocalesLoader());
 exports.default = expressionDescriptor_1.ExpressionDescriptor;
 var toString = expressionDescriptor_1.ExpressionDescriptor.toString;
@@ -970,14 +1022,14 @@ exports.toString = toString;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.allLocalesLoader = void 0;
-var allLocales = __webpack_require__(8);
+var allLocales = __webpack_require__(9);
 var allLocalesLoader = (function () {
     function allLocalesLoader() {
     }
@@ -994,70 +1046,70 @@ exports.allLocalesLoader = allLocalesLoader;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var en_1 = __webpack_require__(3);
+var en_1 = __webpack_require__(4);
 Object.defineProperty(exports, "en", { enumerable: true, get: function () { return en_1.en; } });
-var da_1 = __webpack_require__(9);
+var da_1 = __webpack_require__(10);
 Object.defineProperty(exports, "da", { enumerable: true, get: function () { return da_1.da; } });
-var de_1 = __webpack_require__(10);
+var de_1 = __webpack_require__(11);
 Object.defineProperty(exports, "de", { enumerable: true, get: function () { return de_1.de; } });
-var es_1 = __webpack_require__(11);
+var es_1 = __webpack_require__(12);
 Object.defineProperty(exports, "es", { enumerable: true, get: function () { return es_1.es; } });
-var fr_1 = __webpack_require__(12);
+var fr_1 = __webpack_require__(13);
 Object.defineProperty(exports, "fr", { enumerable: true, get: function () { return fr_1.fr; } });
-var it_1 = __webpack_require__(13);
+var it_1 = __webpack_require__(14);
 Object.defineProperty(exports, "it", { enumerable: true, get: function () { return it_1.it; } });
-var ko_1 = __webpack_require__(14);
+var ko_1 = __webpack_require__(15);
 Object.defineProperty(exports, "ko", { enumerable: true, get: function () { return ko_1.ko; } });
-var nl_1 = __webpack_require__(15);
+var nl_1 = __webpack_require__(16);
 Object.defineProperty(exports, "nl", { enumerable: true, get: function () { return nl_1.nl; } });
-var nb_1 = __webpack_require__(16);
+var nb_1 = __webpack_require__(17);
 Object.defineProperty(exports, "nb", { enumerable: true, get: function () { return nb_1.nb; } });
-var sv_1 = __webpack_require__(17);
+var sv_1 = __webpack_require__(18);
 Object.defineProperty(exports, "sv", { enumerable: true, get: function () { return sv_1.sv; } });
-var pl_1 = __webpack_require__(18);
+var pl_1 = __webpack_require__(19);
 Object.defineProperty(exports, "pl", { enumerable: true, get: function () { return pl_1.pl; } });
-var pt_BR_1 = __webpack_require__(19);
+var pt_BR_1 = __webpack_require__(20);
 Object.defineProperty(exports, "pt_BR", { enumerable: true, get: function () { return pt_BR_1.pt_BR; } });
-var ro_1 = __webpack_require__(20);
+var ro_1 = __webpack_require__(21);
 Object.defineProperty(exports, "ro", { enumerable: true, get: function () { return ro_1.ro; } });
-var ru_1 = __webpack_require__(21);
+var ru_1 = __webpack_require__(22);
 Object.defineProperty(exports, "ru", { enumerable: true, get: function () { return ru_1.ru; } });
-var tr_1 = __webpack_require__(22);
+var tr_1 = __webpack_require__(23);
 Object.defineProperty(exports, "tr", { enumerable: true, get: function () { return tr_1.tr; } });
-var uk_1 = __webpack_require__(23);
+var uk_1 = __webpack_require__(24);
 Object.defineProperty(exports, "uk", { enumerable: true, get: function () { return uk_1.uk; } });
-var zh_CN_1 = __webpack_require__(24);
+var zh_CN_1 = __webpack_require__(25);
 Object.defineProperty(exports, "zh_CN", { enumerable: true, get: function () { return zh_CN_1.zh_CN; } });
-var zh_TW_1 = __webpack_require__(25);
+var zh_TW_1 = __webpack_require__(26);
 Object.defineProperty(exports, "zh_TW", { enumerable: true, get: function () { return zh_TW_1.zh_TW; } });
-var ja_1 = __webpack_require__(26);
+var ja_1 = __webpack_require__(27);
 Object.defineProperty(exports, "ja", { enumerable: true, get: function () { return ja_1.ja; } });
-var he_1 = __webpack_require__(27);
+var he_1 = __webpack_require__(28);
 Object.defineProperty(exports, "he", { enumerable: true, get: function () { return he_1.he; } });
-var cs_1 = __webpack_require__(28);
+var cs_1 = __webpack_require__(29);
 Object.defineProperty(exports, "cs", { enumerable: true, get: function () { return cs_1.cs; } });
-var sk_1 = __webpack_require__(29);
+var sk_1 = __webpack_require__(30);
 Object.defineProperty(exports, "sk", { enumerable: true, get: function () { return sk_1.sk; } });
-var fi_1 = __webpack_require__(30);
+var fi_1 = __webpack_require__(31);
 Object.defineProperty(exports, "fi", { enumerable: true, get: function () { return fi_1.fi; } });
-var sl_1 = __webpack_require__(31);
+var sl_1 = __webpack_require__(32);
 Object.defineProperty(exports, "sl", { enumerable: true, get: function () { return sl_1.sl; } });
-var sw_1 = __webpack_require__(32);
+var sw_1 = __webpack_require__(33);
 Object.defineProperty(exports, "sw", { enumerable: true, get: function () { return sw_1.sw; } });
-var fa_1 = __webpack_require__(33);
+var fa_1 = __webpack_require__(34);
 Object.defineProperty(exports, "fa", { enumerable: true, get: function () { return fa_1.fa; } });
-var ca_1 = __webpack_require__(34);
+var ca_1 = __webpack_require__(35);
 Object.defineProperty(exports, "ca", { enumerable: true, get: function () { return ca_1.ca; } });
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1239,7 +1291,7 @@ exports.da = da;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1421,7 +1473,7 @@ exports.de = de;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1603,7 +1655,7 @@ exports.es = es;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1788,7 +1840,7 @@ exports.fr = fr;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1970,7 +2022,7 @@ exports.it = it;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2154,7 +2206,7 @@ exports.ko = ko;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2336,7 +2388,7 @@ exports.nl = nl;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2518,7 +2570,7 @@ exports.nb = nb;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2700,7 +2752,7 @@ exports.sv = sv;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2882,7 +2934,7 @@ exports.pl = pl;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3064,7 +3116,7 @@ exports.pt_BR = pt_BR;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3246,7 +3298,7 @@ exports.ro = ro;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3428,7 +3480,7 @@ exports.ru = ru;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3610,7 +3662,7 @@ exports.tr = tr;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3792,7 +3844,7 @@ exports.uk = uk;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3979,7 +4031,7 @@ exports.zh_CN = zh_CN;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4157,7 +4209,7 @@ exports.zh_TW = zh_TW;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4341,7 +4393,7 @@ exports.ja = ja;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4510,7 +4562,7 @@ exports.he = he;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4692,7 +4744,7 @@ exports.cs = cs;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4874,7 +4926,7 @@ exports.sk = sk;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5065,7 +5117,7 @@ exports.fi = fi;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5247,7 +5299,7 @@ exports.sl = sl;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5430,7 +5482,7 @@ exports.sw = sw;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5605,7 +5657,7 @@ exports.fa = fa;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
