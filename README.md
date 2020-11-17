@@ -13,7 +13,7 @@ This library was ported from the original C# implemenation called [cron-expressi
 
 ## Demo
 
-A demo is available here [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
+A demo is available [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
 
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
