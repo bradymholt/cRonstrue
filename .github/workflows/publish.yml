@@ -27,6 +27,7 @@ jobs:
         run: |
           npm run prerelease
           npm version minor --force -m "Version %s [build-skip]"
+          npm set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
