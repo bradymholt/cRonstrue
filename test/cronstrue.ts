@@ -15,6 +15,11 @@ describe("Cronstrue", function () {
     it("* * * * * (verbose)", function () {
       assert.equal(construe.toString("* * * * *", { verbose: true }), "Every minute, every hour, every day");
     });
+    
+    // this is not working as intended
+    it("0 * * * * (verbose)", function () {
+      assert.equal(construe.toString("0 * * * *", { verbose: true }), "Every hour, every day");
+    });
 
     it("*/1 * * * *", function () {
       assert.equal(construe.toString(this.test.title), "Every minute");
