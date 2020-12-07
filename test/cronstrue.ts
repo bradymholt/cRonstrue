@@ -79,7 +79,7 @@ describe("Cronstrue", function () {
     });
 
     it("0 * ? * 2/1 *", function () {
-      assert.equal(construe.toString(this.test.title), "Every minute, February through December");
+      assert.equal(construe.toString(this.test.title), "Every hour, Tuesday through Saturday");
     });
 
     it("0 * ? * 1/1", function () {

@@ -43,9 +43,17 @@ export class CronParser {
       parsed.unshift("");
       parsed.push("");
     } else if (parsed.length == 6) {
-      // If last element ends with 4 digits, a year element has been supplied and no seconds element
-      if (/\d{4}$/.test(parsed[5])) {
-        // year provided
+      /* We will detect if this 6 part expression has a year specified and if so we will shift the parts and treat the
+        first part as a minute part rather than a second part.
+
+        Ways we detect:
+          1. Last part is a literal year (i.e. 2020)
+          2. 3rd or 5th part is specified as "?" (DOM or DOW)
+      */
+      const isYearWithNoSecondsPart = /\d{4}$/.test(parsed[5]) || parsed[4] == "?" || parsed[2] == "?";
+
+      if (isYearWithNoSecondsPart) {
+        // year provided; shift parts over by one
         parsed.unshift("");
       } else {
         // seconds provided
@@ -192,8 +200,12 @@ export class CronParser {
     for (let i = 0; i < expressionParts.length; i++) {
       // ignore empty characters around comma
       // if nothing left, set it to *
-      if (expressionParts[i].indexOf(',') != -1) {
-        expressionParts[i] = expressionParts[i].split(',').filter(str => str !== '').join(',') || '*';
+      if (expressionParts[i].indexOf(",") != -1) {
+        expressionParts[i] =
+          expressionParts[i]
+            .split(",")
+            .filter((str) => str !== "")
+            .join(",") || "*";
       }
       // convert all '*/1' to '*'
       if (expressionParts[i] == "*/1") {

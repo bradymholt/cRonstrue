@@ -11,11 +11,8 @@ describe("CronParser", function () {
     it("should parse 6 part cron with year", function () {
       assert.equal(new CronParser("* * * * * 2015").parse()[6], "2015");
       assert.equal(new CronParser("* * * * * 2015").parse()[0], "");
-    });
-
-    it("should parse 6 part cron with year", function () {
-      assert.equal(new CronParser("* * * * * 2015").parse()[6], "2015");
-      assert.equal(new CronParser("* * * * * 2015").parse()[0], "");
+      assert.equal(new CronParser("0/5 8-17 ? * MON-FRI *").parse()[2], "8-17");
+      assert.equal(new CronParser("0 8 1 * ? *").parse()[2], "8");
     });
 
     it("should error if expression is not a cron schedule", function () {
