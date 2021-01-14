@@ -205,6 +205,9 @@ var ExpressionDescriptor = (function () {
                 description += ", ";
             }
             description += minutesDescription;
+            if (minutesDescription === hoursDescription) {
+                return description;
+            }
             if (description.length > 0 && hoursDescription.length > 0) {
                 description += ", ";
             }

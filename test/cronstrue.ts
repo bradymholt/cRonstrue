@@ -12,6 +12,10 @@ describe("Cronstrue", function () {
       assert.equal(construe.toString(this.test.title), "Every minute");
     });
 
+    it("0 * * * * (verbose)", function () {
+      assert.equal(construe.toString("0 * * * *", { verbose: true }), "Every hour, every day");
+    });
+
     it("* * * * * (verbose)", function () {
       assert.equal(construe.toString("* * * * *", { verbose: true }), "Every minute, every hour, every day");
     });
