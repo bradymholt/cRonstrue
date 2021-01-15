@@ -3,10 +3,12 @@ name: Publish to npm Registry
 on:
   pull_request:
     types: closed
+  workflow_dispatch:
+
 jobs:
   job:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
+    if: "!github.event.pull_request || github.event.pull_request.merged"
     steps:
       - uses: actions/checkout@v1
         with:
@@ -22,7 +24,7 @@ jobs:
         with:
           node-version: 12
           registry-url: "https://registry.npmjs.org"
-      - run: npm install      
+      - run: npm install
       - name: Version and publish to npm
         run: |
           npm run prerelease
