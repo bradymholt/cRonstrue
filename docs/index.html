@@ -55,22 +55,27 @@
 <h2 id="installation">Installation</h2>
 <p>cRonstrue is exported as an <a href="https://github.com/umdjs/umd">UMD</a> module so it will work in an <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a>, <a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> or browser global context.</p>
 <p>First, install the module:</p>
-<pre><code>npm install cronstrue</code></pre>
+<pre><code>npm install cronstrue
+</code></pre>
 <p>Then, depending upon your usage context, add a reference to it:</p>
 <h3 id="node">Node</h3>
-<pre><code class="language-js">var cronstrue = require(&#39;cronstrue&#39;);</code></pre>
+<pre><code class="language-js">var cronstrue = require(&#39;cronstrue&#39;);
+</code></pre>
 <h3 id="esm--webpack--typescript">ESM / webpack / TypeScript</h3>
-<pre><code class="language-js">import cronstrue from &#39;cronstrue&#39;;</code></pre>
+<pre><code class="language-js">import cronstrue from &#39;cronstrue&#39;;
+</code></pre>
 <h3 id="browser">Browser</h3>
 <p> The <code>cronstrue.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a <code>&lt;script&gt;</code> tag.</p>
 <pre><code class="language-html">&lt;script src=&quot;cronstrue.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   var cronstrue = window.cronstrue;
-&lt;/script&gt;</code></pre>
+&lt;/script&gt;
+</code></pre>
 <h4 id="cdn">CDN</h4>
 <p>A simple way to load the library in a browser is by using the <a href="https://unpkg.com/">unpkg</a> CDN, which is a
 &quot;fast, global content delivery network for everything on npm&quot;.  To use it, include a script tag like this in your file:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;</code></pre>
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
+</code></pre>
 <p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="language-js">cronstrue.toString(&quot;* * * * *&quot;);
@@ -89,7 +94,8 @@ cronstrue.toString(&quot;23 14 * * SUN#2&quot;, { use24HourTimeFormat: true });
 &gt; &quot;At 14:23, on the second Sunday of the month&quot;
 
 cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false });
-&gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;</code></pre>
+&gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
+</code></pre>
 <p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts">reference the unit tests</a>.</p>
 <h2 id="options">Options</h2>
 <p>An options object can be passed as the second parameter to <code>cronstrue.toString</code>.  The following options are available:</p>
@@ -104,13 +110,15 @@ cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false
 <p>To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  <code>cronstrue.toString()</code>.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; });</code>.</p>
 <h3 id="node-1">Node</h3>
 <pre><code class="language-js">var cronstrue = require(&#39;cronstrue/i18n&#39;);
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });</code></pre>
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
+</code></pre>
 <h3 id="browser-1">Browser</h3>
 <p> The <code>cronstrue-i18n.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.</p>
 <pre><code class="language-html">&lt;script src=&quot;cronstrue-i18n.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
-&lt;/script&gt;</code></pre>
+&lt;/script&gt;
+</code></pre>
 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 <blockquote>
 <p>The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?</p>
