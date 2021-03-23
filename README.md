@@ -118,6 +118,10 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" });
 
 This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-validator](https://www.npmjs.com/package/cron-validator) or [cron-parser](https://www.npmjs.com/package/cron-parser).
 
+> Can cRonstrue output the next occurrence of the cron expression?
+
+No, cRonstrue does not support this.  It simply describes a cron expression.  You could use another library to get the next occurance of a cron expression and then pass that expression into cRonstrue, to acheive this.
+
 ### Supported Locales
 
 - en - English
