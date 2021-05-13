@@ -553,8 +553,12 @@ describe("Cronstrue", function () {
 
     it('dayOfWeek out of range', function () {
       assert.throws(function () {
-        construe.toString("0 0 0 1 12 8");
-      }, "DOW part must be >= 0 and <= 6")
+        construe.toString("0 0 0 1 12 8", { dayOfWeekStartIndexZero: true });
+      }, "DOW part must be >= 0 and <= 6");
+
+      assert.throws(function () {
+        construe.toString("0 0 0 1 12 8", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
     });
 
     it("garbage expression", function () {

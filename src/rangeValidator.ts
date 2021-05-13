@@ -55,12 +55,15 @@ export default class RangeValidator {
     }
   }
 
-  static dayOfWeekRange(parse: string) {
+  static dayOfWeekRange(parse: string, dayOfWeekStartIndexZero: boolean) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const dayOfWeek = parseInt(parsed[i], 10);
-        assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'DOW part must be >= 0 and <= 6');
+        assert(
+          dayOfWeek >= 0 && dayOfWeek <= 6,
+          dayOfWeekStartIndexZero ? 'DOW part must be >= 0 and <= 6' : 'DOW part must be >= 1 and <= 7'
+        );
       }
     }
   }
