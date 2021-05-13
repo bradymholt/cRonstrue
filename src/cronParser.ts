@@ -257,7 +257,7 @@ export class CronParser {
     RangeValidator.hourRange(parsed[2]);
     RangeValidator.dayOfMonthRange(parsed[3]);
     RangeValidator.monthRange(parsed[4]);
-    RangeValidator.dayOfWeekRange(parsed[5]);
+    RangeValidator.dayOfWeekRange(parsed[5], this.dayOfWeekStartIndexZero);
   }
 
   protected assertNoInvalidCharacters(partDescription: string, expression: string) {
