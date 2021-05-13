@@ -1,6 +1,5 @@
 import chai = require("chai");
 import construe from "../src/cronstrue";
-import { fa } from "../src/i18n/locales/fa";
 let assert = chai.assert;
 
 describe("Cronstrue", function () {
@@ -522,34 +521,34 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
-    it("second out of range", function () {
+    it('second out of range', function () {
       assert.throws(function () {
         construe.toString("61 * * * * *");
-      }, "seconds part must be >= 0 and <= 59");
+      }, "seconds part must be >= 0 and <= 59")
     });
 
-    it("minute out of range", function () {
+    it('minute out of range', function () {
       assert.throws(function () {
         construe.toString("0 -1 * * * *");
-      }, "minutes part must be >= 0 and <= 59");
+      }, "minutes part must be >= 0 and <= 59")
     });
 
-    it("hour out of range", function () {
+    it('hour out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 24 * * *");
-      }, "hours part must be >= 0 and <= 23");
+      }, "hours part must be >= 0 and <= 23")
     });
 
-    it("dayOfMonth out of range", function () {
+    it('dayOfMonth out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 32 * *");
-      }, "DOM part must be >= 1 and <= 31");
+      }, "DOM part must be >= 1 and <= 31")
     });
 
-    it("month out of range", function () {
+    it('month out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 1 13 *");
-      }, "month part must be >= 1 and <= 12");
+      }, "month part must be >= 1 and <= 12")
     });
 
     it("dayOfWeek out of range", function () {
