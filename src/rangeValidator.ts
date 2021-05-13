@@ -56,7 +56,7 @@ export default class RangeValidator {
   }
 
   static dayOfWeekRange(parse: string, dayOfWeekStartIndexZero: boolean) {
-    const parsed = parse.split(",");
+    const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const dayOfWeek = parseInt(parsed[i], 10);
@@ -67,5 +67,4 @@ export default class RangeValidator {
       }
     }
   }
-
 }

@@ -551,7 +551,7 @@ describe("Cronstrue", function () {
       }, "month part must be >= 1 and <= 12")
     });
 
-    it("dayOfWeek out of range", function () {
+    it('dayOfWeek out of range', function () {
       assert.throws(function () {
         construe.toString("0 0 0 1 12 8", { dayOfWeekStartIndexZero: true });
       }, "DOW part must be >= 0 and <= 6");
