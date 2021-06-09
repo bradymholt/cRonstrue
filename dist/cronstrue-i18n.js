@@ -739,7 +739,7 @@ var CronParser = (function () {
         rangeValidator_1.default.hourRange(parsed[2]);
         rangeValidator_1.default.dayOfMonthRange(parsed[3]);
         rangeValidator_1.default.monthRange(parsed[4]);
-        rangeValidator_1.default.dayOfWeekRange(parsed[5]);
+        rangeValidator_1.default.dayOfWeekRange(parsed[5], this.dayOfWeekStartIndexZero);
     };
     CronParser.prototype.assertNoInvalidCharacters = function (partDescription, expression) {
         var invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
@@ -812,12 +812,12 @@ var RangeValidator = (function () {
             }
         }
     };
-    RangeValidator.dayOfWeekRange = function (parse) {
+    RangeValidator.dayOfWeekRange = function (parse, dayOfWeekStartIndexZero) {
         var parsed = parse.split(',');
         for (var i = 0; i < parsed.length; i++) {
             if (!isNaN(parseInt(parsed[i], 10))) {
                 var dayOfWeek = parseInt(parsed[i], 10);
-                assert(dayOfWeek >= 0 && dayOfWeek <= 6, 'DOW part must be >= 0 and <= 6');
+                assert(dayOfWeek >= 0 && dayOfWeek <= 6, dayOfWeekStartIndexZero ? 'DOW part must be >= 0 and <= 6' : 'DOW part must be >= 1 and <= 7');
             }
         }
     };
