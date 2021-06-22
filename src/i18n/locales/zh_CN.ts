@@ -54,7 +54,7 @@ export class zh_CN implements Locale {
     return "每秒";
   }
   everyX0Seconds() {
-    return "每隔 %s 秒";
+    return "每过 %s 秒";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "在每分钟的第 %s 到 %s 秒";
@@ -63,7 +63,7 @@ export class zh_CN implements Locale {
     return "在每分钟的第 %s 秒";
   }
   everyX0Minutes() {
-    return "每隔 %s 分钟";
+    return "每过 %s 分钟";
   }
   minutesX0ThroughX1PastTheHour() {
     return "在每小时的第 %s 到 %s 分钟";
@@ -72,7 +72,7 @@ export class zh_CN implements Locale {
     return "在每小时的第 %s 分钟";
   }
   everyX0Hours() {
-    return "每隔 %s 小时";
+    return "每过 %s 小时";
   }
   betweenX0AndX1() {
     return "在 %s 和 %s 之间";
@@ -117,22 +117,22 @@ export class zh_CN implements Locale {
     return ", 限每月的最后一个%s";
   }
   commaOnlyOnX0() {
-    return ", 仅%s";
+    return ", 仅在%s";
   }
   commaAndOnX0() {
     return ", 并且为%s";
   }
   commaEveryX0Months() {
-    return ", 每隔 %s 个月";
+    return ", 每过 %s 个月";
   }
   commaOnlyInX0() {
     return ", 仅限%s";
   }
   commaOnlyInMonthX0() {
-    return ", 仅于%s份";
+    return ", 仅在%s份";
   }
   commaOnlyInYearX0() {
-    return ", 仅于 %s 年";
+    return ", 仅在 %s 年";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", 限每月的最后一天";
@@ -153,7 +153,7 @@ export class zh_CN implements Locale {
     return ", 限每月的%s";
   }
   commaEveryX0Days() {
-    return ", 每隔 %s 天";
+    return ", 每过 %s 天";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
     return ", 限每月的 %s 至 %s 之间";
@@ -162,7 +162,7 @@ export class zh_CN implements Locale {
     return ", 限每月%s";
   }
   commaEveryX0Years() {
-    return ", 每隔 %s 年";
+    return ", 每过 %s 年";
   }
   commaStartingX0() {
     return ", %s开始";
