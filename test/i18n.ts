@@ -55,6 +55,14 @@ describe("i18n", function () {
     });
   });
 
+
+  describe("id", function() {
+    it("* * * * *", function() {
+      assert.equal(cronstrue.toString(this.test.title, { locale: "id" }), "Setiap menit");
+    });
+  });
+
+
   describe("nb", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test.title, { locale: "nb" }), "Hvert minutt");

@@ -135,6 +135,7 @@ No, cRonstrue does not support this.  It simply describes a cron expression.  Yo
 - fa - Farsi
 - he - Hebrew
 - it - Italian
+- id - Indonesia
 - ja - Japanese
 - ko - Korean
 - nb - Norwegian
