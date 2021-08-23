@@ -4,6 +4,7 @@ export { de } from "./locales/de";
 export { es } from "./locales/es";
 export { fr } from "./locales/fr";
 export { it } from "./locales/it";
+export { id } from "./locales/id";
 export { ko } from "./locales/ko";
 export { nl } from "./locales/nl";
 export { nb } from "./locales/nb";

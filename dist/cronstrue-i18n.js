@@ -1072,47 +1072,49 @@ var fr_1 = __webpack_require__(13);
 Object.defineProperty(exports, "fr", { enumerable: true, get: function () { return fr_1.fr; } });
 var it_1 = __webpack_require__(14);
 Object.defineProperty(exports, "it", { enumerable: true, get: function () { return it_1.it; } });
-var ko_1 = __webpack_require__(15);
+var id_1 = __webpack_require__(15);
+Object.defineProperty(exports, "id", { enumerable: true, get: function () { return id_1.id; } });
+var ko_1 = __webpack_require__(16);
 Object.defineProperty(exports, "ko", { enumerable: true, get: function () { return ko_1.ko; } });
-var nl_1 = __webpack_require__(16);
+var nl_1 = __webpack_require__(17);
 Object.defineProperty(exports, "nl", { enumerable: true, get: function () { return nl_1.nl; } });
-var nb_1 = __webpack_require__(17);
+var nb_1 = __webpack_require__(18);
 Object.defineProperty(exports, "nb", { enumerable: true, get: function () { return nb_1.nb; } });
-var sv_1 = __webpack_require__(18);
+var sv_1 = __webpack_require__(19);
 Object.defineProperty(exports, "sv", { enumerable: true, get: function () { return sv_1.sv; } });
-var pl_1 = __webpack_require__(19);
+var pl_1 = __webpack_require__(20);
 Object.defineProperty(exports, "pl", { enumerable: true, get: function () { return pl_1.pl; } });
-var pt_BR_1 = __webpack_require__(20);
+var pt_BR_1 = __webpack_require__(21);
 Object.defineProperty(exports, "pt_BR", { enumerable: true, get: function () { return pt_BR_1.pt_BR; } });
-var ro_1 = __webpack_require__(21);
+var ro_1 = __webpack_require__(22);
 Object.defineProperty(exports, "ro", { enumerable: true, get: function () { return ro_1.ro; } });
-var ru_1 = __webpack_require__(22);
+var ru_1 = __webpack_require__(23);
 Object.defineProperty(exports, "ru", { enumerable: true, get: function () { return ru_1.ru; } });
-var tr_1 = __webpack_require__(23);
+var tr_1 = __webpack_require__(24);
 Object.defineProperty(exports, "tr", { enumerable: true, get: function () { return tr_1.tr; } });
-var uk_1 = __webpack_require__(24);
+var uk_1 = __webpack_require__(25);
 Object.defineProperty(exports, "uk", { enumerable: true, get: function () { return uk_1.uk; } });
-var zh_CN_1 = __webpack_require__(25);
+var zh_CN_1 = __webpack_require__(26);
 Object.defineProperty(exports, "zh_CN", { enumerable: true, get: function () { return zh_CN_1.zh_CN; } });
-var zh_TW_1 = __webpack_require__(26);
+var zh_TW_1 = __webpack_require__(27);
 Object.defineProperty(exports, "zh_TW", { enumerable: true, get: function () { return zh_TW_1.zh_TW; } });
-var ja_1 = __webpack_require__(27);
+var ja_1 = __webpack_require__(28);
 Object.defineProperty(exports, "ja", { enumerable: true, get: function () { return ja_1.ja; } });
-var he_1 = __webpack_require__(28);
+var he_1 = __webpack_require__(29);
 Object.defineProperty(exports, "he", { enumerable: true, get: function () { return he_1.he; } });
-var cs_1 = __webpack_require__(29);
+var cs_1 = __webpack_require__(30);
 Object.defineProperty(exports, "cs", { enumerable: true, get: function () { return cs_1.cs; } });
-var sk_1 = __webpack_require__(30);
+var sk_1 = __webpack_require__(31);
 Object.defineProperty(exports, "sk", { enumerable: true, get: function () { return sk_1.sk; } });
-var fi_1 = __webpack_require__(31);
+var fi_1 = __webpack_require__(32);
 Object.defineProperty(exports, "fi", { enumerable: true, get: function () { return fi_1.fi; } });
-var sl_1 = __webpack_require__(32);
+var sl_1 = __webpack_require__(33);
 Object.defineProperty(exports, "sl", { enumerable: true, get: function () { return sl_1.sl; } });
-var sw_1 = __webpack_require__(33);
+var sw_1 = __webpack_require__(34);
 Object.defineProperty(exports, "sw", { enumerable: true, get: function () { return sw_1.sw; } });
-var fa_1 = __webpack_require__(34);
+var fa_1 = __webpack_require__(35);
 Object.defineProperty(exports, "fa", { enumerable: true, get: function () { return fa_1.fa; } });
-var ca_1 = __webpack_require__(35);
+var ca_1 = __webpack_require__(36);
 Object.defineProperty(exports, "ca", { enumerable: true, get: function () { return ca_1.ca; } });
 
 
@@ -2036,6 +2038,191 @@ exports.it = it;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.id = void 0;
+var id = (function () {
+    function id() {
+    }
+    id.prototype.atX0SecondsPastTheMinuteGt20 = function () {
+        return null;
+    };
+    id.prototype.atX0MinutesPastTheHourGt20 = function () {
+        return null;
+    };
+    id.prototype.commaMonthX0ThroughMonthX1 = function () {
+        return null;
+    };
+    id.prototype.commaYearX0ThroughYearX1 = function () {
+        return null;
+    };
+    id.prototype.use24HourTimeFormatByDefault = function () {
+        return false;
+    };
+    id.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Terjadi kesalahan saat membuat deskripsi ekspresi. Periksa sintaks ekspresi cron.";
+    };
+    id.prototype.everyMinute = function () {
+        return "setiap menit";
+    };
+    id.prototype.everyHour = function () {
+        return "setiap jam";
+    };
+    id.prototype.atSpace = function () {
+        return "Pada ";
+    };
+    id.prototype.everyMinuteBetweenX0AndX1 = function () {
+        return "Setiap menit diantara %s dan %s";
+    };
+    id.prototype.at = function () {
+        return "Pada";
+    };
+    id.prototype.spaceAnd = function () {
+        return " dan";
+    };
+    id.prototype.everySecond = function () {
+        return "setiap detik";
+    };
+    id.prototype.everyX0Seconds = function () {
+        return "setiap %s detik";
+    };
+    id.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "detik ke %s sampai %s melewati menit";
+    };
+    id.prototype.atX0SecondsPastTheMinute = function () {
+        return "pada %s detik lewat satu menit";
+    };
+    id.prototype.everyX0Minutes = function () {
+        return "setiap %s menit";
+    };
+    id.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "menit ke %s sampai %s melewati jam";
+    };
+    id.prototype.atX0MinutesPastTheHour = function () {
+        return "pada %s menit melewati jam";
+    };
+    id.prototype.everyX0Hours = function () {
+        return "setiap %s jam";
+    };
+    id.prototype.betweenX0AndX1 = function () {
+        return "diantara %s dan %s";
+    };
+    id.prototype.atX0 = function () {
+        return "pada %s";
+    };
+    id.prototype.commaEveryDay = function () {
+        return ", setiap hari";
+    };
+    id.prototype.commaEveryX0DaysOfTheWeek = function () {
+        return ", setiap hari %s  dalam seminggu";
+    };
+    id.prototype.commaX0ThroughX1 = function () {
+        return ", %s sampai %s";
+    };
+    id.prototype.first = function () {
+        return "pertama";
+    };
+    id.prototype.second = function () {
+        return "kedua";
+    };
+    id.prototype.third = function () {
+        return "ketiga";
+    };
+    id.prototype.fourth = function () {
+        return "keempat";
+    };
+    id.prototype.fifth = function () {
+        return "kelima";
+    };
+    id.prototype.commaOnThe = function () {
+        return ", di ";
+    };
+    id.prototype.spaceX0OfTheMonth = function () {
+        return " %s pada bulan";
+    };
+    id.prototype.lastDay = function () {
+        return "hari terakhir";
+    };
+    id.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", pada %s terakhir bulan ini";
+    };
+    id.prototype.commaOnlyOnX0 = function () {
+        return ", hanya pada %s";
+    };
+    id.prototype.commaAndOnX0 = function () {
+        return ", dan pada %s";
+    };
+    id.prototype.commaEveryX0Months = function () {
+        return ", setiap bulan %s ";
+    };
+    id.prototype.commaOnlyInX0 = function () {
+        return ", hanya pada %s";
+    };
+    id.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", pada hari terakhir bulan ini";
+    };
+    id.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", pada hari kerja terakhir setiap bulan";
+    };
+    id.prototype.commaDaysBeforeTheLastDayOfTheMonth = function () {
+        return ", %s hari sebelum hari terakhir setiap bulan";
+    };
+    id.prototype.firstWeekday = function () {
+        return "hari kerja pertama";
+    };
+    id.prototype.weekdayNearestDayX0 = function () {
+        return "hari kerja terdekat %s";
+    };
+    id.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", pada %s bulan ini";
+    };
+    id.prototype.commaEveryX0Days = function () {
+        return ", setiap %s hari";
+    };
+    id.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", antara hari %s dan %s dalam sebulan";
+    };
+    id.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", pada hari %s dalam sebulan";
+    };
+    id.prototype.commaEveryHour = function () {
+        return ", setiap jam";
+    };
+    id.prototype.commaEveryX0Years = function () {
+        return ", setiap %s tahun";
+    };
+    id.prototype.commaStartingX0 = function () {
+        return ", mulai pada %s";
+    };
+    id.prototype.daysOfTheWeek = function () {
+        return ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    };
+    id.prototype.monthsOfTheYear = function () {
+        return [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+        ];
+    };
+    return id;
+}());
+exports.id = id;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.ko = void 0;
 var ko = (function () {
     function ko() {
@@ -2214,7 +2401,7 @@ exports.ko = ko;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2396,7 +2583,7 @@ exports.nl = nl;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2578,7 +2765,7 @@ exports.nb = nb;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2760,7 +2947,7 @@ exports.sv = sv;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2942,7 +3129,7 @@ exports.pl = pl;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3124,7 +3311,7 @@ exports.pt_BR = pt_BR;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3306,7 +3493,7 @@ exports.ro = ro;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3488,7 +3675,7 @@ exports.ru = ru;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3670,7 +3857,7 @@ exports.tr = tr;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3852,7 +4039,7 @@ exports.uk = uk;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4039,7 +4226,7 @@ exports.zh_CN = zh_CN;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4217,7 +4404,7 @@ exports.zh_TW = zh_TW;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4401,7 +4588,7 @@ exports.ja = ja;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4570,7 +4757,7 @@ exports.he = he;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4752,7 +4939,7 @@ exports.cs = cs;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4934,7 +5121,7 @@ exports.sk = sk;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5125,7 +5312,7 @@ exports.fi = fi;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5307,7 +5494,7 @@ exports.sl = sl;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5490,7 +5677,7 @@ exports.sw = sw;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5665,7 +5852,7 @@ exports.fa = fa;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
