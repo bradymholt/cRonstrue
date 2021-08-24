@@ -174,9 +174,7 @@ export class CronParser {
 
       if (this.monthStartIndexZero) {
         // if monthStartIndexZero==true, we will shift month number up so that JAN=1 and DEC=12
-        console.log(dowDigits)
         dowDigitsAdjusted = (parseInt(dowDigits) + 1).toString();
-        console.log(dowDigitsAdjusted)
       }
 
       return t.replace(dowDigits, dowDigitsAdjusted);
