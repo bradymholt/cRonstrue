@@ -8,10 +8,16 @@ import RangeValidator from "./rangeValidator";
 export class CronParser {
   expression: string;
   dayOfWeekStartIndexZero: boolean;
+  monthStartIndexZero: boolean;
 
-  constructor(expression: string, dayOfWeekStartIndexZero: boolean = true) {
+  constructor(
+    expression: string,
+    dayOfWeekStartIndexZero: boolean = true,
+    monthStartIndexZero: boolean = false
+  ) {
     this.expression = expression;
     this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
+    this.monthStartIndexZero = monthStartIndexZero;
   }
 
   /**
@@ -159,6 +165,23 @@ export class CronParser {
       expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
     }
 
+    // Adjust month based on monthStartIndexZero option
+    // Normalized Month: 1=JAN/12=DEC
+    expressionParts[4] = expressionParts[4].replace(/(^\d{1,2})|([^#/\s]\d{1,2})/g, (t) => {
+      // skip anything preceeded by # or /
+      let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
+      let dowDigitsAdjusted: string = dowDigits;
+
+      if (this.monthStartIndexZero) {
+        // if monthStartIndexZero==true, we will shift month number up so that JAN=1 and DEC=12
+        console.log(dowDigits)
+        dowDigitsAdjusted = (parseInt(dowDigits) + 1).toString();
+        console.log(dowDigitsAdjusted)
+      }
+
+      return t.replace(dowDigits, dowDigitsAdjusted);
+    });
+
     // Convert JAN-DEC format to 1-12 format
     var months: { [key: string]: number } = {
       JAN: 1,
@@ -256,7 +279,7 @@ export class CronParser {
     RangeValidator.minuteRange(parsed[1]);
     RangeValidator.hourRange(parsed[2]);
     RangeValidator.dayOfMonthRange(parsed[3]);
-    RangeValidator.monthRange(parsed[4]);
+    RangeValidator.monthRange(parsed[4], this.monthStartIndexZero);
     RangeValidator.dayOfWeekRange(parsed[5], this.dayOfWeekStartIndexZero);
   }
 

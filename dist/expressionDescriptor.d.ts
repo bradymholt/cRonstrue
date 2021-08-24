@@ -10,7 +10,7 @@ export declare class ExpressionDescriptor {
     expressionParts: string[];
     options: Options;
     i18n: Locale;
-    static toString(expression: string, { throwExceptionOnParseError, verbose, dayOfWeekStartIndexZero, use24HourTimeFormat, locale, }?: Options): string;
+    static toString(expression: string, { throwExceptionOnParseError, verbose, dayOfWeekStartIndexZero, monthStartIndexZero, use24HourTimeFormat, locale, }?: Options): string;
     static initialize(localesLoader: LocaleLoader): void;
     constructor(expression: string, options: Options);
     protected getFullDescription(): string;

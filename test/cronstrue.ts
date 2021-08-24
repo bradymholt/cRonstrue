@@ -319,6 +319,43 @@ describe("Cronstrue", function () {
     });
   });
 
+  describe("monthStartIndexZero=true", function () {
+    it("* * * 7 *", function () {
+      assert.equal(
+        construe.toString(this.test.title, { monthStartIndexZero: true }),
+        "Every minute, only in August"
+      );
+    });
+
+    it("30 * * 6-8 *", function () {
+      assert.equal(
+        construe.toString(this.test.title, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, July through September"
+      );
+    });
+
+    it("30 * * 1-10/2 *", function () {
+      assert.equal(
+        construe.toString(this.test.title, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, every 2 months, February through November"
+      );
+    });
+
+    it("30 * * 4,5,6 *", function () {
+      assert.equal(
+        construe.toString(this.test.title, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, only in May, June, and July"
+      );
+    });
+
+    it("30 * * JAN *", function () {
+      assert.equal(
+        construe.toString(this.test.title, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, only in January"
+      );
+    });
+  });
+
   describe("non-trivial expressions", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
@@ -547,8 +584,12 @@ describe("Cronstrue", function () {
 
     it('month out of range', function () {
       assert.throws(function () {
-        construe.toString("0 0 0 1 13 *");
+        construe.toString("0 0 0 1 13 *", { monthStartIndexZero: false });
       }, "month part must be >= 1 and <= 12")
+
+      assert.throws(function () {
+        construe.toString("0 0 0 1 13 *", { monthStartIndexZero: true });
+      }, "month part must be >= 0 and <= 11")
     });
 
     it('dayOfWeek out of range', function () {

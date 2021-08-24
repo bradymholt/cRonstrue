@@ -45,12 +45,15 @@ export default class RangeValidator {
     }
   }
 
-  static monthRange(parse: string) {
+  static monthRange(parse: string, monthStartIndexZero: boolean) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
       if (!isNaN(parseInt(parsed[i], 10))) {
         const month = parseInt(parsed[i], 10);
-        assert(month >= 1 && month <= 12, 'month part must be >= 1 and <= 12');
+        assert(
+          month >= 1 && month <= 12,
+          monthStartIndexZero ? 'month part must be >= 0 and <= 11' : 'month part must be >= 1 and <= 12'
+        );
       }
     }
   }
