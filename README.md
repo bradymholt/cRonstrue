@@ -79,6 +79,9 @@ cronstrue.toString("23 14 * * SUN#2", { use24HourTimeFormat: true });
 
 cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false });
 > "Every second, every 2 days of the week, Monday through Friday"
+
+cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
+> "Every minute, July through September"
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
@@ -90,6 +93,7 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 - **throwExceptionOnParseError: boolean** - If exception occurs when trying to parse expression and generate description, whether to throw or catch and output the Exception message as the description. (Default: true)
 - **verbose: boolean** - Whether to use a verbose description (Default: false)
 - **dayOfWeekStartIndexZero: boolean** - Whether to interpret cron expression DOW `1` as Sunday or Monday. (Default: true)
+- **monthStartIndexZero: boolean** - Wether to interpret January as `0` or `1`. (Default: false)
 - **use24HourTimeFormat: boolean** - If true, descriptions will use a [24-hour clock](https://en.wikipedia.org/wiki/24-hour_clock) (Default: false but some translations will default to true)
 - **locale: string** - The locale to use (Default: "en")
 

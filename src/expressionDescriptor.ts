@@ -23,6 +23,7 @@ export class ExpressionDescriptor {
    *         casingType = CasingTypeEnum.Sentence,
    *         verbose = false,
    *         dayOfWeekStartIndexZero = true,
+   *         monthStartIndexZero = false,
    *         use24HourTimeFormat = false,
    *         locale = 'en'
    *     }={}]
@@ -34,6 +35,7 @@ export class ExpressionDescriptor {
       throwExceptionOnParseError = true,
       verbose = false,
       dayOfWeekStartIndexZero = true,
+      monthStartIndexZero = false,
       use24HourTimeFormat,
       locale = "en",
     }: Options = {}
@@ -45,6 +47,7 @@ export class ExpressionDescriptor {
       throwExceptionOnParseError: throwExceptionOnParseError,
       verbose: verbose,
       dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
+      monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
       locale: locale,
     };
@@ -83,7 +86,7 @@ export class ExpressionDescriptor {
     let description = "";
 
     try {
-      let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
+      let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero, this.options.monthStartIndexZero);
       this.expressionParts = parser.parse();
       var timeSegment = this.getTimeOfDayDescription();
       var dayOfMonthDesc = this.getDayOfMonthDescription();
@@ -203,8 +206,8 @@ export class ExpressionDescriptor {
         return s == "0"
           ? ""
           : parseInt(s) < 20
-          ? this.i18n.atX0SecondsPastTheMinute()
-          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
+            ? this.i18n.atX0SecondsPastTheMinute()
+            : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
       }
     );
 
@@ -231,8 +234,8 @@ export class ExpressionDescriptor {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
             : parseInt(s) < 20
-            ? this.i18n.atX0MinutesPastTheHour()
-            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
+              ? this.i18n.atX0MinutesPastTheHour()
+              : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour();
         }
@@ -408,8 +411,8 @@ export class ExpressionDescriptor {
                 return s == "L"
                   ? this.i18n.lastDay()
                   : this.i18n.dayX0
-                  ? StringUtilities.format(this.i18n.dayX0(), s)
-                  : s;
+                    ? StringUtilities.format(this.i18n.dayX0(), s)
+                    : s;
               },
               (s) => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
