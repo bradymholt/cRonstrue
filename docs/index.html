@@ -95,6 +95,9 @@ cronstrue.toString(&quot;23 14 * * SUN#2&quot;, { use24HourTimeFormat: true });
 
 cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false });
 &gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
+
+cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
+&gt; &quot;Every minute, July through September&quot;
 </code></pre>
 <p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts">reference the unit tests</a>.</p>
 <h2 id="options">Options</h2>
@@ -103,6 +106,7 @@ cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false
 <li><strong>throwExceptionOnParseError: boolean</strong> - If exception occurs when trying to parse expression and generate description, whether to throw or catch and output the Exception message as the description. (Default: true)</li>
 <li><strong>verbose: boolean</strong> - Whether to use a verbose description (Default: false)</li>
 <li><strong>dayOfWeekStartIndexZero: boolean</strong> - Whether to interpret cron expression DOW <code>1</code> as Sunday or Monday. (Default: true)</li>
+<li><strong>monthStartIndexZero: boolean</strong> - Wether to interpret January as <code>0</code> or <code>1</code>. (Default: false)</li>
 <li><strong>use24HourTimeFormat: boolean</strong> - If true, descriptions will use a <a href="https://en.wikipedia.org/wiki/24-hour_clock">24-hour clock</a> (Default: false but some translations will default to true)</li>
 <li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
 </ul>

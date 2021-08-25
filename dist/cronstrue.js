@@ -121,11 +121,12 @@ var ExpressionDescriptor = (function () {
         }
     }
     ExpressionDescriptor.toString = function (expression, _a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.throwExceptionOnParseError, throwExceptionOnParseError = _c === void 0 ? true : _c, _d = _b.verbose, verbose = _d === void 0 ? false : _d, _e = _b.dayOfWeekStartIndexZero, dayOfWeekStartIndexZero = _e === void 0 ? true : _e, use24HourTimeFormat = _b.use24HourTimeFormat, _f = _b.locale, locale = _f === void 0 ? "en" : _f;
+        var _b = _a === void 0 ? {} : _a, _c = _b.throwExceptionOnParseError, throwExceptionOnParseError = _c === void 0 ? true : _c, _d = _b.verbose, verbose = _d === void 0 ? false : _d, _e = _b.dayOfWeekStartIndexZero, dayOfWeekStartIndexZero = _e === void 0 ? true : _e, _f = _b.monthStartIndexZero, monthStartIndexZero = _f === void 0 ? false : _f, use24HourTimeFormat = _b.use24HourTimeFormat, _g = _b.locale, locale = _g === void 0 ? "en" : _g;
         var options = {
             throwExceptionOnParseError: throwExceptionOnParseError,
             verbose: verbose,
             dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
+            monthStartIndexZero: monthStartIndexZero,
             use24HourTimeFormat: use24HourTimeFormat,
             locale: locale,
         };
@@ -139,7 +140,7 @@ var ExpressionDescriptor = (function () {
     ExpressionDescriptor.prototype.getFullDescription = function () {
         var description = "";
         try {
-            var parser = new cronParser_1.CronParser(this.expression, this.options.dayOfWeekStartIndexZero);
+            var parser = new cronParser_1.CronParser(this.expression, this.options.dayOfWeekStartIndexZero, this.options.monthStartIndexZero);
             this.expressionParts = parser.parse();
             var timeSegment = this.getTimeOfDayDescription();
             var dayOfMonthDesc = this.getDayOfMonthDescription();
@@ -575,10 +576,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CronParser = void 0;
 var rangeValidator_1 = __webpack_require__(3);
 var CronParser = (function () {
-    function CronParser(expression, dayOfWeekStartIndexZero) {
+    function CronParser(expression, dayOfWeekStartIndexZero, monthStartIndexZero) {
         if (dayOfWeekStartIndexZero === void 0) { dayOfWeekStartIndexZero = true; }
+        if (monthStartIndexZero === void 0) { monthStartIndexZero = false; }
         this.expression = expression;
         this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
+        this.monthStartIndexZero = monthStartIndexZero;
     }
     CronParser.prototype.parse = function () {
         var parsed = this.extractParts(this.expression);
@@ -670,6 +673,14 @@ var CronParser = (function () {
         for (var day in days) {
             expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
         }
+        expressionParts[4] = expressionParts[4].replace(/(^\d{1,2})|([^#/\s]\d{1,2})/g, function (t) {
+            var dowDigits = t.replace(/\D/, "");
+            var dowDigitsAdjusted = dowDigits;
+            if (_this.monthStartIndexZero) {
+                dowDigitsAdjusted = (parseInt(dowDigits) + 1).toString();
+            }
+            return t.replace(dowDigits, dowDigitsAdjusted);
+        });
         var months = {
             JAN: 1,
             FEB: 2,
@@ -738,7 +749,7 @@ var CronParser = (function () {
         rangeValidator_1.default.minuteRange(parsed[1]);
         rangeValidator_1.default.hourRange(parsed[2]);
         rangeValidator_1.default.dayOfMonthRange(parsed[3]);
-        rangeValidator_1.default.monthRange(parsed[4]);
+        rangeValidator_1.default.monthRange(parsed[4], this.monthStartIndexZero);
         rangeValidator_1.default.dayOfWeekRange(parsed[5], this.dayOfWeekStartIndexZero);
     };
     CronParser.prototype.assertNoInvalidCharacters = function (partDescription, expression) {
@@ -803,12 +814,12 @@ var RangeValidator = (function () {
             }
         }
     };
-    RangeValidator.monthRange = function (parse) {
+    RangeValidator.monthRange = function (parse, monthStartIndexZero) {
         var parsed = parse.split(',');
         for (var i = 0; i < parsed.length; i++) {
             if (!isNaN(parseInt(parsed[i], 10))) {
                 var month = parseInt(parsed[i], 10);
-                assert(month >= 1 && month <= 12, 'month part must be >= 1 and <= 12');
+                assert(month >= 1 && month <= 12, monthStartIndexZero ? 'month part must be >= 0 and <= 11' : 'month part must be >= 1 and <= 12');
             }
         }
     };
