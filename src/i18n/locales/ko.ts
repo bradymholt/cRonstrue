@@ -112,7 +112,7 @@ export class ko implements Locale {
   }
 
   public commaX0ThroughX1() {
-    return ", %s에서 %s가지";
+    return ", %s에서 %s까지";
   }
 
   public first() {
