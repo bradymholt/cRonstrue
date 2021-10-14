@@ -2320,7 +2320,7 @@ var ko = (function () {
         return ", 주 중 %s일마다";
     };
     ko.prototype.commaX0ThroughX1 = function () {
-        return ", %s에서 %s가지";
+        return ", %s에서 %s까지";
     };
     ko.prototype.first = function () {
         return "첫 번째";
