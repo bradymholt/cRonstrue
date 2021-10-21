@@ -41,7 +41,7 @@
                 </div>
                 <h1 id="cronstrue-build-status-npm-package">cRonstrue <img src="https://github.com/bradymholt/cRonstrue/workflows/build/badge.svg" alt="Build Status"> <a href="https://www.npmjs.com/package/cronstrue"><img src="https://img.shields.io/npm/v/cronstrue.svg" alt="NPM Package"></a></h1>
 <p>cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression &quot;*/5 * * * *&quot; it will output &quot;Every 5 minutes&quot;.</p>
-<p>This library was ported from the original C# implemenation called <a href="https://github.com/bradymholt/cron-expression-descriptor">cron-expression-descriptor</a> and is also available in a <a href="https://github.com/bradymholt/cron-expression-descriptor#ports">few other languages</a>.</p>
+<p>This library was ported from the original C# implementation called <a href="https://github.com/bradymholt/cron-expression-descriptor">cron-expression-descriptor</a> and is also available in a <a href="https://github.com/bradymholt/cron-expression-descriptor#ports">few other languages</a>.</p>
 <h2 id="features">Features</h2>
 <ul>
 <li>Zero dependencies</li>
@@ -111,7 +111,7 @@ cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
 <li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
 </ul>
 <h2 id="i18n">i18n</h2>
-<p>To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale transalations.  Once you do this, you can pass the name of a supported locale as an option to  <code>cronstrue.toString()</code>.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; });</code>.</p>
+<p>To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale translations.  Once you do this, you can pass the name of a supported locale as an option to  <code>cronstrue.toString()</code>.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; });</code>.</p>
 <h3 id="node-1">Node</h3>
 <pre><code class="language-js">var cronstrue = require(&#39;cronstrue/i18n&#39;);
 cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
@@ -131,7 +131,7 @@ cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
 <blockquote>
 <p>Can cRonstrue output the next occurrence of the cron expression?</p>
 </blockquote>
-<p>No, cRonstrue does not support this.  It simply describes a cron expression.  You could use another library to get the next occurance of a cron expression and then pass that expression into cRonstrue, to acheive this.</p>
+<p>No, cRonstrue does not support this.  It simply describes a cron expression.  You could use another library to get the next occurrence of a cron expression and then pass that expression into cRonstrue, to achieve this.</p>
 <h3 id="supported-locales">Supported Locales</h3>
 <ul>
 <li>en - English (<a href="https://github.com/bradymholt">Brady Holt</a>)</li>
