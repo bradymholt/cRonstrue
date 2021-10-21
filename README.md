@@ -128,34 +128,34 @@ No, cRonstrue does not support this.  It simply describes a cron expression.  Yo
 
 ### Supported Locales
 
-- en - English
-- ca - Catalan
-- cs - Czech
-- es - Spanish
-- da - Danish
-- de - German
-- fi - Finnish
-- fr - French
-- fa - Farsi
-- he - Hebrew
-- it - Italian
-- id - Indonesia
-- ja - Japanese
-- ko - Korean
-- nb - Norwegian
-- nl - Dutch
-- pl - Polish
-- pt_BR - Portuguese (Brazil)
-- ro - Romanian
-- ru - Russian
-- sk - Slovakian
-- sl - Slovenian
-- sw - Swahili
-- sv - Swedish
-- tr - Turkish
-- uk - Ukrainian
-- zh_CN - Chinese (Simplified)
-- zh_TW - Chinese (Traditional)
+- en - English ([Brady Holt](https://github.com/bradymholt))
+- ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))
+- cs - Czech ([hanbar](https://github.com/hanbar))
+- es - Spanish ([Ivan Santos](https://github.com/ivansg))
+- da - Danish ([Rasmus Melchior Jacobsen](https://github.com/rmja))
+- de - German ([Michael Schuler](https://github.com/mschuler))
+- fi - Finnish ([Mikael Rosenberg](https://github.com/MR77FI))
+- fr - French ([Arnaud TAMAILLON](https://github.com/Greybird))
+- fa - Farsi ([A. Bahrami](https://github.com/alirezakoo))
+- he - Hebrew ([Ilan Firsov](https://github.com/IlanF))
+- it - Italian ([rinaldihno](https://github.com/rinaldihno))
+- id - Indonesia ([Hasan Basri](https://github.com/hasanbasri1993))
+- ja - Japanese ([Alin Sarivan](https://github.com/asarivan))
+- ko - Korean ([Ion Mincu](https://github.com/ionmincu))
+- nb - Norwegian ([Siarhei Khalipski](https://github.com/KhalipskiSiarhei))
+- nl - Dutch ([TotalMace](https://github.com/TotalMace))
+- pl - Polish ([foka](https://github.com/foka))
+- pt_BR - Portuguese (Brazil) ([Renato Lima](https://github.com/natenho))
+- ro - Romanian ([Illegitimis](https://github.com/illegitimis))
+- ru - Russian ([LbISS](https://github.com/LbISS))
+- sk - Slovakian ([hanbar](https://github.com/hanbar))
+- sl - Slovenian ([Jani Bevk](https://github.com/jenzy))
+- sw - Swahili ([Leylow Lujuo](https://github.com/leyluj))
+- sv - Swedish ([roobin](https://github.com/roobin))
+- tr - Turkish ([Mustafa SADEDİL](https://github.com/sadedil))
+- uk - Ukrainian ([Taras](https://github.com/tbudurovych))
+- zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
+- zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
 
 ## License
 
