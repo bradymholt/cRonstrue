@@ -11,7 +11,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ !github.event.workflow_run || github.event.workflow_run.conclusion == 'success' }} && !contains(github.event.head_commit.message, '[no-publish]')
     steps:
       - uses: actions/checkout@v1
         with:
