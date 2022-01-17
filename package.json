@@ -1,5 +1,5 @@
 {
-  "name": "cronstrue-be",
+  "name": "cronstrue",
   "title": "cRonstrue",
   "version": "1.122.0",
   "description": "Convert cron expressions into human readable descriptions",
@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/bradymholt/cronstrue/issues"
   },
-  "homepage": "https://github.com/KirillMikulich/cRonstrue",
+  "homepage": "https://github.com/bradymholt/cronstrue",
   "keywords": [
     "cron",
     "cronjob",
@@ -34,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KirillMikulich/cRonstrue.git"
+    "url": "git+https://github.com/bradymholt/cronstrue.git"
   },
   "publishConfig": {
     "access": "public"
@@ -63,7 +63,6 @@
     "start": "npm run build",
     "build": "npx tsc -p ./src --emitDeclarationOnly",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
-    "prerelease": "rm -rf ./dist && npx webpack && npx jbash ./scripts/generate-docs.js && git add -A",
-    "webpack-build": "webpack"
+    "prerelease": "rm -rf ./dist && npx webpack && npx jbash ./scripts/generate-docs.js && git add -A"
   }
 }
