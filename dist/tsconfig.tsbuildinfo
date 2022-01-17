@@ -1,0 +1,700 @@
+{
+  "program": {
+    "fileInfos": {
+      "../node_modules/typescript/lib/lib.d.ts": {
+        "version": "2dc8c927c9c162a773c6bb3cdc4f3286c23f10eedc67414028f9cb5951610f60",
+        "signature": "2dc8c927c9c162a773c6bb3cdc4f3286c23f10eedc67414028f9cb5951610f60",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "70ae6416528e68c2ee7b62892200d2ca631759943d4429f8b779b947ff1e124d",
+        "signature": "70ae6416528e68c2ee7b62892200d2ca631759943d4429f8b779b947ff1e124d",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "9affb0a2ddc57df5b8174c0af96c288d697a262e5bc9ca1f544c999dc64a91e6",
+        "signature": "9affb0a2ddc57df5b8174c0af96c288d697a262e5bc9ca1f544c999dc64a91e6",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
+        "signature": "7fac8cb5fc820bc2a59ae11ef1c5b38d3832c6d0dfaec5acdb5569137d09a481",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
+        "signature": "097a57355ded99c68e6df1b738990448e0bf170e606707df5a7c0481ff2427cd",
+        "affectsGlobalScope": true
+      },
+      "../src/rangevalidator.ts": {
+        "version": "3f5ae1f1a7ed209a69e32d7fef8df9710858489d3ac1a6f39fb3c8c6845e4bcc",
+        "signature": "a8eecd9cd9f581157a10428bb79f27e7c0199efb2953d4545b289444e90e1a2a",
+        "affectsGlobalScope": false
+      },
+      "../src/cronparser.ts": {
+        "version": "506d1e3e5d14e9e412a483f1eb480baf649d631be64035dd64aeb318eed40e43",
+        "signature": "d6b43c446c34ead038b4ec1eec40a9e6b7467f8fea2feaa4ceabaf1c51916047",
+        "affectsGlobalScope": false
+      },
+      "../src/stringutilities.ts": {
+        "version": "338266e743a5b65770ecf41214559ae0e6b868bcd19b312b6eb33641e3c07aab",
+        "signature": "9c9be982542f76c4050b7dedc1f9d97ae62535f3138acbbbe5b709ed999cbcf6",
+        "affectsGlobalScope": false
+      },
+      "../src/options.ts": {
+        "version": "4c3a713888c180f3291732b9c8ea0f11e5aba0e3df410cfdaea9b44f73af7ebb",
+        "signature": "77e4acbbbbec6e489e51d4dff48c43c970dc806cc0fe38ed513cc73da660e1de",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locale.ts": {
+        "version": "8cf288775741ef2b657ab1aba390619acc808dedfe6716a9f55b21375b6f5d9d",
+        "signature": "5c6ed3c9ae71807192171307cca890b33c195bd743bf868eb289ecf097a37149",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/localeloader.ts": {
+        "version": "6689e14ebd970e751f83698267eee6fb13c36ea7d5391ec7f821735b5ceb217e",
+        "signature": "ca2483b6ca50594e6d36cd9516c6abfd1773629295662e4941cae53d7b14948f",
+        "affectsGlobalScope": false
+      },
+      "../src/expressiondescriptor.ts": {
+        "version": "a910d133b8b6feb4ca4d37744a625c0f41cb51114ff0e94dd6965380870b1b46",
+        "signature": "6ab99fa3a8adcbef4e34f76d2468a47af0c1aabe7e570a003ec7d821b59c0c30",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/en.ts": {
+        "version": "7f2172a93f3d9c6503db77fd23e1dfa9202c7a9e4fa0abeddac117b3928ee92b",
+        "signature": "35910c6cd3e9a3eb63c64d7a4fe3fbd2cc6955b0fa0fb6b88b20a80ea12a880f",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/da.ts": {
+        "version": "669bec83e0244a381a11d272fa17e3804f686f86f1b0f7b26a39488f39c49701",
+        "signature": "e50563af71717f0fcab1ef7bb41b3ac80ef5b0670ca6207c1c660da07c6a9a48",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/de.ts": {
+        "version": "99025fb7525ec19f135ff754fb70e783b9a107a0da1f4bcc911b42636b201a80",
+        "signature": "a86db0210b977f1c3f61897270db55e3a01f87c461c48ef2913ca0e40232a62c",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/es.ts": {
+        "version": "b844415a842a76130608ccc97efbcb90270ef5a0e2a046d3d4aaa97f771a787a",
+        "signature": "4a7179a51875a5f9192b1cec07fae3863a9a7508ddba5e670427fd06e160b9a6",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/fr.ts": {
+        "version": "b88e4c4dcbd8b889cb6cecba719d78e819b7a97b02e91b3fd7cd2dc8128ee82b",
+        "signature": "25ca9e5092f758cead5cc6bbf576effaa0928ecaa23ba822d1f75151727cecf7",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/it.ts": {
+        "version": "3b74bcf1268f246b0d119d92fa63734fd020c8f6505f4543709d0d4b81fe1829",
+        "signature": "77d5e23dd745c8596c7131ae30f07e510073413719d059943d1c3c23d27bcc5e",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/id.ts": {
+        "version": "032684d8666deffb1d2f01e526c3fa2d72e2434d46ae24793b44b61f684c9485",
+        "signature": "4c10d3cf12fa850cb2d860f79dc448f39181efe87a1cc05727c8421ccf63c248",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/ko.ts": {
+        "version": "8453b3b95c0034f2056200238e99cc5ce5bfbfbc6b9472408d06de280fa9536b",
+        "signature": "208c71e369037cc2074b6e0ac0dd6fd0a3db7e9793ef130071a43cca1c8b8b80",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/nl.ts": {
+        "version": "493ca5125f5123bbbb0c7887594b92302b2293cb0d0a3dc466cdda64d4786c46",
+        "signature": "0cb3ff7a1d02b61ee6585f32e2d2688153da8166180d7e65dd4baa6f764208d0",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/nb.ts": {
+        "version": "3925056a9ce17b94d9dfacd61ad57a91c37ef2fc89a9b524e0f924848913cb94",
+        "signature": "abf622dc117cdcabdaa84c1603043c02225cd91107b9cb9c53bf72ffcf1d0ae7",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/sv.ts": {
+        "version": "12081de7ee39a7ed8e3021a9bd56649c0453a3e67b91b0a12dd8ad10ed0402d2",
+        "signature": "451b21add6495ef23b89cf8e454d5645e70a1f12e69b24bd77cd5862c417f5a0",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/pl.ts": {
+        "version": "d0ac3a7e5cb584ac9ea52312cab8732d64821a33b5ba4c6e02ae3d3ecaafb53c",
+        "signature": "02a75fe2a96969330c6f37b332d24a26015cb84e8932999fa40458c66a61f381",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/pt_br.ts": {
+        "version": "b5fee3609d0e3904a8781a639358e77757cb41dd0c2e1867452b53dea080ada2",
+        "signature": "346315a3b7b233bc52dcdeb51b6c6c349548dc5443f0c42a074650791630967c",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/ro.ts": {
+        "version": "01851c359dd014867538f9860c2671a0bc9f6541cb42056a218da1de3d153233",
+        "signature": "5c0959c3bfc16f487bdde6d16839f49e4b10fe5d9a6c9cb9a4569bd24deeae24",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/ru.ts": {
+        "version": "6ff94d8baddac9961f7a1e3fa7019e8bee630c8c967f90b9078e3ecc7cc41b1f",
+        "signature": "68e97b633287dda50ca3c2b07159394888d3995011105b0066a59d83da8a92f3",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/tr.ts": {
+        "version": "1425f0f93cc8735721c75ace0794694356c1685d1f67db2394391c16e9f451b0",
+        "signature": "db337fb0691fce20256768afa24be11e3b529cabd8c0c52b38aa141cb77d584a",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/uk.ts": {
+        "version": "236333a55ca790984d142c332eef80f2be52de426e4e06cccd6c5a8a4d4f6a54",
+        "signature": "ca4f57e2de336baf246bca7eef617dfe26c6307b1413d7b94e8149fcb71caa79",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/zh_cn.ts": {
+        "version": "687c2a9c575c3ec0717f34bd1252073ec5db48de96e869423ea4738ab191a630",
+        "signature": "9fc63dc4eebf2a0264e898d3b72e1750ef05980cdc9a919eb29159ebbdfef7ff",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/zh_tw.ts": {
+        "version": "8b98d9a06edf2d9773193bd29148925bdbe97ce16327285c737244c5872c7f42",
+        "signature": "8a5d4971210780c11ac5506e88dff83859870d47511a17604d445d2db4290da1",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/ja.ts": {
+        "version": "68ce8f0b960f60dd9dc88be0c5af037ed30004d0dc4bc2f4d73db8e4129ba59e",
+        "signature": "2892fc40587cdd90ea923c032b7732b5761d28c5cd2223d5e09f895f4b1ffeec",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/he.ts": {
+        "version": "97b4912c74615a440da142fe354f140c2df3ae4fb1b136dac36fcc53920a2d42",
+        "signature": "1b2a976bdaad98cbdf784f0408e8ec9e0dfa18dcd923d71eaaaeddeeb921dbfe",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/cs.ts": {
+        "version": "4831a1725c68e01665e38048adbe29b8e382134b834897ad341a6c1a098d7707",
+        "signature": "d627d4aa614e47b5c674cc6d4138564b297b4b9e11fca89acb13fa4e1b633da9",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/sk.ts": {
+        "version": "736d2e2a363c2e37e02786e3561df2d00093a670ed411939cd212b6f678254eb",
+        "signature": "9ca00dbf375f23590fedf4d8be104ba51c25eee2cba7d3b46a393329d88dd1bd",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/fi.ts": {
+        "version": "966d48b9f70d1f570a52987e0af44d36a2484f4f962916168bd1092f769081e9",
+        "signature": "41b7a4eec0a1792df1e9698d333b548da90f4c669d4f8e1920bb129c23499d79",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/sl.ts": {
+        "version": "a12cfdbadf01478e90fff0c587bd4bbf4f3bbc26061860f6edcead92b5da5449",
+        "signature": "19d858147f4c90fe1158aaa99bb278e696b71e088f81f98e3b919099dbf8d2c2",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/sw.ts": {
+        "version": "57e8018c8c6361fe2be9871bb7d07cc10df64c88113d78d15f8fd4faf7ba0933",
+        "signature": "9239551fdeb7e0daec67bc1475afb606f7981e8330b6299d8c1e958376d3b4f8",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/fa.ts": {
+        "version": "0118d2c9cac9bc99fdb69e665afb2ffcf1b06707f2a40d644b1dab83b3ac6a0f",
+        "signature": "592fdc19c51d7e65baea6faddfd9a5e655767554351cd02c098c636fc3fa0066",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/ca.ts": {
+        "version": "4d30c788bff6846ee30d873bd0c3e46e5f05435255c85daab3443935aa67b6d2",
+        "signature": "1f720a813421ea0bd9c7745210ba0f0d649cffc7a6ff54e0a4115859ac356e6e",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/locales/be.ts": {
+        "version": "f64e5bd6e2594fec9cbec4dd7ef2951730bf586b6a3d4e09cbd54377a9f5fa8f",
+        "signature": "248e5dcf56e8fa4ea2602744d82d2a5cb0abb2f92d1020b66415d095372b80f0",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/alllocales.ts": {
+        "version": "024ab86c52f7903531de166101dab7ff2bacd9cde155c215b3fcf92bc529dd4d",
+        "signature": "0933b1046bc80029b7410a9670310a6ef914fb1c7d7693e62fa2a352de25e5aa",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/alllocalesloader.ts": {
+        "version": "99943ab93fbe956a2e5c8d6ea4466cbf08ad5510cb70f4646be878813378e6f4",
+        "signature": "f12de798bb231b8da40bd5b1d6cccafc79e62b7ad3c191f9053c710a616eabd8",
+        "affectsGlobalScope": false
+      },
+      "../src/cronstrue-i18n.ts": {
+        "version": "f94be3e4b1f1fb02ea592aadb5c83582b8731d14ec0010a3ca0e5bf9b0efada9",
+        "signature": "5105c54e25d171d1aae0ce110f5d0fbf17db7b23fac880cf477304361a9693a0",
+        "affectsGlobalScope": false
+      },
+      "../src/i18n/enlocaleloader.ts": {
+        "version": "4734bc981649aa681958c0e794540e077cbf0344cf6b391369242ecef352a7fb",
+        "signature": "5a598028317daa9841b62e69a29b312e2a365fde376825091e149703a4a22519",
+        "affectsGlobalScope": false
+      },
+      "../src/cronstrue.ts": {
+        "version": "c37ddb1a25cb34f7a64bc9a8e47b05d5bedd4e18dbd2b1176cde35dd67a80826",
+        "signature": "5105c54e25d171d1aae0ce110f5d0fbf17db7b23fac880cf477304361a9693a0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/chai/index.d.ts": {
+        "version": "1df845885d8bd29132f67f47b7a64ec35f4b83962274ee9fb38ae40a82305a72",
+        "signature": "1df845885d8bd29132f67f47b7a64ec35f4b83962274ee9fb38ae40a82305a72",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/mocha/index.d.ts": {
+        "version": "8a244c05a19e4cc513053e22c8a0950d30a13f70522acb8ac954324378493e0e",
+        "signature": "8a244c05a19e4cc513053e22c8a0950d30a13f70522acb8ac954324378493e0e",
+        "affectsGlobalScope": true
+      }
+    },
+    "options": {
+      "module": 1,
+      "target": 1,
+      "outDir": "./",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": false,
+      "sourceMap": true,
+      "declaration": true,
+      "composite": true,
+      "project": "../src",
+      "emitDeclarationOnly": true,
+      "configFilePath": "../src/tsconfig.json"
+    },
+    "referencedMap": {
+      "../src/cronparser.ts": [
+        "../src/rangevalidator.ts"
+      ],
+      "../src/cronstrue-i18n.ts": [
+        "../src/expressiondescriptor.ts",
+        "../src/i18n/alllocalesloader.ts"
+      ],
+      "../src/cronstrue.ts": [
+        "../src/expressiondescriptor.ts",
+        "../src/i18n/enlocaleloader.ts"
+      ],
+      "../src/expressiondescriptor.ts": [
+        "../src/cronparser.ts",
+        "../src/i18n/locale.ts",
+        "../src/i18n/localeloader.ts",
+        "../src/options.ts",
+        "../src/stringutilities.ts"
+      ],
+      "../src/i18n/alllocales.ts": [
+        "../src/i18n/locales/be.ts",
+        "../src/i18n/locales/ca.ts",
+        "../src/i18n/locales/cs.ts",
+        "../src/i18n/locales/da.ts",
+        "../src/i18n/locales/de.ts",
+        "../src/i18n/locales/en.ts",
+        "../src/i18n/locales/es.ts",
+        "../src/i18n/locales/fa.ts",
+        "../src/i18n/locales/fi.ts",
+        "../src/i18n/locales/fr.ts",
+        "../src/i18n/locales/he.ts",
+        "../src/i18n/locales/id.ts",
+        "../src/i18n/locales/it.ts",
+        "../src/i18n/locales/ja.ts",
+        "../src/i18n/locales/ko.ts",
+        "../src/i18n/locales/nb.ts",
+        "../src/i18n/locales/nl.ts",
+        "../src/i18n/locales/pl.ts",
+        "../src/i18n/locales/pt_br.ts",
+        "../src/i18n/locales/ro.ts",
+        "../src/i18n/locales/ru.ts",
+        "../src/i18n/locales/sk.ts",
+        "../src/i18n/locales/sl.ts",
+        "../src/i18n/locales/sv.ts",
+        "../src/i18n/locales/sw.ts",
+        "../src/i18n/locales/tr.ts",
+        "../src/i18n/locales/uk.ts",
+        "../src/i18n/locales/zh_cn.ts",
+        "../src/i18n/locales/zh_tw.ts"
+      ],
+      "../src/i18n/alllocalesloader.ts": [
+        "../src/i18n/alllocales.ts",
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/enlocaleloader.ts": [
+        "../src/i18n/locale.ts",
+        "../src/i18n/locales/en.ts"
+      ],
+      "../src/i18n/localeloader.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/be.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ca.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/cs.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/da.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/de.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/en.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/es.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fa.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fi.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fr.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/he.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/id.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/it.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ja.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ko.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/nb.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/nl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/pl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/pt_br.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ro.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ru.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sk.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sv.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sw.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/tr.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/uk.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/zh_cn.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/zh_tw.ts": [
+        "../src/i18n/locale.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "../src/cronstrue-i18n.ts": [
+        "../src/expressiondescriptor.ts"
+      ],
+      "../src/cronstrue.ts": [
+        "../src/expressiondescriptor.ts"
+      ],
+      "../src/expressiondescriptor.ts": [
+        "../src/i18n/locale.ts",
+        "../src/i18n/localeloader.ts",
+        "../src/options.ts"
+      ],
+      "../src/i18n/alllocales.ts": [
+        "../src/i18n/locales/be.ts",
+        "../src/i18n/locales/ca.ts",
+        "../src/i18n/locales/cs.ts",
+        "../src/i18n/locales/da.ts",
+        "../src/i18n/locales/de.ts",
+        "../src/i18n/locales/en.ts",
+        "../src/i18n/locales/es.ts",
+        "../src/i18n/locales/fa.ts",
+        "../src/i18n/locales/fi.ts",
+        "../src/i18n/locales/fr.ts",
+        "../src/i18n/locales/he.ts",
+        "../src/i18n/locales/id.ts",
+        "../src/i18n/locales/it.ts",
+        "../src/i18n/locales/ja.ts",
+        "../src/i18n/locales/ko.ts",
+        "../src/i18n/locales/nb.ts",
+        "../src/i18n/locales/nl.ts",
+        "../src/i18n/locales/pl.ts",
+        "../src/i18n/locales/pt_br.ts",
+        "../src/i18n/locales/ro.ts",
+        "../src/i18n/locales/ru.ts",
+        "../src/i18n/locales/sk.ts",
+        "../src/i18n/locales/sl.ts",
+        "../src/i18n/locales/sv.ts",
+        "../src/i18n/locales/sw.ts",
+        "../src/i18n/locales/tr.ts",
+        "../src/i18n/locales/uk.ts",
+        "../src/i18n/locales/zh_cn.ts",
+        "../src/i18n/locales/zh_tw.ts"
+      ],
+      "../src/i18n/alllocalesloader.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/enlocaleloader.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/localeloader.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/be.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ca.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/cs.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/da.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/de.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/en.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/es.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fa.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fi.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/fr.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/he.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/id.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/it.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ja.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ko.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/nb.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/nl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/pl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/pt_br.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ro.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/ru.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sk.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sl.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sv.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/sw.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/tr.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/uk.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/zh_cn.ts": [
+        "../src/i18n/locale.ts"
+      ],
+      "../src/i18n/locales/zh_tw.ts": [
+        "../src/i18n/locale.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      [
+        "../node_modules/@types/chai/index.d.ts",
+        [
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 27839,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlySet'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 27856,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlyMap'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 28263,
+            "length": 7,
+            "messageText": "Cannot find name 'WeakSet'. Do you need to change your target library? Try changing the `lib` compiler option to es2015 or later.",
+            "category": 1,
+            "code": 2583
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 29394,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlySet'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 29411,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlyMap'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 29830,
+            "length": 7,
+            "messageText": "Cannot find name 'WeakSet'. Do you need to change your target library? Try changing the `lib` compiler option to es2015 or later.",
+            "category": 1,
+            "code": 2583
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 31109,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlySet'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 31126,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlyMap'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 31539,
+            "length": 7,
+            "messageText": "Cannot find name 'WeakSet'. Do you need to change your target library? Try changing the `lib` compiler option to es2015 or later.",
+            "category": 1,
+            "code": 2583
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 32475,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlySet'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 32492,
+            "length": 11,
+            "messageText": "Cannot find name 'ReadonlyMap'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "../node_modules/@types/chai/index.d.ts",
+            "start": 32931,
+            "length": 7,
+            "messageText": "Cannot find name 'WeakSet'. Do you need to change your target library? Try changing the `lib` compiler option to es2015 or later.",
+            "category": 1,
+            "code": 2583
+          }
+        ]
+      ],
+      "../node_modules/@types/mocha/index.d.ts",
+      "../node_modules/typescript/lib/lib.d.ts",
+      "../node_modules/typescript/lib/lib.dom.d.ts",
+      "../node_modules/typescript/lib/lib.es5.d.ts",
+      "../node_modules/typescript/lib/lib.scripthost.d.ts",
+      "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "../src/cronparser.ts",
+      "../src/cronstrue-i18n.ts",
+      "../src/cronstrue.ts",
+      "../src/expressiondescriptor.ts",
+      "../src/i18n/alllocales.ts",
+      "../src/i18n/alllocalesloader.ts",
+      "../src/i18n/enlocaleloader.ts",
+      "../src/i18n/locale.ts",
+      "../src/i18n/localeloader.ts",
+      "../src/i18n/locales/be.ts",
+      "../src/i18n/locales/ca.ts",
+      "../src/i18n/locales/cs.ts",
+      "../src/i18n/locales/da.ts",
+      "../src/i18n/locales/de.ts",
+      "../src/i18n/locales/en.ts",
+      "../src/i18n/locales/es.ts",
+      "../src/i18n/locales/fa.ts",
+      "../src/i18n/locales/fi.ts",
+      "../src/i18n/locales/fr.ts",
+      "../src/i18n/locales/he.ts",
+      "../src/i18n/locales/id.ts",
+      "../src/i18n/locales/it.ts",
+      "../src/i18n/locales/ja.ts",
+      "../src/i18n/locales/ko.ts",
+      "../src/i18n/locales/nb.ts",
+      "../src/i18n/locales/nl.ts",
+      "../src/i18n/locales/pl.ts",
+      "../src/i18n/locales/pt_br.ts",
+      "../src/i18n/locales/ro.ts",
+      "../src/i18n/locales/ru.ts",
+      "../src/i18n/locales/sk.ts",
+      "../src/i18n/locales/sl.ts",
+      "../src/i18n/locales/sv.ts",
+      "../src/i18n/locales/sw.ts",
+      "../src/i18n/locales/tr.ts",
+      "../src/i18n/locales/uk.ts",
+      "../src/i18n/locales/zh_cn.ts",
+      "../src/i18n/locales/zh_tw.ts",
+      "../src/options.ts",
+      "../src/rangevalidator.ts",
+      "../src/stringutilities.ts"
+    ]
+  },
+  "version": "3.9.6"
+}

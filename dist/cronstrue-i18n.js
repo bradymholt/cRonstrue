@@ -6091,7 +6091,7 @@ var be = (function () {
         return "У";
     };
     be.prototype.spaceAnd = function () {
-        return "і";
+        return " і";
     };
     be.prototype.everySecond = function () {
         return "кожную секунду";
@@ -6151,7 +6151,7 @@ var be = (function () {
         return ", у ";
     };
     be.prototype.spaceX0OfTheMonth = function () {
-        return "%s месяца";
+        return " %s месяца";
     };
     be.prototype.lastDay = function () {
         return "апошні дзень";
