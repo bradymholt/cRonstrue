@@ -156,6 +156,7 @@ No, cRonstrue does not support this.  It simply describes a cron expression.  Yo
 - uk - Ukrainian ([Taras](https://github.com/tbudurovych))
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
 - zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
+- be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
 
 ## License
 

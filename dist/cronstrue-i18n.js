@@ -1127,6 +1127,8 @@ var fa_1 = __webpack_require__(35);
 Object.defineProperty(exports, "fa", { enumerable: true, get: function () { return fa_1.fa; } });
 var ca_1 = __webpack_require__(36);
 Object.defineProperty(exports, "ca", { enumerable: true, get: function () { return ca_1.ca; } });
+var be_1 = __webpack_require__(37);
+Object.defineProperty(exports, "be", { enumerable: true, get: function () { return be_1.be; } });
 
 
 /***/ }),
@@ -6042,6 +6044,188 @@ var ca = (function () {
     return ca;
 }());
 exports.ca = ca;
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.be = void 0;
+var be = (function () {
+    function be() {
+    }
+    be.prototype.atX0SecondsPastTheMinuteGt20 = function () {
+        return null;
+    };
+    be.prototype.atX0MinutesPastTheHourGt20 = function () {
+        return null;
+    };
+    be.prototype.commaMonthX0ThroughMonthX1 = function () {
+        return null;
+    };
+    be.prototype.commaYearX0ThroughYearX1 = function () {
+        return null;
+    };
+    be.prototype.use24HourTimeFormatByDefault = function () {
+        return true;
+    };
+    be.prototype.everyMinute = function () {
+        return "кожную хвіліну";
+    };
+    be.prototype.everyHour = function () {
+        return "кожную гадзіну";
+    };
+    be.prototype.anErrorOccuredWhenGeneratingTheExpressionD = function () {
+        return "Адбылася памылка падчас генерацыі апісання выразы. Праверце сінтаксіс крон-выразы.";
+    };
+    be.prototype.atSpace = function () {
+        return "У ";
+    };
+    be.prototype.everyMinuteBetweenX0AndX1 = function () {
+        return "Кожную хвіліну з %s да %s";
+    };
+    be.prototype.at = function () {
+        return "У";
+    };
+    be.prototype.spaceAnd = function () {
+        return " і";
+    };
+    be.prototype.everySecond = function () {
+        return "кожную секунду";
+    };
+    be.prototype.everyX0Seconds = function () {
+        return "кожныя %s секунд";
+    };
+    be.prototype.secondsX0ThroughX1PastTheMinute = function () {
+        return "секунды з %s па %s";
+    };
+    be.prototype.atX0SecondsPastTheMinute = function () {
+        return "у %s секунд";
+    };
+    be.prototype.everyX0Minutes = function () {
+        return "кожныя %s хвілін";
+    };
+    be.prototype.minutesX0ThroughX1PastTheHour = function () {
+        return "хвіліны з %s па %s";
+    };
+    be.prototype.atX0MinutesPastTheHour = function () {
+        return "у %s хвілін";
+    };
+    be.prototype.everyX0Hours = function () {
+        return "кожныя %s гадзін";
+    };
+    be.prototype.betweenX0AndX1 = function () {
+        return "з %s па %s";
+    };
+    be.prototype.atX0 = function () {
+        return "у %s";
+    };
+    be.prototype.commaEveryDay = function () {
+        return ", кожны дзень";
+    };
+    be.prototype.commaEveryX0DaysOfTheWeek = function () {
+        return ", кожныя %s дзён тыдня";
+    };
+    be.prototype.commaX0ThroughX1 = function () {
+        return ", %s па %s";
+    };
+    be.prototype.first = function () {
+        return "першы";
+    };
+    be.prototype.second = function () {
+        return "другі";
+    };
+    be.prototype.third = function () {
+        return "трэці";
+    };
+    be.prototype.fourth = function () {
+        return "чацвёрты";
+    };
+    be.prototype.fifth = function () {
+        return "пяты";
+    };
+    be.prototype.commaOnThe = function () {
+        return ", у ";
+    };
+    be.prototype.spaceX0OfTheMonth = function () {
+        return " %s месяца";
+    };
+    be.prototype.lastDay = function () {
+        return "апошні дзень";
+    };
+    be.prototype.commaOnTheLastX0OfTheMonth = function () {
+        return ", у апошні %s месяца";
+    };
+    be.prototype.commaOnlyOnX0 = function () {
+        return ", толькі ў %s";
+    };
+    be.prototype.commaAndOnX0 = function () {
+        return ", і ў %s";
+    };
+    be.prototype.commaEveryX0Months = function () {
+        return ", кожныя %s месяцаў";
+    };
+    be.prototype.commaOnlyInX0 = function () {
+        return ", толькі ў %s";
+    };
+    be.prototype.commaOnTheLastDayOfTheMonth = function () {
+        return ", у апошні дзень месяца";
+    };
+    be.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
+        return ", у апошні будні дзень месяца";
+    };
+    be.prototype.commaDaysBeforeTheLastDayOfTheMonth = function () {
+        return ", %s дзён да апошняга дня месяца";
+    };
+    be.prototype.firstWeekday = function () {
+        return "першы будны дзень";
+    };
+    be.prototype.weekdayNearestDayX0 = function () {
+        return "найбліжэйшы будны дзень да %s";
+    };
+    be.prototype.commaOnTheX0OfTheMonth = function () {
+        return ", у %s месяцы";
+    };
+    be.prototype.commaEveryX0Days = function () {
+        return ", кожныя %s дзён";
+    };
+    be.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
+        return ", з %s па %s лік месяца";
+    };
+    be.prototype.commaOnDayX0OfTheMonth = function () {
+        return ", у %s лік месяца";
+    };
+    be.prototype.commaEveryX0Years = function () {
+        return ", кожныя %s гадоў";
+    };
+    be.prototype.commaStartingX0 = function () {
+        return ", пачатак %s";
+    };
+    be.prototype.daysOfTheWeek = function () {
+        return ["нядзеля", "панядзелак", "аўторак", "серада", "чацвер", "пятніца", "субота"];
+    };
+    be.prototype.monthsOfTheYear = function () {
+        return [
+            "студзень",
+            "люты",
+            "сакавік",
+            "красавік",
+            "травень",
+            "чэрвень",
+            "ліпень",
+            "жнівень",
+            "верасень",
+            "кастрычнік",
+            "лістапад",
+            "снежань",
+        ];
+    };
+    return be;
+}());
+exports.be = be;
 
 
 /***/ })
