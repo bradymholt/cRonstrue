@@ -13,7 +13,7 @@ const templateFile = path.join(__dirname, "../docs/template.hbs.html");
 const outputFile = path.join(__dirname, "../docs/index.html");
 
 let readmeContent = cat(readmeFile);
-let readmeHtml = marked(readmeContent);
+let readmeHtml = marked.parse(readmeContent);
 let templateContent = cat(templateFile);
 
 let templateCompiled = handlebars.compile(templateContent);

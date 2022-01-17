@@ -56,14 +56,14 @@
     "typescript": "^3.9.6",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
-    "webpack-command": "^0.5.0",
+    "webpack-cli": "^4.9.1",
     "xml2js": "^0.4.23"
   },
   "scripts": {
     "start": "npm run build",
     "build": "npx tsc -p ./src --emitDeclarationOnly",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
-    "prerelease": "rm -rf ./dist && npx webpack && npx jbash ./scripts/generate-docs.js && git add -A"
+    "prerelease": "rm -rf ./dist && ./node_modules/webpack-cli/bin/cli.js && npx jbash ./scripts/generate-docs.js && git add -A"
   },
   "dependencies": {}
 }
