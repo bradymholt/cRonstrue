@@ -1,5 +1,5 @@
 {
-  "name": "cronstrue",
+  "name": "cronstrue-be",
   "title": "cRonstrue",
   "version": "1.122.0",
   "description": "Convert cron expressions into human readable descriptions",
@@ -8,7 +8,7 @@
   "bugs": {
     "url": "https://github.com/bradymholt/cronstrue/issues"
   },
-  "homepage": "https://github.com/bradymholt/cronstrue",
+  "homepage": "https://github.com/KirillMikulich/cRonstrue",
   "keywords": [
     "cron",
     "cronjob",
@@ -34,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradymholt/cronstrue.git"
+    "url": "git+https://github.com/KirillMikulich/cRonstrue.git"
   },
   "publishConfig": {
     "access": "public"
