@@ -36,7 +36,7 @@ export class be implements Locale {
     return "У";
   }
   spaceAnd() {
-    return "і";
+    return " і";
   }
   everySecond() {
     return "кожную секунду";
@@ -96,7 +96,7 @@ export class be implements Locale {
     return ", у ";
   }
   spaceX0OfTheMonth() {
-    return "%s месяца";
+    return " %s месяца";
   }
   lastDay() {
     return "апошні дзень";
