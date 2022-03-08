@@ -14,16 +14,16 @@ export class zh_CN implements Locale {
     return "上午";
   }
 
-  atX0SecondsPastTheMinuteGt20(): string {
+  atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }
-  atX0MinutesPastTheHourGt20(): string {
+  atX0MinutesPastTheHourGt20(): string|null {
     return null;
   }
-  commaMonthX0ThroughMonthX1(): string {
+  commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }
-  commaYearX0ThroughYearX1(): string {
+  commaYearX0ThroughYearX1(): string|null {
     return ", 从%s年至%s年";
   }
   use24HourTimeFormatByDefault() {

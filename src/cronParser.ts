@@ -242,7 +242,7 @@ export class CronParser {
       */
 
       if (expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
-        let stepRangeThrough: string = null;
+        let stepRangeThrough: string|null = null;
         switch (i) {
           case 4:
             stepRangeThrough = "12";
@@ -258,7 +258,7 @@ export class CronParser {
             break;
         }
 
-        if (stepRangeThrough != null) {
+        if (stepRangeThrough !== null) {
           let parts: string[] = expressionParts[i].split("/");
           expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
         }

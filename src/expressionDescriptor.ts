@@ -68,8 +68,8 @@ export class ExpressionDescriptor {
     this.options = options;
     this.expressionParts = new Array(5);
 
-    if (ExpressionDescriptor.locales[options.locale]) {
-      this.i18n = ExpressionDescriptor.locales[options.locale];
+    if (ExpressionDescriptor.locales[options.locale as string]) {
+      this.i18n = ExpressionDescriptor.locales[options.locale as string];
     } else {
       // fall back to English
       console.warn(`Locale '${options.locale}' could not be found; falling back to 'en'.`);
@@ -95,7 +95,7 @@ export class ExpressionDescriptor {
       var yearDesc = this.getYearDescription();
 
       description += timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc;
-      description = this.transformVerbosity(description, this.options.verbose);
+      description = this.transformVerbosity(description, !!this.options.verbose);
 
       // uppercase first character
       description = description.charAt(0).toLocaleUpperCase() + description.substr(1);
@@ -169,7 +169,7 @@ export class ExpressionDescriptor {
 
       description += secondsDescription;
 
-      if (description.length > 0 && minutesDescription.length > 0) {
+      if (description && minutesDescription) {
         description += ", ";
       }
 
@@ -179,7 +179,7 @@ export class ExpressionDescriptor {
         return description;
       }
 
-      if (description.length > 0 && hoursDescription.length > 0) {
+      if (description && hoursDescription) {
         description += ", ";
       }
 
@@ -190,7 +190,7 @@ export class ExpressionDescriptor {
   }
 
   protected getSecondsDescription() {
-    let description: string = this.getSegmentDescription(
+    let description: string|null = this.getSegmentDescription(
       this.expressionParts[0],
       this.i18n.everySecond(),
       (s) => {
@@ -217,7 +217,7 @@ export class ExpressionDescriptor {
   protected getMinutesDescription() {
     const secondsExpression = this.expressionParts[0];
     const hourExpression = this.expressionParts[2];
-    let description: string = this.getSegmentDescription(
+    let description: string|null = this.getSegmentDescription(
       this.expressionParts[1],
       this.i18n.everyMinute(),
       (s) => {
@@ -247,7 +247,7 @@ export class ExpressionDescriptor {
 
   protected getHoursDescription() {
     let expression = this.expressionParts[2];
-    let description: string = this.getSegmentDescription(
+    let description: string|null = this.getSegmentDescription(
       expression,
       this.i18n.everyHour(),
       (s) => {
@@ -270,7 +270,7 @@ export class ExpressionDescriptor {
   protected getDayOfWeekDescription() {
     var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
-    let description: string = null;
+    let description: string|null = null;
     if (this.expressionParts[5] == "*") {
       // DOW is specified as * so we will not generate a description and defer to DOM part.
       // Otherwise, we could get a contradiction like "on day 1 of the month, every day"
@@ -302,10 +302,10 @@ export class ExpressionDescriptor {
           return this.i18n.commaX0ThroughX1();
         },
         (s) => {
-          let format: string = null;
+          let format: string|null = null;
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-            let dayOfWeekOfMonthDescription: string = null;
+            let dayOfWeekOfMonthDescription: string|null = null;
             switch (dayOfWeekOfMonthNumber) {
               case "1":
                 dayOfWeekOfMonthDescription = this.i18n.first();
@@ -344,7 +344,7 @@ export class ExpressionDescriptor {
   protected getMonthDescription() {
     var monthNames = this.i18n.monthsOfTheYear();
 
-    let description: string = this.getSegmentDescription(
+    let description: string|null = this.getSegmentDescription(
       this.expressionParts[4],
       "",
       (s) => {
@@ -370,8 +370,8 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  protected getDayOfMonthDescription(): string {
-    let description: string = null;
+  protected getDayOfMonthDescription(): string|null {
+    let description: string|null = null;
     let expression: string = this.expressionParts[3];
 
     switch (expression) {
@@ -433,7 +433,7 @@ export class ExpressionDescriptor {
   }
 
   protected getYearDescription() {
-    let description: string = this.getSegmentDescription(
+    let description: string|null = this.getSegmentDescription(
       this.expressionParts[6],
       "",
       (s) => {
@@ -460,8 +460,8 @@ export class ExpressionDescriptor {
     getIncrementDescriptionFormat: (t: string) => string,
     getRangeDescriptionFormat: (t: string) => string,
     getDescriptionFormat: (t: string) => string
-  ): string {
-    let description: string = null;
+  ): string|null {
+    let description: string|null = null;
     const doesExpressionContainIncrement = expression.indexOf("/") > -1;
     const doesExpressionContainRange = expression.indexOf("-") > -1;
     const doesExpressionContainMultipleValues = expression.indexOf(",") > -1;
@@ -508,7 +508,7 @@ export class ExpressionDescriptor {
           );
 
           if (isSegmentRangeWithoutIncrement) {
-            currentDescriptionContent = currentDescriptionContent.replace(", ", "");
+            currentDescriptionContent = currentDescriptionContent!.replace(", ", "");
           }
 
           descriptionContent += currentDescriptionContent;
@@ -596,7 +596,7 @@ export class ExpressionDescriptor {
     let period: string = "";
     let setPeriodBeforeTime: boolean = false;
     if (!this.options.use24HourTimeFormat) {
-      setPeriodBeforeTime = this.i18n.setPeriodBeforeTime && this.i18n.setPeriodBeforeTime();
+      setPeriodBeforeTime = !!(this.i18n.setPeriodBeforeTime && this.i18n.setPeriodBeforeTime());
       period = setPeriodBeforeTime ? `${this.getPeriod(hour)} ` : ` ${this.getPeriod(hour)}`;
       if (hour > 12) {
         hour -= 12;

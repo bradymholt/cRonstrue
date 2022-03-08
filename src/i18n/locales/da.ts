@@ -134,16 +134,16 @@ export class da implements Locale {
   weekdayNearestDayX0() {
     return "hverdag nærmest dag %s";
   }
-  commaMonthX0ThroughMonthX1(): string {
+  commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }
-  commaYearX0ThroughYearX1(): string {
+  commaYearX0ThroughYearX1(): string|null {
     return null;
   }
-  atX0MinutesPastTheHourGt20(): string {
+  atX0MinutesPastTheHourGt20(): string|null {
     return null;
   }
-  atX0SecondsPastTheMinuteGt20(): string {
+  atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }
   commaStartingX0() {
