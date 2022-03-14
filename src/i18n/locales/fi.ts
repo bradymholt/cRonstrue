@@ -19,7 +19,7 @@ export class fi implements Locale {
   atX0MinutesPastTheHour(): string {
     return "%s minuuttia yli";
   }
-  atX0MinutesPastTheHourGt20(): string {
+  atX0MinutesPastTheHourGt20(): string|null {
     return "%s minuuttia yli";
   }
   atX0SecondsPastTheMinute(): string {
@@ -142,13 +142,13 @@ export class fi implements Locale {
   weekdayNearestDayX0(): string {
     return "viikonpäivä lähintä %s päivää";
   }
-  atX0SecondsPastTheMinuteGt20(): string {
+  atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }
-  commaMonthX0ThroughMonthX1(): string {
+  commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }
-  commaYearX0ThroughYearX1(): string {
+  commaYearX0ThroughYearX1(): string|null {
     return null;
   }
   lastDay() {

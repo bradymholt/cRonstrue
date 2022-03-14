@@ -18,19 +18,19 @@ export interface Locale {
   everyX0Seconds(): string;
   secondsX0ThroughX1PastTheMinute(): string;
   atX0SecondsPastTheMinute(): string;
-  atX0SecondsPastTheMinuteGt20(): string; // optional
+  atX0SecondsPastTheMinuteGt20(): string|null; // optional
   everyX0Minutes(): string;
   minutesX0ThroughX1PastTheHour(): string;
   atX0MinutesPastTheHour(): string;
-  atX0MinutesPastTheHourGt20(): string; // optional
+  atX0MinutesPastTheHourGt20(): string|null; // optional
   everyX0Hours(): string;
   betweenX0AndX1(): string;
   atX0(): string;
   commaEveryDay(): string;
   commaEveryX0DaysOfTheWeek(): string;
   commaX0ThroughX1(): string;
-  commaMonthX0ThroughMonthX1(): string; // optional
-  commaYearX0ThroughYearX1(): string; // optional
+  commaMonthX0ThroughMonthX1(): string|null; // optional
+  commaYearX0ThroughYearX1(): string|null; // optional
   first(): string;
   second(): string;
   third(): string;

@@ -145,16 +145,16 @@ export class ja implements Locale {
   commaDaysBeforeTheLastDayOfTheMonth(): string {
     return "月の最終日の %s 日前";
   }
-  atX0SecondsPastTheMinuteGt20(): string {
+  atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }
-  atX0MinutesPastTheHourGt20(): string {
+  atX0MinutesPastTheHourGt20(): string|null {
     return null;
   }
-  commaMonthX0ThroughMonthX1(): string {
+  commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }
-  commaYearX0ThroughYearX1(): string {
+  commaYearX0ThroughYearX1(): string|null {
     return null;
   }
   lastDay() {

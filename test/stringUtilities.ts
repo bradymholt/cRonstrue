@@ -1,3 +1,4 @@
+import 'mocha';
 import chai = require("chai");
 import { StringUtilities } from "../src/stringUtilities";
 let assert = chai.assert;

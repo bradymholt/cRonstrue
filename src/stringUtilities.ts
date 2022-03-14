@@ -8,8 +8,8 @@ export class StringUtilities {
    * @returns {string}
    */
   static format(template: string, ...values: string[]): string {
-    return template.replace(/%s/g, function () {
-      return values.shift();
+    return template.replace(/%s/g, function (substring: string, ...args: any[]): string {
+      return values.shift() as string;
     });
   }
 
