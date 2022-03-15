@@ -74,7 +74,7 @@ export class ExpressionDescriptor {
       this.options.locale = ExpressionDescriptor.defaultLocale;
     }
 
-    if (!ExpressionDescriptor.locales[this.options.locale]) {
+    if (!ExpressionDescriptor.locales[this.options!.locale!]) {
       const fallBackLocale = Object.keys(ExpressionDescriptor.locales)[0];
       // fall back to English
       console.warn(`Locale '${this.options.locale}' could not be found; falling back to '${fallBackLocale}'.`);
@@ -82,7 +82,7 @@ export class ExpressionDescriptor {
       this.options.locale = fallBackLocale;
     }
 
-    this.i18n = ExpressionDescriptor.locales[this.options.locale];
+    this.i18n = ExpressionDescriptor.locales[this.options!.locale!];
 
     if (options.use24HourTimeFormat === undefined) {
       // if use24HourTimeFormat not specified, set based on locale default

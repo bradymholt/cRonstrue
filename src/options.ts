@@ -4,5 +4,5 @@ export interface Options {
   dayOfWeekStartIndexZero?: boolean;
   monthStartIndexZero?: boolean;
   use24HourTimeFormat?: boolean;
-  locale?: string;
+  locale?: string | null;
 }
