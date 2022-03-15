@@ -111,17 +111,21 @@ cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
 <li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
 </ul>
 <h2 id="i18n">i18n</h2>
-<p>To use the i18n support cRonstrue provides, you must use the packaged library that contains the locale translations.  Once you do this, you can pass the name of a supported locale as an option to  <code>cronstrue.toString()</code>.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; });</code>.</p>
-<h3 id="node-1">Node</h3>
-<pre><code class="language-js">var cronstrue = require(&#39;cronstrue/i18n&#39;);
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
+<p>To use the i18n support cRonstrue provides, you can import a specific locale and then call <code>toString()</code>. For example, for the es (Spanish) locale:</p>
+<pre><code class="language-js">import cronstrue from &#39;cronstrue/locales/es&#39;;
+cronstrue.toString(&quot;*/5 * * * *&quot;);
 </code></pre>
 <h3 id="browser-1">Browser</h3>
-<p> The <code>cronstrue-i18n.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.</p>
-<pre><code class="language-html">&lt;script src=&quot;cronstrue-i18n.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<p> A locale file from the <code>/locales</code> folder in the npm package should be served to the browser.</p>
+<pre><code class="language-html">&lt;script src=&quot;locales/es.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
-  cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; });
+  cronstrue.toString(&quot;*/5 * * * *&quot;);
 &lt;/script&gt;
+</code></pre>
+<h2 id="all-locales">All Locales</h2>
+<p>Alternatively you can import all locales and then pass in the <code>locale</code> option to specify the locale to use:</p>
+<pre><code class="language-js">import cronstrue from &#39;cronstrue/i18n&#39;;
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; });
 </code></pre>
 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 <blockquote>

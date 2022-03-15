@@ -99,41 +99,31 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 
 ## i18n
 
-To use the i18n support cRonstrue provides, you can either use the packaged library that contains the locale translations, or import the specific locales you want.  
-Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  
-For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.
+To use the i18n support cRonstrue provides, you can import a specific locale and then call `toString()`. For example, for the es (Spanish) locale:
 
-### Node
 ```js
-var cronstrue = require('cronstrue/i18n');
-cronstrue.toString("*/5 * * * *", { locale: "fr" });
-```
-
-Or:
-```js
-var cronstrue = require('cronstrue');
-require('cronstrue/locales/fr');
-cronstrue.toString("*/5 * * * *", { locale: "fr" });
+import cronstrue from 'cronstrue/locales/es';
+cronstrue.toString("*/5 * * * *");
 ```
 
 ### Browser
- The `cronstrue-i18n.min.js` file from the `/dist` folder in the npm package should be served to the browser.
+
+A locale file from the `/locales` folder in the npm package should be served to the browser.
 
 ```html
-<script src="cronstrue-i18n.min.js" type="text/javascript"></script>
+<script src="locales/es.min.js" type="text/javascript"></script>
 <script>
-  cronstrue.toString("*/5 * * * *", { locale: "fr" });
+  cronstrue.toString("*/5 * * * *");
 </script>
 ```
 
-Or:
+## All Locales
 
-```html
-<script src="cronstrue.min.js" type="text/javascript"></script>
-<script src="locales/fr.js" type="text/javascript"></script>
-<script>
-  cronstrue.toString("*/5 * * * *", { locale: "fr" });
-</script>
+Alternatively you can import all locales and then pass in the `locale` option to specify the locale to use:
+
+```js
+import cronstrue from 'cronstrue/i18n';
+cronstrue.toString("*/5 * * * *", { locale: "es" });
 ```
 
 ## Frequently Asked Questions
