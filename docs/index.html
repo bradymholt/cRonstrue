@@ -116,14 +116,14 @@ cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
 cronstrue.toString(&quot;*/5 * * * *&quot;);
 </code></pre>
 <h3 id="browser-1">Browser</h3>
-<p> A locale file from the <code>/locales</code> folder in the npm package should be served to the browser.</p>
-<pre><code class="language-html">&lt;script src=&quot;locales/es.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+<p>A locale file from the <code>/locales</code> folder in the npm package should be served to the browser.</p>
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/es.min.js&quot; async&gt;&lt;/script&gt;
 &lt;script&gt;
   cronstrue.toString(&quot;*/5 * * * *&quot;);
 &lt;/script&gt;
 </code></pre>
 <h2 id="all-locales">All Locales</h2>
-<p>Alternatively you can import all locales and then pass in the <code>locale</code> option to specify the locale to use:</p>
+<p>Alternatively you can import all locales and then pass in the <code>locale</code> option:</p>
 <pre><code class="language-js">import cronstrue from &#39;cronstrue/i18n&#39;;
 cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; });
 </code></pre>
