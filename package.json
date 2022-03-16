@@ -29,6 +29,7 @@
   "typings": "dist/cronstrue.d.ts",
   "files": [
     "dist/",
+    "locales/",
     "i18n.js",
     "i18n.d.ts"
   ],

@@ -7,6 +7,7 @@ import { LocaleLoader } from "./i18n/localeLoader";
 
 export class ExpressionDescriptor {
   static locales: { [name: string]: Locale } = {};
+  static defaultLocale: string;
   static specialCharacters: string[];
 
   expression: string;
@@ -37,7 +38,7 @@ export class ExpressionDescriptor {
       dayOfWeekStartIndexZero = true,
       monthStartIndexZero = false,
       use24HourTimeFormat,
-      locale = "en",
+      locale = null,
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -56,8 +57,9 @@ export class ExpressionDescriptor {
     return descripter.getFullDescription();
   }
 
-  static initialize(localesLoader: LocaleLoader) {
+  static initialize(localesLoader: LocaleLoader, defaultLocale = "en") {
     ExpressionDescriptor.specialCharacters = ["/", "-", ",", "*"];
+    ExpressionDescriptor.defaultLocale = defaultLocale;
 
     // Load locales
     localesLoader.load(ExpressionDescriptor.locales);
@@ -68,13 +70,19 @@ export class ExpressionDescriptor {
     this.options = options;
     this.expressionParts = new Array(5);
 
-    if (ExpressionDescriptor.locales[options.locale as string]) {
-      this.i18n = ExpressionDescriptor.locales[options.locale as string];
-    } else {
-      // fall back to English
-      console.warn(`Locale '${options.locale}' could not be found; falling back to 'en'.`);
-      this.i18n = ExpressionDescriptor.locales["en"];
+    if (!this.options.locale && ExpressionDescriptor.defaultLocale) {
+      this.options.locale = ExpressionDescriptor.defaultLocale;
     }
+
+    if (!ExpressionDescriptor.locales[this.options!.locale!]) {
+      const fallBackLocale = Object.keys(ExpressionDescriptor.locales)[0];
+      // fall back to English
+      console.warn(`Locale '${this.options.locale}' could not be found; falling back to '${fallBackLocale}'.`);
+
+      this.options.locale = fallBackLocale;
+    }
+
+    this.i18n = ExpressionDescriptor.locales[this.options!.locale!];
 
     if (options.use24HourTimeFormat === undefined) {
       // if use24HourTimeFormat not specified, set based on locale default
@@ -86,7 +94,11 @@ export class ExpressionDescriptor {
     let description = "";
 
     try {
-      let parser = new CronParser(this.expression, this.options.dayOfWeekStartIndexZero, this.options.monthStartIndexZero);
+      let parser = new CronParser(
+        this.expression,
+        this.options.dayOfWeekStartIndexZero,
+        this.options.monthStartIndexZero
+      );
       this.expressionParts = parser.parse();
       var timeSegment = this.getTimeOfDayDescription();
       var dayOfMonthDesc = this.getDayOfMonthDescription();
@@ -190,7 +202,7 @@ export class ExpressionDescriptor {
   }
 
   protected getSecondsDescription() {
-    let description: string|null = this.getSegmentDescription(
+    let description: string | null = this.getSegmentDescription(
       this.expressionParts[0],
       this.i18n.everySecond(),
       (s) => {
@@ -206,8 +218,8 @@ export class ExpressionDescriptor {
         return s == "0"
           ? ""
           : parseInt(s) < 20
-            ? this.i18n.atX0SecondsPastTheMinute()
-            : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
+          ? this.i18n.atX0SecondsPastTheMinute()
+          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute();
       }
     );
 
@@ -217,7 +229,7 @@ export class ExpressionDescriptor {
   protected getMinutesDescription() {
     const secondsExpression = this.expressionParts[0];
     const hourExpression = this.expressionParts[2];
-    let description: string|null = this.getSegmentDescription(
+    let description: string | null = this.getSegmentDescription(
       this.expressionParts[1],
       this.i18n.everyMinute(),
       (s) => {
@@ -234,8 +246,8 @@ export class ExpressionDescriptor {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
             : parseInt(s) < 20
-              ? this.i18n.atX0MinutesPastTheHour()
-              : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
+            ? this.i18n.atX0MinutesPastTheHour()
+            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour();
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour();
         }
@@ -247,7 +259,7 @@ export class ExpressionDescriptor {
 
   protected getHoursDescription() {
     let expression = this.expressionParts[2];
-    let description: string|null = this.getSegmentDescription(
+    let description: string | null = this.getSegmentDescription(
       expression,
       this.i18n.everyHour(),
       (s) => {
@@ -270,7 +282,7 @@ export class ExpressionDescriptor {
   protected getDayOfWeekDescription() {
     var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
-    let description: string|null = null;
+    let description: string | null = null;
     if (this.expressionParts[5] == "*") {
       // DOW is specified as * so we will not generate a description and defer to DOM part.
       // Otherwise, we could get a contradiction like "on day 1 of the month, every day"
@@ -302,10 +314,10 @@ export class ExpressionDescriptor {
           return this.i18n.commaX0ThroughX1();
         },
         (s) => {
-          let format: string|null = null;
+          let format: string | null = null;
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-            let dayOfWeekOfMonthDescription: string|null = null;
+            let dayOfWeekOfMonthDescription: string | null = null;
             switch (dayOfWeekOfMonthNumber) {
               case "1":
                 dayOfWeekOfMonthDescription = this.i18n.first();
@@ -344,7 +356,7 @@ export class ExpressionDescriptor {
   protected getMonthDescription() {
     var monthNames = this.i18n.monthsOfTheYear();
 
-    let description: string|null = this.getSegmentDescription(
+    let description: string | null = this.getSegmentDescription(
       this.expressionParts[4],
       "",
       (s) => {
@@ -370,8 +382,8 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  protected getDayOfMonthDescription(): string|null {
-    let description: string|null = null;
+  protected getDayOfMonthDescription(): string | null {
+    let description: string | null = null;
     let expression: string = this.expressionParts[3];
 
     switch (expression) {
@@ -411,8 +423,8 @@ export class ExpressionDescriptor {
                 return s == "L"
                   ? this.i18n.lastDay()
                   : this.i18n.dayX0
-                    ? StringUtilities.format(this.i18n.dayX0(), s)
-                    : s;
+                  ? StringUtilities.format(this.i18n.dayX0(), s)
+                  : s;
               },
               (s) => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days();
@@ -433,7 +445,7 @@ export class ExpressionDescriptor {
   }
 
   protected getYearDescription() {
-    let description: string|null = this.getSegmentDescription(
+    let description: string | null = this.getSegmentDescription(
       this.expressionParts[6],
       "",
       (s) => {
@@ -460,8 +472,8 @@ export class ExpressionDescriptor {
     getIncrementDescriptionFormat: (t: string) => string,
     getRangeDescriptionFormat: (t: string) => string,
     getDescriptionFormat: (t: string) => string
-  ): string|null {
-    let description: string|null = null;
+  ): string | null {
+    let description: string | null = null;
     const doesExpressionContainIncrement = expression.indexOf("/") > -1;
     const doesExpressionContainRange = expression.indexOf("-") > -1;
     const doesExpressionContainMultipleValues = expression.indexOf(",") > -1;
