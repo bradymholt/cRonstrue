@@ -111,7 +111,7 @@ cronstrue.toString("*/5 * * * *");
 A locale file from the `/locales` folder in the npm package should be served to the browser.
 
 ```html
-<script src="locales/es.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/cronstrue@latest/locales/es.min.js" async></script>
 <script>
   cronstrue.toString("*/5 * * * *");
 </script>
@@ -119,7 +119,7 @@ A locale file from the `/locales` folder in the npm package should be served to 
 
 ## All Locales
 
-Alternatively you can import all locales and then pass in the `locale` option to specify the locale to use:
+Alternatively you can import all locales and then pass in the `locale` option:
 
 ```js
 import cronstrue from 'cronstrue/i18n';
