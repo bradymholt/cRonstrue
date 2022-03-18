@@ -2,16 +2,16 @@
 
 import { Locale } from "../locale";
 export class en implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
+  atX0SecondsPastTheMinuteGt20(): string | null {
     return null;
   }
-  atX0MinutesPastTheHourGt20(): string|null {
+  atX0MinutesPastTheHourGt20(): string | null {
     return null;
   }
-  commaMonthX0ThroughMonthX1(): string|null {
+  commaMonthX0ThroughMonthX1(): string | null {
     return null;
   }
-  commaYearX0ThroughYearX1(): string|null {
+  commaYearX0ThroughYearX1(): string | null {
     return null;
   }
 
@@ -44,7 +44,7 @@ export class en implements Locale {
     return "every second";
   }
   everyX0Seconds() {
-    return "every %s seconds";
+    return "every %t seconds";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "seconds %s through %s past the minute";
@@ -53,7 +53,7 @@ export class en implements Locale {
     return "at %s seconds past the minute";
   }
   everyX0Minutes() {
-    return "every %s minutes";
+    return "every %t minutes";
   }
   minutesX0ThroughX1PastTheHour() {
     return "minutes %s through %s past the hour";
@@ -62,7 +62,7 @@ export class en implements Locale {
     return "at %s minutes past the hour";
   }
   everyX0Hours() {
-    return "every %s hours";
+    return "every %t hours";
   }
   betweenX0AndX1() {
     return "between %s and %s";
@@ -74,7 +74,7 @@ export class en implements Locale {
     return ", every day";
   }
   commaEveryX0DaysOfTheWeek() {
-    return ", every %s days of the week";
+    return ", every %t days of the week";
   }
   commaX0ThroughX1() {
     return ", %s through %s";
@@ -113,7 +113,7 @@ export class en implements Locale {
     return ", and on %s";
   }
   commaEveryX0Months() {
-    return ", every %s months";
+    return ", every %t months";
   }
   commaOnlyInX0() {
     return ", only in %s";
@@ -137,7 +137,7 @@ export class en implements Locale {
     return ", on the %s of the month";
   }
   commaEveryX0Days() {
-    return ", every %s days";
+    return ", every %t days";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
     return ", between day %s and %s of the month";

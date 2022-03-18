@@ -41,7 +41,8 @@
     "access": "public"
   },
   "prettier": {
-    "printWidth": 120
+    "printWidth": 120,
+    "singleQuote": false
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
