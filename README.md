@@ -117,7 +117,7 @@ A locale file from the `/locales` folder in the npm package should be served to 
 </script>
 ```
 
-## All Locales
+### All Locales
 
 Alternatively you can import all locales and then pass in the `locale` option:
 
