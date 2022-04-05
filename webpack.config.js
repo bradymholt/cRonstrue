@@ -46,7 +46,7 @@ module.exports = [
       minimize: true,
       minimizer: [
         new TerserJsPlugin({
-          include: /\.min\.js$|i18n\/locales/,
+          include: /\.min\.js$/,
         }),
       ],
     },
@@ -65,6 +65,9 @@ module.exports = [
     resolve: {
       extensions: [".js", ".ts"],
     },
+    externals: {
+      cronstrue: "cronstrue",
+    },
     module: {
       rules: [
         {
@@ -75,14 +78,10 @@ module.exports = [
               let localeCode = resourcePath.match(/i18n[\/\\]locales[\/\\]([a-zA-Z_]+)\.ts$/)[1];
               source = `\
 ${source}
-import { ExpressionDescriptor } from "../../expressionDescriptor";
-ExpressionDescriptor.initialize({
-  load(availableLocales) {
-    availableLocales["${localeCode}"] = new ${localeCode}();
-  }
-}, "${localeCode}");
-export default ExpressionDescriptor;
-let toString = ExpressionDescriptor.toString;
+import Cronstrue from \"cronstrue\";
+Cronstrue.locales["${localeCode}"] = new ${localeCode}();
+const toString = Cronstrue.toString;
+export default Cronstrue;
 export { toString };
 `;
               return source;
@@ -93,6 +92,14 @@ export { toString };
           test: /\.ts$/,
           loader: "ts-loader",
         },
+      ],
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserJsPlugin({
+          include: /\.min\.js$/,
+        }),
       ],
     },
     resolveLoader: {

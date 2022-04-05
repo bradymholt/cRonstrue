@@ -99,7 +99,26 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 
 ## i18n
 
-To use the i18n support cRonstrue provides, you can import a specific locale and then call `toString()`. For example, for the es (Spanish) locale:
+cRonstrue provides a few ways to use i18n, depending on your situation.
+
+1. Use the packaged library that contains the locale translations.  
+Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  
+For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.  
+
+```js
+var cronstrue = require('cronstrue/i18n');
+cronstrue.toString("*/5 * * * *", { locale: "fr" });
+```
+
+2. Import the specific locales you want:  
+
+```js
+var cronstrue = require('cronstrue');
+require('cronstrue/locales/fr');
+cronstrue.toString("*/5 * * * *", { locale: "fr" });
+```
+
+3. Directly import the locale and call its `toString`. For example, for the es (Spanish) locale:
 
 ```js
 import cronstrue from 'cronstrue/locales/es';
@@ -108,22 +127,16 @@ cronstrue.toString("*/5 * * * *");
 
 ### Browser
 
-A locale file from the `/locales` folder in the npm package should be served to the browser.
+Again, you can either require the full package with all i18n locales, or hand-pick them after imporing the base library.
 
 ```html
+<script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js.js" async></script>
+<!-- Or -->
+<script src="https://unpkg.com/cronstrue@latest/cronstrue.min.js.js" async></script>
 <script src="https://unpkg.com/cronstrue@latest/locales/es.min.js" async></script>
 <script>
   cronstrue.toString("*/5 * * * *");
 </script>
-```
-
-### All Locales
-
-Alternatively you can import all locales and then pass in the `locale` option:
-
-```js
-import cronstrue from 'cronstrue/i18n';
-cronstrue.toString("*/5 * * * *", { locale: "es" });
 ```
 
 ## Frequently Asked Questions
