@@ -130,9 +130,9 @@ cronstrue.toString("*/5 * * * *");
 Again, you can either require the full package with all i18n locales, or hand-pick them after imporing the base library.
 
 ```html
-<script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js" async></script>
 <!-- Or -->
-<script src="https://unpkg.com/cronstrue@latest/cronstrue.min.js.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/cronstrue.min.js" async></script>
 <script src="https://unpkg.com/cronstrue@latest/locales/es.min.js" async></script>
 <script>
   cronstrue.toString("*/5 * * * *");
