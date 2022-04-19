@@ -26,10 +26,10 @@ npm install cronstrue
 
 Then, depending upon your usage context, add a reference to it:
 
-### Node
+### Node / CommonJS
 
 ```js
-var cronstrue = require('cronstrue');
+const cronstrue = require('cronstrue');
 ```
 
 ### ESM / webpack / TypeScript
@@ -57,7 +57,7 @@ A simple way to load the library in a browser is by using the [unpkg](https://un
 <script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
 ```
 
-Using the "latest" tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js to avoid this redirect.
+Using the "latest" tag will result in a 302 redirect to the latest version tag so it is recommended to use a specific version tag such as https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js to avoid this redirect.
 
 ## Usage
 
@@ -99,44 +99,44 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 
 ## i18n
 
-cRonstrue provides a few ways to use i18n, depending on your situation.
+To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using `cronstrue/i18n`) or by importing individual locales (using `cronstrue/locales/[locale]`).  Then, when calling `toString` you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" })`.
 
-1. Use the packaged library that contains the locale translations.  
-Once you do this, you can pass the name of a supported locale as an option to  `cronstrue.toString()`.  
-For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" });`.  
+### All Locales
 
-```js
-var cronstrue = require('cronstrue/i18n');
-cronstrue.toString("*/5 * * * *", { locale: "fr" });
-```
-
-2. Import the specific locales you want:  
+You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module that will take longer to load, particularly when sending down to a browser.
 
 ```js
-var cronstrue = require('cronstrue');
-require('cronstrue/locales/fr');
-cronstrue.toString("*/5 * * * *", { locale: "fr" });
-```
-
-3. Directly import the locale and call its `toString`. For example, for the es (Spanish) locale:
-
-```js
-import cronstrue from 'cronstrue/locales/es';
-cronstrue.toString("*/5 * * * *");
-```
-
-### Browser
-
-Again, you can either require the full package with all i18n locales, or hand-pick them after imporing the base library.
-
-```html
+// Node
+const cronstrue = require('cronstrue/i18n');
+// ESM
+import cronstrue from 'cronstrue/i18n';
+// Browser
 <script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js" async></script>
-<!-- Or -->
+
+cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
+cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
+```
+
+### Individual Locales
+
+You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.
+
+```js
+// Node
+const cronstrue = require('cronstrue');
+require('cronstrue/locales/fr');
+require('cronstrue/locales/es');
+// ESM
+import cronstrue from 'cronstrue';
+import 'cronstrue/locales/fr';
+import 'cronstrue/locales/es';
+// Browser
 <script src="https://unpkg.com/cronstrue@latest/cronstrue.min.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/locales/fr.min.js" async></script>
 <script src="https://unpkg.com/cronstrue@latest/locales/es.min.js" async></script>
-<script>
-  cronstrue.toString("*/5 * * * *");
-</script>
+
+cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
+cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 ```
 
 ## Frequently Asked Questions
