@@ -103,7 +103,7 @@ To use the i18n support cRonstrue provides, you can either import all the suppor
 
 ### All Locales
 
-You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module that will take longer to load, particularly when sending down to a browser.
+You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module (~130k, minified) that will take longer to load, particularly when sending down to a browser.
 
 ```js
 // Node / CommonJS
@@ -121,7 +121,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ### Individual Locales
 
-You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.
+You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k ( minified) and each locale is about 4k (minified) in size.
 
 ```js
 // Node / CommonJS
