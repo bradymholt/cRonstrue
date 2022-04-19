@@ -106,10 +106,12 @@ To use the i18n support cRonstrue provides, you can either import all the suppor
 You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module that will take longer to load, particularly when sending down to a browser.
 
 ```js
-// Node
+// Node / CommonJS
 const cronstrue = require('cronstrue/i18n');
-// ESM
+
+// ESM / webpack / TypeScript
 import cronstrue from 'cronstrue/i18n';
+
 // Browser
 <script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js" async></script>
 
@@ -122,14 +124,16 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.
 
 ```js
-// Node
+// Node / CommonJS
 const cronstrue = require('cronstrue');
 require('cronstrue/locales/fr');
 require('cronstrue/locales/es');
-// ESM
+
+// ESM / webpack / TypeScript
 import cronstrue from 'cronstrue';
 import 'cronstrue/locales/fr';
 import 'cronstrue/locales/es';
+
 // Browser
 <script src="https://unpkg.com/cronstrue@latest/cronstrue.min.js" async></script>
 <script src="https://unpkg.com/cronstrue@latest/locales/fr.min.js" async></script>
@@ -147,7 +151,7 @@ This library does not do full validation of cron expressions and assumes the exp
 
 > Can cRonstrue output the next occurrence of the cron expression?
 
-No, cRonstrue does not support this.  It simply describes a cron expression.  You could use another library to get the next occurrence of a cron expression and then pass that expression into cRonstrue, to achieve this.
+No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
 
 ### Supported Locales
 
