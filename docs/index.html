@@ -111,13 +111,15 @@ cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
 <li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
 </ul>
 <h2 id="i18n">i18n</h2>
-<p>To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using <code>cronstrue/i18n</code>) or by importing individual locales (using <code>cronstrue/locales/[locale]</code>).  Then, when calling <code>toString</code> you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; })</code>.</p>
+<p>To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using <code>cronstrue/i18n</code>) or import individual locales (using <code>cronstrue/locales/[locale]</code>).  Then, when calling <code>toString</code> you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; })</code>.</p>
 <h3 id="all-locales">All Locales</h3>
-<p>You can import all locales at once with <code>cronstrue/i18n</code>.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module that will take longer to load, particularly when sending down to a browser.</p>
-<pre><code class="language-js">// Node
+<p>You can import all locales at once with <code>cronstrue/i18n</code>.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module (~130k, minified) that will take longer to load, particularly when sending down to a browser.</p>
+<pre><code class="language-js">// Node / CommonJS
 const cronstrue = require(&#39;cronstrue/i18n&#39;);
-// ESM
+
+// ESM / webpack / TypeScript
 import cronstrue from &#39;cronstrue/i18n&#39;;
+
 // Browser
 &lt;script src=&quot;https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js&quot; async&gt;&lt;/script&gt;
 
@@ -125,15 +127,17 @@ cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; }); // =&gt
 cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt; Cada 5 minutos
 </code></pre>
 <h3 id="individual-locales">Individual Locales</h3>
-<p>You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.</p>
-<pre><code class="language-js">// Node
+<p>You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k (minified) and each locale is about 4k (minified) in size.</p>
+<pre><code class="language-js">// Node / CommonJS
 const cronstrue = require(&#39;cronstrue&#39;);
 require(&#39;cronstrue/locales/fr&#39;);
 require(&#39;cronstrue/locales/es&#39;);
-// ESM
+
+// ESM / webpack / TypeScript
 import cronstrue from &#39;cronstrue&#39;;
 import &#39;cronstrue/locales/fr&#39;;
 import &#39;cronstrue/locales/es&#39;;
+
 // Browser
 &lt;script src=&quot;https://unpkg.com/cronstrue@latest/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
 &lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/fr.min.js&quot; async&gt;&lt;/script&gt;
@@ -150,7 +154,7 @@ cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt
 <blockquote>
 <p>Can cRonstrue output the next occurrence of the cron expression?</p>
 </blockquote>
-<p>No, cRonstrue does not support this.  It simply describes a cron expression.  You could use another library to get the next occurrence of a cron expression and then pass that expression into cRonstrue, to achieve this.</p>
+<p>No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.</p>
 <h3 id="supported-locales">Supported Locales</h3>
 <ul>
 <li>en - English (<a href="https://github.com/bradymholt">Brady Holt</a>)</li>
