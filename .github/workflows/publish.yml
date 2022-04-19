@@ -1,11 +1,11 @@
 name: Publish to npm Registry
 
 on:
-  workflow_run:
-    workflows: ["Build"]
-    branches: [master]
-    types:
-      - completed
+#  workflow_run:
+#    workflows: ["Build"]
+#    branches: [master]
+#    types:
+#      - completed
   workflow_dispatch:
 
 jobs:
