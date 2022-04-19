@@ -13,7 +13,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'build-skip')"
     strategy:
       matrix:
-        node-version: [10, 11, 12]
+        node-version: [12, 14, 16]
     steps:
       - uses: actions/checkout@v1
       - name: Install Node.js ${{ matrix.node-version }}
