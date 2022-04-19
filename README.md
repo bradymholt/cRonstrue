@@ -99,7 +99,7 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 
 ## i18n
 
-To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using `cronstrue/i18n`) or by importing individual locales (using `cronstrue/locales/[locale]`).  Then, when calling `toString` you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" })`.
+To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using `cronstrue/i18n`) or import individual locales (using `cronstrue/locales/[locale]`).  Then, when calling `toString` you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: `cronstrue.toString("* * * * *", { locale: "es" })`.
 
 ### All Locales
 
