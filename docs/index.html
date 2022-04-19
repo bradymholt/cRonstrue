@@ -58,8 +58,8 @@
 <pre><code>npm install cronstrue
 </code></pre>
 <p>Then, depending upon your usage context, add a reference to it:</p>
-<h3 id="node">Node</h3>
-<pre><code class="language-js">var cronstrue = require(&#39;cronstrue&#39;);
+<h3 id="node--commonjs">Node / CommonJS</h3>
+<pre><code class="language-js">const cronstrue = require(&#39;cronstrue&#39;);
 </code></pre>
 <h3 id="esm--webpack--typescript">ESM / webpack / TypeScript</h3>
 <pre><code class="language-js">import cronstrue from &#39;cronstrue&#39;;
@@ -76,7 +76,7 @@
 &quot;fast, global content delivery network for everything on npm&quot;.  To use it, include a script tag like this in your file:</p>
 <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
 </code></pre>
-<p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is highly recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
+<p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="language-js">cronstrue.toString(&quot;* * * * *&quot;);
 &gt; &quot;Every minute&quot;
@@ -111,21 +111,36 @@ cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
 <li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
 </ul>
 <h2 id="i18n">i18n</h2>
-<p>To use the i18n support cRonstrue provides, you can import a specific locale and then call <code>toString()</code>. For example, for the es (Spanish) locale:</p>
-<pre><code class="language-js">import cronstrue from &#39;cronstrue/locales/es&#39;;
-cronstrue.toString(&quot;*/5 * * * *&quot;);
-</code></pre>
-<h3 id="browser-1">Browser</h3>
-<p>A locale file from the <code>/locales</code> folder in the npm package should be served to the browser.</p>
-<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/es.min.js&quot; async&gt;&lt;/script&gt;
-&lt;script&gt;
-  cronstrue.toString(&quot;*/5 * * * *&quot;);
-&lt;/script&gt;
-</code></pre>
+<p>To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using <code>cronstrue/i18n</code>) or by importing individual locales (using <code>cronstrue/locales/[locale]</code>).  Then, when calling <code>toString</code> you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; })</code>.</p>
 <h3 id="all-locales">All Locales</h3>
-<p>Alternatively you can import all locales and then pass in the <code>locale</code> option:</p>
-<pre><code class="language-js">import cronstrue from &#39;cronstrue/i18n&#39;;
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; });
+<p>You can import all locales at once with <code>cronstrue/i18n</code>.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module that will take longer to load, particularly when sending down to a browser.</p>
+<pre><code class="language-js">// Node
+const cronstrue = require(&#39;cronstrue/i18n&#39;);
+// ESM
+import cronstrue from &#39;cronstrue/i18n&#39;;
+// Browser
+&lt;script src=&quot;https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js&quot; async&gt;&lt;/script&gt;
+
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; }); // =&gt; Toutes les 5 minutes
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt; Cada 5 minutos
+</code></pre>
+<h3 id="individual-locales">Individual Locales</h3>
+<p>You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.</p>
+<pre><code class="language-js">// Node
+const cronstrue = require(&#39;cronstrue&#39;);
+require(&#39;cronstrue/locales/fr&#39;);
+require(&#39;cronstrue/locales/es&#39;);
+// ESM
+import cronstrue from &#39;cronstrue&#39;;
+import &#39;cronstrue/locales/fr&#39;;
+import &#39;cronstrue/locales/es&#39;;
+// Browser
+&lt;script src=&quot;https://unpkg.com/cronstrue@latest/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/fr.min.js&quot; async&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/es.min.js&quot; async&gt;&lt;/script&gt;
+
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; }); // =&gt; Toutes les 5 minutes
+cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt; Cada 5 minutos
 </code></pre>
 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 <blockquote>
