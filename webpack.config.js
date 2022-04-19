@@ -78,10 +78,10 @@ module.exports = [
               let localeCode = resourcePath.match(/i18n[\/\\]locales[\/\\]([a-zA-Z_]+)\.ts$/)[1];
               source = `\
 ${source}
-import Cronstrue from \"cronstrue\";
-Cronstrue.locales["${localeCode}"] = new ${localeCode}();
-const toString = Cronstrue.toString;
-export default Cronstrue;
+import cronstrue from \"cronstrue\";
+cronstrue.locales["${localeCode}"] = new ${localeCode}();
+const toString = cronstrue.toString;
+export default cronstrue;
 export { toString };
 `;
               return source;
