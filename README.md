@@ -121,7 +121,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ### Individual Locales
 
-You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k ( minified) and each locale is about 4k (minified) in size.
+You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k (minified) and each locale is about 4k (minified) in size.
 
 ```js
 // Node / CommonJS
