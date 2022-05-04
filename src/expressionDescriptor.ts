@@ -259,7 +259,7 @@ export class ExpressionDescriptor {
 
   protected getHoursDescription() {
     let expression = this.expressionParts[2];
-    let description: string | null = this.getSegmentDescription(
+    let description = this.getSegmentDescription(
       expression,
       this.i18n.everyHour(),
       (s) => {
@@ -275,6 +275,15 @@ export class ExpressionDescriptor {
         return this.i18n.atX0();
       }
     );
+
+    // If this is an hour range and minute segment is not "on the hour" (0), we'll change the second hour part from :00 to :59
+    if (description && expression.includes("-") && this.expressionParts[1] != "0") {
+      const atTheHourMatches = Array.from(description.matchAll(/:00/g));
+      if (atTheHourMatches.length > 1) {
+        const lastAtTheHourMatchIndex = atTheHourMatches[atTheHourMatches.length - 1].index;
+        description = description.substring(0, lastAtTheHourMatchIndex) + ":59" + description.substring(lastAtTheHourMatchIndex! + 3);
+      }
+    }
 
     return description;
   }
@@ -596,7 +605,6 @@ export class ExpressionDescriptor {
     let rangeSegments: string[] = rangeExpression.split("-");
     let rangeSegment1Description: string = getSingleItemDescription(rangeSegments[0]);
     let rangeSegment2Description: string = getSingleItemDescription(rangeSegments[1]);
-    rangeSegment2Description = rangeSegment2Description.replace(":00", ":59");
     let rangeDescriptionFormat = getRangeDescriptionFormat(rangeExpression);
     description += StringUtilities.format(rangeDescriptionFormat, rangeSegment1Description, rangeSegment2Description);
 
