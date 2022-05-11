@@ -24,7 +24,7 @@ export class hu implements Locale {
     return "Hiba történt a kifejezésleírás generálásakor. Ellenőrizze a cron kifejezés szintaxisát.";
   }
   everyMinute() {
-    return "minden perc";
+    return "minden percben";
   }
   everyHour() {
     return "minden órában";
@@ -33,19 +33,19 @@ export class hu implements Locale {
     return "At ";
   }
   everyMinuteBetweenX0AndX1() {
-    return "Every minute between %s and %s";
+    return "Percenként %s és %s között";
   }
   at() {
     return "At";
   }
   spaceAnd() {
-    return " and";
+    return " és";
   }
   everySecond() {
-    return "every second";
+    return "minden másodpercben";
   }
   everyX0Seconds() {
-    return "every %s seconds";
+    return "minden %s másodpercben";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "seconds %s through %s past the minute";
@@ -54,7 +54,7 @@ export class hu implements Locale {
     return "at %s seconds past the minute";
   }
   everyX0Minutes() {
-    return "every %s minutes";
+    return "minden %s percben";
   }
   minutesX0ThroughX1PastTheHour() {
     return "minutes %s through %s past the hour";
@@ -63,37 +63,37 @@ export class hu implements Locale {
     return "at %s minutes past the hour";
   }
   everyX0Hours() {
-    return "every %s hours";
+    return "minden %s órában";
   }
   betweenX0AndX1() {
-    return "between %s and %s";
+    return "%s és %s között";
   }
   atX0() {
     return "at %s";
   }
   commaEveryDay() {
-    return ", every day";
+    return ", minden nap";
   }
   commaEveryX0DaysOfTheWeek() {
-    return ", every %s days of the week";
+    return ", a hét minden %s napján";
   }
   commaX0ThroughX1() {
     return ", %s through %s";
   }
   first() {
-    return "first";
+    return "első";
   }
   second() {
-    return "second";
+    return "második";
   }
   third() {
-    return "third";
+    return "harmadik";
   }
   fourth() {
-    return "fourth";
+    return "negyedik";
   }
   fifth() {
-    return "fifth";
+    return "ötödik";
   }
   commaOnThe() {
     return ", on the ";
@@ -114,22 +114,22 @@ export class hu implements Locale {
     return ", and on %s";
   }
   commaEveryX0Months() {
-    return ", every %s months";
+    return ", minden %s hónapban";
   }
   commaOnlyInX0() {
     return ", only in %s";
   }
   commaOnTheLastDayOfTheMonth() {
-    return ", on the last day of the month";
+    return ", a hónap utolsó napján";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", on the last weekday of the month";
+    return ", a hónap utolsó hétköznapján";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s days before the last day of the month";
+    return ", %s nappal a hónap utolsó napja előtt";
   }
   firstWeekday() {
-    return "first weekday";
+    return "első hétköznap";
   }
   weekdayNearestDayX0() {
     return "weekday nearest day %s";
@@ -138,7 +138,7 @@ export class hu implements Locale {
     return ", on the %s of the month";
   }
   commaEveryX0Days() {
-    return ", every %s days";
+    return ", %s naponként";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
     return ", between day %s and %s of the month";
@@ -147,31 +147,31 @@ export class hu implements Locale {
     return ", on day %s of the month";
   }
   commaEveryHour() {
-    return ", every hour";
+    return ", minden órában";
   }
   commaEveryX0Years() {
-    return ", every %s years";
+    return ", %s évente";
   }
   commaStartingX0() {
     return ", starting %s";
   }
   daysOfTheWeek() {
-    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
   }
   monthsOfTheYear() {
     return [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+      "január",
+      "február",
+      "március",
+      "április",
+      "május",
+      "június",
+      "július",
+      "augusztus",
+      "szeptember",
+      "október",
+      "november",
+      "december",
     ];
   }
 }
