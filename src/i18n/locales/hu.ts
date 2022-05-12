@@ -96,10 +96,10 @@ export class hu implements Locale {
     return "ötödik";
   }
   commaOnThe() {
-    return ", a ";
+    return ", ";
   }
   spaceX0OfTheMonth() {
-    return " a hónap %s";
+    return " %s a hónapban";
   }
   lastDay() {
     return "az utolsó nap";
@@ -156,7 +156,7 @@ export class hu implements Locale {
     return ", %s kezdettel";
   }
   daysOfTheWeek() {
-    return ["vasárnap", "hétfőn", "kedden", "szerdán", "csütörtökön", "pénteken", "szombaton"];
+    return ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
   }
   monthsOfTheYear() {
     return [
