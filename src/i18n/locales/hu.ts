@@ -30,13 +30,13 @@ export class hu implements Locale {
     return "minden órában";
   }
   atSpace() {
-    return "At ";
+    return "Ekkor: ";
   }
   everyMinuteBetweenX0AndX1() {
-    return "Percenként %s és %s között";
+    return "percenként %s és %s között";
   }
   at() {
-    return "At";
+    return "ekkor:";
   }
   spaceAnd() {
     return " és";
@@ -48,19 +48,19 @@ export class hu implements Locale {
     return "minden %s másodpercben";
   }
   secondsX0ThroughX1PastTheMinute() {
-    return "seconds %s through %s past the minute";
+    return "%s másodpercben %s perc után";
   }
   atX0SecondsPastTheMinute() {
-    return "at %s seconds past the minute";
+    return "%s másodperccel a perc után";
   }
   everyX0Minutes() {
     return "minden %s percben";
   }
   minutesX0ThroughX1PastTheHour() {
-    return "minutes %s through %s past the hour";
+    return "%s percben %s óra után";
   }
   atX0MinutesPastTheHour() {
-    return "at %s minutes past the hour";
+    return "%s perccel az óra után";
   }
   everyX0Hours() {
     return "minden %s órában";
@@ -69,7 +69,7 @@ export class hu implements Locale {
     return "%s és %s között";
   }
   atX0() {
-    return "at %s";
+    return "ekkor %s";
   }
   commaEveryDay() {
     return ", minden nap";
@@ -78,7 +78,7 @@ export class hu implements Locale {
     return ", a hét minden %s napján";
   }
   commaX0ThroughX1() {
-    return ", %s through %s";
+    return ", %s - %s";
   }
   first() {
     return "első";
@@ -96,28 +96,28 @@ export class hu implements Locale {
     return "ötödik";
   }
   commaOnThe() {
-    return ", on the ";
+    return ", a ";
   }
   spaceX0OfTheMonth() {
-    return " %s of the month";
+    return " a hónap %s";
   }
   lastDay() {
-    return "the last day";
+    return "az utolsó nap";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", on the last %s of the month";
+    return ", a hónap utolsó %s";
   }
   commaOnlyOnX0() {
-    return ", only on %s";
+    return ", csak ekkor: %s";
   }
   commaAndOnX0() {
-    return ", and on %s";
+    return ", és %s";
   }
   commaEveryX0Months() {
     return ", minden %s hónapban";
   }
   commaOnlyInX0() {
-    return ", only in %s";
+    return ", csak ekkor: %s";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", a hónap utolsó napján";
@@ -132,19 +132,19 @@ export class hu implements Locale {
     return "első hétköznap";
   }
   weekdayNearestDayX0() {
-    return "weekday nearest day %s";
+    return "hétköznap legközelebbi nap %s";
   }
   commaOnTheX0OfTheMonth() {
-    return ", on the %s of the month";
+    return ", a hónap %s";
   }
   commaEveryX0Days() {
     return ", %s naponként";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
-    return ", between day %s and %s of the month";
+    return ", a hónap %s és %s napja között";
   }
   commaOnDayX0OfTheMonth() {
-    return ", on day %s of the month";
+    return ", a hónap %s napján";
   }
   commaEveryHour() {
     return ", minden órában";
@@ -153,10 +153,10 @@ export class hu implements Locale {
     return ", %s évente";
   }
   commaStartingX0() {
-    return ", starting %s";
+    return ", %s kezdettel";
   }
   daysOfTheWeek() {
-    return ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
+    return ["vasárnap", "hétfőn", "kedden", "szerdán", "csütörtökön", "pénteken", "szombaton"];
   }
   monthsOfTheYear() {
     return [
