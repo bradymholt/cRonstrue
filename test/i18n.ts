@@ -286,4 +286,10 @@ describe("i18n", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "1분마다");
     });
   });
+
+  describe("hu", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "hu" }), "Minden percben");
+    });
+  });
 });
