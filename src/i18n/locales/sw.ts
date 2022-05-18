@@ -50,7 +50,6 @@ export class sw implements Locale {
     return "sekunde ya %s hadi %s baada ya dakika";
   }
   atX0SecondsPastTheMinute() {
-    return "at %s seconds past the minute";
     return "sekunde %s baada ya dakika";
   }
   everyX0Minutes() {
