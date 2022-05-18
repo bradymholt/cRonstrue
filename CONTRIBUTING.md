@@ -6,20 +6,6 @@ If you would like to make a non-trivial change to this project, please first dis
 
 Here are some helpful scripts that should help you get up and running:
 
-
-### Setup
-
-```
-npm install
-```
-
-### Build
-```
-npm start
-```
-
-### Test
-
-```
-npm test
-```
+- Install dependencies - `npm install`
+- Build - `npm start`
+- Run Tests - `npm test`
