@@ -10,7 +10,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'build-skip')"
     strategy:
       matrix:
         node-version: [12, 14, 16]
