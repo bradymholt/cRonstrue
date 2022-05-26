@@ -174,7 +174,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_PT" }),
-        "A cada 5 minutos, entre 03:00 PM e 03:59 PM, de segunda-feira a sexta-feira"
+        "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira"
       );
     });
   });
