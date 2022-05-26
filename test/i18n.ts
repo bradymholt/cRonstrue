@@ -166,6 +166,19 @@ describe("i18n", function () {
     });
   });
 
+  describe("pt_PT", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "pt_PT" }), "A cada minuto");
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_PT" }),
+        "A cada 5 minutos, entre 03:00 PM e 03:59 PM, de segunda-feira a sexta-feira"
+      );
+    });
+  });
+
   describe("ro", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ro" }), "În fiecare minut");
