@@ -11,6 +11,7 @@ export { nb } from "./locales/nb"; // Norwegian
 export { sv } from "./locales/sv"; // Swedish
 export { pl } from "./locales/pl"; // Polish
 export { pt_BR } from "./locales/pt_BR"; // Portuguese (Brazil)
+export { pt_PT } from "./locales/pt_PT"; // Portuguese (Portugal)
 export { ro } from "./locales/ro"; // Romanian
 export { ru } from "./locales/ru"; // Russian
 export { tr } from "./locales/tr"; // Turkish
