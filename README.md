@@ -184,7 +184,7 @@ No, cRonstrue does not support this.  This library simply describes a cron expre
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
 - zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
 - be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
-- hu - Hungarian ([Orcsity Norbert](https://github.com/Northber))
+- hu - Hungarian ([Orcsity Norbert](https://github.com/Northber), Szabó Dániel)
 
 ## License
 

@@ -36,7 +36,7 @@ export class hu implements Locale {
     return "percenként %s és %s között";
   }
   at() {
-    return "ekkor:";
+    return "Ekkor:";
   }
   spaceAnd() {
     return " és";
@@ -45,22 +45,22 @@ export class hu implements Locale {
     return "minden másodpercben";
   }
   everyX0Seconds() {
-    return "minden %s másodpercben";
+    return "%s másodpercenként";
   }
   secondsX0ThroughX1PastTheMinute() {
-    return "%s másodpercben %s perc után";
+    return "%s. másodpercben %s perc után";
   }
   atX0SecondsPastTheMinute() {
-    return "%s másodperccel a perc után";
+    return "%s. másodpercben";
   }
   everyX0Minutes() {
-    return "minden %s percben";
+    return "minden %s. percben";
   }
   minutesX0ThroughX1PastTheHour() {
-    return "%s percben %s óra után";
+    return "%s. percben %s óra után";
   }
   atX0MinutesPastTheHour() {
-    return "%s perccel az óra után";
+    return "%s. percben";
   }
   everyX0Hours() {
     return "minden %s órában";
