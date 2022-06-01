@@ -28,3 +28,4 @@ export { sw } from "./locales/sw"; // Swahili
 export { fa } from "./locales/fa"; // Farsi
 export { ca } from "./locales/ca"; // Catalan
 export { be } from "./locales/be"; // Be
+export { hu } from "./locales/hu"; // Hungarian
