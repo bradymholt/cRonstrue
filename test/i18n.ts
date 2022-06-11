@@ -305,4 +305,10 @@ describe("i18n", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "hu" }), "Minden percben");
     });
   });
+
+  describe("af", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "af" }), "Elke minuut");
+    });
+  });
 });
