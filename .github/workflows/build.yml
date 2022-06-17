@@ -5,6 +5,7 @@ on:
     branches:
     - master
   pull_request:
+    # Base branches for PR
     branches:
     - master
 jobs:
