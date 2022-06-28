@@ -74,7 +74,7 @@ export class fr implements Locale {
     return ", tous les jours";
   }
   commaEveryX0DaysOfTheWeek() {
-    return ", every %s days of the week";
+    return ", tous les %s jours de la semaine";
   }
   commaX0ThroughX1() {
     return ", de %s à %s";
@@ -152,7 +152,7 @@ export class fr implements Locale {
     return ", du %s au %s";
   }
   commaStartingX0() {
-    return ", départ %s";
+    return ", à partir de %s";
   }
   daysOfTheWeek() {
     return ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
