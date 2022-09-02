@@ -14,7 +14,16 @@ export class ExpressionDescriptor {
   expressionParts: string[];
   options: Options;
   i18n: Locale;
-
+  parseDetails: {
+    full?: string | null;
+    min?: string | null;
+    hour?: string | null;
+    sec?: string | null;
+    mond?: string | null;
+    mon?: string | null;
+    wkd?: string | null;
+    year?: string | null;
+  };
   /**
    * Converts a cron expression into a description a human can read
    * @static
@@ -65,10 +74,44 @@ export class ExpressionDescriptor {
     localesLoader.load(ExpressionDescriptor.locales);
   }
 
+  static toDetails(
+    expression: string,
+    {
+      throwExceptionOnParseError = true,
+      verbose = false,
+      dayOfWeekStartIndexZero = true,
+      monthStartIndexZero = false,
+      use24HourTimeFormat,
+      locale = null,
+    }: Options = {}
+  ) {
+    // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
+    // an Options type so we can pass around options with ease.
+
+    let options = <Options>{
+      throwExceptionOnParseError: throwExceptionOnParseError,
+      verbose: verbose,
+      dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
+      monthStartIndexZero: monthStartIndexZero,
+      use24HourTimeFormat: use24HourTimeFormat,
+      locale: locale,
+    };
+
+    let descripter = new ExpressionDescriptor(expression, options);
+    descripter.parseDetails.full = descripter.getFullDescription();
+    descripter.getTimeOfDayDescription();
+    descripter.parseDetails.mond = descripter.getDayOfMonthDescription();
+    descripter.parseDetails.mon = descripter.getMonthDescription();
+    descripter.parseDetails.wkd = descripter.getDayOfWeekDescription();
+    descripter.parseDetails.year = descripter.getYearDescription();
+    return descripter.parseDetails;
+  }
+
   constructor(expression: string, options: Options) {
     this.expression = expression;
     this.options = options;
     this.expressionParts = new Array(5);
+    this.parseDetails = {};
 
     if (!this.options.locale && ExpressionDescriptor.defaultLocale) {
       this.options.locale = ExpressionDescriptor.defaultLocale;
@@ -135,7 +178,17 @@ export class ExpressionDescriptor {
       !StringUtilities.containsAny(secondsExpression, ExpressionDescriptor.specialCharacters)
     ) {
       // specific time of day (i.e. 10 14)
-      description += this.i18n.atSpace() + this.formatTime(hourExpression, minuteExpression, secondsExpression);
+      let time = this.formatTime(hourExpression, minuteExpression, secondsExpression);
+      let timeList = time.split(":");
+      if (timeList.length < 3) {
+        this.parseDetails.hour = timeList[0];
+        this.parseDetails.min = timeList[1].substring(0, 2);
+      } else {
+        this.parseDetails.hour = timeList[0];
+        this.parseDetails.min = timeList[1];
+        this.parseDetails.sec = timeList[2].substring(0, 2);
+      }
+      description += this.i18n.atSpace() + time;
     } else if (
       !secondsExpression &&
       minuteExpression.indexOf("-") > -1 &&
@@ -150,6 +203,8 @@ export class ExpressionDescriptor {
         this.formatTime(hourExpression, minuteParts[0], ""),
         this.formatTime(hourExpression, minuteParts[1], "")
       );
+      this.parseDetails.min = description
+      this.parseDetails.hour = description
     } else if (
       !secondsExpression &&
       hourExpression.indexOf(",") > -1 &&
@@ -173,11 +228,16 @@ export class ExpressionDescriptor {
           description += this.i18n.spaceAnd();
         }
       }
+      this.parseDetails.hour = description
+      this.parseDetails.min = minuteExpression
     } else {
       // default time description
       let secondsDescription = this.getSecondsDescription();
       let minutesDescription = this.getMinutesDescription();
       let hoursDescription = this.getHoursDescription();
+      this.parseDetails.sec = secondsDescription;
+      this.parseDetails.min = minutesDescription;
+      this.parseDetails.hour = hoursDescription;
 
       description += secondsDescription;
 
@@ -281,7 +341,10 @@ export class ExpressionDescriptor {
       const atTheHourMatches = Array.from(description.matchAll(/:00/g));
       if (atTheHourMatches.length > 1) {
         const lastAtTheHourMatchIndex = atTheHourMatches[atTheHourMatches.length - 1].index;
-        description = description.substring(0, lastAtTheHourMatchIndex) + ":59" + description.substring(lastAtTheHourMatchIndex! + 3);
+        description =
+          description.substring(0, lastAtTheHourMatchIndex) +
+          ":59" +
+          description.substring(lastAtTheHourMatchIndex! + 3);
       }
     }
 
@@ -403,8 +466,8 @@ export class ExpressionDescriptor {
       case "LW":
         description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
         break;
-      default:
-        let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/); // i.e. 3W or W2
+      default: // i.e. 3W or W2
+        let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
         if (weekDayNumberMatches) {
           let dayNumber: number = parseInt(weekDayNumberMatches[0].replace("W", ""));
           let dayString: string =
