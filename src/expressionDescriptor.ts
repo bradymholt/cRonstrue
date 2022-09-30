@@ -320,7 +320,9 @@ export class ExpressionDescriptor {
           }
         },
         (s) => {
-          return this.i18n.commaX0ThroughX1();
+          // If both DOM and DOW are specified, the cron will execute at either time.
+          const domSpecified = this.expressionParts[3] != "*";
+          return domSpecified ? this.i18n.commaAndX0ThroughX1() : this.i18n.commaX0ThroughX1();
         },
         (s) => {
           let format: string | null = null;
