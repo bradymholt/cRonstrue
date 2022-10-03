@@ -89,6 +89,9 @@ export class pl implements Locale {
   commaX0ThroughX1() {
     return ", od %s do %s";
   }
+  commaAndX0ThroughX1() {
+    return ", i od %s do %s";
+  }
   everyHour() {
     return "co godzinę";
   }

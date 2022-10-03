@@ -86,6 +86,9 @@ export class pt_PT implements Locale {
   commaX0ThroughX1() {
     return ", de %s a %s";
   }
+  commaAndX0ThroughX1() {
+    return ", e de %s a %s";
+  }
   everyHour() {
     return "a cada hora";
   }

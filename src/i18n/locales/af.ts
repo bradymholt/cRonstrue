@@ -79,6 +79,9 @@ export class af implements Locale {
   commaX0ThroughX1() {
     return ", %s deur na %s";
   }
+  commaAndX0ThroughX1() {
+    return ", en %s deur na %s";
+  }
   first() {
     return "eerste";
   }

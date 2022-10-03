@@ -77,6 +77,9 @@ export class uk implements Locale {
   commaX0ThroughX1() {
     return ", %s по %s";
   }
+  commaAndX0ThroughX1() {
+    return ", та %s по %s";
+  }
   first() {
     return "перший";
   }

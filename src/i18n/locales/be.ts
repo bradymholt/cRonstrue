@@ -77,6 +77,9 @@ export class be implements Locale {
   commaX0ThroughX1() {
     return ", %s па %s";
   }
+  commaAndX0ThroughX1() {
+    return ", і %s па %s";
+  }
   first() {
     return "першы";
   }

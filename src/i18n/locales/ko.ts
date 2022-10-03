@@ -115,6 +115,10 @@ export class ko implements Locale {
     return ", %s에서 %s까지";
   }
 
+  public commaAndX0ThroughX1() {
+    return ", 및%s에서 %s까지";
+  }
+
   public first() {
     return "첫 번째";
   }

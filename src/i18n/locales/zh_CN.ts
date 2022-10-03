@@ -89,6 +89,9 @@ export class zh_CN implements Locale {
   commaX0ThroughX1() {
     return ", %s至%s";
   }
+  commaAndX0ThroughX1() {
+    return ", 和%s至%s";
+  }
   first() {
     return "第一个";
   }

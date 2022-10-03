@@ -77,6 +77,9 @@ export class sv implements Locale {
   commaX0ThroughX1() {
     return ", %s till %s";
   }
+  commaAndX0ThroughX1() {
+    return ", och %s till %s";
+  }
   first() {
     return "första";
   }

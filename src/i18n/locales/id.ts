@@ -79,6 +79,9 @@ export class id implements Locale {
   commaX0ThroughX1() {
     return ", %s sampai %s";
   }
+  commaAndX0ThroughX1() {
+    return ", dan %s sampai %s";
+  }
   first() {
     return "pertama";
   }

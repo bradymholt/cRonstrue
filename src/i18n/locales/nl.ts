@@ -77,6 +77,9 @@ export class nl implements Locale {
   commaX0ThroughX1() {
     return ", %s t/m %s";
   }
+  commaAndX0ThroughX1() {
+    return ", en %s t/m %s";
+  }
   first() {
     return "eerste";
   }

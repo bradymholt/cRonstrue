@@ -91,6 +91,9 @@ export class it implements Locale {
   commaX0ThroughX1() {
     return ", %s al %s";
   }
+  commaAndX0ThroughX1() {
+    return ", e %s al %s";
+  }
   everyHour() {
     return "ogni ora";
   }

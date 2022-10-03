@@ -77,6 +77,9 @@ export class zh_TW implements Locale {
   commaX0ThroughX1() {
     return ", %s 到 %s";
   }
+  commaAndX0ThroughX1() {
+    return ", 和 %s 到 %s";
+  }
   first() {
     return "第一個";
   }

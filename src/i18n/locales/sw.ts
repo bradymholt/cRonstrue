@@ -79,6 +79,9 @@ export class sw implements Locale {
   commaX0ThroughX1() {
     return ", %s hadi %s";
   }
+  commaAndX0ThroughX1() {
+    return ", na %s hadi %s";
+  }
   first() {
     return "ya kwanza";
   }

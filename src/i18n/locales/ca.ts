@@ -88,6 +88,9 @@ export class ca implements Locale {
   commaX0ThroughX1() {
     return ", de %s a %s";
   }
+  commaAndX0ThroughX1() {
+    return ", i de %s a %s";
+  }
   everyHour() {
     return "cada hora";
   }

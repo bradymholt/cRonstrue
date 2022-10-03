@@ -80,6 +80,9 @@ export class hu implements Locale {
   commaX0ThroughX1() {
     return ", %s - %s";
   }
+  commaAndX0ThroughX1() {
+    return ", és %s - %s";
+  }
   first() {
     return "első";
   }

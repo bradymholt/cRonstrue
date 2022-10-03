@@ -79,6 +79,9 @@ export class fa implements Locale {
   commaX0ThroughX1() {
     return ", %s تا %s";
   }
+  commaAndX0ThroughX1() {
+    return ", و %s تا %s";
+  }
   first() {
     return "اول";
   }

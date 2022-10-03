@@ -77,6 +77,9 @@ export class tr implements Locale {
   commaX0ThroughX1() {
     return ", %s ile %s arasında";
   }
+  commaAndX0ThroughX1() {
+    return ", ve %s ile %s arasında";
+  }
   first() {
     return "ilk";
   }
