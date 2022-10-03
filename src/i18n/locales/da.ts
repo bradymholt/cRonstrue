@@ -77,6 +77,9 @@ export class da implements Locale {
   commaX0ThroughX1() {
     return ", %s til og med %s";
   }
+  commaAndX0ThroughX1() {
+    return ", og %s til og med %s";
+  }
   everyHour() {
     return "hver time";
   }

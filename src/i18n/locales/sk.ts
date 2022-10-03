@@ -79,6 +79,9 @@ export class sk implements Locale {
   commaX0ThroughX1() {
     return ", od %s do %s";
   }
+  commaAndX0ThroughX1() {
+    return ", a od %s do %s";
+  }
   first() {
     return "prvý";
   }

@@ -78,6 +78,9 @@ export class ro implements Locale {
   commaX0ThroughX1() {
     return ", de %s până %s";
   }
+  commaAndX0ThroughX1() {
+    return ", și de %s până %s";
+  }
   everyHour() {
     return "în fiecare oră";
   }

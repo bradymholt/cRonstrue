@@ -78,6 +78,9 @@ export class he implements Locale {
   commaX0ThroughX1() {
     return ", %s עד %s";
   }
+  commaAndX0ThroughX1() {
+    return ", ו %s עד %s";
+  }
   first() {
     return "ראשון";
   }

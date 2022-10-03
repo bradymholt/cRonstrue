@@ -77,6 +77,9 @@ export class ru implements Locale {
   commaX0ThroughX1() {
     return ", %s по %s";
   }
+  commaAndX0ThroughX1() {
+    return ", и %s по %s";
+  }
   first() {
     return "первый";
   }

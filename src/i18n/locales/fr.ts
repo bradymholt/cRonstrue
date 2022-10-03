@@ -79,6 +79,9 @@ export class fr implements Locale {
   commaX0ThroughX1() {
     return ", de %s à %s";
   }
+  commaAndX0ThroughX1() {
+    return ", et de %s à %s";
+  }
   first() {
     return "premier";
   }

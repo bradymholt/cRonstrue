@@ -64,6 +64,9 @@ export class ja implements Locale {
   commaX0ThroughX1(): string {
     return "、%s から %s まで";
   }
+  commaAndX0ThroughX1() {
+    return "、%s から %s まで";
+  }
   first(): string {
     return "1 番目";
   }

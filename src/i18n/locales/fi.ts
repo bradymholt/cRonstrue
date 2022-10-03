@@ -79,6 +79,9 @@ export class fi implements Locale {
   commaX0ThroughX1(): string {
     return ", %s - %s";
   }
+  commaAndX0ThroughX1() {
+    return ", %s - %s";
+  }
   commaDaysBeforeTheLastDayOfTheMonth(): string {
     return ", %s päivää ennen kuukauden viimeistä päivää";
   }
