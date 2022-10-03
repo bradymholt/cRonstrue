@@ -29,6 +29,7 @@ export interface Locale {
   commaEveryDay(): string;
   commaEveryX0DaysOfTheWeek(): string;
   commaX0ThroughX1(): string;
+  commaAndX0ThroughX1(): string;
   commaMonthX0ThroughMonthX1(): string|null; // optional
   commaYearX0ThroughYearX1(): string|null; // optional
   first(): string;
