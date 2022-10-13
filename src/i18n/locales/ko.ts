@@ -48,7 +48,7 @@ export class ko implements Locale {
   }
 
   public atSpace() {
-    return "에서 ";
+    return "시간 ";
   }
 
   public everyMinuteBetweenX0AndX1() {
@@ -56,7 +56,7 @@ export class ko implements Locale {
   }
 
   public at() {
-    return "에서";
+    return "시간";
   }
 
   public spaceAnd() {
@@ -116,7 +116,7 @@ export class ko implements Locale {
   }
 
   public commaAndX0ThroughX1() {
-    return ", 및%s에서 %s까지";
+    return ", 및 %s에서 %s까지";
   }
 
   public first() {
