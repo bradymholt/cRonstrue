@@ -30,3 +30,4 @@ export { ca } from "./locales/ca"; // Catalan
 export { be } from "./locales/be"; // Be
 export { hu } from "./locales/hu"; // Hungarian
 export { af } from "./locales/af"; // Afrikaans
+export { th } from "./locales/th"; // Thai
