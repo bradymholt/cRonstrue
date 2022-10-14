@@ -9,7 +9,7 @@ This library was ported from the original C# implementation called [cron-express
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - Supports [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions
-- i18n support with 29 languages
+- i18n support with 30 languages
 
 ## Demo
 
@@ -180,6 +180,7 @@ No, cRonstrue does not support this.  This library simply describes a cron expre
 - sl - Slovenian ([Jani Bevk](https://github.com/jenzy))
 - sw - Swahili ([Leylow Lujuo](https://github.com/leyluj))
 - sv - Swedish ([roobin](https://github.com/roobin))
+- th - Thai ([Teerapat Prommarak](https://github.com/xeusteerapat))
 - tr - Turkish ([Mustafa SADEDİL](https://github.com/sadedil))
 - uk - Ukrainian ([Taras](https://github.com/tbudurovych))
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))

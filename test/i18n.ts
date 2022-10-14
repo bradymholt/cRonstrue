@@ -1,4 +1,4 @@
-import 'mocha';
+import "mocha";
 import chai = require("chai");
 import cronstrue from "../src/cronstrue-i18n";
 let assert = chai.assert;
@@ -56,13 +56,11 @@ describe("i18n", function () {
     });
   });
 
-
-  describe("id", function() {
-    it("* * * * *", function() {
+  describe("id", function () {
+    it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "id" }), "Setiap menit");
     });
   });
-
 
   describe("nb", function () {
     it("* * * * *", function () {
@@ -77,7 +75,10 @@ describe("i18n", function () {
     });
 
     it("0 5 1/1 * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }), "Kl.05:00");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
+        "Kl.05:00"
+      );
     });
 
     it("15 11 * 1/1 MON#1", function () {
@@ -119,7 +120,10 @@ describe("i18n", function () {
     });
 
     it("0 15 10 ? * 6#3", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "sv" }), "Kl 10:15, den tredje lördagen av månaden");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "sv" }),
+        "Kl 10:15, den tredje lördagen av månaden"
+      );
     });
 
     it("0 0 15 ? * MON *", function () {
@@ -309,6 +313,30 @@ describe("i18n", function () {
   describe("af", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "af" }), "Elke minuut");
+    });
+  });
+
+  describe("th", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "th" }), "ทุกๆ นาที");
+    });
+
+    it("0 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "th" }), "ทุกๆ ชั่วโมง");
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "th" }),
+        "ทุกๆ 5 นาที, ระหว่าง 03:00 PM ถึง 03:59 PM, วันจันทร์ ถึง วันศุกร์"
+      );
+    });
+
+    it("15 14 1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "th" }),
+        "เมื่อ 02:15 PM, ในวัน 1 ของเดือน"
+      );
     });
   });
 });
