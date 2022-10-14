@@ -113,7 +113,7 @@ export class th implements Locale {
     return ", เท่านั้น %s";
   }
   commaAndOnX0() {
-    return ", และ on %s";
+    return ", และใน %s";
   }
   commaEveryX0Months() {
     return ", ทุกๆ %s เดือน";
