@@ -204,7 +204,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ru" }),
-        "Каждые 5 минут, с 15:00 по 15:59, понедельник по пятница"
+        "Каждые 5 минут, с 15:00 по 15:59, с понедельника по пятницу"
       );
     });
   });
