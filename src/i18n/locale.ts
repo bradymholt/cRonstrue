@@ -15,50 +15,60 @@ export interface Locale {
   at(): string;
   spaceAnd(): string;
   everySecond(): string;
-  everyX0Seconds(): string;
+  everyX0Seconds(s?: string): string;
   secondsX0ThroughX1PastTheMinute(): string;
-  atX0SecondsPastTheMinute(): string;
-  atX0SecondsPastTheMinuteGt20(): string|null; // optional
-  everyX0Minutes(): string;
+  atX0SecondsPastTheMinute(s?: string): string;
+  atX0SecondsPastTheMinuteGt20(): string | null; // optional
+  everyX0Minutes(s?: string): string;
   minutesX0ThroughX1PastTheHour(): string;
-  atX0MinutesPastTheHour(): string;
-  atX0MinutesPastTheHourGt20(): string|null; // optional
-  everyX0Hours(): string;
+  atX0MinutesPastTheHour(s?: string): string;
+  atX0MinutesPastTheHourGt20(): string | null; // optional
+  everyX0Hours(s?: string): string;
   betweenX0AndX1(): string;
   atX0(): string;
   commaEveryDay(): string;
-  commaEveryX0DaysOfTheWeek(): string;
-  commaX0ThroughX1(): string;
-  commaAndX0ThroughX1(): string;
-  commaMonthX0ThroughMonthX1(): string|null; // optional
-  commaYearX0ThroughYearX1(): string|null; // optional
-  first(): string;
-  second(): string;
-  third(): string;
-  fourth(): string;
-  fifth(): string;
-  commaOnThe(): string;
+  commaEveryX0DaysOfTheWeek(s?: string): string;
+  commaX0ThroughX1(s?: string): string;
+  commaAndX0ThroughX1(s?: string): string;
+  commaMonthX0ThroughMonthX1(): string | null; // optional
+  commaYearX0ThroughYearX1(): string | null; // optional
+  first(s?: string): string;
+  second(s?: string): string;
+  third(s?: string): string;
+  fourth(s?: string): string;
+  fifth(s?: string): string;
+  commaOnThe(s?: string): string;
   spaceX0OfTheMonth(): string;
   lastDay(): string;
-  commaOnTheLastX0OfTheMonth(): string;
-  commaOnlyOnX0(): string;
+  commaOnTheLastX0OfTheMonth(s?: string): string;
+  commaOnlyOnX0(s?: string): string;
   commaAndOnX0(): string;
-  commaEveryX0Months(): string;
+  commaEveryX0Months(s?: string): string;
   commaOnlyInX0(): string;
   commaOnlyInMonthX0?(): string;
   commaOnlyInYearX0?(): string;
   commaOnTheLastDayOfTheMonth(): string;
   commaOnTheLastWeekdayOfTheMonth(): string;
-  commaDaysBeforeTheLastDayOfTheMonth(): string;
+  commaDaysBeforeTheLastDayOfTheMonth(s?: string): string;
   firstWeekday(): string;
   weekdayNearestDayX0(): string;
   commaOnTheX0OfTheMonth(): string;
-  commaEveryX0Days(): string;
-  commaBetweenDayX0AndX1OfTheMonth(): string;
-  commaOnDayX0OfTheMonth(): string;
-  commaEveryX0Years(): string;
+  commaEveryX0Days(s?: string): string;
+  commaBetweenDayX0AndX1OfTheMonth(s?: string): string;
+  commaOnDayX0OfTheMonth(s?: string): string;
+  commaEveryX0Years(s?: string): string;
   commaStartingX0(): string;
   dayX0?(): string;
   daysOfTheWeek(): string[];
+  /** If multiple forms are needed in "%s through %s"
+   * @param f 1 for "from", 2 for "through"
+   * @return {string[]} days of week
+   */
+  daysOfTheWeekInCase?(f?: number): string[];
   monthsOfTheYear(): string[];
+  /** If multiple forms are needed in "%s through %s"
+   * @param f 1 for "from", 2 for "through"
+   * @return {string[]} months of year
+   */
+  monthsOfTheYearInCase?(f?: number): string[];
 }
