@@ -87,10 +87,10 @@ export class ru implements Locale {
     return getPhraseByNumber(s, ["", ", каждые %s дня недели", ", каждые %s дней недели"]);
   }
   commaX0ThroughX1(s: string) {
-    return s[0] == "2" || s[0] == "3" ? ", со %s по %s" : ", с %s по %s";
+    return s && (s[0] == "2" || s[0] == "3") ? ", со %s по %s" : ", с %s по %s";
   }
   commaAndX0ThroughX1(s: string) {
-    return s[0] == "2" || s[0] == "3" ? " и со %s по %s" : " и с %s по %s";
+    return s && (s[0] == "2" || s[0] == "3") ? " и со %s по %s" : " и с %s по %s";
   }
   first(s: string) {
     return getPhraseByDayOfWeek(s, ["первое", "первый", "первую"]);
@@ -120,7 +120,7 @@ export class ru implements Locale {
     return getPhraseByDayOfWeek(s, [", в последнее %s месяца", ", в последний %s месяца", ", в последнюю %s месяца"]);
   }
   commaOnlyOnX0(s: string) {
-    return s[0] === "2" ? ", только во %s" : ", только в %s";
+    return s && s[0] === "2" ? ", только во %s" : ", только в %s";
   }
   commaAndOnX0() {
     return ", и %s";
@@ -160,10 +160,10 @@ export class ru implements Locale {
     return getPhraseByNumber(s, [", каждый %s день", ", каждые %s дня", ", каждые %s дней"]);
   }
   commaBetweenDayX0AndX1OfTheMonth(s: string) {
-    return s.substring(0, s.indexOf("-")) == "2" ? ", со %s по %s число месяца" : ", с %s по %s число месяца";
+    return s && s.substring(0, s.indexOf("-")) == "2" ? ", со %s по %s число месяца" : ", с %s по %s число месяца";
   }
   commaOnDayX0OfTheMonth(s: string) {
-    return s[0] == "2" ? ", во %s число месяца" : ", в %s число месяца";
+    return s && s[0] == "2" ? ", во %s число месяца" : ", в %s число месяца";
   }
   commaEveryX0Years(s: string) {
     return getPhraseByNumber(s, [", каждый %s год", ", каждые %s года", ", каждые %s лет"]);
