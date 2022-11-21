@@ -26,6 +26,9 @@
     "cron schedule"
   ],
   "main": "dist/cronstrue.js",
+  "bin": {
+    "cronstrue": "bin/cli.js"
+  },
   "typings": "dist/cronstrue.d.ts",
   "files": [
     "dist/",

@@ -86,6 +86,23 @@ cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
 
+### CLI Usage
+
+```sh
+$ npm install -g cronstrue
+
+$ cronstrue 1 2 3 4 5
+At 02:01 AM, on day 3 of the month, and on Friday, only in April
+
+$ cronstrue 1 2 3
+Error: too few arguments (3): 1 2 3
+Usage (5 args): cronstrue minute hour day-of-month month day-of-week
+or
+Usage (6 args): cronstrue second minute hour day-of-month month day-of-week
+or
+Usage (7 args): cronstrue second minute hour day-of-month month day-of-week year
+```
+
 ## Options
 
 An options object can be passed as the second parameter to `cronstrue.toString`.  The following options are available:
