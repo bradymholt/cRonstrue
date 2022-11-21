@@ -44,11 +44,10 @@ jobs:
           name: npm-logs
           path: ~/.npm/_logs
       - name: Package release assets
-        run: zip –r assets.zip dist locales i18n.js i18n.d.ts
+        run: zip –r assets.zip dist/ locales/ i18n.js i18n.d.ts
       - name: Create a Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.push.outputs.tag-name }}
           generate_release_notes: true
-          files: |
-            assets.zip
+          files: assets.zip
