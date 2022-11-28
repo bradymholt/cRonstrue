@@ -339,4 +339,9 @@ describe("i18n", function () {
       );
     });
   });
+  describe("ar", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ar" }), "كل دقيقة");
+    });
+  });
 });
