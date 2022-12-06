@@ -77,12 +77,10 @@ module.exports = [
             process: function (resourcePath, source) {
               let localeCode = resourcePath.match(/i18n[\/\\]locales[\/\\]([a-zA-Z_]+)\.ts$/)[1];
               source = `\
+var exports = __webpack_exports__;
 ${source}
 import cronstrue from \"cronstrue\";
 cronstrue.locales["${localeCode}"] = new ${localeCode}();
-const toString = cronstrue.toString;
-export default cronstrue;
-export { toString };
 `;
               return source;
             },
