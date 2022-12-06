@@ -153,8 +153,8 @@ import 'cronstrue/locales/es';
 
 // Browser
 <script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
-<script src="https://unpkg.com/cronstrue@latest/dist/locales/fr.min.js" async></script>
-<script src="https://unpkg.com/cronstrue@latest/dist/locales/es.min.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/locales/fr.min.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/locales/es.min.js" async></script>
 
 cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
 cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
