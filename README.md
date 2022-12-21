@@ -162,13 +162,29 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ## Frequently Asked Questions
 
-> The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?
+1. The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?
 
-This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-validator](https://www.npmjs.com/package/cron-validator), [cron-validate](https://github.com/Airfooox/cron-validate), or [cron-parser](https://www.npmjs.com/package/cron-parser).
+    This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-parser](https://www.npmjs.com/package/cron-parser).  Example validation with cron-parser:
 
-> Can cRonstrue output the next occurrence of the cron expression?
+   ```
+   const cronParser = require("cron-parser");
+   const cronstrue = require("cronstrue");
 
-No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
+   const expression = "* * * * * *";
+
+   // Validate expression first
+   let isCronValid = true;
+   try { cronParser.parseExpression(expression) } catch(e) { isCronValid = false; }
+   
+   // If valid, then pass into cRonstrue
+   if (isCronValid) {
+     console.log(cronstrue.toString("* * * * *"));
+   }
+   ```
+
+2. Can cRonstrue output the next occurrence of the cron expression?
+
+    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
 
 ### Supported Locales
 
