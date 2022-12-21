@@ -17,4 +17,4 @@ assignees: ''
 "Every year"
 
 **Prerequisites**
-- [ ] The cron expression being passed in in valid.  cRonstrue does not validate expressions and assumes the one you pass is already valid.  See the [FAQ](https://github.com/bradymholt/cRonstrue#frequently-asked-questions) for more details.
+- [ ] The cron expression being passed in is a valid expression.  cRonstrue does not validate expressions and assumes the one you pass is already valid.  See the [FAQ](https://github.com/bradymholt/cRonstrue#frequently-asked-questions) for more details.
