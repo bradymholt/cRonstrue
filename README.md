@@ -1,5 +1,13 @@
 # cRonstrue ![Build Status](https://github.com/bradymholt/cRonstrue/workflows/Build/badge.svg) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 
+<img align="left" src="https://user-images.githubusercontent.com/759811/210273710-b13913e2-0a71-4d9d-94da-1fe538b8a73e.gif"/>
+
+<br/>
+
+ &nbsp;**Would you take a quick second and ⭐️ my repo?**
+
+<br/>
+
 cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
 This library was ported from the original C# implementation called [cron-expression-descriptor](https://github.com/bradymholt/cron-expression-descriptor) and is also available in a [few other languages](https://github.com/bradymholt/cron-expression-descriptor#ports).
