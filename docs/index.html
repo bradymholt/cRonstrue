@@ -47,12 +47,19 @@
         border-bottom: solid 1px gray;
         padding: 20px 0;
       }
-      #description {
+      div#description {
         padding-top: 20px;
         color: #0000ff;
         font-weight: 800;
         font-size: 2rem;
         text-align: center;
+      }
+
+      @media only screen and (max-width: 640px) {
+        form {
+          display: flex;
+          flex-direction: column;
+        }
       }
     </style>
   </head>
