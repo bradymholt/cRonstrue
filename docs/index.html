@@ -1,272 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cRonstrue - convert cron expressions to human readable descriptions</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Courier New", Courier, monospace;
+      }
+      h1,
+      h2 {
+        margin: 5px 0;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      input,
+      select,
+      button {
+        border: 1px solid rgb(169, 165, 165);
+        font-size: 1rem;
+      }
+      input {
+        padding: 5px;
+      }
+      select,
+      button {
+        padding: 4px;
+      }
+      button {
+        cursor: pointer;
+      }
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 25px;
+      }
+      section {
+        text-align: center;
+        border-top: solid 1px gray;
+        border-bottom: solid 1px gray;
+        padding: 20px 0;
+      }
+      #description {
+        padding-top: 20px;
+        color: #0000ff;
+        font-weight: 800;
+        font-size: 2rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>cRonstrue</h1>
+      <h2>convert cron expressions to human readable descriptions</h2>
+      <section>
+        <form>
+          <input type="text" id="expression" size="20" value="*/5 * * * *" />
+          <select id="locale">
+            <option value="en" selected>English</option>
+            <option value="ca">Catalan</option>
+            <option value="cs">Czech</option>
+            <option value="es">Spanish</option>
+            <option value="da">Danish</option>
+            <option value="de">German</option>
+            <option value="fi">Finnish</option>
+            <option value="fr">French</option>
+            <option value="fa">Farsi</option>
+            <option value="he">Hebrew</option>
+            <option value="it">Italian</option>
+            <option value="id">Indonesia</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="nb">Norwegian</option>
+            <option value="nl">Dutch</option>
+            <option value="pl">Polish</option>
+            <option value="pt_BR">Portuguese (Brazil)</option>
+            <option value="pt_PT">Portuguese (Portugal)</option>
+            <option value="ro">Romanian</option>
+            <option value="ru">Russian</option>
+            <option value="sk">Slovakian</option>
+            <option value="sl">Slovenian</option>
+            <option value="sw">Swahili</option>
+            <option value="sv">Swedish</option>
+            <option value="tr">Turkish</option>
+            <option value="uk">Ukrainian</option>
+            <option value="zh_CN">Chinese (Simplified)</option>
+            <option value="zh_TW">Chinese (Traditional)</option>
+            <option value="be">Belarusian</option>
+            <option value="hu">Hungarian</option>
+            <option value="af">Afrikaans</option>
+          </select>
+          <button type="button" id="translate">Translate</button>
+        </form>
+        <div id="description">"Every 5 minutes"</div>
+      </section>
+      <footer>
+        <p>
+          cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of
+          the cron schedule. For example, given the expression "*/5 * * * *" it will output "Every 5 minutes". This
+          library was ported from the original C# implementation called cron-expression-descriptor and is also available
+          in a few other languages. The library was created by and is maintained by
+          <a href="https://www.geekytidbits.com/">Brady Holt</a>, and has received many improvements from other
+          <a href="https://github.com/bradymholt/cRonstrue/graphs/contributors">contributors</a>.
+        </p>
+        <h3>Features</h3>
+        <ul>
+          <li>Zero dependencies</li>
+          <li>Supports all cron expression special characters including * / , - ? L W, #</li>
+          <li>Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions</li>
+          <li>Supports <a href="http://www.quartz-scheduler.org/">Quartz Job Scheduler</a> cron expressions</li>
+          <li>i18n support with 34 languages</li>
+        </ul>
+        <a href="https://github.com/bradymholt/cRonstrue">cRonstrue on GitHub</a>
+      </footer>
+    </main>
+    <!---->
+    <a href="http://github.com/bradymholt/cRonstrue" class="github-corner" aria-label="View source on Github">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 250 250"
+        style="fill: #151513; color: #fff; position: absolute; top: 0; border: 0; right: 0"
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        ></path>
+      </svg>
+    </a>
+    <script defer src="https://unpkg.com/cronstrue/dist/cronstrue.min.js"></script>
+    <script defer src="https://unpkg.com/cronstrue/dist/cronstrue-i18n.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const expressionElement = document.getElementById("expression");
+        const localeElement = document.getElementById("locale");
+        const translateButton = document.getElementById("translate");
+        const descriptionElement = document.getElementById("description");
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="assets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="assets/github-dark.css" media="screen">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>cRonstrue by Brady Holt</title>
-</head>
+        translateButton.onclick = () => {
+          const expression = expressionElement.value;
+          const locale = localeElement.value;
+          const description = cronstrue.toString(expression, { throwExceptionOnParseError: false, locale });
 
-<body>
-    <div id="container">
-        <div class="inner">
-
-            <header>
-                <h1>cRonstrue</h1>
-                <h2>Convert cron expressions into human readable descriptions</h2>
-            </header>
-
-            <section id="downloads" class="clearfix">
-                <a href="https://github.com/bradymholt/cronstrue/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-                <a href="https://github.com/bradymholt/cronstrue/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-                <a href="https://github.com/bradymholt/cronstrue" id="view-on-github" class="button"><span>View on GitHub</span></a>
-            </section>
-
-            <hr>
-
-            <section id="main_content">
-                <div class="jumbotron">
-                  <h2 id="cronstrue-demo">Demo</h2>
-                  <form style="background-color:inherit; padding-left:0px; font-size:18px;">
-                      <input type="text" id="expression" size="20" style="font-size:18px;" value="*/5 * * * *" class="textinput" />
-                      <button type="button" class="button" style="font-size:18px;" id="translate">Translate</button>
-                      <select name="i18n" id="i18n" style="font-size:15px; padding:3px;">
-                        <option value="en" selected>English</option>
-                        <option value="ca">Catalan</option>
-                        <option value="cs">Czech</option>
-                        <option value="es">Spanish</option>
-                        <option value="da">Danish</option>
-                        <option value="de">German</option>
-                        <option value="fi">Finnish</option>
-                        <option value="fr">French</option>
-                        <option value="fa">Farsi</option>
-                        <option value="he">Hebrew</option>
-                        <option value="it">Italian</option>
-                        <option value="id">Indonesia</option>
-                        <option value="ja">Japanese</option>
-                        <option value="ko">Korean</option>
-                        <option value="nb">Norwegian</option>
-                        <option value="nl">Dutch</option>
-                        <option value="pl">Polish</option>
-                        <option value="pt_BR">Portuguese (Brazil)</option>
-                        <option value="pt_PT">Portuguese (Portugal)</option>
-                        <option value="ro">Romanian</option>
-                        <option value="ru">Russian</option>
-                        <option value="sk">Slovakian</option>
-                        <option value="sl">Slovenian</option>
-                        <option value="sw">Swahili</option>
-                        <option value="sv">Swedish</option>
-                        <option value="tr">Turkish</option>
-                        <option value="uk">Ukrainian</option>
-                        <option value="zh_CN">Chinese (Simplified)</option>
-                        <option value="zh_TW">Chinese (Traditional)</option>
-                        <option value="be">Belarusian</option>
-                        <option value="hu">Hungarian</option>
-                        <option value="af">Afrikaans</option>
-                      </select>
-                      <div id="output" style="margin-top: 10px; font-weight: bold; color:blue;" class="output ">Every 5 minutes</div>
-                  </form>
-                </div>
-                <h1 id="cronstrue-build-status-npm-package">cRonstrue <img src="https://github.com/bradymholt/cRonstrue/workflows/Build/badge.svg" alt="Build Status"> <a href="https://www.npmjs.com/package/cronstrue"><img src="https://img.shields.io/npm/v/cronstrue.svg" alt="NPM Package"></a></h1>
-<p>cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression &quot;*/5 * * * *&quot; it will output &quot;Every 5 minutes&quot;.</p>
-<p>This library was ported from the original C# implementation called <a href="https://github.com/bradymholt/cron-expression-descriptor">cron-expression-descriptor</a> and is also available in a <a href="https://github.com/bradymholt/cron-expression-descriptor#ports">few other languages</a>.</p>
-<h2 id="features">Features</h2>
-<ul>
-<li>Zero dependencies</li>
-<li>Supports all cron expression special characters including * / , - ? L W, #</li>
-<li>Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions</li>
-<li>Supports <a href="http://www.quartz-scheduler.org/">Quartz Job Scheduler</a> cron expressions</li>
-<li>i18n support with 34 languages</li>
-</ul>
-<h2 id="demo">Demo</h2>
-<p>A demo is available <a href="http://bradymholt.github.io/cRonstrue/#cronstrue-demo">here</a>.</p>
-<h2 id="installation">Installation</h2>
-<p>cRonstrue is exported as an <a href="https://github.com/umdjs/umd">UMD</a> module so it will work in an <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a>, <a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a> or browser global context.</p>
-<p>First, install the module:</p>
-<pre><code>npm install cronstrue
-</code></pre>
-<p>Then, depending upon your usage context, add a reference to it:</p>
-<h3 id="node--commonjs">Node / CommonJS</h3>
-<pre><code class="language-js">const cronstrue = require(&#39;cronstrue&#39;);
-</code></pre>
-<h3 id="esm--webpack--typescript">ESM / webpack / TypeScript</h3>
-<pre><code class="language-js">import cronstrue from &#39;cronstrue&#39;;
-</code></pre>
-<h3 id="browser">Browser</h3>
-<p> The <code>cronstrue.min.js</code> file from the <code>/dist</code> folder in the npm package should be served to the browser.  There are no dependencies so you can simply include the library in a <code>&lt;script&gt;</code> tag.</p>
-<pre><code class="language-html">&lt;script src=&quot;cronstrue.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  var cronstrue = window.cronstrue;
-&lt;/script&gt;
-</code></pre>
-<h4 id="cdn">CDN</h4>
-<p>A simple way to load the library in a browser is by using the <a href="https://unpkg.com/">unpkg</a> CDN, which is a
-&quot;fast, global content delivery network for everything on npm&quot;.  To use it, include a script tag like this in your file:</p>
-<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
-</code></pre>
-<p>Using the &quot;latest&quot; tag will result in a 302 redirect to the latest version tag so it is recommended to use a specific version tag such as <a href="https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js">https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js</a> to avoid this redirect.</p>
-<h2 id="usage">Usage</h2>
-<pre><code class="language-js">cronstrue.toString(&quot;* * * * *&quot;);
-&gt; &quot;Every minute&quot;
-
-cronstrue.toString(&quot;0 23 ? * MON-FRI&quot;);
-&gt; &quot;At 11:00 PM, Monday through Friday&quot;
-
-cronstrue.toString(&quot;0 23 * * *&quot;, { verbose: true });
-&gt; &quot;At 11:00 PM, every day&quot;
-
-cronstrue.toString(&quot;23 12 * * SUN#2&quot;);
-&gt; &quot;At 12:23 PM, on the second Sunday of the month&quot;
-
-cronstrue.toString(&quot;23 14 * * SUN#2&quot;, { use24HourTimeFormat: true });
-&gt; &quot;At 14:23, on the second Sunday of the month&quot;
-
-cronstrue.toString(&quot;* * * ? * 2-6/2&quot;, { dayOfWeekStartIndexZero: false });
-&gt; &quot;Every second, every 2 days of the week, Monday through Friday&quot;
-
-cronstrue.toString(&quot;* * * 6-8 *&quot;, { monthStartIndexZero: true });
-&gt; &quot;Every minute, July through September&quot;
-</code></pre>
-<p>For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can <a href="https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts">reference the unit tests</a>.</p>
-<h3 id="cli-usage">CLI Usage</h3>
-<pre><code class="language-sh">$ npm install -g cronstrue
-
-$ cronstrue 1 2 3 4 5
-At 02:01 AM, on day 3 of the month, and on Friday, only in April
-
-$ cronstrue 1 2 3
-Error: too few arguments (3): 1 2 3
-Usage (5 args): cronstrue minute hour day-of-month month day-of-week
-or
-Usage (6 args): cronstrue second minute hour day-of-month month day-of-week
-or
-Usage (7 args): cronstrue second minute hour day-of-month month day-of-week year
-</code></pre>
-<h2 id="options">Options</h2>
-<p>An options object can be passed as the second parameter to <code>cronstrue.toString</code>.  The following options are available:</p>
-<ul>
-<li><strong>throwExceptionOnParseError: boolean</strong> - If exception occurs when trying to parse expression and generate description, whether to throw or catch and output the Exception message as the description. (Default: true)</li>
-<li><strong>verbose: boolean</strong> - Whether to use a verbose description (Default: false)</li>
-<li><strong>dayOfWeekStartIndexZero: boolean</strong> - Whether to interpret cron expression DOW <code>1</code> as Sunday or Monday. (Default: true)</li>
-<li><strong>monthStartIndexZero: boolean</strong> - Wether to interpret January as <code>0</code> or <code>1</code>. (Default: false)</li>
-<li><strong>use24HourTimeFormat: boolean</strong> - If true, descriptions will use a <a href="https://en.wikipedia.org/wiki/24-hour_clock">24-hour clock</a> (Default: false but some translations will default to true)</li>
-<li><strong>locale: string</strong> - The locale to use (Default: &quot;en&quot;)</li>
-</ul>
-<h2 id="i18n">i18n</h2>
-<p>To use the i18n support cRonstrue provides, you can either import all the supported locales at once (using <code>cronstrue/i18n</code>) or import individual locales (using <code>cronstrue/locales/[locale]</code>).  Then, when calling <code>toString</code> you pass in the name of the locale you want to use.  For example, for the es (Spanish) locale, you would use: <code>cronstrue.toString(&quot;* * * * *&quot;, { locale: &quot;es&quot; })</code>.</p>
-<h3 id="all-locales">All Locales</h3>
-<p>You can import all locales at once with <code>cronstrue/i18n</code>.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module (~130k, minified) that will take longer to load, particularly when sending down to a browser.</p>
-<pre><code class="language-js">// Node / CommonJS
-const cronstrue = require(&#39;cronstrue/i18n&#39;);
-
-// ESM / webpack / TypeScript
-import cronstrue from &#39;cronstrue/i18n&#39;;
-
-// Browser
-&lt;script src=&quot;https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js&quot; async&gt;&lt;/script&gt;
-
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; }); // =&gt; Toutes les 5 minutes
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt; Cada 5 minutos
-</code></pre>
-<h3 id="individual-locales">Individual Locales</h3>
-<p>You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k (minified) and each locale is about 4k (minified) in size.</p>
-<pre><code class="language-js">// Node / CommonJS
-const cronstrue = require(&#39;cronstrue&#39;);
-require(&#39;cronstrue/locales/fr&#39;);
-require(&#39;cronstrue/locales/es&#39;);
-
-// ESM / webpack / TypeScript
-import cronstrue from &#39;cronstrue&#39;;
-import &#39;cronstrue/locales/fr&#39;;
-import &#39;cronstrue/locales/es&#39;;
-
-// Browser
-&lt;script src=&quot;https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js&quot; async&gt;&lt;/script&gt;
-&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/fr.min.js&quot; async&gt;&lt;/script&gt;
-&lt;script src=&quot;https://unpkg.com/cronstrue@latest/locales/es.min.js&quot; async&gt;&lt;/script&gt;
-
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;fr&quot; }); // =&gt; Toutes les 5 minutes
-cronstrue.toString(&quot;*/5 * * * *&quot;, { locale: &quot;es&quot; }); // =&gt; Cada 5 minutos
-</code></pre>
-<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
-<blockquote>
-<p>The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?</p>
-</blockquote>
-<p>This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like <a href="https://www.npmjs.com/package/cron-validator">cron-validator</a> or <a href="https://www.npmjs.com/package/cron-parser">cron-parser</a>.</p>
-<blockquote>
-<p>Can cRonstrue output the next occurrence of the cron expression?</p>
-</blockquote>
-<p>No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.</p>
-<h3 id="supported-locales">Supported Locales</h3>
-<ul>
-<li>en - English (<a href="https://github.com/bradymholt">Brady Holt</a>)</li>
-<li>ar - Arabic (<a href="https://github.com/mohamednehad450">Mohamed Nehad Shalabi</a>)</li>
-<li>ca - Catalan (<a href="https://github.com/fjbarrena">Francisco Javier Barrena</a>)</li>
-<li>cs - Czech (<a href="https://github.com/hanbar">hanbar</a>)</li>
-<li>es - Spanish (<a href="https://github.com/ivansg">Ivan Santos</a>)</li>
-<li>da - Danish (<a href="https://github.com/rmja">Rasmus Melchior Jacobsen</a>)</li>
-<li>de - German (<a href="https://github.com/mschuler">Michael Schuler</a>)</li>
-<li>fi - Finnish (<a href="https://github.com/MR77FI">Mikael Rosenberg</a>)</li>
-<li>fr - French (<a href="https://github.com/Greybird">Arnaud TAMAILLON</a>)</li>
-<li>fa - Farsi (<a href="https://github.com/alirezakoo">A. Bahrami</a>)</li>
-<li>he - Hebrew (<a href="https://github.com/IlanF">Ilan Firsov</a>)</li>
-<li>it - Italian (<a href="https://github.com/rinaldihno">rinaldihno</a>)</li>
-<li>id - Indonesia (<a href="https://github.com/hasanbasri1993">Hasan Basri</a>)</li>
-<li>ja - Japanese (<a href="https://github.com/asarivan">Alin Sarivan</a>)</li>
-<li>ko - Korean (<a href="https://github.com/ionmincu">Ion Mincu</a>)</li>
-<li>nb - Norwegian (<a href="https://github.com/KhalipskiSiarhei">Siarhei Khalipski</a>)</li>
-<li>nl - Dutch (<a href="https://github.com/TotalMace">TotalMace</a>)</li>
-<li>pl - Polish (<a href="https://github.com/foka">foka</a>)</li>
-<li>pt_BR - Portuguese (Brazil) (<a href="https://github.com/natenho">Renato Lima</a>)</li>
-<li>pt_PT - Portuguese (Portugal) (<a href="https://github.com/POFerro">POFerro</a>)</li>
-<li>ro - Romanian (<a href="https://github.com/illegitimis">Illegitimis</a>)</li>
-<li>ru - Russian (<a href="https://github.com/LbISS">LbISS</a>)</li>
-<li>sk - Slovakian (<a href="https://github.com/hanbar">hanbar</a>)</li>
-<li>sl - Slovenian (<a href="https://github.com/jenzy">Jani Bevk</a>)</li>
-<li>sw - Swahili (<a href="https://github.com/leyluj">Leylow Lujuo</a>)</li>
-<li>sv - Swedish (<a href="https://github.com/roobin">roobin</a>)</li>
-<li>th - Thai (<a href="https://github.com/xeusteerapat">Teerapat Prommarak</a>)</li>
-<li>tr - Turkish (<a href="https://github.com/sadedil">Mustafa SADEDİL</a>)</li>
-<li>uk - Ukrainian (<a href="https://github.com/tbudurovych">Taras</a>)</li>
-<li>zh_CN - Chinese (Simplified) (<a href="https://github.com/starpeng">Star Peng</a>)</li>
-<li>zh_TW - Chinese (Traditional) (<a href="https://github.com/metavige">Ricky Chiang</a>)</li>
-<li>be - Belarusian (<a href="https://github.com/KirillMikulich">Kirill Mikulich</a>)</li>
-<li>hu - Hungarian (<a href="https://github.com/Northber">Orcsity Norbert</a>, Szabó Dániel)</li>
-<li>af - Afrikaans (Michael van Niekerk(<a href="https://github.com/mvniekerk">https://github.com/mvniekerk</a>))</li>
-</ul>
-<h2 id="license">License</h2>
-<p>cRonstrue is freely distributable under the terms of the <a href="https://github.com/bradymholt/cronstrue/blob/master/LICENSE">MIT license</a>.</p>
-
-            </section>
-            <footer>
-                cRonstrue is maintained by <a href="https://github.com/bradymholt/cronstrue">Brady Holt</a><br> This page was generated
-                by <a href="https://www.npmjs.com/package/handlebars">Handlebars.js</a> and <a href="https://www.npmjs.com/package/marked">marked</a>.
-                Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-            </footer>
-
-
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/cronstrue/dist/cronstrue.min.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/cronstrue/dist/cronstrue-i18n.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#translate").click(function () {
-                var expression = $("#expression").val();
-                var i18n = $("#i18n").val();
-                var description = cronstrue.toString(expression, { throwExceptionOnParseError: false, locale: i18n });
-                $("#output").text(description);
-            });
-        });
+          descriptionElement.innerText = `"${description}"`;
+        };
+      });
     </script>
-</body>
-
+  </body>
 </html>
