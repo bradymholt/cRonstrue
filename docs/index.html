@@ -12,11 +12,19 @@
         font-family: "Courier New", Courier, monospace;
       }
       h1,
-      h2 {
+      h2,
+      h3 {
         margin: 5px 0;
       }
       h1 {
         font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+        letter-spacing: 0.5rem;
+      }
+      h3 {
+        font-size: 1.5rem;
       }
       input,
       select,
@@ -47,6 +55,9 @@
         border-bottom: solid 1px gray;
         padding: 20px 0;
       }
+      div#logo-lettering {
+        float: right;
+      }
       div#description {
         padding-top: 20px;
         color: #0000ff;
@@ -66,7 +77,8 @@
   <body>
     <main>
       <h1>cRonstrue</h1>
-      <h2>convert cron expressions to human readable descriptions</h2>
+      <h2>* * * * *</h2>
+      <h3>convert cron expressions to human readable descriptions</h3>
       <section>
         <form>
           <input type="text" id="expression" size="20" value="*/5 * * * *" />
