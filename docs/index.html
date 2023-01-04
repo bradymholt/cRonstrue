@@ -102,10 +102,10 @@
       document.addEventListener("DOMContentLoaded", () => {
         const expressionElement = document.getElementById("expression");
         const localeElement = document.getElementById("locale");
-        const translateButton = document.getElementById("translate");
+        const translateButtonElement = document.getElementById("translate");
         const descriptionElement = document.getElementById("description");
 
-        translateButton.onclick = () => {
+        translateButtonElement.onclick = () => {
           const expression = expressionElement.value;
           const locale = localeElement.value;
           const description = cronstrue.toString(expression, { throwExceptionOnParseError: false, locale });
