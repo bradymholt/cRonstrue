@@ -67,7 +67,7 @@
     "start": "npm run build",
     "build": "npx tsc -p ./src --emitDeclarationOnly",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
-    "prepublish": "rm -rf ./dist && ./node_modules/webpack-cli/bin/cli.js && npx jbash ./scripts/generate-docs.js && git add -A"
+    "prepublish": "rm -rf ./dist && ./node_modules/webpack-cli/bin/cli.js && git add -A"
   },
   "dependencies": {}
 }
