@@ -38,7 +38,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "fr" }),
-        "Toutes les 5 minutes, de 03:00 PM à 03:59 PM, de lundi à vendredi"
+        "Toutes les 5 minutes, de 15:00 à 15:59, de lundi à vendredi"
       );
     });
   });
