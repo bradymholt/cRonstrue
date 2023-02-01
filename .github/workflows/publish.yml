@@ -33,7 +33,7 @@ jobs:
         id: push
         run: |
           git push gh-origin HEAD:master --tags
-          echo "::set-output name=tag-name::$(git describe --tags --abbrev=0)"
+          echo "tag-name=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
       - name: Publish to npm
         run: |
           npm set //registry.npmjs.org/:_authToken ${{ secrets.NODE_AUTH_TOKEN }}
