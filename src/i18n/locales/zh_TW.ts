@@ -12,7 +12,7 @@ export class zh_TW implements Locale {
     return null;
   }
   commaYearX0ThroughYearX1(): string|null {
-    return ", 从%s年至%s年";
+    return ", 從 %s 年至 %s 年";
   }
   use24HourTimeFormatByDefault() {
     return false;
@@ -24,7 +24,7 @@ export class zh_TW implements Locale {
     return "每小時";
   }
   anErrorOccuredWhenGeneratingTheExpressionD() {
-    return "產生正規表達式描述時發生了錯誤，請檢查 cron 表達式語法。";
+    return "產生表達式描述時發生了錯誤，請檢查 cron 表達式語法。";
   }
   atSpace() {
     return "在 ";
@@ -120,7 +120,7 @@ export class zh_TW implements Locale {
     return ", 僅在 %s";
   }
   commaOnlyInMonthX0() {
-    return ", 僅在%s";
+    return ", 僅在 %s";
   }
   commaOnlyInYearX0() {
     return ", 僅在 %s 年";
