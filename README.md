@@ -92,7 +92,7 @@ cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
 > "Every minute, July through September"
 ```
 
-For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/master/test/cronstrue.ts).
+For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/main/test/cronstrue.ts).
 
 ### CLI Usage
 
@@ -183,7 +183,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
    // Validate expression first
    let isCronValid = true;
    try { cronParser.parseExpression(expression) } catch(e) { isCronValid = false; }
-   
+
    // If valid, then pass into cRonstrue
    if (isCronValid) {
      console.log(cronstrue.toString("* * * * *"));
@@ -233,4 +233,4 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ## License
 
-cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradymholt/cronstrue/blob/master/LICENSE).
+cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradymholt/cronstrue/blob/main/LICENSE).
