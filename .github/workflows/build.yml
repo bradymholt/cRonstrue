@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - master
+    - main
   pull_request:
     # Base branches for PR
     branches:
-    - master
+    - main
 jobs:
   test:
     runs-on: ubuntu-latest
