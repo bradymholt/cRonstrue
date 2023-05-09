@@ -369,6 +369,10 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the third Monday of the month");
     });
 
+    it("* * * * MON#3,THU#1", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the third Monday and first Thursday of the month");
+    });
+
     it("5-10 * * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Seconds 5 through 10 past the minute");
     });
