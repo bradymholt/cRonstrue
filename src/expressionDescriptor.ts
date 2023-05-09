@@ -307,14 +307,40 @@ export class ExpressionDescriptor {
         (s, form) => {
           let exp: string = s;
           if (s.indexOf("#") > -1) {
-            exp = s.substr(0, s.indexOf("#"));
+            exp = s.substring(0, s.indexOf("#"));
           } else if (s.indexOf("L") > -1) {
             exp = exp.replace("L", "");
           }
 
-          return this.i18n.daysOfTheWeekInCase
+          let description = this.i18n.daysOfTheWeekInCase
             ? this.i18n.daysOfTheWeekInCase(form)[parseInt(exp)]
             : daysOfWeekNames[parseInt(exp)];
+
+          if (s.indexOf("#") > -1) {
+            let dayOfWeekOfMonthDescription: string | null = null;
+            let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
+            let dayOfWeekNumber = s.substring(0, s.indexOf("#"));
+            switch (dayOfWeekOfMonthNumber) {
+              case "1":
+                dayOfWeekOfMonthDescription = this.i18n.first(dayOfWeekNumber);
+                break;
+              case "2":
+                dayOfWeekOfMonthDescription = this.i18n.second(dayOfWeekNumber);
+                break;
+              case "3":
+                dayOfWeekOfMonthDescription = this.i18n.third(dayOfWeekNumber);
+                break;
+              case "4":
+                dayOfWeekOfMonthDescription = this.i18n.fourth(dayOfWeekNumber);
+                break;
+              case "5":
+                dayOfWeekOfMonthDescription = this.i18n.fifth(dayOfWeekNumber);
+                break;
+            }
+            description = dayOfWeekOfMonthDescription + " " + description;
+          }
+
+          return description;
         },
         (s) => {
           if (parseInt(s) == 1) {
@@ -335,30 +361,7 @@ export class ExpressionDescriptor {
           let format: string | null = null;
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-            let dayOfWeekNumber = s.substring(0, s.indexOf("#"));
-            let dayOfWeekOfMonthDescription: string | null = null;
-            switch (dayOfWeekOfMonthNumber) {
-              case "1":
-                dayOfWeekOfMonthDescription = this.i18n.first(dayOfWeekNumber);
-                break;
-              case "2":
-                dayOfWeekOfMonthDescription = this.i18n.second(dayOfWeekNumber);
-                break;
-              case "3":
-                dayOfWeekOfMonthDescription = this.i18n.third(dayOfWeekNumber);
-                break;
-              case "4":
-                dayOfWeekOfMonthDescription = this.i18n.fourth(dayOfWeekNumber);
-                break;
-              case "5":
-                dayOfWeekOfMonthDescription = this.i18n.fifth(dayOfWeekNumber);
-                break;
-            }
-
-            format =
-              this.i18n.commaOnThe(dayOfWeekOfMonthNumber) +
-              dayOfWeekOfMonthDescription +
-              this.i18n.spaceX0OfTheMonth();
+            format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber).trim() + this.i18n.spaceX0OfTheMonth();
           } else if (s.indexOf("L") > -1) {
             format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
           } else {
