@@ -83,61 +83,61 @@ export class vi implements Locale {
     return ", %s đến %s";
   }
   first() {
-    return "first";
+    return "đầu tiên";
   }
   second() {
-    return "second";
+    return "thứ 2";
   }
   third() {
-    return "third";
+    return "thứ 3";
   }
   fourth() {
-    return "fourth";
+    return "thứ 4";
   }
   fifth() {
-    return "fifth";
+    return "thứ 5";
   }
   commaOnThe() {
-    return ", on the ";
+    return ", trên ";
   }
   spaceX0OfTheMonth() {
-    return " %s of the month";
+    return " %s của tháng";
   }
   lastDay() {
-    return "the last day";
+    return "ngày cuối cùng";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", on the last %s of the month";
+    return ", vào ngày %s cuối cùng của tháng";
   }
   commaOnlyOnX0() {
-    return ", only on %s";
+    return ", chỉ trên %s";
   }
   commaAndOnX0() {
-    return ", and on %s";
+    return ", và hơn %s";
   }
   commaEveryX0Months() {
-    return ", every %s months";
+    return ", mỗi ngày %s tháng";
   }
   commaOnlyInX0() {
-    return ", only in %s";
+    return ", chỉ trong %s";
   }
   commaOnTheLastDayOfTheMonth() {
-    return ", on the last day of the month";
+    return ", vào ngày cuối cùng của tháng";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", on the last weekday of the month";
+    return ", vào ngày cuối tuần của tháng";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s days before the last day of the month";
+    return ", %s ngày trước ngày cuối cùng của tháng";
   }
   firstWeekday() {
-    return "first weekday";
+    return "ngày đầu tuần";
   }
   weekdayNearestDayX0() {
-    return "weekday nearest day %s";
+    return "ngày trong tuần ngày gần nhất %s";
   }
   commaOnTheX0OfTheMonth() {
-    return ", on the %s of the month";
+    return ", vào ngày %s của tháng";
   }
   commaEveryX0Days() {
     return ", mỗi %s ngày";
