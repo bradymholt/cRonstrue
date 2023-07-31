@@ -27,6 +27,7 @@ export class ExpressionDescriptor {
    *         monthStartIndexZero = false,
    *         use24HourTimeFormat = false,
    *         locale = 'en'
+   *         tzOffset = 0
    *     }={}]
    * @returns {string}
    */
@@ -39,6 +40,7 @@ export class ExpressionDescriptor {
       monthStartIndexZero = false,
       use24HourTimeFormat,
       locale = null,
+      tzOffset = 0
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -51,6 +53,7 @@ export class ExpressionDescriptor {
       monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
       locale: locale,
+      tzOffset: tzOffset
     };
 
     let descripter = new ExpressionDescriptor(expression, options);
@@ -218,8 +221,8 @@ export class ExpressionDescriptor {
         return s == "0"
           ? ""
           : parseInt(s) < 20
-          ? this.i18n.atX0SecondsPastTheMinute(s)
-          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s);
+            ? this.i18n.atX0SecondsPastTheMinute(s)
+            : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s);
       }
     );
 
@@ -246,8 +249,8 @@ export class ExpressionDescriptor {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
             : parseInt(s) < 20
-            ? this.i18n.atX0MinutesPastTheHour(s)
-            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);
+              ? this.i18n.atX0MinutesPastTheHour(s)
+              : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour(s);
         }
@@ -450,8 +453,8 @@ export class ExpressionDescriptor {
                 return s == "L"
                   ? this.i18n.lastDay()
                   : this.i18n.dayX0
-                  ? StringUtilities.format(this.i18n.dayX0(), s)
-                  : s;
+                    ? StringUtilities.format(this.i18n.dayX0(), s)
+                    : s;
               },
               (s) => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days(s);
@@ -630,7 +633,12 @@ export class ExpressionDescriptor {
   }
 
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
-    let hour: number = parseInt(hourExpression);
+    let hour: number = parseInt(hourExpression) + (this.options.tzOffset ? this.options.tzOffset : 0);
+    if (hour >= 24) {
+      hour = hour - 24;
+    } else if (hour < 0) {
+      hour = 24 + hour;
+    }
     let period: string = "";
     let setPeriodBeforeTime: boolean = false;
     if (!this.options.use24HourTimeFormat) {

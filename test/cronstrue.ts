@@ -154,6 +154,33 @@ describe("Cronstrue", function () {
 
   describe("at", function () {
     it("30 11 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:3
+      }), "At 02:30 PM");
+    });
+
+    it("30 11 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:3,
+        use24HourTimeFormat:true
+      }), "At 14:30");
+    });
+
+    it("30 3 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:-5,
+        use24HourTimeFormat:true
+      }), "At 22:30");
+    });
+
+    it("30 22 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:5,
+        use24HourTimeFormat:true
+      }), "At 03:30");
+    });
+
+    it("30 11 * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 11:30 AM");
     });
 
