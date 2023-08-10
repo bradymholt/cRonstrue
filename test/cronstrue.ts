@@ -173,6 +173,13 @@ describe("Cronstrue", function () {
       }), "At 22:30");
     });
 
+    it("10 11 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: -4,
+        verbose: true
+      }), "At 07:10 AM, every day");
+    });
+
     it("30 22 * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string,{
         tzOffset:5,
