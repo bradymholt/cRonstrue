@@ -344,4 +344,45 @@ describe("i18n", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ar" }), "كل دقيقة");
     });
   });
+  describe("my", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "my" }), "Setiap minit");
+    });
+
+    it("0 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
+        "Setiap jam"
+      );
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
+        "Setiap 5 minit, antara 15:00 dan 15:59, Isnin hingga Jumaat"
+      );
+    });
+
+    it("0 5 1/1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
+        "Pada 05:00"
+      );
+    });
+
+    it("15 11 * 1/5 MON", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
+        "Pada 11:15, hanya pada Isnin, setiap bulan 5"
+      );
+    });
+
+    it("0 7 * * MON,TUE,THU,FRI,SUN", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
+        "Pada 07:00, hanya pada Isnin, Selasa, Khamis, Jumaat, dan Ahad"
+      );
+    });
+
+  });
 });
