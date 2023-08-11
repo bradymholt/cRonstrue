@@ -33,3 +33,4 @@ export { af } from "./locales/af"; // Afrikaans
 export { th } from "./locales/th"; // Thai
 export { ar } from './locales/ar'; // Arabic
 export { vi } from './locales/vi'; // Vietnamese
+export { my } from './locales/my'; // Malay
