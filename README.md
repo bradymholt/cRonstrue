@@ -232,6 +232,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 - hu - Hungarian ([Orcsity Norbert](https://github.com/Northber), Szabó Dániel)
 - af - Afrikaans (Michael van Niekerk(https://github.com/mvniekerk))
 - vi - Vietnamese ([Nguyen Tan Phap](https://github.com/rikkapro0128))
+- my - Malay (Malaysia) ([Ikhwan Abdullah](https://github.com/leychay))
 
 ## License
 
