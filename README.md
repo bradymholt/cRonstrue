@@ -198,7 +198,9 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 ### Supported Locales
 
 - en - English ([Brady Holt](https://github.com/bradymholt))
+- af - Afrikaans (Michael van Niekerk(https://github.com/mvniekerk))
 - ar - Arabic ([Mohamed Nehad Shalabi](https://github.com/mohamednehad450))
+- be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
 - ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))
 - cs - Czech ([hanbar](https://github.com/hanbar))
 - es - Spanish ([Ivan Santos](https://github.com/ivansg))
@@ -208,10 +210,12 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 - fr - French ([Arnaud TAMAILLON](https://github.com/Greybird))
 - fa - Farsi ([A. Bahrami](https://github.com/alirezakoo))
 - he - Hebrew ([Ilan Firsov](https://github.com/IlanF))
+- hu - Hungarian ([Orcsity Norbert](https://github.com/Northber), Szabó Dániel)
 - it - Italian ([rinaldihno](https://github.com/rinaldihno))
 - id - Indonesia ([Hasan Basri](https://github.com/hasanbasri1993))
 - ja - Japanese ([Alin Sarivan](https://github.com/asarivan))
 - ko - Korean ([Ion Mincu](https://github.com/ionmincu))
+- my - Malay (Malaysia) ([Ikhwan Abdullah](https://github.com/leychay))
 - nb - Norwegian ([Siarhei Khalipski](https://github.com/KhalipskiSiarhei))
 - nl - Dutch ([TotalMace](https://github.com/TotalMace))
 - pl - Polish ([foka](https://github.com/foka))
@@ -226,13 +230,9 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 - th - Thai ([Teerapat Prommarak](https://github.com/xeusteerapat))
 - tr - Turkish ([Mustafa SADEDİL](https://github.com/sadedil))
 - uk - Ukrainian ([Taras](https://github.com/tbudurovych))
+- vi - Vietnamese ([Nguyen Tan Phap](https://github.com/rikkapro0128))
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
 - zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
-- be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
-- hu - Hungarian ([Orcsity Norbert](https://github.com/Northber), Szabó Dániel)
-- af - Afrikaans (Michael van Niekerk(https://github.com/mvniekerk))
-- vi - Vietnamese ([Nguyen Tan Phap](https://github.com/rikkapro0128))
-- my - Malay (Malaysia) ([Ikhwan Abdullah](https://github.com/leychay))
 
 ## License
 
