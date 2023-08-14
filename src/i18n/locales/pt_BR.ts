@@ -56,11 +56,11 @@ export class pt_BR implements Locale {
   commaOnDayX0OfTheMonth() {
     return ", no dia %s do mês";
   }
-  commaOnlyInX0() {
-    return ", somente em %s";
+  commaOnlyInX0(s?: string) {
+    return s && s.length > 1 && s[1] === "-" ? "somente %s" : ", somente em %s";
   }
-  commaOnlyOnX0() {
-    return ", somente de %s";
+  commaOnlyOnX0(s?: string) {
+    return s && s.length > 1 && s[1] === "-" ? ", somente %s" : ", somente de %s";
   }
   commaAndOnX0() {
     return ", e de %s";
