@@ -156,7 +156,6 @@ describe("i18n", function () {
       );
     });
   });
-
   describe("pt_BR", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }), "A cada minuto");
@@ -168,7 +167,15 @@ describe("i18n", function () {
         "A cada 5 minutos, entre 03:00 PM e 03:59 PM, de segunda-feira a sexta-feira"
       );
     });
+
+    it("*/5 15 * * MON-FRI,SUN", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "A cada 5 minutos, entre 03:00 PM e 03:59 PM, somente de segunda-feira a sexta-feira e domingo"
+      );
+    });
   });
+
 
   describe("pt_PT", function () {
     it("* * * * *", function () {
