@@ -392,4 +392,15 @@ describe("i18n", function () {
     });
 
   });
+  describe("bg", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всяка минута");
+    });
+    it("0 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всеки час");
+    });
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всеки 5 минути, от 15:00 до 15:59, от понеделник до петък");
+    });
+  });
 });
