@@ -201,6 +201,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 - af - Afrikaans (Michael van Niekerk(https://github.com/mvniekerk))
 - ar - Arabic ([Mohamed Nehad Shalabi](https://github.com/mohamednehad450))
 - be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
+- bg - Bulgarian ([kamenf](https://github.com/kamenf))
 - ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))
 - cs - Czech ([hanbar](https://github.com/hanbar))
 - es - Spanish ([Ivan Santos](https://github.com/ivansg))
