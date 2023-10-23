@@ -63,14 +63,12 @@ jobs:
         with:
           script: |
             const releaseId = process.env.RELEASE_ID;
-            console.log(`Fetching release_id: ${releaseId} ...`)
             const getReleaseResponse = await github.rest.repos.getRelease({
               release_id: process.env.RELEASE_ID,
               owner: context.repo.owner,
               repo: context.repo.repo
             });
             const release = getReleaseResponse.data;
-            console.log(`Fetched release:\n\n${JSON.stringify(release)}`)
 
             const prNumbersInRelease = new Set(Array.from(release.body.matchAll(/\/pull\/(\d+)/g)).map(p=>p[1]));
 
