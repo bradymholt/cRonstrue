@@ -62,7 +62,8 @@ jobs:
           RELEASE_ID: ${{ steps.create-release.outputs.id }}
         with:
           script: |
-            console.log(`Fetching release_id: ${steps.create-release.outputs.id} ...`)
+            const releaseId = process.env.RELEASE_ID;
+            console.log(`Fetching release_id: ${releaseId} ...`)
             const release = await github.rest.repos.getRelease({
               release_id: process.env.RELEASE_ID,
               owner: context.repo.owner,
