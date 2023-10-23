@@ -1,4 +1,4 @@
-#!/usr/bin/env npx jbash
+#!/usr/bin/env npx jsh
 
 /* Converts a Cron Expression Descriptor (https://github.com/bradymholt/cron-expression-descriptor/blob/master/scripts/release.js)
    locale to a cronstrue locale.
@@ -6,11 +6,19 @@
    Example usage:
      convert-ced-locale.js /Users/jdoe/cron-expression-descriptor/lib/Resources.ja.resx
 */
+usage(`\
+Usage:
+  ${0} convert-ced-locale.js path_to_ced_locale_file
 
+Converts a Cron Expression Descriptor (https://github.com/bradymholt/cron-expression-descriptor/blob/master/scripts/release.js)
+locale to a cronstrue locale
+`)
+
+const pathToSourceLocaleFile = args.assert(1);
 const xmlHelper = require("pixl-xml");
-const xmlContent = cat($1);
+const xmlContent = readFile(pathToSourceLocaleFile);
 const parsed = xmlHelper.parse(xmlContent);
-const locale = $1
+const locale = pathToSourceLocaleFile
   .split(".")
   .slice(-2)
   .shift();
