@@ -58,11 +58,13 @@ jobs:
           files: assets.zip
       - name: Comment on PRs with link to release they are included in
         uses: actions/github-script@v6
+        env:
+          RELEASE_ID: ${{ steps.create-release.outputs.id }}
         with:
           script: |
             console.log(`Fetching release_id: ${steps.create-release.outputs.id} ...`)
             const release = await github.rest.repos.getRelease({
-              release_id: '${{ steps.create-release.outputs.id }}',
+              release_id: process.env.RELEASE_ID,
               owner: context.repo.owner,
               repo: context.repo.repo
             });
