@@ -61,7 +61,7 @@ jobs:
         with:
           script: |
             const release = await github.rest.repos.getRelease({
-              release_id: ${{ steps.create-release.outputs.id }},
+              release_id: '${{ steps.create-release.outputs.id }}',
               owner: context.repo.owner,
               repo: context.repo.repo
             });
