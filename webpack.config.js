@@ -102,7 +102,7 @@ cronstrue.locales["${localeCode}"] = new ${localeCode}();
     },
     resolveLoader: {
       alias: {
-        "custom-loader": path.resolve(__dirname, "scripts/custom-loader"),
+        "custom-loader": path.resolve(__dirname, "./webpack-custom-loader"),
       },
     },
   },
