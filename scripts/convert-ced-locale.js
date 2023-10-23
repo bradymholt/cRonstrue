@@ -8,7 +8,7 @@
 */
 usage(`\
 Usage:
-  ${0} convert-ced-locale.js path_to_ced_locale_file
+  ${0} path_to_ced_locale_file
 
 Converts a Cron Expression Descriptor (https://github.com/bradymholt/cron-expression-descriptor/blob/master/scripts/release.js)
 locale to a cronstrue locale
