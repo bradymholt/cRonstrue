@@ -73,6 +73,6 @@ jobs:
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `The changes in PR were released in [${release.name}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${release.tag_name}) 🎉.`
+                body: `The changes in PR were just released in [${release.name}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${release.tag_name}) 🎉.`
               })
             }
