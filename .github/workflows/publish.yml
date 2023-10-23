@@ -60,7 +60,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const release = await github.rest.releases.getRelease({
+            const release = await github.rest.repos.releases.getRelease({
               release_id: ${{ steps.create-release.outputs.id }},
               owner: context.repo.owner,
               repo: context.repo.repo
@@ -69,7 +69,7 @@ jobs:
             const prNumbersInRelease = new Set(Array.from(release.body.matchAll(/\/pull\/(\d+)/g)).map(p=>p[1]));
 
             for(let prNumber of prNumbersInRelease) {
-              await github.rest.releases.createComment({
+              await github.rest.issues.createComment({
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
