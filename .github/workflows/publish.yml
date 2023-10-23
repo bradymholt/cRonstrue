@@ -60,11 +60,13 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log(`Fetching release_id: ${steps.create-release.outputs.id} ...`)
             const release = await github.rest.repos.getRelease({
               release_id: '${{ steps.create-release.outputs.id }}',
               owner: context.repo.owner,
               repo: context.repo.repo
             });
+            console.log(`Fetched release:\n\n${JSON.stringify(release)}`)
 
             const prNumbersInRelease = new Set(Array.from(release.body.matchAll(/\/pull\/(\d+)/g)).map(p=>p[1]));
 
