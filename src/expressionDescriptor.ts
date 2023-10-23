@@ -315,9 +315,26 @@ export class ExpressionDescriptor {
             exp = exp.replace("L", "");
           }
 
+          let parsedExp = parseInt(exp);
+          if (this.options.tzOffset) {
+            const hourExpression = this.expressionParts[2];
+            let hour: number = parseInt(hourExpression) + (this.options.tzOffset ? this.options.tzOffset : 0);
+            if (hour >= 24) {
+              parsedExp++;
+            } else if (hour < 0) {
+              parsedExp--;
+            }
+
+            if (parsedExp > 6) {
+              parsedExp = 0;
+            } else if (parsedExp < 0) {
+              parsedExp = 6;
+            }
+          }
+
           let description = this.i18n.daysOfTheWeekInCase
-            ? this.i18n.daysOfTheWeekInCase(form)[parseInt(exp)]
-            : daysOfWeekNames[parseInt(exp)];
+            ? this.i18n.daysOfTheWeekInCase(form)[parsedExp]
+            : daysOfWeekNames[parsedExp];
 
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthDescription: string | null = null;

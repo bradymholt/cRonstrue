@@ -223,6 +223,18 @@ describe("Cronstrue", function () {
       }), "At 03:30");
     });
 
+    it("5 1 * * 1", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:-2,
+      }), "At 11:05 PM, only on Sunday");
+    });
+
+    it("5 23 * * 1", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset:2,
+      }), "At 01:05 AM, only on Tuesday");
+    });
+
     it("30 11 * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 11:30 AM");
     });
