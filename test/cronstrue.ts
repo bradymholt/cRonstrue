@@ -159,6 +159,42 @@ describe("Cronstrue", function () {
       }), "At 02:30 PM");
     });
 
+    it("31 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: 5.5
+      }), "At 04:01 PM");
+    });
+
+    it("29 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: 5.5
+      }), "At 03:59 PM");
+    });
+
+    it("30 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: 5.5
+      }), "At 04:00 PM");
+    });
+
+    it("31 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: -1.5
+      }), "At 09:01 AM");
+    });
+
+    it("29 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: -1.5
+      }), "At 08:59 AM");
+    });
+
+    it("30 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string,{
+        tzOffset: -1.5
+      }), "At 09:00 AM");
+    });
+
     it("30 11 * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string,{
         tzOffset:3,

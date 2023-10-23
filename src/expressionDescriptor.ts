@@ -633,7 +633,30 @@ export class ExpressionDescriptor {
   }
 
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
-    let hour: number = parseInt(hourExpression) + (this.options.tzOffset ? this.options.tzOffset : 0);
+    let hourOffset: number = 0;
+    let minuteOffset: number = 0;
+    
+    if(this.options.tzOffset) {
+      hourOffset = this.options.tzOffset > 0 ? Math.floor(this.options.tzOffset) : Math.ceil(this.options.tzOffset);
+
+      minuteOffset = (parseFloat((this.options.tzOffset % 1).toFixed(2)));
+
+      if(minuteOffset != 0) {
+        minuteOffset *= 60;
+      }
+    }
+
+    let hour: number = parseInt(hourExpression) + (hourOffset);
+    let minute: number = parseInt(minuteExpression) + (minuteOffset);
+
+    if (minute >= 60) {
+      minute -= 60;
+      hour += 1;
+    } else if (minute < 0) {
+      minute += 60;
+      hour -= 1;
+    }
+    
     if (hour >= 24) {
       hour = hour - 24;
     } else if (hour < 0) {
@@ -652,7 +675,6 @@ export class ExpressionDescriptor {
       }
     }
 
-    const minute = minuteExpression;
     let second: string = "";
     if (secondExpression) {
       second = `:${("00" + secondExpression).substring(secondExpression.length)}`;
