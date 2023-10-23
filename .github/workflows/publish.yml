@@ -63,6 +63,7 @@ jobs:
         with:
           script: |
             const releaseId = process.env.RELEASE_ID;
+            console.log(`Fetching release_id: ${releaseId} ...`);
             const getReleaseResponse = await github.rest.repos.getRelease({
               release_id: process.env.RELEASE_ID,
               owner: context.repo.owner,
@@ -73,6 +74,7 @@ jobs:
             const prNumbersInRelease = new Set(Array.from(release.body.matchAll(/\/pull\/(\d+)/g)).map(p=>p[1]));
 
             for(let prNumber of prNumbersInRelease) {
+              console.log(`Adding comment on PR #${prNumber} ...`);
               await github.rest.issues.createComment({
                 issue_number: prNumber,
                 owner: context.repo.owner,
