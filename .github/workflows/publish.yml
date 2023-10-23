@@ -50,8 +50,29 @@ jobs:
           zip assets.zip i18n.js i18n.d.ts
           zip -gr assets.zip dist/ locales/
       - name: Create a Release
+        id: create-release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.push.outputs.tag-name }}
           generate_release_notes: true
           files: assets.zip
+      - name: Comment on PRs with link to release they are included in
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const release = await github.rest.releases.getRelease({
+              release_id: ${{ steps.create-release.outputs.id }},
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const prNumbersInRelease = new Set(Array.from(release.body.matchAll(/\/pull\/(\d+)/g)).map(p=>p[1]));
+
+            for(let prNumber of prNumbersInRelease) {
+              await github.rest.releases.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `The changes in PR were released in [${release.name}](https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/${release.tag_name}) 🎉.`
+              })
+            }
