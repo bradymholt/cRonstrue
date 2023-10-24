@@ -197,6 +197,8 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ### Supported Locales
 
+The following locales can be passed in for the `locale` option.  Thank you to the author (shown below) of each translation!
+
 - en - English ([Brady Holt](https://github.com/bradymholt))
 - af - Afrikaans (Michael van Niekerk(https://github.com/mvniekerk))
 - ar - Arabic ([Mohamed Nehad Shalabi](https://github.com/mohamednehad450))
