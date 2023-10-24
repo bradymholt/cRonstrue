@@ -237,6 +237,17 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
 - zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
 
+## Sponsors
+
+Thank you to the following sponsors of this project!
+
+<a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+<a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+<a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+<a href="https://github.com/KevinWang15"><img src="https://github.com/KevinWang15.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+<a href="https://github.com/timheuer"><img src="https://github.com/timheuer.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+
+
 ## License
 
 cRonstrue is freely distributable under the terms of the [MIT license](https://github.com/bradymholt/cronstrue/blob/main/LICENSE).
