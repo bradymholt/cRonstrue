@@ -16,7 +16,7 @@ export class sw implements Locale {
   }
 
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
 
   anErrorOccuredWhenGeneratingTheExpressionD() {

@@ -15,7 +15,7 @@ export class nl implements Locale {
     return null;
   }
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
   everyMinute() {
     return "elke minuut";

@@ -15,7 +15,7 @@ export class pt_BR implements Locale {
     return null;
   }
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
   anErrorOccuredWhenGeneratingTheExpressionD() {
     return "Ocorreu um erro ao gerar a descrição da expressão Cron.";
