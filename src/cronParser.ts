@@ -40,6 +40,25 @@ export class CronParser {
     // split on one or more spaces
     let parsed: string[] = expression.trim().split(/[ ]+/);
 
+    // sort elements with array of numbers
+    for (let i = 0; i < parsed.length; i++) {
+      if (parsed[i].includes(",")) {
+        const arrayElement = parsed[i]
+          .split(",")
+          .map((item) => item.trim())
+          .filter((item) => item !== "")
+          .map((item) => (!isNaN(Number(item)) ? Number(item) : item))
+          .filter((item) => item !== null && item !== "");
+
+        if (arrayElement.length === 0) {
+          arrayElement.push("*");
+        }
+
+        arrayElement.sort((a, b) => (a !== null && b !== null ? (a as number) - (b as number) : 0));
+        parsed[i] = arrayElement.map((item) => (item !== null ? item.toString() : "")).join(",");
+      }
+    }
+
     if (parsed.length < 5) {
       throw new Error(
         `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`
@@ -242,7 +261,7 @@ export class CronParser {
       */
 
       if (expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
-        let stepRangeThrough: string|null = null;
+        let stepRangeThrough: string | null = null;
         switch (i) {
           case 4:
             stepRangeThrough = "12";
