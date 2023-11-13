@@ -1,7 +1,7 @@
 import { Locale } from "../locale";
 export class ja implements Locale {
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
 
   everyMinute(): string {

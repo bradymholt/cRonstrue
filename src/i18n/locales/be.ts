@@ -15,7 +15,7 @@ export class be implements Locale {
     return null;
   }
   use24HourTimeFormatByDefault() {
-    return true;
+    return false;
   }
   everyMinute() {
     return "кожную хвіліну";

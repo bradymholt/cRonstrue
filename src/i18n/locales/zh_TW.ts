@@ -15,7 +15,7 @@ export class zh_TW implements Locale {
     return ", 從 %s 年至 %s 年";
   }
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
   everyMinute() {
     return "每分鐘";

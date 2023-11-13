@@ -15,7 +15,7 @@ export class nb implements Locale {
     return null;
   }
   use24HourTimeFormatByDefault() {
-    return false;
+    return true;
   }
   anErrorOccuredWhenGeneratingTheExpressionD() {
     return "En feil inntraff ved generering av uttrykksbeskrivelse. Sjekk cron syntaks.";

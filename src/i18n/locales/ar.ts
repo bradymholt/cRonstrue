@@ -16,7 +16,7 @@ export class ar implements Locale {
     }
 
     use24HourTimeFormatByDefault() {
-        return false;
+        return true;
     }
 
     anErrorOccuredWhenGeneratingTheExpressionD() {
