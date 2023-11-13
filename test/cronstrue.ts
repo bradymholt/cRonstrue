@@ -154,84 +154,84 @@ describe("Cronstrue", function () {
 
   describe("at", function () {
     it("30 11 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:3
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: 3
       }), "At 02:30 PM");
     });
 
     it("31 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: 5.5
       }), "At 04:01 PM");
     });
 
     it("29 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: 5.5
       }), "At 03:59 PM");
     });
 
     it("30 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: 5.5
       }), "At 04:00 PM");
     });
 
     it("31 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: -1.5
       }), "At 09:01 AM");
     });
 
     it("29 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: -1.5
       }), "At 08:59 AM");
     });
 
     it("30 10 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: -1.5
       }), "At 09:00 AM");
     });
 
     it("30 11 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:3,
-        use24HourTimeFormat:true
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: 3,
+        use24HourTimeFormat: true
       }), "At 14:30");
     });
 
     it("30 3 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:-5,
-        use24HourTimeFormat:true
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: -5,
+        use24HourTimeFormat: true
       }), "At 22:30");
     });
 
     it("10 11 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
+      assert.equal(cronstrue.toString(this.test?.title as string, {
         tzOffset: -4,
         verbose: true
       }), "At 07:10 AM, every day");
     });
 
     it("30 22 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:5,
-        use24HourTimeFormat:true
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: 5,
+        use24HourTimeFormat: true
       }), "At 03:30");
     });
 
     it("5 1 * * 1", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:-2,
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: -2,
       }), "At 11:05 PM, only on Sunday");
     });
 
     it("5 23 * * 1", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string,{
-        tzOffset:2,
+      assert.equal(cronstrue.toString(this.test?.title as string, {
+        tzOffset: 2,
       }), "At 01:05 AM, only on Tuesday");
     });
 
@@ -289,6 +289,10 @@ describe("Cronstrue", function () {
 
     it("0 * 31 * 1", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every hour, on day 31 of the month, and on Monday");
+    });
+
+    it("0 45 12 22,17,6,30,26 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:45 PM, on day 6, 17, 22, 26, and 30 of the month");
     });
   });
 
