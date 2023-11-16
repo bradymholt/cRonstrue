@@ -34,7 +34,7 @@ export class CronParser {
 
   protected extractParts(expression: string) {
     if (!this.expression) {
-      throw new Error("Expression is empty");
+      throw new Error("cron expression is empty");
     }
 
     // split on one or more spaces
