@@ -702,19 +702,19 @@ describe("Cronstrue", function () {
     it("empty expression", function () {
       assert.throws(function () {
         cronstrue.toString("");
-      }, "Error: Expression is empty");
+      }, "Error: cron expression is empty");
     });
 
     it("null expression", function () {
       assert.throws(function () {
         cronstrue.toString(null as any as string);
-      }, "Error: Expression is empty");
+      }, "Error: cron expression is empty");
     });
 
     it("undefined expression", function () {
       assert.throws(function () {
         cronstrue.toString("");
-      }, "Error: Expression is empty");
+      }, "Error: cron expression is empty");
     });
 
     it("'W' list is invalid", function () {
