@@ -84,7 +84,7 @@ export class ko implements Locale {
   }
 
   public minutesX0ThroughX1PastTheHour() {
-    return "정시 후 %s분에서 %s까지";
+    return "정시 후 %s분에서 %s분까지";
   }
 
   public atX0MinutesPastTheHour() {
@@ -168,7 +168,7 @@ export class ko implements Locale {
   }
 
   public commaOnlyInX0() {
-    return ", %s에서만";
+    return ", %s에만";
   }
 
   public commaOnTheLastDayOfTheMonth() {
@@ -188,7 +188,7 @@ export class ko implements Locale {
   }
 
   public weekdayNearestDayX0() {
-    return "평일 가장 가까운 날 %s";
+    return "%s일과 가장 가까운 평일";
   }
 
   public commaOnTheX0OfTheMonth() {
@@ -200,7 +200,7 @@ export class ko implements Locale {
   }
 
   public commaBetweenDayX0AndX1OfTheMonth() {
-    return ", 해당 월의 %s일 및 %s일 사이";
+    return ", 해당 월의 %s일에서 %s일까지";
   }
 
   public commaOnDayX0OfTheMonth() {
