@@ -123,7 +123,7 @@ export class zh_CN implements Locale {
     return ", 仅%s";
   }
   commaAndOnX0() {
-    return ", 并且为%s";
+    return ", 或者为%s";
   }
   commaEveryX0Months() {
     return ", 每隔 %s 个月";

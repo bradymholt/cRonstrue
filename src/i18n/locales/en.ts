@@ -113,7 +113,7 @@ export class en implements Locale {
     return ", only on %s";
   }
   commaAndOnX0() {
-    return ", and on %s";
+    return ", or on %s";
   }
   commaEveryX0Months() {
     return ", every %s months";

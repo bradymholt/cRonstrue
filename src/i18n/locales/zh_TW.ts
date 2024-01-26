@@ -111,7 +111,7 @@ export class zh_TW implements Locale {
     return ", 僅在 %s";
   }
   commaAndOnX0() {
-    return ", 和 %s";
+    return ", 或 %s";
   }
   commaEveryX0Months() {
     return ", 每 %s 月";
