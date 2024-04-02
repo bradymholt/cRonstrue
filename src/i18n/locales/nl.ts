@@ -27,13 +27,13 @@ export class nl implements Locale {
     return "Er is een fout opgetreden bij het vertalen van de gegevens. Controleer de gegevens.";
   }
   atSpace() {
-    return "Op ";
+    return "Om ";
   }
   everyMinuteBetweenX0AndX1() {
     return "Elke minuut tussen %s en %s";
   }
   at() {
-    return "Op";
+    return "Om";
   }
   spaceAnd() {
     return " en";
@@ -66,7 +66,7 @@ export class nl implements Locale {
     return "tussen %s en %s";
   }
   atX0() {
-    return "op %s";
+    return "om %s";
   }
   commaEveryDay() {
     return ", elke dag";
