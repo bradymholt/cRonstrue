@@ -28,14 +28,15 @@ export class CronParser {
     let parsed: string[];
     
     if (this.expression.startsWith('@')) {
-        var special = this.parseSpecial(this.expression);
-        parsed = this.extractParts(special);
+      var special = this.parseSpecial(this.expression);
+      parsed = this.extractParts(special);
 
     } else {
-        parsed = this.extractParts(this.expression);
-        this.normalize(parsed);
-        this.validate(parsed);
+      parsed = this.extractParts(this.expression);
     }
+
+    this.normalize(parsed);
+    this.validate(parsed);
 
     return parsed;
   }
