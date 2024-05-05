@@ -25,11 +25,38 @@ export class CronParser {
    * @returns {string[]}
    */
   parse(): string[] {
-    let parsed = this.extractParts(this.expression);
-    this.normalize(parsed);
-    this.validate(parsed);
+    let parsed: string[];
+    
+    if (this.expression.startsWith('@')) {
+        var special = this.parseSpecial(this.expression);
+        parsed = this.extractParts(special);
+
+    } else {
+        parsed = this.extractParts(this.expression);
+        this.normalize(parsed);
+        this.validate(parsed);
+    }
 
     return parsed;
+  }
+
+  parseSpecial(expression: string): string {
+    const specialExpressions: { [key: string]: string } = {
+        '@yearly': '0 0 1 1 *',
+        '@annually': '0 0 1 1 *',
+        '@monthly': '0 0 1 * *',
+        '@weekly': '0 0 * * 0',
+        '@daily': '0 0 * * *',
+        '@midnight': '0 0 * * *',
+        '@hourly': '0 * * * *'
+    };
+
+    const special = specialExpressions[expression];
+    if (!special) {
+        throw new Error('Unknown special expression.');
+    }
+
+    return special;
   }
 
   protected extractParts(expression: string) {
