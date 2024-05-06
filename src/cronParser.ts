@@ -27,7 +27,9 @@ export class CronParser {
   parse(): string[] {
     let parsed: string[];
     
-    if (this.expression.startsWith('@')) {
+    var expression = this.expression ?? '';
+
+    if (expression.startsWith('@')) {
       var special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
 
