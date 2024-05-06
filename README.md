@@ -17,6 +17,7 @@ This library was ported from the original C# implementation called [cron-express
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - Supports [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions
+- Supports `@` expressions, e.g. `@weekly` or `@annually`
 - i18n support with 30+ languages
 
 ## Demo
@@ -90,6 +91,10 @@ cronstrue.toString("* * * ? * 2-6/2", { dayOfWeekStartIndexZero: false });
 
 cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
 > "Every minute, July through September"
+
+cronstrue.toString("@monthly");
+> "At 12:00 AM, on day 1 of the month"
+
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/main/test/cronstrue.ts).
