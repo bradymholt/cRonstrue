@@ -44,5 +44,9 @@ describe("CronParser", function () {
     it("dayOfWeek dangling comma", function () {
       assert.equal(new CronParser("*/5 * * * * ,2").parse()[5], "2");
     });
+
+    it("should parse cron @ expression", function () {
+      assert.equal(new CronParser("@weekly").parse().length, 7);
+    });
   });
 });

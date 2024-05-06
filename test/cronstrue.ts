@@ -638,6 +638,36 @@ describe("Cronstrue", function () {
     });
   });
 
+  describe("@ expressions", function () {
+    it("@yearly", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on day 1 of the month, only in January");
+    });
+
+    it("@annually", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on day 1 of the month, only in January");
+    });
+
+    it("@monthly", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on day 1 of the month");
+    });
+
+    it("@weekly", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, only on Sunday");
+    });
+
+    it("@daily", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM");
+    });
+
+    it("@midnight", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM");
+    });
+
+    it("@hourly", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every hour");
+    });
+  });
+
   describe("verbose", function () {
     it("30 4 1 * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "At 04:30 AM, on day 1 of the month");
