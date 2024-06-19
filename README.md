@@ -245,6 +245,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 
 Thank you to the following sponsors of this project!
 
+<a href="https://github.com/microsoft"><img src="https://github.com/microsoft.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
 <a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
 <a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
 <a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
