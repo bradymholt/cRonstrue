@@ -57,19 +57,19 @@ export class zh_CN implements Locale {
     return "每隔 %s 秒";
   }
   secondsX0ThroughX1PastTheMinute() {
-    return "在每分钟的第 %s 到 %s 秒";
+    return "在一分钟后的第 %s 到 %s 秒";
   }
   atX0SecondsPastTheMinute() {
-    return "在每分钟的第 %s 秒";
+    return "在一分钟后的第 %s 秒";
   }
   everyX0Minutes() {
     return "每隔 %s 分钟";
   }
   minutesX0ThroughX1PastTheHour() {
-    return "在每小时的第 %s 到 %s 分钟";
+    return "在整点后的第 %s 到 %s 分钟";
   }
   atX0MinutesPastTheHour() {
-    return "在每小时的第 %s 分钟";
+    return "在整点后的第 %s 分钟";
   }
   everyX0Hours() {
     return "每隔 %s 小时";
