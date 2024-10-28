@@ -181,6 +181,27 @@ describe("i18n", function () {
         "A cada 5 minutos, entre 15:00 e 15:59, somente de segunda-feira a sexta-feira e domingo"
       );
     });
+
+    it("45 10 * * 6#2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, no segundo sábado do mês"
+      );
+    });
+
+    it("45 10 * * 0#3", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, no terceiro domingo do mês"
+      );
+    });
+
+    it("45 10 * * 1#3", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, na terceira segunda-feira do mês"
+      );
+    });
   });
 
 
@@ -193,6 +214,28 @@ describe("i18n", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_PT" }),
         "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira"
+      );
+    });
+
+
+    it("45 10 * * 6#2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, no segundo sábado do mês"
+      );
+    });
+
+    it("45 10 * * 0#3", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, no terceiro domingo do mês"
+      );
+    });
+
+    it("45 10 * * 1#3", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
+        "Às 10:45, na terceira segunda-feira do mês"
       );
     });
   });
