@@ -381,7 +381,8 @@ export class ExpressionDescriptor {
           let format: string | null = null;
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-            format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber).trim() + this.i18n.spaceX0OfTheMonth();
+            let dayOfWeek = s.substring(0, s.indexOf("#"));
+            format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth();
           } else if (s.indexOf("L") > -1) {
             format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
           } else {

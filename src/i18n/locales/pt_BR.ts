@@ -65,8 +65,8 @@ export class pt_BR implements Locale {
   commaAndOnX0() {
     return ", e de %s";
   }
-  commaOnThe() {
-    return ", na ";
+  commaOnThe(s?: string, day?: string) {
+    return day === '6' || day === '0' ? ", no" : ", na ";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", no último dia do mês";
@@ -110,23 +110,23 @@ export class pt_BR implements Locale {
   everyX0Seconds() {
     return "a cada %s segundos";
   }
-  fifth() {
-    return "quinta";
+  fifth(s?: string) {
+    return s === '6' || s === '0' ? "quinto" : "quinta";
   }
-  first() {
-    return "primeira";
+  first(s?: string) {
+    return s === '6' || s === '0' ? "primeiro" : "primeira";
   }
   firstWeekday() {
     return "primeiro dia da semana";
   }
-  fourth() {
-    return "quarta";
+  fourth(s?: string) {
+    return s === '6' || s === '0' ? "quarto" : "quarta";
   }
   minutesX0ThroughX1PastTheHour() {
     return "do minuto %s até %s de cada hora";
   }
-  second() {
-    return "segunda";
+  second(s?: string) {
+    return s === '6' || s === '0' ? "segundo" : "segunda";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "No segundo %s até %s de cada minuto";
@@ -140,8 +140,8 @@ export class pt_BR implements Locale {
   lastDay() {
     return "o último dia";
   }
-  third() {
-    return "terceira";
+  third(s?: string) {
+    return s === '6' || s === '0' ? "terceiro" : "terceira";
   }
   weekdayNearestDayX0() {
     return "dia da semana mais próximo do dia %s";
