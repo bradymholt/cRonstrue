@@ -1,6 +1,8 @@
 import "mocha";
-import chai = require("chai");
+
 import cronstrue from "../src/cronstrue-i18n";
+
+import chai = require("chai");
 let assert = chai.assert;
 
 describe("i18n", function () {
@@ -340,6 +342,13 @@ describe("i18n", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "da" }),
         "Hvert 5. minut, mellem 15:00 og 15:59, mandag til og med fredag"
+      );
+    });
+
+    it("0 3 * * 4", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "da" }),
+        "Kl 03:00, på torsdage"
       );
     });
   });

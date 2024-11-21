@@ -51,7 +51,7 @@ export class da implements Locale {
     return ", kun i %s";
   }
   commaOnlyOnX0() {
-    return ", kun på %s";
+    return ", på %se";
   }
   commaAndOnX0() {
     return ", og på %s";
