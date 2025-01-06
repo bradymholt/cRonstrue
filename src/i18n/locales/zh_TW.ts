@@ -45,19 +45,19 @@ export class zh_TW implements Locale {
     return "每 %s 秒";
   }
   secondsX0ThroughX1PastTheMinute() {
-    return "在每分鐘的 %s 到 %s 秒";
+    return "在一分鐘後的 %s 到 %s 秒";
   }
   atX0SecondsPastTheMinute() {
-    return "在每分鐘的 %s 秒";
+    return "在一分鐘後的 %s 秒";
   }
   everyX0Minutes() {
     return "每 %s 分鐘";
   }
   minutesX0ThroughX1PastTheHour() {
-    return "在每小時的 %s 到 %s 分鐘";
+    return "在整點後的 %s 到 %s 分鐘";
   }
   atX0MinutesPastTheHour() {
-    return "在每小時的 %s 分";
+    return "在整點後的 %s 分";
   }
   everyX0Hours() {
     return "每 %s 小時";
