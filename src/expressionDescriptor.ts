@@ -653,7 +653,7 @@ export class ExpressionDescriptor {
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
     let hourOffset: number = 0;
     let minuteOffset: number = 0;
-    
+
     if(this.options.tzOffset) {
       hourOffset = this.options.tzOffset > 0 ? Math.floor(this.options.tzOffset) : Math.ceil(this.options.tzOffset);
 
@@ -674,7 +674,7 @@ export class ExpressionDescriptor {
       minute += 60;
       hour -= 1;
     }
-    
+
     if (hour >= 24) {
       hour = hour - 24;
     } else if (hour < 0) {
