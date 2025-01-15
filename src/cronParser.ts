@@ -26,7 +26,7 @@ export class CronParser {
    */
   parse(): string[] {
     let parsed: string[];
-    
+
     var expression = this.expression ?? '';
 
     if (expression.startsWith('@')) {
@@ -316,12 +316,22 @@ export class CronParser {
   }
 
   protected validate(parsed: string[]) {
-    this.assertNoInvalidCharacters("DOW", parsed[5]);
-    this.assertNoInvalidCharacters("DOM", parsed[3]);
-    this.validateRange(parsed);
+    const standardCronPartCharacters = "0-9,\\-*\/";
+    this.validateOnlyExpectedCharactersFound(parsed[0], standardCronPartCharacters);
+    this.validateOnlyExpectedCharactersFound(parsed[1], standardCronPartCharacters);
+    this.validateOnlyExpectedCharactersFound(parsed[2], standardCronPartCharacters);
+    // DOM
+    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*\/LW");
+    this.validateOnlyExpectedCharactersFound(parsed[4], standardCronPartCharacters);
+    // DOW
+    this.validateOnlyExpectedCharactersFound(parsed[5], "0-9,\\-*\/L#");
+    this.validateOnlyExpectedCharactersFound(parsed[6], standardCronPartCharacters);
+
+    this.validateAnyRanges(parsed);
+
   }
 
-  protected validateRange(parsed: string[]) {
+  protected validateAnyRanges(parsed: string[]) {
     RangeValidator.secondRange(parsed[0]);
     RangeValidator.minuteRange(parsed[1]);
     RangeValidator.hourRange(parsed[2]);
@@ -330,11 +340,12 @@ export class CronParser {
     RangeValidator.dayOfWeekRange(parsed[5], this.dayOfWeekStartIndexZero);
   }
 
-  protected assertNoInvalidCharacters(partDescription: string, expression: string) {
-    // No characters other than 'L' or 'W' should remain after normalization
-    let invalidChars = expression.match(/[A-KM-VX-Z]+/gi);
+  protected validateOnlyExpectedCharactersFound(cronPart: string, allowedCharsExpression: string) {
+    // Write code that will ensure the expression string only contains numbers or any of the following characters , - * /
+    // If any other characters are found, it is an error.
+    let invalidChars = cronPart.match(new RegExp(`[^${allowedCharsExpression}]+`, "gi"));
     if (invalidChars && invalidChars.length) {
-      throw new Error(`${partDescription} part contains invalid values: '${invalidChars.toString()}'`);
+      throw new Error(`Expression contains invalid values: '${invalidChars.toString()}'`);
     }
   }
 }

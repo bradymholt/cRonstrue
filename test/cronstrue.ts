@@ -729,6 +729,12 @@ describe("Cronstrue", function () {
       }, "Error: Expression has only 1 part. At least 5 parts are required.");
     });
 
+    it("too many parts", function () {
+      assert.throws(function () {
+        cronstrue.toString("* * * * * * * *");
+      }, "Expression has 8 parts; too many!");
+    });
+
     it("empty expression", function () {
       assert.throws(function () {
         cronstrue.toString("");
