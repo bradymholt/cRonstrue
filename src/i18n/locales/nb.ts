@@ -129,7 +129,7 @@ export class nb implements Locale {
     return "minuttene fra %s til og med %s etter timen";
   }
   second() {
-    return "sekund";
+    return "andre";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "sekundene fra %s til og med %s etter minuttet";
