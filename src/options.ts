@@ -5,5 +5,9 @@ export interface Options {
   monthStartIndexZero?: boolean;
   use24HourTimeFormat?: boolean;
   locale?: string | null;
+
+  /**
+   * @deprecated Timezone offset in minutes.
+   */
   tzOffset?: number;
 }
