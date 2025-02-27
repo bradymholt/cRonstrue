@@ -1,7 +1,6 @@
 import "mocha";
-import chai = require("chai");
+import { assert } from "chai";
 import cronstrue from "../src/cronstrue";
-let assert = chai.assert;
 
 describe("Cronstrue", function () {
   describe("every", function () {
@@ -193,11 +192,11 @@ describe("Cronstrue", function () {
     });
 
     it("10 11 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true}), "At 11:10 AM, every day");
+      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "At 11:10 AM, every day");
     });
 
     it("30 22 * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { use24HourTimeFormat: true}), "At 22:30");
+      assert.equal(cronstrue.toString(this.test?.title as string, { use24HourTimeFormat: true }), "At 22:30");
     });
 
     it("5 1 * * 1", function () {
@@ -805,7 +804,7 @@ describe("Cronstrue", function () {
     it("garbage expression with option (throwExceptionOnParseError = false)", function () {
       assert.equal(
         cronstrue.toString("garbage", { throwExceptionOnParseError: false }),
-        "An error occured when generating the expression description.  Check the cron expression syntax."
+        "An error occurred when generating the expression description. Check the cron expression syntax."
       );
     });
   });

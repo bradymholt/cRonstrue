@@ -19,14 +19,14 @@ export class fr implements Locale {
     return true;
   }
 
+  anErrorOccuredWhenGeneratingTheExpressionD() {
+    return "Une erreur est survenue en générant la description de l'expression cron. Vérifiez sa syntaxe.";
+  }
   everyMinute() {
     return "toutes les minutes";
   }
   everyHour() {
     return "toutes les heures";
-  }
-  anErrorOccuredWhenGeneratingTheExpressionD() {
-    return "Une erreur est survenue en générant la description de l'expression cron. Vérifiez sa syntaxe.";
   }
   atSpace() {
     return "À ";
@@ -68,7 +68,7 @@ export class fr implements Locale {
     return "de %s à %s";
   }
   atX0() {
-    return "à %s";
+    return "%s";
   }
   commaEveryDay() {
     return ", tous les jours";
@@ -146,11 +146,15 @@ export class fr implements Locale {
     return ", du %s au %s du mois";
   }
   commaOnDayX0OfTheMonth() {
-    return ", le %s du mois";
+    return ", %s du mois";
+  }
+  commaEveryHour() {
+    return ", chaque heure";
   }
   commaEveryX0Years() {
     return ", tous les %s ans";
   }
+  // No longer used?
   commaDaysX0ThroughX1() {
     return ", du %s au %s";
   }
