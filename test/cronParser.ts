@@ -1,7 +1,6 @@
-import 'mocha';
-import chai = require("chai");
+import "mocha";
+import { assert } from "chai";
 import { CronParser } from "../src/cronParser";
-let assert = chai.assert;
 
 describe("CronParser", function () {
   describe("parse", function () {
@@ -28,10 +27,10 @@ describe("CronParser", function () {
       }, `Expression contains invalid values: 'MO'`);
     });
 
-     it("does not allow unexpected characters or statements in any part", function () {
+    it("does not allow unexpected characters or statements in any part", function () {
       const maliciousStatement = "\nDROP\tDATABASE\tusers;";
 
-      for(let i = 0; i <= 6; i++) {
+      for (let i = 0; i <= 6; i++) {
         const cleanCronParts = ["*", "*", "*", "*", "*", "*", "*"];
         cleanCronParts[i] = maliciousStatement;
         const cronToTest = cleanCronParts.join(" ");

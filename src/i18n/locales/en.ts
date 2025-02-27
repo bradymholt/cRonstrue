@@ -20,7 +20,7 @@ export class en implements Locale {
   }
 
   anErrorOccuredWhenGeneratingTheExpressionD() {
-    return "An error occured when generating the expression description.  Check the cron expression syntax.";
+    return "An error occurred when generating the expression description. Check the cron expression syntax.";
   }
   everyMinute() {
     return "every minute";
