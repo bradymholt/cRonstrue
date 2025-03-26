@@ -140,6 +140,40 @@ describe("Cronstrue (fr)", function () {
     });
   });
 
+  describe("choice", function () {
+    it("* * 3,8 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 3 et 8 du mois");
+    });
+
+    it("* * * * 2,6", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, uniquement le mardi et samedi");
+    });
+
+    it("* * 3 * 2", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 3 du mois, et mardi");
+    });
+
+    it("* * 3 * 2,6", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 3 du mois, et mardi et samedi");
+    });
+
+    it("* * 3,8 * 2", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 3 et 8 du mois, et mardi");
+    });
+
+    it("* * 3,8 * 2,6", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 3 et 8 du mois, et mardi et samedi");
+    });
+
+    it("* * 1,3,5,7,9 * 2,4,6", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le 1, 3, 5, 7, et 9 du mois, et mardi, jeudi, et samedi");
+    });
+
+    it("0,30,59 0,12,23 1,3,5,7,9 3,6,9,12 2,4,6", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "0, 30, et 59 minutes après l'heure, 00:00, 12:00, et 23:00, le 1, 3, 5, 7, et 9 du mois, et mardi, jeudi, et samedi, uniquement en mars, juin, septembre, et décembre");
+    });
+  });
+
   describe("last", function () {
     it("* * * * 4L", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, le dernier jeudi du mois");
@@ -167,11 +201,8 @@ describe("Cronstrue (fr)", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, toutes les 6 heures, à partir de 03:00");
     });
 
-    // ERROR: This is false but it can't be fixed properly for french language
-    // "à partir de 3" should be "à partir du 3"
-    // See https://github.com/bradymholt/cRonstrue/pull/338
     it("* * 3/6 * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, tous les 6 jours, à partir de 3 du mois");
+      assert.equal(cronstrue.toString(this.test?.title as string), "Toutes les minutes, tous les 6 jours, à partir du 3 du mois");
     });
 
     it("* * * 3/6 *", function () {

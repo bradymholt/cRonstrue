@@ -2,6 +2,12 @@
 
 import { Locale } from "../locale";
 export class fr implements Locale {
+  conciseVerbosityReplacements() {
+    return {
+      "de le": "du",
+    };
+  }
+  
   atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }
@@ -146,7 +152,7 @@ export class fr implements Locale {
     return ", du %s au %s du mois";
   }
   commaOnDayX0OfTheMonth() {
-    return ", %s du mois";
+    return ", le %s du mois";
   }
   commaEveryHour() {
     return ", chaque heure";

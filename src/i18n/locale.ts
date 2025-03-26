@@ -3,6 +3,15 @@ export interface Locale {
   // TODO: These locale translations would be a good use for ES6 template strings except we sometimes concatenate multiple transactions together before
   //       doing the actual template replacement.
 
+  /**
+   * When `verbose` option is set to `false`, use this array to do any replacements to make the description more concise
+   * For example:
+   * return {
+      "only in January": "in January",
+      "every weekend day": "weekends",
+    };
+  */
+  conciseVerbosityReplacements?(): Record<string, string>;
   setPeriodBeforeTime?(): boolean;
   pm?(): string;
   am?(): string;

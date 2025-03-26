@@ -6,7 +6,7 @@ import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
 
 export class ExpressionDescriptor {
-  static locales: { [name: string]: Locale } = {};
+  static locales: { [name: string]: Locale; } = {};
   static defaultLocale: string;
   static specialCharacters: string[];
 
@@ -713,6 +713,12 @@ export class ExpressionDescriptor {
       description = description.replace(new RegExp(`, ${this.i18n.everyHour()}`, "g"), "");
       description = description.replace(new RegExp(this.i18n.commaEveryDay(), "g"), "");
       description = description.replace(/\, ?$/, "");
+
+      if (this.i18n.conciseVerbosityReplacements) {
+        for (const [key, value] of Object.entries(this.i18n.conciseVerbosityReplacements())) {
+          description = description.replace(new RegExp(key, "g"), value);
+        }
+      }
     }
     return description;
   }
