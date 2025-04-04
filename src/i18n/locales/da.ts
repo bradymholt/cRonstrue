@@ -50,8 +50,8 @@ export class da implements Locale {
   commaOnlyInX0() {
     return ", kun i %s";
   }
-  commaOnlyOnX0() {
-    return ", på %se";
+  commaOnlyOnX0(s?: string) {
+    return ", på enhver %s";
   }
   commaAndOnX0() {
     return ", og på %s";

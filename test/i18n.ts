@@ -348,7 +348,14 @@ describe("i18n", function () {
     it("0 3 * * 4", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "da" }),
-        "Kl 03:00, på torsdage"
+        "Kl 03:00, på enhver torsdag"
+      );
+    });
+
+    it("0 3 * * 4,5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "da" }),
+        "Kl 03:00, på enhver torsdag og fredag"
       );
     });
   });
