@@ -1,7 +1,6 @@
-import 'mocha';
-import chai = require("chai");
+import "mocha";
+import { assert } from "chai";
 import { StringUtilities } from "../src/stringUtilities";
-let assert = chai.assert;
 
 describe("StringUtilities", function () {
   describe("format", function () {

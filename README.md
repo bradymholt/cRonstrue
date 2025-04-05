@@ -125,7 +125,6 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 - **monthStartIndexZero: boolean** - Wether to interpret January as `0` or `1`. (Default: false)
 - **use24HourTimeFormat: boolean** - If true, descriptions will use a [24-hour clock](https://en.wikipedia.org/wiki/24-hour_clock) (Default: false but some translations will default to true)
 - **locale: string** - The locale to use (Default: "en")
-- **tzOffset: number** - Your time offset (in hours) from UTC (Default: 0)
 
 ## i18n
 

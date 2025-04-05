@@ -6,7 +6,7 @@ import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
 
 export class ExpressionDescriptor {
-  static locales: { [name: string]: Locale } = {};
+  static locales: { [name: string]: Locale; } = {};
   static defaultLocale: string;
   static specialCharacters: string[];
 
@@ -27,7 +27,6 @@ export class ExpressionDescriptor {
    *         monthStartIndexZero = false,
    *         use24HourTimeFormat = false,
    *         locale = 'en'
-   *         tzOffset = 0
    *     }={}]
    * @returns {string}
    */
@@ -40,7 +39,7 @@ export class ExpressionDescriptor {
       monthStartIndexZero = false,
       use24HourTimeFormat,
       locale = null,
-      tzOffset = 0
+      tzOffset = 0,
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -53,8 +52,12 @@ export class ExpressionDescriptor {
       monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
       locale: locale,
-      tzOffset: tzOffset
+      tzOffset: tzOffset,
     };
+
+    if (options.tzOffset) {
+      console.warn(`'tzOffset' option has been deprecated and will be removed in a future release.`);
+    }
 
     let descripter = new ExpressionDescriptor(expression, options);
     return descripter.getFullDescription();
@@ -221,8 +224,8 @@ export class ExpressionDescriptor {
         return s == "0"
           ? ""
           : parseInt(s) < 20
-            ? this.i18n.atX0SecondsPastTheMinute(s)
-            : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s);
+          ? this.i18n.atX0SecondsPastTheMinute(s)
+          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s);
       }
     );
 
@@ -249,8 +252,8 @@ export class ExpressionDescriptor {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
             : parseInt(s) < 20
-              ? this.i18n.atX0MinutesPastTheHour(s)
-              : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);
+            ? this.i18n.atX0MinutesPastTheHour(s)
+            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour(s);
         }
@@ -442,7 +445,8 @@ export class ExpressionDescriptor {
       case "LW":
         description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
         break;
-      default: // i.e. 3W or W2
+      default:
+        // i.e. 3W or W2
         let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
         if (weekDayNumberMatches) {
           let dayNumber: number = parseInt(weekDayNumberMatches[0].replace("W", ""));
@@ -471,8 +475,8 @@ export class ExpressionDescriptor {
                 return s == "L"
                   ? this.i18n.lastDay()
                   : this.i18n.dayX0
-                    ? StringUtilities.format(this.i18n.dayX0(), s)
-                    : s;
+                  ? StringUtilities.format(this.i18n.dayX0(), s)
+                  : s;
               },
               (s) => {
                 return s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days(s);
@@ -653,19 +657,19 @@ export class ExpressionDescriptor {
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
     let hourOffset: number = 0;
     let minuteOffset: number = 0;
-    
-    if(this.options.tzOffset) {
+
+    if (this.options.tzOffset) {
       hourOffset = this.options.tzOffset > 0 ? Math.floor(this.options.tzOffset) : Math.ceil(this.options.tzOffset);
 
-      minuteOffset = (parseFloat((this.options.tzOffset % 1).toFixed(2)));
+      minuteOffset = parseFloat((this.options.tzOffset % 1).toFixed(2));
 
-      if(minuteOffset != 0) {
+      if (minuteOffset != 0) {
         minuteOffset *= 60;
       }
     }
 
-    let hour: number = parseInt(hourExpression) + (hourOffset);
-    let minute: number = parseInt(minuteExpression) + (minuteOffset);
+    let hour: number = parseInt(hourExpression) + hourOffset;
+    let minute: number = parseInt(minuteExpression) + minuteOffset;
 
     if (minute >= 60) {
       minute -= 60;
@@ -674,7 +678,7 @@ export class ExpressionDescriptor {
       minute += 60;
       hour -= 1;
     }
-    
+
     if (hour >= 24) {
       hour = hour - 24;
     } else if (hour < 0) {
@@ -709,6 +713,12 @@ export class ExpressionDescriptor {
       description = description.replace(new RegExp(`, ${this.i18n.everyHour()}`, "g"), "");
       description = description.replace(new RegExp(this.i18n.commaEveryDay(), "g"), "");
       description = description.replace(/\, ?$/, "");
+
+      if (this.i18n.conciseVerbosityReplacements) {
+        for (const [key, value] of Object.entries(this.i18n.conciseVerbosityReplacements())) {
+          description = description.replace(new RegExp(key, "g"), value);
+        }
+      }
     }
     return description;
   }

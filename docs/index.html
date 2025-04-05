@@ -35,7 +35,7 @@
       <h1>cRonstrue <span id="logo-lettering">* * * * *</span></h1>
       <h2>translate cron expressions to human readable descriptions</h2>
       <section>
-        <form>
+        <form id="form">
           <input type="text" id="expression" size="20" value="*/5 * * * *" />
           <select id="locale">
             <option value="en" selected>English</option>
@@ -127,8 +127,15 @@
         const localeElement = document.getElementById("locale");
         const translateButtonElement = document.getElementById("translate");
         const descriptionElement = document.getElementById("description");
+        const formElement = document.getElementById("form");
 
-        translateButtonElement.onclick = () => {
+        formElement.onsubmit = translate
+        localeElement.onchange = translate
+        translateButtonElement.onclick = translate
+
+        function translate(e) {
+          e.preventDefault();
+
           const expression = expressionElement.value;
           const locale = localeElement.value;
           const description = cronstrue.toString(expression, { throwExceptionOnParseError: false, locale });

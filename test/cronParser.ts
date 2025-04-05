@@ -1,7 +1,6 @@
-import 'mocha';
-import chai = require("chai");
+import "mocha";
+import { assert } from "chai";
 import { CronParser } from "../src/cronParser";
-let assert = chai.assert;
 
 describe("CronParser", function () {
   describe("parse", function () {
@@ -25,7 +24,21 @@ describe("CronParser", function () {
     it("should error if DOW part is not valid", function () {
       assert.throws(function () {
         new CronParser("* * * * MO").parse();
-      }, `DOW part contains invalid values: 'MO'`);
+      }, `Expression contains invalid values: 'MO'`);
+    });
+
+    it("does not allow unexpected characters or statements in any part", function () {
+      const maliciousStatement = "\nDROP\tDATABASE\tusers;";
+
+      for (let i = 0; i <= 6; i++) {
+        const cleanCronParts = ["*", "*", "*", "*", "*", "*", "*"];
+        cleanCronParts[i] = maliciousStatement;
+        const cronToTest = cleanCronParts.join(" ");
+        assert.throws(function () {
+          new CronParser(cronToTest).parse();
+        }, `Expression contains invalid values:`);
+      }
+
     });
 
     it("should parse cron with multiple spaces between parts", function () {
