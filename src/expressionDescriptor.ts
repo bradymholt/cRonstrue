@@ -6,7 +6,7 @@ import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
 
 export class ExpressionDescriptor {
-  static locales: { [name: string]: Locale; } = {};
+  static locales: { [name: string]: Locale } = {};
   static defaultLocale: string;
   static specialCharacters: string[];
 
@@ -265,11 +265,32 @@ export class ExpressionDescriptor {
 
   protected getHoursDescription() {
     let expression = this.expressionParts[2];
+
+    // Collect the end values of hour ranges (e.g., "7-19" -> "19") to determine if ":59" should be used instead of ":00" for the last minute of the range.
+    let hourIndex = 0;
+    const rangeEndValues: { value: string; index: number }[] = [];
+    expression
+      .split("/")[0] // Ignore step values (e.g., "7-19/2" -> "7-19")
+      .split(",") // Split multiple ranges or values (e.g., "7-19,20" -> ["7-19", "20"])
+      .forEach((range) => {
+        const rangeParts = range.split("-"); // Split ranges into start and end (e.g., "7-19" -> ["7", "19"])
+        if (rangeParts.length === 2) {
+          rangeEndValues.push({ value: rangeParts[1], index: hourIndex + 1 });
+        }
+        hourIndex += rangeParts.length;
+      });
+
+    let evaluationIndex = 0;
     let description = this.getSegmentDescription(
       expression,
       this.i18n.everyHour(),
       (s) => {
-        return this.formatTime(s, "0", "");
+        const match = rangeEndValues.find((r) => r.value === s && r.index === evaluationIndex);
+        const isRangeEndWithNonZeroMinute = match && this.expressionParts[1] !== "0";
+
+        evaluationIndex++;
+
+        return isRangeEndWithNonZeroMinute ? this.formatTime(s, "59", "") : this.formatTime(s, "0", "");
       },
       (s) => {
         return StringUtilities.format(this.i18n.everyX0Hours(s), s);
@@ -281,18 +302,6 @@ export class ExpressionDescriptor {
         return this.i18n.atX0();
       }
     );
-
-    // If this is an hour range and minute segment is not "on the hour" (0), we'll change the second hour part from :00 to :59
-    if (description && expression.includes("-") && this.expressionParts[1] != "0") {
-      const atTheHourMatches = Array.from(description.matchAll(/:00/g));
-      if (atTheHourMatches.length > 1) {
-        const lastAtTheHourMatchIndex = atTheHourMatches[atTheHourMatches.length - 1].index;
-        description =
-          description.substring(0, lastAtTheHourMatchIndex) +
-          ":59" +
-          description.substring(lastAtTheHourMatchIndex! + 3);
-      }
-    }
 
     return description;
   }

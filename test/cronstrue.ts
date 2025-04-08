@@ -669,6 +669,20 @@ describe("Cronstrue", function () {
         "Every 10 minutes, minutes 5 through 45 past the hour, every 5 minutes, and at 9 minutes past the hour"
       );
     });
+
+    it("*/5 0-4,6-8 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every 5 minutes, at 12:00 AM through 04:59 AM and 06:00 AM through 08:59 AM"
+      );
+    });
+
+    it("* 1-2,22-23 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, at 01:00 AM through 02:59 AM and 10:00 PM through 11:59 PM"
+      );
+    });
   });
 
   describe("@ expressions", function () {
