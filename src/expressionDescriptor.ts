@@ -39,7 +39,6 @@ export class ExpressionDescriptor {
       monthStartIndexZero = false,
       use24HourTimeFormat,
       locale = null,
-      tzOffset = 0,
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -52,11 +51,10 @@ export class ExpressionDescriptor {
       monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
       locale: locale,
-      tzOffset: tzOffset,
     };
 
     if (options.tzOffset) {
-      console.warn(`'tzOffset' option has been deprecated and will be removed in a future release.`);
+      console.warn(`'tzOffset' option has been deprecated and is no longer supported.`);
     }
 
     let descripter = new ExpressionDescriptor(expression, options);
@@ -328,22 +326,6 @@ export class ExpressionDescriptor {
           }
 
           let parsedExp = parseInt(exp);
-          if (this.options.tzOffset) {
-            const hourExpression = this.expressionParts[2];
-            let hour: number = parseInt(hourExpression) + (this.options.tzOffset ? this.options.tzOffset : 0);
-            if (hour >= 24) {
-              parsedExp++;
-            } else if (hour < 0) {
-              parsedExp--;
-            }
-
-            if (parsedExp > 6) {
-              parsedExp = 0;
-            } else if (parsedExp < 0) {
-              parsedExp = 6;
-            }
-          }
-
           let description = this.i18n.daysOfTheWeekInCase
             ? this.i18n.daysOfTheWeekInCase(form)[parsedExp]
             : daysOfWeekNames[parsedExp];
@@ -666,16 +648,6 @@ export class ExpressionDescriptor {
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
     let hourOffset: number = 0;
     let minuteOffset: number = 0;
-
-    if (this.options.tzOffset) {
-      hourOffset = this.options.tzOffset > 0 ? Math.floor(this.options.tzOffset) : Math.ceil(this.options.tzOffset);
-
-      minuteOffset = parseFloat((this.options.tzOffset % 1).toFixed(2));
-
-      if (minuteOffset != 0) {
-        minuteOffset *= 60;
-      }
-    }
 
     let hour: number = parseInt(hourExpression) + hourOffset;
     let minute: number = parseInt(minuteExpression) + minuteOffset;
