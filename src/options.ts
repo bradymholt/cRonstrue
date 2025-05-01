@@ -7,7 +7,7 @@ export interface Options {
   locale?: string | null;
 
   /**
-   * @deprecated Timezone offset in minutes.
+   * @deprecated (DEPRECATED DO NOT USE) Timezone offset in minutes.
    */
   tzOffset?: number;
 }
