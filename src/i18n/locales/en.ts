@@ -176,4 +176,8 @@ export class en implements Locale {
       "December",
     ];
   }
+
+  atReboot() {
+    return "Run once, at startup";
+  }
 }

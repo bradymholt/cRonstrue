@@ -96,7 +96,7 @@ cronstrue.toString("@monthly");
 > "At 12:00 AM, on day 1 of the month"
 
 cronstrue.toString("@reboot");
-> "At system startup"
+> "Run once, at startup"
 
 ```
 

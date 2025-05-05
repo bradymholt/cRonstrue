@@ -107,7 +107,7 @@ export class ExpressionDescriptor {
 
       // Special handling for @reboot
       if (this.expressionParts[0] === "@reboot") {
-        return "At system startup";
+        return this.i18n.atReboot?.() || "Run once, at startup";
       }
 
       var timeSegment = this.getTimeOfDayDescription();

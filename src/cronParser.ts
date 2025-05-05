@@ -10,7 +10,11 @@ export class CronParser {
   dayOfWeekStartIndexZero: boolean;
   monthStartIndexZero: boolean;
 
-  constructor(expression: string, dayOfWeekStartIndexZero: boolean = true, monthStartIndexZero: boolean = false) {
+  constructor(
+    expression: string,
+    dayOfWeekStartIndexZero: boolean = true,
+    monthStartIndexZero: boolean = false
+  ) {
     this.expression = expression;
     this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     this.monthStartIndexZero = monthStartIndexZero;
@@ -23,13 +27,13 @@ export class CronParser {
   parse(): string[] {
     let parsed: string[];
 
-    var expression = this.expression ?? "";
+    var expression = this.expression ?? '';
 
     if (expression === "@reboot") {
       // Special handling for @reboot - create a marker array with a special format
       parsed = ["@reboot", "", "", "", "", "", ""];
       return parsed;
-    } else if (expression.startsWith("@")) {
+    } else if (expression.startsWith('@')) {
       var special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
     } else {
@@ -44,19 +48,19 @@ export class CronParser {
 
   parseSpecial(expression: string): string {
     const specialExpressions: { [key: string]: string } = {
-      "@yearly": "0 0 1 1 *",
-      "@annually": "0 0 1 1 *",
-      "@monthly": "0 0 1 * *",
-      "@weekly": "0 0 * * 0",
-      "@daily": "0 0 * * *",
-      "@midnight": "0 0 * * *",
-      "@hourly": "0 * * * *",
-      "@reboot": "@reboot",
+        '@yearly': '0 0 1 1 *',
+        '@annually': '0 0 1 1 *',
+        '@monthly': '0 0 1 * *',
+        '@weekly': '0 0 * * 0',
+        '@daily': '0 0 * * *',
+        '@midnight': '0 0 * * *',
+        '@hourly': '0 * * * *',
+        '@reboot': '@reboot'
     };
 
     const special = specialExpressions[expression];
     if (!special) {
-      throw new Error("Unknown special expression.");
+        throw new Error('Unknown special expression.');
     }
 
     return special;
@@ -316,15 +320,15 @@ export class CronParser {
   }
 
   protected validate(parsed: string[]) {
-    const standardCronPartCharacters = "0-9,\\-*/";
+    const standardCronPartCharacters = "0-9,\\-*\/";
     this.validateOnlyExpectedCharactersFound(parsed[0], standardCronPartCharacters);
     this.validateOnlyExpectedCharactersFound(parsed[1], standardCronPartCharacters);
     this.validateOnlyExpectedCharactersFound(parsed[2], standardCronPartCharacters);
     // DOM
-    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*/LW");
+    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*\/LW");
     this.validateOnlyExpectedCharactersFound(parsed[4], standardCronPartCharacters);
     // DOW
-    this.validateOnlyExpectedCharactersFound(parsed[5], "0-9,\\-*/L#");
+    this.validateOnlyExpectedCharactersFound(parsed[5], "0-9,\\-*\/L#");
     this.validateOnlyExpectedCharactersFound(parsed[6], standardCronPartCharacters);
 
     this.validateAnyRanges(parsed);

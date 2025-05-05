@@ -721,7 +721,7 @@ describe("Cronstrue", function () {
     });
 
     it("@reboot", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string), "At system startup");
+      assert.equal(cronstrue.toString(this.test?.title as string), "Run once, at startup");
     });
   });
 

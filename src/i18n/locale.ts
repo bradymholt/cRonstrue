@@ -80,4 +80,5 @@ export interface Locale {
    * @return {string[]} months of year
    */
   monthsOfTheYearInCase?(f?: number): string[];
+  atReboot?(): string;
 }
