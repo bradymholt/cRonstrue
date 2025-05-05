@@ -61,5 +61,11 @@ describe("CronParser", function () {
     it("should parse cron @ expression", function () {
       assert.equal(new CronParser("@weekly").parse().length, 7);
     });
+
+    it("should parse @reboot expression", function () {
+      const parsedReboot = new CronParser("@reboot").parse();
+      assert.equal(parsedReboot.length, 7);
+      assert.equal(parsedReboot[0], "@reboot");
+    });
   });
 });

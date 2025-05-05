@@ -719,6 +719,10 @@ describe("Cronstrue", function () {
     it("@hourly", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every hour");
     });
+
+    it("@reboot", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At system startup");
+    });
   });
 
   describe("verbose", function () {

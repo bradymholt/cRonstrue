@@ -104,6 +104,12 @@ export class ExpressionDescriptor {
         this.options.monthStartIndexZero
       );
       this.expressionParts = parser.parse();
+
+      // Special handling for @reboot
+      if (this.expressionParts[0] === "@reboot") {
+        return "At system startup";
+      }
+
       var timeSegment = this.getTimeOfDayDescription();
       var dayOfMonthDesc = this.getDayOfMonthDescription();
       var monthDesc = this.getMonthDescription();
