@@ -94,10 +94,6 @@ cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
 
 cronstrue.toString("@monthly");
 > "At 12:00 AM, on day 1 of the month"
-
-cronstrue.toString("@reboot");
-> "Run once, at startup"
-
 ```
 
 For more usage examples, including a demonstration of how cRonstrue can handle some very complex cron expressions, you can [reference the unit tests](https://github.com/bradymholt/cRonstrue/blob/main/test/cronstrue.ts).
