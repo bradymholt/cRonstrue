@@ -17,6 +17,7 @@ This library was ported from the original C# implementation called [cron-express
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions are supported
+- Supports time specification _nicknames_ (@yearly, @annually, @monthly, @weekly, @daily, @reboot)
 - i18n support with 30+ languages
 
 ## Demo
@@ -93,6 +94,9 @@ cronstrue.toString("* * * 6-8 *", { monthStartIndexZero: true });
 
 cronstrue.toString("@monthly");
 > "At 12:00 AM, on day 1 of the month"
+
+cronstrue.toString("@reboot");
+> "Run once, at startup"
 
 ```
 

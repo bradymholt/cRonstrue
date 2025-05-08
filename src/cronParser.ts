@@ -29,10 +29,13 @@ export class CronParser {
 
     var expression = this.expression ?? '';
 
-    if (expression.startsWith('@')) {
+    if (expression === "@reboot") {
+      // Special handling for @reboot - create a marker array with a special format
+      parsed = ["@reboot", "", "", "", "", "", ""];
+      return parsed;
+    } else if (expression.startsWith('@')) {
       var special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
-
     } else {
       parsed = this.extractParts(this.expression);
     }
@@ -51,7 +54,8 @@ export class CronParser {
         '@weekly': '0 0 * * 0',
         '@daily': '0 0 * * *',
         '@midnight': '0 0 * * *',
-        '@hourly': '0 * * * *'
+        '@hourly': '0 * * * *',
+        '@reboot': '@reboot'
     };
 
     const special = specialExpressions[expression];
@@ -328,7 +332,6 @@ export class CronParser {
     this.validateOnlyExpectedCharactersFound(parsed[6], standardCronPartCharacters);
 
     this.validateAnyRanges(parsed);
-
   }
 
   protected validateAnyRanges(parsed: string[]) {
