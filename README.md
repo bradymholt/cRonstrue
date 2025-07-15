@@ -172,32 +172,6 @@ cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
 cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 ```
 
-## Frequently Asked Questions
-
-1. The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?
-
-    This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-parser](https://www.npmjs.com/package/cron-parser).  Example validation with cron-parser:
-
-   ```
-   const cronParser = require("cron-parser");
-   const cronstrue = require("cronstrue");
-
-   const expression = "* * * * * *";
-
-   // Validate expression first
-   let isCronValid = true;
-   try { cronParser.parseExpression(expression) } catch(e) { isCronValid = false; }
-
-   // If valid, then pass into cRonstrue
-   if (isCronValid) {
-     console.log(cronstrue.toString("* * * * *"));
-   }
-   ```
-
-2. Can cRonstrue output the next occurrence of the cron expression?
-
-    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
-
 ### Supported Locales
 
 The following locales can be passed in for the `locale` option.  Thank you to the author (shown below) of each translation!
@@ -239,6 +213,32 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 - vi - Vietnamese ([Nguyen Tan Phap](https://github.com/rikkapro0128))
 - zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
 - zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
+
+## Frequently Asked Questions
+
+1. The cron expression I am passing in is not valid and this library is giving strange output.  What should I do?
+
+    This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-parser](https://www.npmjs.com/package/cron-parser).  Example validation with cron-parser:
+
+   ```
+   const cronParser = require("cron-parser");
+   const cronstrue = require("cronstrue");
+
+   const expression = "* * * * * *";
+
+   // Validate expression first
+   let isCronValid = true;
+   try { cronParser.parseExpression(expression) } catch(e) { isCronValid = false; }
+
+   // If valid, then pass into cRonstrue
+   if (isCronValid) {
+     console.log(cronstrue.toString("* * * * *"));
+   }
+   ```
+
+2. Can cRonstrue output the next occurrence of the cron expression?
+
+    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
 
 ## Sponsors
 
