@@ -208,6 +208,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 - be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
 - bg - Bulgarian ([kamenf](https://github.com/kamenf))
 - ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))
+- hr - Croatian ([Rok Šekoranja](https://github.com/Rookxc))
 - cs - Czech ([hanbar](https://github.com/hanbar))
 - es - Spanish ([Ivan Santos](https://github.com/ivansg))
 - da - Danish ([Rasmus Melchior Jacobsen](https://github.com/rmja))
