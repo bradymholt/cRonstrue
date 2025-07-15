@@ -551,7 +551,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "hr" }),
-        "Svakih 5 minuta, između 15:00 i 15:59, od ponedjeljka do petka"
+        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedjeljak do Petak"
       );
     });
   });
