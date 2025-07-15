@@ -17,7 +17,7 @@ This library was ported from the original C# implementation called [cron-express
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
 - [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions are supported
-- Supports time specification _nicknames_ (@yearly, @annually, @monthly, @weekly, @daily, @reboot)
+- Supports time specification _nicknames_ (@yearly, @annually, @monthly, @weekly, @daily)
 - i18n support with 30+ languages
 
 ## Demo
