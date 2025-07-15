@@ -539,4 +539,22 @@ describe("i18n", function () {
     });
   });
 
+  describe("hr", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "hr" }), "Svaku minutu");
+    });
+
+    it("0 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "hr" }), "Svaki sat");
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "hr" }),
+        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedjeljak do Petak"
+      );
+    });
+  });
+
+
 });
