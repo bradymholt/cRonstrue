@@ -86,7 +86,7 @@ export class ru implements Locale {
     return ", каждый день";
   }
   commaEveryX0DaysOfTheWeek(s?: string) {
-    return getPhraseByNumber(s, ["", ", каждые %s дня недели", ", каждые %s дней недели"]);
+    return getPhraseByNumber(s, [", каждый %s день недели", ", каждые %s дня недели", ", каждые %s дней недели"]);
   }
   commaX0ThroughX1(s?: string) {
     return s && (s[0] == "2" || s[0] == "3") ? ", со %s по %s" : ", с %s по %s";
