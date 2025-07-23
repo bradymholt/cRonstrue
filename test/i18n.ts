@@ -264,6 +264,13 @@ describe("i18n", function () {
         "Каждые 5 минут, с 15:00 по 15:59, с понедельника по пятницу"
       );
     });
+
+    it("* * * * */31", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ru" }),
+        "Каждую минуту, каждый 31 день недели"
+      );
+    });
   });
 
   describe("tr", function () {
