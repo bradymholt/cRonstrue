@@ -267,6 +267,27 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every hour, on day 31 of the month, and on Monday");
     });
 
+    it("0 * 31 * 2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
+        "Every hour, on day 31 of the month, only on Tuesday"
+      );
+    });
+
+    it("0 0 0 1,2,3 * WED,FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
+        "At 12:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday"
+      );
+    });
+
+    it("0 2,16 1,8,15,22 * 1,2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
+        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday"
+      );
+    });
+
     it("0 45 12 22,17,6,30,26 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
@@ -803,7 +824,7 @@ describe("Cronstrue", function () {
 
     it("null expression", function () {
       assert.throws(function () {
-        cronstrue.toString((null as any) as string);
+        cronstrue.toString(null as any as string);
       }, "Error: cron expression is empty");
     });
 

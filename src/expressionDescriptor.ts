@@ -39,6 +39,7 @@ export class ExpressionDescriptor {
       monthStartIndexZero = false,
       use24HourTimeFormat,
       locale = null,
+      logicalAndDayFields = false,
     }: Options = {}
   ): string {
     // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
@@ -51,6 +52,7 @@ export class ExpressionDescriptor {
       monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
       locale: locale,
+      logicalAndDayFields: logicalAndDayFields,
     };
 
     if (options.tzOffset) {
@@ -386,9 +388,17 @@ export class ExpressionDescriptor {
           } else if (s.indexOf("L") > -1) {
             format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
           } else {
-            // If both DOM and DOW are specified, the cron will execute at either time.
+            // If both DOM and DOW are specified, the cron executes depending on the cron format.
+            // For the standard crontab format, the cron will execute at either time. For some
+            // custom formats, the cron will execute when both times are satisfied.
             const domSpecified = this.expressionParts[3] != "*";
-            format = domSpecified ? this.i18n.commaAndOnX0() : this.i18n.commaOnlyOnX0(s);
+            if (!domSpecified) {
+              format = this.i18n.commaOnlyOnX0(s);
+            } else if (this.options.logicalAndDayFields) {
+              format = this.i18n.commaOnlyOnX0(s);
+            } else {
+              format = this.i18n.commaAndOnX0();
+            }
           }
 
           return format;
