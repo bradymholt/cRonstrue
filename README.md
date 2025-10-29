@@ -100,7 +100,7 @@ For more usage examples, including a demonstration of how cRonstrue can handle s
 
 ### i18n
 
-By default, only the English translation (`en`) is included when you import and use cRonstrue.  To use other languages, please see the [i18n section](i18n-1) below.
+By default, only the English translation (`en`) is included when you import and use cRonstrue.  To use other languages, please see the [i18n section](#i18n-1) below.
 
 ### CLI Usage
 
