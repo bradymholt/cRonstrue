@@ -124,7 +124,7 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 - **dayOfWeekStartIndexZero: boolean** - Whether to interpret cron expression DOW `1` as Sunday or Monday. (Default: true)
 - **monthStartIndexZero: boolean** - Whether to interpret January as `0` or `1`. (Default: false)
 - **use24HourTimeFormat: boolean** - If true, descriptions will use a [24-hour clock](https://en.wikipedia.org/wiki/24-hour_clock) (Default: false but some translations will default to true)
-- **locale: string** - The locale to use (Default: "en")
+- **locale: string** - The locale to use (Default: "en" - see [Default Locale](#default-locale-english))
 - **logicalAndDayFields: boolean** - If true, descriptions for cron expressions with both day of month and day of week specified will follow a logical-AND wording rather than logical-OR wording; e.g. "...between day 11 and 17 of the month, only on Friday" rather than "...between day 11 and 17 of the month, and on Friday" (Default: false)
 
 ## i18n
@@ -171,6 +171,25 @@ import 'cronstrue/locales/es';
 
 cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
 cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
+```
+
+### Default Locale (English)
+
+The English locale (`en`) is the default locale included with the main cronstrue module (no need to explicitly import). In addition, `en` is set as the default locale option, so you do not need to include it in the `.toString()` options (see [Options](#options)).
+
+```js
+// Node / CommonJS
+// English (`en`) is included with main cronstrue module
+const cronstrue = require('cronstrue');
+
+// ESM / webpack / TypeScript
+import cronstrue from 'cronstrue';
+
+// Browser
+<script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
+
+// English (`en`) is the default locale option
+cronstrue.toString("*/5 * * * *"); // => Every 5 minutes
 ```
 
 ### Supported Locales
