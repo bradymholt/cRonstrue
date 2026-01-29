@@ -571,17 +571,35 @@ export class ExpressionDescriptor {
 
           const isSegmentRangeWithoutIncrement = segments[i].indexOf("-") > -1 && segments[i].indexOf("/") == -1;
 
+          // For range segments in a multiple-value expression with increments, we need a format
+          // that includes context (e.g., "day" for day-of-month) to match increment descriptions
+          const rangeFormat = isSegmentRangeWithoutIncrement && doesExpressionContainIncrement
+            ? (s: string) => {
+                // Extract the word before %s in getDescriptionFormat to use as prefix
+                // e.g., "on day %s of the month" -> extract "day"
+                const sampleFormat = getDescriptionFormat("");
+                const match = sampleFormat.match(/\s(\w+)\s+%s/);
+                const prefix = match ? match[1] + " " : "";
+                return this.i18n.commaX0ThroughX1().replace("%s", prefix + "%s");
+              }
+            : isSegmentRangeWithoutIncrement ? this.i18n.commaX0ThroughX1 : getRangeDescriptionFormat;
+
           let currentDescriptionContent = this.getSegmentDescription(
             segments[i],
             allDescription,
             getSingleItemDescription,
             getIncrementDescriptionFormat,
-            isSegmentRangeWithoutIncrement ? this.i18n.commaX0ThroughX1 : getRangeDescriptionFormat,
+            rangeFormat,
             getDescriptionFormat
           );
 
-          if (isSegmentRangeWithoutIncrement) {
-            currentDescriptionContent = currentDescriptionContent!.replace(", ", "");
+          // When we have multiple values with increments, we need to strip leading commas/formatting
+          // from all segments so we can concatenate them properly and apply formatting at the end
+          // Only strip if it starts with ", " to avoid removing internal commas
+          if (isSegmentRangeWithoutIncrement || doesExpressionContainIncrement) {
+            if (currentDescriptionContent!.startsWith(", ")) {
+              currentDescriptionContent = currentDescriptionContent!.substring(2);
+            }
           }
 
           descriptionContent += currentDescriptionContent;
@@ -602,7 +620,11 @@ export class ExpressionDescriptor {
       if (!doesExpressionContainIncrement) {
         description = StringUtilities.format(getDescriptionFormat(expression), descriptionContent);
       } else {
-        description = descriptionContent;
+        // When we have increments, segments already have their formatting, but we stripped the leading commas/prefixes
+        // Add back just the leading comma if the format would have had one
+        const sampleFormat = getDescriptionFormat("");
+        const hasLeadingComma = sampleFormat.trimStart().startsWith(",");
+        description = hasLeadingComma ? ", " + descriptionContent : descriptionContent;
       }
     } else if (doesExpressionContainIncrement) {
       // Increment
