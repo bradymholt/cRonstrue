@@ -294,6 +294,13 @@ describe("Cronstrue", function () {
         "At 12:45 PM, on day 6, 17, 22, 26, and 30 of the month"
       );
     });
+
+    it("0 15 5 1-2,6/1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 05:15 AM, day 1 through 2 and every day, starting on day 6 of the month"
+      );
+    });
   });
 
   describe("weekday", function () {
