@@ -28,6 +28,13 @@ describe("i18n", function () {
         "Cada 5 minutos, entre las 15:00 y las 15:59, de lunes a viernes"
       );
     });
+
+    it("0 15 5 1-2,6/1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "es" }),
+        "A las 05:15, de día 1 a 2 y cada día, comenzando el día 6 del mes"
+      );
+    });
   });
 
   describe("fr", function () {

@@ -577,8 +577,9 @@ export class ExpressionDescriptor {
             ? (s: string) => {
                 // Extract the word before %s in getDescriptionFormat to use as prefix
                 // e.g., "on day %s of the month" -> extract "day"
+                // Use a more robust pattern to handle non-ASCII characters in various locales
                 const sampleFormat = getDescriptionFormat("");
-                const match = sampleFormat.match(/\s(\w+)\s+%s/);
+                const match = sampleFormat.match(/\s([^\s,]+)\s+%s/);
                 const prefix = match ? match[1] + " " : "";
                 return this.i18n.commaX0ThroughX1().replace("%s", prefix + "%s");
               }
@@ -596,9 +597,9 @@ export class ExpressionDescriptor {
           // When we have multiple values with increments, we need to strip leading commas/formatting
           // from all segments so we can concatenate them properly and apply formatting at the end
           // Only strip if it starts with ", " to avoid removing internal commas
-          if (isSegmentRangeWithoutIncrement || doesExpressionContainIncrement) {
-            if (currentDescriptionContent!.startsWith(", ")) {
-              currentDescriptionContent = currentDescriptionContent!.substring(2);
+          if ((isSegmentRangeWithoutIncrement || doesExpressionContainIncrement) && currentDescriptionContent) {
+            if (currentDescriptionContent.startsWith(", ")) {
+              currentDescriptionContent = currentDescriptionContent.substring(2);
             }
           }
 
