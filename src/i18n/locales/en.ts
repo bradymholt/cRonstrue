@@ -140,7 +140,7 @@ export class en implements Locale {
     return ", on the %s of the month";
   }
   commaEveryX0Days() {
-    return ", every %s days in a month";
+    return ", every %s days of the month";
   }
   commaBetweenDayX0AndX1OfTheMonth() {
     return ", between day %s and %s of the month";
