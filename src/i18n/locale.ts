@@ -81,4 +81,5 @@ export interface Locale {
    */
   monthsOfTheYearInCase?(f?: number): string[];
   atReboot?(): string;
+  onTheHour?(): string;
 }

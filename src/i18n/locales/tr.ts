@@ -171,4 +171,8 @@ export class tr implements Locale {
       "Aralık",
     ];
   }
+
+  onTheHour() {
+    return "saatin başında";
+  }
 }

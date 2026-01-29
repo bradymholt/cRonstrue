@@ -171,4 +171,8 @@ export class uk implements Locale {
       "грудень",
     ];
   }
+
+  onTheHour() {
+    return "рівно о годині";
+  }
 }

@@ -231,4 +231,8 @@ export class hr implements Locale {
       "prosinac",
     ];
   }
+
+  onTheHour() {
+    return "u puni sat";
+  }
 }

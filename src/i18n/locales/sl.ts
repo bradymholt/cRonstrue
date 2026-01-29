@@ -171,4 +171,8 @@ export class sl implements Locale {
       "december",
     ];
   }
+
+  onTheHour() {
+    return "ob točni uri";
+  }
 }

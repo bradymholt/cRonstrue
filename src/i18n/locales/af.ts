@@ -176,4 +176,8 @@ export class af implements Locale {
       "Desember",
     ];
   }
+
+  onTheHour() {
+    return "op die uur";
+  }
 }

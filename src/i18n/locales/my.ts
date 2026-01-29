@@ -176,4 +176,8 @@ export class my implements Locale {
       "Disember",
     ];
   }
+
+  onTheHour() {
+    return "pada waktu yang tepat";
+  }
 }

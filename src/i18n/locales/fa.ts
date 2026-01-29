@@ -166,4 +166,8 @@ export class fa implements Locale {
   monthsOfTheYear() {
     return ["ژانویه", "فوریه", "مارس", "آپریل", "مه", "ژوئن", "ژوئیه", "آگوست", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"];
   }
+
+  onTheHour() {
+    return "سر ساعت";
+  }
 }

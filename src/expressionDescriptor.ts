@@ -257,6 +257,8 @@ export class ExpressionDescriptor {
         try {
           return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
             ? this.i18n.everyHour()
+            : s == "0"
+            ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
             : parseInt(s) < 20
             ? this.i18n.atX0MinutesPastTheHour(s)
             : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);

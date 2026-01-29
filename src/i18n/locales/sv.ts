@@ -171,4 +171,8 @@ export class sv implements Locale {
       "december",
     ];
   }
+
+  onTheHour() {
+    return "på heltimmen";
+  }
 }

@@ -176,4 +176,8 @@ export class vi implements Locale {
       "Tháng 12",
     ];
   }
+
+  onTheHour() {
+    return "đúng giờ";
+  }
 }

@@ -180,4 +180,8 @@ export class fi implements Locale {
       "joulukuu",
     ];
   }
+
+  onTheHour() {
+    return "tasalta";
+  }
 }

@@ -173,4 +173,8 @@ export class ca implements Locale {
       "desembre",
     ];
   }
+
+  onTheHour() {
+    return "en punt";
+  }
 }
