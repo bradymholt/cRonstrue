@@ -171,4 +171,8 @@ export class nb implements Locale {
       "desember",
     ];
   }
+
+  onTheHour() {
+    return "på timen";
+  }
 }

@@ -171,4 +171,8 @@ export class be implements Locale {
       "снежань",
     ];
   }
+
+  onTheHour() {
+    return "роўна ў гадзіну";
+  }
 }

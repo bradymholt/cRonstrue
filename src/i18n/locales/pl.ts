@@ -171,4 +171,8 @@ export class pl implements Locale {
       "grudzień",
     ];
   }
+
+  onTheHour() {
+    return "o pełnej godzinie";
+  }
 }

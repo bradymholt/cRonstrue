@@ -173,4 +173,8 @@ export class es implements Locale {
       "diciembre",
     ];
   }
+
+  onTheHour() {
+    return "en punto";
+  }
 }

@@ -173,4 +173,8 @@ export class it implements Locale {
       "dicembre",
     ];
   }
+
+  onTheHour() {
+    return "all'ora esatta";
+  }
 }

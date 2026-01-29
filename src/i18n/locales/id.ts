@@ -176,4 +176,8 @@ export class id implements Locale {
       "Desember",
     ];
   }
+
+  onTheHour() {
+    return "tepat pada jam";
+  }
 }

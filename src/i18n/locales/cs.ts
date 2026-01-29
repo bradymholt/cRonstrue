@@ -173,4 +173,8 @@ export class cs implements Locale {
       "Prosinec",
     ];
   }
+
+  onTheHour() {
+    return "v celou hodinu";
+  }
 }

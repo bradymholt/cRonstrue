@@ -171,4 +171,8 @@ export class da implements Locale {
       "december",
     ];
   }
+
+  onTheHour() {
+    return "på timen";
+  }
 }

@@ -175,4 +175,8 @@ export class sw implements Locale {
       "Desemba",
     ];
   }
+
+  onTheHour() {
+    return "saa kamili";
+  }
 }

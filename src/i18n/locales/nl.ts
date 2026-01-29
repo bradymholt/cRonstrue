@@ -171,4 +171,8 @@ export class nl implements Locale {
       "december",
     ];
   }
+
+  onTheHour() {
+    return "op het hele uur";
+  }
 }

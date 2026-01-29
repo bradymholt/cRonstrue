@@ -186,4 +186,8 @@ export class fr implements Locale {
       "décembre",
     ];
   }
+
+  onTheHour() {
+    return "à l'heure pile";
+  }
 }

@@ -171,4 +171,8 @@ export class de implements Locale {
       "Dezember",
     ];
   }
+
+  onTheHour() {
+    return "zur vollen Stunde";
+  }
 }

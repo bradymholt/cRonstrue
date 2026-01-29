@@ -172,4 +172,8 @@ export class ro implements Locale {
       "decembrie",
     ];
   }
+
+  onTheHour() {
+    return "fix la oră";
+  }
 }

@@ -180,4 +180,8 @@ export class bg implements Locale {
   public monthsOfTheYear(): string[] {
     return ['януари', 'февруари', 'март', 'април', 'май', 'юни', 'юли', 'август', 'септевмври', 'октомври', 'ноември', 'декември'];
   }
+
+  onTheHour() {
+    return "в началото на часа";
+  }
 }

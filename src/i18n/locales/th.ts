@@ -176,4 +176,8 @@ export class th implements Locale {
       "ธันวาคม",
     ];
   }
+
+  onTheHour() {
+    return "ตรงชั่วโมง";
+  }
 }

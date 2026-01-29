@@ -171,4 +171,8 @@ export class pt_PT implements Locale {
       "dezembro",
     ];
   }
+
+  onTheHour() {
+    return "à hora certa";
+  }
 }

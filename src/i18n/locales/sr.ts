@@ -231,4 +231,8 @@ export class sr implements Locale {
       "decembar",
     ];
   }
+
+  onTheHour() {
+    return "u pun sat";
+  }
 }

@@ -176,4 +176,8 @@ export class ar implements Locale {
             "ديسمبر",
         ];
     }
+
+    onTheHour() {
+        return "في تمام الساعة";
+    }
 }

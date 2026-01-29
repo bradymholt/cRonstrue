@@ -173,4 +173,8 @@ export class sk implements Locale {
       "December",
     ];
   }
+
+  onTheHour() {
+    return "o celú hodinu";
+  }
 }

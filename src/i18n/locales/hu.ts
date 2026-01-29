@@ -177,4 +177,8 @@ export class hu implements Locale {
       "december",
     ];
   }
+
+  onTheHour() {
+    return "órakor";
+  }
 }
