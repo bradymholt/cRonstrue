@@ -550,7 +550,11 @@ describe("Cronstrue", function () {
     });
 
     it("0 0 8 1/3 * ? *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string), "At 08:00 AM, every 3 days");
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 08:00 AM, every 3 days in a month");
+    });
+
+    it("0 0 14 */30 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 02:00 PM, every 30 days in a month");
     });
 
     it("0 15 10 ? * */3", function () {
@@ -613,7 +617,7 @@ describe("Cronstrue", function () {
     it("0 5 7 2/3 * ? *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 07:05 AM, every 3 days, starting on day 2 of the month"
+        "At 07:05 AM, every 3 days in a month, starting on day 2 of the month"
       );
     });
 
