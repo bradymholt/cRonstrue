@@ -180,4 +180,8 @@ export class en implements Locale {
   atReboot() {
     return "Run once, at startup";
   }
+
+  onTheHour() {
+    return "on the hour";
+  }
 }

@@ -130,18 +130,18 @@ describe("Cronstrue", function () {
     it("* 0 */4 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every second, at 0 minutes past the hour, every 4 hours"
+        "Every second, on the hour, every 4 hours"
       );
     });
 
     it("*/10 0 * * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string), "Every 10 seconds, at 0 minutes past the hour");
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every 10 seconds, on the hour");
     });
 
     it("* 0 0 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every second, at 0 minutes past the hour, between 12:00 AM and 12:00 AM"
+        "Every second, on the hour, between 12:00 AM and 12:00 AM"
       );
     });
 
@@ -150,7 +150,7 @@ describe("Cronstrue", function () {
     });
 
     it("* 0 * * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string), "Every second, at 0 minutes past the hour");
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every second, on the hour");
     });
   });
 
@@ -663,10 +663,17 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 */4 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "On the hour, every 4 hours"
+      );
+    });
+
     it("0 */4,6 * * * ", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 0 minutes past the hour, every 4 hours and at 06:00 AM"
+        "On the hour, every 4 hours and at 06:00 AM"
       );
     });
 
