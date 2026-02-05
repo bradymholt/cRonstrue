@@ -112,6 +112,13 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute between 11:00 AM and 11:10 AM");
     });
 
+    it("*/4 * 9-23,0-1 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every 4 seconds, between 09:00 AM and 01:59 AM"
+      );
+    });
+
     it("23 12 * Jan-Mar *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 12:23 PM, January through March");
     });

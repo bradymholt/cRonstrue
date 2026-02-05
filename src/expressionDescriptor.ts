@@ -274,6 +274,14 @@ export class ExpressionDescriptor {
   protected getHoursDescription() {
     let expression = this.expressionParts[2];
 
+    const overnightRange = this.getOvernightHoursRange(expression);
+    if (overnightRange) {
+      const endMinute = this.expressionParts[1] !== "0" ? "59" : "0";
+      const rangeStart = this.formatTime(overnightRange.start.toString(), "0", "");
+      const rangeEnd = this.formatTime(overnightRange.end.toString(), endMinute, "");
+      return StringUtilities.format(this.i18n.betweenX0AndX1(), rangeStart, rangeEnd);
+    }
+
     // Collect the end values of hour ranges (e.g., "7-19" -> "19") to determine if ":59" should be used instead of ":00" for the last minute of the range.
     let hourIndex = 0;
     const rangeEndValues: { value: string; index: number }[] = [];
@@ -312,6 +320,60 @@ export class ExpressionDescriptor {
     );
 
     return description;
+  }
+
+  protected getOvernightHoursRange(expression: string): { start: number; end: number } | null {
+    if (!expression || expression === "*" || expression.indexOf("/") > -1 || expression.indexOf(",") === -1) {
+      return null;
+    }
+
+    const ranges: { start: number; end: number }[] = [];
+
+    for (const segment of expression.split(",")) {
+      if (!segment) {
+        return null;
+      }
+
+      if (segment.indexOf("-") > -1) {
+        const [startText, endText] = segment.split("-");
+        if (!startText || !endText) {
+          return null;
+        }
+
+        const start = parseInt(startText, 10);
+        const end = parseInt(endText, 10);
+
+        if (Number.isNaN(start) || Number.isNaN(end) || start < 0 || end > 23 || start > end) {
+          return null;
+        }
+
+        ranges.push({ start, end });
+      } else {
+        const value = parseInt(segment, 10);
+        if (Number.isNaN(value) || value < 0 || value > 23) {
+          return null;
+        }
+        ranges.push({ start: value, end: value });
+      }
+    }
+
+    ranges.sort((a, b) => a.start - b.start);
+
+    const merged: { start: number; end: number }[] = [];
+    for (const range of ranges) {
+      const last = merged[merged.length - 1];
+      if (!last || range.start > last.end + 1) {
+        merged.push({ start: range.start, end: range.end });
+      } else if (range.end > last.end) {
+        last.end = range.end;
+      }
+    }
+
+    if (merged.length !== 2 || merged[0].start !== 0 || merged[1].end !== 23) {
+      return null;
+    }
+
+    return { start: merged[1].start, end: merged[0].end };
   }
 
   protected getDayOfWeekDescription() {
