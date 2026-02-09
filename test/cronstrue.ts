@@ -128,10 +128,7 @@ describe("Cronstrue", function () {
     });
 
     it("* 0 */4 * * *", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string),
-        "Every second, on the hour, every 4 hours"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every second, on the hour, every 4 hours");
     });
 
     it("*/10 0 * * * *", function () {
@@ -668,17 +665,11 @@ describe("Cronstrue", function () {
     });
 
     it("0 */4 * * *", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string),
-        "On the hour, every 4 hours"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string), "On the hour, every 4 hours");
     });
 
     it("0 */4,6 * * * ", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string),
-        "On the hour, every 4 hours and at 06:00 AM"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string), "On the hour, every 4 hours and at 06:00 AM");
     });
 
     it("5 30 6,14,16 5 * *", function () {
@@ -706,6 +697,13 @@ describe("Cronstrue", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
         "Every 5 minutes, at 12:00 AM through 04:59 AM and 06:00 AM through 08:59 AM"
+      );
+    });
+
+    it("0 9 * * 0-4/2,5,6", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 09:00 AM, every 2 days of the week, Sunday through Thursday, only on Friday, and only on Saturday"
       );
     });
 
@@ -835,7 +833,7 @@ describe("Cronstrue", function () {
 
     it("null expression", function () {
       assert.throws(function () {
-        cronstrue.toString(null as any as string);
+        cronstrue.toString((null as any) as string);
       }, "Error: cron expression is empty");
     });
 
