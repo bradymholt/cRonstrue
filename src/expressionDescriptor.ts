@@ -588,7 +588,7 @@ export class ExpressionDescriptor {
         } else if (!doesExpressionContainIncrement) {
           descriptionContent += getSingleItemDescription(segments[i]);
         } else {
-          descriptionContent += this.getSegmentDescription(
+          let segmentDescription = this.getSegmentDescription(
             segments[i],
             allDescription,
             getSingleItemDescription,
@@ -596,6 +596,11 @@ export class ExpressionDescriptor {
             getRangeDescriptionFormat,
             getDescriptionFormat
           );
+          // Strip leading comma since we manage separators in this loop
+          if (segmentDescription && segmentDescription.startsWith(", ")) {
+            segmentDescription = segmentDescription.substring(2);
+          }
+          descriptionContent += segmentDescription;
         }
       }
 
