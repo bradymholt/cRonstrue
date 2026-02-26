@@ -52,7 +52,7 @@ export class ko implements Locale {
   }
 
   public everyMinuteBetweenX0AndX1() {
-    return "%s 및 %s 사이에 매 분";
+    return "매분 %s~%s";
   }
 
   public at() {
@@ -72,11 +72,11 @@ export class ko implements Locale {
   }
 
   public secondsX0ThroughX1PastTheMinute() {
-    return "정분 후 %s초에서 %s초까지";
+    return "%s~%s초";
   }
 
   public atX0SecondsPastTheMinute() {
-    return "정분 후 %s초에서";
+    return "%s초";
   }
 
   public everyX0Minutes() {
@@ -84,11 +84,11 @@ export class ko implements Locale {
   }
 
   public minutesX0ThroughX1PastTheHour() {
-    return "정시 후 %s분에서 %s분까지";
+    return "%s~%s분";
   }
 
   public atX0MinutesPastTheHour() {
-    return "정시 후 %s분에서";
+    return "%s분";
   }
 
   public everyX0Hours() {
@@ -140,11 +140,11 @@ export class ko implements Locale {
   }
 
   public commaOnThe() {
-    return ", 해당 ";
+    return ", 매월 ";
   }
 
   public spaceX0OfTheMonth() {
-    return " 해당 월의 %s";
+    return " %s";
   }
 
   public lastDay() {
@@ -176,7 +176,7 @@ export class ko implements Locale {
   }
 
   public commaOnTheLastWeekdayOfTheMonth() {
-    return ", 해당 월의 마지막 평일에";
+    return ", 매월 마지막 평일";
   }
 
   public commaDaysBeforeTheLastDayOfTheMonth() {
@@ -192,7 +192,7 @@ export class ko implements Locale {
   }
 
   public commaOnTheX0OfTheMonth() {
-    return ", 해당 월의 %s에";
+    return ", 매월 %s";
   }
 
   public commaEveryX0Days() {
@@ -204,7 +204,7 @@ export class ko implements Locale {
   }
 
   public commaOnDayX0OfTheMonth() {
-    return ", 해당 월의 %s일에";
+    return ", 매월 %s일";
   }
 
   public commaEveryMinute() {

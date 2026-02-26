@@ -415,6 +415,22 @@ describe("i18n", function () {
         "5분마다, 오후 03:00에서 오후 03:59 사이, 월요일에서 금요일까지"
       );
     });
+
+    it("0-10 11 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "매분 오전 11:00~오전 11:10");
+    });
+
+    it("23 12 15 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "시간 오후 12:23, 매월 15일");
+    });
+
+    it("* * * * MON#3", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "1분마다, 매월 세 번째 월요일");
+    });
+
+    it("* * LW * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "1분마다, 매월 마지막 평일");
+    });
   });
 
   describe("hu", function () {
