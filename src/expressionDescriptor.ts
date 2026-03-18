@@ -709,9 +709,15 @@ export class ExpressionDescriptor {
       second = `:${("00" + secondExpression).substring(secondExpression.length)}`;
     }
 
-    return `${setPeriodBeforeTime ? period : ""}${
-      this.options.trimHoursLeadingZero ? hour.toString() : ("00" + hour.toString()).substring(hour.toString().length)
-    }:${("00" + minute.toString()).substring(minute.toString().length)}${second}${!setPeriodBeforeTime ? period : ""}`;
+    const hourStr = hour.toString();
+    const paddedHour = ("00" + hourStr).substring(hourStr.length);
+    const minuteStr = minute.toString();
+    const paddedMinute = ("00" + minuteStr).substring(minuteStr.length);
+    const displayHour = this.options.trimHoursLeadingZero ? hourStr : paddedHour;
+
+    return `${setPeriodBeforeTime ? period : ""}${displayHour}:${paddedMinute}${second}${
+      !setPeriodBeforeTime ? period : ""
+    }`;
   }
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
