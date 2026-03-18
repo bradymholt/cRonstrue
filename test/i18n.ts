@@ -1,7 +1,6 @@
 import "mocha";
 import cronstrue from "../src/cronstrue-i18n";
-import chai = require("chai");
-let assert = chai.assert;
+import { assert } from "chai";
 
 describe("i18n", function () {
   describe("de", function () {
