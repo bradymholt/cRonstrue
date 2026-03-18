@@ -128,6 +128,7 @@ An options object can be passed as the second parameter to `cronstrue.toString`.
 - **dayOfWeekStartIndexZero: boolean** - Whether to interpret cron expression DOW `1` as Sunday or Monday. (Default: true)
 - **monthStartIndexZero: boolean** - Whether to interpret January as `0` or `1`. (Default: false)
 - **use24HourTimeFormat: boolean** - If true, descriptions will use a [24-hour clock](https://en.wikipedia.org/wiki/24-hour_clock) (Default: false but some translations will default to true)
+- **trimHoursLeadingZero: boolean** - Whether to trim the leading zero that may appear in the hours description; e.g. "02:00 AM" -> "2:00 AM", "08:00" -> "8:00" (Default: false)
 - **locale: string** - The locale to use (Default: "en")
 - **logicalAndDayFields: boolean** - If true, descriptions for cron expressions with both day of month and day of week specified will follow a logical-AND wording rather than logical-OR wording; e.g. "...between day 11 and 17 of the month, only on Friday" rather than "...between day 11 and 17 of the month, and on Friday" (Default: false)
 
