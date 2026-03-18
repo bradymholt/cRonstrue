@@ -4,6 +4,7 @@ export interface Options {
   dayOfWeekStartIndexZero?: boolean;
   monthStartIndexZero?: boolean;
   use24HourTimeFormat?: boolean;
+  trimHoursLeadingZero?: boolean;
   locale?: string | null;
   /**
    * The day of month and day of week are logical AND'ed (as opposed to OR'ed).

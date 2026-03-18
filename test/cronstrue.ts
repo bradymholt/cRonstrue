@@ -188,6 +188,35 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 03:30 AM");
     });
 
+    it("30 10 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true }), "At 10:30 AM");
+    });
+
+    it("31 10 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
+        "At 10:31"
+      );
+    });
+
+    it("29 9 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true }), "At 9:29 AM");
+    });
+
+    it("30 9 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
+        "At 9:30"
+      );
+    });
+
+    it("0 0 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
+        "At 0:00"
+      );
+    });
+
     it("10 11 * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "At 11:10 AM, every day");
     });

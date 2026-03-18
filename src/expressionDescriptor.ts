@@ -26,6 +26,7 @@ export class ExpressionDescriptor {
    *         dayOfWeekStartIndexZero = true,
    *         monthStartIndexZero = false,
    *         use24HourTimeFormat = false,
+   *         trimHoursLeadingZero = false,
    *         locale = 'en'
    *     }={}]
    * @returns {string}
@@ -38,6 +39,7 @@ export class ExpressionDescriptor {
       dayOfWeekStartIndexZero = true,
       monthStartIndexZero = false,
       use24HourTimeFormat,
+      trimHoursLeadingZero = false,
       locale = null,
       logicalAndDayFields = false,
     }: Options = {}
@@ -51,6 +53,7 @@ export class ExpressionDescriptor {
       dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
       monthStartIndexZero: monthStartIndexZero,
       use24HourTimeFormat: use24HourTimeFormat,
+      trimHoursLeadingZero: trimHoursLeadingZero,
       locale: locale,
       logicalAndDayFields: logicalAndDayFields,
     };
@@ -706,9 +709,9 @@ export class ExpressionDescriptor {
       second = `:${("00" + secondExpression).substring(secondExpression.length)}`;
     }
 
-    return `${setPeriodBeforeTime ? period : ""}${("00" + hour.toString()).substring(hour.toString().length)}:${(
-      "00" + minute.toString()
-    ).substring(minute.toString().length)}${second}${!setPeriodBeforeTime ? period : ""}`;
+    return `${setPeriodBeforeTime ? period : ""}${
+      this.options.trimHoursLeadingZero ? hour.toString() : ("00" + hour.toString()).substring(hour.toString().length)
+    }:${("00" + minute.toString()).substring(minute.toString().length)}${second}${!setPeriodBeforeTime ? period : ""}`;
   }
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
