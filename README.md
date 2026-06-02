@@ -218,25 +218,36 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 
     This library does not do full validation of cron expressions and assumes the expression passed in is valid. If you need to validate an expression consider using a library like [cron-parser](https://www.npmjs.com/package/cron-parser).  Example validation with cron-parser:
 
-   ```
-   const cronParser = require("cron-parser");
-   const cronstrue = require("cronstrue");
+   ```javascript
+   import { CronExpressionParser } from "cron-parser";
+   import cronstrue from "cronstrue";
 
    const expression = "* * * * * *";
 
-   // Validate expression first
-   let isCronValid = true;
-   try { cronParser.parseExpression(expression) } catch(e) { isCronValid = false; }
+   const isCronValid = (() => {
+     try {
+       CronExpressionParser.parse(expression);
+       return true;
+     } catch {
+       return false;
+     }
+   })();
 
-   // If valid, then pass into cRonstrue
    if (isCronValid) {
-     console.log(cronstrue.toString("* * * * *"));
+     console.log(cronstrue.toString(expression));
    }
    ```
 
 2. Can cRonstrue output the next occurrence of the cron expression?
 
-    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.
+    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.  You can do with with a library like [croner](https://www.npmjs.com/package/croner).  Example:
+
+   ```javascript
+   import { Cron } from 'croner';
+   const job = new Cron('0 9 * * 1-5');
+   console.log(job.nextRun());      // next Date
+   console.log(job.nextRuns(5));    // next 5 Dates
+   ```
 
 ## Sponsors
 
