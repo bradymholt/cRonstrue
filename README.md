@@ -105,18 +105,8 @@ By default, only the English translation (`en`) is included when you import and 
 ### CLI Usage
 
 ```sh
-$ npm install -g cronstrue
-
-$ cronstrue 1 2 3 4 5
-At 02:01 AM, on day 3 of the month, and on Friday, only in April
-
-$ cronstrue 1 2 3
-Error: too few arguments (3): 1 2 3
-Usage (5 args): cronstrue minute hour day-of-month month day-of-week
-or
-Usage (6 args): cronstrue second minute hour day-of-month month day-of-week
-or
-Usage (7 args): cronstrue second minute hour day-of-month month day-of-week year
+❯ npx cronstrue "*/5 * * * *"
+Every 5 minutes
 ```
 
 ## Options
