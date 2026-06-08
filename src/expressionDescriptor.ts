@@ -177,7 +177,9 @@ export class ExpressionDescriptor {
       description += this.i18n.at();
 
       for (let i = 0; i < hourParts.length; i++) {
-        description += " ";
+        if (description) {
+          description += " ";
+        }
         description += this.formatTime(hourParts[i], minuteExpression, "");
 
         if (i < hourParts.length - 2) {
@@ -556,6 +558,7 @@ export class ExpressionDescriptor {
 
       let segments: string[] = expression.split(",");
       let descriptionContent: string = "";
+      const conjunction = this.i18n.spaceAnd();
       for (let i = 0; i < segments.length; i++) {
         if (i > 0 && segments.length > 2) {
           descriptionContent += ",";
@@ -566,7 +569,7 @@ export class ExpressionDescriptor {
         }
 
         if (i > 0 && segments.length > 1 && (i == segments.length - 1 || segments.length == 2)) {
-          descriptionContent += `${this.i18n.spaceAnd()} `;
+          descriptionContent += conjunction == "," && segments.length > 2 ? " " : `${conjunction} `;
         }
 
         if (segments[i].indexOf("/") > -1 || segments[i].indexOf("-") > -1) {
