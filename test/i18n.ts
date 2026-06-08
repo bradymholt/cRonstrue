@@ -411,7 +411,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ko" }),
-        "5분마다, 오후 03:00에서 오후 03:59 사이, 월요일에서 금요일까지"
+        "5분마다, 오후 03:00부터 오후 03:59까지, 월요일부터 금요일까지"
       );
     });
 
@@ -420,7 +420,19 @@ describe("i18n", function () {
     });
 
     it("23 12 15 * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "시간 오후 12:23, 매월 15일");
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "오후 12:23, 매월 15일");
+    });
+
+    it("0 9 * * 1-5", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "오전 09:00, 월요일부터 금요일까지");
+    });
+
+    it("0,22,24,26,28 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "0, 22, 24, 26, 28분");
+    });
+
+    it("30 6,14 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "오전 06:30, 오후 02:30");
     });
 
     it("* * * * MON#3", function () {
