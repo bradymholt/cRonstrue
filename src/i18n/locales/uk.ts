@@ -134,6 +134,12 @@ export class uk implements Locale {
   weekdayNearestDayX0() {
     return "будень найближчий до %s дня";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s днів до %s місяця";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s днів після %s місяця";
+  }
   commaOnTheX0OfTheMonth() {
     return ", в %s місяця";
   }

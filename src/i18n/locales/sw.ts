@@ -138,6 +138,12 @@ export class sw implements Locale {
   weekdayNearestDayX0() {
     return "siku ya kazi karibu na siku ya %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", siku ya %s kabla ya %s wa mwezi";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", siku ya %s baada ya %s wa mwezi";
+  }
   commaOnTheX0OfTheMonth() {
     return ", siku ya %s ya mwezi";
   }

@@ -140,6 +140,12 @@ export class zh_TW implements Locale {
   weekdayNearestDayX0() {
     return "最接近 %s 號的工作日";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s 天在本月%s之前";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s 天在本月%s之後";
+  }
   commaOnTheX0OfTheMonth() {
     return ", 每月的 %s ";
   }

@@ -135,6 +135,12 @@ export class he implements Locale {
   weekdayNearestDayX0() {
     return "יום החול הראשון הקרוב אל %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s ימים לפני %s בחודש";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s ימים אחרי %s בחודש";
+  }
   commaOnTheX0OfTheMonth() {
     return ", ביום ה%s של החודש";
   }

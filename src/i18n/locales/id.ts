@@ -136,6 +136,12 @@ export class id implements Locale {
   weekdayNearestDayX0() {
     return "hari kerja terdekat %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s hari sebelum %s setiap bulan";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s hari setelah %s setiap bulan";
+  }
   commaOnTheX0OfTheMonth() {
     return ", pada %s bulan ini";
   }

@@ -134,6 +134,12 @@ export class nl implements Locale {
   weekdayNearestDayX0() {
     return "werkdag dichtst bij dag %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dagen vóór de %s van de maand";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dagen na de %s van de maand";
+  }
   commaOnTheX0OfTheMonth() {
     return ", op de %s van de maand";
   }
