@@ -10,6 +10,12 @@ on:
         - major
         - minor
         - patch
+
+permissions:
+  contents: write        # push release commit/tag + create GH release
+  pull-requests: write   # comment on PRs
+  id-token: write        # REQUIRED: mint OIDC token for npm trusted publishing
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -37,9 +43,7 @@ jobs:
           git push gh-origin HEAD:main --tags
           echo "tag-name=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
       - name: Publish to npm
-        run: |
-          npm set //registry.npmjs.org/:_authToken ${{ secrets.NODE_AUTH_TOKEN }}
-          npm publish
+        run: npm publish
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
