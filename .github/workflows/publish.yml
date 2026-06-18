@@ -19,7 +19,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           ref: refs/heads/main
       - name: Setup git repo
@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - name: Version
@@ -44,7 +44,7 @@ jobs:
         run: |
           git push gh-origin HEAD:main --tags
           echo "tag-name=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: npm-logs
@@ -61,7 +61,7 @@ jobs:
           generate_release_notes: true
           files: assets.zip
       - name: Comment on PRs with link to release they are included in
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         env:
           RELEASE_ID: ${{ steps.create-release.outputs.id }}
         with:
