@@ -37,13 +37,13 @@ jobs:
       - name: Version
         run: |
           npm version ${{ github.event.inputs.version_type }} --force -m "Version %s"
+      - name: Publish to npm
+        run: npm publish
       - name: Push release commit and tag to GitHub
         id: push
         run: |
           git push gh-origin HEAD:main --tags
           echo "tag-name=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
-      - name: Publish to npm
-        run: npm publish
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
