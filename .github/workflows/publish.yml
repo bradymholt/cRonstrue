@@ -11,8 +11,9 @@ on:
         - minor
         - patch
 
-permissions:  
+permissions:
   id-token: write        # REQUIRED: mint OIDC token for npm trusted publishing
+  contents: write        # REQUIRED: push version commit and tags back to the repo
 
 jobs:
   publish:
@@ -28,15 +29,16 @@ jobs:
           git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - name: Version
         run: |
           npm version ${{ github.event.inputs.version_type }} --force -m "Version %s"
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --provenance
       - name: Push release commit and tag to GitHub
         id: push
         run: |
