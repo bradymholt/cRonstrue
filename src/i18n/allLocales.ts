@@ -8,6 +8,7 @@ export { id } from "./locales/id"; // Indonesia
 export { ko } from "./locales/ko"; // Korean
 export { nl } from "./locales/nl"; // Dutch
 export { nb } from "./locales/nb"; // Norwegian
+export { nn } from "./locales/nn"; // Norwegian (Nynorsk)
 export { sv } from "./locales/sv"; // Swedish
 export { pl } from "./locales/pl"; // Polish
 export { pt_BR } from "./locales/pt_BR"; // Portuguese (Brazil)
