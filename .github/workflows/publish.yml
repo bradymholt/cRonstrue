@@ -12,9 +12,10 @@ on:
         - patch
 
 permissions:
-  id-token: write        # REQUIRED: mint OIDC token for npm trusted publishing
-  contents: write        # REQUIRED: push version commit and tags back to the repo
-  pull-requests: write   # REQUIRED: post comments on PRs after release
+  id-token: write
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   publish:
