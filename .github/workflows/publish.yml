@@ -11,9 +11,7 @@ on:
         - minor
         - patch
 
-permissions:
-  contents: write        # push release commit/tag + create GH release
-  pull-requests: write   # comment on PRs
+permissions:  
   id-token: write        # REQUIRED: mint OIDC token for npm trusted publishing
 
 jobs:
