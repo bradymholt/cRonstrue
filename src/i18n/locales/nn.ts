@@ -45,7 +45,7 @@ export class nn implements Locale {
     return ", kvar dag";
   }
   commaEveryX0Days() {
-    return ", kvar %s dag";
+    return ", kvar %s dag i månaden";
   }
   commaEveryX0DaysOfTheWeek() {
     return ", kvar %s vekedag";

@@ -45,7 +45,7 @@ export class nb implements Locale {
     return ", hver dag";
   }
   commaEveryX0Days() {
-    return ", hver %s dag";
+    return ", hver %s dag i måneden";
   }
   commaEveryX0DaysOfTheWeek() {
     return ", hver %s ukedag";
