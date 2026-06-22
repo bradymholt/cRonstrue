@@ -182,6 +182,12 @@ export class hr implements Locale {
   weekdayNearestDayX0() {
     return "radni dan najbliži %s. danu";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dana prije %s u mjesecu";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dana nakon %s u mjesecu";
+  }
 
   commaMonthX0ThroughMonthX1(): string | null {
     return null;

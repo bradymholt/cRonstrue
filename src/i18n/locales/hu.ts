@@ -137,6 +137,12 @@ export class hu implements Locale {
   weekdayNearestDayX0() {
     return "hétköznap legközelebbi nap %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s nappal a hónap %s előtt";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s nappal a hónap %s után";
+  }
   commaOnTheX0OfTheMonth() {
     return ", a hónap %s";
   }

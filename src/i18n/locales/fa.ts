@@ -136,6 +136,12 @@ export class fa implements Locale {
   weekdayNearestDayX0() {
     return "روز نزدیک به روز %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s روز قبل از %s ماه";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s روز بعد از %s ماه";
+  }
   commaOnTheX0OfTheMonth() {
     return ", در %s ماه";
   }

@@ -134,6 +134,12 @@ export class be implements Locale {
   weekdayNearestDayX0() {
     return "найбліжэйшы будны дзень да %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s дзён да %s месяца";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s дзён пасля %s месяца";
+  }
   commaOnTheX0OfTheMonth() {
     return ", у %s месяцы";
   }
