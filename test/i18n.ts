@@ -388,6 +388,15 @@ describe("i18n", function () {
         "Vsakih 5 minut, od 15:00 do 15:59, od Ponedeljek do Petek"
       );
     });
+
+    it("*/5 * L JAN *", function () {
+      // Last day of month takes no value, so the phrase reads "zadnji dan",
+      // matching the sibling commaOnTheLastWeekdayOfTheMonth ("zadnji delovni dan").
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "sl" }),
+        "Vsakih 5 minut, zadnji dan v mesecu, samo v januar"
+      );
+    });
   });
 
   describe("ca", function () {
