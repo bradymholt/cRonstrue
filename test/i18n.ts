@@ -403,6 +403,17 @@ describe("i18n", function () {
     });
   });
 
+  describe("ja", function () {
+    it("0 0 14 */30 * *", function () {
+      // Day-of-month step is scoped to a single month, matching the day-of-week
+      // step which already reads "週のうち %s 日ごと".
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ja" }),
+        "次において実施14:00、月のうち 30 日ごと"
+      );
+    });
+  });
+
   describe("ko", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "1분마다");

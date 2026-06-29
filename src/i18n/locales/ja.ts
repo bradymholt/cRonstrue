@@ -116,7 +116,7 @@ export class ja implements Locale {
     return "月の %s に";
   }
   commaEveryX0Days(): string {
-    return "、%s 日ごと";
+    return "、月のうち %s 日ごと";
   }
   commaBetweenDayX0AndX1OfTheMonth(): string {
     return "、月の %s 日から %s 日の間";
