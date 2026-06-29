@@ -60,7 +60,7 @@ export class sl implements Locale {
     return ", ";
   }
   commaOnTheLastDayOfTheMonth() {
-    return ", zadnji %s v mesecu";
+    return ", zadnji dan v mesecu";
   }
   commaOnTheLastWeekdayOfTheMonth() {
     return ", zadnji delovni dan v mesecu";
