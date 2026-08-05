@@ -136,6 +136,12 @@ export class my implements Locale {
   weekdayNearestDayX0() {
     return "hari bekerja yang terdekat dengan %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s hari sebelum %s bulan";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s hari selepas %s bulan";
+  }
   commaOnTheX0OfTheMonth() {
     return ", pada %s bulan";
   }

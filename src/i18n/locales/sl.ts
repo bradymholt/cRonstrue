@@ -137,6 +137,12 @@ export class sl implements Locale {
   weekdayNearestDayX0() {
     return "delovni dan, najbližji %s. dnevu";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dni pred %s v mesecu";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dni po %s v mesecu";
+  }
   commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }

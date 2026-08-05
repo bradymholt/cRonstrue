@@ -155,6 +155,12 @@ export class ru implements Locale {
   weekdayNearestDayX0() {
     return "ближайший будний день к %s числу";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", за %s день до %s месяца";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", через %s день после %s месяца";
+  }
   commaOnTheX0OfTheMonth() {
     return ", в %s месяца";
   }

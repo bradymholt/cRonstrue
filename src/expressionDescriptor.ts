@@ -461,6 +461,36 @@ export class ExpressionDescriptor {
         break;
       default:
         // i.e. 3W or W2
+        // First check for W offset patterns (e.g. 1W-2 or 1W+2)
+        let weekDayOffsetMatches = expression.match(/(\d{1,2})W([+-])(\d{1,2})/);
+        if (weekDayOffsetMatches) {
+          let dayNumber: number = parseInt(weekDayOffsetMatches[1]);
+          let offsetSign: string = weekDayOffsetMatches[2];
+          let offsetDays: string = weekDayOffsetMatches[3];
+          let dayString: string =
+            dayNumber == 1
+              ? this.i18n.firstWeekday()
+              : StringUtilities.format(this.i18n.weekdayNearestDayX0(), dayNumber.toString());
+          if (offsetSign === "-") {
+            description = StringUtilities.format(
+              this.i18n.commaDaysBeforeNearestWeekdayX0
+                ? this.i18n.commaDaysBeforeNearestWeekdayX0()
+                : ", %s days before the %s of the month",
+              offsetDays,
+              dayString
+            );
+          } else {
+            description = StringUtilities.format(
+              this.i18n.commaDaysAfterNearestWeekdayX0
+                ? this.i18n.commaDaysAfterNearestWeekdayX0()
+                : ", %s days after the %s of the month",
+              offsetDays,
+              dayString
+            );
+          }
+          break;
+        }
+
         let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
         if (weekDayNumberMatches) {
           let dayNumber: number = parseInt(weekDayNumberMatches[0].replace("W", ""));

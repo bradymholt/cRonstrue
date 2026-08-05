@@ -145,6 +145,12 @@ export class fi implements Locale {
   weekdayNearestDayX0(): string {
     return "viikonpäivä lähintä %s päivää";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s päivää ennen kuukauden %s";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s päivää jälkeen kuukauden %s";
+  }
   atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
   }

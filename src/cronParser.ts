@@ -195,13 +195,16 @@ export class CronParser {
       expressionParts[3] = "*";
     }
 
-    if (
-      expressionParts[3].indexOf("W") > -1 &&
-      (expressionParts[3].indexOf(",") > -1 || expressionParts[3].indexOf("-") > -1)
-    ) {
-      throw new Error(
-        "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
-      );
+    if (expressionParts[3].indexOf("W") > -1) {
+      // Allow W with offset notation (e.g. 1W-2 or 1W+2) but reject comma lists and ranges.
+      // An offset uses '-' or '+' immediately after 'W' (e.g. W-2), while a range has a '-'
+      // between two digits (e.g. 1-5). Detect a range by looking for a digit directly
+      // followed by '-' that is not the offset pattern.
+      if (expressionParts[3].indexOf(",") > -1 || /\d-/.test(expressionParts[3])) {
+        throw new Error(
+          "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
+        );
+      }
     }
 
     // Convert DOW SUN-SAT format to 0-6 format
@@ -325,7 +328,7 @@ export class CronParser {
     this.validateOnlyExpectedCharactersFound(parsed[1], standardCronPartCharacters);
     this.validateOnlyExpectedCharactersFound(parsed[2], standardCronPartCharacters);
     // DOM
-    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*\/LW");
+    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*\/LW+");
     this.validateOnlyExpectedCharactersFound(parsed[4], standardCronPartCharacters);
     // DOW
     this.validateOnlyExpectedCharactersFound(parsed[5], "0-9,\\-*\/L#");

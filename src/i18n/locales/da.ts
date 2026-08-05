@@ -137,6 +137,12 @@ export class da implements Locale {
   weekdayNearestDayX0() {
     return "hverdag nærmest dag %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dage før %s i måneden";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dage efter %s i måneden";
+  }
   commaMonthX0ThroughMonthX1(): string|null {
     return null;
   }
