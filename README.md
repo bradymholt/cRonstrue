@@ -205,6 +205,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 - sw - Swahili ([Leylow Lujuo](https://github.com/leyluj))
 - sv - Swedish ([roobin](https://github.com/roobin))
 - sr - Serbian ([Miloš Paunović](https://github.com/MilosPaunovic))
+- tg - Tajik ([Ismoil Vakhidov](https://github.com/ismoil77))
 - th - Thai ([Teerapat Prommarak](https://github.com/xeusteerapat))
 - tr - Turkish ([Mustafa SADEDİL](https://github.com/sadedil))
 - uk - Ukrainian ([Taras](https://github.com/tbudurovych))

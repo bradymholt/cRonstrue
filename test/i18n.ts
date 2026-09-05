@@ -377,6 +377,23 @@ describe("i18n", function () {
     });
   });
 
+  describe("tg", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "tg" }), "Ҳар дақиқа");
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "tg" }),
+        "Ҳар 5 дақиқа, аз 15:00 то 15:59, аз душанбе то ҷумъа"
+      );
+    });
+
+    it("0 0 L * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "tg" }), "Дар 00:00, дар рӯзи охирини моҳ");
+    });
+  });
+
   describe("sl", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "sl" }), "Vsako minuto");

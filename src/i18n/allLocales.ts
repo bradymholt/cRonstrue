@@ -15,6 +15,7 @@ export { pt_BR } from "./locales/pt_BR"; // Portuguese (Brazil)
 export { pt_PT } from "./locales/pt_PT"; // Portuguese (Portugal)
 export { ro } from "./locales/ro"; // Romanian
 export { ru } from "./locales/ru"; // Russian
+export { tg } from "./locales/tg"; // Tajik
 export { tr } from "./locales/tr"; // Turkish
 export { uk } from "./locales/uk"; // Ukrainian
 export { zh_CN } from "./locales/zh_CN"; // Chinese (Simplified)
