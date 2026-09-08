@@ -57,7 +57,7 @@ jobs:
           zip -gr assets.zip dist/ locales/
       - name: Create a Release
         id: create-release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.push.outputs.tag-name }}
           generate_release_notes: true
