@@ -175,6 +175,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 - en - English ([Brady Holt](https://github.com/bradymholt))
 - af - Afrikaans ([Michael van Niekerk](https://github.com/mvniekerk))
 - ar - Arabic ([Mohamed Nehad Shalabi](https://github.com/mohamednehad450))
+- az - Azerbaijani ([Jamal Kamaladdin](https://github.com/jamalkamaladdin))
 - be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
 - bg - Bulgarian ([kamenf](https://github.com/kamenf))
 - ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))

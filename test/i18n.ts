@@ -644,5 +644,38 @@ describe("i18n", function () {
     });
   });
 
+  describe("az", function () {
+    it("* * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "az" }), "Hər dəqiqə");
+    });
+
+    it("0 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "az" }), "Hər saat");
+    });
+
+    it("*/5 15 * * MON-FRI", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "az" }),
+        "Hər 5 dəqiqədən bir, saat 15:00 ilə 15:59 arasında, bazar ertəsindən cüməyə qədər"
+      );
+    });
+
+    // The ordinal suffix follows vowel harmony, so it is not the same for every number.
+    it("0 0 3 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "az" }), "Saat 00:00, ayın 3-cü günü");
+    });
+
+    it("0 0 9 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "az" }), "Saat 00:00, ayın 9-cu günü");
+    });
+
+    it("23 12 * JAN-MAR *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "az" }),
+        "Saat 12:23, yanvardan marta qədər"
+      );
+    });
+  });
+
 
 });

@@ -39,3 +39,4 @@ export { my } from './locales/my'; // Malay
 export { bg } from './locales/bg'; // Bulgarian
 export { hr } from './locales/hr'; // Croatian
 export { sr } from './locales/sr'; // Serbian
+export { az } from "./locales/az"; // Azerbaijani
