@@ -237,7 +237,8 @@ export class ExpressionDescriptor {
           : parseInt(s) < 20
           ? this.i18n.atX0SecondsPastTheMinute(s)
           : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s);
-      }
+      },
+      { min: 0, max: 59 }
     );
 
     return description;
@@ -270,7 +271,8 @@ export class ExpressionDescriptor {
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour(s);
         }
-      }
+      },
+      { min: 0, max: 59 }
     );
 
     return description;
@@ -313,7 +315,8 @@ export class ExpressionDescriptor {
       },
       (s) => {
         return this.i18n.atX0();
-      }
+      },
+      { min: 0, max: 23 }
     );
 
     return description;
@@ -537,7 +540,8 @@ export class ExpressionDescriptor {
     getSingleItemDescription: (t: string, form?: number) => string,
     getIncrementDescriptionFormat: (t: string) => string,
     getRangeDescriptionFormat: (t: string) => string,
-    getDescriptionFormat: (t: string) => string
+    getDescriptionFormat: (t: string) => string,
+    range?: { min: number; max: number }
   ): string | null {
     let description: string | null = null;
     const doesExpressionContainIncrement = expression.indexOf("/") > -1;
@@ -646,6 +650,16 @@ export class ExpressionDescriptor {
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
       }
+
+      description += this.getWrappingIncrementDescription(
+        expression,
+        range,
+        allDescription,
+        getSingleItemDescription,
+        getIncrementDescriptionFormat,
+        getRangeDescriptionFormat,
+        getDescriptionFormat
+      );
     } else if (doesExpressionContainRange) {
       // Range
 
@@ -657,6 +671,60 @@ export class ExpressionDescriptor {
     }
 
     return description;
+  }
+
+  /**
+   * A step which doesn't divide the field evenly (e.g. minute "*\/50") matches the values 0 and 50,
+   * so the gaps alternate between 50 and 10 minutes instead of being a constant interval.
+   * In verbose mode, spell out the matched values after the increment description by reusing
+   * the description of the equivalent list expression ("0,50").
+   */
+  protected getWrappingIncrementDescription(
+    expression: string,
+    range: { min: number; max: number } | undefined,
+    allDescription: string,
+    getSingleItemDescription: (t: string, form?: number) => string,
+    getIncrementDescriptionFormat: (t: string) => string,
+    getRangeDescriptionFormat: (t: string) => string,
+    getDescriptionFormat: (t: string) => string
+  ): string {
+    if (!this.options.verbose || !range) {
+      return "";
+    }
+
+    const [start, stepValue] = expression.split("/");
+    const step = parseInt(stepValue);
+    const length = range.max - range.min + 1;
+
+    // Only a step over the whole field wraps around: a range with a step ("2-30/7") already
+    // states its bounds, and an evenly dividing step ("*\/15") really is a constant interval.
+    const coversWholeField = start === "*";
+    const isUsableStep = Number.isInteger(step) && step > 1;
+    const dividesEvenly = isUsableStep && length % step === 0;
+
+    if (!coversWholeField || !isUsableStep || dividesEvenly) {
+      return "";
+    }
+
+    const values: number[] = [];
+    for (let value = range.min; value <= range.max; value += step) {
+      values.push(value);
+    }
+
+    if (values.length < 2) {
+      return "";
+    }
+
+    const valuesDescription = this.getSegmentDescription(
+      values.join(","),
+      allDescription,
+      getSingleItemDescription,
+      getIncrementDescriptionFormat,
+      getRangeDescriptionFormat,
+      getDescriptionFormat
+    );
+
+    return valuesDescription ? `, ${valuesDescription}` : "";
   }
 
   protected generateRangeSegmentDescription(
