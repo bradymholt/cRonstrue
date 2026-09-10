@@ -138,6 +138,12 @@ export class ro implements Locale {
   weekdayNearestDayX0() {
     return "cea mai apropiată zi a săptămânii de ziua %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s zile înainte de %s lunii";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s zile după %s lunii";
+  }
   commaMonthX0ThroughMonthX1() {
     return ", din %s până în %s";
   }

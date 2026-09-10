@@ -136,6 +136,12 @@ export class af implements Locale {
   weekdayNearestDayX0() {
     return "weeksdag naaste aan dag %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dae voor die %s van die maand";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dae ná die %s van die maand";
+  }
   commaOnTheX0OfTheMonth() {
     return ", op die %s van die maande";
   }

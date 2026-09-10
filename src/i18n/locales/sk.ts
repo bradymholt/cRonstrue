@@ -136,6 +136,12 @@ export class sk implements Locale {
   weekdayNearestDayX0() {
     return "pracovný deň najbližšie %s. dňu";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dní pred %s v mesiaci";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dní po %s v mesiaci";
+  }
   commaOnTheX0OfTheMonth() {
     return ", v %s v mesiaci";
   }

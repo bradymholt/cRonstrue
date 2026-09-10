@@ -151,6 +151,12 @@ export class it implements Locale {
   weekdayNearestDayX0() {
     return "giorno della settimana più vicino al %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s giorni prima del %s del mese";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s giorni dopo il %s del mese";
+  }
   commaStartingX0() {
     return ", a partire %s";
   }

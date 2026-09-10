@@ -136,6 +136,12 @@ export class th implements Locale {
   weekdayNearestDayX0() {
     return "วันธรรมดาที่ใกล้ที่สุด %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s วันก่อน%sของเดือน";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s วันหลัง%sของเดือน";
+  }
   commaOnTheX0OfTheMonth() {
     return ", ในวัน %s ของเดือน";
   }

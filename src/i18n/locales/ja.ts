@@ -112,6 +112,12 @@ export class ja implements Locale {
   weekdayNearestDayX0(): string {
     return "%s 日の直近の平日";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s日前 (月の%s)";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s日後 (月の%s)";
+  }
   commaOnTheX0OfTheMonth(): string {
     return "月の %s に";
   }

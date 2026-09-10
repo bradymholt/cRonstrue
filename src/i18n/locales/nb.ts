@@ -149,6 +149,12 @@ export class nb implements Locale {
   weekdayNearestDayX0() {
     return "ukedag nærmest dag %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dager før %s i måneden";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dager etter %s i måneden";
+  }
   commaStartingX0() {
     return ", starter %s";
   }

@@ -142,6 +142,12 @@ export class fr implements Locale {
   weekdayNearestDayX0() {
     return "jour ouvrable le plus proche du %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s jours avant le %s du mois";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s jours après le %s du mois";
+  }
   commaOnTheX0OfTheMonth() {
     return ", le %s du mois";
   }

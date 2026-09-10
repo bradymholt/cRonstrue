@@ -136,6 +136,12 @@ export class vi implements Locale {
   weekdayNearestDayX0() {
     return "ngày trong tuần ngày gần nhất %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s ngày trước %s của tháng";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s ngày sau %s của tháng";
+  }
   commaOnTheX0OfTheMonth() {
     return ", vào ngày %s của tháng";
   }

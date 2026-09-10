@@ -149,6 +149,12 @@ export class pl implements Locale {
   weekdayNearestDayX0() {
     return "dzień roboczy najbliższy %s-ego dnia";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dni przed %s miesiąca";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dni po %s miesiąca";
+  }
   commaStartingX0() {
     return ", startowy %s";
   }

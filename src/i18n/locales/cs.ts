@@ -136,6 +136,12 @@ export class cs implements Locale {
   weekdayNearestDayX0() {
     return "pracovní den nejblíže %s. dni";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dní před %s v měsíci";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dní po %s v měsíci";
+  }
   commaOnTheX0OfTheMonth() {
     return ", v %s v měsíci";
   }

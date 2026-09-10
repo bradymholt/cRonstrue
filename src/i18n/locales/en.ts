@@ -136,6 +136,12 @@ export class en implements Locale {
   weekdayNearestDayX0() {
     return "weekday nearest day %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s days before the %s of the month";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s days after the %s of the month";
+  }
   commaOnTheX0OfTheMonth() {
     return ", on the %s of the month";
   }
