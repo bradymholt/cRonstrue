@@ -795,6 +795,60 @@ describe("Cronstrue", function () {
     it("0 13 * * 1", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "At 01:00 PM, only on Monday");
     });
+
+    // A step which doesn't divide the field evenly spells out the values it matches
+    it("*/50 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every 50 minutes");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 50 minutes, at 0 and 50 minutes past the hour, every hour, every day"
+      );
+    });
+
+    it("*/7 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 7 minutes, at 0, 7, 14, 21, 28, 35, 42, 49, and 56 minutes past the hour, every hour, every day"
+      );
+    });
+
+    it("*/59 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 59 minutes, at 0 and 59 minutes past the hour, every hour, every day"
+      );
+    });
+
+    it("0 */7 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "On the hour, every 7 hours, at 12:00 AM, 07:00 AM, 02:00 PM, and 09:00 PM, every day"
+      );
+    });
+
+    it("*/50 * * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 50 seconds, at 0 and 50 seconds past the minute, every minute, every hour, every day"
+      );
+    });
+
+    // A step which divides the field evenly is a constant interval and stays as it is
+    it("*/15 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "Every 15 minutes, every hour, every day");
+    });
+
+    it("*/30 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "Every 30 minutes, every hour, every day");
+    });
+
+    // A range with a step already states its bounds
+    it("5-30/7 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 7 minutes, minutes 5 through 30 past the hour, every hour, every day"
+      );
+    });
   });
 
   describe("errors", function () {
