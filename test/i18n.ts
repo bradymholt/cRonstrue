@@ -283,6 +283,10 @@ describe("i18n", function () {
         "Her 5 dakikada bir, 15:00 ile 15:59 arasında, Pazartesi ile Cuma arasında"
       );
     });
+
+    it("@reboot", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "tr" }), "Başlangıçta bir kez çalıştır");
+    });
   });
 
   describe("uk", function () {
