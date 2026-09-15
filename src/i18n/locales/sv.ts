@@ -134,6 +134,12 @@ export class sv implements Locale {
   weekdayNearestDayX0() {
     return "veckodagen närmast dag %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dagar före %s i månaden";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dagar efter %s i månaden";
+  }
   commaOnTheX0OfTheMonth() {
     return ", på den %s av månaden";
   }

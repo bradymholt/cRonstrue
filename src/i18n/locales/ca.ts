@@ -148,6 +148,12 @@ export class ca implements Locale {
   weekdayNearestDayX0() {
     return "dia de la setmana més proper al %s";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s dies abans del %s del mes";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s dies després del %s del mes";
+  }
   commaEveryX0Years() {
     return ", cada %s anys";
   }

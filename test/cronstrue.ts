@@ -359,6 +359,34 @@ describe("Cronstrue", function () {
         "Every minute, on the weekday nearest day 5 of the month"
       );
     });
+
+    it("0 0 1W-2 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 2 days before the first weekday of the month"
+      );
+    });
+
+    it("0 0 1W+2 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 2 days after the first weekday of the month"
+      );
+    });
+
+    it("0 0 15W-3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days before the weekday nearest day 15 of the month"
+      );
+    });
+
+    it("0 0 15W+3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days after the weekday nearest day 15 of the month"
+      );
+    });
   });
 
   describe("last", function () {

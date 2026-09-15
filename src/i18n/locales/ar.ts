@@ -136,6 +136,12 @@ export class ar implements Locale {
     weekdayNearestDayX0() {
         return "يوم الأسبوع الأقرب ليوم %s";
     }
+    commaDaysBeforeNearestWeekdayX0() {
+      return "، %s أيام قبل %s من الشهر";
+    }
+    commaDaysAfterNearestWeekdayX0() {
+      return "، %s أيام بعد %s من الشهر";
+    }
     commaOnTheX0OfTheMonth() {
         return "، في %s من الشهر";
     }

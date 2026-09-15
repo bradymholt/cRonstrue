@@ -155,6 +155,12 @@ export class bg implements Locale {
   public weekdayNearestDayX0(): string {
     return 'най-близкият делничен ден до %s число';
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s дни преди %s на месеца";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s дни след %s на месеца";
+  }
   public commaOnTheX0OfTheMonth(): string {
     return ', на %s число от месеца';
   }

@@ -61,6 +61,8 @@ export interface Locale {
   commaDaysBeforeTheLastDayOfTheMonth(s?: string): string;
   firstWeekday(): string;
   weekdayNearestDayX0(): string;
+  commaDaysBeforeNearestWeekdayX0?(): string;
+  commaDaysAfterNearestWeekdayX0?(): string;
   commaOnTheX0OfTheMonth(): string;
   commaEveryX0Days(s?: string): string;
   commaBetweenDayX0AndX1OfTheMonth(s?: string): string;

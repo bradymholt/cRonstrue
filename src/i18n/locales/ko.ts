@@ -190,6 +190,12 @@ export class ko implements Locale {
   public weekdayNearestDayX0() {
     return "%s일과 가장 가까운 평일";
   }
+  commaDaysBeforeNearestWeekdayX0() {
+    return ", %s일 전 (해당 월의 %s)";
+  }
+  commaDaysAfterNearestWeekdayX0() {
+    return ", %s일 후 (해당 월의 %s)";
+  }
 
   public commaOnTheX0OfTheMonth() {
     return ", 매월 %s";
