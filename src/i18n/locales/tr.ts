@@ -172,6 +172,10 @@ export class tr implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Başlangıçta bir kez çalıştır";
+  }
+
   onTheHour() {
     return "saatin başında";
   }
