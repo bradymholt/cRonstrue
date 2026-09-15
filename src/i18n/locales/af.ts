@@ -177,6 +177,10 @@ export class af implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Loop een keer, met opstart";
+  }
+
   onTheHour() {
     return "op die uur";
   }

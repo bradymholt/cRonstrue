@@ -172,6 +172,10 @@ export class da implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Kør én gang, ved opstart";
+  }
+
   onTheHour() {
     return "på timen";
   }

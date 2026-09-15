@@ -172,6 +172,10 @@ export class nn implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Køyr éin gong, ved oppstart";
+  }
+
   onTheHour() {
     return "på timen";
   }

@@ -174,6 +174,10 @@ export class es implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Ejecutar una vez, al iniciar";
+  }
+
   onTheHour() {
     return "en punto";
   }

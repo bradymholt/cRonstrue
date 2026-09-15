@@ -174,6 +174,10 @@ export class cs implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Spustit jednou, při startu";
+  }
+
   onTheHour() {
     return "v celou hodinu";
   }

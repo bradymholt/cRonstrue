@@ -232,6 +232,10 @@ export class hr implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Pokreni jednom, pri pokretanju";
+  }
+
   onTheHour() {
     return "u puni sat";
   }

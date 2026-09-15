@@ -177,6 +177,10 @@ export class th implements Locale {
     ];
   }
 
+  atReboot() {
+    return "ทำงานครั้งเดียว เมื่อเริ่มระบบ";
+  }
+
   onTheHour() {
     return "ตรงชั่วโมง";
   }

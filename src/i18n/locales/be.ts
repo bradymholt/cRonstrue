@@ -172,6 +172,10 @@ export class be implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Выканаць адзін раз, пры запуску";
+  }
+
   onTheHour() {
     return "роўна ў гадзіну";
   }

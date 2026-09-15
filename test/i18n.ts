@@ -1,6 +1,7 @@
 import "mocha";
 import cronstrue from "../src/cronstrue-i18n";
 import { assert } from "chai";
+import * as allLocales from "../src/i18n/allLocales";
 
 describe("i18n", function () {
   describe("de", function () {
@@ -681,5 +682,63 @@ describe("i18n", function () {
     });
   });
 
+
+
+  describe("@reboot", function () {
+    const expectedByLocale: { [locale: string]: string } = {
+      af: "Loop een keer, met opstart",
+      ar: "تشغيل مرة واحدة، عند بدء التشغيل",
+      az: "Başlanğıcda bir dəfə icra olunur",
+      be: "Выканаць адзін раз, пры запуску",
+      bg: "Изпълнение веднъж, при стартиране",
+      ca: "Executa una vegada, en iniciar",
+      cs: "Spustit jednou, při startu",
+      da: "Kør én gang, ved opstart",
+      de: "Einmal ausführen, beim Start",
+      en: "Run once, at startup",
+      es: "Ejecutar una vez, al iniciar",
+      fa: "یک بار اجرا شود، هنگام راه‌اندازی",
+      fi: "Suorita kerran, käynnistyksen yhteydessä",
+      fr: "Exécuter une fois, au démarrage",
+      he: "הרצה אחת, בעת ההפעלה",
+      hr: "Pokreni jednom, pri pokretanju",
+      hu: "Egyszer fut le, rendszerindításkor",
+      id: "Jalankan sekali, saat mulai",
+      it: "Esegui una volta, all'avvio",
+      ja: "起動時に1回実行",
+      ko: "시작 시 한 번 실행",
+      my: "Jalankan sekali, semasa permulaan",
+      nb: "Kjør én gang, ved oppstart",
+      nl: "Eén keer uitvoeren, bij het opstarten",
+      nn: "Køyr éin gong, ved oppstart",
+      pl: "Uruchom raz, przy starcie",
+      pt_BR: "Executar uma vez, na inicialização",
+      pt_PT: "Executar uma vez, no arranque",
+      ro: "Rulează o dată, la pornire",
+      ru: "Выполнить один раз, при запуске",
+      sk: "Spustiť raz, pri štarte",
+      sl: "Zaženi enkrat, ob zagonu",
+      sr: "Pokreni jednom, pri pokretanju",
+      sv: "Kör en gång, vid uppstart",
+      sw: "Endesha mara moja, wakati wa kuanza",
+      tg: "Як бор иҷро шавад, ҳангоми оғоз",
+      th: "ทำงานครั้งเดียว เมื่อเริ่มระบบ",
+      tr: "Başlangıçta bir kez çalıştır",
+      uk: "Виконати один раз, при запуску",
+      vi: "Chạy một lần, khi khởi động",
+      zh_CN: "开机时运行一次",
+      zh_TW: "開機時執行一次",
+    };
+
+    for (const locale of Object.keys(allLocales)) {
+      it(locale, function () {
+        assert.equal(cronstrue.toString("@reboot", { locale }), expectedByLocale[locale]);
+      });
+    }
+
+    it("is covered by every locale", function () {
+      assert.deepEqual(Object.keys(allLocales).sort(), Object.keys(expectedByLocale).sort());
+    });
+  });
 
 });

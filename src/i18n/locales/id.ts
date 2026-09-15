@@ -177,6 +177,10 @@ export class id implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Jalankan sekali, saat mulai";
+  }
+
   onTheHour() {
     return "tepat pada jam";
   }

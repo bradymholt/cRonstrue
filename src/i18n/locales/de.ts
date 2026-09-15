@@ -172,6 +172,10 @@ export class de implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Einmal ausführen, beim Start";
+  }
+
   onTheHour() {
     return "zur vollen Stunde";
   }

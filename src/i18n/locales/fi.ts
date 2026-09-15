@@ -181,6 +181,10 @@ export class fi implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Suorita kerran, käynnistyksen yhteydessä";
+  }
+
   onTheHour() {
     return "tasalta";
   }

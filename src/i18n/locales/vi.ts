@@ -177,6 +177,10 @@ export class vi implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Chạy một lần, khi khởi động";
+  }
+
   onTheHour() {
     return "đúng giờ";
   }

@@ -201,6 +201,10 @@ export class tg implements Locale {
   monthsOfTheYearInCase(f?: number) {
     return f == 1 ? [...monthsIzafa] : [...months];
   }
+  atReboot() {
+    return "Як бор иҷро шавад, ҳангоми оғоз";
+  }
+
   onTheHour() {
     return "дақиқан дар соат";
   }

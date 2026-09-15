@@ -178,6 +178,10 @@ export class hu implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Egyszer fut le, rendszerindításkor";
+  }
+
   onTheHour() {
     return "órakor";
   }

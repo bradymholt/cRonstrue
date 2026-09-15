@@ -177,7 +177,11 @@ export class ar implements Locale {
         ];
     }
 
-    onTheHour() {
+    atReboot() {
+    return "تشغيل مرة واحدة، عند بدء التشغيل";
+  }
+
+  onTheHour() {
         return "في تمام الساعة";
     }
 }

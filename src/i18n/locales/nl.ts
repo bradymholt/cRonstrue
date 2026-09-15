@@ -172,6 +172,10 @@ export class nl implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Eén keer uitvoeren, bij het opstarten";
+  }
+
   onTheHour() {
     return "op het hele uur";
   }
