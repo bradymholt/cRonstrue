@@ -187,6 +187,10 @@ export class fr implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Exécuter une fois, au démarrage";
+  }
+
   onTheHour() {
     return "à l'heure pile";
   }

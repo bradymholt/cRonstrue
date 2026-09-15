@@ -172,6 +172,10 @@ export class sv implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Kör en gång, vid uppstart";
+  }
+
   onTheHour() {
     return "på heltimmen";
   }

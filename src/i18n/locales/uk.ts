@@ -172,6 +172,10 @@ export class uk implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Виконати один раз, при запуску";
+  }
+
   onTheHour() {
     return "рівно о годині";
   }

@@ -177,6 +177,10 @@ export class my implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Jalankan sekali, semasa permulaan";
+  }
+
   onTheHour() {
     return "pada waktu yang tepat";
   }

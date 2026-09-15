@@ -174,6 +174,10 @@ export class sk implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Spustiť raz, pri štarte";
+  }
+
   onTheHour() {
     return "o celú hodinu";
   }

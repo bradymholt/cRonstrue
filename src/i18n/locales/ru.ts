@@ -216,6 +216,10 @@ export class ru implements Locale {
       : this.monthsOfTheYear();
   }
 
+  atReboot() {
+    return "Выполнить один раз, при запуске";
+  }
+
   onTheHour() {
     return "ровно в час";
   }

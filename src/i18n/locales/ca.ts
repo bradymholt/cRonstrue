@@ -174,6 +174,10 @@ export class ca implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Executa una vegada, en iniciar";
+  }
+
   onTheHour() {
     return "en punt";
   }

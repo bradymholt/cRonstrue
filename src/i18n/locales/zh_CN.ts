@@ -180,6 +180,10 @@ export class zh_CN implements Locale {
     return ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
   }
 
+  atReboot() {
+    return "开机时运行一次";
+  }
+
   onTheHour() {
     return "整点";
   }

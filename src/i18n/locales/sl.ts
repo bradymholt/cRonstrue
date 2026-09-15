@@ -172,6 +172,10 @@ export class sl implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Zaženi enkrat, ob zagonu";
+  }
+
   onTheHour() {
     return "ob točni uri";
   }

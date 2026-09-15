@@ -173,6 +173,10 @@ export class ro implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Rulează o dată, la pornire";
+  }
+
   onTheHour() {
     return "fix la oră";
   }

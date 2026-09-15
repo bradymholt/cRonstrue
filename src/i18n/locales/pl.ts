@@ -172,6 +172,10 @@ export class pl implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Uruchom raz, przy starcie";
+  }
+
   onTheHour() {
     return "o pełnej godzinie";
   }

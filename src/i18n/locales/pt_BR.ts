@@ -172,6 +172,10 @@ export class pt_BR implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Executar uma vez, na inicialização";
+  }
+
   onTheHour() {
     return "na hora certa";
   }

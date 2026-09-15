@@ -174,6 +174,10 @@ export class it implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Esegui una volta, all'avvio";
+  }
+
   onTheHour() {
     return "all'ora esatta";
   }

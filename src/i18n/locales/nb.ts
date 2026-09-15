@@ -172,6 +172,10 @@ export class nb implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Kjør én gang, ved oppstart";
+  }
+
   onTheHour() {
     return "på timen";
   }

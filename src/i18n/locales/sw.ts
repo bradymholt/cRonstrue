@@ -176,6 +176,10 @@ export class sw implements Locale {
     ];
   }
 
+  atReboot() {
+    return "Endesha mara moja, wakati wa kuanza";
+  }
+
   onTheHour() {
     return "saa kamili";
   }
