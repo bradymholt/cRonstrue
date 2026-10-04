@@ -1,6 +1,14 @@
 // Romanian
 
 import { Locale } from "../locale";
+
+// Romanian puts "de" between a number and its noun when the number is 20 or more and ends in 00 or 20 to 99:
+// "5 minute", "19 minute", "20 de minute", "101 minute", "120 de minute"
+const getPhraseByNumber = (str: string | undefined, words: [string, string]) => {
+  const number = Number(str);
+  return number >= 20 && (number % 100 === 0 || number % 100 >= 20) ? words[1] : words[0];
+};
+
 export class ro implements Locale {
   use24HourTimeFormatByDefault() {
     return true;
@@ -33,17 +41,17 @@ export class ro implements Locale {
   commaEveryDay() {
     return ", în fiecare zi";
   }
-  commaEveryX0Days() {
-    return ", la fiecare %s zile";
+  commaEveryX0Days(s?: string) {
+    return getPhraseByNumber(s, [", la fiecare %s zile", ", la fiecare %s de zile"]);
   }
   commaEveryX0DaysOfTheWeek() {
     return ", la fiecare a %s-a zi a săptămânii";
   }
-  commaEveryX0Months() {
-    return ", la fiecare %s luni";
+  commaEveryX0Months(s?: string) {
+    return getPhraseByNumber(s, [", la fiecare %s luni", ", la fiecare %s de luni"]);
   }
-  commaEveryX0Years() {
-    return ", o dată la %s ani";
+  commaEveryX0Years(s?: string) {
+    return getPhraseByNumber(s, [", o dată la %s ani", ", o dată la %s de ani"]);
   }
   commaOnDayX0OfTheMonth() {
     return ", în ziua %s a lunii";
@@ -66,8 +74,11 @@ export class ro implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", în ultima zi lucrătoare a lunii";
   }
-  commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s zile înainte de ultima zi a lunii";
+  commaDaysBeforeTheLastDayOfTheMonth(s?: string) {
+    return getPhraseByNumber(s, [
+      ", %s zile înainte de ultima zi a lunii",
+      ", %s de zile înainte de ultima zi a lunii",
+    ]);
   }
   commaOnTheLastX0OfTheMonth() {
     return ", în ultima %s a lunii";
@@ -93,14 +104,14 @@ export class ro implements Locale {
   everySecond() {
     return "în fiecare secundă";
   }
-  everyX0Hours() {
-    return "la fiecare %s ore";
+  everyX0Hours(s?: string) {
+    return getPhraseByNumber(s, ["la fiecare %s ore", "la fiecare %s de ore"]);
   }
-  everyX0Minutes() {
-    return "la fiecare %s minute";
+  everyX0Minutes(s?: string) {
+    return getPhraseByNumber(s, ["la fiecare %s minute", "la fiecare %s de minute"]);
   }
-  everyX0Seconds() {
-    return "la fiecare %s secunde";
+  everyX0Seconds(s?: string) {
+    return getPhraseByNumber(s, ["la fiecare %s secunde", "la fiecare %s de secunde"]);
   }
   fifth() {
     return "a cincea";
@@ -109,7 +120,7 @@ export class ro implements Locale {
     return "prima";
   }
   firstWeekday() {
-    return "prima zi a săptămânii";
+    return "prima zi lucrătoare";
   }
   fourth() {
     return "a patra";
@@ -136,7 +147,7 @@ export class ro implements Locale {
     return "a treia";
   }
   weekdayNearestDayX0() {
-    return "cea mai apropiată zi a săptămânii de ziua %s";
+    return "cea mai apropiată zi lucrătoare de ziua %s";
   }
   commaMonthX0ThroughMonthX1() {
     return ", din %s până în %s";

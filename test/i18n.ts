@@ -251,6 +251,63 @@ describe("i18n", function () {
         "La fiecare 5 minute, între 15:00 și 15:59, de luni până vineri"
       );
     });
+
+    it("*/30 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ro" }), "La fiecare 30 de minute");
+    });
+
+    it("*/20 * * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ro" }), "La fiecare 20 de secunde");
+    });
+
+    it("0 */20 * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "Fix la oră, la fiecare 20 de ore"
+      );
+    });
+
+    it("0 0 */20 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 00:00, la fiecare 20 de zile"
+      );
+    });
+
+    it("0 0 L-20 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 00:00, 20 de zile înainte de ultima zi a lunii"
+      );
+    });
+
+    it("0 0 0 1 1 ? */100", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 100 de ani"
+      );
+    });
+
+    it("0 0 0 1 1 ? */101", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 101 ani"
+      );
+    });
+
+    it("0 9 1W * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 09:00, în prima zi lucrătoare a lunii"
+      );
+    });
+
+    it("0 9 15W * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
+        "La 09:00, în cea mai apropiată zi lucrătoare de ziua 15 a lunii"
+      );
+    });
   });
 
   describe("ru", function () {
