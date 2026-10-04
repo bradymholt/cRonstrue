@@ -782,6 +782,30 @@ describe("Cronstrue", function () {
     it("@reboot", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Run once, at startup");
     });
+
+    describe("numbering options", function () {
+      const aliases = [
+        ["@yearly", "At 12:00 AM, on day 1 of the month, only in January"],
+        ["@annually", "At 12:00 AM, on day 1 of the month, only in January"],
+        ["@weekly", "At 12:00 AM, only on Sunday"],
+      ];
+
+      for (const [alias, description] of aliases) {
+        for (const dayOfWeekStartIndexZero of [true, false]) {
+          for (const monthStartIndexZero of [false, true]) {
+            it(
+              `${alias}, dayOfWeekStartIndexZero=${dayOfWeekStartIndexZero}, monthStartIndexZero=${monthStartIndexZero}`,
+              function () {
+                assert.equal(
+                  cronstrue.toString(alias, { dayOfWeekStartIndexZero, monthStartIndexZero }),
+                  description
+                );
+              }
+            );
+          }
+        }
+      }
+    });
   });
 
   describe("verbose", function () {
