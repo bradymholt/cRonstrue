@@ -448,6 +448,27 @@ describe("Cronstrue", function () {
   });
 
   describe("monthStartIndexZero=true", function () {
+    it("30 * * */10 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, every 10 months"
+      );
+    });
+
+    it("30 * * 2/11 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, every 11 months, March through December"
+      );
+    });
+
+    it("30 * * 1/2 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
+        "At 30 minutes past the hour, every 2 months, February through December"
+      );
+    });
+
     it("* * * 7 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),

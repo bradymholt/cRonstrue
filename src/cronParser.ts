@@ -154,9 +154,10 @@ export class CronParser {
       expressionParts[3] = expressionParts[3].replace("1/", "*/");
     }
 
-    if (expressionParts[4].indexOf("1/") == 0) {
+    const monthStart = this.monthStartIndexZero ? "0/" : "1/";
+    if (expressionParts[4].indexOf(monthStart) == 0) {
       // Month
-      expressionParts[4] = expressionParts[4].replace("1/", "*/");
+      expressionParts[4] = expressionParts[4].replace(monthStart, "*/");
     }
 
     if (expressionParts[6].indexOf("1/") == 0) {
@@ -220,7 +221,7 @@ export class CronParser {
 
     // Adjust month based on monthStartIndexZero option
     // Normalized Month: 1=JAN/12=DEC
-    expressionParts[4] = expressionParts[4].replace(/(^\d{1,2})|([^#/\s]\d{1,2})/g, (t) => {
+    expressionParts[4] = expressionParts[4].replace(/(^\d{1,2})|([^#/\s\d]\d{1,2})/g, (t) => {
       // skip anything preceeded by # or /
       let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
       let dowDigitsAdjusted: string = dowDigits;

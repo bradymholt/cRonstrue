@@ -50,6 +50,38 @@ describe("CronParser", function () {
       assert.equal(new CronParser("5-45/10,*/5,9 * * * *").parse().length, 7);
     });
 
+    it("should normalize zero-based months without changing step values", function () {
+      const cases = [
+        ["*/10", "*/10"],
+        ["*/11", "*/11"],
+        ["2/11", "3-12/11"],
+        ["1/2", "2-12/2"],
+        ["0/2", "*/2"],
+        ["0/10", "*/10"],
+        ["0-11/10", "1-12/10"],
+        ["0,10,11", "1,11,12"],
+        ["JAN/10", "1-12/10"],
+      ];
+
+      for (const [month, expected] of cases) {
+        assert.equal(new CronParser(`30 * * ${month} *`, true, true).parse()[4], expected);
+      }
+    });
+
+    it("should preserve one-based month step normalization", function () {
+      const cases = [
+        ["*/10", "*/10"],
+        ["1/2", "*/2"],
+        ["1/10", "*/10"],
+        ["2/11", "2-12/11"],
+        ["1-12/10", "1-12/10"],
+      ];
+
+      for (const [month, expected] of cases) {
+        assert.equal(new CronParser(`30 * * ${month} *`).parse()[4], expected);
+      }
+    });
+
     it("dayOfWeek specified as comma", function () {
       assert.equal(new CronParser("*/5 * * * * ,").parse()[5], "*");
     });
