@@ -195,9 +195,13 @@ export class CronParser {
       expressionParts[3] = "*";
     }
 
+    // i.e. 15W-2 or 15W+2 (offset from the nearest weekday)
+    const weekdayOffsetRegex = /^\d{1,2}W[+-]\d{1,2}$/;
+
     if (
       expressionParts[3].indexOf("W") > -1 &&
-      (expressionParts[3].indexOf(",") > -1 || expressionParts[3].indexOf("-") > -1)
+      (expressionParts[3].indexOf(",") > -1 || /[-+]/.test(expressionParts[3])) &&
+      !weekdayOffsetRegex.test(expressionParts[3])
     ) {
       throw new Error(
         "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
@@ -325,7 +329,7 @@ export class CronParser {
     this.validateOnlyExpectedCharactersFound(parsed[1], standardCronPartCharacters);
     this.validateOnlyExpectedCharactersFound(parsed[2], standardCronPartCharacters);
     // DOM
-    this.validateOnlyExpectedCharactersFound(parsed[3], "0-9,\\-*\/LW");
+    this.validateOnlyExpectedCharactersFound(parsed[3].replace(/^(\d{1,2}W)[+-]\d{1,2}$/, "$1"), "0-9,\\-*\/LW");
     this.validateOnlyExpectedCharactersFound(parsed[4], standardCronPartCharacters);
     // DOW
     this.validateOnlyExpectedCharactersFound(parsed[5], "0-9,\\-*\/L#");

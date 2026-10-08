@@ -463,15 +463,30 @@ export class ExpressionDescriptor {
         description = this.i18n.commaOnTheLastWeekdayOfTheMonth();
         break;
       default:
-        // i.e. 3W or W2
-        let weekDayNumberMatches = expression.match(/(\d{1,2}W)|(W\d{1,2})/);
+        // i.e. 3W, W2, 15W-2 or 15W+2
+        let weekDayNumberMatches = expression.match(/^(?:(\d{1,2})W|W(\d{1,2}))(?:([+-])(\d{1,2}))?$/);
         if (weekDayNumberMatches) {
-          let dayNumber: number = parseInt(weekDayNumberMatches[0].replace("W", ""));
+          let dayNumber: number = parseInt(weekDayNumberMatches[1] || weekDayNumberMatches[2]);
           let dayString: string =
             dayNumber == 1
               ? this.i18n.firstWeekday()
               : StringUtilities.format(this.i18n.weekdayNearestDayX0(), dayNumber.toString());
-          description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
+          let offsetDays: string | undefined = weekDayNumberMatches[4];
+          if (!offsetDays) {
+            description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
+          } else if (weekDayNumberMatches[3] == "-") {
+            description = StringUtilities.format(
+              this.i18n.commaDaysBeforeTheX0OfTheMonth?.(offsetDays) || ", %s days before the %s of the month",
+              offsetDays,
+              dayString
+            );
+          } else {
+            description = StringUtilities.format(
+              this.i18n.commaDaysAfterTheX0OfTheMonth?.(offsetDays) || ", %s days after the %s of the month",
+              offsetDays,
+              dayString
+            );
+          }
 
           break;
         } else {

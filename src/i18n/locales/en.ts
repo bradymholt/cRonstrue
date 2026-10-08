@@ -139,6 +139,12 @@ export class en implements Locale {
   commaOnTheX0OfTheMonth() {
     return ", on the %s of the month";
   }
+  commaDaysBeforeTheX0OfTheMonth() {
+    return ", %s days before the %s of the month";
+  }
+  commaDaysAfterTheX0OfTheMonth() {
+    return ", %s days after the %s of the month";
+  }
   commaEveryX0Days() {
     return ", every %s days in a month";
   }
