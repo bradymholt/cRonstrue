@@ -10,6 +10,10 @@ on:
         - major
         - minor
         - patch
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: [main]
 
 permissions:
   id-token: write
@@ -18,12 +22,44 @@ permissions:
   pull-requests: write
 
 jobs:
-  publish:
+  check:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    outputs:
+      release: ${{ steps.changes.outputs.release }}
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: refs/heads/main
+          ref: ${{ github.event.workflow_run.head_sha || 'refs/heads/main' }}
+          fetch-depth: 0
+      - name: Check for releasable changes since last release
+        id: changes
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "release=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          last_tag=$(git describe --tags --abbrev=0)
+          changed=$(git diff --name-only "$last_tag" HEAD -- . \
+            ':!*.md' ':!docs/**' ':!test/**' ':!.github/**' ':!.vscode/**' \
+            ':!.editorconfig' ':!.gitignore' ':!.tool-versions' ':!LICENSE')
+          if [ -n "$changed" ]; then
+            echo "Releasable changes since $last_tag:"
+            echo "$changed"
+            echo "release=true" >> $GITHUB_OUTPUT
+          else
+            echo "No releasable changes since $last_tag; skipping release."
+            echo "release=false" >> $GITHUB_OUTPUT
+          fi
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: check
+    if: needs.check.outputs.release == 'true'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || 'refs/heads/main' }}
       - name: Setup git repo
         run: |
           git config user.name $GITHUB_ACTOR
@@ -38,7 +74,7 @@ jobs:
       - run: npm install
       - name: Version
         run: |
-          npm version ${{ github.event.inputs.version_type }} --force -m "Version %s"
+          npm version ${{ github.event.inputs.version_type || 'minor' }} --force -m "Version %s"
       - name: Publish to npm
         run: npm publish --provenance
       - name: Push release commit and tag to GitHub
