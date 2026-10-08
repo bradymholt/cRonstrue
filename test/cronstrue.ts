@@ -359,6 +359,20 @@ describe("Cronstrue", function () {
         "Every minute, on the weekday nearest day 5 of the month"
       );
     });
+
+    it("0 0 1W-2 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 2 days before the first weekday of the month"
+      );
+    });
+
+    it("0 0 15W+3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days after the weekday nearest day 15 of the month"
+      );
+    });
   });
 
   describe("last", function () {
@@ -975,6 +989,17 @@ describe("Cronstrue", function () {
       assert.throws(function () {
         cronstrue.toString("0 30 14 1W,15W * ? *");
       }, "Error: The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.");
+    });
+
+    it("'W' offset is invalid unless a single day with a single offset", function () {
+      for (const dom of ["1-5W", "LW-2", "1W+2+3", "1W+-2"]) {
+        assert.throws(function () {
+          cronstrue.toString(`0 0 ${dom} * *`);
+        }, "Error: The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.");
+      }
+      assert.throws(function () {
+        cronstrue.toString("0 0 1+2 * *");
+      }, "Error: Expression contains invalid values: '+'");
     });
 
     it("garbage expression with option (throwExceptionOnParseError = false)", function () {
