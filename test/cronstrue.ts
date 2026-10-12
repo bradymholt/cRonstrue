@@ -771,6 +771,13 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 9 * * 5,0-4/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 09:00 AM, only on Friday and every 2 days of the week, Sunday through Thursday"
+      );
+    });
+
     it("* 1-2,22-23 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
