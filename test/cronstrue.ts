@@ -293,6 +293,13 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every hour, on day 31 of the month, and on Monday");
     });
 
+    it("0 * 31 * 1-5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every hour, on day 31 of the month, and Monday through Friday"
+      );
+    });
+
     it("0 * 31 * 2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),

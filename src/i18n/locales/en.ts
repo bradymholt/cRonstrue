@@ -80,7 +80,7 @@ export class en implements Locale {
     return ", %s through %s";
   }
   commaAndX0ThroughX1() {
-    return ", %s through %s";
+    return ", and %s through %s";
   }
   first() {
     return "first";
