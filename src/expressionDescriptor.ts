@@ -387,7 +387,9 @@ export class ExpressionDescriptor {
           const beginFrom = s.substring(0, s.indexOf("-"));
 
           const domSpecified = this.expressionParts[3] != "*";
-          return domSpecified ? this.i18n.commaAndX0ThroughX1(beginFrom) : this.i18n.commaX0ThroughX1(beginFrom);
+          return domSpecified && !this.options.logicalAndDayFields
+            ? this.i18n.commaAndX0ThroughX1(beginFrom)
+            : this.i18n.commaX0ThroughX1(beginFrom);
         },
         (s) => {
           let format: string | null = null;
