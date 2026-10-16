@@ -531,6 +531,18 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the third Monday of the month");
     });
 
+    it("0 0 ? * MON#1", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the first Monday of the month");
+    });
+
+    it("0 0 ? * MON#2", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the second Monday of the month");
+    });
+
+    it("0 0 ? * MON#5", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the fifth Monday of the month");
+    });
+
     it("* * * * MON#3,THU#1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
@@ -953,6 +965,22 @@ describe("Cronstrue", function () {
       assert.throws(function () {
         cronstrue.toString("0 0 0 1 12 8", { dayOfWeekStartIndexZero: false });
       }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#0");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#6");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * 1#9");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#01");
+      }, "DOW nth weekday must be >= 1 and <= 5");
     });
 
     it("garbage expression", function () {
@@ -1005,6 +1033,10 @@ describe("Cronstrue", function () {
     it("garbage expression with option (throwExceptionOnParseError = false)", function () {
       assert.equal(
         cronstrue.toString("garbage", { throwExceptionOnParseError: false }),
+        "An error occurred when generating the expression description. Check the cron expression syntax."
+      );
+      assert.equal(
+        cronstrue.toString("0 0 ? * MON#6", { throwExceptionOnParseError: false }),
         "An error occurred when generating the expression description. Check the cron expression syntax."
       );
     });
