@@ -61,6 +61,11 @@ export default class RangeValidator {
   static dayOfWeekRange(parse: string, dayOfWeekStartIndexZero: boolean) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
+      if (parsed[i].indexOf('#') > -1) {
+        const nthString = parsed[i].substring(parsed[i].indexOf('#') + 1);
+        assert(/^[1-5]$/.test(nthString), 'DOW nth weekday must be >= 1 and <= 5');
+      }
+
       if (!isNaN(parseInt(parsed[i], 10))) {
         const dayOfWeek = parseInt(parsed[i], 10);
         assert(
