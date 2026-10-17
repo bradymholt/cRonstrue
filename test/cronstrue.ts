@@ -911,6 +911,30 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
+    it("zero step in a wildcard expression", function () {
+      assert.throws(function () {
+        cronstrue.toString("*/0 * * * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero step after a starting value", function () {
+      assert.throws(function () {
+        cronstrue.toString("0/0 * * * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero step in the day-of-month field", function () {
+      assert.throws(function () {
+        cronstrue.toString("0 0 */0 * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero steps in multiple fields", function () {
+      assert.throws(function () {
+        cronstrue.toString("*/0 */0 * * *");
+      }, "step value must be greater than 0");
+    });
+
     it("second out of range", function () {
       assert.throws(function () {
         cronstrue.toString("61 * * * * *");

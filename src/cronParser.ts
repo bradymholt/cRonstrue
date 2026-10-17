@@ -339,6 +339,7 @@ export class CronParser {
   }
 
   protected validateAnyRanges(parsed: string[]) {
+    parsed.forEach((part) => RangeValidator.stepRange(part));
     RangeValidator.secondRange(parsed[0]);
     RangeValidator.minuteRange(parsed[1]);
     RangeValidator.hourRange(parsed[2]);
