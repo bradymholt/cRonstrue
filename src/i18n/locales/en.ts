@@ -1,6 +1,10 @@
 // English
 
 import { Locale } from "../locale";
+
+// A count of 1 takes the singular unit. A list like "1,15" is not a number, so it stays plural.
+const isOne = (s?: string) => Number(s) === 1;
+
 export class en implements Locale {
   atX0SecondsPastTheMinuteGt20(): string|null {
     return null;
@@ -43,26 +47,26 @@ export class en implements Locale {
   everySecond() {
     return "every second";
   }
-  everyX0Seconds() {
-    return "every %s seconds";
+  everyX0Seconds(s?: string) {
+    return isOne(s) ? "every %s second" : "every %s seconds";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "seconds %s through %s past the minute";
   }
-  atX0SecondsPastTheMinute() {
-    return "at %s seconds past the minute";
+  atX0SecondsPastTheMinute(s?: string) {
+    return isOne(s) ? "at %s second past the minute" : "at %s seconds past the minute";
   }
-  everyX0Minutes() {
-    return "every %s minutes";
+  everyX0Minutes(s?: string) {
+    return isOne(s) ? "every %s minute" : "every %s minutes";
   }
   minutesX0ThroughX1PastTheHour() {
     return "minutes %s through %s past the hour";
   }
-  atX0MinutesPastTheHour() {
-    return "at %s minutes past the hour";
+  atX0MinutesPastTheHour(s?: string) {
+    return isOne(s) ? "at %s minute past the hour" : "at %s minutes past the hour";
   }
-  everyX0Hours() {
-    return "every %s hours";
+  everyX0Hours(s?: string) {
+    return isOne(s) ? "every %s hour" : "every %s hours";
   }
   betweenX0AndX1() {
     return "between %s and %s";
@@ -127,8 +131,8 @@ export class en implements Locale {
   commaOnTheLastWeekdayOfTheMonth() {
     return ", on the last weekday of the month";
   }
-  commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s days before the last day of the month";
+  commaDaysBeforeTheLastDayOfTheMonth(s?: string) {
+    return isOne(s) ? ", %s day before the last day of the month" : ", %s days before the last day of the month";
   }
   firstWeekday() {
     return "first weekday";
@@ -139,11 +143,11 @@ export class en implements Locale {
   commaOnTheX0OfTheMonth() {
     return ", on the %s of the month";
   }
-  commaDaysBeforeTheX0OfTheMonth() {
-    return ", %s days before the %s of the month";
+  commaDaysBeforeTheX0OfTheMonth(s?: string) {
+    return isOne(s) ? ", %s day before the %s of the month" : ", %s days before the %s of the month";
   }
-  commaDaysAfterTheX0OfTheMonth() {
-    return ", %s days after the %s of the month";
+  commaDaysAfterTheX0OfTheMonth(s?: string) {
+    return isOne(s) ? ", %s day after the %s of the month" : ", %s days after the %s of the month";
   }
   commaEveryX0Days() {
     return ", every %s days in a month";
@@ -157,8 +161,8 @@ export class en implements Locale {
   commaEveryHour() {
     return ", every hour";
   }
-  commaEveryX0Years() {
-    return ", every %s years";
+  commaEveryX0Years(s?: string) {
+    return isOne(s) ? ", every %s year" : ", every %s years";
   }
   commaStartingX0() {
     return ", starting %s";
