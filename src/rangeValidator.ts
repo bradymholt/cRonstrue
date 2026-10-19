@@ -5,6 +5,14 @@ function assert(value: boolean, message: string) {
 }
 
 export default class RangeValidator {
+  static stepRange(parse: string) {
+    const parsed = parse.split(',');
+    for (let i = 0; i < parsed.length; i++) {
+      const step = parsed[i].split('/')[1];
+      assert(step === undefined || !/^0+$/.test(step), 'step value must be greater than 0');
+    }
+  }
+
   static secondRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
