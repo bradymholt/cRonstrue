@@ -459,6 +459,20 @@ describe("Cronstrue", function () {
         "Every hour, Monday through Saturday"
       );
     });
+
+    it("0 0 ? * 2#1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
+        "At 12:00 AM, on the first Monday of the month"
+      );
+    });
+
+    it("0 0 ? * 2#5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
+        "At 12:00 AM, on the fifth Monday of the month"
+      );
+    });
   });
 
   describe("monthStartIndexZero=true", function () {
@@ -980,6 +994,10 @@ describe("Cronstrue", function () {
 
       assert.throws(function () {
         cronstrue.toString("0 0 ? * MON#01");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * 2#06", { dayOfWeekStartIndexZero: false });
       }, "DOW nth weekday must be >= 1 and <= 5");
     });
 
