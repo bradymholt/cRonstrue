@@ -739,6 +739,19 @@ describe("i18n", function () {
     });
   });
 
+  describe("vi", function () {
+    it("0 9 * */3 *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "vi" }), "Vào 09:00, mỗi 3 tháng");
+    });
+
+    it("0 9 * 2,3-9/2 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "vi" }),
+        "Vào 09:00, chỉ trong Tháng 2 và mỗi 2 tháng, Tháng 3 đến Tháng 9"
+      );
+    });
+  });
+
 
 
   describe("@reboot", function () {

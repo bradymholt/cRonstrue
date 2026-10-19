@@ -116,7 +116,7 @@ export class vi implements Locale {
     return ", và hơn %s";
   }
   commaEveryX0Months() {
-    return ", mỗi ngày %s tháng";
+    return ", mỗi %s tháng";
   }
   commaOnlyInX0() {
     return ", chỉ trong %s";
