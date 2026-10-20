@@ -300,6 +300,27 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 * 31 * 1-5/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every hour, on day 31 of the month, and every 2 days of the week, Monday through Friday"
+      );
+    });
+
+    it("0 * 31 * 1-5/2 with logicalAndDayFields", function () {
+      assert.equal(
+        cronstrue.toString("0 * 31 * 1-5/2", { logicalAndDayFields: true }),
+        "Every hour, on day 31 of the month, every 2 days of the week, Monday through Friday"
+      );
+    });
+
+    it("0 * 31 * */2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every hour, on day 31 of the month, and every 2 days of the week"
+      );
+    });
+
     it("0 * 31 * 2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),

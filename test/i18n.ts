@@ -22,6 +22,13 @@ describe("i18n", function () {
         "Jede Stunde, an Tag 31 des Monats, Montag bis Freitag"
       );
     });
+
+    it("0 * 31 * 1-5/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Jede Stunde, an Tag 31 des Monats, alle 2 Tage der Woche, Montag bis Freitag"
+      );
+    });
   });
 
   describe("es", function () {

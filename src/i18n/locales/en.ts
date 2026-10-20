@@ -80,6 +80,9 @@ export class en implements Locale {
   commaEveryX0DaysOfTheWeek() {
     return ", every %s days of the week";
   }
+  commaAndEveryX0DaysOfTheWeek() {
+    return ", and every %s days of the week";
+  }
   commaX0ThroughX1() {
     return ", %s through %s";
   }

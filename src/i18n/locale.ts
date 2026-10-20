@@ -37,6 +37,7 @@ export interface Locale {
   atX0(): string;
   commaEveryDay(): string;
   commaEveryX0DaysOfTheWeek(s?: string): string;
+  commaAndEveryX0DaysOfTheWeek?(s?: string): string;
   commaX0ThroughX1(s?: string): string;
   commaAndX0ThroughX1(s?: string): string;
   commaMonthX0ThroughMonthX1(): string | null; // optional
