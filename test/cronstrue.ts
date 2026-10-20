@@ -123,7 +123,7 @@ describe("Cronstrue", function () {
     it("1 1,3-4 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 1 minutes past the hour, at 01:00 AM and 03:00 AM through 04:59 AM"
+        "At 1 minute past the hour, at 01:00 AM and 03:00 AM through 04:59 AM"
       );
     });
 
@@ -421,6 +421,81 @@ describe("Cronstrue", function () {
         cronstrue.toString(this.test?.title as string),
         "At 12:00 AM, 5 days before the last day of the month"
       );
+    });
+  });
+
+  describe("count of 1", function () {
+    it("1 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 1 minute past the hour");
+    });
+
+    it("1 * * * * (verbose)", function () {
+      assert.equal(
+        cronstrue.toString("1 * * * *", { verbose: true }),
+        "At 1 minute past the hour, every hour, every day"
+      );
+    });
+
+    it("1/15 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every 15 minutes, starting at 1 minute past the hour"
+      );
+    });
+
+    it("1 * * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 1 second past the minute");
+    });
+
+    it("1/1 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every 1 minute, starting at 1 minute past the hour"
+      );
+    });
+
+    it("5-10/1 * * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every 1 second, seconds 5 through 10 past the minute"
+      );
+    });
+
+    it("0 2/1 * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "On the hour, every 1 hour, starting at 02:00 AM");
+    });
+
+    it("0 0 L-1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 1 day before the last day of the month"
+      );
+    });
+
+    it("0 0 1W-1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 1 day before the first weekday of the month"
+      );
+    });
+
+    it("0 0 15W+1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 1 day after the weekday nearest day 15 of the month"
+      );
+    });
+
+    it("0 0 0 1 1 ? 2020/1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on day 1 of the month, only in January, every 1 year, 2020 through 9999"
+      );
+    });
+
+    // A list is not a count, so the unit stays plural
+    it("1,15 * * * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 1 and 15 minutes past the hour");
     });
   });
 
@@ -778,6 +853,13 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 9 * * 5,0-4/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 09:00 AM, only on Friday and every 2 days of the week, Sunday through Thursday"
+      );
+    });
+
     it("* 1-2,22-23 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
@@ -918,6 +1000,30 @@ describe("Cronstrue", function () {
   });
 
   describe("errors", function () {
+    it("zero step in a wildcard expression", function () {
+      assert.throws(function () {
+        cronstrue.toString("*/0 * * * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero step after a starting value", function () {
+      assert.throws(function () {
+        cronstrue.toString("0/0 * * * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero step in the day-of-month field", function () {
+      assert.throws(function () {
+        cronstrue.toString("0 0 */0 * *");
+      }, "step value must be greater than 0");
+    });
+
+    it("zero steps in multiple fields", function () {
+      assert.throws(function () {
+        cronstrue.toString("*/0 */0 * * *");
+      }, "step value must be greater than 0");
+    });
+
     it("second out of range", function () {
       assert.throws(function () {
         cronstrue.toString("61 * * * * *");

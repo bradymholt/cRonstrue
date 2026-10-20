@@ -609,6 +609,9 @@ export class ExpressionDescriptor {
 
           if (isSegmentRangeWithoutIncrement) {
             currentDescriptionContent = currentDescriptionContent!.replace(", ", "");
+          } else if (i > 0 && currentDescriptionContent!.startsWith(", ")) {
+            // Strip leading comma since we manage separators in this loop
+            currentDescriptionContent = currentDescriptionContent!.substring(2);
           }
 
           descriptionContent += currentDescriptionContent;
@@ -624,7 +627,7 @@ export class ExpressionDescriptor {
             getDescriptionFormat
           );
           // Strip leading comma since we manage separators in this loop
-          if (segmentDescription && segmentDescription.startsWith(", ")) {
+          if (i > 0 && segmentDescription && segmentDescription.startsWith(", ")) {
             segmentDescription = segmentDescription.substring(2);
           }
           descriptionContent += segmentDescription;
