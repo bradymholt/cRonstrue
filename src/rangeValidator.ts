@@ -4,6 +4,19 @@ function assert(value: boolean, message: string) {
   }
 }
 
+// Returns the numeric start and, for a range like "10-15", the end of a cron list part.
+function rangeValues(part: string): number[] {
+  const values: number[] = [];
+  if (!isNaN(parseInt(part, 10))) {
+    values.push(parseInt(part, 10));
+    const range = part.match(/^\d+-(\d+)/);
+    if (range) {
+      values.push(parseInt(range[1], 10));
+    }
+  }
+  return values;
+}
+
 export default class RangeValidator {
   static stepRange(parse: string) {
     const parsed = parse.split(',');
@@ -16,8 +29,7 @@ export default class RangeValidator {
   static secondRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const second = parseInt(parsed[i], 10);
+      for (const second of rangeValues(parsed[i])) {
         assert(second >= 0 && second <= 59, 'seconds part must be >= 0 and <= 59');
       }
     }
@@ -26,8 +38,7 @@ export default class RangeValidator {
   static minuteRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const minute = parseInt(parsed[i], 10);
+      for (const minute of rangeValues(parsed[i])) {
         assert(minute >= 0 && minute <= 59, 'minutes part must be >= 0 and <= 59');
       }
     }
@@ -36,8 +47,7 @@ export default class RangeValidator {
   static hourRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const hour = parseInt(parsed[i], 10);
+      for (const hour of rangeValues(parsed[i])) {
         assert(hour >= 0 && hour <= 23, 'hours part must be >= 0 and <= 23');
       }
     }
@@ -46,8 +56,7 @@ export default class RangeValidator {
   static dayOfMonthRange(parse: string) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const dayOfMonth = parseInt(parsed[i], 10);
+      for (const dayOfMonth of rangeValues(parsed[i])) {
         assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'DOM part must be >= 1 and <= 31');
       }
     }
@@ -56,8 +65,7 @@ export default class RangeValidator {
   static monthRange(parse: string, monthStartIndexZero: boolean) {
     const parsed = parse.split(',');
     for (let i = 0; i < parsed.length; i++) {
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const month = parseInt(parsed[i], 10);
+      for (const month of rangeValues(parsed[i])) {
         assert(
           month >= 1 && month <= 12,
           monthStartIndexZero ? 'month part must be >= 0 and <= 11' : 'month part must be >= 1 and <= 12'
@@ -74,8 +82,7 @@ export default class RangeValidator {
         assert(/^[1-5]$/.test(nthString), 'DOW nth weekday must be >= 1 and <= 5');
       }
 
-      if (!isNaN(parseInt(parsed[i], 10))) {
-        const dayOfWeek = parseInt(parsed[i], 10);
+      for (const dayOfWeek of rangeValues(parsed[i])) {
         assert(
           dayOfWeek >= 0 && dayOfWeek <= 6,
           dayOfWeekStartIndexZero ? 'DOW part must be >= 0 and <= 6' : 'DOW part must be >= 1 and <= 7'

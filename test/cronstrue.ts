@@ -1107,6 +1107,32 @@ describe("Cronstrue", function () {
       }, "DOW nth weekday must be >= 1 and <= 5");
     });
 
+    it("range end out of range", function () {
+      assert.throws(function () {
+        cronstrue.toString("10-60 * * * * *");
+      }, "seconds part must be >= 0 and <= 59");
+
+      assert.throws(function () {
+        cronstrue.toString("0 10-70 * * * *");
+      }, "minutes part must be >= 0 and <= 59");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 20-30 * * *");
+      }, "hours part must be >= 0 and <= 23");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 25-40 * *");
+      }, "DOM part must be >= 1 and <= 31");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 1 10-15 *");
+      }, "month part must be >= 1 and <= 12");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-9", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
+    });
+
     it("garbage expression", function () {
       assert.throws(function () {
         cronstrue.toString("sdlksldksldksd");
