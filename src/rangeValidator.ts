@@ -9,7 +9,7 @@ function rangeValues(part: string): number[] {
   const values: number[] = [];
   if (!isNaN(parseInt(part, 10))) {
     values.push(parseInt(part, 10));
-    const range = part.match(/^\d+-(\d+)/);
+    const range = part.match(/^\d+-(-?\d+)/);
     if (range) {
       values.push(parseInt(range[1], 10));
     }
