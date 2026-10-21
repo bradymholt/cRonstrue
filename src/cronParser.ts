@@ -166,9 +166,9 @@ export class CronParser {
 
     // Adjust DOW based on dayOfWeekStartIndexZero option
     // Normalized DOW: 0=Sunday/6=Saturday
-    expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s\d]\d)/g, (t) => {
-      // Skip anything preceeded by # or /. Also skip digits that follow another digit so that
-      // multi-digit sequences (e.g. the ordinal in "2#06") are only adjusted at their leading digit.
+    expressionParts[5] = expressionParts[5].replace(/(^\d+)|([^#/\s\d]\d+)/g, (t) => {
+      // Skip anything preceeded by # or /. Multi-digit numbers (e.g. "10") are adjusted as a whole
+      // so that out-of-range values are caught by validation instead of being partially shifted.
       let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
       let dowDigitsAdjusted: string = dowDigits;
 
