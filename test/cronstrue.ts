@@ -1131,6 +1131,10 @@ describe("Cronstrue", function () {
       assert.throws(function () {
         cronstrue.toString("0 0 0 * * 1-9", { dayOfWeekStartIndexZero: false });
       }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-0", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
     });
 
     it("garbage expression", function () {
