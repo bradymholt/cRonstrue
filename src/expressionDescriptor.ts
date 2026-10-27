@@ -332,8 +332,19 @@ export class ExpressionDescriptor {
       // or a dupe description like "every day, every day".
       description = "";
     } else {
+      let dayOfWeekExpression = this.expressionParts[5];
+      const dayOfWeekItems = dayOfWeekExpression.split(",");
+      const isLastDayOfWeekList = dayOfWeekItems.every((s) => s.indexOf("L") > -1);
+      if (!isLastDayOfWeekList) {
+        // Describe "last" days after the plain ones, so "5L,1" reads like "1,5L"
+        dayOfWeekExpression = dayOfWeekItems
+          .filter((s) => s.indexOf("L") === -1)
+          .concat(dayOfWeekItems.filter((s) => s.indexOf("L") > -1))
+          .join(",");
+      }
+
       description = this.getSegmentDescription(
-        this.expressionParts[5],
+        dayOfWeekExpression,
         this.i18n.commaEveryDay(),
         (s, form) => {
           let exp: string = s;
@@ -370,6 +381,9 @@ export class ExpressionDescriptor {
                 break;
             }
             description = dayOfWeekOfMonthDescription + " " + description;
+          } else if (s.indexOf("L") > -1 && !isLastDayOfWeekList) {
+            // A list mixing "5L" with plain days (i.e. "1,5L") only limits that day to the last of the month
+            description = StringUtilities.format(this.i18n.commaOnTheLastX0OfTheMonth(exp), description).replace(", ", "");
           }
 
           return description;
@@ -395,7 +409,7 @@ export class ExpressionDescriptor {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
             let dayOfWeek = s.substring(0, s.indexOf("#"));
             format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth();
-          } else if (s.indexOf("L") > -1) {
+          } else if (isLastDayOfWeekList) {
             format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
           } else {
             // If both DOM and DOW are specified, the cron executes depending on the cron format.
