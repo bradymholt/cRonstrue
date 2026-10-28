@@ -322,25 +322,27 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  protected getDayOfWeekDescription() {
+  protected getDayOfWeekDescription(dayOfWeekExpression: string = this.expressionParts[5]): string | null {
     var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
     let description: string | null = null;
-    if (this.expressionParts[5] == "*") {
+    if (dayOfWeekExpression == "*") {
       // DOW is specified as * so we will not generate a description and defer to DOM part.
       // Otherwise, we could get a contradiction like "on day 1 of the month, every day"
       // or a dupe description like "every day, every day".
       description = "";
     } else {
-      let dayOfWeekExpression = this.expressionParts[5];
       const dayOfWeekItems = dayOfWeekExpression.split(",");
-      const isLastDayOfWeekList = dayOfWeekItems.every((s) => s.indexOf("L") > -1);
-      if (!isLastDayOfWeekList) {
-        // Describe "last" days after the plain ones, so "5L,1" reads like "1,5L"
-        dayOfWeekExpression = dayOfWeekItems
-          .filter((s) => s.indexOf("L") === -1)
-          .concat(dayOfWeekItems.filter((s) => s.indexOf("L") > -1))
-          .join(",");
+      const lastItems = dayOfWeekItems.filter((s) => s.indexOf("L") > -1);
+      const otherItems = dayOfWeekItems.filter((s) => s.indexOf("L") === -1);
+      if (lastItems.length > 0 && otherItems.length > 0) {
+        // "1,5L" runs every Monday but only on the last Friday, so describe the two parts separately
+        const lastDescription = this.getDayOfWeekDescription(lastItems.join(",")) ?? "";
+        return (
+          (this.getDayOfWeekDescription(otherItems.join(",")) ?? "") +
+          `${this.i18n.spaceAnd()} ` +
+          (lastDescription.startsWith(", ") ? lastDescription.substring(2) : lastDescription)
+        );
       }
 
       description = this.getSegmentDescription(
@@ -381,9 +383,6 @@ export class ExpressionDescriptor {
                 break;
             }
             description = dayOfWeekOfMonthDescription + " " + description;
-          } else if (s.indexOf("L") > -1 && !isLastDayOfWeekList) {
-            // A list mixing "5L" with plain days (i.e. "1,5L") only limits that day to the last of the month
-            description = StringUtilities.format(this.i18n.commaOnTheLastX0OfTheMonth(exp), description).replace(", ", "");
           }
 
           return description;
@@ -409,7 +408,7 @@ export class ExpressionDescriptor {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
             let dayOfWeek = s.substring(0, s.indexOf("#"));
             format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth();
-          } else if (isLastDayOfWeekList) {
+          } else if (s.indexOf("L") > -1) {
             format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
           } else {
             // If both DOM and DOW are specified, the cron executes depending on the cron format.
