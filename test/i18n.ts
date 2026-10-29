@@ -15,6 +15,20 @@ describe("i18n", function () {
         "Alle 5 Minuten, zwischen 15:00 und 15:59, Montag bis Freitag"
       );
     });
+
+    it("* * * * 1,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Jede Minute, nur jeden Montag und am letzten Freitag des Monats"
+      );
+    });
+
+    it("* * * * 1#2,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Jede Minute, am zweiten Montag des Monats und am letzten Freitag des Monats"
+      );
+    });
   });
 
   describe("es", function () {
