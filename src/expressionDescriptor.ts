@@ -332,8 +332,17 @@ export class ExpressionDescriptor {
       // or a dupe description like "every day, every day".
       description = "";
     } else {
+      // If both DOM and DOW are specified, the cron will execute at either time, so the whole
+      // day of week clause starts with "and". A step range like 1-5/2 is one clause: the
+      // "and" goes before the step, and the range only bounds it.
+      const dayOfWeekExpression = this.expressionParts[5];
+      const startsWithAnd =
+        this.expressionParts[3] != "*" && !this.options.logicalAndDayFields && dayOfWeekExpression.indexOf(",") == -1;
+      const stepSegments = dayOfWeekExpression.split("/");
+      const hasStep = stepSegments.length > 1 && parseInt(stepSegments[1]) != 1;
+
       description = this.getSegmentDescription(
-        this.expressionParts[5],
+        dayOfWeekExpression,
         this.i18n.commaEveryDay(),
         (s, form) => {
           let exp: string = s;
@@ -379,15 +388,19 @@ export class ExpressionDescriptor {
             // rather than "every 1 days" just return empty string
             return "";
           } else {
-            return StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(s), s);
+            const format =
+              startsWithAnd && this.i18n.commaAndEveryX0DaysOfTheWeek
+                ? this.i18n.commaAndEveryX0DaysOfTheWeek(s)
+                : this.i18n.commaEveryX0DaysOfTheWeek(s);
+            return StringUtilities.format(format, s);
           }
         },
         (s) => {
-          // If both DOM and DOW are specified, the cron will execute at either time.
           const beginFrom = s.substring(0, s.indexOf("-"));
 
-          const domSpecified = this.expressionParts[3] != "*";
-          return domSpecified ? this.i18n.commaAndX0ThroughX1(beginFrom) : this.i18n.commaX0ThroughX1(beginFrom);
+          return startsWithAnd && !hasStep
+            ? this.i18n.commaAndX0ThroughX1(beginFrom)
+            : this.i18n.commaX0ThroughX1(beginFrom);
         },
         (s) => {
           let format: string | null = null;
