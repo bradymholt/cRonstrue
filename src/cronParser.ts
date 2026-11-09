@@ -337,6 +337,27 @@ export class CronParser {
     this.validateOnlyExpectedCharactersFound(parsed[6], standardCronPartCharacters);
 
     this.validateAnyRanges(parsed);
+    this.validateEachItem(parsed);
+  }
+
+  protected validateEachItem(parsed: string[]) {
+    // The checks above only look at which characters occur and at the first numbers, so an item like "*5", "5-",
+    // "*/" or "5L1" got through and was described with empty or "undefined" values.
+    const numeric = /^(?:\*|\d+(?:-\d+)?)(?:\/\d+)?$/;
+    const dayOfMonth = /^(?:L|LW|WL|L-\d{1,2}|\d{1,2}-L|(?:\d{1,2}W|W\d{1,2})(?:[+-]\d{1,2})?)$/;
+    const dayOfWeek = /^(?:\d+#\d+|\d+L)$/;
+
+    parsed.forEach((part, index) => {
+      for (const item of part.split(",")) {
+        if (item === "" || numeric.test(item)) {
+          continue;
+        }
+        if ((index === 3 && dayOfMonth.test(item)) || (index === 5 && dayOfWeek.test(item))) {
+          continue;
+        }
+        throw new Error(`Expression contains invalid values: '${item}'`);
+      }
+    });
   }
 
   protected validateAnyRanges(parsed: string[]) {

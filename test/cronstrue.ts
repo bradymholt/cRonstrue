@@ -1242,6 +1242,95 @@ describe("Cronstrue", function () {
       }, "Error: Expression contains invalid values: '+'");
     });
 
+    describe("malformed items", function () {
+      const malformed = [
+        "*/5- * * * *",
+        "*/ * * * *",
+        "*5 * * * *",
+        "5* * * * *",
+        "**/5 * * * *",
+        "*-5 * * * *",
+        "5- * * * *",
+        "5/ * * * *",
+        "/5 * * * *",
+        "1-2-3 * * * *",
+        "*/5/2 * * * *",
+        "*/-5 * * * *",
+        "0 ** * * *",
+        "0 3* * * *",
+        "0 */ * * *",
+        "0 0 3* * *",
+        "0 0 *6W * *",
+        "0 0 L4 * *",
+        "0 0 LL * *",
+        "0 0 W * *",
+        "0 0 5L * *",
+        "0 0 * */ *",
+        "0 0 * 1- *",
+        "0 0 * *3 *",
+        "0 0 * 1-3-5 *",
+        "0 0 * * 5L1",
+        "0 0 * * 5LL",
+        "0 0 * * *L",
+        "0 0 * * L5",
+        "0 0 * * 1-5L",
+        "0 0 * * */",
+        "0 0 * * 1,L",
+        "0 0 0 * * * 2020-",
+        "0 0 0 * * * */",
+        "0 0 0 * * * 20*",
+      ];
+
+      malformed.forEach(function (expression) {
+        it(`rejects "${expression}"`, function () {
+          assert.throws(function () {
+            cronstrue.toString(expression);
+          }, "Expression contains invalid values");
+        });
+      });
+
+      const wellFormed = [
+        "*/5 * * * *",
+        "5/15 * * * *",
+        "0/5 * * * *",
+        "1-5/2 * * * *",
+        "5,10-20/5,*/30 * * * *",
+        "0 0 1W * *",
+        "0 0 W1 * *",
+        "0 0 15W-2 * *",
+        "0 0 15W+2 * *",
+        "0 0 L-3 * *",
+        "0 0 LW * *",
+        "0 0 WL * *",
+        "0 0 L * *",
+        "0 0 15,L * *",
+        "0 0 * * 5#2",
+        "0 0 * * FRIL",
+        "0 0 * * 5L",
+        "0 0 * * L",
+        "0 0 * * 1,5L",
+        "0 0 * * MON-FRI",
+        "0 0 * JAN-MAR *",
+        "0 0 * 3/2 *",
+        "0 0 * * 3/2",
+        "0 0 12 * * ? 2030",
+        "0 0 12 * * * 2020-2030/2",
+        "*/5 * * * * *",
+        "*/5 * * * * ,2",
+        "0 30 8 ? * MON-FRI 2030",
+        "@daily",
+        "@reboot",
+      ];
+
+      wellFormed.forEach(function (expression) {
+        it(`still accepts "${expression}"`, function () {
+          assert.doesNotThrow(function () {
+            cronstrue.toString(expression);
+          });
+        });
+      });
+    });
+
     it("garbage expression with option (throwExceptionOnParseError = false)", function () {
       assert.equal(
         cronstrue.toString("garbage", { throwExceptionOnParseError: false }),
