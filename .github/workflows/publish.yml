@@ -75,13 +75,13 @@ jobs:
       - name: Version
         run: |
           npm version ${{ github.event.inputs.version_type || 'minor' }} --force -m "Version %s"
-      - name: Publish to npm
-        run: npm publish --provenance
       - name: Push release commit and tag to GitHub
         id: push
         run: |
           git push gh-origin HEAD:main --tags
           echo "tag-name=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+      - name: Publish to npm
+        run: npm publish --provenance
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
