@@ -67,6 +67,26 @@ describe("i18n", function () {
         "Setiap 5 menit, diantara 15:00 dan 15:59, Senin sampai Jumat"
       );
     });
+
+    it("0 9 * * */2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "id" }),
+        "Pada 09:00, setiap hari 2  dalam seminggu"
+      );
+    });
+  });
+
+  describe("sw", function () {
+    it("0 0 */3 * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "sw" }), "Kwa 00:00, kila siku 3");
+    });
+
+    it("15 */5 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "sw" }),
+        "Sekunde 15 baada ya dakika, kila dakika 5"
+      );
+    });
   });
 
   describe("nb", function () {
