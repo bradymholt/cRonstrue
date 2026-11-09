@@ -77,7 +77,7 @@ export class it implements Locale {
     return ", l'ultimo giorno del mese";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", nell'ultima settimana del mese";
+    return ", l'ultimo giorno feriale del mese";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s giorni prima dell'ultimo giorno del mese";

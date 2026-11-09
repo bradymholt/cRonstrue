@@ -772,6 +772,31 @@ describe("i18n", function () {
     });
   });
 
+  describe("last/nearest weekday and last-day offsets", function () {
+    const cases: [string, string, string][] = [
+      ["it", "0 9 LW * *", "Alle 09:00, l'ultimo giorno feriale del mese"],
+      ["vi", "0 9 LW * *", "Vào 09:00, vào ngày làm việc cuối cùng của tháng"],
+      ["vi", "0 9 1W * *", "Vào 09:00, vào ngày làm việc đầu tiên của tháng"],
+      ["vi", "0 9 15W * *", "Vào 09:00, vào ngày làm việc gần ngày 15 nhất của tháng"],
+      ["my", "0 9 LW * *", "Pada 09:00 AM, pada hari bekerja terakhir bulan"],
+      ["sw", "0 9 LW * *", "Kwa 09:00, siku ya kazi ya mwisho wa mwezi"],
+      ["sw", "0 9 * * 5L", "Kwa 09:00, Ijumaa ya mwisho ya mwezi"],
+      ["fa", "0 9 LW * *", "در 09:00, در آخرین روز کاری ماه"],
+      ["fa", "0 9 1W * *", "در 09:00, در اولین روز کاری ماه"],
+      ["fa", "0 9 * * 5L", "در 09:00, در آخرین جمعه ماه"],
+      ["he", "0 9 * * 5L", "ב 09:00, ביום שישי האחרון של החודש"],
+      ["tr", "0 9 15W * *", "Saat 09:00, ayın 15. gününe en yakın iş günü"],
+      ["zh_CN", "0 9 L-3 * *", "在上午 09:00, 限每月最后一天之前的第3天"],
+      ["zh_TW", "0 9 L-3 * *", "在 09:00, 每月最後一天之前的第 3 天"],
+    ];
+
+    cases.forEach(([locale, expression, expected]) => {
+      it(`${locale}: ${expression}`, function () {
+        assert.equal(cronstrue.toString(expression, { locale }), expected);
+      });
+    });
+  });
+
 
 
   describe("@reboot", function () {

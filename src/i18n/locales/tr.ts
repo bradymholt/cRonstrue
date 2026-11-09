@@ -132,7 +132,7 @@ export class tr implements Locale {
     return "ilk iş günü";
   }
   weekdayNearestDayX0() {
-    return "%s. günü sonrasındaki ilk iş günü";
+    return "%s. gününe en yakın iş günü";
   }
   commaOnTheX0OfTheMonth() {
     return ", ayın %s";

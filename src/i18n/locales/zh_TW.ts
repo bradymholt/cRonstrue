@@ -132,7 +132,7 @@ export class zh_TW implements Locale {
     return ", 每月的最後一個工作日";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s 這個月的最後一天的前幾天";
+    return ", 每月最後一天之前的第 %s 天";
   }
   firstWeekday() {
     return "第一個工作日";

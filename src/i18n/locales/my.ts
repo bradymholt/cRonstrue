@@ -125,7 +125,7 @@ export class my implements Locale {
     return ", pada hari terakhir bulan";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", pada minggu terakhir bulan";
+    return ", pada hari bekerja terakhir bulan";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s hari sebelum hari terakhir bulan";

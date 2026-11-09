@@ -107,7 +107,7 @@ export class sw implements Locale {
     return "siku ya mwisho";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", siku ya %s ya mwezi";
+    return ", %s ya mwisho ya mwezi";
   }
   commaOnlyOnX0() {
     //    return ", only on %s";
@@ -127,7 +127,7 @@ export class sw implements Locale {
     return ", siku ya mwisho wa mwezi";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", wikendi ya mwisho wa mwezi";
+    return ", siku ya kazi ya mwisho wa mwezi";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", siku ya %s kabla ya siku ya mwisho wa mwezi";

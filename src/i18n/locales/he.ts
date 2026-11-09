@@ -106,7 +106,7 @@ export class he implements Locale {
     return "היום האחרון";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", רק ב %s של החודש";
+    return ", ב%s האחרון של החודש";
   }
   commaOnlyOnX0() {
     return ", רק ב %s";
