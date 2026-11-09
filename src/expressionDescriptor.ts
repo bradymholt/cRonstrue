@@ -322,18 +322,31 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  protected getDayOfWeekDescription() {
+  protected getDayOfWeekDescription(dayOfWeekExpression: string = this.expressionParts[5]): string | null {
     var daysOfWeekNames = this.i18n.daysOfTheWeek();
 
     let description: string | null = null;
-    if (this.expressionParts[5] == "*") {
+    if (dayOfWeekExpression == "*") {
       // DOW is specified as * so we will not generate a description and defer to DOM part.
       // Otherwise, we could get a contradiction like "on day 1 of the month, every day"
       // or a dupe description like "every day, every day".
       description = "";
     } else {
+      const dayOfWeekItems = dayOfWeekExpression.split(",");
+      const lastItems = dayOfWeekItems.filter((s) => s.indexOf("L") > -1);
+      const otherItems = dayOfWeekItems.filter((s) => s.indexOf("L") === -1);
+      if (lastItems.length > 0 && otherItems.length > 0) {
+        // "1,5L" runs every Monday but only on the last Friday, so describe the two parts separately
+        const lastDescription = this.getDayOfWeekDescription(lastItems.join(",")) ?? "";
+        return (
+          (this.getDayOfWeekDescription(otherItems.join(",")) ?? "") +
+          `${this.i18n.spaceAnd()} ` +
+          (lastDescription.startsWith(", ") ? lastDescription.substring(2) : lastDescription)
+        );
+      }
+
       description = this.getSegmentDescription(
-        this.expressionParts[5],
+        dayOfWeekExpression,
         this.i18n.commaEveryDay(),
         (s, form) => {
           let exp: string = s;
