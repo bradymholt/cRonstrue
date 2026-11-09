@@ -144,7 +144,7 @@ export class zh_CN implements Locale {
     return ", 限每月的最后一个工作日";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", 限每月最后%s天";
+    return ", 限每月最后一天之前的第%s天";
   }
   firstWeekday() {
     return "第一个工作日";

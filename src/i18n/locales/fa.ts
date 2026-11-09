@@ -107,7 +107,7 @@ export class fa implements Locale {
     return "آخرین روز";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", در %s ماه";
+    return ", در آخرین %s ماه";
   }
   commaOnlyOnX0() {
     return ", فقط در %s";
@@ -125,13 +125,13 @@ export class fa implements Locale {
     return ", در آخرین روز ماه";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", در آخرین روز ماه";
+    return ", در آخرین روز کاری ماه";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s روز قبل از آخرین روز ماه";
   }
   firstWeekday() {
-    return "اولین روز";
+    return "اولین روز کاری";
   }
   weekdayNearestDayX0() {
     return "روز نزدیک به روز %s";

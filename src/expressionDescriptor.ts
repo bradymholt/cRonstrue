@@ -824,9 +824,9 @@ export class ExpressionDescriptor {
 
   protected transformVerbosity(description: string, useVerboseFormat: boolean) {
     if (!useVerboseFormat) {
-      description = description.replace(new RegExp(`, ${this.i18n.everyMinute()}`, "g"), "");
-      description = description.replace(new RegExp(`, ${this.i18n.everyHour()}`, "g"), "");
-      description = description.replace(new RegExp(this.i18n.commaEveryDay(), "g"), "");
+      description = description.replace(new RegExp(`, ${this.i18n.everyMinute()}(?!\\s*[\\p{L}\\p{N}])`, "gu"), "");
+      description = description.replace(new RegExp(`, ${this.i18n.everyHour()}(?!\\s*[\\p{L}\\p{N}])`, "gu"), "");
+      description = description.replace(new RegExp(`${this.i18n.commaEveryDay()}(?!\\s*[\\p{L}\\p{N}])`, "gu"), "");
       description = description.replace(/\, ?$/, "");
 
       if (this.i18n.conciseVerbosityReplacements) {

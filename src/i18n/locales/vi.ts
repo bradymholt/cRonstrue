@@ -125,19 +125,19 @@ export class vi implements Locale {
     return ", vào ngày cuối cùng của tháng";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", vào ngày cuối tuần của tháng";
+    return ", vào ngày làm việc cuối cùng của tháng";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s ngày trước ngày cuối cùng của tháng";
   }
   firstWeekday() {
-    return "ngày đầu tuần";
+    return "ngày làm việc đầu tiên";
   }
   weekdayNearestDayX0() {
-    return "ngày trong tuần ngày gần nhất %s";
+    return "ngày làm việc gần ngày %s nhất";
   }
   commaOnTheX0OfTheMonth() {
-    return ", vào ngày %s của tháng";
+    return ", vào %s của tháng";
   }
   commaEveryX0Days() {
     return ", mỗi %s ngày";
