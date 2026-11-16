@@ -457,6 +457,55 @@ describe("Cronstrue", function () {
         "At 12:00 AM, 5 days before the last day of the month"
       );
     });
+
+    it("0 20 L,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 08:00 PM, on day 15 and the last day of the month"
+      );
+    });
+
+    it("0 20 20-L,1-5 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 08:00 PM, on day 1 through 5 and 20 through the last day of the month"
+      );
+    });
+
+    it("0 0 1,L-3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on day 1 of the month and 3 days before the last day of the month"
+      );
+    });
+
+    it("0 0 L-3,1,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on day 1 and 15 of the month and 3 days before the last day of the month"
+      );
+    });
+
+    it("0 0 L-1,L * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on the last day of the month and 1 day before the last day of the month"
+      );
+    });
+
+    it("0 0 1-5/2,L * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, every 2 days in a month, between day 1 and 5 of the month and on the last day of the month"
+      );
+    });
+
+    it("0 0 L-3,L-1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days before the last day of the month and 1 day before the last day of the month"
+      );
+    });
   });
 
   describe("count of 1", function () {

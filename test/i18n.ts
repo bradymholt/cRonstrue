@@ -29,6 +29,20 @@ describe("i18n", function () {
         "Jede Minute, am zweiten Montag des Monats und am letzten Freitag des Monats"
       );
     });
+
+    it("0 0 L,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Um 00:00, an Tag 15 und der letzte Tag des Monats"
+      );
+    });
+
+    it("0 0 1,L-3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Um 00:00, an Tag 1 des Monats und 3 tage vor dem letzten Tag des Monats"
+      );
+    });
   });
 
   describe("es", function () {
