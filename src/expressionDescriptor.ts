@@ -341,7 +341,7 @@ export class ExpressionDescriptor {
         return (
           (this.getDayOfWeekDescription(otherItems.join(",")) ?? "") +
           `${this.i18n.spaceAnd()} ` +
-          (lastDescription.startsWith(", ") ? lastDescription.substring(2) : lastDescription)
+          ExpressionDescriptor.removeLeadingComma(lastDescription)
         );
       }
 
@@ -463,9 +463,44 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  protected getDayOfMonthDescription(): string | null {
+  // Removes the comma a "comma..." description starts with. Locales use their own comma ("، " in ar, "，" in zh).
+  private static removeLeadingComma(description: string): string {
+    return description.replace(/^[,،，、]\s*/, "");
+  }
+
+  protected getDayOfMonthDescription(dayOfMonthExpression: string = this.expressionParts[3]): string | null {
     let description: string | null = null;
-    let expression: string = this.expressionParts[3];
+    let expression: string = dayOfMonthExpression;
+
+    const dayOfMonthItems = expression.split(",");
+    if (dayOfMonthItems.length > 1) {
+      const isLastDayOffset = (s: string) => /^L-\d{1,2}$/.test(s);
+      const lastDayOffsetItems = dayOfMonthItems.filter((s) => isLastDayOffset(s));
+      // "L,15" would read "on day the last day and 15", so put the items with L after the numbered days
+      const otherItems = dayOfMonthItems
+        .filter((s) => !isLastDayOffset(s))
+        .sort((a, b) => Number(a.indexOf("L") > -1) - Number(b.indexOf("L") > -1));
+
+      if (lastDayOffsetItems.length > 0) {
+        // "1,L-3" runs on day 1 and 3 days before the last day, so describe each L-n item on its own
+        const parts = (otherItems.length > 0 ? [otherItems.join(",")] : []).concat(lastDayOffsetItems);
+        return (
+          parts
+            .map((part) => this.getDayOfMonthDescription(part) ?? "")
+            // "*" describes to "" (the day-of-week part says when), so it must not get an "and"
+            .filter((partDescription) => partDescription !== "")
+            .map((partDescription, i) => {
+              if (i === 0) {
+                return partDescription;
+              }
+              return `${this.i18n.spaceAnd()} ` + ExpressionDescriptor.removeLeadingComma(partDescription);
+            })
+            .join("")
+        );
+      }
+
+      expression = otherItems.join(",");
+    }
 
     switch (expression) {
       case "L":
@@ -530,7 +565,8 @@ export class ExpressionDescriptor {
                 return this.i18n.commaBetweenDayX0AndX1OfTheMonth(s);
               },
               (s) => {
-                return this.i18n.commaOnDayX0OfTheMonth(s);
+                // a lone L item of a list with a step ("1-5/2,L") has no day number to put in "on day %s"
+                return s == "L" ? this.i18n.commaOnTheLastDayOfTheMonth() : this.i18n.commaOnDayX0OfTheMonth(s);
               }
             );
           }

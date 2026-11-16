@@ -29,6 +29,20 @@ describe("i18n", function () {
         "Jede Minute, am zweiten Montag des Monats und am letzten Freitag des Monats"
       );
     });
+
+    it("0 0 L,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Um 00:00, an Tag 15 und der letzte Tag des Monats"
+      );
+    });
+
+    it("0 0 1,L-3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Um 00:00, an Tag 1 des Monats und 3 tage vor dem letzten Tag des Monats"
+      );
+    });
   });
 
   describe("es", function () {
@@ -627,6 +641,20 @@ describe("i18n", function () {
     });
   });
   describe("ar", function () {
+    it("0 0 L-3,L-1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، 3 أيام قبل اخر يوم من الشهر و 1 أيام قبل اخر يوم من الشهر"
+      );
+    });
+
+    it("0 0 * * 1,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، الإثنين فقط و في اخر الجمعة من الشهر"
+      );
+    });
+
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ar" }), "كل دقيقة");
     });
