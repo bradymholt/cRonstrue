@@ -506,6 +506,13 @@ describe("Cronstrue", function () {
         "At 12:00 AM, 3 days before the last day of the month and 1 day before the last day of the month"
       );
     });
+
+    it("0 0 *,L-3 * MON", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days before the last day of the month, and on Monday"
+      );
+    });
   });
 
   describe("count of 1", function () {

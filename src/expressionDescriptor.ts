@@ -341,7 +341,7 @@ export class ExpressionDescriptor {
         return (
           (this.getDayOfWeekDescription(otherItems.join(",")) ?? "") +
           `${this.i18n.spaceAnd()} ` +
-          (lastDescription.startsWith(", ") ? lastDescription.substring(2) : lastDescription)
+          ExpressionDescriptor.removeLeadingComma(lastDescription)
         );
       }
 
@@ -463,6 +463,11 @@ export class ExpressionDescriptor {
     return description;
   }
 
+  // Removes the comma a "comma..." description starts with. Locales use their own comma ("، " in ar, "，" in zh).
+  private static removeLeadingComma(description: string): string {
+    return description.replace(/^[,،，、]\s*/, "");
+  }
+
   protected getDayOfMonthDescription(dayOfMonthExpression: string = this.expressionParts[3]): string | null {
     let description: string | null = null;
     let expression: string = dayOfMonthExpression;
@@ -479,18 +484,19 @@ export class ExpressionDescriptor {
       if (lastDayOffsetItems.length > 0) {
         // "1,L-3" runs on day 1 and 3 days before the last day, so describe each L-n item on its own
         const parts = (otherItems.length > 0 ? [otherItems.join(",")] : []).concat(lastDayOffsetItems);
-        return parts
-          .map((part, i) => {
-            const partDescription = this.getDayOfMonthDescription(part) ?? "";
-            if (i === 0) {
-              return partDescription;
-            }
-            return (
-              `${this.i18n.spaceAnd()} ` +
-              (partDescription.startsWith(", ") ? partDescription.substring(2) : partDescription)
-            );
-          })
-          .join("");
+        return (
+          parts
+            .map((part) => this.getDayOfMonthDescription(part) ?? "")
+            // "*" describes to "" (the day-of-week part says when), so it must not get an "and"
+            .filter((partDescription) => partDescription !== "")
+            .map((partDescription, i) => {
+              if (i === 0) {
+                return partDescription;
+              }
+              return `${this.i18n.spaceAnd()} ` + ExpressionDescriptor.removeLeadingComma(partDescription);
+            })
+            .join("")
+        );
       }
 
       expression = otherItems.join(",");
