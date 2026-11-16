@@ -548,6 +548,27 @@ describe("i18n", function () {
         "次において実施14:00、月のうち 30 日ごと"
       );
     });
+
+    it("0 0 1-5,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ja" }),
+        "次において実施00:00、月の 1 から 5 までと 15 日目"
+      );
+    });
+
+    it("0 0 * 3/2 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ja" }),
+        "次において実施00:00、2 か月ごと、3月 から 12月 まで"
+      );
+    });
+
+    it("0 0 5/5 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ja" }),
+        "次において実施00:00、月のうち 5 日ごと、月の 5 日目 に開始"
+      );
+    });
   });
 
   describe("ko", function () {
@@ -663,6 +684,34 @@ describe("i18n", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
         "كل 5 دقائق, بين 15:00 و 15:59، الإثنين حتى الجمعة"
+      );
+    });
+
+    it("0 0 1-5,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، في اليوم 1 حتى 5 و 15 من الشهر"
+      );
+    });
+
+    it("0 0 * * 1,3-5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، الإثنين و الأربعاء حتى الجمعة فقط"
+      );
+    });
+
+    it("0 0 * 3/2 *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، كل 2 أشهر، مارس حتى ديسمبر"
+      );
+    });
+
+    it("0 0 5/5 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ar" }),
+        " 00:00، كل 5 أيام، بداية من في اليوم 5 من الشهر"
       );
     });
   });

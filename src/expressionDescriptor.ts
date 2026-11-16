@@ -463,9 +463,14 @@ export class ExpressionDescriptor {
     return description;
   }
 
-  // Removes the comma a "comma..." description starts with. Locales use their own comma ("، " in ar, "，" in zh).
+  // Removes the comma (and one space) a "comma..." description starts with. Locales use their own comma ("، " in ar,
+  // "、" in ja, "，" in zh).
   private static removeLeadingComma(description: string): string {
-    return description.replace(/^[,،，、]\s*/, "");
+    return description.replace(/^[,،，、] ?/, "");
+  }
+
+  private static hasLeadingComma(description: string): boolean {
+    return /^[,،，、]/.test(description);
   }
 
   protected getDayOfMonthDescription(dayOfMonthExpression: string = this.expressionParts[3]): string | null {
@@ -654,11 +659,9 @@ export class ExpressionDescriptor {
             getDescriptionFormat
           );
 
-          if (isSegmentRangeWithoutIncrement) {
-            currentDescriptionContent = currentDescriptionContent!.replace(", ", "");
-          } else if (i > 0 && currentDescriptionContent!.startsWith(", ")) {
+          if (isSegmentRangeWithoutIncrement || i > 0) {
             // Strip leading comma since we manage separators in this loop
-            currentDescriptionContent = currentDescriptionContent!.substring(2);
+            currentDescriptionContent = ExpressionDescriptor.removeLeadingComma(currentDescriptionContent!);
           }
 
           descriptionContent += currentDescriptionContent;
@@ -674,8 +677,8 @@ export class ExpressionDescriptor {
             getDescriptionFormat
           );
           // Strip leading comma since we manage separators in this loop
-          if (i > 0 && segmentDescription && segmentDescription.startsWith(", ")) {
-            segmentDescription = segmentDescription.substring(2);
+          if (i > 0 && segmentDescription) {
+            segmentDescription = ExpressionDescriptor.removeLeadingComma(segmentDescription);
           }
           descriptionContent += segmentDescription;
         }
@@ -701,7 +704,7 @@ export class ExpressionDescriptor {
           getSingleItemDescription
         );
 
-        if (rangeSegmentDescription.indexOf(", ") != 0) {
+        if (!ExpressionDescriptor.hasLeadingComma(rangeSegmentDescription)) {
           description += ", ";
         }
 
@@ -713,7 +716,7 @@ export class ExpressionDescriptor {
         );
 
         // remove any leading comma
-        rangeItemDescription = rangeItemDescription.replace(", ", "");
+        rangeItemDescription = ExpressionDescriptor.removeLeadingComma(rangeItemDescription);
 
         description += StringUtilities.format(this.i18n.commaStartingX0(), rangeItemDescription);
       }
