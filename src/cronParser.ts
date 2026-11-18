@@ -186,10 +186,11 @@ export class CronParser {
       return t.replace(dowDigits, dowDigitsAdjusted);
     });
 
-    // Convert DOW 'L' to '6' (Saturday)
-    if (expressionParts[5] == "L") {
-      expressionParts[5] = "6";
-    }
+    // Convert DOW 'L' to '6' (Saturday), also when it is one item of a list ("1,L")
+    expressionParts[5] = expressionParts[5]
+      .split(",")
+      .map((item) => (item == "L" ? "6" : item))
+      .join(",");
 
     // Convert DOM '?' to '*'
     if (expressionParts[3] == "?") {
