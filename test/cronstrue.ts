@@ -406,6 +406,17 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("* * * * 1,L", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, only on Monday and Saturday");
+    });
+
+    it("* * * * 1,L,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and Saturday and on the last Friday of the month"
+      );
+    });
+
     it("* * * * 5L,1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
