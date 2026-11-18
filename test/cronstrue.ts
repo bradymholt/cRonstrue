@@ -380,6 +380,25 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last Thursday of the month");
     });
 
+    it("* * * * 5l", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last Friday of the month");
+    });
+
+    it("* * l * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last day of the month");
+    });
+
+    it("* * lw * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last weekday of the month");
+    });
+
+    it("* * 15w * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, on the weekday nearest day 15 of the month"
+      );
+    });
+
     it("* * * * 1,5L", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
