@@ -333,6 +333,18 @@ export class ExpressionDescriptor {
       description = "";
     } else {
       const dayOfWeekItems = dayOfWeekExpression.split(",");
+      const nthOrLastItems = dayOfWeekItems.filter((s) => /[#L]/.test(s));
+      const plainItems = dayOfWeekItems.filter((s) => !/[#L]/.test(s));
+      if (plainItems.length > 0 && nthOrLastItems.some((s) => s.indexOf("#") > -1)) {
+        // "1,3#2" runs every Monday but only on the second Wednesday, so describe the two parts separately
+        const nthOrLastDescription = this.getDayOfWeekDescription(nthOrLastItems.join(",")) ?? "";
+        return (
+          (this.getDayOfWeekDescription(plainItems.join(",")) ?? "") +
+          `${this.i18n.spaceAnd()} ` +
+          ExpressionDescriptor.removeLeadingComma(nthOrLastDescription)
+        );
+      }
+
       const lastItems = dayOfWeekItems.filter((s) => s.indexOf("L") > -1);
       const otherItems = dayOfWeekItems.filter((s) => s.indexOf("L") === -1);
       if (lastItems.length > 0 && otherItems.length > 0) {

@@ -30,6 +30,13 @@ describe("i18n", function () {
       );
     });
 
+    it("* * * * 1,3#2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Jede Minute, nur jeden Montag und am zweiten Mittwoch des Monats"
+      );
+    });
+
     it("0 0 L,15 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
