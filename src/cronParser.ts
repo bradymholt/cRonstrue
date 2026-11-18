@@ -126,6 +126,11 @@ export class CronParser {
   }
 
   protected normalize(expressionParts: string[]): void {
+    // Special characters are case-insensitive (Quartz upper-cases the whole expression), so "5l" is "5L"
+    for (let i = 0; i < expressionParts.length; i++) {
+      expressionParts[i] = expressionParts[i].toUpperCase();
+    }
+
     // Convert ? to * for DOM and DOW
     expressionParts[3] = expressionParts[3].replace("?", "*");
     expressionParts[5] = expressionParts[5].replace("?", "*");
