@@ -265,6 +265,25 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("46 9 * * 0,7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, only on Sunday");
+    });
+
+    it("46 9 * * 0,1,7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, only on Sunday and Monday");
+    });
+
+    it("46 9 * * 0-7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, Sunday through Saturday");
+    });
+
+    it("46 9 * * 0-7/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 09:46 AM, every 2 days of the week, Sunday through Saturday"
+      );
+    });
+
     it("23 12 15 * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 12:23 PM, on day 15 of the month");
     });
