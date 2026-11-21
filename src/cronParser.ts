@@ -169,6 +169,15 @@ export class CronParser {
       expressionParts[6] = expressionParts[6].replace("1/", "*/");
     }
 
+    if (this.dayOfWeekStartIndexZero) {
+      // "0-7" runs from Sunday to Sunday again, i.e. every day. Read it as 0-6 so that 7 => 0 below
+      // does not turn it into "0-0" (Sunday through Sunday).
+      expressionParts[5] = expressionParts[5]
+        .split(",")
+        .map((item) => item.replace(/^0-7(?=\/|$)/, "0-6"))
+        .join(",");
+    }
+
     // Adjust DOW based on dayOfWeekStartIndexZero option
     // Normalized DOW: 0=Sunday/6=Saturday
     expressionParts[5] = expressionParts[5].replace(/(^\d+)|([^#/\s\d]\d+)/g, (t) => {
@@ -228,6 +237,12 @@ export class CronParser {
     for (let day in days) {
       expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
     }
+
+    // Sunday can be written as both 0 and 7 ("0,7"), which are the same item once normalized; list it once
+    expressionParts[5] = expressionParts[5]
+      .split(",")
+      .filter((item, index, items) => item === "" || items.indexOf(item) === index)
+      .join(",");
 
     // Adjust month based on monthStartIndexZero option
     // Normalized Month: 1=JAN/12=DEC
