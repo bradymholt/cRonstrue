@@ -421,7 +421,7 @@ export class ExpressionDescriptor {
             let dayOfWeek = s.substring(0, s.indexOf("#"));
             format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth();
           } else if (s.indexOf("L") > -1) {
-            format = this.i18n.commaOnTheLastX0OfTheMonth(s.replace("L", ""));
+            format = this.i18n.commaOnTheLastX0OfTheMonth(s.split(",")[0].replace("L", ""));
           } else {
             // If both DOM and DOW are specified, the cron executes depending on the cron format.
             // For the standard crontab format, the cron will execute at either time. For some
