@@ -46,14 +46,14 @@ export class CronParser {
   parse(): string[] {
     let parsed: string[];
 
-    var expression = this.expression ?? '';
+    const expression = this.expression ?? "";
 
     if (expression === "@reboot") {
       // Special handling for @reboot - create a marker array with a special format
       parsed = ["@reboot", "", "", "", "", "", ""];
       return parsed;
     } else if (expression.startsWith('@')) {
-      var special = this.parseSpecial(this.expression);
+      const special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
     } else {
       parsed = this.extractParts(this.expression);
@@ -74,7 +74,6 @@ export class CronParser {
         '@daily': '0 0 * * *',
         '@midnight': '0 0 * * *',
         '@hourly': '0 * * * *',
-        '@reboot': '@reboot'
     };
 
     const special = specialExpressions[expression];
@@ -206,11 +205,6 @@ export class CronParser {
       .map((item) => (item == "L" ? "6" : item))
       .join(",");
 
-    // Convert DOM '?' to '*'
-    if (expressionParts[3] == "?") {
-      expressionParts[3] = "*";
-    }
-
     // i.e. 15W-2 or 15W+2 (offset from the nearest weekday)
     const weekdayOffsetRegex = /^\d{1,2}W[+-]\d{1,2}$/;
 
@@ -330,8 +324,6 @@ export class CronParser {
   }
 
   protected validateOnlyExpectedCharactersFound(cronPart: string, allowedCharsExpression: string) {
-    // Write code that will ensure the expression string only contains numbers or any of the following characters , - * /
-    // If any other characters are found, it is an error.
     let invalidChars = cronPart.match(new RegExp(`[^${allowedCharsExpression}]+`, "gi"));
     if (invalidChars && invalidChars.length) {
       throw new Error(`Expression contains invalid values: '${invalidChars.toString()}'`);

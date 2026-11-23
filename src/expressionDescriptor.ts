@@ -30,18 +30,8 @@ export class ExpressionDescriptor {
 
   /**
    * Converts a cron expression into a description a human can read
-   * @static
    * @param {string} expression - The cron expression
-   * @param {IOptions} [{
-   *         throwExceptionOnParseError = true,
-   *         casingType = CasingTypeEnum.Sentence,
-   *         verbose = false,
-   *         dayOfWeekStartIndexZero = true,
-   *         monthStartIndexZero = false,
-   *         use24HourTimeFormat = false,
-   *         trimHoursLeadingZero = false,
-   *         locale = 'en'
-   *     }={}]
+   * @param {Options} [options] - See the README for each option and its default
    * @returns {string}
    */
   static toString(
@@ -57,10 +47,7 @@ export class ExpressionDescriptor {
       logicalAndDayFields = false,
     }: Options = {}
   ): string {
-    // We take advantage of Destructuring Object Parameters (and defaults) in TS/ES6 and now we will reassemble back to
-    // an Options type so we can pass around options with ease.
-
-    let options = <Options>{
+    const options: Options = {
       throwExceptionOnParseError: throwExceptionOnParseError,
       verbose: verbose,
       dayOfWeekStartIndexZero: dayOfWeekStartIndexZero,
@@ -71,12 +58,7 @@ export class ExpressionDescriptor {
       logicalAndDayFields: logicalAndDayFields,
     };
 
-    if (options.tzOffset) {
-      console.warn(`'tzOffset' option has been deprecated and is no longer supported.`);
-    }
-
-    let descripter = new ExpressionDescriptor(expression, options);
-    return descripter.getFullDescription();
+    return new ExpressionDescriptor(expression, options).getFullDescription();
   }
 
   static initialize(localesLoader: LocaleLoader, defaultLocale = "en") {
@@ -90,7 +72,7 @@ export class ExpressionDescriptor {
   constructor(expression: string, options: Options) {
     this.expression = expression;
     this.options = options;
-    this.expressionParts = new Array(5);
+    this.expressionParts = [];
 
     if (!this.options.locale && ExpressionDescriptor.defaultLocale) {
       this.options.locale = ExpressionDescriptor.defaultLocale;
@@ -128,17 +110,17 @@ export class ExpressionDescriptor {
         return this.i18n.atReboot?.() || english.atReboot();
       }
 
-      var timeSegment = this.getTimeOfDayDescription();
-      var dayOfMonthDesc = this.getDayOfMonthDescription();
-      var monthDesc = this.getMonthDescription();
-      var dayOfWeekDesc = this.getDayOfWeekDescription();
-      var yearDesc = this.getYearDescription();
+      const timeSegment = this.getTimeOfDayDescription();
+      const dayOfMonthDesc = this.getDayOfMonthDescription();
+      const monthDesc = this.getMonthDescription();
+      const dayOfWeekDesc = this.getDayOfWeekDescription();
+      const yearDesc = this.getYearDescription();
 
       description += timeSegment + dayOfMonthDesc + dayOfWeekDesc + monthDesc + yearDesc;
       description = this.transformVerbosity(description, !!this.options.verbose);
 
       // uppercase first character
-      description = description.charAt(0).toLocaleUpperCase() + description.substr(1);
+      description = description.charAt(0).toLocaleUpperCase() + description.substring(1);
     } catch (ex) {
       if (!this.options.throwExceptionOnParseError) {
         description = this.i18n.anErrorOccuredWhenGeneratingTheExpressionD();
@@ -255,19 +237,14 @@ export class ExpressionDescriptor {
       single: (s) => s,
       increment: (s) => StringUtilities.format(this.i18n.everyX0Minutes(s), s),
       range: () => this.i18n.minutesX0ThroughX1PastTheHour(),
-      format: (s) => {
-        try {
-          return s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
-            ? this.i18n.everyHour()
-            : s == "0"
-            ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
-            : parseInt(s) < 20
-            ? this.i18n.atX0MinutesPastTheHour(s)
-            : this.i18n.atX0MinutesPastTheHourGt20?.() || this.i18n.atX0MinutesPastTheHour(s);
-        } catch (e) {
-          return this.i18n.atX0MinutesPastTheHour(s);
-        }
-      },
+      format: (s) =>
+        s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
+          ? this.i18n.everyHour()
+          : s == "0"
+          ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
+          : parseInt(s) < 20
+          ? this.i18n.atX0MinutesPastTheHour(s)
+          : this.i18n.atX0MinutesPastTheHourGt20?.() || this.i18n.atX0MinutesPastTheHour(s),
       bounds: { min: 0, max: 59 },
     });
   }
@@ -308,7 +285,7 @@ export class ExpressionDescriptor {
   }
 
   protected getDayOfWeekDescription(dayOfWeekExpression: string = this.expressionParts[5]): string | null {
-    var daysOfWeekNames = this.i18n.daysOfTheWeek();
+    const daysOfWeekNames = this.i18n.daysOfTheWeek();
 
     let description: string | null = null;
     if (dayOfWeekExpression == "*") {
@@ -402,7 +379,7 @@ export class ExpressionDescriptor {
   }
 
   protected getMonthDescription() {
-    var monthNames = this.i18n.monthsOfTheYear();
+    const monthNames = this.i18n.monthsOfTheYear();
 
     return this.getSegmentDescription(this.expressionParts[4], {
       all: "",
@@ -693,25 +670,9 @@ export class ExpressionDescriptor {
   }
 
   protected formatTime(hourExpression: string, minuteExpression: string, secondExpression: string) {
-    let hourOffset: number = 0;
-    let minuteOffset: number = 0;
+    let hour = parseInt(hourExpression);
+    const minute = parseInt(minuteExpression);
 
-    let hour: number = parseInt(hourExpression) + hourOffset;
-    let minute: number = parseInt(minuteExpression) + minuteOffset;
-
-    if (minute >= 60) {
-      minute -= 60;
-      hour += 1;
-    } else if (minute < 0) {
-      minute += 60;
-      hour -= 1;
-    }
-
-    if (hour >= 24) {
-      hour = hour - 24;
-    } else if (hour < 0) {
-      hour = 24 + hour;
-    }
     let period: string = "";
     let setPeriodBeforeTime: boolean = false;
     if (!this.options.use24HourTimeFormat) {
