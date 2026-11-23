@@ -1,7 +1,6 @@
 // Hebrew
 import { Locale } from "../locale";
 export class he implements Locale {
-
   use24HourTimeFormatByDefault() {
     return true;
   }

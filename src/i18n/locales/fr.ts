@@ -7,7 +7,6 @@ export class fr implements Locale {
       "de le": "du",
     };
   }
-  
 
   use24HourTimeFormatByDefault() {
     return true;

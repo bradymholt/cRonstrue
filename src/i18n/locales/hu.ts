@@ -1,9 +1,7 @@
 // Hungarian
 
-
 import { Locale } from "../locale";
 export class hu implements Locale {
-
   use24HourTimeFormatByDefault() {
     return true;
   }

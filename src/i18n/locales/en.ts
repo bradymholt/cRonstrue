@@ -6,7 +6,6 @@ import { Locale } from "../locale";
 const isOne = (s?: string) => Number(s) === 1;
 
 export class en implements Locale {
-
   use24HourTimeFormatByDefault() {
     return false;
   }

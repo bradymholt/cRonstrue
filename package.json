@@ -52,7 +52,7 @@
     "chai": "^4.2.0",
     "mocha": "^12.0.1",
     "pixl-xml": "^1.0.13",
-    "prettier": "^2.1.1",
+    "prettier": "^3.10.1",
     "terser-webpack-plugin": "^5.3.1",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
@@ -66,6 +66,5 @@
     "bundle": "rm -rf ./dist && webpack",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
     "prepublishOnly": "npm run bundle"
-  },
-  "dependencies": {}
+  }
 }

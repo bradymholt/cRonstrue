@@ -45,7 +45,7 @@ export class ExpressionDescriptor {
       trimHoursLeadingZero = false,
       locale = null,
       logicalAndDayFields = false,
-    }: Options = {}
+    }: Options = {},
   ): string {
     const options: Options = {
       throwExceptionOnParseError: throwExceptionOnParseError,
@@ -101,7 +101,7 @@ export class ExpressionDescriptor {
       let parser = new CronParser(
         this.expression,
         this.options.dayOfWeekStartIndexZero,
-        this.options.monthStartIndexZero
+        this.options.monthStartIndexZero,
       );
       this.expressionParts = parser.parse();
 
@@ -158,7 +158,7 @@ export class ExpressionDescriptor {
       description += StringUtilities.format(
         this.i18n.everyMinuteBetweenX0AndX1(),
         this.formatTime(hourExpression, minuteParts[0], ""),
-        this.formatTime(hourExpression, minuteParts[1], "")
+        this.formatTime(hourExpression, minuteParts[1], ""),
       );
     } else if (
       !secondsExpression &&
@@ -223,8 +223,8 @@ export class ExpressionDescriptor {
         s == "0"
           ? ""
           : parseInt(s) < 20
-          ? this.i18n.atX0SecondsPastTheMinute(s)
-          : this.i18n.atX0SecondsPastTheMinuteGt20?.() || this.i18n.atX0SecondsPastTheMinute(s),
+            ? this.i18n.atX0SecondsPastTheMinute(s)
+            : this.i18n.atX0SecondsPastTheMinuteGt20?.() || this.i18n.atX0SecondsPastTheMinute(s),
       bounds: { min: 0, max: 59 },
     });
   }
@@ -241,10 +241,10 @@ export class ExpressionDescriptor {
         s == "0" && hourExpression.indexOf("/") == -1 && secondsExpression == ""
           ? this.i18n.everyHour()
           : s == "0"
-          ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
-          : parseInt(s) < 20
-          ? this.i18n.atX0MinutesPastTheHour(s)
-          : this.i18n.atX0MinutesPastTheHourGt20?.() || this.i18n.atX0MinutesPastTheHour(s),
+            ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
+            : parseInt(s) < 20
+              ? this.i18n.atX0MinutesPastTheHour(s)
+              : this.i18n.atX0MinutesPastTheHourGt20?.() || this.i18n.atX0MinutesPastTheHour(s),
       bounds: { min: 0, max: 59 },
     });
   }
@@ -461,15 +461,17 @@ export class ExpressionDescriptor {
             description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
           } else if (weekDayNumberMatches[3] == "-") {
             description = StringUtilities.format(
-              this.i18n.commaDaysBeforeTheX0OfTheMonth?.(offsetDays) || english.commaDaysBeforeTheX0OfTheMonth(offsetDays),
+              this.i18n.commaDaysBeforeTheX0OfTheMonth?.(offsetDays) ||
+                english.commaDaysBeforeTheX0OfTheMonth(offsetDays),
               offsetDays,
-              dayString
+              dayString,
             );
           } else {
             description = StringUtilities.format(
-              this.i18n.commaDaysAfterTheX0OfTheMonth?.(offsetDays) || english.commaDaysAfterTheX0OfTheMonth(offsetDays),
+              this.i18n.commaDaysAfterTheX0OfTheMonth?.(offsetDays) ||
+                english.commaDaysAfterTheX0OfTheMonth(offsetDays),
               offsetDays,
-              dayString
+              dayString,
             );
           }
 
@@ -492,8 +494,7 @@ export class ExpressionDescriptor {
               increment: (s) => (s == "1" ? this.i18n.commaEveryDay() : this.i18n.commaEveryX0Days(s)),
               range: (s) => this.i18n.commaBetweenDayX0AndX1OfTheMonth(s),
               // a lone L item of a list with a step ("1-5/2,L") has no day number to put in "on day %s"
-              format: (s) =>
-                s == "L" ? this.i18n.commaOnTheLastDayOfTheMonth() : this.i18n.commaOnDayX0OfTheMonth(s),
+              format: (s) => (s == "L" ? this.i18n.commaOnTheLastDayOfTheMonth() : this.i18n.commaOnDayX0OfTheMonth(s)),
             });
           }
           break;
@@ -556,7 +557,7 @@ export class ExpressionDescriptor {
 
           let currentDescriptionContent = this.getSegmentDescription(
             segments[i],
-            isSegmentRangeWithoutIncrement ? { ...itemDescribers, range: this.i18n.commaX0ThroughX1 } : itemDescribers
+            isSegmentRangeWithoutIncrement ? { ...itemDescribers, range: this.i18n.commaX0ThroughX1 } : itemDescribers,
           );
 
           if (isSegmentRangeWithoutIncrement || i > 0) {
@@ -601,7 +602,7 @@ export class ExpressionDescriptor {
       } else if (segments[0].indexOf("*") == -1) {
         let rangeItemDescription: string = StringUtilities.format(
           describers.format(segments[0]),
-          describers.single(segments[0])
+          describers.single(segments[0]),
         );
 
         // remove any leading comma
@@ -665,7 +666,7 @@ export class ExpressionDescriptor {
     return StringUtilities.format(
       describers.range(rangeExpression),
       describers.single(rangeSegments[0], 1),
-      describers.single(rangeSegments[1], 2)
+      describers.single(rangeSegments[1], 2),
     );
   }
 

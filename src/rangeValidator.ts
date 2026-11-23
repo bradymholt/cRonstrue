@@ -54,7 +54,7 @@ export default class RangeValidator {
       parse,
       1,
       12,
-      monthStartIndexZero ? "month part must be >= 0 and <= 11" : "month part must be >= 1 and <= 12"
+      monthStartIndexZero ? "month part must be >= 0 and <= 11" : "month part must be >= 1 and <= 12",
     );
   }
 
@@ -70,7 +70,7 @@ export default class RangeValidator {
       parse,
       0,
       6,
-      dayOfWeekStartIndexZero ? "DOW part must be >= 0 and <= 6" : "DOW part must be >= 1 and <= 7"
+      dayOfWeekStartIndexZero ? "DOW part must be >= 0 and <= 6" : "DOW part must be >= 1 and <= 7",
     );
   }
 }

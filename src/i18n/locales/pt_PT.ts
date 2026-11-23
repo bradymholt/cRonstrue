@@ -54,7 +54,7 @@ export class pt_PT implements Locale {
     return ", e de %s";
   }
   commaOnThe(s?: string, day?: string) {
-    return day === '6' || day === '0' ? ", no" : ", na ";
+    return day === "6" || day === "0" ? ", no" : ", na ";
   }
   commaOnTheLastDayOfTheMonth() {
     return ", no último dia do mês";
@@ -99,22 +99,22 @@ export class pt_PT implements Locale {
     return "a cada %s segundos";
   }
   fifth(s?: string) {
-    return s === '6' || s === '0' ? "quinto" : "quinta";
+    return s === "6" || s === "0" ? "quinto" : "quinta";
   }
   first(s?: string) {
-    return s === '6' || s === '0' ? "primeiro" : "primeira";
+    return s === "6" || s === "0" ? "primeiro" : "primeira";
   }
   firstWeekday() {
     return "primeiro dia da semana";
   }
   fourth(s?: string) {
-    return s === '6' || s === '0' ? "quarto" : "quarta";
+    return s === "6" || s === "0" ? "quarto" : "quarta";
   }
   minutesX0ThroughX1PastTheHour() {
     return "do minuto %s até %s de cada hora";
   }
   second(s?: string) {
-    return s === '6' || s === '0' ? "segundo" : "segunda";
+    return s === "6" || s === "0" ? "segundo" : "segunda";
   }
   secondsX0ThroughX1PastTheMinute() {
     return "No segundo %s até %s de cada minuto";
@@ -129,7 +129,7 @@ export class pt_PT implements Locale {
     return "o último dia";
   }
   third(s?: string) {
-    return s === '6' || s === '0' ? "terceiro" : "terceira";
+    return s === "6" || s === "0" ? "terceiro" : "terceira";
   }
   weekdayNearestDayX0() {
     return "dia da semana mais próximo do dia %s";

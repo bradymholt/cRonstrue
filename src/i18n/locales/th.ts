@@ -2,7 +2,6 @@
 
 import { Locale } from "../locale";
 export class th implements Locale {
-
   use24HourTimeFormatByDefault() {
     return false;
   }

@@ -15,10 +15,6 @@ export class ko implements Locale {
     return "오전";
   }
 
-
-
-
-
   public use24HourTimeFormatByDefault() {
     return false;
   }

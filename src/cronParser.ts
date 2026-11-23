@@ -29,11 +29,7 @@ export class CronParser {
   dayOfWeekStartIndexZero: boolean;
   monthStartIndexZero: boolean;
 
-  constructor(
-    expression: string,
-    dayOfWeekStartIndexZero: boolean = true,
-    monthStartIndexZero: boolean = false
-  ) {
+  constructor(expression: string, dayOfWeekStartIndexZero: boolean = true, monthStartIndexZero: boolean = false) {
     this.expression = expression;
     this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     this.monthStartIndexZero = monthStartIndexZero;
@@ -52,7 +48,7 @@ export class CronParser {
       // Special handling for @reboot - create a marker array with a special format
       parsed = ["@reboot", "", "", "", "", "", ""];
       return parsed;
-    } else if (expression.startsWith('@')) {
+    } else if (expression.startsWith("@")) {
       const special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
     } else {
@@ -67,18 +63,18 @@ export class CronParser {
 
   parseSpecial(expression: string): string {
     const specialExpressions: { [key: string]: string } = {
-        '@yearly': '0 0 1 JAN *',
-        '@annually': '0 0 1 JAN *',
-        '@monthly': '0 0 1 * *',
-        '@weekly': '0 0 * * SUN',
-        '@daily': '0 0 * * *',
-        '@midnight': '0 0 * * *',
-        '@hourly': '0 * * * *',
+      "@yearly": "0 0 1 JAN *",
+      "@annually": "0 0 1 JAN *",
+      "@monthly": "0 0 1 * *",
+      "@weekly": "0 0 * * SUN",
+      "@daily": "0 0 * * *",
+      "@midnight": "0 0 * * *",
+      "@hourly": "0 * * * *",
     };
 
     const special = specialExpressions[expression];
     if (!special) {
-        throw new Error('Unknown special expression.');
+      throw new Error("Unknown special expression.");
     }
 
     return special;
@@ -113,7 +109,7 @@ export class CronParser {
 
     if (parsed.length < 5) {
       throw new Error(
-        `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`
+        `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`,
       );
     } else if (parsed.length == 5) {
       // 5 part cron so shift array past seconds element
@@ -214,7 +210,7 @@ export class CronParser {
       !weekdayOffsetRegex.test(expressionParts[3])
     ) {
       throw new Error(
-        "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
+        "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.",
       );
     }
 

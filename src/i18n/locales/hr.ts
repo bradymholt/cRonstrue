@@ -183,24 +183,12 @@ export class hr implements Locale {
     return "radni dan najbliži %s. danu";
   }
 
-
-
-
-
   commaStartingX0() {
     return ", počevši od %s";
   }
 
   daysOfTheWeek() {
-    return [
-      "Nedjelja",
-      "Ponedjeljak",
-      "Utorak",
-      "Srijeda",
-      "Četvrtak",
-      "Petak",
-      "Subota",
-    ];
+    return ["Nedjelja", "Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota"];
   }
 
   monthsOfTheYear() {

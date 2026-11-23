@@ -33,10 +33,10 @@ export { be } from "./locales/be"; // Be
 export { hu } from "./locales/hu"; // Hungarian
 export { af } from "./locales/af"; // Afrikaans
 export { th } from "./locales/th"; // Thai
-export { ar } from './locales/ar'; // Arabic
-export { vi } from './locales/vi'; // Vietnamese
-export { my } from './locales/my'; // Malay
-export { bg } from './locales/bg'; // Bulgarian
-export { hr } from './locales/hr'; // Croatian
-export { sr } from './locales/sr'; // Serbian
+export { ar } from "./locales/ar"; // Arabic
+export { vi } from "./locales/vi"; // Vietnamese
+export { my } from "./locales/my"; // Malay
+export { bg } from "./locales/bg"; // Bulgarian
+export { hr } from "./locales/hr"; // Croatian
+export { sr } from "./locales/sr"; // Serbian
 export { az } from "./locales/az"; // Azerbaijani
