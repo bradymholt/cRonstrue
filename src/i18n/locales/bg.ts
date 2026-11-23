@@ -10,7 +10,7 @@ const getPhraseByDayOfWeek = (str: string | undefined, words: string[]): string 
   const strAsNumber = str != null ? Number(str) : 0;
   // weekdays: 0:неделя 1:понеделник 2:вторник 3:сряда 4:четвъртък 5:петък 6:събота
   // gender: ж м м ж м м ж
-  return words[[1, 0, 0, 1, 0, 0, 1][strAsNumber]!]!;
+  return words[[1, 0, 0, 1, 0, 0, 1][strAsNumber] ?? 0]!;
 };
 const getNumberEnding = (str: string | undefined, gender: 'м' | 'ж' | 'ср'): string => {
   let strAsNumber = str != null ? Number(str) : 1;

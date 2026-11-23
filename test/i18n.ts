@@ -785,6 +785,9 @@ describe("i18n", function () {
     it("0 0 * * 1L,5L", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният понеделник и петък от месеца");
     });
+    it("0 0 * * 1-2L,5L", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният от понеделник до вторник и петък от месеца");
+    });
   });
 
   describe("be", function () {
