@@ -383,6 +383,13 @@ describe("i18n", function () {
         "Каждую минуту, каждый 31 день недели"
       );
     });
+
+    it("0 0 * * 1L,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ru" }),
+        "В 00:00, в последний понедельник и пятницу месяца"
+      );
+    });
   });
 
   describe("tr", function () {
@@ -774,6 +781,12 @@ describe("i18n", function () {
     });
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всеки 5 минути, от 15:00 до 15:59, от понеделник до петък");
+    });
+    it("0 0 * * 1L,5L", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният понеделник и петък от месеца");
+    });
+    it("0 0 * * 1-2L,5L", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният от понеделник до вторник и петък от месеца");
     });
   });
 
