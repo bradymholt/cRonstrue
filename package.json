@@ -65,6 +65,8 @@
     "build": "npx tsc -p ./src --emitDeclarationOnly",
     "bundle": "rm -rf ./dist && webpack",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
     "prepublishOnly": "npm run bundle"
   }
 }
