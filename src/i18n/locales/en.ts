@@ -175,6 +175,14 @@ export class en implements Locale {
     ];
   }
 
+  am() {
+    return "AM";
+  }
+
+  pm() {
+    return "PM";
+  }
+
   atReboot() {
     return "Run once, at startup";
   }

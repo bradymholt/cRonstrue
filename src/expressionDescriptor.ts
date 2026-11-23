@@ -4,6 +4,9 @@ import { Options } from "./options";
 
 import { Locale } from "./i18n/locale";
 import { LocaleLoader } from "./i18n/localeLoader";
+import { en } from "./i18n/locales/en";
+
+const english = new en();
 
 interface SegmentDescribers {
   all: string;
@@ -122,7 +125,7 @@ export class ExpressionDescriptor {
 
       // Special handling for @reboot
       if (this.expressionParts[0] === "@reboot") {
-        return this.i18n.atReboot?.() || "Run once, at startup";
+        return this.i18n.atReboot?.() || english.atReboot();
       }
 
       var timeSegment = this.getTimeOfDayDescription();
@@ -481,13 +484,13 @@ export class ExpressionDescriptor {
             description = StringUtilities.format(this.i18n.commaOnTheX0OfTheMonth(), dayString);
           } else if (weekDayNumberMatches[3] == "-") {
             description = StringUtilities.format(
-              this.i18n.commaDaysBeforeTheX0OfTheMonth?.(offsetDays) || ", %s days before the %s of the month",
+              this.i18n.commaDaysBeforeTheX0OfTheMonth?.(offsetDays) || english.commaDaysBeforeTheX0OfTheMonth(offsetDays),
               offsetDays,
               dayString
             );
           } else {
             description = StringUtilities.format(
-              this.i18n.commaDaysAfterTheX0OfTheMonth?.(offsetDays) || ", %s days after the %s of the month",
+              this.i18n.commaDaysAfterTheX0OfTheMonth?.(offsetDays) || english.commaDaysAfterTheX0OfTheMonth(offsetDays),
               offsetDays,
               dayString
             );
@@ -755,6 +758,6 @@ export class ExpressionDescriptor {
   }
 
   private getPeriod(hour: number): string {
-    return hour >= 12 ? (this.i18n.pm && this.i18n.pm()) || "PM" : (this.i18n.am && this.i18n.am()) || "AM";
+    return hour >= 12 ? this.i18n.pm?.() || english.pm() : this.i18n.am?.() || english.am();
   }
 }
