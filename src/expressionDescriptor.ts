@@ -18,6 +18,7 @@ export class ExpressionDescriptor {
   static locales: { [name: string]: Locale } = {};
   static defaultLocale: string;
   static specialCharacters: string[];
+  private static readonly ordinals = ["first", "second", "third", "fourth", "fifth"] as const;
 
   expression: string;
   expressionParts: string[];
@@ -314,28 +315,23 @@ export class ExpressionDescriptor {
       description = "";
     } else {
       const dayOfWeekItems = dayOfWeekExpression.split(",");
+      const describeSeparately = (items: string[], otherItems: string[]) =>
+        (this.getDayOfWeekDescription(items.join(",")) ?? "") +
+        `${this.i18n.spaceAnd()} ` +
+        ExpressionDescriptor.removeLeadingComma(this.getDayOfWeekDescription(otherItems.join(",")) ?? "");
+
+      // "1,3#2" runs every Monday but only on the second Wednesday, so describe the two parts separately
       const nthOrLastItems = dayOfWeekItems.filter((s) => /[#L]/.test(s));
       const plainItems = dayOfWeekItems.filter((s) => !/[#L]/.test(s));
       if (plainItems.length > 0 && nthOrLastItems.some((s) => s.indexOf("#") > -1)) {
-        // "1,3#2" runs every Monday but only on the second Wednesday, so describe the two parts separately
-        const nthOrLastDescription = this.getDayOfWeekDescription(nthOrLastItems.join(",")) ?? "";
-        return (
-          (this.getDayOfWeekDescription(plainItems.join(",")) ?? "") +
-          `${this.i18n.spaceAnd()} ` +
-          ExpressionDescriptor.removeLeadingComma(nthOrLastDescription)
-        );
+        return describeSeparately(plainItems, nthOrLastItems);
       }
 
+      // "1,5L" runs every Monday but only on the last Friday
       const lastItems = dayOfWeekItems.filter((s) => s.indexOf("L") > -1);
       const otherItems = dayOfWeekItems.filter((s) => s.indexOf("L") === -1);
       if (lastItems.length > 0 && otherItems.length > 0) {
-        // "1,5L" runs every Monday but only on the last Friday, so describe the two parts separately
-        const lastDescription = this.getDayOfWeekDescription(lastItems.join(",")) ?? "";
-        return (
-          (this.getDayOfWeekDescription(otherItems.join(",")) ?? "") +
-          `${this.i18n.spaceAnd()} ` +
-          ExpressionDescriptor.removeLeadingComma(lastDescription)
-        );
+        return describeSeparately(otherItems, lastItems);
       }
 
       description = this.getSegmentDescription(dayOfWeekExpression, {
@@ -354,27 +350,10 @@ export class ExpressionDescriptor {
             : daysOfWeekNames[parsedExp];
 
           if (s.indexOf("#") > -1) {
-            let dayOfWeekOfMonthDescription: string | null = null;
-            let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
-            let dayOfWeekNumber = s.substring(0, s.indexOf("#"));
-            switch (dayOfWeekOfMonthNumber) {
-              case "1":
-                dayOfWeekOfMonthDescription = this.i18n.first(dayOfWeekNumber);
-                break;
-              case "2":
-                dayOfWeekOfMonthDescription = this.i18n.second(dayOfWeekNumber);
-                break;
-              case "3":
-                dayOfWeekOfMonthDescription = this.i18n.third(dayOfWeekNumber);
-                break;
-              case "4":
-                dayOfWeekOfMonthDescription = this.i18n.fourth(dayOfWeekNumber);
-                break;
-              case "5":
-                dayOfWeekOfMonthDescription = this.i18n.fifth(dayOfWeekNumber);
-                break;
-            }
-            description = dayOfWeekOfMonthDescription + " " + description;
+            const dayOfWeekOfMonthNumber = parseInt(s.substring(s.indexOf("#") + 1));
+            const dayOfWeekNumber = s.substring(0, s.indexOf("#"));
+            const ordinal = ExpressionDescriptor.ordinals[dayOfWeekOfMonthNumber - 1];
+            description = this.i18n[ordinal](dayOfWeekNumber) + " " + description;
           }
 
           return description;
