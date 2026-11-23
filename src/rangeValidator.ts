@@ -17,77 +17,60 @@ function rangeValues(part: string): number[] {
   return values;
 }
 
+function assertInRange(parse: string, min: number, max: number, message: string) {
+  for (const part of parse.split(",")) {
+    for (const value of rangeValues(part)) {
+      assert(value >= min && value <= max, message);
+    }
+  }
+}
+
 export default class RangeValidator {
   static stepRange(parse: string) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      const step = parsed[i].split('/')[1];
-      assert(step === undefined || !/^0+$/.test(step), 'step value must be greater than 0');
+    for (const part of parse.split(",")) {
+      const step = part.split("/")[1];
+      assert(step === undefined || !/^0+$/.test(step), "step value must be greater than 0");
     }
   }
 
   static secondRange(parse: string) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      for (const second of rangeValues(parsed[i])) {
-        assert(second >= 0 && second <= 59, 'seconds part must be >= 0 and <= 59');
-      }
-    }
+    assertInRange(parse, 0, 59, "seconds part must be >= 0 and <= 59");
   }
 
   static minuteRange(parse: string) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      for (const minute of rangeValues(parsed[i])) {
-        assert(minute >= 0 && minute <= 59, 'minutes part must be >= 0 and <= 59');
-      }
-    }
+    assertInRange(parse, 0, 59, "minutes part must be >= 0 and <= 59");
   }
 
   static hourRange(parse: string) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      for (const hour of rangeValues(parsed[i])) {
-        assert(hour >= 0 && hour <= 23, 'hours part must be >= 0 and <= 23');
-      }
-    }
+    assertInRange(parse, 0, 23, "hours part must be >= 0 and <= 23");
   }
 
   static dayOfMonthRange(parse: string) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      for (const dayOfMonth of rangeValues(parsed[i])) {
-        assert(dayOfMonth >= 1 && dayOfMonth <= 31, 'DOM part must be >= 1 and <= 31');
-      }
-    }
+    assertInRange(parse, 1, 31, "DOM part must be >= 1 and <= 31");
   }
 
   static monthRange(parse: string, monthStartIndexZero: boolean) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      for (const month of rangeValues(parsed[i])) {
-        assert(
-          month >= 1 && month <= 12,
-          monthStartIndexZero ? 'month part must be >= 0 and <= 11' : 'month part must be >= 1 and <= 12'
-        );
-      }
-    }
+    assertInRange(
+      parse,
+      1,
+      12,
+      monthStartIndexZero ? "month part must be >= 0 and <= 11" : "month part must be >= 1 and <= 12",
+    );
   }
 
   static dayOfWeekRange(parse: string, dayOfWeekStartIndexZero: boolean) {
-    const parsed = parse.split(',');
-    for (let i = 0; i < parsed.length; i++) {
-      if (parsed[i].indexOf('#') > -1) {
-        const nthString = parsed[i].substring(parsed[i].indexOf('#') + 1);
-        assert(/^[1-5]$/.test(nthString), 'DOW nth weekday must be >= 1 and <= 5');
-      }
-
-      for (const dayOfWeek of rangeValues(parsed[i])) {
-        assert(
-          dayOfWeek >= 0 && dayOfWeek <= 6,
-          dayOfWeekStartIndexZero ? 'DOW part must be >= 0 and <= 6' : 'DOW part must be >= 1 and <= 7'
-        );
+    for (const part of parse.split(",")) {
+      if (part.indexOf("#") > -1) {
+        const nthString = part.substring(part.indexOf("#") + 1);
+        assert(/^[1-5]$/.test(nthString), "DOW nth weekday must be >= 1 and <= 5");
       }
     }
+
+    assertInRange(
+      parse,
+      0,
+      6,
+      dayOfWeekStartIndexZero ? "DOW part must be >= 0 and <= 6" : "DOW part must be >= 1 and <= 7",
+    );
   }
 }

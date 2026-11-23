@@ -2,16 +2,7 @@
 
 import { Locale } from "../locale";
 export class zh_TW implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
+  commaYearX0ThroughYearX1() {
     return ", 從 %s 年至 %s 年";
   }
   use24HourTimeFormatByDefault() {

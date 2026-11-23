@@ -9,3 +9,4 @@ Here are some helpful scripts that should help you get up and running:
 - Install dependencies - `npm install`
 - Build - `npm start`
 - Run Tests - `npm test`
+- Format code - `npm run format`

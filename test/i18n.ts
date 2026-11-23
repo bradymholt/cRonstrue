@@ -12,42 +12,42 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Alle 5 Minuten, zwischen 15:00 und 15:59, Montag bis Freitag"
+        "Alle 5 Minuten, zwischen 15:00 und 15:59, Montag bis Freitag",
       );
     });
 
     it("* * * * 1,5L", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Jede Minute, nur jeden Montag und am letzten Freitag des Monats"
+        "Jede Minute, nur jeden Montag und am letzten Freitag des Monats",
       );
     });
 
     it("* * * * 1#2,5L", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Jede Minute, am zweiten Montag des Monats und am letzten Freitag des Monats"
+        "Jede Minute, am zweiten Montag des Monats und am letzten Freitag des Monats",
       );
     });
 
     it("* * * * 1,3#2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Jede Minute, nur jeden Montag und am zweiten Mittwoch des Monats"
+        "Jede Minute, nur jeden Montag und am zweiten Mittwoch des Monats",
       );
     });
 
     it("0 0 L,15 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Um 00:00, an Tag 15 und der letzte Tag des Monats"
+        "Um 00:00, an Tag 15 und der letzte Tag des Monats",
       );
     });
 
     it("0 0 1,L-3 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "de" }),
-        "Um 00:00, an Tag 1 des Monats und 3 tage vor dem letzten Tag des Monats"
+        "Um 00:00, an Tag 1 des Monats und 3 tage vor dem letzten Tag des Monats",
       );
     });
   });
@@ -60,7 +60,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "es" }),
-        "Cada 5 minutos, entre las 15:00 y las 15:59, de lunes a viernes"
+        "Cada 5 minutos, entre las 15:00 y las 15:59, de lunes a viernes",
       );
     });
   });
@@ -73,7 +73,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "fr" }),
-        "Toutes les 5 minutes, de 15:00 à 15:59, de lundi à vendredi"
+        "Toutes les 5 minutes, de 15:00 à 15:59, de lundi à vendredi",
       );
     });
   });
@@ -86,7 +86,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "it" }),
-        "Ogni 5 minuti, tra le 15:00 e le 15:59, lunedì al venerdì"
+        "Ogni 5 minuti, tra le 15:00 e le 15:59, lunedì al venerdì",
       );
     });
   });
@@ -99,14 +99,14 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "id" }),
-        "Setiap 5 menit, diantara 15:00 dan 15:59, Senin sampai Jumat"
+        "Setiap 5 menit, diantara 15:00 dan 15:59, Senin sampai Jumat",
       );
     });
 
     it("0 9 * * */2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "id" }),
-        "Pada 09:00, setiap hari 2  dalam seminggu"
+        "Pada 09:00, setiap hari 2  dalam seminggu",
       );
     });
   });
@@ -119,7 +119,7 @@ describe("i18n", function () {
     it("15 */5 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sw" }),
-        "Sekunde 15 baada ya dakika, kila dakika 5"
+        "Sekunde 15 baada ya dakika, kila dakika 5",
       );
     });
   });
@@ -132,35 +132,35 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
-        "Hvert 5 minutt, mellom 15:00 og 15:59, mandag til og med fredag"
+        "Hvert 5 minutt, mellom 15:00 og 15:59, mandag til og med fredag",
       );
     });
 
     it("0 5 1/1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
-        "Kl.05:00"
+        "Kl.05:00",
       );
     });
 
     it("15 11 * 1/1 MON#1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
-        "Kl.11:15, på første mandag i måneden"
+        "Kl.11:15, på første mandag i måneden",
       );
     });
 
     it("15 11 * 1/5 MON#1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
-        "Kl.11:15, på første mandag i måneden, hver 5 måned"
+        "Kl.11:15, på første mandag i måneden, hver 5 måned",
       );
     });
 
     it("0 7 * * MON,TUE,THU,FRI,SUN", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nb", use24HourTimeFormat: true }),
-        "Kl.07:00, på mandag, tirsdag, torsdag, fredag, og søndag"
+        "Kl.07:00, på mandag, tirsdag, torsdag, fredag, og søndag",
       );
     });
   });
@@ -173,7 +173,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sv" }),
-        "Var 5 minut, mellan 15:00 och 15:59, måndag till fredag"
+        "Var 5 minut, mellan 15:00 och 15:59, måndag till fredag",
       );
     });
 
@@ -184,7 +184,7 @@ describe("i18n", function () {
     it("0 15 10 ? * 6#3", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sv" }),
-        "Kl 10:15, den tredje lördagen av månaden"
+        "Kl 10:15, den tredje lördagen av månaden",
       );
     });
 
@@ -201,7 +201,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "nl" }),
-        "Elke 5 minuten, tussen 15:00 en 15:59, maandag t/m vrijdag"
+        "Elke 5 minuten, tussen 15:00 en 15:59, maandag t/m vrijdag",
       );
     });
   });
@@ -214,7 +214,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pl" }),
-        "Co 5 minut, od 15:00 do 15:59, od poniedziałek do piątek"
+        "Co 5 minut, od 15:00 do 15:59, od poniedziałek do piątek",
       );
     });
   });
@@ -226,39 +226,38 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira"
+        "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira",
       );
     });
 
     it("*/5 15 * * MON-FRI,SUN", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "A cada 5 minutos, entre 15:00 e 15:59, somente de segunda-feira a sexta-feira e domingo"
+        "A cada 5 minutos, entre 15:00 e 15:59, somente de segunda-feira a sexta-feira e domingo",
       );
     });
 
     it("45 10 * * 6#2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, no segundo sábado do mês"
+        "Às 10:45, no segundo sábado do mês",
       );
     });
 
     it("45 10 * * 0#3", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, no terceiro domingo do mês"
+        "Às 10:45, no terceiro domingo do mês",
       );
     });
 
     it("45 10 * * 1#3", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, na terceira segunda-feira do mês"
+        "Às 10:45, na terceira segunda-feira do mês",
       );
     });
   });
-
 
   describe("pt_PT", function () {
     it("* * * * *", function () {
@@ -268,29 +267,28 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_PT" }),
-        "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira"
+        "A cada 5 minutos, entre 15:00 e 15:59, de segunda-feira a sexta-feira",
       );
     });
-
 
     it("45 10 * * 6#2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, no segundo sábado do mês"
+        "Às 10:45, no segundo sábado do mês",
       );
     });
 
     it("45 10 * * 0#3", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, no terceiro domingo do mês"
+        "Às 10:45, no terceiro domingo do mês",
       );
     });
 
     it("45 10 * * 1#3", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "pt_BR" }),
-        "Às 10:45, na terceira segunda-feira do mês"
+        "Às 10:45, na terceira segunda-feira do mês",
       );
     });
   });
@@ -303,7 +301,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La fiecare 5 minute, între 15:00 și 15:59, de luni până vineri"
+        "La fiecare 5 minute, între 15:00 și 15:59, de luni până vineri",
       );
     });
 
@@ -318,49 +316,46 @@ describe("i18n", function () {
     it("0 */20 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "Fix la oră, la fiecare 20 de ore"
+        "Fix la oră, la fiecare 20 de ore",
       );
     });
 
     it("0 0 */20 * *", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 00:00, la fiecare 20 de zile"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ro" }), "La 00:00, la fiecare 20 de zile");
     });
 
     it("0 0 L-20 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 00:00, 20 de zile înainte de ultima zi a lunii"
+        "La 00:00, 20 de zile înainte de ultima zi a lunii",
       );
     });
 
     it("0 0 0 1 1 ? */100", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 100 de ani"
+        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 100 de ani",
       );
     });
 
     it("0 0 0 1 1 ? */101", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 101 ani"
+        "La 00:00, în ziua 1 a lunii, doar în ianuarie, o dată la 101 ani",
       );
     });
 
     it("0 9 1W * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 09:00, în prima zi lucrătoare a lunii"
+        "La 09:00, în prima zi lucrătoare a lunii",
       );
     });
 
     it("0 9 15W * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ro" }),
-        "La 09:00, în cea mai apropiată zi lucrătoare de ziua 15 a lunii"
+        "La 09:00, în cea mai apropiată zi lucrătoare de ziua 15 a lunii",
       );
     });
   });
@@ -373,21 +368,21 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ru" }),
-        "Каждые 5 минут, с 15:00 по 15:59, с понедельника по пятницу"
+        "Каждые 5 минут, с 15:00 по 15:59, с понедельника по пятницу",
       );
     });
 
     it("* * * * */31", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ru" }),
-        "Каждую минуту, каждый 31 день недели"
+        "Каждую минуту, каждый 31 день недели",
       );
     });
 
     it("0 0 * * 1L,5L", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ru" }),
-        "В 00:00, в последний понедельник и пятницу месяца"
+        "В 00:00, в последний понедельник и пятницу месяца",
       );
     });
   });
@@ -400,7 +395,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "tr" }),
-        "Her 5 dakikada bir, 15:00 ile 15:59 arasında, Pazartesi ile Cuma arasında"
+        "Her 5 dakikada bir, 15:00 ile 15:59 arasında, Pazartesi ile Cuma arasında",
       );
     });
 
@@ -417,7 +412,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "uk" }),
-        "Кожні 5 хвилин, між 15:00 та 15:59, понеділок по п'ятниця"
+        "Кожні 5 хвилин, між 15:00 та 15:59, понеділок по п'ятниця",
       );
     });
   });
@@ -430,7 +425,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "zh_CN" }),
-        "每隔 5 分钟, 在 下午 03:00 和 下午 03:59 之间, 星期一至星期五"
+        "每隔 5 分钟, 在 下午 03:00 和 下午 03:59 之间, 星期一至星期五",
       );
     });
   });
@@ -443,7 +438,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "zh_TW" }),
-        "每 5 分鐘, 在 15:00 和 15:59 之間, 星期一 到 星期五"
+        "每 5 分鐘, 在 15:00 和 15:59 之間, 星期一 到 星期五",
       );
     });
   });
@@ -456,7 +451,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "he" }),
-        "כל 5 דקות, 15:00 עד 15:59, יום שני עד יום שישי"
+        "כל 5 דקות, 15:00 עד 15:59, יום שני עד יום שישי",
       );
     });
   });
@@ -469,21 +464,18 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "da" }),
-        "Hvert 5. minut, mellem 15:00 og 15:59, mandag til og med fredag"
+        "Hvert 5. minut, mellem 15:00 og 15:59, mandag til og med fredag",
       );
     });
 
     it("0 3 * * 4", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string, { locale: "da" }),
-        "Kl 03:00, på enhver torsdag"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "da" }), "Kl 03:00, på enhver torsdag");
     });
 
     it("0 3 * * 4,5", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "da" }),
-        "Kl 03:00, på enhver torsdag og fredag"
+        "Kl 03:00, på enhver torsdag og fredag",
       );
     });
   });
@@ -496,7 +488,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "fa" }),
-        "هر 5 دقیقه, بین 15:00 و 15:59, دوشنبه تا جمعه"
+        "هر 5 دقیقه, بین 15:00 و 15:59, دوشنبه تا جمعه",
       );
     });
   });
@@ -509,7 +501,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "tg" }),
-        "Ҳар 5 дақиқа, аз 15:00 то 15:59, аз душанбе то ҷумъа"
+        "Ҳар 5 дақиқа, аз 15:00 то 15:59, аз душанбе то ҷумъа",
       );
     });
 
@@ -526,7 +518,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sl" }),
-        "Vsakih 5 minut, od 15:00 do 15:59, od Ponedeljek do Petek"
+        "Vsakih 5 minut, od 15:00 do 15:59, od Ponedeljek do Petek",
       );
     });
 
@@ -535,7 +527,7 @@ describe("i18n", function () {
       // matching the sibling commaOnTheLastWeekdayOfTheMonth ("zadnji delovni dan").
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sl" }),
-        "Vsakih 5 minut, zadnji dan v mesecu, samo v januar"
+        "Vsakih 5 minut, zadnji dan v mesecu, samo v januar",
       );
     });
   });
@@ -548,7 +540,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ca" }),
-        "Cada 5 minuts, entre les 15:00 i les 15:59, de dilluns a divendres"
+        "Cada 5 minuts, entre les 15:00 i les 15:59, de dilluns a divendres",
       );
     });
   });
@@ -559,28 +551,28 @@ describe("i18n", function () {
       // step which already reads "週のうち %s 日ごと".
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ja" }),
-        "次において実施14:00、月のうち 30 日ごと"
+        "次において実施14:00、月のうち 30 日ごと",
       );
     });
 
     it("0 0 1-5,15 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ja" }),
-        "次において実施00:00、月の 1 から 5 までと 15 日目"
+        "次において実施00:00、月の 1 から 5 までと 15 日目",
       );
     });
 
     it("0 0 * 3/2 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ja" }),
-        "次において実施00:00、2 か月ごと、3月 から 12月 まで"
+        "次において実施00:00、2 か月ごと、3月 から 12月 まで",
       );
     });
 
     it("0 0 5/5 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ja" }),
-        "次において実施00:00、月のうち 5 日ごと、月の 5 日目 に開始"
+        "次において実施00:00、月のうち 5 日ごと、月の 5 日目 に開始",
       );
     });
   });
@@ -593,7 +585,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ko" }),
-        "5분마다, 오후 03:00부터 오후 03:59까지, 월요일부터 금요일까지"
+        "5분마다, 오후 03:00부터 오후 03:59까지, 월요일부터 금요일까지",
       );
     });
 
@@ -606,7 +598,10 @@ describe("i18n", function () {
     });
 
     it("0 9 * * 1-5", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ko" }), "오전 09:00, 월요일부터 금요일까지");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ko" }),
+        "오전 09:00, 월요일부터 금요일까지",
+      );
     });
 
     it("0,22,24,26,28 * * * *", function () {
@@ -634,7 +629,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "hu" }),
-        "Minden 5. percben, 15:00 és 15:59 között, hétfő - péntek"
+        "Minden 5. percben, 15:00 és 15:59 között, hétfő - péntek",
       );
     });
   });
@@ -647,7 +642,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "af" }),
-        "Elke 5 minute, tussen 15:00 en 15:59, Maandag deur na Vrydag"
+        "Elke 5 minute, tussen 15:00 en 15:59, Maandag deur na Vrydag",
       );
     });
   });
@@ -664,29 +659,26 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "th" }),
-        "ทุกๆ 5 นาที, ระหว่าง 03:00 PM ถึง 03:59 PM, วันจันทร์ ถึง วันศุกร์"
+        "ทุกๆ 5 นาที, ระหว่าง 03:00 PM ถึง 03:59 PM, วันจันทร์ ถึง วันศุกร์",
       );
     });
 
     it("15 14 1 * *", function () {
-      assert.equal(
-        cronstrue.toString(this.test?.title as string, { locale: "th" }),
-        "เมื่อ 02:15 PM, ในวัน 1 ของเดือน"
-      );
+      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "th" }), "เมื่อ 02:15 PM, ในวัน 1 ของเดือน");
     });
   });
   describe("ar", function () {
     it("0 0 L-3,L-1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، 3 أيام قبل اخر يوم من الشهر و 1 أيام قبل اخر يوم من الشهر"
+        " 00:00، 3 أيام قبل اخر يوم من الشهر و 1 أيام قبل اخر يوم من الشهر",
       );
     });
 
     it("0 0 * * 1,5L", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، الإثنين فقط و في اخر الجمعة من الشهر"
+        " 00:00، الإثنين فقط و في اخر الجمعة من الشهر",
       );
     });
 
@@ -697,35 +689,35 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        "كل 5 دقائق, بين 15:00 و 15:59، الإثنين حتى الجمعة"
+        "كل 5 دقائق, بين 15:00 و 15:59، الإثنين حتى الجمعة",
       );
     });
 
     it("0 0 1-5,15 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، في اليوم 1 حتى 5 و 15 من الشهر"
+        " 00:00، في اليوم 1 حتى 5 و 15 من الشهر",
       );
     });
 
     it("0 0 * * 1,3-5", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، الإثنين و الأربعاء حتى الجمعة فقط"
+        " 00:00، الإثنين و الأربعاء حتى الجمعة فقط",
       );
     });
 
     it("0 0 * 3/2 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، كل 2 أشهر، مارس حتى ديسمبر"
+        " 00:00، كل 2 أشهر، مارس حتى ديسمبر",
       );
     });
 
     it("0 0 5/5 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "ar" }),
-        " 00:00، كل 5 أيام، بداية من في اليوم 5 من الشهر"
+        " 00:00، كل 5 أيام، بداية من في اليوم 5 من الشهر",
       );
     });
   });
@@ -738,38 +730,37 @@ describe("i18n", function () {
     it("0 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
-        "Setiap jam"
+        "Setiap jam",
       );
     });
 
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
-        "Setiap 5 minit, antara 15:00 dan 15:59, Isnin hingga Jumaat"
+        "Setiap 5 minit, antara 15:00 dan 15:59, Isnin hingga Jumaat",
       );
     });
 
     it("0 5 1/1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
-        "Pada 05:00"
+        "Pada 05:00",
       );
     });
 
     it("15 11 * 1/5 MON", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
-        "Pada 11:15, hanya pada Isnin, setiap bulan 5"
+        "Pada 11:15, hanya pada Isnin, setiap bulan 5",
       );
     });
 
     it("0 7 * * MON,TUE,THU,FRI,SUN", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "my", use24HourTimeFormat: true }),
-        "Pada 07:00, hanya pada Isnin, Selasa, Khamis, Jumaat, dan Ahad"
+        "Pada 07:00, hanya pada Isnin, Selasa, Khamis, Jumaat, dan Ahad",
       );
     });
-
   });
 
   describe("bg", function () {
@@ -780,13 +771,22 @@ describe("i18n", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всеки час");
     });
     it("*/5 15 * * MON-FRI", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "Всеки 5 минути, от 15:00 до 15:59, от понеделник до петък");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "bg" }),
+        "Всеки 5 минути, от 15:00 до 15:59, от понеделник до петък",
+      );
     });
     it("0 0 * * 1L,5L", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният понеделник и петък от месеца");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "bg" }),
+        "В 00:00, в последният понеделник и петък от месеца",
+      );
     });
     it("0 0 * * 1-2L,5L", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { locale: "bg" }), "В 00:00, в последният от понеделник до вторник и петък от месеца");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "bg" }),
+        "В 00:00, в последният от понеделник до вторник и петък от месеца",
+      );
     });
   });
 
@@ -798,7 +798,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "be" }),
-        "Кожныя 5 хвілін, з 03:00 PM па 03:59 PM, панядзелак па пятніца"
+        "Кожныя 5 хвілін, з 03:00 PM па 03:59 PM, панядзелак па пятніца",
       );
     });
   });
@@ -815,12 +815,12 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "hr" }),
-        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedjeljak do Petak"
+        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedjeljak do Petak",
       );
     });
   });
 
-    describe("sr", function () {
+  describe("sr", function () {
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "sr" }), "Svakog minuta");
     });
@@ -832,7 +832,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "sr" }),
-        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedeljak do Petak"
+        "Svakih 5 minuta, između 15:00 i 15:59, od Ponedeljak do Petak",
       );
     });
   });
@@ -849,7 +849,7 @@ describe("i18n", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "az" }),
-        "Hər 5 dəqiqədən bir, saat 15:00 ilə 15:59 arasında, bazar ertəsindən cüməyə qədər"
+        "Hər 5 dəqiqədən bir, saat 15:00 ilə 15:59 arasında, bazar ertəsindən cüməyə qədər",
       );
     });
 
@@ -865,7 +865,7 @@ describe("i18n", function () {
     it("23 12 * JAN-MAR *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "az" }),
-        "Saat 12:23, yanvardan marta qədər"
+        "Saat 12:23, yanvardan marta qədər",
       );
     });
   });
@@ -878,7 +878,7 @@ describe("i18n", function () {
     it("0 9 * 2,3-9/2 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { locale: "vi" }),
-        "Vào 09:00, chỉ trong Tháng 2 và mỗi 2 tháng, Tháng 3 đến Tháng 9"
+        "Vào 09:00, chỉ trong Tháng 2 và mỗi 2 tháng, Tháng 3 đến Tháng 9",
       );
     });
   });
@@ -907,8 +907,6 @@ describe("i18n", function () {
       });
     });
   });
-
-
 
   describe("@reboot", function () {
     const expectedByLocale: { [locale: string]: string } = {
@@ -966,5 +964,4 @@ describe("i18n", function () {
       assert.deepEqual(Object.keys(allLocales).sort(), Object.keys(expectedByLocale).sort());
     });
   });
-
 });

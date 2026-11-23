@@ -38,7 +38,6 @@ describe("CronParser", function () {
           new CronParser(cronToTest).parse();
         }, `Expression contains invalid values:`);
       }
-
     });
 
     it("should parse cron with multiple spaces between parts", function () {

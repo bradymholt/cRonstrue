@@ -48,16 +48,10 @@ const ordinalSuffix = (value: string | undefined) => {
 };
 
 export class az implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string | null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string | null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string | null {
+  commaMonthX0ThroughMonthX1() {
     return ", %s %s qədər";
   }
-  commaYearX0ThroughYearX1(): string | null {
+  commaYearX0ThroughYearX1() {
     return ", %s ilindən %s ilinə qədər";
   }
 

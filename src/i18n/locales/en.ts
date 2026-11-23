@@ -6,19 +6,6 @@ import { Locale } from "../locale";
 const isOne = (s?: string) => Number(s) === 1;
 
 export class en implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
-
   use24HourTimeFormatByDefault() {
     return false;
   }
@@ -185,6 +172,14 @@ export class en implements Locale {
       "November",
       "December",
     ];
+  }
+
+  am() {
+    return "AM";
+  }
+
+  pm() {
+    return "PM";
   }
 
   atReboot() {
