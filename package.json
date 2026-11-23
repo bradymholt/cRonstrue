@@ -63,8 +63,9 @@
   "scripts": {
     "start": "npm run build",
     "build": "npx tsc -p ./src --emitDeclarationOnly",
+    "bundle": "rm -rf ./dist && webpack",
     "test": "npx mocha --reporter spec --require ts-node/register \"./test/**/*.ts\"",
-    "prepublishOnly": "rm -rf ./dist && ./node_modules/webpack-cli/bin/cli.js && git add -A"
+    "prepublishOnly": "npm run bundle"
   },
   "dependencies": {}
 }
