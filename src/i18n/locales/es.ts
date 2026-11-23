@@ -2,18 +2,6 @@
 
 import { Locale } from "../locale";
 export class es implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
 
   use24HourTimeFormatByDefault() {
     return true;

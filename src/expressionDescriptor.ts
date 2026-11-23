@@ -239,7 +239,7 @@ export class ExpressionDescriptor {
           ? ""
           : parseInt(s) < 20
           ? this.i18n.atX0SecondsPastTheMinute(s)
-          : this.i18n.atX0SecondsPastTheMinuteGt20() || this.i18n.atX0SecondsPastTheMinute(s),
+          : this.i18n.atX0SecondsPastTheMinuteGt20?.() || this.i18n.atX0SecondsPastTheMinute(s),
       bounds: { min: 0, max: 59 },
     });
   }
@@ -260,7 +260,7 @@ export class ExpressionDescriptor {
             ? this.i18n.onTheHour?.() || this.i18n.atX0MinutesPastTheHour(s)
             : parseInt(s) < 20
             ? this.i18n.atX0MinutesPastTheHour(s)
-            : this.i18n.atX0MinutesPastTheHourGt20() || this.i18n.atX0MinutesPastTheHour(s);
+            : this.i18n.atX0MinutesPastTheHourGt20?.() || this.i18n.atX0MinutesPastTheHour(s);
         } catch (e) {
           return this.i18n.atX0MinutesPastTheHour(s);
         }
@@ -410,7 +410,7 @@ export class ExpressionDescriptor {
       increment: (s) =>
         // rather than "every 1 months" just return empty string
         parseInt(s) == 1 ? "" : StringUtilities.format(this.i18n.commaEveryX0Months(s), s),
-      range: () => this.i18n.commaMonthX0ThroughMonthX1() || this.i18n.commaX0ThroughX1(),
+      range: () => this.i18n.commaMonthX0ThroughMonthX1?.() || this.i18n.commaX0ThroughX1(),
       format: () => (this.i18n.commaOnlyInMonthX0 ? this.i18n.commaOnlyInMonthX0() : this.i18n.commaOnlyInX0()),
     });
   }
@@ -528,7 +528,7 @@ export class ExpressionDescriptor {
       all: "",
       single: (s) => (/^\d+$/.test(s) ? new Date(parseInt(s), 1).getFullYear().toString() : s),
       increment: (s) => StringUtilities.format(this.i18n.commaEveryX0Years(s), s),
-      range: () => this.i18n.commaYearX0ThroughYearX1() || this.i18n.commaX0ThroughX1(),
+      range: () => this.i18n.commaYearX0ThroughYearX1?.() || this.i18n.commaX0ThroughX1(),
       format: () => (this.i18n.commaOnlyInYearX0 ? this.i18n.commaOnlyInYearX0() : this.i18n.commaOnlyInX0()),
     });
   }

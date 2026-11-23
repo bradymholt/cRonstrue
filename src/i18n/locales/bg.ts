@@ -20,18 +20,6 @@ const getNumberEnding = (str: string | undefined, gender: 'м' | 'ж' | 'ср'):
 };
 
 export class bg implements Locale {
-  public atX0SecondsPastTheMinuteGt20(): string | null {
-    return null;
-  }
-  public atX0MinutesPastTheHourGt20(): string | null {
-    return null;
-  }
-  public commaMonthX0ThroughMonthX1(): string | null {
-    return null;
-  }
-  public commaYearX0ThroughYearX1(): string | null {
-    return null;
-  }
   public use24HourTimeFormatByDefault(): boolean {
     return true;
   }

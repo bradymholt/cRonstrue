@@ -183,21 +183,9 @@ export class hr implements Locale {
     return "radni dan najbliži %s. danu";
   }
 
-  commaMonthX0ThroughMonthX1(): string | null {
-    return null;
-  }
 
-  commaYearX0ThroughYearX1(): string | null {
-    return null;
-  }
 
-  atX0MinutesPastTheHourGt20(): string | null {
-    return null;
-  }
 
-  atX0SecondsPastTheMinuteGt20(): string | null {
-    return null;
-  }
 
   commaStartingX0() {
     return ", počevši od %s";

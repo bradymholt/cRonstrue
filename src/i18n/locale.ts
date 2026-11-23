@@ -1,8 +1,4 @@
 export interface Locale {
-  // TODO: Circle back and use null/undefined aware types for optionals below in TypeScript 2.0: https://github.com/Microsoft/TypeScript/pull/7140
-  // TODO: These locale translations would be a good use for ES6 template strings except we sometimes concatenate multiple transactions together before
-  //       doing the actual template replacement.
-
   /**
    * When `verbose` option is set to `false`, use this array to do any replacements to make the description more concise
    * For example:
@@ -27,11 +23,11 @@ export interface Locale {
   everyX0Seconds(s?: string): string;
   secondsX0ThroughX1PastTheMinute(): string;
   atX0SecondsPastTheMinute(s?: string): string;
-  atX0SecondsPastTheMinuteGt20(): string | null; // optional
+  atX0SecondsPastTheMinuteGt20?(): string;
   everyX0Minutes(s?: string): string;
   minutesX0ThroughX1PastTheHour(): string;
   atX0MinutesPastTheHour(s?: string): string;
-  atX0MinutesPastTheHourGt20(): string | null; // optional
+  atX0MinutesPastTheHourGt20?(): string;
   everyX0Hours(s?: string): string;
   betweenX0AndX1(): string;
   atX0(): string;
@@ -39,8 +35,8 @@ export interface Locale {
   commaEveryX0DaysOfTheWeek(s?: string): string;
   commaX0ThroughX1(s?: string): string;
   commaAndX0ThroughX1(s?: string): string;
-  commaMonthX0ThroughMonthX1(): string | null; // optional
-  commaYearX0ThroughYearX1(): string | null; // optional
+  commaMonthX0ThroughMonthX1?(): string;
+  commaYearX0ThroughYearX1?(): string;
   first(s?: string): string;
   second(s?: string): string;
   third(s?: string): string;
