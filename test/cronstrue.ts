@@ -87,6 +87,28 @@ describe("Cronstrue", function () {
     it("0 0 12 ? * * 2030,*", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 PM");
     });
+
+    it("0 0 *,5 * MON", function () {
+      // day of month starts with *, so it is combined with day of week using AND
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, only on Monday");
+    });
+
+    it("0 0 5,* * MON", function () {
+      // neither day part starts with *, so they are combined using OR, and "5,*" matches every day
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM");
+    });
+
+    it("0 0 10,5,* * MON", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM");
+    });
+
+    it("0 0 5 * *,MON", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on day 5 of the month");
+    });
+
+    it("0 0 5 * MON,*", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM");
+    });
   });
 
   describe("interval", function () {
