@@ -58,6 +58,14 @@ export class CronParser {
     this.normalize(parsed);
     this.validate(parsed);
 
+    // A list that has "*" as one of its items covers every value ("*,5" is "*"). Collapse it after
+    // validation so that the other items are still checked (e.g. "*,99" in the hours part is an error).
+    for (let i = 0; i < parsed.length; i++) {
+      if (parsed[i].split(",").length > 1 && parsed[i].split(",").indexOf("*") > -1) {
+        parsed[i] = "*";
+      }
+    }
+
     return parsed;
   }
 
