@@ -28,6 +28,25 @@
     "cronstrue": "bin/cli.js"
   },
   "typings": "dist/cronstrue.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/cronstrue.d.ts",
+      "default": "./dist/cronstrue.js"
+    },
+    "./i18n": {
+      "types": "./i18n.d.ts",
+      "default": "./i18n.js"
+    },
+    "./locales/*.js": "./locales/*.js",
+    "./locales/*": "./locales/*.js",
+    "./dist/*.js": "./dist/*.js",
+    "./dist/*.d.ts": "./dist/*.d.ts",
+    "./dist/*": "./dist/*.js",
+    "./bin/*.js": "./bin/*.js",
+    "./bin/*": "./bin/*.js",
+    "./package.json": "./package.json",
+    "./*": "./*"
+  },
   "files": [
     "dist/",
     "locales/",
