@@ -58,6 +58,27 @@ export class CronParser {
     this.normalize(parsed);
     this.validate(parsed);
 
+    // A list that has "*" as one of its items covers every value ("*,5" is "*"). Collapse it after
+    // validation so that the other items are still checked (e.g. "*,99" in the hours part is an error).
+    const hasWildcardItem = (part: string) => part.indexOf(",") > -1 && part.split(",").indexOf("*") > -1;
+
+    // Day of month and day of week are combined with AND only when one of them starts with "*" (as in Vixie cron
+    // and cronie), otherwise with OR. So "0 0 5,* * MON" runs every day, while "0 0 *,5 * MON" runs on Mondays.
+    for (const [part, otherPart] of [
+      [3, 5],
+      [5, 3],
+    ]) {
+      if (hasWildcardItem(parsed[part]) && parsed[part][0] !== "*" && parsed[otherPart][0] !== "*") {
+        parsed[otherPart] = "*";
+      }
+    }
+
+    for (let i = 0; i < parsed.length; i++) {
+      if (hasWildcardItem(parsed[i])) {
+        parsed[i] = "*";
+      }
+    }
+
     return parsed;
   }
 
@@ -102,7 +123,10 @@ export class CronParser {
           arrayElement.push("*");
         }
 
-        arrayElement.sort((a, b) => (a !== null && b !== null ? (a as number) - (b as number) : 0));
+        // Keep the order of a list with "*" in it: whether it starts with "*" matters for the day parts (see parse())
+        if (arrayElement.indexOf("*") === -1) {
+          arrayElement.sort((a, b) => (a !== null && b !== null ? (a as number) - (b as number) : 0));
+        }
         parsed[i] = arrayElement.map((item) => (item !== null ? item.toString() : "")).join(",");
       }
     }
