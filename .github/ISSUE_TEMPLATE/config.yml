@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Try the live demo
+    url: https://bradymholt.github.io/cRonstrue/
+    about: Check how an expression is described, in any language, before opening an issue.
