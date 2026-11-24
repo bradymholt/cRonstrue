@@ -314,6 +314,15 @@ export class ExpressionDescriptor {
         return describeSeparately(otherItems, lastItems);
       }
 
+      // If both DOM and DOW are specified, the cron will execute at either time, so the whole
+      // day of week clause starts with "and". A step range like 1-5/2 is one clause: the
+      // "and" goes before the step, and the range only bounds it.
+      const startsWithAnd =
+        this.expressionParts[3] != "*" && !this.options.logicalAndDayFields && dayOfWeekExpression.indexOf(",") == -1;
+      const stepSegments = dayOfWeekExpression.split("/");
+      const hasStep = stepSegments.length > 1 && parseInt(stepSegments[1]) != 1;
+      const andPrefix = this.getAndPrefix();
+
       description = this.getSegmentDescription(dayOfWeekExpression, {
         all: this.i18n.commaEveryDay(),
         single: (s, form) => {
@@ -338,15 +347,23 @@ export class ExpressionDescriptor {
 
           return description;
         },
-        increment: (s) =>
+        increment: (s) => {
           // rather than "every 1 days" just return empty string
-          parseInt(s) == 1 ? "" : StringUtilities.format(this.i18n.commaEveryX0DaysOfTheWeek(s), s),
+          if (parseInt(s) == 1) {
+            return "";
+          }
+          const format = this.i18n.commaEveryX0DaysOfTheWeek(s);
+          return StringUtilities.format(
+            startsWithAnd && andPrefix ? andPrefix + ExpressionDescriptor.removeLeadingComma(format) : format,
+            s,
+          );
+        },
         range: (s) => {
-          // If both DOM and DOW are specified, the cron will execute at either time.
           const beginFrom = s.substring(0, s.indexOf("-"));
 
-          const domSpecified = this.expressionParts[3] != "*";
-          return domSpecified ? this.i18n.commaAndX0ThroughX1(beginFrom) : this.i18n.commaX0ThroughX1(beginFrom);
+          return startsWithAnd && (!hasStep || !andPrefix)
+            ? this.i18n.commaAndX0ThroughX1(beginFrom)
+            : this.i18n.commaX0ThroughX1(beginFrom);
         },
         format: (s) => {
           let format: string | null = null;
@@ -393,6 +410,17 @@ export class ExpressionDescriptor {
       range: () => this.i18n.commaMonthX0ThroughMonthX1?.() || this.i18n.commaX0ThroughX1(),
       format: () => (this.i18n.commaOnlyInMonthX0 ? this.i18n.commaOnlyInMonthX0() : this.i18n.commaOnlyInX0()),
     });
+  }
+
+  // The conjunction a locale puts before a range, such as ", und " from ", und %s bis %s"
+  private getAndPrefix(): string | null {
+    const plain = this.i18n.commaX0ThroughX1();
+    const withAnd = this.i18n.commaAndX0ThroughX1();
+    const body = ExpressionDescriptor.removeLeadingComma(plain);
+    if (withAnd == plain || withAnd.length <= body.length || withAnd.slice(-body.length) != body) {
+      return null;
+    }
+    return withAnd.slice(0, -body.length);
   }
 
   // Removes the comma (and one space) a "comma..." description starts with. Locales use their own comma ("، " in ar,

@@ -50,6 +50,20 @@ describe("i18n", function () {
         "Um 00:00, an Tag 1 des Monats und 3 tage vor dem letzten Tag des Monats",
       );
     });
+
+    it("0 * 31 * 1-5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de", logicalAndDayFields: true }),
+        "Jede Stunde, an Tag 31 des Monats, Montag bis Freitag",
+      );
+    });
+
+    it("0 * 31 * 1-5/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Jede Stunde, an Tag 31 des Monats, und alle 2 Tage der Woche, Montag bis Freitag",
+      );
+    });
   });
 
   describe("es", function () {
@@ -361,6 +375,13 @@ describe("i18n", function () {
   });
 
   describe("ru", function () {
+    it("0 * 31 * 1-5/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "ru" }),
+        "Каждый час, в 31 число месяца и каждые 2 дня недели, с понедельника по пятницу",
+      );
+    });
+
     it("* * * * *", function () {
       assert.equal(cronstrue.toString(this.test?.title as string, { locale: "ru" }), "Каждую минуту");
     });
