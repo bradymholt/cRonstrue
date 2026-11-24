@@ -15,22 +15,6 @@ export class ko implements Locale {
     return "오전";
   }
 
-  public atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-
-  public atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-
-  public commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-
-  public commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
-
   public use24HourTimeFormatByDefault() {
     return false;
   }

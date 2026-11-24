@@ -14,16 +14,7 @@ export class zh_CN implements Locale {
     return "上午";
   }
 
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
+  commaYearX0ThroughYearX1() {
     return ", 从%s年至%s年";
   }
   use24HourTimeFormatByDefault() {
@@ -144,7 +135,7 @@ export class zh_CN implements Locale {
     return ", 限每月的最后一个工作日";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", 限每月最后%s天";
+    return ", 限每月最后一天之前的第%s天";
   }
   firstWeekday() {
     return "第一个工作日";

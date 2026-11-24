@@ -2,19 +2,6 @@
 
 import { Locale } from "../locale";
 export class it implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
@@ -77,7 +64,7 @@ export class it implements Locale {
     return ", l'ultimo giorno del mese";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", nell'ultima settimana del mese";
+    return ", l'ultimo giorno feriale del mese";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s giorni prima dell'ultimo giorno del mese";

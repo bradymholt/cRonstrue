@@ -2,16 +2,7 @@
 
 import { Locale } from "../locale";
 export class zh_TW implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
+  commaYearX0ThroughYearX1() {
     return ", 從 %s 年至 %s 年";
   }
   use24HourTimeFormatByDefault() {
@@ -132,7 +123,7 @@ export class zh_TW implements Locale {
     return ", 每月的最後一個工作日";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
-    return ", %s 這個月的最後一天的前幾天";
+    return ", 每月最後一天之前的第 %s 天";
   }
   firstWeekday() {
     return "第一個工作日";

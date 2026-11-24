@@ -123,7 +123,7 @@ describe("Cronstrue", function () {
     it("1 1,3-4 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 1 minute past the hour, at 01:00 AM and 03:00 AM through 04:59 AM"
+        "At 1 minute past the hour, at 01:00 AM and 03:00 AM through 04:59 AM",
       );
     });
 
@@ -138,7 +138,7 @@ describe("Cronstrue", function () {
     it("* 0 0 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every second, on the hour, between 12:00 AM and 12:00 AM"
+        "Every second, on the hour, between 12:00 AM and 12:00 AM",
       );
     });
 
@@ -195,7 +195,7 @@ describe("Cronstrue", function () {
     it("31 10 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
-        "At 10:31"
+        "At 10:31",
       );
     });
 
@@ -206,14 +206,14 @@ describe("Cronstrue", function () {
     it("30 9 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
-        "At 9:30"
+        "At 9:30",
       );
     });
 
     it("0 0 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { trimHoursLeadingZero: true, use24HourTimeFormat: true }),
-        "At 0:00"
+        "At 0:00",
       );
     });
 
@@ -261,7 +261,26 @@ describe("Cronstrue", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
         "At 09:46 AM, only on Sunday",
-        "7 should mean Sunday"
+        "7 should mean Sunday",
+      );
+    });
+
+    it("46 9 * * 0,7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, only on Sunday");
+    });
+
+    it("46 9 * * 0,1,7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, only on Sunday and Monday");
+    });
+
+    it("46 9 * * 0-7", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 09:46 AM, Sunday through Saturday");
+    });
+
+    it("46 9 * * 0-7/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 09:46 AM, every 2 days of the week, Sunday through Saturday",
       );
     });
 
@@ -324,28 +343,28 @@ describe("Cronstrue", function () {
     it("0 * 31 * 2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
-        "Every hour, on day 31 of the month, only on Tuesday"
+        "Every hour, on day 31 of the month, only on Tuesday",
       );
     });
 
     it("0 0 0 1,2,3 * WED,FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
-        "At 12:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday"
+        "At 12:00 AM, on day 1, 2, and 3 of the month, only on Wednesday and Friday",
       );
     });
 
     it("0 2,16 1,8,15,22 * 1,2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { logicalAndDayFields: true }),
-        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday"
+        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, only on Monday and Tuesday",
       );
     });
 
     it("0 45 12 22,17,6,30,26 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:45 PM, on day 6, 17, 22, 26, and 30 of the month"
+        "At 12:45 PM, on day 6, 17, 22, 26, and 30 of the month",
       );
     });
   });
@@ -366,7 +385,7 @@ describe("Cronstrue", function () {
     it("* * 13W * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every minute, on the weekday nearest day 13 of the month"
+        "Every minute, on the weekday nearest day 13 of the month",
       );
     });
 
@@ -377,28 +396,28 @@ describe("Cronstrue", function () {
     it("* * 5W * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every minute, on the weekday nearest day 5 of the month"
+        "Every minute, on the weekday nearest day 5 of the month",
       );
     });
 
     it("* * W5 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every minute, on the weekday nearest day 5 of the month"
+        "Every minute, on the weekday nearest day 5 of the month",
       );
     });
 
     it("0 0 1W-2 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 2 days before the first weekday of the month"
+        "At 12:00 AM, 2 days before the first weekday of the month",
       );
     });
 
     it("0 0 15W+3 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 3 days after the weekday nearest day 15 of the month"
+        "At 12:00 AM, 3 days after the weekday nearest day 15 of the month",
       );
     });
   });
@@ -408,24 +427,117 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last Thursday of the month");
     });
 
+    it("* * * * 5l", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last Friday of the month");
+    });
+
+    it("* * l * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last day of the month");
+    });
+
+    it("* * lw * *", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the last weekday of the month");
+    });
+
+    it("* * 15w * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, on the weekday nearest day 15 of the month",
+      );
+    });
+
+    it("* * * * 1,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and on the last Friday of the month",
+      );
+    });
+
+    it("* * * * 1,L", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, only on Monday and Saturday");
+    });
+
+    it("* * * * 1,L,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and Saturday and on the last Friday of the month",
+      );
+    });
+
+    it("* * * * 5L,1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and on the last Friday of the month",
+      );
+    });
+
+    it("* * * * 5L,6L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, on the last Friday and Saturday of the month",
+      );
+    });
+
+    it("* * * * 1#2,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, on the second Monday of the month and on the last Friday of the month",
+      );
+    });
+
+    it("* * * * 1,3#2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and on the second Wednesday of the month",
+      );
+    });
+
+    it("* * * * 3#2,1-2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, Monday through Tuesday and on the second Wednesday of the month",
+      );
+    });
+
+    it("* * * * 1,3#2,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, only on Monday and on the second Wednesday of the month and on the last Friday of the month",
+      );
+    });
+
+    it("* * * * 1-5/2,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Every minute, every 2 days of the week, Monday through Friday and on the last Friday of the month",
+      );
+    });
+
+    it("0 12 15 * 1,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 15 of the month, and on Monday and on the last Friday of the month",
+      );
+    });
+
     it("*/5 * L JAN *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 5 minutes, on the last day of the month, only in January"
+        "Every 5 minutes, on the last day of the month, only in January",
       );
     });
 
     it("0 20 15,L * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 08:00 PM, on day 15 and the last day of the month"
+        "At 08:00 PM, on day 15 and the last day of the month",
       );
     });
 
     it("0 20 1-10,20-L * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 08:00 PM, on day 1 through 10 and 20 through the last day of the month"
+        "At 08:00 PM, on day 1 through 10 and 20 through the last day of the month",
       );
     });
 
@@ -440,7 +552,63 @@ describe("Cronstrue", function () {
     it("0 0 0 L-5 * ?", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 5 days before the last day of the month"
+        "At 12:00 AM, 5 days before the last day of the month",
+      );
+    });
+
+    it("0 20 L,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 08:00 PM, on day 15 and the last day of the month",
+      );
+    });
+
+    it("0 20 20-L,1-5 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 08:00 PM, on day 1 through 5 and 20 through the last day of the month",
+      );
+    });
+
+    it("0 0 1,L-3 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on day 1 of the month and 3 days before the last day of the month",
+      );
+    });
+
+    it("0 0 L-3,1,15 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on day 1 and 15 of the month and 3 days before the last day of the month",
+      );
+    });
+
+    it("0 0 L-1,L * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, on the last day of the month and 1 day before the last day of the month",
+      );
+    });
+
+    it("0 0 1-5/2,L * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, every 2 days in a month, between day 1 and 5 of the month and on the last day of the month",
+      );
+    });
+
+    it("0 0 L-3,L-1 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days before the last day of the month and 1 day before the last day of the month",
+      );
+    });
+
+    it("0 0 *,L-3 * MON", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 AM, 3 days before the last day of the month, and on Monday",
       );
     });
   });
@@ -453,14 +621,14 @@ describe("Cronstrue", function () {
     it("1 * * * * (verbose)", function () {
       assert.equal(
         cronstrue.toString("1 * * * *", { verbose: true }),
-        "At 1 minute past the hour, every hour, every day"
+        "At 1 minute past the hour, every hour, every day",
       );
     });
 
     it("1/15 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 15 minutes, starting at 1 minute past the hour"
+        "Every 15 minutes, starting at 1 minute past the hour",
       );
     });
 
@@ -471,14 +639,14 @@ describe("Cronstrue", function () {
     it("1/1 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 1 minute, starting at 1 minute past the hour"
+        "Every 1 minute, starting at 1 minute past the hour",
       );
     });
 
     it("5-10/1 * * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 1 second, seconds 5 through 10 past the minute"
+        "Every 1 second, seconds 5 through 10 past the minute",
       );
     });
 
@@ -489,28 +657,28 @@ describe("Cronstrue", function () {
     it("0 0 L-1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 1 day before the last day of the month"
+        "At 12:00 AM, 1 day before the last day of the month",
       );
     });
 
     it("0 0 1W-1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 1 day before the first weekday of the month"
+        "At 12:00 AM, 1 day before the first weekday of the month",
       );
     });
 
     it("0 0 15W+1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, 1 day after the weekday nearest day 15 of the month"
+        "At 12:00 AM, 1 day after the weekday nearest day 15 of the month",
       );
     });
 
     it("0 0 0 1 1 ? 2020/1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, on day 1 of the month, only in January, every 1 year, 2020 through 9999"
+        "At 12:00 AM, on day 1 of the month, only in January, every 1 year, 2020 through 9999",
       );
     });
 
@@ -524,42 +692,56 @@ describe("Cronstrue", function () {
     it("23 12 * * 1#2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "At 12:23 PM, on the second Sunday of the month"
+        "At 12:23 PM, on the second Sunday of the month",
       );
     });
 
     it("* * * ? * 2-6/2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "Every second, every 2 days of the week, Monday through Friday"
+        "Every second, every 2 days of the week, Monday through Friday",
       );
     });
 
     it("* * * ? * 7", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "Every second, only on Saturday"
+        "Every second, only on Saturday",
       );
     });
 
     it("* * * ? * 1,2,3,4,5", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "Every second, only on Sunday, Monday, Tuesday, Wednesday, and Thursday"
+        "Every second, only on Sunday, Monday, Tuesday, Wednesday, and Thursday",
       );
     });
 
     it("0 * ? * 1/1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "Every hour, Sunday through Saturday"
+        "Every hour, Sunday through Saturday",
       );
     });
 
     it("0 * ? * 2/1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
-        "Every hour, Monday through Saturday"
+        "Every hour, Monday through Saturday",
+      );
+    });
+
+    it("0 0 ? * 2#1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
+        "At 12:00 AM, on the first Monday of the month",
+      );
+    });
+
+    it("0 0 ? * 2#5", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { dayOfWeekStartIndexZero: false }),
+        "At 12:00 AM, on the fifth Monday of the month",
       );
     });
   });
@@ -568,56 +750,56 @@ describe("Cronstrue", function () {
     it("* * * 7 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "Every minute, only in August"
+        "Every minute, only in August",
       );
     });
 
     it("30 * * 6-8 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, July through September"
+        "At 30 minutes past the hour, July through September",
       );
     });
 
     it("30 * * 1-10/2 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, every 2 months, February through November"
+        "At 30 minutes past the hour, every 2 months, February through November",
       );
     });
 
     it("30 * * 4,5,6 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, only in May, June, and July"
+        "At 30 minutes past the hour, only in May, June, and July",
       );
     });
 
     it("30 * * */10 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, every 10 months"
+        "At 30 minutes past the hour, every 10 months",
       );
     });
 
     it("30 * * 2/11 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, every 11 months, March through December"
+        "At 30 minutes past the hour, every 11 months, March through December",
       );
     });
 
     it("30 * * 1/2 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, every 2 months, February through December"
+        "At 30 minutes past the hour, every 2 months, February through December",
       );
     });
 
     it("30 * * JAN *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { monthStartIndexZero: true }),
-        "At 30 minutes past the hour, only in January"
+        "At 30 minutes past the hour, only in January",
       );
     });
   });
@@ -626,7 +808,7 @@ describe("Cronstrue", function () {
     it("*/5 15 * * MON-FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 5 minutes, between 03:00 PM and 03:59 PM, Monday through Friday"
+        "Every 5 minutes, between 03:00 PM and 03:59 PM, Monday through Friday",
       );
     });
 
@@ -634,10 +816,22 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every minute, on the third Monday of the month");
     });
 
+    it("0 0 ? * MON#1", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the first Monday of the month");
+    });
+
+    it("0 0 ? * MON#2", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the second Monday of the month");
+    });
+
+    it("0 0 ? * MON#5", function () {
+      assert.equal(cronstrue.toString(this.test?.title as string), "At 12:00 AM, on the fifth Monday of the month");
+    });
+
     it("* * * * MON#3,THU#1", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every minute, on the third Monday and first Thursday of the month"
+        "Every minute, on the third Monday and first Thursday of the month",
       );
     });
 
@@ -648,7 +842,7 @@ describe("Cronstrue", function () {
     it("5-10 30-35 10-12 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Seconds 5 through 10 past the minute, minutes 30 through 35 past the hour, between 10:00 AM and 12:59 PM"
+        "Seconds 5 through 10 past the minute, minutes 30 through 35 past the hour, between 10:00 AM and 12:59 PM",
       );
     });
 
@@ -663,35 +857,35 @@ describe("Cronstrue", function () {
     it("2-59/3 1,9,22 11-26 1-6 ?", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 3 minutes, minutes 2 through 59 past the hour, at 01:00 AM, 09:00 AM, and 10:00 PM, between day 11 and 26 of the month, January through June"
+        "Every 3 minutes, minutes 2 through 59 past the hour, at 01:00 AM, 09:00 AM, and 10:00 PM, between day 11 and 26 of the month, January through June",
       );
     });
 
     it("23 12 * JAN-FEB * 2013-2014", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:23 PM, January through February, 2013 through 2014"
+        "At 12:23 PM, January through February, 2013 through 2014",
       );
     });
 
     it("23 12 * JAN-MAR * 2013-2015", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:23 PM, January through March, 2013 through 2015"
+        "At 12:23 PM, January through March, 2013 through 2015",
       );
     });
 
     it("12-50 0-10 6 * * * 2022", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Seconds 12 through 50 past the minute, minutes 0 through 10 past the hour, at 06:00 AM, only in 2022"
+        "Seconds 12 through 50 past the minute, minutes 0 through 10 past the hour, at 06:00 AM, only in 2022",
       );
     });
 
     it("0 0/30 8-9 5,20 * ?", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 30 minutes, between 08:00 AM and 09:59 AM, on day 5 and 20 of the month"
+        "Every 30 minutes, between 08:00 AM and 09:59 AM, on day 5 and 20 of the month",
       );
     });
 
@@ -702,14 +896,14 @@ describe("Cronstrue", function () {
     it("0 25 7-19/8 ? * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 25 minutes past the hour, every 8 hours, between 07:00 AM and 07:59 PM"
+        "At 25 minutes past the hour, every 8 hours, between 07:00 AM and 07:59 PM",
       );
     });
 
     it("0 25 7-20/13 ? * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 25 minutes past the hour, every 13 hours, between 07:00 AM and 08:59 PM"
+        "At 25 minutes past the hour, every 13 hours, between 07:00 AM and 08:59 PM",
       );
     });
 
@@ -728,49 +922,49 @@ describe("Cronstrue", function () {
     it("* * * ? * 1-5/2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every second, every 2 days of the week, Monday through Friday"
+        "Every second, every 2 days of the week, Monday through Friday",
       );
     });
 
     it("0 5 7 2 1/3 ? *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 07:05 AM, on day 2 of the month, every 3 months"
+        "At 07:05 AM, on day 2 of the month, every 3 months",
       );
     });
 
     it("0 15 6 1 1 ? 1/2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 06:15 AM, on day 1 of the month, only in January, every 2 years"
+        "At 06:15 AM, on day 1 of the month, only in January, every 2 years",
       );
     });
 
     it("2,4-5 1 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 2 and 4 through 5 minutes past the hour, at 01:00 AM"
+        "At 2 and 4 through 5 minutes past the hour, at 01:00 AM",
       );
     });
 
     it("2,26-28 18 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 2 and 26 through 28 minutes past the hour, at 06:00 PM"
+        "At 2 and 26 through 28 minutes past the hour, at 06:00 PM",
       );
     });
 
     it("5/30 * * * * ?", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 30 seconds, starting at 5 seconds past the minute"
+        "Every 30 seconds, starting at 5 seconds past the minute",
       );
     });
 
     it("0 5/30 * * * ?", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 30 minutes, starting at 5 minutes past the hour"
+        "Every 30 minutes, starting at 5 minutes past the hour",
       );
     });
 
@@ -781,21 +975,21 @@ describe("Cronstrue", function () {
     it("0 5 7 2/3 * ? *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 07:05 AM, every 3 days in a month, starting on day 2 of the month"
+        "At 07:05 AM, every 3 days in a month, starting on day 2 of the month",
       );
     });
 
     it("0 5 7 ? 3/2 ? *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 07:05 AM, every 2 months, March through December"
+        "At 07:05 AM, every 2 months, March through December",
       );
     });
 
     it("0 5 7 ? * 2/3 *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 07:05 AM, every 3 days of the week, Tuesday through Saturday"
+        "At 07:05 AM, every 3 days of the week, Tuesday through Saturday",
       );
     });
 
@@ -806,28 +1000,28 @@ describe("Cronstrue", function () {
     it("0 30 10-13 ? * wed,FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 30 minutes past the hour, between 10:00 AM and 01:59 PM, only on Wednesday and Friday"
+        "At 30 minutes past the hour, between 10:00 AM and 01:59 PM, only on Wednesday and Friday",
       );
     });
 
     it("0 00 10 ? * MON-THU,SUN *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 10:00 AM, only on Monday through Thursday and Sunday"
+        "At 10:00 AM, only on Monday through Thursday and Sunday",
       );
     });
 
     it("0 0 0 1,2,3 * WED,FRI", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, on day 1, 2, and 3 of the month, and on Wednesday and Friday"
+        "At 12:00 AM, on day 1, 2, and 3 of the month, and on Wednesday and Friday",
       );
     });
 
     it("0 2,16 1,8,15,22 * 1,2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, and on Monday and Tuesday"
+        "At 02:00 AM and 04:00 PM, on day 1, 8, 15, and 22 of the month, and on Monday and Tuesday",
       );
     });
 
@@ -842,49 +1036,49 @@ describe("Cronstrue", function () {
     it("5 30 6,14,16 5 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 5 seconds past the minute, at 30 minutes past the hour, at 06:00 AM, 02:00 PM, and 04:00 PM, on day 5 of the month"
+        "At 5 seconds past the minute, at 30 minutes past the hour, at 06:00 AM, 02:00 PM, and 04:00 PM, on day 5 of the month",
       );
     });
 
     it("0-20/3 9 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM"
+        "Every 3 minutes, minutes 0 through 20 past the hour, between 09:00 AM and 09:59 AM",
       );
     });
 
     it("5-45/10,*/5,9 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 10 minutes, minutes 5 through 45 past the hour, every 5 minutes, and at 9 minutes past the hour"
+        "Every 10 minutes, minutes 5 through 45 past the hour, every 5 minutes, and at 9 minutes past the hour",
       );
     });
 
     it("*/5 0-4,6-8 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every 5 minutes, at 12:00 AM through 04:59 AM and 06:00 AM through 08:59 AM"
+        "Every 5 minutes, at 12:00 AM through 04:59 AM and 06:00 AM through 08:59 AM",
       );
     });
 
     it("0 9 * * 0-4/2,5,6", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 09:00 AM, every 2 days of the week, Sunday through Thursday, only on Friday, and only on Saturday"
+        "At 09:00 AM, every 2 days of the week, Sunday through Thursday, only on Friday, and only on Saturday",
       );
     });
 
     it("0 9 * * 5,0-4/2", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 09:00 AM, only on Friday and every 2 days of the week, Sunday through Thursday"
+        "At 09:00 AM, only on Friday and every 2 days of the week, Sunday through Thursday",
       );
     });
 
     it("* 1-2,22-23 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "Every minute, at 01:00 AM through 02:59 AM and 10:00 PM through 11:59 PM"
+        "Every minute, at 01:00 AM through 02:59 AM and 10:00 PM through 11:59 PM",
       );
     });
   });
@@ -893,14 +1087,14 @@ describe("Cronstrue", function () {
     it("@yearly", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, on day 1 of the month, only in January"
+        "At 12:00 AM, on day 1 of the month, only in January",
       );
     });
 
     it("@annually", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
-        "At 12:00 AM, on day 1 of the month, only in January"
+        "At 12:00 AM, on day 1 of the month, only in January",
       );
     });
 
@@ -938,15 +1132,9 @@ describe("Cronstrue", function () {
       for (const [alias, description] of aliases) {
         for (const dayOfWeekStartIndexZero of [true, false]) {
           for (const monthStartIndexZero of [false, true]) {
-            it(
-              `${alias}, dayOfWeekStartIndexZero=${dayOfWeekStartIndexZero}, monthStartIndexZero=${monthStartIndexZero}`,
-              function () {
-                assert.equal(
-                  cronstrue.toString(alias, { dayOfWeekStartIndexZero, monthStartIndexZero }),
-                  description
-                );
-              }
-            );
+            it(`${alias}, dayOfWeekStartIndexZero=${dayOfWeekStartIndexZero}, monthStartIndexZero=${monthStartIndexZero}`, function () {
+              assert.equal(cronstrue.toString(alias, { dayOfWeekStartIndexZero, monthStartIndexZero }), description);
+            });
           }
         }
       }
@@ -957,7 +1145,7 @@ describe("Cronstrue", function () {
     it("30 4 1 * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "At 04:30 AM, on day 1 of the month"
+        "At 04:30 AM, on day 1 of the month",
       );
     });
 
@@ -970,52 +1158,58 @@ describe("Cronstrue", function () {
       assert.equal(cronstrue.toString(this.test?.title as string), "Every 50 minutes");
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "Every 50 minutes, at 0 and 50 minutes past the hour, every hour, every day"
+        "Every 50 minutes, at 0 and 50 minutes past the hour, every hour, every day",
       );
     });
 
     it("*/7 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "Every 7 minutes, at 0, 7, 14, 21, 28, 35, 42, 49, and 56 minutes past the hour, every hour, every day"
+        "Every 7 minutes, at 0, 7, 14, 21, 28, 35, 42, 49, and 56 minutes past the hour, every hour, every day",
       );
     });
 
     it("*/59 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "Every 59 minutes, at 0 and 59 minutes past the hour, every hour, every day"
+        "Every 59 minutes, at 0 and 59 minutes past the hour, every hour, every day",
       );
     });
 
     it("0 */7 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "On the hour, every 7 hours, at 12:00 AM, 07:00 AM, 02:00 PM, and 09:00 PM, every day"
+        "On the hour, every 7 hours, at 12:00 AM, 07:00 AM, 02:00 PM, and 09:00 PM, every day",
       );
     });
 
     it("*/50 * * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "Every 50 seconds, at 0 and 50 seconds past the minute, every minute, every hour, every day"
+        "Every 50 seconds, at 0 and 50 seconds past the minute, every minute, every hour, every day",
       );
     });
 
     // A step which divides the field evenly is a constant interval and stays as it is
     it("*/15 * * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "Every 15 minutes, every hour, every day");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 15 minutes, every hour, every day",
+      );
     });
 
     it("*/30 * * * *", function () {
-      assert.equal(cronstrue.toString(this.test?.title as string, { verbose: true }), "Every 30 minutes, every hour, every day");
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { verbose: true }),
+        "Every 30 minutes, every hour, every day",
+      );
     });
 
     // A range with a step already states its bounds
     it("5-30/7 * * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string, { verbose: true }),
-        "Every 7 minutes, minutes 5 through 30 past the hour, every hour, every day"
+        "Every 7 minutes, minutes 5 through 30 past the hour, every hour, every day",
       );
     });
   });
@@ -1087,6 +1281,72 @@ describe("Cronstrue", function () {
       assert.throws(function () {
         cronstrue.toString("0 0 0 1 12 8", { dayOfWeekStartIndexZero: false });
       }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#0");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#6");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * 1#9");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * MON#01");
+      }, "DOW nth weekday must be >= 1 and <= 5");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 ? * 2#06", { dayOfWeekStartIndexZero: false });
+      }, "DOW nth weekday must be >= 1 and <= 5");
+    });
+
+    it("range end out of range", function () {
+      assert.throws(function () {
+        cronstrue.toString("10-60 * * * * *");
+      }, "seconds part must be >= 0 and <= 59");
+
+      assert.throws(function () {
+        cronstrue.toString("0 10-70 * * * *");
+      }, "minutes part must be >= 0 and <= 59");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 20-30 * * *");
+      }, "hours part must be >= 0 and <= 23");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 25-40 * *");
+      }, "DOM part must be >= 1 and <= 31");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 1 10-15 *");
+      }, "month part must be >= 1 and <= 12");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-9", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-0", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-10", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 1-70", { dayOfWeekStartIndexZero: true });
+      }, "DOW part must be >= 0 and <= 6");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 10", { dayOfWeekStartIndexZero: false });
+      }, "DOW part must be >= 1 and <= 7");
+
+      assert.throws(function () {
+        cronstrue.toString("0 0 0 * * 70", { dayOfWeekStartIndexZero: true });
+      }, "DOW part must be >= 0 and <= 6");
     });
 
     it("garbage expression", function () {
@@ -1109,7 +1369,7 @@ describe("Cronstrue", function () {
 
     it("null expression", function () {
       assert.throws(function () {
-        cronstrue.toString((null as any) as string);
+        cronstrue.toString(null as any as string);
       }, "Error: cron expression is empty");
     });
 
@@ -1139,7 +1399,11 @@ describe("Cronstrue", function () {
     it("garbage expression with option (throwExceptionOnParseError = false)", function () {
       assert.equal(
         cronstrue.toString("garbage", { throwExceptionOnParseError: false }),
-        "An error occurred when generating the expression description. Check the cron expression syntax."
+        "An error occurred when generating the expression description. Check the cron expression syntax.",
+      );
+      assert.equal(
+        cronstrue.toString("0 0 ? * MON#6", { throwExceptionOnParseError: false }),
+        "An error occurred when generating the expression description. Check the cron expression syntax.",
       );
     });
   });

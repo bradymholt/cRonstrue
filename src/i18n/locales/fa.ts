@@ -2,19 +2,6 @@
 
 import { Locale } from "../locale";
 export class fa implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
-
   use24HourTimeFormatByDefault() {
     return true;
   }
@@ -107,7 +94,7 @@ export class fa implements Locale {
     return "آخرین روز";
   }
   commaOnTheLastX0OfTheMonth() {
-    return ", در %s ماه";
+    return ", در آخرین %s ماه";
   }
   commaOnlyOnX0() {
     return ", فقط در %s";
@@ -125,13 +112,13 @@ export class fa implements Locale {
     return ", در آخرین روز ماه";
   }
   commaOnTheLastWeekdayOfTheMonth() {
-    return ", در آخرین روز ماه";
+    return ", در آخرین روز کاری ماه";
   }
   commaDaysBeforeTheLastDayOfTheMonth() {
     return ", %s روز قبل از آخرین روز ماه";
   }
   firstWeekday() {
-    return "اولین روز";
+    return "اولین روز کاری";
   }
   weekdayNearestDayX0() {
     return "روز نزدیک به روز %s";

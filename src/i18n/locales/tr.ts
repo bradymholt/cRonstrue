@@ -2,18 +2,6 @@
 
 import { Locale } from "../locale";
 export class tr implements Locale {
-  atX0SecondsPastTheMinuteGt20(): string|null {
-    return null;
-  }
-  atX0MinutesPastTheHourGt20(): string|null {
-    return null;
-  }
-  commaMonthX0ThroughMonthX1(): string|null {
-    return null;
-  }
-  commaYearX0ThroughYearX1(): string|null {
-    return null;
-  }
   use24HourTimeFormatByDefault() {
     return true;
   }
@@ -132,7 +120,7 @@ export class tr implements Locale {
     return "ilk iş günü";
   }
   weekdayNearestDayX0() {
-    return "%s. günü sonrasındaki ilk iş günü";
+    return "%s. gününe en yakın iş günü";
   }
   commaOnTheX0OfTheMonth() {
     return ", ayın %s";

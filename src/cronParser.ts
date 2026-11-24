@@ -1,5 +1,24 @@
 import RangeValidator from "./rangeValidator";
 
+const DAYS: { [key: string]: number } = { SUN: 0, MON: 1, TUE: 2, WED: 3, THU: 4, FRI: 5, SAT: 6 };
+
+const MONTHS: { [key: string]: number } = {
+  JAN: 1,
+  FEB: 2,
+  MAR: 3,
+  APR: 4,
+  MAY: 5,
+  JUN: 6,
+  JUL: 7,
+  AUG: 8,
+  SEP: 9,
+  OCT: 10,
+  NOV: 11,
+  DEC: 12,
+};
+
+const STEP_RANGE_THROUGH: { [index: number]: string } = { 4: "12", 5: "6", 6: "9999" };
+
 /**
  * Parses and normalizes a cron expression
  * @export
@@ -10,11 +29,7 @@ export class CronParser {
   dayOfWeekStartIndexZero: boolean;
   monthStartIndexZero: boolean;
 
-  constructor(
-    expression: string,
-    dayOfWeekStartIndexZero: boolean = true,
-    monthStartIndexZero: boolean = false
-  ) {
+  constructor(expression: string, dayOfWeekStartIndexZero: boolean = true, monthStartIndexZero: boolean = false) {
     this.expression = expression;
     this.dayOfWeekStartIndexZero = dayOfWeekStartIndexZero;
     this.monthStartIndexZero = monthStartIndexZero;
@@ -27,14 +42,14 @@ export class CronParser {
   parse(): string[] {
     let parsed: string[];
 
-    var expression = this.expression ?? '';
+    const expression = this.expression ?? "";
 
     if (expression === "@reboot") {
       // Special handling for @reboot - create a marker array with a special format
       parsed = ["@reboot", "", "", "", "", "", ""];
       return parsed;
-    } else if (expression.startsWith('@')) {
-      var special = this.parseSpecial(this.expression);
+    } else if (expression.startsWith("@")) {
+      const special = this.parseSpecial(this.expression);
       parsed = this.extractParts(special);
     } else {
       parsed = this.extractParts(this.expression);
@@ -48,19 +63,18 @@ export class CronParser {
 
   parseSpecial(expression: string): string {
     const specialExpressions: { [key: string]: string } = {
-        '@yearly': '0 0 1 JAN *',
-        '@annually': '0 0 1 JAN *',
-        '@monthly': '0 0 1 * *',
-        '@weekly': '0 0 * * SUN',
-        '@daily': '0 0 * * *',
-        '@midnight': '0 0 * * *',
-        '@hourly': '0 * * * *',
-        '@reboot': '@reboot'
+      "@yearly": "0 0 1 JAN *",
+      "@annually": "0 0 1 JAN *",
+      "@monthly": "0 0 1 * *",
+      "@weekly": "0 0 * * SUN",
+      "@daily": "0 0 * * *",
+      "@midnight": "0 0 * * *",
+      "@hourly": "0 * * * *",
     };
 
     const special = specialExpressions[expression];
     if (!special) {
-        throw new Error('Unknown special expression.');
+      throw new Error("Unknown special expression.");
     }
 
     return special;
@@ -95,7 +109,7 @@ export class CronParser {
 
     if (parsed.length < 5) {
       throw new Error(
-        `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`
+        `Expression has only ${parsed.length} part${parsed.length == 1 ? "" : "s"}. At least 5 parts are required.`,
       );
     } else if (parsed.length == 5) {
       // 5 part cron so shift array past seconds element
@@ -126,6 +140,11 @@ export class CronParser {
   }
 
   protected normalize(expressionParts: string[]): void {
+    // Special characters are case-insensitive (Quartz upper-cases the whole expression), so "5l" is "5L"
+    for (let i = 0; i < expressionParts.length; i++) {
+      expressionParts[i] = expressionParts[i].toUpperCase();
+    }
+
     // Convert ? to * for DOM and DOW
     expressionParts[3] = expressionParts[3].replace("?", "*");
     expressionParts[5] = expressionParts[5].replace("?", "*");
@@ -133,41 +152,32 @@ export class CronParser {
     // Convert ? to * for Hour. ? isn't valid for hour position but we can work around it.
     expressionParts[2] = expressionParts[2].replace("?", "*");
 
-    // Convert 0/, 1/ to */
-    if (expressionParts[0].indexOf("0/") == 0) {
-      // Seconds
-      expressionParts[0] = expressionParts[0].replace("0/", "*/");
+    // A step from the field's first value ("0/5" for minutes, "1/5" for DOM) is the same as "*/5"
+    const firstValueSteps: { [index: number]: string } = { 0: "0/", 1: "0/", 2: "0/", 3: "1/", 6: "1/" };
+    if (!this.monthStartIndexZero) {
+      // with monthStartIndexZero, 1/ starts in February so it is not the same as */
+      firstValueSteps[4] = "1/";
+    }
+    for (const index of Object.keys(firstValueSteps).map(Number)) {
+      if (expressionParts[index].indexOf(firstValueSteps[index]) == 0) {
+        expressionParts[index] = expressionParts[index].replace(firstValueSteps[index], "*/");
+      }
     }
 
-    if (expressionParts[1].indexOf("0/") == 0) {
-      // Minutes
-      expressionParts[1] = expressionParts[1].replace("0/", "*/");
-    }
-
-    if (expressionParts[2].indexOf("0/") == 0) {
-      // Hours
-      expressionParts[2] = expressionParts[2].replace("0/", "*/");
-    }
-
-    if (expressionParts[3].indexOf("1/") == 0) {
-      // DOM
-      expressionParts[3] = expressionParts[3].replace("1/", "*/");
-    }
-
-    if (!this.monthStartIndexZero && expressionParts[4].indexOf("1/") == 0) {
-      // Month (with monthStartIndexZero, 1/ starts in February so it is not the same as */)
-      expressionParts[4] = expressionParts[4].replace("1/", "*/");
-    }
-
-    if (expressionParts[6].indexOf("1/") == 0) {
-      // Years
-      expressionParts[6] = expressionParts[6].replace("1/", "*/");
+    if (this.dayOfWeekStartIndexZero) {
+      // "0-7" runs from Sunday to Sunday again, i.e. every day. Read it as 0-6 so that 7 => 0 below
+      // does not turn it into "0-0" (Sunday through Sunday).
+      expressionParts[5] = expressionParts[5]
+        .split(",")
+        .map((item) => item.replace(/^0-7(?=\/|$)/, "0-6"))
+        .join(",");
     }
 
     // Adjust DOW based on dayOfWeekStartIndexZero option
     // Normalized DOW: 0=Sunday/6=Saturday
-    expressionParts[5] = expressionParts[5].replace(/(^\d)|([^#/\s]\d)/g, (t) => {
-      // skip anything preceeded by # or /
+    expressionParts[5] = expressionParts[5].replace(/(^\d+)|([^#/\s\d]\d+)/g, (t) => {
+      // Skip anything preceeded by # or /. Multi-digit numbers (e.g. "10") are adjusted as a whole
+      // so that out-of-range values are caught by validation instead of being partially shifted.
       let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
       let dowDigitsAdjusted: string = dowDigits;
 
@@ -185,15 +195,11 @@ export class CronParser {
       return t.replace(dowDigits, dowDigitsAdjusted);
     });
 
-    // Convert DOW 'L' to '6' (Saturday)
-    if (expressionParts[5] == "L") {
-      expressionParts[5] = "6";
-    }
-
-    // Convert DOM '?' to '*'
-    if (expressionParts[3] == "?") {
-      expressionParts[3] = "*";
-    }
+    // Convert DOW 'L' to '6' (Saturday), also when it is one item of a list ("1,L")
+    expressionParts[5] = expressionParts[5]
+      .split(",")
+      .map((item) => (item == "L" ? "6" : item))
+      .join(",");
 
     // i.e. 15W-2 or 15W+2 (offset from the nearest weekday)
     const weekdayOffsetRegex = /^\d{1,2}W[+-]\d{1,2}$/;
@@ -204,57 +210,39 @@ export class CronParser {
       !weekdayOffsetRegex.test(expressionParts[3])
     ) {
       throw new Error(
-        "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days."
+        "The 'W' character can be specified only when the day-of-month is a single day, not a range or list of days.",
       );
     }
 
     // Convert DOW SUN-SAT format to 0-6 format
-    var days: { [key: string]: number } = {
-      SUN: 0,
-      MON: 1,
-      TUE: 2,
-      WED: 3,
-      THU: 4,
-      FRI: 5,
-      SAT: 6,
-    };
-    for (let day in days) {
-      expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), days[day].toString());
+    for (const day in DAYS) {
+      expressionParts[5] = expressionParts[5].replace(new RegExp(day, "gi"), DAYS[day].toString());
     }
+
+    // Sunday can be written as both 0 and 7 ("0,7"), which are the same item once normalized; list it once
+    expressionParts[5] = expressionParts[5]
+      .split(",")
+      .filter((item, index, items) => item === "" || items.indexOf(item) === index)
+      .join(",");
 
     // Adjust month based on monthStartIndexZero option
     // Normalized Month: 1=JAN/12=DEC
     expressionParts[4] = expressionParts[4].replace(/(^\d{1,2})|([^#/\s\d]\d{1,2})/g, (t) => {
       // skip anything preceeded by # or /
-      let dowDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
-      let dowDigitsAdjusted: string = dowDigits;
+      const monthDigits = t.replace(/\D/, ""); // extract digit part (i.e. if "-2" or ",2", just take 2)
+      let monthDigitsAdjusted = monthDigits;
 
       if (this.monthStartIndexZero) {
         // if monthStartIndexZero==true, we will shift month number up so that JAN=1 and DEC=12
-        dowDigitsAdjusted = (parseInt(dowDigits) + 1).toString();
+        monthDigitsAdjusted = (parseInt(monthDigits) + 1).toString();
       }
 
-      return t.replace(dowDigits, dowDigitsAdjusted);
+      return t.replace(monthDigits, monthDigitsAdjusted);
     });
 
     // Convert JAN-DEC format to 1-12 format
-    var months: { [key: string]: number } = {
-      JAN: 1,
-      FEB: 2,
-      MAR: 3,
-      APR: 4,
-      MAY: 5,
-      JUN: 6,
-      JUL: 7,
-      AUG: 8,
-      SEP: 9,
-      OCT: 10,
-      NOV: 11,
-      DEC: 12,
-    };
-
-    for (let month in months) {
-      expressionParts[4] = expressionParts[4].replace(new RegExp(month, "gi"), months[month].toString());
+    for (const month in MONTHS) {
+      expressionParts[4] = expressionParts[4].replace(new RegExp(month, "gi"), MONTHS[month].toString());
     }
 
     // Convert 0 second to (empty)
@@ -298,27 +286,10 @@ export class CronParser {
            - DOW part '3/2' will be converted to '3-6/2' (every 2 days between Tuesday and Saturday)
       */
 
-      if (expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
-        let stepRangeThrough: string | null = null;
-        switch (i) {
-          case 4:
-            stepRangeThrough = "12";
-            break;
-          case 5:
-            stepRangeThrough = "6";
-            break;
-          case 6:
-            stepRangeThrough = "9999";
-            break;
-          default:
-            stepRangeThrough = null;
-            break;
-        }
-
-        if (stepRangeThrough !== null) {
-          let parts: string[] = expressionParts[i].split("/");
-          expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
-        }
+      const stepRangeThrough = STEP_RANGE_THROUGH[i];
+      if (stepRangeThrough && expressionParts[i].indexOf("/") > -1 && !/^\*|\-|\,/.test(expressionParts[i])) {
+        const parts = expressionParts[i].split("/");
+        expressionParts[i] = `${parts[0]}-${stepRangeThrough}/${parts[1]}`;
       }
     }
   }
@@ -349,8 +320,6 @@ export class CronParser {
   }
 
   protected validateOnlyExpectedCharactersFound(cronPart: string, allowedCharsExpression: string) {
-    // Write code that will ensure the expression string only contains numbers or any of the following characters , - * /
-    // If any other characters are found, it is an error.
     let invalidChars = cronPart.match(new RegExp(`[^${allowedCharsExpression}]+`, "gi"));
     if (invalidChars && invalidChars.length) {
       throw new Error(`Expression contains invalid values: '${invalidChars.toString()}'`);
