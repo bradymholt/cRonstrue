@@ -13,135 +13,309 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cRonstrue - translate cron expressions to human readable descriptions</title>
+    <meta name="description" content="cRonstrue is a JavaScript library that turns cron expressions like */5 * * * * into human readable descriptions like &quot;Every 5 minutes&quot;, in 40+ languages." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bradymholt.github.io/cRonstrue/" />
+    <meta property="og:title" content="cRonstrue - cron expressions in plain language" />
+    <meta property="og:description" content="Turn */5 * * * * into &quot;Every 5 minutes&quot;. A zero-dependency JavaScript library with 40+ languages." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#0b1f4d" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='white' stroke-width='2.5'/%3E%3Cpath d='M16 10.5V16l3.5 2.5' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="canonical" href="https://bradymholt.github.io/cRonstrue/" />
     <!-- prettier-ignore -->
     <style>
+      :root{
+        --bg:#f4f6fb;--surface:#fff;--text:#1a1f2e;--muted:#5b6478;--border:#dde2ec;
+        --accent:#1d4ed8;--accent-soft:#e8eefc;--result:#0b1f4d;--error:#b42318;--error-soft:#fdecea;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+        --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+        color-scheme:light;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#0e1117;--surface:#161b24;--text:#e6e9ef;--muted:#9aa3b5;--border:#2a3140;
+          --accent:#7aa2ff;--accent-soft:#1c2740;--result:#dbe5ff;--error:#ff8a80;--error-soft:#3a1d1d;
+          color-scheme:dark;
+        }
+      }
       *{box-sizing:border-box}
-      body{font-family:"Courier New",Courier,monospace;background:linear-gradient(90deg,#1CB5E0 0%,#000851 100%)}
-      h1,h2{margin:5px 0}
-      h1{font-size:2.5rem}
-      h2{font-size:1.5rem}
-      button,input,select{border:1px solid #a9a5a5;font-size:1rem}
-      input{padding:5px}
-      button,select{padding:4px}
-      button{cursor:pointer;font-weight:800}
-      main{background-color:#FFF;max-width:640px;margin:0 auto;border:1px solid #000;border-radius:5px;padding:25px;position:relative}
-      section{text-align:center;border-top:1px solid gray;border-bottom:1px solid gray;padding:20px 0}
-      div#description{padding-top:20px;color:#1234ae;font-weight:800;font-size:2rem;text-align:center}
-      @media only screen and (max-width: 640px) {form{display:flex;flex-direction:column} span#logo-lettering{display:inline-block}}
+      html{-webkit-text-size-adjust:100%}
+      body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55}
+      a{color:var(--accent)}
+      code,kbd{font-family:var(--mono);font-size:.92em}
+      .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+      header{padding:40px 0 8px}
+      .brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+      h1{margin:0;font-size:2rem;letter-spacing:-.02em}
+      h1 .stars{font-family:var(--mono);color:var(--accent);font-weight:600;font-size:1.1rem;margin-left:8px;letter-spacing:.1em}
+      .tagline{margin:6px 0 0;color:var(--muted);font-size:1.05rem}
+      .links{display:flex;gap:8px}
+      .links a{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);text-decoration:none;font-size:.9rem;font-weight:500}
+      .links a:hover{border-color:var(--accent)}
+      .links svg{width:16px;height:16px;fill:currentColor}
+      .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin:24px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+      .field{display:block;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+      .row{display:flex;gap:10px;flex-wrap:wrap}
+      .row > .grow{flex:1 1 260px;min-width:0}
+      input[type=text],select{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+      input[type=text]{font-family:var(--mono);font-size:1.25rem;letter-spacing:.04em}
+      input[type=text],select{height:50px}
+      select{font-size:1rem}
+      input:focus,select:focus,button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+      .locale{flex:0 1 220px}
+      #description{margin:22px 0 4px;min-height:1.3em;font-size:1.7rem;font-weight:650;line-height:1.3;color:var(--result);letter-spacing:-.01em}
+      #description.error{color:var(--error);font-size:1.05rem;font-weight:500;background:var(--error-soft);padding:10px 12px;border-radius:10px}
+      .examples{margin-top:18px}
+      .examples .field{margin-bottom:8px}
+      .chips{display:flex;flex-wrap:wrap;gap:6px}
+      .chip{font-family:var(--mono);font-size:.85rem;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
+      .chip:hover{border-color:var(--accent);background:var(--accent-soft)}
+      details{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+      summary{cursor:pointer;font-weight:600;color:var(--muted);font-size:.95rem}
+      .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px 16px;margin-top:12px}
+      .opts label{display:flex;align-items:flex-start;gap:8px;font-size:.92rem;cursor:pointer}
+      .opts input{margin-top:4px;accent-color:var(--accent)}
+      .opts code{color:var(--muted);font-size:.8rem;display:block}
+      .code{position:relative;margin-top:18px}
+      pre{margin:0;padding:14px 72px 14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow-x:auto;font-family:var(--mono);font-size:.88rem;line-height:1.5}
+      .copy{position:absolute;top:8px;right:8px;font:inherit;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer}
+      .copy:hover{color:var(--text);border-color:var(--accent)}
+      h2{font-size:1.15rem;margin:0 0 10px}
+      .about p{margin:0 0 12px}
+      .about ul{margin:0;padding-left:20px}
+      .about li{margin:4px 0}
+      footer{color:var(--muted);font-size:.88rem;padding:8px 0 40px;text-align:center}
+      @media (max-width:560px){
+        header{padding-top:24px}
+        h1{font-size:1.6rem}
+        .card{padding:18px}
+        .locale{flex:1 1 100%}
+        #description{font-size:1.35rem}
+      }
     </style>
   </head>
   <body>
-    <main>
-      <h1>cRonstrue <span id="logo-lettering">* * * * *</span></h1>
-      <h2>translate cron expressions to human readable descriptions</h2>
-      <section>
-        <form id="form">
-          <input type="text" id="expression" size="20" value="*/5 * * * *" />
-          <select id="locale">
-            <option value="en" selected>English</option>
-            <option value="ca">Catalan</option>
-            <option value="cs">Czech</option>
-            <option value="es">Spanish</option>
-            <option value="da">Danish</option>
-            <option value="de">German</option>
-            <option value="fi">Finnish</option>
-            <option value="fr">French</option>
-            <option value="ar">Arabic</option>
-            <option value="fa">Farsi</option>
-            <option value="he">Hebrew</option>
-            <option value="it">Italian</option>
-            <option value="id">Indonesia</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
-            <option value="nb">Norwegian</option>
-            <option value="nl">Dutch</option>
-            <option value="pl">Polish</option>
-            <option value="pt_BR">Portuguese (Brazil)</option>
-            <option value="pt_PT">Portuguese (Portugal)</option>
-            <option value="ro">Romanian</option>
-            <option value="ru">Russian</option>
-            <option value="sk">Slovakian</option>
-            <option value="sl">Slovenian</option>
-            <option value="sw">Swahili</option>
-            <option value="sv">Swedish</option>
-            <option value="tr">Turkish</option>
-            <option value="uk">Ukrainian</option>
-            <option value="zh_CN">Chinese (Simplified)</option>
-            <option value="zh_TW">Chinese (Traditional)</option>
-            <option value="be">Belarusian</option>
-            <option value="hu">Hungarian</option>
-            <option value="af">Afrikaans</option>
-          </select>
-          <button type="button" id="translate">Translate</button>
-        </form>
-        <div id="description">"Every 5 minutes"</div>
-      </section>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <h1>cRonstrue<span class="stars" aria-hidden="true">* * * * *</span></h1>
+          <nav class="links">
+            <a href="https://github.com/bradymholt/cRonstrue"
+              ><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg
+              >GitHub</a
+            >
+            <a href="https://www.npmjs.com/package/cronstrue">npm</a>
+          </nav>
+        </div>
+        <p class="tagline">Translate cron expressions into human readable descriptions.</p>
+      </header>
+
+      <main>
+        <section class="card" aria-label="Demo">
+          <form id="form" class="row" autocomplete="off">
+            <div class="grow">
+              <label class="field" for="expression">Cron expression</label>
+              <input type="text" id="expression" value="*/5 * * * *" spellcheck="false" autocapitalize="off" />
+            </div>
+            <div class="locale">
+              <label class="field" for="locale">Language</label>
+              <select id="locale"></select>
+            </div>
+          </form>
+
+          <div id="description" aria-live="polite"></div>
+
+          <div class="examples">
+            <span class="field">Try an example</span>
+            <div class="chips" id="examples"></div>
+          </div>
+
+          <details id="options">
+            <summary>Options</summary>
+            <div class="opts">
+              <label><input type="checkbox" data-opt="use24HourTimeFormat" /><span>24-hour time<code>use24HourTimeFormat</code></span></label>
+              <label><input type="checkbox" data-opt="verbose" /><span>Verbose<code>verbose</code></span></label>
+              <label><input type="checkbox" data-opt="trimHoursLeadingZero" /><span>Trim leading zero on hours<code>trimHoursLeadingZero</code></span></label>
+              <label><input type="checkbox" data-opt="logicalAndDayFields" /><span>AND day-of-month with day-of-week<code>logicalAndDayFields</code></span></label>
+              <label><input type="checkbox" data-opt="dayOfWeekStartIndexZero" data-default="true" checked /><span>Sunday is day 0<code>dayOfWeekStartIndexZero</code></span></label>
+              <label><input type="checkbox" data-opt="monthStartIndexZero" /><span>January is month 0<code>monthStartIndexZero</code></span></label>
+            </div>
+          </details>
+
+          <div class="code">
+            <pre><code id="snippet"></code></pre>
+            <button type="button" class="copy" data-copy="snippet">Copy</button>
+          </div>
+        </section>
+
+        <section class="card about">
+          <h2>Get started</h2>
+          <div class="code" style="margin-top:0">
+            <pre><code id="install">npm install cronstrue</code></pre>
+            <button type="button" class="copy" data-copy="install">Copy</button>
+          </div>
+          <p style="margin-top:12px">
+            See the <a href="https://github.com/bradymholt/cRonstrue#readme">README</a> for browser, CDN, CLI and i18n
+            usage.
+          </p>
+          <ul>
+            <li>Zero dependencies, with TypeScript type definitions</li>
+            <li>Supports all special characters, including <code>* / , - ? L W #</code></li>
+            <li>Supports 5, 6 (with seconds or year) and 7 part expressions</li>
+            <li>Supports <a href="https://www.quartz-scheduler.org/">Quartz Job Scheduler</a> expressions and nicknames like <code>@daily</code></li>
+            <li><span id="locale-count">40+</span> languages</li>
+          </ul>
+        </section>
+      </main>
+
       <footer>
-        <p>
-          cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of
-          the cron schedule. For example, given the expression "*/5 * * * *" it will output "Every 5 minutes". This
-          library was ported from the original C# implementation called
-          <a href="https://github.com/bradymholt/cron-expression-descriptor">cron-expression-descriptor</a> and is also
-          available in a few other languages. The library was created by and is maintained by
-          <a href="https://www.geekytidbits.com/">Brady Holt</a>, and has received many improvements from other
-          <a href="https://github.com/bradymholt/cRonstrue/graphs/contributors">contributors</a>.
-        </p>
-        <h3>Features</h3>
-        <ul>
-          <li>Zero dependencies</li>
-          <li>Supports all cron expression special characters including * / , - ? L W, #</li>
-          <li>Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions</li>
-          <li>Supports <a href="http://www.quartz-scheduler.org/">Quartz Job Scheduler</a> cron expressions</li>
-          <li>i18n support with 30+ languages</li>
-        </ul>
-        <a href="https://github.com/bradymholt/cRonstrue">cRonstrue on GitHub</a>
+        cRonstrue was ported from
+        <a href="https://github.com/bradymholt/cron-expression-descriptor">cron-expression-descriptor</a> and is maintained by
+        <a href="https://www.geekytidbits.com/">Brady Holt</a> with help from many
+        <a href="https://github.com/bradymholt/cRonstrue/graphs/contributors">contributors</a>. MIT licensed.
       </footer>
-      <a href="http://github.com/bradymholt/cRonstrue" class="github-corner" aria-label="View source on Github">
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 250 250"
-          style="fill: #151513; color: #fff; position: absolute; top: 0; border: 0; right: 0"
-          aria-hidden="true"
-        >
-          <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-          <path
-            d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-            fill="currentColor"
-            style="transform-origin: 130px 106px"
-            class="octo-arm"
-          ></path>
-          <path
-            d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-            fill="currentColor"
-            class="octo-body"
-          ></path>
-        </svg>
-      </a>
-    </main>
-    <script defer src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js"></script>
+    </div>
+
     <script defer src="https://unpkg.com/cronstrue@latest/dist/cronstrue-i18n.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const expressionElement = document.getElementById("expression");
-        const localeElement = document.getElementById("locale");
-        const translateButtonElement = document.getElementById("translate");
-        const descriptionElement = document.getElementById("description");
-        const formElement = document.getElementById("form");
-
-        formElement.onsubmit = translate
-        localeElement.onchange = translate
-        translateButtonElement.onclick = translate
-
-        function translate(e) {
-          e.preventDefault();
-
-          const expression = expressionElement.value;
-          const locale = localeElement.value;
-          const description = cronstrue.toString(expression, { throwExceptionOnParseError: false, locale });
-
-          descriptionElement.innerText = `"${description}"`;
+        const LANGUAGE_NAMES = {
+          en: "English", af: "Afrikaans", ar: "Arabic", az: "Azerbaijani", be: "Belarusian", bg: "Bulgarian",
+          ca: "Catalan", cs: "Czech", da: "Danish", de: "German", es: "Spanish", fa: "Farsi", fi: "Finnish",
+          fr: "French", he: "Hebrew", hr: "Croatian", hu: "Hungarian", id: "Indonesian", it: "Italian",
+          ja: "Japanese", ko: "Korean", my: "Malay (Malaysia)", nb: "Norwegian (Bokmål)", nl: "Dutch",
+          nn: "Norwegian (Nynorsk)", pl: "Polish", pt_BR: "Portuguese (Brazil)", pt_PT: "Portuguese (Portugal)",
+          ro: "Romanian", ru: "Russian", sk: "Slovak", sl: "Slovenian", sr: "Serbian", sv: "Swedish",
+          sw: "Swahili", tg: "Tajik", th: "Thai", tr: "Turkish", uk: "Ukrainian", vi: "Vietnamese",
+          zh_CN: "Chinese (Simplified)", zh_TW: "Chinese (Traditional)",
         };
+        const RTL = new Set(["ar", "fa", "he"]);
+        const EXAMPLES = [
+          "*/5 * * * *",
+          "0 9 * * 1-5",
+          "30 14 1,15 * *",
+          "0 0 L * *",
+          "0 12 * * MON#2",
+          "0 */2 8-18 ? * MON-FRI",
+          "0 0 6 W * ?",
+          "@weekly",
+        ];
+
+        const api = window.cronstrue && (window.cronstrue.default || window.cronstrue);
+        const expressionEl = document.getElementById("expression");
+        const localeEl = document.getElementById("locale");
+        const descriptionEl = document.getElementById("description");
+        const snippetEl = document.getElementById("snippet");
+        const optionEls = [...document.querySelectorAll("[data-opt]")];
+
+        if (!api) {
+          descriptionEl.className = "error";
+          descriptionEl.textContent = "Could not load cRonstrue from unpkg. Please try again later.";
+          return;
+        }
+
+        const displayName = (code) => {
+          if (LANGUAGE_NAMES[code]) return LANGUAGE_NAMES[code];
+          try {
+            return new Intl.DisplayNames(["en"], { type: "language" }).of(code.replace("_", "-")) || code;
+          } catch {
+            return code;
+          }
+        };
+        const codes = Object.keys(api.locales || { en: true }).sort((a, b) =>
+          a === "en" ? -1 : b === "en" ? 1 : displayName(a).localeCompare(displayName(b))
+        );
+        for (const code of codes) localeEl.add(new Option(`${displayName(code)} (${code})`, code));
+        document.getElementById("locale-count").textContent = codes.length;
+
+        const examplesEl = document.getElementById("examples");
+        for (const example of EXAMPLES) {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "chip";
+          chip.textContent = example;
+          chip.onclick = () => {
+            expressionEl.value = example;
+            update();
+            expressionEl.focus();
+          };
+          examplesEl.appendChild(chip);
+        }
+
+        const isDefault = (el) => el.checked === (el.dataset.default === "true");
+
+        function readState() {
+          const params = new URLSearchParams(location.hash.slice(1));
+          if (params.has("expr")) expressionEl.value = params.get("expr");
+          if (params.has("locale") && codes.includes(params.get("locale"))) localeEl.value = params.get("locale");
+          for (const el of optionEls) {
+            if (params.has(el.dataset.opt)) el.checked = params.get(el.dataset.opt) === "true";
+          }
+          if (optionEls.some((el) => !isDefault(el))) document.getElementById("options").open = true;
+        }
+
+        function writeState() {
+          const params = new URLSearchParams();
+          params.set("expr", expressionEl.value);
+          if (localeEl.value !== "en") params.set("locale", localeEl.value);
+          for (const el of optionEls) if (!isDefault(el)) params.set(el.dataset.opt, String(el.checked));
+          history.replaceState(null, "", "#" + params.toString());
+        }
+
+        function update() {
+          const expression = expressionEl.value.trim();
+          const locale = localeEl.value;
+          const options = {};
+          if (locale !== "en") options.locale = locale;
+          for (const el of optionEls) if (!isDefault(el)) options[el.dataset.opt] = el.checked;
+
+          descriptionEl.dir = RTL.has(locale) ? "rtl" : "ltr";
+          if (!expression) {
+            descriptionEl.className = "";
+            descriptionEl.textContent = "";
+          } else {
+            try {
+              descriptionEl.textContent = api.toString(expression, options);
+              descriptionEl.className = "";
+            } catch (e) {
+              descriptionEl.textContent = String(e && e.message ? e.message : e);
+              descriptionEl.className = "error";
+            }
+          }
+
+          const optionsText = Object.keys(options).length
+            ? ", " + JSON.stringify(options).replace(/"(\w+)":/g, "$1: ").replace(/,/g, ", ").replace(/^\{/, "{ ").replace(/\}$/, " }")
+            : "";
+          snippetEl.textContent =
+            (locale !== "en" ? `import cronstrue from "cronstrue";\nimport "cronstrue/locales/${locale}";\n\n` : `import cronstrue from "cronstrue";\n\n`) +
+            `cronstrue.toString(${JSON.stringify(expression)}${optionsText});`;
+
+          writeState();
+        }
+
+        for (const button of document.querySelectorAll(".copy")) {
+          button.onclick = async () => {
+            try {
+              await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
+              button.textContent = "Copied";
+            } catch {
+              button.textContent = "Copy failed";
+            }
+            setTimeout(() => (button.textContent = "Copy"), 1500);
+          };
+        }
+
+        document.getElementById("form").onsubmit = (e) => e.preventDefault();
+        expressionEl.addEventListener("input", update);
+        localeEl.addEventListener("change", update);
+        for (const el of optionEls) el.addEventListener("change", update);
+        window.addEventListener("hashchange", () => {
+          readState();
+          update();
+        });
+
+        readState();
+        update();
       });
     </script>
   </body>
