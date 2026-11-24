@@ -1,4 +1,11 @@
-# cRonstrue ![Build Status](https://github.com/bradymholt/cRonstrue/workflows/Build/badge.svg) [![NPM Package](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+# cRonstrue
+
+[![Build](https://img.shields.io/github/actions/workflow/status/bradymholt/cRonstrue/build.yml?branch=main&label=build)](https://github.com/bradymholt/cRonstrue/actions/workflows/build.yml)
+[![npm version](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+[![npm downloads](https://img.shields.io/npm/dm/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+[![Bundle size](https://img.shields.io/bundlejs/size/cronstrue)](https://bundlejs.com/?q=cronstrue)
+[![Types](https://img.shields.io/npm/types/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
+[![License: MIT](https://img.shields.io/npm/l/cronstrue.svg)](https://github.com/bradymholt/cRonstrue/blob/main/LICENSE)
 
 <img align="left" src="https://user-images.githubusercontent.com/759811/210273710-b13913e2-0a71-4d9d-94da-1fe538b8a73e.gif"/>
 
@@ -10,19 +17,25 @@
 
 cRonstrue is a JavaScript library that parses a cron expression and outputs a human readable description of the cron schedule.  For example, given the expression "*/5 * * * *" it will output "Every 5 minutes".
 
-This library was ported from the original C# implementation called [cron-expression-descriptor](https://github.com/bradymholt/cron-expression-descriptor) and is also available in a [few other languages](https://github.com/bradymholt/cron-expression-descriptor#ports).
+```js
+cronstrue.toString("*/5 * * * *"); // "Every 5 minutes"
+cronstrue.toString("0 23 ? * MON-FRI"); // "At 11:00 PM, Monday through Friday"
+cronstrue.toString("0 9 * * 1", { locale: "fr" }); // "À 09:00, uniquement le lundi"
+```
+
+**[Try it in the live demo →](https://bradymholt.github.io/cRonstrue/)**
+
+This library was ported from the original C# implementation called [cron-expression-descriptor](https://github.com/bradymholt/cron-expression-descriptor) and is also available in [Java, Python, Ruby, Go, PHP, Rust, Swift and more](https://github.com/bradymholt/cron-expression-descriptor#ports).
 
 ## Features
 - Zero dependencies
+- TypeScript type definitions included
 - Supports all cron expression special characters including * / , - ? L W, #
 - Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
-- [Quartz Job Scheduler](http://www.quartz-scheduler.org/) cron expressions are supported
-- Supports time specification _nicknames_ (@yearly, @annually, @monthly, @weekly, @daily)
+- [Quartz Job Scheduler](https://www.quartz-scheduler.org/) cron expressions are supported
+- Supports time specification _nicknames_ (@yearly, @annually, @monthly, @weekly, @daily, @midnight, @hourly, @reboot)
 - i18n support with 40+ languages
-
-## Demo
-
-A demo is available [here](http://bradymholt.github.io/cRonstrue/#cronstrue-demo).
+- CLI: `npx cronstrue "*/5 * * * *"`
 
 ## Installation
 cRonstrue is exported as an [UMD](https://github.com/umdjs/umd) module so it will work in an [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD), [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) or browser global context.
@@ -66,7 +79,7 @@ A simple way to load the library in a browser is by using the [unpkg](https://un
 <script src="https://unpkg.com/cronstrue@latest/dist/cronstrue.min.js" async></script>
 ```
 
-Using the "latest" tag will result in a 302 redirect to the latest version tag so it is recommended to use a specific version tag such as https://unpkg.com/cronstrue@1.48.0/dist/cronstrue.min.js to avoid this redirect.
+Using the "latest" tag will result in a 302 redirect to the latest version tag so it is recommended to use a specific version tag such as https://unpkg.com/cronstrue@3.48.0/dist/cronstrue.min.js to avoid this redirect.
 
 ## Usage
 
@@ -128,7 +141,7 @@ To use the i18n support cRonstrue provides, you can either import all the suppor
 
 ### All Locales
 
-You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module (~130k, minified) that will take longer to load, particularly when sending down to a browser.
+You can import all locales at once with `cronstrue/i18n`.  This approach has the advantage of only having to load one module and having access to all supported locales.  The tradeoff with this approach is a larger module (~190k, minified) that will take longer to load, particularly when sending down to a browser.
 
 ```js
 // Node / CommonJS
@@ -138,7 +151,7 @@ const cronstrue = require('cronstrue/i18n');
 import cronstrue from 'cronstrue/i18n';
 
 // Browser
-<script src="https://unpkg.com/cronstrue@latest/cronstrue-i18n.min.js" async></script>
+<script src="https://unpkg.com/cronstrue@latest/dist/cronstrue-i18n.min.js" async></script>
 
 cronstrue.toString("*/5 * * * *", { locale: "fr" }); // => Toutes les 5 minutes
 cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
@@ -146,7 +159,7 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 ### Individual Locales
 
-You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 42k (minified) and each locale is about 4k (minified) in size.
+You can also load the main cronstrue module and then load individual locale modules you want to have access to.  This works well when you have one or more locales you know you need access to and want to minimize load time, particularly when sending down to a browser.  The main cronstrue module is about 26k (minified) and each locale is about 5k (minified) in size.
 
 ```js
 // Node / CommonJS
@@ -172,47 +185,50 @@ cronstrue.toString("*/5 * * * *", { locale: "es" }); // => Cada 5 minutos
 
 The following locales can be passed in for the `locale` option.  Thank you to the author (shown below) of each translation!
 
-- en - English ([Brady Holt](https://github.com/bradymholt))
-- af - Afrikaans ([Michael van Niekerk](https://github.com/mvniekerk))
-- ar - Arabic ([Mohamed Nehad Shalabi](https://github.com/mohamednehad450))
-- az - Azerbaijani ([Jamal Kamaladdin](https://github.com/jamalkamaladdin))
-- be - Belarusian ([Kirill Mikulich](https://github.com/KirillMikulich))
-- bg - Bulgarian ([kamenf](https://github.com/kamenf))
-- ca - Catalan ([Francisco Javier Barrena](https://github.com/fjbarrena))
-- cs - Czech ([hanbar](https://github.com/hanbar))
-- da - Danish ([Rasmus Melchior Jacobsen](https://github.com/rmja))
-- de - German ([Michael Schuler](https://github.com/mschuler))
-- es - Spanish ([Ivan Santos](https://github.com/ivansg))
-- fa - Farsi ([A. Bahrami](https://github.com/alirezakoo))
-- fi - Finnish ([Mikael Rosenberg](https://github.com/MR77FI))
-- fr - French ([Arnaud TAMAILLON](https://github.com/Greybird))
-- he - Hebrew ([Ilan Firsov](https://github.com/IlanF))
-- hr - Croatian ([Rok Šekoranja](https://github.com/Rookxc))
-- hu - Hungarian ([Orcsity Norbert](https://github.com/Northber), Szabó Dániel)
-- id - Indonesia ([Hasan Basri](https://github.com/hasanbasri1993))
-- it - Italian ([rinaldihno](https://github.com/rinaldihno))
-- ja - Japanese ([Alin Sarivan](https://github.com/asarivan))
-- ko - Korean ([Ion Mincu](https://github.com/ionmincu))
-- my - Malay (Malaysia) ([Ikhwan Abdullah](https://github.com/leychay))
-- nb - Norwegian ([Siarhei Khalipski](https://github.com/KhalipskiSiarhei))
-- nl - Dutch ([TotalMace](https://github.com/TotalMace))
-- pl - Polish ([foka](https://github.com/foka))
-- pt_BR - Portuguese (Brazil) ([Renato Lima](https://github.com/natenho))
-- pt_PT - Portuguese (Portugal) ([POFerro](https://github.com/POFerro))
-- ro - Romanian ([Illegitimis](https://github.com/illegitimis))
-- ru - Russian ([LbISS](https://github.com/LbISS))
-- sk - Slovakian ([hanbar](https://github.com/hanbar))
-- sl - Slovenian ([Jani Bevk](https://github.com/jenzy))
-- sw - Swahili ([Leylow Lujuo](https://github.com/leyluj))
-- sv - Swedish ([roobin](https://github.com/roobin))
-- sr - Serbian ([Miloš Paunović](https://github.com/MilosPaunovic))
-- tg - Tajik ([Ismoil Vakhidov](https://github.com/ismoil77))
-- th - Thai ([Teerapat Prommarak](https://github.com/xeusteerapat))
-- tr - Turkish ([Mustafa SADEDİL](https://github.com/sadedil))
-- uk - Ukrainian ([Taras](https://github.com/tbudurovych))
-- vi - Vietnamese ([Nguyen Tan Phap](https://github.com/rikkapro0128))
-- zh_CN - Chinese (Simplified) ([Star Peng](https://github.com/starpeng))
-- zh_TW - Chinese (Traditional) ([Ricky Chiang](https://github.com/metavige))
+| Code | Language | Translated by |
+| --- | --- | --- |
+| `en` | English | [Brady Holt](https://github.com/bradymholt) |
+| `af` | Afrikaans | [Michael van Niekerk](https://github.com/mvniekerk) |
+| `ar` | Arabic | [Mohamed Nehad Shalabi](https://github.com/mohamednehad450) |
+| `az` | Azerbaijani | [Jamal Kamaladdin](https://github.com/jamalkamaladdin) |
+| `be` | Belarusian | [Kirill Mikulich](https://github.com/KirillMikulich) |
+| `bg` | Bulgarian | [kamenf](https://github.com/kamenf) |
+| `ca` | Catalan | [Francisco Javier Barrena](https://github.com/fjbarrena) |
+| `cs` | Czech | [hanbar](https://github.com/hanbar) |
+| `da` | Danish | [Rasmus Melchior Jacobsen](https://github.com/rmja) |
+| `de` | German | [Michael Schuler](https://github.com/mschuler) |
+| `es` | Spanish | [Ivan Santos](https://github.com/ivansg) |
+| `fa` | Farsi | [A. Bahrami](https://github.com/alirezakoo) |
+| `fi` | Finnish | [Mikael Rosenberg](https://github.com/MR77FI) |
+| `fr` | French | [Arnaud TAMAILLON](https://github.com/Greybird) |
+| `he` | Hebrew | [Ilan Firsov](https://github.com/IlanF) |
+| `hr` | Croatian | [Rok Šekoranja](https://github.com/Rookxc) |
+| `hu` | Hungarian | [Orcsity Norbert](https://github.com/Northber), Szabó Dániel |
+| `id` | Indonesian | [Hasan Basri](https://github.com/hasanbasri1993) |
+| `it` | Italian | [rinaldihno](https://github.com/rinaldihno) |
+| `ja` | Japanese | [Alin Sarivan](https://github.com/asarivan) |
+| `ko` | Korean | [Ion Mincu](https://github.com/ionmincu) |
+| `my` | Malay (Malaysia) | [Ikhwan Abdullah](https://github.com/leychay) |
+| `nb` | Norwegian (Bokmål) | [Siarhei Khalipski](https://github.com/KhalipskiSiarhei) |
+| `nn` | Norwegian (Nynorsk) | [Arvind](https://github.com/arvindfroi) |
+| `nl` | Dutch | [TotalMace](https://github.com/TotalMace) |
+| `pl` | Polish | [foka](https://github.com/foka) |
+| `pt_BR` | Portuguese (Brazil) | [Renato Lima](https://github.com/natenho) |
+| `pt_PT` | Portuguese (Portugal) | [POFerro](https://github.com/POFerro) |
+| `ro` | Romanian | [Illegitimis](https://github.com/illegitimis) |
+| `ru` | Russian | [LbISS](https://github.com/LbISS) |
+| `sk` | Slovak | [hanbar](https://github.com/hanbar) |
+| `sl` | Slovenian | [Jani Bevk](https://github.com/jenzy) |
+| `sw` | Swahili | [Leylow Lujuo](https://github.com/leyluj) |
+| `sv` | Swedish | [roobin](https://github.com/roobin) |
+| `sr` | Serbian | [Miloš Paunović](https://github.com/MilosPaunovic) |
+| `tg` | Tajik | [Ismoil Vakhidov](https://github.com/ismoil77) |
+| `th` | Thai | [Teerapat Prommarak](https://github.com/xeusteerapat) |
+| `tr` | Turkish | [Mustafa SADEDİL](https://github.com/sadedil) |
+| `uk` | Ukrainian | [Taras](https://github.com/tbudurovych) |
+| `vi` | Vietnamese | [Nguyen Tan Phap](https://github.com/rikkapro0128) |
+| `zh_CN` | Chinese (Simplified) | [Star Peng](https://github.com/starpeng) |
+| `zh_TW` | Chinese (Traditional) | [Ricky Chiang](https://github.com/metavige) |
 
 ## Frequently Asked Questions
 
@@ -242,7 +258,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 
 2. Can cRonstrue output the next occurrence of the cron expression?
 
-    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.  You can do with with a library like [croner](https://www.npmjs.com/package/croner).  Example:
+    No, cRonstrue does not support this.  This library simply describes a cron expression that is passed in.  You can do this with a library like [croner](https://www.npmjs.com/package/croner).  Example:
 
    ```javascript
    import { Cron } from 'croner';
@@ -255,12 +271,12 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 
 Thank you to the following sponsors of this project!
 
-<a href="https://github.com/microsoft"><img src="https://github.com/microsoft.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
-<a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
-<a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
-<a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
-<a href="https://github.com/KevinWang15"><img src="https://github.com/KevinWang15.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
-<a href="https://github.com/timheuer"><img src="https://github.com/timheuer.png" width="50px" alt="robjtede" style="max-width: 100%;"></a>
+<a href="https://github.com/microsoft"><img src="https://github.com/microsoft.png" width="50px" alt="microsoft" style="max-width: 100%;"></a>
+<a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" alt="github" style="max-width: 100%;"></a>
+<a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" alt="DevUtilsApp" style="max-width: 100%;"></a>
+<a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" alt="getsentry" style="max-width: 100%;"></a>
+<a href="https://github.com/KevinWang15"><img src="https://github.com/KevinWang15.png" width="50px" alt="KevinWang15" style="max-width: 100%;"></a>
+<a href="https://github.com/timheuer"><img src="https://github.com/timheuer.png" width="50px" alt="timheuer" style="max-width: 100%;"></a>
 
 
 ## License

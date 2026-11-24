@@ -21,8 +21,6 @@
     "cron for humans",
     "cron translated",
     "cron english",
-    "cron schedule",
-    "cron english",
     "cron schedule"
   ],
   "main": "dist/cronstrue.js",
