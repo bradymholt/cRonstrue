@@ -3,7 +3,7 @@
 [![Build](https://img.shields.io/github/actions/workflow/status/bradymholt/cRonstrue/build.yml?branch=main&label=build)](https://github.com/bradymholt/cRonstrue/actions/workflows/build.yml)
 [![npm version](https://img.shields.io/npm/v/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 [![npm downloads](https://img.shields.io/npm/dm/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
-[![Minified size](https://img.shields.io/bundlephobia/min/cronstrue?label=minified)](https://bundlephobia.com/package/cronstrue)
+[![Bundle size](https://img.shields.io/bundlejs/size/cronstrue)](https://bundlejs.com/?q=cronstrue)
 [![Types](https://img.shields.io/npm/types/cronstrue.svg)](https://www.npmjs.com/package/cronstrue)
 [![License: MIT](https://img.shields.io/npm/l/cronstrue.svg)](https://github.com/bradymholt/cRonstrue/blob/main/LICENSE)
 
@@ -217,7 +217,7 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 | `pt_PT` | Portuguese (Portugal) | [POFerro](https://github.com/POFerro) |
 | `ro` | Romanian | [Illegitimis](https://github.com/illegitimis) |
 | `ru` | Russian | [LbISS](https://github.com/LbISS) |
-| `sk` | Slovakian | [hanbar](https://github.com/hanbar) |
+| `sk` | Slovak | [hanbar](https://github.com/hanbar) |
 | `sl` | Slovenian | [Jani Bevk](https://github.com/jenzy) |
 | `sw` | Swahili | [Leylow Lujuo](https://github.com/leyluj) |
 | `sv` | Swedish | [roobin](https://github.com/roobin) |
@@ -271,12 +271,12 @@ The following locales can be passed in for the `locale` option.  Thank you to th
 
 Thank you to the following sponsors of this project!
 
-<a href="https://github.com/microsoft"><img src="https://github.com/microsoft.png" width="50px" style="max-width: 100%;"></a>
-<a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" style="max-width: 100%;"></a>
-<a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" style="max-width: 100%;"></a>
-<a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" style="max-width: 100%;"></a>
-<a href="https://github.com/KevinWang15"><img src="https://github.com/KevinWang15.png" width="50px" style="max-width: 100%;"></a>
-<a href="https://github.com/timheuer"><img src="https://github.com/timheuer.png" width="50px" style="max-width: 100%;"></a>
+<a href="https://github.com/microsoft"><img src="https://github.com/microsoft.png" width="50px" alt="microsoft" style="max-width: 100%;"></a>
+<a href="https://github.com/github"><img src="https://github.com/github.png" width="50px" alt="github" style="max-width: 100%;"></a>
+<a href="https://github.com/DevUtilsApp"><img src="https://github.com/DevUtilsApp.png" width="50px" alt="DevUtilsApp" style="max-width: 100%;"></a>
+<a href="https://github.com/getsentry"><img src="https://github.com/getsentry.png" width="50px" alt="getsentry" style="max-width: 100%;"></a>
+<a href="https://github.com/KevinWang15"><img src="https://github.com/KevinWang15.png" width="50px" alt="KevinWang15" style="max-width: 100%;"></a>
+<a href="https://github.com/timheuer"><img src="https://github.com/timheuer.png" width="50px" alt="timheuer" style="max-width: 100%;"></a>
 
 
 ## License
