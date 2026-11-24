@@ -82,6 +82,7 @@
       .copy:hover{color:var(--text);border-color:var(--accent)}
       h2{font-size:1.15rem;margin:0 0 10px}
       .about p{margin:0 0 12px}
+      .about p.hint{margin:14px 0 8px;color:var(--muted);font-size:.92rem}
       .about ul{margin:0;padding-left:20px}
       .about li{margin:4px 0}
       footer{color:var(--muted);font-size:.88rem;padding:8px 0 40px;text-align:center}
@@ -141,11 +142,6 @@
               <label><input type="checkbox" data-opt="monthStartIndexZero" /><span>January is month 0<code>monthStartIndexZero</code></span></label>
             </div>
           </details>
-
-          <div class="code">
-            <pre><code id="snippet"></code></pre>
-            <button type="button" class="copy" data-copy="snippet">Copy</button>
-          </div>
         </section>
 
         <section class="card about">
@@ -153,6 +149,11 @@
           <div class="code" style="margin-top:0">
             <pre><code id="install">npm install cronstrue</code></pre>
             <button type="button" class="copy" data-copy="install">Copy</button>
+          </div>
+          <p class="hint">Then describe the expression above:</p>
+          <div class="code" style="margin-top:0">
+            <pre><code id="snippet"></code></pre>
+            <button type="button" class="copy" data-copy="snippet">Copy</button>
           </div>
           <p style="margin-top:12px">
             See the <a href="https://github.com/bradymholt/cRonstrue#readme">README</a> for browser, CDN, CLI and i18n
