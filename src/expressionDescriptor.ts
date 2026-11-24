@@ -321,6 +321,7 @@ export class ExpressionDescriptor {
         this.expressionParts[3] != "*" && !this.options.logicalAndDayFields && dayOfWeekExpression.indexOf(",") == -1;
       const stepSegments = dayOfWeekExpression.split("/");
       const hasStep = stepSegments.length > 1 && parseInt(stepSegments[1]) != 1;
+      const andPrefix = this.getAndPrefix();
 
       description = this.getSegmentDescription(dayOfWeekExpression, {
         all: this.i18n.commaEveryDay(),
@@ -351,16 +352,16 @@ export class ExpressionDescriptor {
           if (parseInt(s) == 1) {
             return "";
           }
-          const format =
-            startsWithAnd && this.i18n.commaAndEveryX0DaysOfTheWeek
-              ? this.i18n.commaAndEveryX0DaysOfTheWeek(s)
-              : this.i18n.commaEveryX0DaysOfTheWeek(s);
-          return StringUtilities.format(format, s);
+          const format = this.i18n.commaEveryX0DaysOfTheWeek(s);
+          return StringUtilities.format(
+            startsWithAnd && andPrefix ? andPrefix + ExpressionDescriptor.removeLeadingComma(format) : format,
+            s,
+          );
         },
         range: (s) => {
           const beginFrom = s.substring(0, s.indexOf("-"));
 
-          return startsWithAnd && !hasStep
+          return startsWithAnd && (!hasStep || !andPrefix)
             ? this.i18n.commaAndX0ThroughX1(beginFrom)
             : this.i18n.commaX0ThroughX1(beginFrom);
         },
@@ -409,6 +410,17 @@ export class ExpressionDescriptor {
       range: () => this.i18n.commaMonthX0ThroughMonthX1?.() || this.i18n.commaX0ThroughX1(),
       format: () => (this.i18n.commaOnlyInMonthX0 ? this.i18n.commaOnlyInMonthX0() : this.i18n.commaOnlyInX0()),
     });
+  }
+
+  // The conjunction a locale puts before a range, such as ", und " from ", und %s bis %s"
+  private getAndPrefix(): string | null {
+    const plain = this.i18n.commaX0ThroughX1();
+    const withAnd = this.i18n.commaAndX0ThroughX1();
+    const body = ExpressionDescriptor.removeLeadingComma(plain);
+    if (withAnd == plain || withAnd.length <= body.length || withAnd.slice(-body.length) != body) {
+      return null;
+    }
+    return withAnd.slice(0, -body.length);
   }
 
   // Removes the comma (and one space) a "comma..." description starts with. Locales use their own comma ("، " in ar,
