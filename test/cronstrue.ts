@@ -1130,6 +1130,27 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 12 10 * 1-2,*/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and Monday through Tuesday and every 2 days of the week",
+      );
+    });
+
+    it("0 12 10 * */2,1-2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and every 2 days of the week and Monday through Tuesday",
+      );
+    });
+
+    it("0 12 10 * 1-2,*/2 with logicalAndDayFields", function () {
+      assert.equal(
+        cronstrue.toString("0 12 10 * 1-2,*/2", { logicalAndDayFields: true }),
+        "At 12:00 PM, on day 10 of the month, Monday through Tuesday and every 2 days of the week",
+      );
+    });
+
     it("*/5 0-4,6-8 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),

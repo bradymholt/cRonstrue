@@ -390,6 +390,22 @@ export class ExpressionDescriptor {
           return format;
         },
       });
+
+      // A list with a step has no outer format to carry that "and", and its first item only has one when it is a
+      // single day ("5,*\/2" gives "and on Friday"). Give a first range or step the "and" it gets on its own.
+      const firstItem = dayOfWeekItems[0];
+      const isListWithStep = dayOfWeekItems.length > 1 && dayOfWeekExpression.indexOf("/") > -1;
+      const firstStep = firstItem.split("/")[1];
+      if (
+        isListWithStep &&
+        andPrefix &&
+        description &&
+        this.expressionParts[3] != "*" &&
+        !this.options.logicalAndDayFields &&
+        (firstStep === undefined ? firstItem.indexOf("-") > -1 : parseInt(firstStep) != 1)
+      ) {
+        description = andPrefix + ExpressionDescriptor.removeLeadingComma(description);
+      }
     }
 
     return description;
