@@ -29,8 +29,12 @@
     <!-- prettier-ignore -->
     <style>
       :root{
-        --bg:#f4f6fb;--surface:#fff;--text:#1a1f2e;--muted:#5b6478;--border:#dde2ec;
-        --accent:#1d4ed8;--accent-soft:#e8eefc;--result:#0b1f4d;--error:#b42318;--error-soft:#fdecea;
+        --bg:#f3f5fb;--surface:#fff;--text:#161b2e;--muted:#5b6478;--border:#e1e5ef;
+        --accent:#2563eb;--accent-2:#7c3aed;--accent-3:#0d9488;--accent-4:#db2777;
+        --accent-soft:#e8efff;--result:#0b1f4d;--error:#b42318;--error-soft:#fdecea;
+        --result-bg:linear-gradient(135deg,#eef3ff 0%,#f4eeff 100%);
+        --hero:radial-gradient(800px 380px at 100% 0%,rgba(124,58,237,.45),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(37,99,235,.55),transparent 60%),#0b1430;
+        --code-bg:#0f172a;--code-text:#e2e8f0;--code-border:#1e293b;
         --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
         --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
         --chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235b6478' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -38,8 +42,11 @@
       }
       @media (prefers-color-scheme: dark){
         :root{
-          --bg:#0e1117;--surface:#161b24;--text:#e6e9ef;--muted:#9aa3b5;--border:#2a3140;
-          --accent:#7aa2ff;--accent-soft:#1c2740;--result:#dbe5ff;--error:#ff8a80;--error-soft:#3a1d1d;
+          --bg:#0b0f19;--surface:#131a28;--text:#e6e9ef;--muted:#9aa3b5;--border:#252d3d;
+          --accent:#7aa2ff;--accent-2:#b18cff;--accent-3:#4fd1c5;--accent-4:#f472b6;
+          --accent-soft:#1c2740;--result:#e6edff;--error:#ff8a80;--error-soft:#3a1d1d;
+          --result-bg:linear-gradient(135deg,rgba(122,162,255,.12) 0%,rgba(177,140,255,.12) 100%);
+          --code-bg:#0a0f1c;--code-border:#252d3d;
           --chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%239aa3b5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
           color-scheme:dark;
         }
@@ -50,60 +57,76 @@
       a{color:var(--accent)}
       code,kbd{font-family:var(--mono);font-size:.92em}
       .wrap{max-width:760px;margin:0 auto;padding:0 16px}
-      header{padding:40px 0 8px}
+      .hero{background:var(--hero);color:#fff;padding:44px 0 96px}
       .brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-      h1{margin:0;font-size:2rem;letter-spacing:-.02em}
-      h1 .stars{font-family:var(--mono);color:var(--accent);font-weight:600;font-size:1.1rem;margin-left:8px;letter-spacing:.1em}
-      .tagline{margin:6px 0 0;color:var(--muted);font-size:1.05rem}
+      h1{margin:0;font-size:2.4rem;font-weight:800;letter-spacing:-.03em}
+      h1 .stars{font-family:var(--mono);font-weight:600;font-size:1.2rem;margin-left:10px;letter-spacing:.12em;background:linear-gradient(90deg,#7aa2ff,#c4a6ff,#f9a8d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+      .tagline{margin:8px 0 0;color:#c3cbe0;font-size:1.1rem}
       .links{display:flex;gap:8px}
-      .links a{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);text-decoration:none;font-size:.9rem;font-weight:500}
-      .links a:hover{border-color:var(--accent)}
+      .links a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-size:.9rem;font-weight:600;transition:background .15s}
+      .links a:hover{background:rgba(255,255,255,.18)}
       .links svg{width:16px;height:16px;fill:currentColor}
-      .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin:24px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
-      .field{display:block;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+      main{margin-top:-64px}
+      .card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;margin:0 0 24px;box-shadow:0 12px 32px -12px rgba(16,24,40,.18),0 1px 2px rgba(16,24,40,.05);overflow:hidden}
+      .card.demo::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-4))}
+      .field{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
       .row{display:flex;gap:10px;flex-wrap:wrap}
       .row > .grow{flex:1 1 260px;min-width:0}
-      input[type=text],select{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+      input[type=text],select{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;transition:border-color .15s,box-shadow .15s}
       input[type=text]{font-family:var(--mono);font-size:1.25rem;letter-spacing:.04em}
       input[type=text],select{height:50px}
       select{font-size:1rem;appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:var(--chevron);background-repeat:no-repeat;background-position:right 14px center;background-size:12px 8px}
-      input:focus,select:focus,button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+      input[type=text]:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+      button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
       .locale{flex:0 1 220px}
-      #description{margin:22px 0 4px;min-height:1.3em;font-size:1.7rem;font-weight:650;line-height:1.3;color:var(--result);letter-spacing:-.01em}
-      #description.error{color:var(--error);font-size:1.05rem;font-weight:500;background:var(--error-soft);padding:10px 12px;border-radius:10px}
-      .examples{margin-top:18px}
+      #description{margin:20px 0 4px;min-height:1.3em;font-size:1.7rem;font-weight:700;line-height:1.3;color:var(--result);letter-spacing:-.015em;background:var(--result-bg);border-left:4px solid var(--accent-2);border-radius:12px;padding:16px 20px}
+      #description:empty{display:none}
+      #description.error{color:var(--error);font-size:1.05rem;font-weight:500;background:var(--error-soft);border-left-color:var(--error)}
+      .examples{margin-top:20px}
       .examples .field{margin-bottom:8px}
       .chips{display:flex;flex-wrap:wrap;gap:6px}
-      .chip{font-family:var(--mono);font-size:.85rem;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer}
-      .chip:hover{border-color:var(--accent);background:var(--accent-soft)}
-      details{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+      .chip{font-family:var(--mono);font-size:.85rem;padding:5px 11px;border-radius:999px;border:1px solid transparent;background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer;transition:transform .1s,background .15s}
+      .chip:hover{border-color:var(--accent);transform:translateY(-1px)}
+      .chip:nth-child(4n+2){color:var(--accent-2);background:color-mix(in srgb,var(--accent-2) 12%,transparent)}
+      .chip:nth-child(4n+2):hover{border-color:var(--accent-2)}
+      .chip:nth-child(4n+3){color:var(--accent-3);background:color-mix(in srgb,var(--accent-3) 12%,transparent)}
+      .chip:nth-child(4n+3):hover{border-color:var(--accent-3)}
+      .chip:nth-child(4n){color:var(--accent-4);background:color-mix(in srgb,var(--accent-4) 11%,transparent)}
+      .chip:nth-child(4n):hover{border-color:var(--accent-4)}
+      details{margin-top:20px;border-top:1px solid var(--border);padding-top:14px}
       summary{cursor:pointer;font-weight:600;color:var(--muted);font-size:.95rem}
+      summary:hover{color:var(--text)}
       .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px 16px;margin-top:12px}
       .opts label{display:flex;align-items:flex-start;gap:8px;font-size:.92rem;cursor:pointer}
-      .opts input{margin-top:4px;accent-color:var(--accent)}
+      .opts input{margin-top:4px;accent-color:var(--accent-2)}
       .opts code{color:var(--muted);font-size:.8rem;display:block}
       .code{position:relative;margin-top:18px}
-      pre{margin:0;padding:14px 72px 14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow-x:auto;font-family:var(--mono);font-size:.88rem;line-height:1.5}
-      .copy{position:absolute;top:8px;right:8px;font:inherit;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer}
-      .copy:hover{color:var(--text);border-color:var(--accent)}
-      h2{font-size:1.15rem;margin:0 0 10px}
+      pre{margin:0;padding:14px 72px 14px 16px;background:var(--code-bg);color:var(--code-text);border:1px solid var(--code-border);border-radius:10px;overflow-x:auto;font-family:var(--mono);font-size:.88rem;line-height:1.6}
+      pre .k{color:#c4a6ff}pre .s{color:#86efac}pre .f{color:#7dd3fc}pre .p{color:#fda4af}pre .c{color:#94a3b8}
+      .copy{position:absolute;top:8px;right:8px;font:inherit;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#cbd5e1;cursor:pointer}
+      .copy:hover{color:#fff;background:rgba(255,255,255,.16)}
+      h2{font-size:1.2rem;margin:0 0 12px;letter-spacing:-.01em}
       .about p{margin:0 0 12px}
       .about p.hint{margin:14px 0 8px;color:var(--muted);font-size:.92rem}
-      .about ul{margin:0;padding-left:20px}
-      .about li{margin:4px 0}
+      .features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+      .feature{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--bg)}
+      .feature b{display:block;font-size:1.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;color:var(--c)}
+      .feature span{display:block;font-size:.85rem;color:var(--muted);margin-top:2px}
+      .feature b code{font-size:1.1rem}
       footer{color:var(--muted);font-size:.88rem;padding:8px 0 40px;text-align:center}
       @media (max-width:560px){
-        header{padding-top:24px}
-        h1{font-size:1.6rem}
-        .card{padding:18px}
+        .hero{padding:28px 0 88px}
+        h1{font-size:1.9rem}
+        .card{padding:20px}
         .locale{flex:1 1 100%}
-        #description{font-size:1.35rem}
+        #description{font-size:1.35rem;padding:14px 16px}
+        .features{grid-template-columns:repeat(2,1fr)}
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header>
+    <header class="hero">
+      <div class="wrap">
         <div class="brand">
           <h1>cRonstrue<span class="stars" aria-hidden="true">* * * * *</span></h1>
           <nav class="links">
@@ -115,10 +138,12 @@
           </nav>
         </div>
         <p class="tagline">Translate cron expressions into human readable descriptions.</p>
-      </header>
+      </div>
+    </header>
 
+    <div class="wrap">
       <main>
-        <section class="card" aria-label="Demo">
+        <section class="card demo" aria-label="Demo">
           <form id="form" class="row" autocomplete="off">
             <div class="grow">
               <label class="field" for="expression">Cron expression</label>
@@ -153,7 +178,7 @@
         <section class="card about">
           <h2>Get started</h2>
           <div class="code" style="margin-top:0">
-            <pre><code id="install">npm install cronstrue</code></pre>
+            <pre><code id="install"><span class="f">npm</span> install <span class="s">cronstrue</span></code></pre>
             <button type="button" class="copy" data-copy="install">Copy</button>
           </div>
           <p class="hint">Then describe the expression above:</p>
@@ -165,13 +190,14 @@
             See the <a href="https://github.com/bradymholt/cRonstrue#readme">README</a> for browser, CDN, CLI and i18n
             usage.
           </p>
-          <ul>
-            <li>Zero dependencies, with TypeScript type definitions</li>
-            <li>Supports all special characters, including <code>* / , - ? L W #</code></li>
-            <li>Supports 5, 6 (with seconds or year) and 7 part expressions</li>
-            <li>Supports <a href="https://www.quartz-scheduler.org/">Quartz Job Scheduler</a> expressions and nicknames like <code>@daily</code></li>
-            <li><span id="locale-count">40+</span> languages</li>
-          </ul>
+          <div class="features">
+            <div class="feature" style="--c:var(--accent)"><b>0</b><span>dependencies</span></div>
+            <div class="feature" style="--c:var(--accent-2)"><b id="locale-count">40+</b><span>languages</span></div>
+            <div class="feature" style="--c:var(--accent-3)"><b>TS</b><span>type definitions included</span></div>
+            <div class="feature" style="--c:var(--accent-4)"><b>5&ndash;7</b><span>part expressions, with seconds or year</span></div>
+            <div class="feature" style="--c:var(--accent)"><b><code>L W #</code></b><span>and every other special character</span></div>
+            <div class="feature" style="--c:var(--accent-2)"><b>Quartz</b><span>expressions and nicknames like <code>@daily</code></span></div>
+          </div>
         </section>
       </main>
 
@@ -269,6 +295,20 @@
           history.replaceState(null, "", "#" + params.toString());
         }
 
+        function highlight(code) {
+          const escape = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          return code.replace(
+            /("(?:[^"\\]|\\.)*")|\b(import|from|true|false)\b|(\w+)(?=\()|(\w+)(?=: )|([^"\w]+|\w+)/g,
+            (m, str, kw, fn, prop, other) => {
+              if (str) return `<span class="s">${escape(str)}</span>`;
+              if (kw) return `<span class="k">${kw}</span>`;
+              if (fn) return `<span class="f">${fn}</span>`;
+              if (prop) return `<span class="p">${prop}</span>`;
+              return escape(other);
+            }
+          );
+        }
+
         function update() {
           const expression = expressionEl.value.trim();
           const locale = localeEl.value;
@@ -293,9 +333,10 @@
           const optionsText = Object.keys(options).length
             ? ", " + JSON.stringify(options).replace(/"(\w+)":/g, "$1: ").replace(/,/g, ", ").replace(/^\{/, "{ ").replace(/\}$/, " }")
             : "";
-          snippetEl.textContent =
+          snippetEl.innerHTML = highlight(
             (locale !== "en" ? `import cronstrue from "cronstrue";\nimport "cronstrue/locales/${locale}";\n\n` : `import cronstrue from "cronstrue";\n\n`) +
-            `cronstrue.toString(${JSON.stringify(expression)}${optionsText});`;
+            `cronstrue.toString(${JSON.stringify(expression)}${optionsText});`
+          );
 
           writeState();
         }
