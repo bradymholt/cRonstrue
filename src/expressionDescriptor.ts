@@ -581,14 +581,17 @@ export class ExpressionDescriptor {
         if (segments[i].indexOf("/") > -1 || segments[i].indexOf("-") > -1) {
           // Multiple Values with Increment or Range
 
-          const isSegmentRangeWithoutIncrement = segments[i].indexOf("-") > -1 && segments[i].indexOf("/") == -1;
+          // Without a step in the list, the whole field is formatted below, so a range only gives its values.
+          // With a step there is no outer format, so a range describes itself like the other items.
+          const isBareRange =
+            !doesExpressionContainIncrement && segments[i].indexOf("-") > -1 && segments[i].indexOf("/") == -1;
 
           let currentDescriptionContent = this.getSegmentDescription(
             segments[i],
-            isSegmentRangeWithoutIncrement ? { ...itemDescribers, range: this.i18n.commaX0ThroughX1 } : itemDescribers,
+            isBareRange ? { ...itemDescribers, range: this.i18n.commaX0ThroughX1 } : itemDescribers,
           );
 
-          if (isSegmentRangeWithoutIncrement || i > 0) {
+          if (isBareRange || i > 0) {
             // Strip leading comma since we manage separators in this loop
             currentDescriptionContent = ExpressionDescriptor.removeLeadingComma(currentDescriptionContent!);
           }

@@ -1102,6 +1102,34 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("1-3,*/10 * * * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "Minutes 1 through 3 past the hour and every 10 minutes",
+      );
+    });
+
+    it("0 12 1-5,*/2 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, between day 1 and 5 of the month and every 2 days in a month",
+      );
+    });
+
+    it("0 12 */2,1-5 * *", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, every 2 days in a month and between day 1 and 5 of the month",
+      );
+    });
+
+    it("0 12 * * 1-2,*/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, Monday through Tuesday and every 2 days of the week",
+      );
+    });
+
     it("*/5 0-4,6-8 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
