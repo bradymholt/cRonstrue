@@ -570,6 +570,34 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 12 15 * 5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 15 of the month, and on the last Friday of the month",
+      );
+    });
+
+    it("0 12 15 * 1#2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 15 of the month, and on the second Monday of the month",
+      );
+    });
+
+    it("0 12 15 * 1#2,5L", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 15 of the month, and on the second Monday of the month and on the last Friday of the month",
+      );
+    });
+
+    it("0 12 15 * 5L with logicalAndDayFields", function () {
+      assert.equal(
+        cronstrue.toString("0 12 15 * 5L", { logicalAndDayFields: true }),
+        "At 12:00 PM, on day 15 of the month, on the last Friday of the month",
+      );
+    });
+
     it("*/5 * L JAN *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
