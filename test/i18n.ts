@@ -64,6 +64,13 @@ describe("i18n", function () {
         "Jede Stunde, an Tag 31 des Monats, und alle 2 Tage der Woche, Montag bis Freitag",
       );
     });
+
+    it("0 12 10 * */2,1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string, { locale: "de" }),
+        "Um 12:00, an Tag 10 des Monats, und alle 2 Tage der Woche und jeden Montag",
+      );
+    });
   });
 
   describe("es", function () {
