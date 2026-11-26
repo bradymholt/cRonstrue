@@ -284,7 +284,10 @@ export class ExpressionDescriptor {
     });
   }
 
-  protected getDayOfWeekDescription(dayOfWeekExpression: string = this.expressionParts[5]): string | null {
+  protected getDayOfWeekDescription(
+    dayOfWeekExpression: string = this.expressionParts[5],
+    isFirstClause: boolean = true,
+  ): string | null {
     const daysOfWeekNames = this.i18n.daysOfTheWeek();
 
     let description: string | null = null;
@@ -298,7 +301,7 @@ export class ExpressionDescriptor {
       const describeSeparately = (items: string[], otherItems: string[]) =>
         (this.getDayOfWeekDescription(items.join(",")) ?? "") +
         `${this.i18n.spaceAnd()} ` +
-        ExpressionDescriptor.removeLeadingComma(this.getDayOfWeekDescription(otherItems.join(",")) ?? "");
+        ExpressionDescriptor.removeLeadingComma(this.getDayOfWeekDescription(otherItems.join(","), false) ?? "");
 
       // "1,3#2" runs every Monday but only on the second Wednesday, so describe the two parts separately
       const nthOrLastItems = dayOfWeekItems.filter((s) => /[#L]/.test(s));
@@ -322,6 +325,11 @@ export class ExpressionDescriptor {
       const stepSegments = dayOfWeekExpression.split("/");
       const hasStep = stepSegments.length > 1 && parseInt(stepSegments[1]) != 1;
       const andPrefix = this.getAndPrefix();
+      // "15 * 5L" runs on day 15 or on the last Friday, so an nth or last day clause starts with "and" too
+      const nthOrLastAndPrefix =
+        isFirstClause && this.expressionParts[3] != "*" && !this.options.logicalAndDayFields ? andPrefix : null;
+      const withNthOrLastAnd = (format: string) =>
+        nthOrLastAndPrefix ? nthOrLastAndPrefix + ExpressionDescriptor.removeLeadingComma(format) : format;
 
       description = this.getSegmentDescription(dayOfWeekExpression, {
         all: this.i18n.commaEveryDay(),
@@ -370,9 +378,11 @@ export class ExpressionDescriptor {
           if (s.indexOf("#") > -1) {
             let dayOfWeekOfMonthNumber: string = s.substring(s.indexOf("#") + 1);
             let dayOfWeek = s.substring(0, s.indexOf("#"));
-            format = this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth();
+            format = withNthOrLastAnd(
+              this.i18n.commaOnThe(dayOfWeekOfMonthNumber, dayOfWeek).trim() + this.i18n.spaceX0OfTheMonth(),
+            );
           } else if (s.indexOf("L") > -1) {
-            format = this.i18n.commaOnTheLastX0OfTheMonth(s.split(",")[0].replace("L", ""));
+            format = withNthOrLastAnd(this.i18n.commaOnTheLastX0OfTheMonth(s.split(",")[0].replace("L", "")));
           } else {
             // If both DOM and DOW are specified, the cron executes depending on the cron format.
             // For the standard crontab format, the cron will execute at either time. For some
