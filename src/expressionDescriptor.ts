@@ -322,6 +322,16 @@ export class ExpressionDescriptor {
       const stepSegments = dayOfWeekExpression.split("/");
       const hasStep = stepSegments.length > 1 && parseInt(stepSegments[1]) != 1;
       const andPrefix = this.getAndPrefix();
+      const isListWithStep = dayOfWeekItems.length > 1 && dayOfWeekExpression.indexOf("/") > -1;
+      // A list with a step joins its items with its own "and", so a day in it leaves out the "and" of
+      // ", and on %s" ("*\/2,1" would read "every 2 days of the week and and on Monday"). The "and" that
+      // joins the day of week clause to the day of month goes once in front of the whole list below.
+      const dropsDayAnd =
+        isListWithStep &&
+        this.expressionParts[3] != "*" &&
+        !this.options.logicalAndDayFields &&
+        !!andPrefix &&
+        this.i18n.commaAndOnX0().indexOf(andPrefix) == 0;
 
       description = this.getSegmentDescription(dayOfWeekExpression, {
         all: this.i18n.commaEveryDay(),
@@ -382,6 +392,8 @@ export class ExpressionDescriptor {
               format = this.i18n.commaOnlyOnX0(s);
             } else if (this.options.logicalAndDayFields) {
               format = this.i18n.commaOnlyOnX0(s);
+            } else if (dropsDayAnd) {
+              format = this.i18n.commaAndOnX0().substring(andPrefix!.length);
             } else {
               format = this.i18n.commaAndOnX0();
             }
@@ -392,9 +404,8 @@ export class ExpressionDescriptor {
       });
 
       // A list with a step has no outer format to carry that "and", and its first item only has one when it is a
-      // single day ("5,*\/2" gives "and on Friday"). Give a first range or step the "and" it gets on its own.
+      // single day that keeps its own "and" (see dropsDayAnd). Give the list the "and" its first item gets on its own.
       const firstItem = dayOfWeekItems[0];
-      const isListWithStep = dayOfWeekItems.length > 1 && dayOfWeekExpression.indexOf("/") > -1;
       const firstStep = firstItem.split("/")[1];
       if (
         isListWithStep &&
@@ -402,7 +413,7 @@ export class ExpressionDescriptor {
         description &&
         this.expressionParts[3] != "*" &&
         !this.options.logicalAndDayFields &&
-        (firstStep === undefined ? firstItem.indexOf("-") > -1 : parseInt(firstStep) != 1)
+        (firstStep === undefined ? firstItem.indexOf("-") > -1 || dropsDayAnd : parseInt(firstStep) != 1)
       ) {
         description = andPrefix + ExpressionDescriptor.removeLeadingComma(description);
       }

@@ -1151,6 +1151,48 @@ describe("Cronstrue", function () {
       );
     });
 
+    it("0 12 10 * */2,1", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and every 2 days of the week and on Monday",
+      );
+    });
+
+    it("0 12 10 * 1-5/2,6", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and every 2 days of the week, Monday through Friday and on Saturday",
+      );
+    });
+
+    it("0 12 10 * */2,1,3", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and every 2 days of the week, on Monday, and on Wednesday",
+      );
+    });
+
+    it("0 12 10 * 5,*/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and on Friday and every 2 days of the week",
+      );
+    });
+
+    it("0 12 10 * */2,1/2", function () {
+      assert.equal(
+        cronstrue.toString(this.test?.title as string),
+        "At 12:00 PM, on day 10 of the month, and every 2 days of the week and every 2 days of the week, starting on Monday",
+      );
+    });
+
+    it("0 12 10 * */2,1 with logicalAndDayFields", function () {
+      assert.equal(
+        cronstrue.toString("0 12 10 * */2,1", { logicalAndDayFields: true }),
+        "At 12:00 PM, on day 10 of the month, every 2 days of the week and only on Monday",
+      );
+    });
+
     it("*/5 0-4,6-8 * * *", function () {
       assert.equal(
         cronstrue.toString(this.test?.title as string),
